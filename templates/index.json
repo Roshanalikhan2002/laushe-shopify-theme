@@ -466,14 +466,13 @@
         "bg_color": "#fff9e9"
       }
     },
-    "final_cta": {
-      "type": "final-cta",
+    "promo_cta": {
+      "type": "laushe-promo-cta",
       "settings": {
-        "headline": "Ready to Transform Your Health?",
-        "subtext": "Join over 50,000+ satisfied customers today and experience the Laushe difference.",
-        "cta_text": "SHOP NOW - SAVE 25%",
-        "cta_url": "",
-        "bg_color": "#1b4332"
+        "headline": "Ready to Transform Your Health Naturally?",
+        "cta_text": "Shop Laushe Now",
+        "bg_color": "#000000",
+        "btn_color": "#FFFA00"
       }
     }
   },
@@ -493,6 +492,6 @@
     "video_grid",
     "story",
     "social_proof",
-    "final_cta"
+    "promo_cta"
   ]
 }
