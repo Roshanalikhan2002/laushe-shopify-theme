@@ -1,36 +1,44 @@
 {% schema %}
-  "name": "Problem vs Sol",
+{
+  "name": "Problem vs Solution",
   "settings": [
+    { "id": "bg_color", "type": "color", "label": "Background Color", "default": "#002b1b" }
+  ],
+  "blocks": [
     {
-       "id": "heading",
-       "type": "text",
-       "label": "Heading",
-       "default": "The Problem"
+      "type": "problem_point",
+      "name": "Problem Point",
+      "settings": [
+        { "id": "text", "type": "text", "label": "Text", "default": "Artificial preservatives and fillers" }
+      ]
+    },
+    {
+      "type": "solution_point",
+      "name": "Solution Point",
+      "settings": [
+        { "id": "text", "type": "text", "label": "Text", "default": "100% natural, ethically sourced ingredients" }
+      ]
     }
   ],
-  "presets": [
-     {
-       "name": "Problem vs Sol"
-     }
-  ]
+  "presets": [{ "name": "Problem vs Solution", "category": "Laushe Sections" }]
 }
 {% endschema %}
 
-<section class="prob-sol-luxe" style="background-color: {{ section.settings.section_bg }};">
-  <div class="container container-laushe">
-    <div class="prob-sol-grid">
-
-      <!-- LEFT: THE PROBLEM -->
-      <div class="prob-col">
-        <p class="prob-label">{{ section.settings.problem_subtitle }}</p>
-        <h2 class="prob-heading">{{ section.settings.problem_title }}</h2>
-        <p class="prob-desc">{{ section.settings.problem_description }}</p>
-
-        <div class="point-list">
+<section class="problem-solution-v2" style="background-color: {{ section.settings.bg_color }};">
+  <div class="container">
+    <div class="prob-sol-grid-v2">
+      
+      <!-- LEFT: PROBLEM -->
+      <div class="prob-side">
+        <span class="luxe-label">THE PROBLEM</span>
+        <h2 class="luxe-heading">Most Health Products Are Full of Hidden Chemicals</h2>
+        <p class="luxe-desc">The market is flooded with supplements and health products that promise results but deliver artificial fillers, synthetic additives, and questionable ingredients. Your body deserves better than processed chemicals disguised as wellness.</p>
+        
+        <div class="luxe-points">
           {% for block in section.blocks %}
-            {% if block.type == 'prob_point' %}
-              <div class="point-item" {{ block.shopify_attributes }}>
-                <span class="icon-x">✕</span>
+            {% if block.type == 'problem_point' %}
+              <div class="luxe-point-item">
+                <span class="icon-circle icon-red">✕</span>
                 <span class="point-text">{{ block.settings.text }}</span>
               </div>
             {% endif %}
@@ -38,18 +46,18 @@
         </div>
       </div>
 
-      <!-- RIGHT: THE SOLUTION -->
-      <div class="sol-col-card">
-        <p class="sol-label">{{ section.settings.solution_subtitle }}</p>
-        <h2 class="sol-heading">{{ section.settings.solution_title }}</h2>
-        <p class="sol-desc">{{ section.settings.solution_description }}</p>
-
-        <div class="point-list">
+      <!-- RIGHT: SOLUTION CARD -->
+      <div class="sol-card">
+        <span class="luxe-label" style="color: #D4AF37;">THE LAUSHE SOLUTION</span>
+        <h2 class="luxe-heading-sm">100% Pure, 100% Natural, 100% Effective</h2>
+        <p class="luxe-desc" style="color: rgba(255,255,255,0.7);">Every Laushe product is crafted from ethically sourced, natural ingredients with complete transparency. Our Sunnah-blessed formulations combine ancient wisdom with modern quality standards.</p>
+        
+        <div class="luxe-points">
           {% for block in section.blocks %}
-            {% if block.type == 'sol_point' %}
-              <div class="point-item" {{ block.shopify_attributes }}>
-                <span class="icon-check">✓</span>
-                <span class="point-text-sol">{{ block.settings.text }}</span>
+            {% if block.type == 'solution_point' %}
+              <div class="luxe-point-item">
+                <span class="icon-circle icon-gold">✓</span>
+                <span class="point-text" style="color: white;">{{ block.settings.text }}</span>
               </div>
             {% endif %}
           {% endfor %}
@@ -61,101 +69,107 @@
 </section>
 
 <style>
-  .prob-sol-luxe {
-    padding: 100px 0;
+  .problem-solution-v2 {
+    padding: 120px 0;
+    color: white;
+    overflow: hidden;
   }
-  .container-laushe {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-  }
-  .prob-sol-grid {
+  
+  .prob-sol-grid-v2 {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 60px;
-    align-items: start;
+    gap: 80px;
+    align-items: center;
   }
-  .prob-label, .sol-label {
-    color: #D4AF37; /* --accent-gold */
-    font-size: 12px;
+  
+  .sol-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 60px;
+    border-radius: 40px;
+    backdrop-filter: blur(10px);
+  }
+  
+  .luxe-label {
+    display: block;
+    font-size: 11px;
     font-weight: 800;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    margin-bottom: 18px;
-  }
-  .prob-heading, .sol-heading {
-    color: white;
-    font-size: 38px;
-    line-height: 1.2;
+    letter-spacing: 0.2em;
+    color: #D4AF37;
     margin-bottom: 20px;
+  }
+  
+  .luxe-heading {
+    font-size: 44px;
+    line-height: 1.1;
+    margin-bottom: 30px;
     font-family: 'Poppins', sans-serif;
     font-weight: 800;
   }
-  .sol-heading {
+  
+  .luxe-heading-sm {
     font-size: 32px;
+    line-height: 1.2;
+    margin-bottom: 25px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 800;
   }
-  .prob-desc, .sol-desc {
-    color: rgba(255,255,255,0.65);
-    font-size: 16px;
-    line-height: 1.8;
-    margin-bottom: 36px;
+  
+  .luxe-desc {
+    font-size: 15px;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 40px;
   }
-  .point-list {
+  
+  .luxe-points {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 20px;
   }
-  .point-item {
+  
+  .luxe-point-item {
     display: flex;
     align-items: center;
-    gap: 14px;
+    gap: 15px;
   }
-  .icon-x {
+  
+  .icon-circle {
     width: 24px;
     height: 24px;
     border-radius: 50%;
-    background: rgba(220,50,50,0.15);
     display: flex;
     align-items: center;
     justify-content: center;
+    font-size: 11px;
+    font-weight: 900;
     flex-shrink: 0;
-    color: #FF6B6B;
-    font-weight: 800;
-    font-size: 14px;
   }
-  .icon-check {
-    width: 24px;
-    height: 24px;
-    border-radius: 50%;
-    background: rgba(212,175,55,0.2);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
+  
+  .icon-red {
+    background: rgba(255, 71, 71, 0.15);
+    color: #FF4747;
+  }
+  
+  .icon-gold {
+    background: rgba(212, 175, 55, 0.2);
     color: #D4AF37;
-    font-weight: 800;
-    font-size: 14px;
   }
+  
   .point-text {
-    color: rgba(255,255,255,0.75);
     font-size: 15px;
-  }
-  .point-text-sol {
-    color: rgba(255,255,255,0.85);
-    font-size: 15px;
+    color: rgba(255,255,255,0.8);
     font-weight: 500;
   }
-  .sol-col-card {
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.12);
-    border-radius: 24px;
-    padding: 48px;
-  }
-
-  @media (max-width: 992px) {
-    .prob-sol-grid {
+  
+  @media (max-width: 1024px) {
+    .prob-sol-grid-v2 {
       grid-template-columns: 1fr;
-      gap: 50px;
+      gap: 60px;
     }
+    .sol-card {
+      padding: 40px;
+    }
+    .luxe-heading { font-size: 32px; }
   }
 </style>
