@@ -1,12 +1,3 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
     "hero": {
@@ -26,44 +17,24 @@
         "trust_icon_sub": "Certified Choice"
       }
     },
+    "bestsellers": {
+      "type": "bestsellers",
+      "blocks": {
+        "b1": { "type": "product", "settings": { "stars_count": "1259" } },
+        "b2": { "type": "product", "settings": { "stars_count": "3373", "show_badge": true, "badge_text": "9% OFF" } },
+        "b3": { "type": "product", "settings": { "stars_count": "1340" } }
+      },
+      "block_order": ["b1", "b2", "b3"]
+    },
     "stats_bar": {
       "type": "stats-bar",
       "blocks": {
-        "s1": {
-          "type": "stat",
-          "settings": {
-            "number": "15,000+",
-            "label": "Happy Families"
-          }
-        },
-        "s2": {
-          "type": "stat",
-          "settings": {
-            "number": "98%",
-            "label": "Customer Satisfaction"
-          }
-        },
-        "s3": {
-          "type": "stat",
-          "settings": {
-            "number": "100%",
-            "label": "Natural Ingredients"
-          }
-        },
-        "s4": {
-          "type": "stat",
-          "settings": {
-            "number": "8",
-            "label": "Premium Products"
-          }
-        }
+        "s1": { "type": "stat", "settings": { "number": "15,000+", "label": "Happy Families" } },
+        "s2": { "type": "stat", "settings": { "number": "98%", "label": "Customer Satisfaction" } },
+        "s3": { "type": "stat", "settings": { "number": "100%", "label": "Natural Ingredients" } },
+        "s4": { "type": "stat", "settings": { "number": "8", "label": "Premium Products" } }
       },
-      "block_order": [
-        "s1",
-        "s2",
-        "s3",
-        "s4"
-      ],
+      "block_order": ["s1", "s2", "s3", "s4"],
       "settings": {
         "bg_color": "#e8f3ed",
         "border_color": "#00422514"
@@ -71,42 +42,20 @@
     },
     "benefits_grid": {
       "type": "benefits-grid",
-      "blocks": {
-        "gut": {
-          "type": "benefit",
-          "settings": {
-            "title": "Gut Health",
-            "description": "Promotes healthy digestion and a balanced microbiome."
-          }
-        },
-        "immunity": {
-          "type": "benefit",
-          "settings": {
-            "title": "Immunity",
-            "description": "Strengthens your defense system with potent antioxidants."
-          }
-        },
-        "energy": {
-          "type": "benefit",
-          "settings": {
-            "title": "Sustained Energy",
-            "description": "No jitters or crashes, just pure natural focus."
-          }
-        },
-        "brain": {
-          "type": "benefit",
-          "settings": {
-            "title": "Brain Clarity",
-            "description": "Enhances focus and cognitive function throughout the day."
-          }
-        }
+      "settings": {
+        "heading": "Transform Your Health",
+        "subheading": "Supported by nature, backed by tradition."
       },
-      "block_order": [
-        "gut",
-        "immunity",
-        "energy",
-        "brain"
-      ],
+      "blocks": {
+        "gut": { "type": "benefit", "settings": { "title": "Gut Health", "desc": "Optimize digestion and nutrient absorption naturally.", "icon_name": "leaf" } },
+        "energy": { "type": "benefit", "settings": { "title": "Energy & Body", "desc": "Sustain energy levels throughout the day without crashes.", "icon_name": "flash" } },
+        "immunity": { "type": "benefit", "settings": { "title": "Immunity", "desc": "Protect your system with nature's strongest defenses.", "icon_name": "shield" } },
+        "brain": { "type": "benefit", "settings": { "title": "Brain Health", "desc": "Support cognitive focus and long-term mental clarity.", "icon_name": "bulb" } }
+      },
+      "block_order": ["gut", "energy", "immunity", "brain"]
+    },
+    "problem_solution": {
+      "type": "problem-solution",
       "settings": {
         "section_title": "Whole Body Benefits In Every Scoop",
         "section_subtitle": "Everything your body needs, nothing it doesn't.",
@@ -126,25 +75,10 @@
     "social_proof": {
       "type": "social-proof-carousel",
       "blocks": {
-        "st1": {
-          "type": "social_stat",
-          "settings": {
-            "number": "95%",
-            "label": "Overall health improved"
-          }
-        },
-        "st2": {
-          "type": "social_stat",
-          "settings": {
-            "number": "67%",
-            "label": "Better digestion"
-          }
-        }
+        "st1": { "type": "social_stat", "settings": { "number": "95%", "label": "Overall health improved" } },
+        "st2": { "type": "social_stat", "settings": { "number": "67%", "label": "Better digestion" } }
       },
-      "block_order": [
-        "st1",
-        "st2"
-      ],
+      "block_order": ["st1", "st2"],
       "settings": {
         "section_title": "Pure, Potent, Proven",
         "section_subtitle": "Here is what our customers report after 3 months of using Laushe products.",
@@ -162,12 +96,5 @@
       }
     }
   },
-  "order": [
-    "hero",
-    "stats_bar",
-    "benefits_grid",
-    "story",
-    "social_proof",
-    "final_cta"
-  ]
+  "order": ["hero", "bestsellers", "stats_bar", "benefits_grid", "problem_solution", "story", "social_proof", "final_cta"]
 }
