@@ -1,0 +1,124 @@
+{% schema %}
+{
+  "name": "Header (Laushe)",
+  "settings": [
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Main Menu",
+      "default": "main-menu"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#ffffff"
+    }
+  ]
+}
+{% endschema %}
+
+<header class="sticky-header" style="background-color: {{ section.settings.bg_color }};">
+  <div class="container header-flex">
+    <!-- Hamburger (mobile only) -->
+    <div class="menu-toggle" onclick="window.toggleMobileMenu()">
+      <ion-icon name="menu-outline"></ion-icon>
+    </div>
+
+    <!-- Logo -->
+    <div class="logo-emblem" style="flex: 0 0 auto;">
+      <a href="/" style="text-decoration: none; font-size: 28px; font-weight: 900; color: #D4AF37; font-family: 'Poppins', sans-serif;">LAUSHE</a>
+    </div>
+
+    <!-- Right Nav (desktop) -->
+    <div class="right-nav" style="display: flex; flex: 1; align-items: center; justify-content: flex-end; gap: 30px;">
+      <nav class="nav-links" style="display: flex; gap: 15px; align-items: center;">
+        {% for link in linklists[section.settings.menu].links %}
+          {% if link.links != blank %}
+            <div class="nav-dropdown" style="position: relative; display: inline-flex; align-items: center;">
+              <button class="nav-dropdown-btn" style="background: none; border: none; cursor: pointer; font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 14px; letter-spacing: 0.05em; color: #004225; padding: 10px 15px; display: flex; align-items: center; gap: 5px;">
+                {{ link.title | upcase }} <span style="font-size: 9px;">&#9660;</span>
+              </button>
+              <div class="nav-dropdown-menu" style="position: absolute; top: calc(100% + 8px); left: 0; background: white; border-radius: 12px; box-shadow: 0 10px 40px rgba(0,0,0,0.12); min-width: 200px; padding: 10px 0; opacity: 0; visibility: hidden; transform: translateY(-8px); transition: all 0.25s ease; z-index: 2000;">
+                {% for sub_link in link.links %}
+                  <a href="{{ sub_link.url }}" style="display: block; padding: 12px 24px; font-size: 14px; font-weight: 600; color: #333; text-decoration: none;">{{ sub_link.title }}</a>
+                {% endfor %}
+              </div>
+            </div>
+          {% else %}
+            <a href="{{ link.url }}" style="text-decoration: none; color: #004225; font-weight: 700; font-size: 14px; letter-spacing: 0.05em; padding: 10px 15px;">{{ link.title | upcase }}</a>
+          {% endif %}
+        {% endfor %}
+      </nav>
+
+      <div class="header-icons nav-links" style="display: flex; gap: 20px; align-items: center;">
+        <a href="/search"><ion-icon name="search-outline" style="font-size: 20px; color: #004225;"></ion-icon></a>
+        <a href="/account"><ion-icon name="person-outline" style="font-size: 20px; color: #004225;"></ion-icon></a>
+        <a href="/cart" style="position: relative;">
+          <ion-icon name="bag-handle-outline" style="font-size: 20px; color: #004225;"></ion-icon>
+          {%- if cart.item_count > 0 -%}
+            <span style="position: absolute; top: -5px; right: -5px; background: #004225; color: white; font-size: 10px; padding: 2px 5px; border-radius: 50%;">{{ cart.item_count }}</span>
+          {%- endif -%}
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- MOBILE NAVIGATION DRAWER -->
+<div id="mobile-drawer-overlay" class="mobile-drawer-overlay" onclick="window.toggleMobileMenu()"></div>
+<div id="mobile-drawer" class="mobile-drawer">
+  <div class="mobile-drawer-header">
+    <div class="mobile-drawer-close" onclick="window.toggleMobileMenu()">&times;</div>
+    <div class="mobile-drawer-logo">
+      <a href="/">
+        <span class="logo-main">LAUSHE</span>
+        <span class="logo-sub">BY ZAHRA</span>
+      </a>
+    </div>
+  </div>
+  <nav class="mobile-drawer-nav">
+    {% for link in linklists[section.settings.menu].links %}
+      <a href="{{ link.url }}" onclick="window.toggleMobileMenu()">{{ link.title | upcase }}</a>
+      {% if link.links != blank %}
+        {% for sub_link in link.links %}
+          <a href="{{ sub_link.url }}" onclick="window.toggleMobileMenu()" style="padding-left: 40px; font-size: 14px; opacity: 0.8;">{{ sub_link.title | upcase }}</a>
+        {% endfor %}
+      {% endif %}
+    {% endfor %}
+  </nav>
+</div>
+
+<script>
+  // Dropdown hover logic
+  document.querySelectorAll('.nav-dropdown').forEach(function(el) {
+    el.addEventListener('mouseenter', function() {
+      const menu = el.querySelector('.nav-dropdown-menu');
+      if(menu) {
+        menu.style.opacity = '1';
+        menu.style.visibility = 'visible';
+        menu.style.transform = 'translateY(0)';
+      }
+    });
+    el.addEventListener('mouseleave', function() {
+      const menu = el.querySelector('.nav-dropdown-menu');
+      if(menu) {
+        menu.style.opacity = '0';
+        menu.style.visibility = 'hidden';
+        menu.style.transform = 'translateY(-8px)';
+      }
+    });
+  });
+
+  // Mobile Drawer
+  function toggleMobileMenu() {
+    const drawer = document.getElementById('mobile-drawer');
+    const overlay = document.getElementById('mobile-drawer-overlay');
+    if(drawer && overlay) {
+      drawer.classList.toggle('open');
+      overlay.classList.toggle('active');
+      document.body.style.overflow = drawer.classList.contains('open') ? 'hidden' : '';
+    }
+  }
+  window.toggleMobileMenu = toggleMobileMenu;
+</script>
