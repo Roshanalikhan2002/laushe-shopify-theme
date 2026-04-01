@@ -1,140 +1,101 @@
-<!-- 
-  Section: Quality Assurance
-  Aesthetics: Trust badges, Clean icons, Premium feel
--->
-
 {% schema %}
 {
-  "name": "Quality Assurance",
+  "name": "Quality Trust Badges",
   "settings": [
-    {
-      "id": "section_title",
-      "type": "text",
-      "label": "Section Title",
-      "default": "Trusted by Experts, Backed by Science"
-    },
-    {
-       "id": "bg_color",
-       "type": "color",
-       "label": "Background Color",
-       "default": "#FFFFFF"
-    }
+    { "id": "heading", "type": "text", "label": "Heading", "default": "Quality You Can Trust" },
+    { "id": "subheading", "type": "text", "label": "Subheading", "default": "Our products are regularly tested to ensure purity and authenticity." }
   ],
   "blocks": [
     {
       "type": "badge",
-      "name": "Quality Badge",
-      "limit": 6,
+      "name": "Badge Item",
+      "limit": 4,
       "settings": [
-        {
-          "id": "badge_image",
-          "type": "image_picker",
-          "label": "Badge Icon"
+        { "id": "icon_name", "type": "select", "label": "Icon", "options": [
+            {"value": "beaker", "label": "Beaker (Pesticides)"},
+            {"value": "skull", "label": "Skull (Heavy Metals)"},
+            {"value": "leaf", "label": "Leaf (Organic)"},
+            {"value": "globe", "label": "Globe (Sourced)"}
+          ], "default": "leaf" 
         },
-        {
-          "id": "label",
-          "type": "text",
-          "label": "Badge Label (e.g. 100% Organic)",
-          "default": "100% Organic"
-        }
+        { "id": "label", "type": "text", "label": "Label", "default": "100% Organic" }
       ]
     }
   ],
-  "presets": [
-     {
-       "name": "Quality Assurance",
-       "category": "Custom"
-     }
-  ]
+  "presets": [{ "name": "Quality Trust Badges", "category": "Laushe Sections" }]
 }
 {% endschema %}
 
-<section class="qa-section section-padding" style="background-color: {{ section.settings.bg_color }};">
-  <div class="container-wide">
-    <div class="qa-wrapper text-center">
-       <h2 class="qa-title h1">{{ section.settings.section_title }}</h2>
-       
-       <div class="qa-badges-grid">
-         {% for block in section.blocks %}
-           <div class="qa-badge-item animate-fade-up" {{ block.shopify_attributes }}>
-              <div class="qa-badge-icon">
-                {% if block.settings.badge_image %}
-                  <img src="{{ block.settings.badge_image | img_url: '150x' }}" alt="{{ block.settings.label }}">
-                {% else %}
-                  <div class="placeholder-qa">🛡️</div>
-                {% endif %}
-              </div>
-              <p class="qa-badge-label">{{ block.settings.label }}</p>
-           </div>
-         {% endfor %}
-       </div>
+<section class="quality-trust section-padding">
+  <div class="container text-center">
+    <div class="trust-header" style="margin-bottom: 60px;">
+      <h2 class="trust-title">{{ section.settings.heading }}</h2>
+      <p class="trust-subtitle">{{ section.settings.subheading }}</p>
+    </div>
+
+    <div class="trust-grid">
+      {% for block in section.blocks %}
+        <div class="trust-item" {{ block.shopify_attributes }}>
+          <div class="trust-icon">
+            {% render 'icon-laushe', name: block.settings.icon_name %}
+          </div>
+          <h3 class="trust-item-label">{{ block.settings.label }}</h3>
+        </div>
+      {% endfor %}
     </div>
   </div>
 </section>
 
 <style>
-  .qa-title {
-    margin-bottom: 60px;
-    font-size: 2.2rem;
-    color: var(--primary-green);
+  .trust-title {
+    font-size: 36px;
+    font-weight: 800;
+    color: #004225;
+    margin-bottom: 15px;
+    font-family: 'Poppins', sans-serif;
   }
   
-  .qa-badges-grid {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 50px;
+  .trust-subtitle {
+    font-size: 16px;
+    color: #666;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .trust-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
     max-width: 1100px;
     margin: 0 auto;
   }
   
-  .qa-badge-item {
-    flex: 0 1 180px;
-    text-align: center;
+  .trust-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
   }
   
-  .qa-badge-icon {
-     width: 100px;
-     height: 100px;
-     margin: 0 auto 20px;
-     background: var(--soft-mint);
-     border-radius: 50%;
-     display: flex;
-     align-items: center;
-     justify-content: center;
-     transition: var(--transition);
-     border: 2px solid transparent;
+  .trust-icon svg {
+    width: 48px;
+    height: 48px;
+    color: #004225;
+    stroke-width: 1.5;
   }
   
-  .qa-badge-item:hover .qa-badge-icon {
-     border-color: var(--accent-gold);
-     transform: scale(1.05);
+  .trust-item-label {
+    font-size: 18px;
+    font-weight: 800;
+    color: #004225;
+    font-family: 'Poppins', sans-serif;
   }
   
-  .qa-badge-icon img {
-     max-width: 60%;
-     height: auto;
-  }
-  
-  .placeholder-qa {
-     font-size: 40px;
-  }
-  
-  .qa-badge-label {
-     font-size: 0.95rem;
-     font-weight: 700;
-     color: var(--primary-green);
-     text-transform: uppercase;
-     letter-spacing: 0.5px;
-  }
-  
-  @media (max-width: 991px) {
-    .qa-badges-grid {
-      gap: 30px;
+  @media (max-width: 768px) {
+    .trust-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 50px 20px;
     }
-    
-    .qa-badge-item {
-      flex: 0 1 140px;
-    }
+    .trust-title { font-size: 28px; }
   }
 </style>

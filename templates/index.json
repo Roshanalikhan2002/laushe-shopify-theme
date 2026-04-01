@@ -125,6 +125,16 @@
         "border_color": "#00422514"
       }
     },
+    "quality_trust": {
+      "type": "quality-assurance",
+      "blocks": {
+        "q1": { "type": "badge", "settings": { "icon_name": "beaker", "label": "No Pesticides" } },
+        "q2": { "type": "badge", "settings": { "icon_name": "skull", "label": "No Heavy Metals" } },
+        "q3": { "type": "badge", "settings": { "icon_name": "leaf", "label": "100% Organic" } },
+        "q4": { "type": "badge", "settings": { "icon_name": "globe", "label": "Ethically Sourced" } }
+      },
+      "block_order": ["q1", "q2", "q3", "q4"]
+    },
     "benefits_grid": {
       "type": "benefits-grid",
       "blocks": {
