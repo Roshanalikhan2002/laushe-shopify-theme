@@ -1,12 +1,3 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
     "hero": {
@@ -85,41 +76,12 @@
     "stats_bar": {
       "type": "stats-bar",
       "blocks": {
-        "s1": {
-          "type": "stat",
-          "settings": {
-            "number": "15,000+",
-            "label": "Happy Families"
-          }
-        },
-        "s2": {
-          "type": "stat",
-          "settings": {
-            "number": "98%",
-            "label": "Customer Satisfaction"
-          }
-        },
-        "s3": {
-          "type": "stat",
-          "settings": {
-            "number": "100%",
-            "label": "Natural Ingredients"
-          }
-        },
-        "s4": {
-          "type": "stat",
-          "settings": {
-            "number": "8",
-            "label": "Premium Products"
-          }
-        }
+        "s1": { "type": "stat", "settings": { "number": "15,000+", "label": "Happy Families" } },
+        "s2": { "type": "stat", "settings": { "number": "98%", "label": "Customer Satisfaction" } },
+        "s3": { "type": "stat", "settings": { "number": "100%", "label": "Natural Ingredients" } },
+        "s4": { "type": "stat", "settings": { "number": "8", "label": "Premium Products" } }
       },
-      "block_order": [
-        "s1",
-        "s2",
-        "s3",
-        "s4"
-      ],
+      "block_order": ["s1", "s2", "s3", "s4"],
       "settings": {
         "bg_color": "#e8f3ed",
         "border_color": "#00422514"
@@ -138,45 +100,12 @@
     "benefits_grid": {
       "type": "benefits-grid",
       "blocks": {
-        "gut": {
-          "type": "benefit",
-          "settings": {
-            "icon_name": "leaf",
-            "title": "Gut Health",
-            "desc": "Optimize digestion and nutrient absorption naturally."
-          }
-        },
-        "energy": {
-          "type": "benefit",
-          "settings": {
-            "icon_name": "flash",
-            "title": "Energy & Body",
-            "desc": "Sustain energy levels throughout the day without crashes."
-          }
-        },
-        "immunity": {
-          "type": "benefit",
-          "settings": {
-            "icon_name": "shield",
-            "title": "Immunity",
-            "desc": "Protect your system with nature's strongest defenses."
-          }
-        },
-        "brain": {
-          "type": "benefit",
-          "settings": {
-            "icon_name": "bulb",
-            "title": "Brain Health",
-            "desc": "Support cognitive focus and long-term mental clarity."
-          }
-        }
+        "gut": { "type": "benefit", "settings": { "icon_name": "leaf", "title": "Gut Health", "desc": "Optimize digestion and nutrient absorption naturally." } },
+        "energy": { "type": "benefit", "settings": { "icon_name": "flash", "title": "Energy & Body", "desc": "Sustain energy levels throughout the day without crashes." } },
+        "immunity": { "type": "benefit", "settings": { "icon_name": "shield", "title": "Immunity", "desc": "Protect your system with nature's strongest defenses." } },
+        "brain": { "type": "benefit", "settings": { "icon_name": "bulb", "title": "Brain Health", "desc": "Support cognitive focus and long-term mental clarity." } }
       },
-      "block_order": [
-        "gut",
-        "energy",
-        "immunity",
-        "brain"
-      ],
+      "block_order": ["gut", "energy", "immunity", "brain"],
       "settings": {
         "heading": "Transform Your Health",
         "subheading": "Supported by nature, backed by tradition.",
@@ -186,99 +115,37 @@
     "problem_solution": {
       "type": "problem-solution",
       "blocks": {
-        "p1": {
-          "type": "problem_point",
-          "settings": {
-            "text": "Artificial preservatives and fillers"
-          }
-        },
-        "p2": {
-          "type": "problem_point",
-          "settings": {
-            "text": "Synthetic vitamins with low absorption"
-          }
-        },
-        "p3": {
-          "type": "problem_point",
-          "settings": {
-            "text": "Hidden sugars and processed ingredients"
-          }
-        },
-        "p4": {
-          "type": "problem_point",
-          "settings": {
-            "text": "No transparency in sourcing"
-          }
-        },
-        "s1": {
-          "type": "solution_point",
-          "settings": {
-            "text": "100% natural, ethically sourced ingredients"
-          }
-        },
-        "s2": {
-          "type": "solution_point",
-          "settings": {
-            "text": "Sunnah-blessed traditional formulations"
-          }
-        },
-        "s3": {
-          "type": "solution_point",
-          "settings": {
-            "text": "Zero artificial additives or preservatives"
-          }
-        },
-        "s4": {
-          "type": "solution_point",
-          "settings": {
-            "text": "Full ingredient transparency on every product"
-          }
-        }
+        "p1": { "type": "problem_point", "settings": { "text": "Artificial preservatives and fillers" } },
+        "p2": { "type": "problem_point", "settings": { "text": "Synthetic vitamins with low absorption" } },
+        "p3": { "type": "problem_point", "settings": { "text": "Hidden sugars and processed ingredients" } },
+        "p4": { "type": "problem_point", "settings": { "text": "No transparency in sourcing" } },
+        "s1": { "type": "solution_point", "settings": { "text": "100% natural, ethically sourced ingredients" } },
+        "s2": { "type": "solution_point", "settings": { "text": "Sunnah-blessed traditional formulations" } },
+        "s3": { "type": "solution_point", "settings": { "text": "Zero artificial additives or preservatives" } },
+        "s4": { "type": "solution_point", "settings": { "text": "Full ingredient transparency on every product" } }
       },
-      "block_order": [
-        "p1",
-        "p2",
-        "p3",
-        "p4",
-        "s1",
-        "s2",
-        "s3",
-        "s4"
-      ],
+      "block_order": ["p1", "p2", "p3", "p4", "s1", "s2", "s3", "s4"],
+      "settings": { "bg_color": "#002b1b" }
+    },
+    "athlete_endorsement": {
+      "type": "athlete-endorsement",
       "settings": {
-        "bg_color": "#002b1b"
+        "name": "Arshad Nadeem",
+        "title": "OLYMPIC GOLD MEDALIST, JAVELIN THROW CHAMPION",
+        "quote": "I love that it makes better health accessible to everyone",
+        "description": "As a professional athlete, I've always looked for ways to stay sharp, feel my best, and fuel my body without overcomplicating it. Laushe uses clean, Sunnah-blessed ingredients that actually deliver. It's about performing at the highest level while staying rooted in tradition.",
+        "disclaimer": "Arshad Nadeem is a proud ambassador and user of Laushe. He trusts our natural formulations for his recovery and peak performance.",
+        "image": "shopify://shop_images/athlete_endorsement.jpg"
       }
     },
     "story": {
       "type": "story-section",
       "blocks": {
-        "s1": {
-          "type": "stat",
-          "settings": {
-            "number": "100%",
-            "label": "Natural"
-          }
-        },
-        "s2": {
-          "type": "stat",
-          "settings": {
-            "number": "0",
-            "label": "Chemicals"
-          }
-        },
-        "s3": {
-          "type": "stat",
-          "settings": {
-            "number": "15K+",
-            "label": "Happy Families"
-          }
-        }
+        "s1": { "type": "stat", "settings": { "number": "100%", "label": "Natural" } },
+        "s2": { "type": "stat", "settings": { "number": "0", "label": "Chemicals" } },
+        "s3": { "type": "stat", "settings": { "number": "15K+", "label": "Happy Families" } }
       },
-      "block_order": [
-        "s1",
-        "s2",
-        "s3"
-      ],
+      "block_order": ["s1", "s2", "s3"],
       "settings": {
         "bg_color": "#faf7f2",
         "subtitle": "OUR STORY",
@@ -292,25 +159,10 @@
     "social_proof": {
       "type": "social-proof-carousel",
       "blocks": {
-        "st1": {
-          "type": "social_stat",
-          "settings": {
-            "number": "95%",
-            "label": "Overall health improved"
-          }
-        },
-        "st2": {
-          "type": "social_stat",
-          "settings": {
-            "number": "67%",
-            "label": "Better digestion"
-          }
-        }
+        "st1": { "type": "social_stat", "settings": { "number": "95%", "label": "Overall health improved" } },
+        "st2": { "type": "social_stat", "settings": { "number": "67%", "label": "Better digestion" } }
       },
-      "block_order": [
-        "st1",
-        "st2"
-      ],
+      "block_order": ["st1", "st2"],
       "settings": {
         "section_title": "Pure, Potent, Proven",
         "section_subtitle": "Here is what our customers report after 3 months of using Laushe products.",
@@ -328,16 +180,5 @@
       }
     }
   },
-  "order": [
-    "hero",
-    "bestsellers_CXGzp8",
-    "modern_living_gpDB8F",
-    "stats_bar",
-    "quality_trust",
-    "benefits_grid",
-    "problem_solution",
-    "story",
-    "social_proof",
-    "final_cta"
-  ]
+  "order": ["hero", "bestsellers_CXGzp8", "modern_living_gpDB8F", "stats_bar", "quality_trust", "benefits_grid", "problem_solution", "athlete_endorsement", "story", "social_proof", "final_cta"]
 }

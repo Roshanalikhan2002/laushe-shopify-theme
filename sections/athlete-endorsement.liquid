@@ -1,168 +1,146 @@
 {% schema %}
-  "name": "Athlete (Laushe)",
+{
+  "name": "Athlete endorsement",
   "settings": [
-    {
-      "id": "body",
-      "type": "textarea",
-      "label": "Description Paragraph",
-      "default": "After incorporating Laushe into my daily routine, I noticed a dramatic improvement."
-    },
-    {
-      "id": "athlete_name_new",
-      "type": "text",
-      "label": "Name",
-      "default": "Arshad Nadeem"
-    }
+    { "id": "image", "type": "image_picker", "label": "Athlete Image" },
+    { "id": "quote", "type": "text", "label": "Large Quote", "default": "I love that it makes better health accessible to everyone" },
+    { "id": "description", "type": "textarea", "label": "Full Testimonial", "default": "As a professional athlete, I've always looked for ways to stay sharp, feel my best, and fuel my body without overcomplicating it. Laushe uses clean, Sunnah-blessed ingredients that actually deliver. It's about performing at the highest level while staying rooted in tradition." },
+    { "id": "name", "type": "text", "label": "Athlete Name", "default": "Arshad Nadeem" },
+    { "id": "title", "type": "text", "label": "Athlete Title", "default": "OLYMPIC GOLD MEDALIST, JAVELIN THROW CHAMPION" },
+    { "id": "btn_txt", "type": "text", "label": "Button Text", "default": "Shop Laushe Now" },
+    { "id": "btn_link", "type": "url", "label": "Button Link" },
+    { "id": "disclaimer", "type": "textarea", "label": "Disclaimer Text", "default": "Arshad Nadeem is a proud ambassador and user of Laushe. He trusts our natural formulations for his recovery and peak performance." }
   ],
-  "presets": [
-     {
-       "name": "Athlete (Laushe)",
-       "category": "Laushe"
-     }
-  ]
+  "presets": [{ "name": "Athlete endorsement", "category": "Laushe Sections" }]
 }
 {% endschema %}
 
-<section class="athlete-wrapper">
-  <div class="container athlete-grid">
-
-    <div class="athlete-image-box">
-      {% if section.settings.image %}
-        <img src="{{ section.settings.image | img_url: '800x' }}" alt="{{ section.settings.athlete_name }}" class="athlete-img">
-      {% else %}
-        <img src="https://laushebyzahra.com/cdn/shop/files/athlete_placeholder.jpg" alt="{{ section.settings.athlete_name }}" class="athlete-img">
-      {% endif %}
-    </div>
-
-    <div class="athlete-content">
-      <div class="athlete-quote">{{ section.settings.quote }}</div>
-
-      <p class="athlete-body">{{ section.settings.body }}</p>
-
-      <div class="athlete-credentials">
-        <div class="athlete-name">{{ section.settings.athlete_name }}</div>
-        <div class="athlete-title-badge">{{ section.settings.athlete_title }}</div>
+<section class="athlete-laushe-section section-padding">
+  <div class="container">
+    <div class="athlete-luxe-grid">
+      <!-- LEFT: IMAGE -->
+      <div class="athlete-luxe-img">
+        {% if section.settings.image %}
+          <img src="{{ section.settings.image | img_url: '1000x' }}" class="luxe-img-fit" alt="{{ section.settings.name }}">
+        {% else %}
+          <img src="shopify://shop_images/athlete_endorsement.jpg" class="luxe-img-fit" alt="{{ section.settings.name }}">
+        {% endif %}
       </div>
 
-      <a href="{{ section.settings.cta_link | default: '/collections/all' }}" class="athlete-btn btn-pill btn-forest">
-        {{ section.settings.cta_text }}
-        <ion-icon name="arrow-forward-outline"></ion-icon>
-      </a>
+      <!-- RIGHT: CONTENT -->
+      <div class="athlete-luxe-content">
+        <div class="quote-mark-wrap">
+          <svg viewBox="0 0 24 24" fill="#004225" opacity="0.1" style="width: 80px; height: 80px;">
+            <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-10zm-14 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+          </svg>
+        </div>
+        
+        <h2 class="athlete-luxe-quote">"{{ section.settings.quote }}"</h2>
+        <p class="athlete-luxe-body">"{{ section.settings.description }}"</p>
+        
+        <div class="athlete-luxe-meta">
+          <h4 class="meta-name">{{ section.settings.name }}</h4>
+          <p class="meta-title">{{ section.settings.title }}</p>
+        </div>
 
-      {% if section.settings.disclaimer != blank %}
-        <p class="athlete-disclaimer">{{ section.settings.disclaimer }}</p>
-      {% endif %}
+        <div class="athlete-luxe-cta">
+          <a href="{{ section.settings.btn_link | default: '/collections/all' }}" class="btn-pill btn-forest">
+            {{ section.settings.btn_txt }} &nbsp; <span>→</span>
+          </a>
+        </div>
+
+        <p class="athlete-luxe-disclaimer">{{ section.settings.disclaimer }}</p>
+      </div>
     </div>
-
   </div>
 </section>
 
 <style>
-  .athlete-wrapper {
-    background-color: #fff;
-    padding: 100px 0;
-    overflow: hidden;
-  }
-  .athlete-grid {
+  .athlete-luxe-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 80px;
     align-items: center;
   }
-  .athlete-img {
+  
+  .luxe-img-fit {
     width: 100%;
-    border-radius: 24px;
-    box-shadow: 0 30px 60px rgba(0,0,0,0.12);
+    height: auto;
+    border-radius: 40px;
     display: block;
+    box-shadow: 0 40px 100px rgba(0,0,0,0.1);
   }
-  .athlete-quote {
-    font-size: 40px;
-    line-height: 1.2;
-    color: #004225;
-    font-family: 'Poppins', sans-serif;
-    font-weight: 800;
-    margin-bottom: 30px;
+  
+  .athlete-luxe-content {
     position: relative;
-    padding-left: 40px;
+    padding-top: 20px;
   }
-  .athlete-quote::before {
-    content: '\201C';
+  
+  .quote-mark-wrap {
     position: absolute;
+    top: -40px;
     left: -20px;
-    top: -20px;
-    font-size: 120px;
-    opacity: 0.08;
+    z-index: -1;
+  }
+  
+  .athlete-luxe-quote {
+    font-size: 56px;
+    line-height: 1.1;
     color: #004225;
-    line-height: 1;
-    font-family: Georgia, serif;
-  }
-  .athlete-body {
-    font-size: 16px;
-    line-height: 1.8;
-    color: #555;
-    margin-bottom: 30px;
-  }
-  .athlete-credentials {
-    margin-bottom: 40px;
-  }
-  .athlete-name {
-    font-size: 22px;
     font-weight: 800;
-    color: #004225;
-    margin-bottom: 4px;
+    margin-bottom: 40px;
     font-family: 'Poppins', sans-serif;
   }
-  .athlete-title-badge {
+  
+  .athlete-luxe-body {
+    font-size: 18px;
+    line-height: 1.7;
+    color: #555;
+    margin-bottom: 40px;
+    font-style: normal;
+  }
+  
+  .athlete-luxe-meta {
+    margin-bottom: 50px;
+  }
+  
+  .meta-name {
+    font-size: 24px;
+    font-weight: 800;
+    color: #004225;
+    margin-bottom: 5px;
+  }
+  
+  .meta-title {
     font-size: 14px;
     color: #D4AF37;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.1em;
   }
-  .athlete-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 12px;
-    background-color: #004225;
-    color: white;
-    padding: 18px 40px;
-    border-radius: 50px;
-    font-weight: 800;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    box-shadow: 0 10px 25px rgba(0,66,37,0.15);
-    font-size: 16px;
+  
+  .athlete-luxe-cta {
+    margin-bottom: 30px;
   }
-  .athlete-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 15px 35px rgba(0,66,37,0.25);
-    background-color: #002b18;
-    color: white;
-  }
-  .athlete-disclaimer {
-    margin-top: 24px;
+  
+  .athlete-luxe-disclaimer {
     font-size: 12px;
     color: #999;
     line-height: 1.6;
     font-style: italic;
+    max-width: 500px;
   }
-
-  @media (max-width: 992px) {
-    .athlete-grid {
+  
+  @media (max-width: 1024px) {
+    .athlete-luxe-grid {
       grid-template-columns: 1fr;
-      gap: 50px;
+      gap: 60px;
     }
-    .athlete-quote {
-      font-size: 30px;
-      padding-left: 20px;
+    .athlete-luxe-img {
+      max-width: 600px;
+      margin: 0 auto;
     }
-    .athlete-quote::before {
-      font-size: 80px;
-      left: -10px;
-    }
-  }
-  @media (max-width: 576px) {
-    .athlete-quote { font-size: 26px; }
-    .athlete-wrapper { padding: 60px 0; }
+    .athlete-luxe-quote { font-size: 38px; }
+    .quote-mark-wrap { top: -20px; left: 0; }
   }
 </style>
