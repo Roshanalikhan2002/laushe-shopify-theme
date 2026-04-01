@@ -1,25 +1,3 @@
-{% schema %}
-{
-  "name": "Comparison Table (Laushe)",
-  "settings": [
-    { "id": "heading", "type": "text", "label": "Heading", "default": "" },
-    { "id": "bg_color", "type": "color", "label": "Background Color", "default": "#FAF7F2" }
-  ],
-  "blocks": [
-    {
-      "type": "row",
-      "name": "Comparison Row",
-      "settings": [
-        { "id": "feature", "type": "text", "label": "Feature", "default": "100% Natural Ingredients" },
-        { "id": "laushe", "type": "checkbox", "label": "Laushe (Check)", "default": true },
-        { "id": "generic", "type": "checkbox", "label": "Generic (Check)", "default": false }
-      ]
-    }
-  ],
-  "presets": [{ "name": "Comparison Table (Laushe)", "category": "Laushe Sections" }]
-}
-{% endschema %}
-
 <section class="comparison-section section-padding" style="background-color: {{ section.settings.bg_color }};" id="section-{{ section.id }}">
   <div class="container container-narrow">
     
@@ -66,12 +44,10 @@
   #section-{{ section.id }} .comparison-section {
     padding: 100px 0;
   }
-  
   #section-{{ section.id }} .container-narrow {
     max-width: 900px;
     margin: 0 auto;
   }
-  
   #section-{{ section.id }} .comparison-table-v2 {
     background: white;
     border-radius: 20px;
@@ -79,7 +55,6 @@
     box-shadow: 0 10px 40px rgba(0,0,0,0.05);
     border: 1px solid rgba(0,0,0,0.05);
   }
-  
   #section-{{ section.id }} .table-header {
     display: grid;
     grid-template-columns: 2fr 1fr 1fr;
@@ -91,17 +66,14 @@
     letter-spacing: 1px;
     text-transform: uppercase;
   }
-  
   #section-{{ section.id }} .header-col {
     display: flex;
     align-items: center;
     justify-content: center;
   }
-  
   #section-{{ section.id }} .header-col.first {
     justify-content: flex-start;
   }
-  
   #section-{{ section.id }} .table-row {
     display: grid;
     grid-template-columns: 2fr 1fr 1fr;
@@ -109,15 +81,12 @@
     border-bottom: 1px solid rgba(0,0,0,0.03);
     align-items: center;
   }
-  
   #section-{{ section.id }} .table-row:nth-child(even) {
     background: #FAF7F2;
   }
-  
   #section-{{ section.id }} .table-row:last-child {
     border-bottom: none;
   }
-  
   #section-{{ section.id }} .row-col {
     display: flex;
     align-items: center;
@@ -126,38 +95,48 @@
     font-weight: 700;
     color: #444;
   }
-  
   #section-{{ section.id }} .row-col.first {
     justify-content: flex-start;
     color: #333;
   }
-  
   #section-{{ section.id }} .status-icon {
     font-size: 20px;
     font-weight: 800;
   }
-  
   #section-{{ section.id }} .status-icon.check {
     color: #004225;
   }
-  
   #section-{{ section.id }} .status-icon.cross {
     color: #D32F2F;
     opacity: 0.6;
   }
-  
   @media (max-width: 600px) {
     #section-{{ section.id }} .table-header,
     #section-{{ section.id }} .table-row {
       padding: 15px 20px;
       grid-template-columns: 1.5fr 1fr 1fr;
     }
-    #section-{{ section.id }} .header-col,
-    #section-{{ section.id }} .row-col {
-      font-size: 12px;
-    }
-    #section-{{ section.id }} .status-icon {
-      font-size: 16px;
-    }
   }
 </style>
+
+{% schema %}
+{
+  "name": "Comparison Table (Laushe)",
+  "settings": [
+    { "id": "heading", "type": "text", "label": "Heading", "default": "The Laushe Standard" },
+    { "id": "bg_color", "type": "color", "label": "Background Color", "default": "#FAF7F2" }
+  ],
+  "blocks": [
+    {
+      "type": "row",
+      "name": "Comparison Row",
+      "settings": [
+        { "id": "feature", "type": "text", "label": "Feature", "default": "100% Natural Ingredients" },
+        { "id": "laushe", "type": "checkbox", "label": "Laushe (Check)", "default": true },
+        { "id": "generic", "type": "checkbox", "label": "Generic (Check)", "default": false }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Comparison Table (Laushe)", "category": "Laushe Sections" }]
+}
+{% endschema %}

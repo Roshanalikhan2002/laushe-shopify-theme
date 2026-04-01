@@ -1,25 +1,3 @@
-{% schema %}
-{
-  "name": "Social Video Grid",
-  "settings": [
-    { "id": "heading", "type": "text", "label": "Heading", "default": "" },
-    { "id": "bg_color", "type": "color", "label": "Background Color", "default": "#FAFAFA" }
-  ],
-  "blocks": [
-    {
-      "type": "video",
-      "name": "Video Item",
-      "settings": [
-        { "id": "thumbnail", "type": "image_picker", "label": "Thumbnail" },
-        { "id": "video_url", "type": "video_url", "label": "Video Link", "accept": ["youtube", "vimeo"] },
-        { "id": "hosted_video", "type": "video", "label": "Shopify Hosted Video" }
-      ]
-    }
-  ],
-  "presets": [{ "name": "Social Video Grid", "category": "Laushe Sections" }]
-}
-{% endschema %}
-
 <section class="video-grid-wrapper section-padding" style="background-color: {{ section.settings.bg_color }};" id="section-{{ section.id }}">
   <div class="container">
     
@@ -40,115 +18,57 @@
                 <div class="video-placeholder"></div>
               {% endif %}
               
-              <!-- Play Icon Overlay -->
               <div class="video-play-overlay">
-                <ion-icon name="play-circle-outline"></ion-icon>
+                <span class="play-icon">▶</span>
               </div>
-
-              {% if block.settings.video_url != blank or block.settings.hosted_video != blank %}
-                <a href="#" class="video-trigger-link" aria-label="Play Video"></a>
-              {% endif %}
             </div>
           </div>
         {% endfor %}
       {% else %}
-        <!-- Default Empty State showing 5 placeholders -->
         {% for i in (1..5) %}
           <div class="video-thumb-item">
             <div class="video-thumb-inner">
               <div class="video-placeholder"></div>
               <div class="video-play-overlay">
-                <ion-icon name="play-circle-outline"></ion-icon>
+                <span class="play-icon">▶</span>
               </div>
             </div>
           </div>
         {% endfor %}
       {% endif %}
     </div>
-
   </div>
 </section>
 
 <style>
-  #section-{{ section.id }} .video-grid-wrapper {
-    padding: 100px 0;
-  }
-  
-  #section-{{ section.id }} .video-grid {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-  }
-  
-  #section-{{ section.id }} .video-thumb-item {
-    flex: 1;
-    min-width: 180px;
-    max-width: 240px;
-    aspect-ratio: 9/12;
-  }
-  
-  #section-{{ section.id }} .video-thumb-inner {
-    width: 100%;
-    height: 100%;
-    background: #E0E0E0;
-    border-radius: 20px;
-    position: relative;
-    overflow: hidden;
-    cursor: pointer;
-    transition: transform 0.3s ease;
-  }
-  
-  #section-{{ section.id }} .video-thumb-inner:hover {
-    transform: scale(1.02);
-  }
-  
-  #section-{{ section.id }} .video-placeholder {
-    width: 100%;
-    height: 100%;
-    background: #E0E0E0; /* Exactly match the ref image grey */
-  }
-  
-  #section-{{ section.id }} .video-preview-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  
-  #section-{{ section.id }} .video-play-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    pointer-events: none;
-    z-index: 2;
-  }
-  
-  #section-{{ section.id }} .video-play-overlay ion-icon {
-    font-size: 48px; 
-    color: white;
-    opacity: 0.9;
-  }
-  
-  #section-{{ section.id }} .video-trigger-link {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 3;
-  }
-  
-  @media (max-width: 768px) {
-    #section-{{ section.id }} .video-grid {
-      gap: 15px;
-    }
-    #section-{{ section.id }} .video-thumb-item {
-      min-width: 140px;
-    }
-  }
+  #section-{{ section.id }} .video-grid-wrapper { padding: 100px 0; }
+  #section-{{ section.id }} .video-grid { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+  #section-{{ section.id }} .video-thumb-item { flex: 1; min-width: 180px; max-width: 240px; aspect-ratio: 9/12; }
+  #section-{{ section.id }} .video-thumb-inner { width: 100%; height: 100%; background: #E0E0E0; border-radius: 20px; position: relative; overflow: hidden; cursor: pointer; transition: transform 0.3s ease; }
+  #section-{{ section.id }} .video-thumb-inner:hover { transform: scale(1.02); }
+  #section-{{ section.id }} .video-placeholder { width: 100%; height: 100%; background: #E0E0E0; }
+  #section-{{ section.id }} .video-preview-img { width: 100%; height: 100%; object-fit: cover; }
+  #section-{{ section.id }} .video-play-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; pointer-events: none; z-index: 2; }
+  #section-{{ section.id }} .play-icon { font-size: 48px; color: white; opacity: 0.9; }
 </style>
+
+{% schema %}
+{
+  "name": "Social Video Grid (Laushe)",
+  "settings": [
+    { "id": "heading", "type": "text", "label": "Heading", "default": "" },
+    { "id": "bg_color", "type": "color", "label": "Background Color", "default": "#FAFAFA" }
+  ],
+  "blocks": [
+    {
+      "type": "video",
+      "name": "Video Item",
+      "settings": [
+        { "id": "thumbnail", "type": "image_picker", "label": "Thumbnail" },
+        { "id": "video_url", "type": "url", "label": "Video Link (Optional)" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Social Video Grid (Laushe)", "category": "Laushe Sections" }]
+}
+{% endschema %}
