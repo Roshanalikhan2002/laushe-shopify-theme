@@ -1,206 +1,163 @@
-<!-- 
-  Section: Comparison Table (Laushe vs Generic)
-  Aesthetics: High-contrast comparisons, Compelling headlines
--->
-
 {% schema %}
 {
-  "name": "Comparison Table",
+  "name": "Comparison Table (Laushe)",
   "settings": [
-    {
-       "id": "section_title",
-       "type": "text",
-       "label": "Section Title",
-       "default": "Why Laushe Stands Alone"
-    },
-    {
-       "id": "bg_color",
-       "type": "color",
-       "label": "Background Color",
-       "default": "#FFFFFF"
-    }
+    { "id": "heading", "type": "text", "label": "Heading", "default": "" },
+    { "id": "bg_color", "type": "color", "label": "Background Color", "default": "#FAF7F2" }
   ],
   "blocks": [
     {
-       "type": "row",
-       "name": "Feature Comparison Row",
-       "settings": [
-         {
-           "id": "feature",
-           "type": "text",
-           "label": "Feature Name",
-           "default": "Ingredient Sourcing"
-         },
-         {
-           "id": "laushe_value",
-           "type": "text",
-           "label": "Laushe Value",
-           "default": "100% Organic & Traceable"
-         },
-         {
-           "id": "generic_value",
-           "type": "text",
-           "label": "Generic Value",
-           "default": "Synthetic & Hidden Sources"
-         }
-       ]
+      "type": "row",
+      "name": "Comparison Row",
+      "settings": [
+        { "id": "feature", "type": "text", "label": "Feature", "default": "100% Natural Ingredients" },
+        { "id": "laushe", "type": "checkbox", "label": "Laushe (Check)", "default": true },
+        { "id": "generic", "type": "checkbox", "label": "Generic (Check)", "default": false }
+      ]
     }
   ],
-  "presets": [
-     {
-       "name": "Comparison Table",
-       "category": "Custom"
-     }
-  ]
+  "presets": [{ "name": "Comparison Table (Laushe)", "category": "Laushe Sections" }]
 }
 {% endschema %}
 
-<section class="comparison-table-section section-padding" style="background-color: {{ section.settings.bg_color }};">
-  <div class="container-wide">
-    <div class="section-badge-wrapper text-center">
-       <span class="sub-badge">UPGRADE YOUR STANDARD</span>
-    </div>
-    <h2 class="text-center h1 comparison-title">{{ section.settings.section_title }}</h2>
+<section class="comparison-section section-padding" style="background-color: {{ section.settings.bg_color }};" id="section-{{ section.id }}">
+  <div class="container container-narrow">
     
-    <div class="table-container">
-      <table class="laushe-comparison-table">
-         <thead>
-            <tr>
-               <th class="feature-col">Feature</th>
-               <th class="laushe-col">
-                  <div class="laushe-th-wrapper">
-                    <span class="th-top-badge">WINNER</span>
-                    <h3 class="th-brand-name">Laushe</h3>
-                  </div>
-               </th>
-               <th class="generic-col">Other Brands</th>
-            </tr>
-         </thead>
-         <tbody>
-            {% for block in section.blocks %}
-               <tr {{ block.shopify_attributes }}>
-                  <td class="feature-name">{{ block.settings.feature }}</td>
-                  <td class="laushe-cell">
-                     <span class="cell-check">✔</span> {{ block.settings.laushe_value }}
-                  </td>
-                  <td class="generic-cell">
-                     <span class="cell-x">✕</span> {{ block.settings.generic_value }}
-                  </td>
-               </tr>
-            {% endfor %}
-         </tbody>
-      </table>
+    {% if section.settings.heading != blank %}
+      <div class="section-header text-center" style="margin-bottom: 50px;">
+        <h2 style="color: #004225; font-weight: 800;">{{ section.settings.heading }}</h2>
+      </div>
+    {% endif %}
+
+    <div class="comparison-table-v2">
+      <div class="table-header">
+        <div class="header-col first">FEATURE</div>
+        <div class="header-col">LAUSHE</div>
+        <div class="header-col">GENERIC</div>
+      </div>
+
+      <div class="table-body">
+        {% for block in section.blocks %}
+          <div class="table-row" {{ block.shopify_attributes }}>
+            <div class="row-col first">{{ block.settings.feature }}</div>
+            <div class="row-col">
+              {% if block.settings.laushe %}
+                <span class="status-icon check">✓</span>
+              {% else %}
+                <span class="status-icon cross">✕</span>
+              {% endif %}
+            </div>
+            <div class="row-col">
+              {% if block.settings.generic %}
+                <span class="status-icon check">✓</span>
+              {% else %}
+                <span class="status-icon cross">✕</span>
+              {% endif %}
+            </div>
+          </div>
+        {% endfor %}
+      </div>
     </div>
+
   </div>
 </section>
 
 <style>
-  .comparison-title {
-    margin-bottom: 60px;
-    color: var(--primary-green);
+  #section-{{ section.id }} .comparison-section {
+    padding: 100px 0;
   }
   
-  .table-container {
-    max-width: 1000px;
+  #section-{{ section.id }} .container-narrow {
+    max-width: 900px;
     margin: 0 auto;
-    overflow-x: auto;
-    background: #FFF;
+  }
+  
+  #section-{{ section.id }} .comparison-table-v2 {
+    background: white;
     border-radius: 20px;
-    box-shadow: var(--shadow-soft);
-    padding: 0;
-    border: 1px solid #EEE;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+    border: 1px solid rgba(0,0,0,0.05);
   }
   
-  .laushe-comparison-table {
-    width: 100%;
-    border-collapse: collapse;
-    min-width: 600px;
-  }
-  
-  .laushe-comparison-table th, .laushe-comparison-table td {
-    padding: 25px 30px;
-    text-align: center;
-    border-bottom: 1px solid #EEE;
-  }
-  
-  .feature-col {
-    text-align: left !important;
-    width: 30%;
-    color: var(--text-muted);
-    font-size: 0.9rem;
+  #section-{{ section.id }} .table-header {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    background: #004225;
+    color: white;
+    padding: 20px 40px;
+    font-weight: 800;
+    font-size: 14px;
+    letter-spacing: 1px;
     text-transform: uppercase;
+  }
+  
+  #section-{{ section.id }} .header-col {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  #section-{{ section.id }} .header-col.first {
+    justify-content: flex-start;
+  }
+  
+  #section-{{ section.id }} .table-row {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    padding: 25px 40px;
+    border-bottom: 1px solid rgba(0,0,0,0.03);
+    align-items: center;
+  }
+  
+  #section-{{ section.id }} .table-row:nth-child(even) {
+    background: #FAF7F2;
+  }
+  
+  #section-{{ section.id }} .table-row:last-child {
+    border-bottom: none;
+  }
+  
+  #section-{{ section.id }} .row-col {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
     font-weight: 700;
+    color: #444;
   }
   
-  .laushe-col {
-    background-color: var(--soft-mint);
-    position: relative;
+  #section-{{ section.id }} .row-col.first {
+    justify-content: flex-start;
+    color: #333;
   }
   
-  .laushe-th-wrapper {
-     display: flex;
-     flex-direction: column;
-     align-items: center;
-     gap: 8px;
+  #section-{{ section.id }} .status-icon {
+    font-size: 20px;
+    font-weight: 800;
   }
   
-  .th-top-badge {
-     font-size: 0.65rem;
-     background: var(--accent-gold);
-     color: var(--primary-green);
-     padding: 4px 10px;
-     border-radius: 4px;
-     font-weight: 900;
-     letter-spacing: 1px;
+  #section-{{ section.id }} .status-icon.check {
+    color: #004225;
   }
   
-  .th-brand-name {
-     margin: 0;
-     font-size: 1.8rem;
-     color: var(--primary-green);
+  #section-{{ section.id }} .status-icon.cross {
+    color: #D32F2F;
+    opacity: 0.6;
   }
   
-  .generic-col {
-    background-color: #FAFAFA;
-    font-size: 1.2rem;
-    color: #999;
-  }
-  
-  .feature-name {
-     text-align: left;
-     font-weight: 600;
-     color: var(--text-charcoal);
-     font-size: 1.1rem;
-  }
-  
-  .laushe-cell {
-     background-color: #F8FDF9;
-     font-weight: 700;
-     color: var(--primary-green);
-     font-size: 1.1rem;
-  }
-  
-  .generic-cell {
-     background-color: #FFF;
-     color: #888;
-     font-size: 1rem;
-  }
-  
-  .cell-check {
-     color: var(--primary-green);
-     font-size: 1.25rem;
-     margin-right: 8px;
-  }
-  
-  .cell-x {
-     color: #D62828;
-     font-size: 1rem;
-     margin-right: 8px;
-  }
-  
-  @media (max-width: 768px) {
-    .laushe-comparison-table th, .laushe-comparison-table td {
+  @media (max-width: 600px) {
+    #section-{{ section.id }} .table-header,
+    #section-{{ section.id }} .table-row {
       padding: 15px 20px;
+      grid-template-columns: 1.5fr 1fr 1fr;
+    }
+    #section-{{ section.id }} .header-col,
+    #section-{{ section.id }} .row-col {
+      font-size: 12px;
+    }
+    #section-{{ section.id }} .status-icon {
+      font-size: 16px;
     }
   }
 </style>
