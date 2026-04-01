@@ -4,13 +4,21 @@
   "settings": [
     { "id": "heading", "type": "text", "label": "Heading", "default": "Shop Our Entire Wellness Collection" },
     { "id": "subheading", "type": "text", "label": "Subheading", "default": "Pure, Raw, and Bio-available supplements for every stage of your health journey." },
-    { "id": "collection", "type": "collection", "label": "Source Collection" }
+    { "id": "collection", "type": "collection", "label": "Source Collection", "info": "Select the collection to show (e.g. 'All Products')" },
+    { "type": "header", "content": "Filter Tab 1" },
+    { "id": "tab1_label", "type": "text", "label": "Label", "default": "All Products" },
+    { "type": "header", "content": "Filter Tab 2" },
+    { "id": "tab2_label", "type": "text", "label": "Label", "default": "Healthcare" },
+    { "id": "tab2_tag", "type": "text", "label": "Tag to Match", "default": "healthcare", "info": "Products must have this tag to show in this tab." },
+    { "type": "header", "content": "Filter Tab 3" },
+    { "id": "tab3_label", "type": "text", "label": "Label", "default": "Organic" },
+    { "id": "tab3_tag", "type": "text", "label": "Tag to Match", "default": "organic", "info": "Products must have this tag to show in this tab." }
   ],
   "presets": [{ "name": "Wellness Collection Grid", "category": "Laushe Sections" }]
 }
 {% endschema %}
 
-<section class="wellness-catalog section-padding" style="background-color: #e9f3ed;">
+<section class="wellness-catalog section-padding" style="background-color: #e9f3ed;" id="section-{{ section.id }}">
   <div class="container">
     
     <!-- HEADER -->
@@ -21,90 +29,76 @@
 
     <!-- FILTER BAR -->
     <div class="catalog-filters">
-      <button class="filter-btn active" data-filter="all">All Products</button>
-      <button class="filter-btn" data-filter="healthcare">Healthcare</button>
-      <button class="filter-btn" data-filter="organic">Organic</button>
+      <button class="filter-btn active" data-filter="all">{{ section.settings.tab1_label }}</button>
+      {% if section.settings.tab2_label != blank %}
+        <button class="filter-btn" data-filter="{{ section.settings.tab2_tag | handle }}">{{ section.settings.tab2_label }}</button>
+      {% endif %}
+      {% if section.settings.tab3_label != blank %}
+        <button class="filter-btn" data-filter="{{ section.settings.tab3_tag | handle }}">{{ section.settings.tab3_label }}</button>
+      {% endif %}
     </div>
 
     <!-- PRODUCT GRID -->
-    <div class="catalog-grid" id="laushe-catalog-grid">
-      {% assign target_collection = section.settings.collection | default: collections.all %}
-      {% for product in target_collection.products %}
-        {% assign is_healthcare = false %}
-        {% assign is_organic = false %}
-        {% for tag in product.tags %}
-           {% assign tag_low = tag | downcase %}
-           {% if tag_low contains 'healthcare' %}{% assign is_healthcare = true %}{% endif %}
-           {% if tag_low contains 'organic' %}{% assign is_organic = true %}{% endif %}
-        {% endfor %}
-
-        <div class="catalog-item" 
-             data-healthcare="{{ is_healthcare }}" 
-             data-organic="{{ is_organic }}"
-             {{ block.shopify_attributes }}>
+    <div class="catalog-grid-wrapper">
+      <div class="catalog-grid" id="laushe-catalog-grid-{{ section.id }}">
+        {% assign target_collection = section.settings.collection | default: collections.all %}
+        {% for product in target_collection.products %}
+          {% assign product_tags_string = product.tags | join: ',' | downcase %}
           
-          <div class="catalog-card">
-            <!-- Badge -->
-            {% if product.compare_at_price > product.price %}
-              {% assign saving = product.compare_at_price | minus: product.price | times: 100 | divided_by: product.compare_at_price %}
-              <div class="card-badge">{{ saving }}% OFF</div>
-            {% endif %}
+          <div class="catalog-item" 
+               data-tags="{{ product_tags_string }}"
+               {{ block.shopify_attributes }}>
+            
+            <div class="catalog-card">
+              <!-- Badge -->
+              {% if product.compare_at_price > product.price %}
+                {% assign saving = product.compare_at_price | minus: product.price | times: 100 | divided_by: product.compare_at_price %}
+                <div class="card-badge">{{ saving }}% OFF</div>
+              {% endif %}
 
-            <!-- Image -->
-            <a href="{{ product.url }}" class="card-img-link">
-              <img src="{{ product.featured_image | img_url: '600x600', crop: 'center' }}" alt="{{ product.title }}" class="card-img">
-            </a>
+              <!-- Image -->
+              <a href="{{ product.url }}" class="card-img-link">
+                <img src="{{ product.featured_image | img_url: '600x600', crop: 'center' }}" alt="{{ product.title }}" class="card-img" loading="lazy">
+              </a>
 
-            <div class="card-content">
-              <!-- Stars (Mock/Standard) -->
-              <div class="card-stars">
-                <span class="stars-gold">★★★★★</span>
-                <span class="review-count">(2134)</span>
-              </div>
+              <div class="card-content">
+                <!-- Stars -->
+                <div class="card-stars">
+                  <span class="stars-gold">★★★★★</span>
+                  <span class="review-count">(2134)</span>
+                </div>
 
-              <h3 class="card-title">{{ product.title }}</h3>
-              <p class="card-short-desc">{{ product.description | strip_html | truncate: 80 }}</p>
+                <h3 class="card-title">{{ product.title }}</h3>
+                <p class="card-short-desc">{{ product.description | strip_html | truncate: 80 }}</p>
 
-              <div class="card-price-row">
-                <span class="price-main">{{ product.price | money }}</span>
-                {% if product.compare_at_price > product.price %}
-                  <span class="price-compare">{{ product.compare_at_price | money }}</span>
-                {% endif %}
+                <div class="card-price-row">
+                  <span class="price-main">{{ product.price | money }}</span>
+                  {% if product.compare_at_price > product.price %}
+                    <span class="price-compare">{{ product.compare_at_price | money }}</span>
+                  {% endif %}
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      {% endfor %}
+        {% endfor %}
+      </div>
+      
+      <!-- Empty State -->
+      <div class="catalog-empty-state" style="display: none; text-align: center; padding: 60px 0;">
+        <p style="font-size: 18px; color: #555; opacity: 0.6;">No products found with this tag.</p>
+      </div>
     </div>
 
   </div>
 </section>
 
 <style>
-  .wellness-catalog {
-    padding: 120px 0;
-  }
-  .catalog-title {
-    font-size: 40px;
-    font-weight: 800;
-    color: #004225;
-    margin-bottom: 15px;
-    font-family: 'Poppins', sans-serif;
-  }
-  .catalog-subtitle {
-    font-size: 16px;
-    color: #555;
-    opacity: 0.8;
-  }
+  #section-{{ section.id }} .wellness-catalog { padding: 120px 0; }
+  #section-{{ section.id }} .catalog-title { font-size: 40px; font-weight: 800; color: #004225; margin-bottom: 15px; font-family: 'Poppins', sans-serif; }
+  #section-{{ section.id }} .catalog-subtitle { font-size: 16px; color: #555; opacity: 0.8; }
+  #section-{{ section.id }} .catalog-filters { display: flex; justify-content: center; gap: 15px; margin-bottom: 60px; flex-wrap: wrap; }
   
-  .catalog-filters {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin-bottom: 60px;
-  }
-  
-  .filter-btn {
+  #section-{{ section.id }} .filter-btn {
     padding: 12px 30px;
     border-radius: 50px;
     border: none;
@@ -117,145 +111,71 @@
     box-shadow: 0 4px 10px rgba(0,0,0,0.05);
   }
   
-  .filter-btn.active {
-    background: #004225;
-    color: white;
-    box-shadow: 0 10px 20px rgba(0,66,37,0.2);
-  }
+  #section-{{ section.id }} .filter-btn.active { background: #004225; color: white; box-shadow: 0 10px 20px rgba(0,66,37,0.2); }
   
-  .catalog-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 30px;
-  }
+  #section-{{ section.id }} .catalog-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; }
+  #section-{{ section.id }} .catalog-card { background: white; border-radius: 20px; padding: 20px; height: 100%; position: relative; transition: transform 0.3s ease; display: flex; flex-direction: column; box-shadow: 0 10px 30px rgba(0,0,0,0.03); }
+  #section-{{ section.id }} .catalog-card:hover { transform: translateY(-5px); }
   
-  .catalog-card {
-    background: white;
-    border-radius: 20px;
-    padding: 20px;
-    height: 100%;
-    position: relative;
-    transition: transform 0.3s ease;
-    display: flex;
-    flex-direction: column;
-  }
+  #section-{{ section.id }} .card-badge { position: absolute; top: 20px; left: 20px; background: #D4AF37; color: white; font-size: 11px; font-weight: 800; padding: 4px 10px; border-radius: 6px; z-index: 2; }
+  #section-{{ section.id }} .card-img-link { display: block; aspect-ratio: 1; margin-bottom: 20px; overflow: hidden; border-radius: 12px; }
+  #section-{{ section.id }} .card-img { width: 100%; height: 100%; object-fit: contain; background: #f9f9f9; }
+  #section-{{ section.id }} .card-stars { margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+  #section-{{ section.id }} .stars-gold { color: #D4AF37; font-size: 14px; letter-spacing: 2px; }
+  #section-{{ section.id }} .review-count { font-size: 12px; color: #888; font-weight: 500; }
+  #section-{{ section.id }} .card-title { font-size: 18px; font-weight: 800; color: #004225; margin-bottom: 10px; font-family: 'Poppins', sans-serif; }
+  #section-{{ section.id }} .card-short-desc { font-size: 13px; color: #666; line-height: 1.5; margin-bottom: 20px; flex-grow: 1; }
+  #section-{{ section.id }} .card-price-row { display: flex; align-items: center; gap: 12px; }
+  #section-{{ section.id }} .price-main { font-size: 18px; font-weight: 800; color: #004225; }
+  #section-{{ section.id }} .price-compare { font-size: 14px; color: #999; text-decoration: line-through; }
   
-  .catalog-card:hover {
-    transform: translateY(-5px);
-  }
-  
-  .card-badge {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    background: #D4AF37;
-    color: white;
-    font-size: 11px;
-    font-weight: 800;
-    padding: 4px 10px;
-    border-radius: 6px;
-    z-index: 2;
-  }
-  
-  .card-img-link {
-    display: block;
-    aspect-ratio: 1;
-    margin-bottom: 20px;
-    overflow: hidden;
-    border-radius: 12px;
-  }
-  
-  .card-img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-  }
-  
-  .card-stars {
-    margin-bottom: 10px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  
-  .stars-gold {
-    color: #D4AF37;
-    font-size: 14px;
-    letter-spacing: 2px;
-  }
-  
-  .review-count {
-    font-size: 12px;
-    color: #888;
-    font-weight: 500;
-  }
-  
-  .card-title {
-    font-size: 18px;
-    font-weight: 800;
-    color: #004225;
-    margin-bottom: 10px;
-    font-family: 'Poppins', sans-serif;
-  }
-  
-  .card-short-desc {
-    font-size: 13px;
-    color: #666;
-    line-height: 1.5;
-    margin-bottom: 20px;
-    flex-grow: 1;
-  }
-  
-  .card-price-row {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-  
-  .price-main {
-    font-size: 18px;
-    font-weight: 800;
-    color: #004225;
-  }
-  
-  .price-compare {
-    font-size: 14px;
-    color: #999;
-    text-decoration: line-through;
-  }
-  
-  @media (max-width: 1100px) {
-    .catalog-grid { grid-template-columns: repeat(2, 1fr); }
-  }
-  
-  @media (max-width: 600px) {
-    .catalog-grid { grid-template-columns: 1fr; }
-    .catalog-title { font-size: 32px; }
-  }
+  @media (max-width: 1100px) { #section-{{ section.id }} .catalog-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 600px) { #section-{{ section.id }} .catalog-grid { grid-template-columns: 1fr; } #section-{{ section.id }} .catalog-title { font-size: 32px; } }
 </style>
 
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const filters = document.querySelectorAll('.filter-btn');
-    const items = document.querySelectorAll('.catalog-item');
-    
-    filters.forEach(btn => {
-      btn.addEventListener('click', () => {
-        // Update active class
-        filters.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        
-        const filter = btn.getAttribute('data-filter');
-        
-        items.forEach(item => {
-          if (filter === 'all') {
-            item.style.display = 'block';
+  (function() {
+    function initCatalogFilters() {
+      const section = document.querySelector('#section-{{ section.id }}');
+      if (!section) return;
+
+      const filters = section.querySelectorAll('.filter-btn');
+      const items = section.querySelectorAll('.catalog-item');
+      const grid = section.querySelector('.catalog-grid');
+      const emptyState = section.querySelector('.catalog-empty-state');
+
+      filters.forEach(btn => {
+        btn.addEventListener('click', () => {
+          filters.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+
+          const filter = btn.getAttribute('data-filter').toLowerCase();
+          let visibleCount = 0;
+
+          items.forEach(item => {
+            if (filter === 'all') {
+              item.style.display = 'block';
+              visibleCount++;
+            } else {
+              const tags = item.getAttribute('data-tags').split(',');
+              const isMatch = tags.includes(filter);
+              item.style.display = isMatch ? 'block' : 'none';
+              if (isMatch) visibleCount++;
+            }
+          });
+
+          if (visibleCount === 0) {
+            grid.style.display = 'none';
+            emptyState.style.display = 'block';
           } else {
-            const isMatch = item.getAttribute('data-' + filter) === 'true';
-            item.style.display = isMatch ? 'block' : 'none';
+            grid.style.display = 'grid';
+            emptyState.style.display = 'none';
           }
         });
       });
-    });
-  });
+    }
+
+    document.addEventListener('DOMContentLoaded', initCatalogFilters);
+    document.addEventListener('shopify:section:load', initCatalogFilters);
+  })();
 </script>
