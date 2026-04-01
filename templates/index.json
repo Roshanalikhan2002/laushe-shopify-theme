@@ -368,6 +368,25 @@
         "bg_color": "#faf7f2"
       }
     },
+    "filtered_reviews": {
+      "type": "filtered-reviews",
+      "blocks": {
+        "t1": { "type": "review", "settings": { "category": "taste", "headline": "Best weight loss kehwa!", "quote": "I noticed results within the first month. No more bloating. The taste is genuinely delicious — like a warm hug in a cup.", "author": "Ahmed K.", "product_name": "Skinny Sips Kehwa" } },
+        "t2": { "type": "review", "settings": { "category": "taste", "headline": "Delicious golden milk!", "quote": "The Golden Elixir tastes amazing with warm milk. My kids love it too! It's the only health drink they actually ask for.", "author": "Fatima Z.", "product_name": "Golden Elixir" } },
+        "t3": { "type": "review", "settings": { "category": "taste", "headline": "Honey like no other.", "quote": "This is the purest honey I've ever tasted. Rich, floral, and you can tell it's real. I use it in my tea every morning.", "author": "Zainab S.", "product_name": "Pure Honey" } },
+        "v1": { "type": "review", "settings": { "category": "value", "headline": "Worth every penny.", "quote": "The quality of these ingredients justifies the price. You get what you pay for — pure, raw wellness without fillers.", "author": "Omar D.", "product_name": "Wellness Bundle" } },
+        "v2": { "type": "review", "settings": { "category": "value", "headline": "Great value for money.", "quote": "I've tried cheaper alternatives but nothing compares to Laushe. The results are much better and more sustainable.", "author": "Sarah M.", "product_name": "Panjiri" } },
+        "b1": { "type": "review", "settings": { "category": "benefits", "headline": "Life changing benefits.", "quote": "Since I started using the Elixir, my joint pain has significantly decreased. I feel much more active and mobile now.", "author": "Bilal A.", "product_name": "Golden Elixir" } },
+        "b2": { "type": "review", "settings": { "category": "benefits", "headline": "Energy levels are up!", "quote": "The Honey and Panjiri combo has given me so much energy during the day. I no longer feel the afternoon slump.", "author": "Hiba R.", "product_name": "Organic Duo" } },
+        "q1": { "type": "review", "settings": { "category": "quality", "headline": "Unmatched purity.", "quote": "You can smell the authenticity as soon as you open the jar. The traditional processing really makes a difference.", "author": "Maryam S.", "product_name": "Pure Desi Ghee" } },
+        "q2": { "type": "review", "settings": { "category": "quality", "headline": "Traditional & Effective.", "quote": "It's rare to find products that stay true to traditional methods while delivering modern results. Laushe nailed it.", "author": "Hassan K.", "product_name": "Royce Hair Oil" } }
+      },
+      "block_order": ["t1", "t2", "t3", "v1", "v2", "b1", "b2", "q1", "q2"],
+      "settings": {
+        "heading": "Join Thousands Improving Their Health",
+        "bg_color": "#FAFAFA"
+      }
+    },
     "story": {
       "type": "story-section",
       "blocks": {
@@ -448,6 +467,7 @@
     "athlete_endorsement",
     "catalog_grid",
     "faq_accordion",
+    "filtered_reviews",
     "story",
     "social_proof"
   ]

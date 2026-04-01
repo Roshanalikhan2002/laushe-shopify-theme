@@ -1,0 +1,231 @@
+{% schema %}
+{
+  "name": "Filtered Reviews (Laushe)",
+  "settings": [
+    { "id": "heading", "type": "text", "label": "Heading", "default": "Join Thousands Improving Their Health" },
+    { "id": "bg_color", "type": "color", "label": "Background Color", "default": "#FAFAFA" }
+  ],
+  "blocks": [
+    {
+      "type": "review",
+      "name": "Review Item",
+      "settings": [
+        {
+          "id": "category",
+          "type": "select",
+          "label": "Category",
+          "options": [
+            { "value": "taste", "label": "Taste" },
+            { "value": "value", "label": "Value" },
+            { "value": "benefits", "label": "Benefits" },
+            { "value": "quality", "label": "Quality" }
+          ],
+          "default": "taste"
+        },
+        { "id": "rating", "type": "range", "label": "Rating", "min": 1, "max": 5, "step": 1, "default": 5 },
+        { "id": "headline", "type": "text", "label": "Headline", "default": "Best weight loss kehwa!" },
+        { "id": "quote", "type": "textarea", "label": "Quote", "default": "I noticed results within the first month. No more bloating." },
+        { "id": "author", "type": "text", "label": "Author", "default": "Ahmed K." },
+        { "id": "product_name", "type": "text", "label": "Product Name", "default": "Skinny Sips Kehwa" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Filtered Reviews (Laushe)", "category": "Laushe Sections" }]
+}
+{% endschema %}
+
+<section class="reviews-wrapper section-padding" style="background-color: {{ section.settings.bg_color }};" id="section-{{ section.id }}">
+  <div class="container">
+    
+    <!-- HEADER -->
+    <div class="reviews-header text-center" style="margin-bottom: 50px;">
+      <h2 class="reviews-title">{{ section.settings.heading }}</h2>
+    </div>
+
+    <!-- FILTER TABS -->
+    <div class="reviews-tabs">
+      <button class="review-tab active" data-category="taste" onclick="filterReviewsById('taste', this, '{{ section.id }}')">Taste</button>
+      <button class="review-tab" data-category="value" onclick="filterReviewsById('value', this, '{{ section.id }}')">Value</button>
+      <button class="review-tab" data-category="benefits" onclick="filterReviewsById('benefits', this, '{{ section.id }}')">Benefits</button>
+      <button class="review-tab" data-category="quality" onclick="filterReviewsById('quality', this, '{{ section.id }}')">Quality</button>
+    </div>
+
+    <!-- REVIEWS GRID -->
+    <div class="reviews-grid" id="reviews-grid-{{ section.id }}">
+      {% for block in section.blocks %}
+        <div class="review-card-item" data-category="{{ block.settings.category }}" {{ block.shopify_attributes }} style="display: {% if block.settings.category == 'taste' %}block{% else %}none{% endif %};">
+          <div class="review-card">
+            <!-- Stars -->
+            <div class="review-stars">
+              {% for i in (1..block.settings.rating) %}
+                <span class="star-gold">★</span>
+              {% endfor %}
+            </div>
+
+            <!-- Content -->
+            <h3 class="review-headline">{{ block.settings.headline }}</h3>
+            <p class="review-quote">"{{ block.settings.quote }}"</p>
+
+            <!-- Author & Product -->
+            <div class="review-footer">
+              <span class="review-author">— {{ block.settings.author }}</span>
+              <span class="review-product-badge">{{ block.settings.product_name }}</span>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+
+  </div>
+</section>
+
+<style>
+  #section-{{ section.id }} .reviews-wrapper {
+    padding: 100px 0;
+  }
+  #section-{{ section.id }} .reviews-title {
+    font-size: 36px;
+    font-weight: 800;
+    color: #004225;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  #section-{{ section.id }} .reviews-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-bottom: 50px;
+  }
+  
+  #section-{{ section.id }} .review-tab {
+    background: none;
+    border: none;
+    font-size: 14px;
+    font-weight: 800;
+    color: #888;
+    cursor: pointer;
+    padding-bottom: 8px;
+    position: relative;
+    transition: color 0.3s ease;
+    text-transform: capitalize;
+  }
+  
+  #section-{{ section.id }} .review-tab.active {
+    color: #004225;
+  }
+  
+  #section-{{ section.id }} .review-tab::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #004225;
+    transition: width 0.3s ease;
+  }
+  
+  #section-{{ section.id }} .review-tab.active::after {
+    width: 100%;
+  }
+  
+  #section-{{ section.id }} .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+  }
+  
+  #section-{{ section.id }} .review-card {
+    background: white;
+    border-radius: 20px;
+    padding: 40px;
+    height: 100%;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #F0F0f0;
+  }
+  
+  #section-{{ section.id }} .review-stars {
+    margin-bottom: 20px;
+    display: flex;
+    gap: 3px;
+  }
+  
+  #section-{{ section.id }} .star-gold {
+    color: #D4AF37;
+    font-size: 18px;
+  }
+  
+  #section-{{ section.id }} .review-headline {
+    font-size: 18px;
+    font-weight: 800;
+    color: #004225;
+    margin-bottom: 15px;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  #section-{{ section.id }} .review-quote {
+    font-size: 15px;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    flex-grow: 1;
+    font-style: normal;
+  }
+  
+  #section-{{ section.id }} .review-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #F0F0F0;
+    padding-top: 20px;
+  }
+  
+  #section-{{ section.id }} .review-author {
+    font-size: 14px;
+    font-weight: 700;
+    color: #004225;
+  }
+  
+  #section-{{ section.id }} .review-product-badge {
+    font-size: 11px;
+    font-weight: 700;
+    color: #004225;
+    background: #e9f3ed;
+    padding: 6px 12px;
+    border-radius: 50px;
+  }
+  
+  @media (max-width: 1024px) {
+    #section-{{ section.id }} .reviews-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  
+  @media (max-width: 600px) {
+    #section-{{ section.id }} .reviews-grid { grid-template-columns: 1fr; }
+    #section-{{ section.id }} .reviews-tabs { gap: 20px; }
+    #section-{{ section.id }} .review-footer { flex-direction: column; align-items: flex-start; gap: 10px; }
+  }
+</style>
+
+<script>
+  function filterReviewsById(category, btn, sectionId) {
+    const parent = document.getElementById('section-' + sectionId);
+    if (!parent) return;
+
+    // Update active tab
+    const tabs = parent.querySelectorAll('.review-tab');
+    tabs.forEach(t => t.classList.remove('active'));
+    btn.classList.add('active');
+
+    // Filter reviews
+    const reviews = parent.querySelectorAll('.review-card-item');
+    reviews.forEach(card => {
+      if (card.getAttribute('data-category') === category) {
+        card.style.display = 'block';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  }
+</script>
