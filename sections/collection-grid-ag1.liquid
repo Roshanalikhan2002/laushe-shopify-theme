@@ -52,7 +52,7 @@
 <!-- FILTER TABS -->
 <nav class="filter-nav">
     <div class="container-wide">
-        <ul class="tab-list">
+        <ul class="tab-list" id="CollectionFilterTabs">
             <li><a href="javascript:void(0)" class="tab-link active" data-filter="all">Shop All</a></li>
             <li><a href="javascript:void(0)" class="tab-link" data-filter="healthcare">Healthcare</a></li>
             <li><a href="javascript:void(0)" class="tab-link" data-filter="organic">Organic</a></li>
@@ -112,36 +112,47 @@
         const groups = document.querySelectorAll('.collection-group');
         const grid = document.getElementById('ProductGrid');
 
+        function applyFilter(filter, bypassAnimation = false) {
+            if (!bypassAnimation) grid.style.opacity = '0.3';
+            
+            setTimeout(() => {
+                groups.forEach(group => {
+                    const categories = group.getAttribute('data-category');
+                    if (filter === 'all') {
+                        group.classList.remove('collection-group--hidden');
+                    } else {
+                        if (categories.includes(filter)) {
+                            group.classList.remove('collection-group--hidden');
+                        } else {
+                            group.classList.add('collection-group--hidden');
+                        }
+                    }
+                });
+                if (!bypassAnimation) grid.style.opacity = '1';
+            }, bypassAnimation ? 0 : 200);
+        }
+
         tabs.forEach(tab => {
             tab.addEventListener('click', (e) => {
                 e.preventDefault();
-                
-                // Update Active Tab
                 tabs.forEach(t => t.classList.remove('active'));
                 tab.classList.add('active');
-
-                const filter = tab.getAttribute('data-filter');
-                
-                // Apply Filter with Fade Effect
-                grid.style.opacity = '0.3';
-                
-                setTimeout(() => {
-                    groups.forEach(group => {
-                        const categories = group.getAttribute('data-category');
-                        if (filter === 'all') {
-                            group.classList.remove('collection-group--hidden');
-                        } else {
-                            if (categories.includes(filter)) {
-                                group.classList.remove('collection-group--hidden');
-                            } else {
-                                group.classList.add('collection-group--hidden');
-                            }
-                        }
-                    });
-                    grid.style.opacity = '1';
-                }, 200);
+                applyFilter(tab.getAttribute('data-filter'));
             });
         });
+
+        // HANDLE DEEP LINKING FROM HEADER
+        const urlParams = new URLSearchParams(window.location.search);
+        const externalFilter = urlParams.get('filter');
+        if (externalFilter) {
+            const targetTab = Array.from(tabs).find(t => t.getAttribute('data-filter') === externalFilter);
+            if (targetTab) {
+                targetTab.click();
+                // Smooth scroll to grid
+                const gridTop = document.getElementById('CollectionFilterTabs').offsetTop;
+                window.scrollTo({ top: gridTop - 100, behavior: 'smooth' });
+            }
+        }
     });
 </script>
 

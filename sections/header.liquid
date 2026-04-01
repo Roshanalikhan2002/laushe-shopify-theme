@@ -3,22 +3,10 @@
   "name": "Header (Laushe)",
   "settings": [
     {
-      "type": "header",
-      "content": "Navigation Links"
-    },
-    {
-      "type": "collection",
-      "id": "collection_1",
-      "label": "Healthcare Collection"
-    },
-    {
-      "type": "collection",
-      "id": "collection_2",
-      "label": "Organic Products Collection"
-    },
-    {
-      "type": "header",
-      "content": "Aesthetics"
+      "type": "url",
+      "id": "shop_all_url",
+      "label": "Shop All / Products Page URL",
+      "default": "/collections/all"
     },
     {
       "type": "color",
@@ -55,9 +43,9 @@
           </button>
           <div class="nav-dropdown-menu" style="position: absolute; top: calc(100% + 8px); left: 0; background: white; border-radius: 12px; box-shadow: 0 10px 40px rgba(0,0,0,0.12); min-width: 220px; padding: 10px 0; opacity: 0; visibility: hidden; transform: translateY(-8px); transition: all 0.25s ease; z-index: 2000;">
             
-            <a href="{{ collections[section.settings.collection_1].url | default: '/collections/all' }}" style="display: block; padding: 12px 24px; font-size: 14px; font-weight: 600; color: #333; text-decoration: none;">Healthcare</a>
+            <a href="{{ section.settings.shop_all_url }}?filter=healthcare" style="display: block; padding: 12px 24px; font-size: 14px; font-weight: 600; color: #333; text-decoration: none;">Healthcare</a>
             
-            <a href="{{ collections[section.settings.collection_2].url | default: '/collections/all' }}" style="display: block; padding: 12px 24px; font-size: 14px; font-weight: 600; color: #333; text-decoration: none;">Organic Products</a>
+            <a href="{{ section.settings.shop_all_url }}?filter=organic" style="display: block; padding: 12px 24px; font-size: 14px; font-weight: 600; color: #333; text-decoration: none;">Organic Products</a>
             
           </div>
         </div>
@@ -94,8 +82,8 @@
   </div>
   <nav class="mobile-drawer-nav">
     <a href="/" onclick="window.toggleMobileMenu()">HOME</a>
-    <a href="{{ collections[section.settings.collection_1].url | default: '/collections/all' }}" onclick="window.toggleMobileMenu()">HEALTHCARE</a>
-    <a href="{{ collections[section.settings.collection_2].url | default: '/collections/all' }}" onclick="window.toggleMobileMenu()">ORGANIC PRODUCTS</a>
+    <a href="{{ section.settings.shop_all_url }}?filter=healthcare" onclick="window.toggleMobileMenu()">HEALTHCARE</a>
+    <a href="{{ section.settings.shop_all_url }}?filter=organic" onclick="window.toggleMobileMenu()">ORGANIC PRODUCTS</a>
     <a href="/pages/contact" onclick="window.toggleMobileMenu()">CONTACT US</a>
   </nav>
 </div>
