@@ -1,0 +1,202 @@
+{% schema %}
+{
+  "name": "Our Top Bestsellers",
+  "settings": [
+    { "id": "heading", "type": "text", "label": "Heading", "default": "Our Top Bestsellers" }
+  ],
+  "blocks": [
+    {
+      "type": "product",
+      "name": "Product Card",
+      "limit": 3,
+      "settings": [
+        { "id": "product", "type": "product", "label": "Select Product" },
+        { "id": "stars_count", "type": "text", "label": "Review Count (manual)", "default": "1250" },
+        { "id": "show_badge", "type": "checkbox", "label": "Show Sale Badge", "default": false },
+        { "id": "badge_text", "type": "text", "label": "Badge Text", "default": "9% OFF" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Our Top Bestsellers", "category": "Laushe Sections" }]
+}
+{% endschema %}
+
+<section class="section-padding" style="background: white;">
+  <div class="container text-center">
+    <h2 style="font-size: 44px; margin-bottom: 50px;">{{ section.settings.heading }}</h2>
+    
+    <div class="bestsellers-grid">
+      {% for block in section.blocks %}
+        {% assign prod = all_products[block.settings.product] %}
+        {% if prod != blank %}
+          <div class="product-card-v2" onclick="location.href='{{ prod.url }}'">
+            <div class="card-image-area">
+              {% if block.settings.show_badge %}
+                <div class="badge-sale-v2">{{ block.settings.badge_text }}</div>
+              {% endif %}
+              <img src="{{ prod.featured_image | img_url: '600x' }}" alt="{{ prod.title }}">
+            </div>
+            
+            <div class="card-content">
+              <div class="stars-line">
+                ⭐⭐⭐⭐⭐ <span class="review-count">({{ block.settings.stars_count }})</span>
+              </div>
+              <h3 class="card-title">{{ prod.title }}</h3>
+              <p class="card-desc">{{ prod.description | strip_html | truncate: 120 }}</p>
+              
+              <div class="card-price-row">
+                <span class="curr-price">{{ prod.price | money }}</span>
+                {% if prod.compare_at_price > prod.price %}
+                  <span class="old-price">{{ prod.compare_at_price | money }}</span>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        {% else %}
+           <!-- Placeholder for visual guidance in editor -->
+           <div class="product-card-v2 placeholder-card">
+             <div class="card-image-area" style="background: #EEE;">
+                <p style="padding: 50px; opacity: 0.5;">Select a Product</p>
+             </div>
+             <div class="card-content">
+                <p>⭐ (0)</p>
+                <h3>Sample Title</h3>
+                <p>Rs. 0</p>
+             </div>
+           </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<style>
+  .bestsellers-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+  }
+  
+  .product-card-v2 {
+    padding: 0;
+    text-align: left;
+    background: white;
+    border: 1px solid #EEE;
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .product-card-v2:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+    border-color: #004225;
+  }
+  
+  .card-image-area {
+    background-color: #FAFAFA;
+    border-radius: 20px 20px 0 0;
+    position: relative;
+    padding: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 280px;
+  }
+  
+  .card-image-area img {
+    width: 100%;
+    max-height: 220px;
+    object-fit: contain;
+    mix-blend-mode: multiply;
+  }
+  
+  .badge-sale-v2 {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: #C3985F;
+    color: white;
+    font-size: 11px;
+    font-weight: 800;
+    padding: 5px 12px;
+    border-radius: 20px;
+    z-index: 2;
+  }
+  
+  .card-content {
+    padding: 24px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .stars-line {
+    font-size: 11px;
+    color: #D4AF37;
+    margin-bottom: 12px;
+    display: flex;
+    gap: 5px;
+    align-items: center;
+  }
+  
+  .review-count {
+    color: #888;
+    font-weight: 500;
+  }
+  
+  .card-title {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #333;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 800;
+  }
+  
+  .card-desc {
+    font-size: 13px;
+    color: #777;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  .card-price-row {
+    margin-top: auto;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+  }
+  
+  .curr-price {
+    font-weight: 800;
+    font-size: 20px;
+    color: #004225;
+  }
+  
+  .old-price {
+    font-size: 14px;
+    color: #999;
+    text-decoration: line-through;
+    font-weight: 500;
+  }
+  
+  @media (max-width: 992px) {
+    .bestsellers-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (max-width: 600px) {
+    .bestsellers-grid {
+      grid-template-columns: 1fr;
+    }
+    .card-image-area { min-height: 240px; }
+  }
+</style>

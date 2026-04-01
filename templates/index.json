@@ -52,7 +52,16 @@
     },
     "final_cta": {
       "type": "final-cta"
+    },
+    "bestsellers": {
+      "type": "bestsellers",
+      "blocks": {
+        "b1": { "type": "product", "settings": { "stars_count": "1259" } },
+        "b2": { "type": "product", "settings": { "stars_count": "3373", "show_badge": true, "badge_text": "9% OFF" } },
+        "b3": { "type": "product", "settings": { "stars_count": "1340" } }
+      },
+      "block_order": ["b1", "b2", "b3"]
     }
   },
-  "order": ["hero", "stats_bar", "benefits_grid", "problem_solution", "social_proof", "story", "athlete", "final_cta"]
+  "order": ["hero", "bestsellers", "stats_bar", "benefits_grid", "problem_solution", "social_proof", "story", "athlete", "final_cta"]
 }
