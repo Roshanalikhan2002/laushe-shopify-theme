@@ -23,7 +23,7 @@
   ],
   "blocks": [
     {
-      "type": "stat",
+      "type": "social_stat",
       "name": "Stat Box",
       "limit": 4,
       "settings": [
@@ -42,7 +42,7 @@
       ]
     },
     {
-      "type": "logo",
+      "type": "social_logo",
       "name": "Trust Logo",
       "settings": [
         {
@@ -55,7 +55,7 @@
   ],
   "presets": [
      {
-       "name": "Social Proof (Laushe)",
+       "name": "Social Proof",
        "category": "Laushe Sections"
      }
   ]
@@ -69,7 +69,7 @@
     
     <div class="quick-stats-row">
       {% for block in section.blocks %}
-        {% if block.type == 'stat' %}
+        {% if block.type == 'social_stat' %}
           <div class="stat-box" {{ block.shopify_attributes }}>
             <div class="stat-number">{{ block.settings.number }}</div>
             <p class="stat-label-bold">{{ block.settings.label }}</p>
@@ -79,13 +79,13 @@
     </div>
 
     {% assign logos_exist = false %}
-    {% for block in section.blocks %}{% if block.type == 'logo' %}{% assign logos_exist = true %}{% break %}{% endif %}{% endfor %}
+    {% for block in section.blocks %}{% if block.type == 'social_logo' %}{% assign logos_exist = true %}{% break %}{% endif %}{% endfor %}
 
     {% if logos_exist %}
       <div class="logos-divider"></div>
       <div class="logos-track-laushe">
         {% for block in section.blocks %}
-          {% if block.type == 'logo' %}
+          {% if block.type == 'social_logo' %}
             <div class="logo-item-laushe" {{ block.shopify_attributes }}>
               {% if block.settings.image %}
                 <img src="{{ block.settings.image | img_url: '200x' }}" alt="Trust Logo">

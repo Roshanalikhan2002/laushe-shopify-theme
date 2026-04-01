@@ -47,7 +47,7 @@
   ],
   "blocks": [
     {
-       "type": "problem_point",
+       "type": "prob_point",
        "name": "Problem Point",
        "settings": [
          {
@@ -59,7 +59,7 @@
        ]
     },
     {
-       "type": "solution_point",
+       "type": "sol_point",
        "name": "Solution Point",
        "settings": [
          {
@@ -73,7 +73,7 @@
   ],
   "presets": [
      {
-       "name": "Problem vs Solution (Luxe)",
+       "name": "Problem vs Solution",
        "category": "Laushe Sections"
      }
   ]
@@ -92,7 +92,7 @@
 
         <div class="point-list">
           {% for block in section.blocks %}
-            {% if block.type == 'problem_point' %}
+            {% if block.type == 'prob_point' %}
               <div class="point-item" {{ block.shopify_attributes }}>
                 <span class="icon-x">✕</span>
                 <span class="point-text">{{ block.settings.text }}</span>
@@ -110,7 +110,7 @@
 
         <div class="point-list">
           {% for block in section.blocks %}
-            {% if block.type == 'solution_point' %}
+            {% if block.type == 'sol_point' %}
               <div class="point-item" {{ block.shopify_attributes }}>
                 <span class="icon-check">✓</span>
                 <span class="point-text-sol">{{ block.settings.text }}</span>
