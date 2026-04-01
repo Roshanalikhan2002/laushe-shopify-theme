@@ -1,12 +1,3 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
     "hero": {
@@ -387,6 +378,21 @@
         "bg_color": "#FAFAFA"
       }
     },
+    "video_grid": {
+      "type": "social-video-grid",
+      "blocks": {
+        "v1": { "type": "video" },
+        "v2": { "type": "video" },
+        "v3": { "type": "video" },
+        "v4": { "type": "video" },
+        "v5": { "type": "video" }
+      },
+      "block_order": ["v1", "v2", "v3", "v4", "v5"],
+      "settings": {
+        "heading": "",
+        "bg_color": "#FAFAFA"
+      }
+    },
     "story": {
       "type": "story-section",
       "blocks": {
@@ -430,29 +436,24 @@
     "social_proof": {
       "type": "social-proof-carousel",
       "blocks": {
-        "st1": {
-          "type": "social_stat",
-          "settings": {
-            "number": "95%",
-            "label": "Overall health improved"
-          }
-        },
-        "st2": {
-          "type": "social_stat",
-          "settings": {
-            "number": "67%",
-            "label": "Better digestion"
-          }
-        }
+        "st1": { "type": "social_stat", "settings": { "number": "95%", "label": "Overall health improved" } },
+        "st2": { "type": "social_stat", "settings": { "number": "67%", "label": "Better digestion" } }
       },
-      "block_order": [
-        "st1",
-        "st2"
-      ],
+      "block_order": [ "st1", "st2" ],
       "settings": {
         "section_title": "Pure, Potent, Proven",
         "section_subtitle": "Here is what our customers report after 3 months of using Laushe products.",
         "bg_color": "#fff9e9"
+      }
+    },
+    "final_cta": {
+      "type": "final-cta",
+      "settings": {
+        "headline": "Ready to Transform Your Health?",
+        "subtext": "Join over 50,000+ satisfied customers today and experience the Laushe difference.",
+        "cta_text": "SHOP NOW - SAVE 25%",
+        "cta_url": "",
+        "bg_color": "#1b4332"
       }
     }
   },
@@ -468,7 +469,9 @@
     "catalog_grid",
     "faq_accordion",
     "filtered_reviews",
+    "video_grid",
     "story",
-    "social_proof"
+    "social_proof",
+    "final_cta"
   ]
 }
