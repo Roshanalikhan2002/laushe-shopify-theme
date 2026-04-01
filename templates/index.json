@@ -35,84 +35,14 @@
       },
       "block_order": ["gut", "immunity", "energy", "brain"]
     },
-    "problem_solution": {
-      "type": "problem-solution",
-      "settings": {
-        "problem_subtitle": "The Problem",
-        "problem_title": "Most Health Products Are Full of Hidden Chemicals",
-        "problem_description": "The market is flooded with supplements and health products that promise results but deliver artificial fillers, synthetic additives, and questionable ingredients.",
-        "solution_subtitle": "The Laushe Solution",
-        "solution_title": "100% Pure, 100% Natural, 100% Effective",
-        "solution_description": "Every Laushe product is crafted from ethically sourced, natural ingredients with complete transparency."
-      },
-      "blocks": {
-        "p1": { "type": "prob_point", "settings": { "text": "Artificial preservatives and fillers" } },
-        "p2": { "type": "prob_point", "settings": { "text": "Synthetic vitamins with low absorption" } },
-        "s1": { "type": "sol_point", "settings": { "text": "100% natural, ethically sourced ingredients" } },
-        "s2": { "type": "sol_point", "settings": { "text": "Sunnah-blessed traditional formulations" } }
-      },
-      "block_order": ["p1", "p2", "s1", "s2"]
-    },
     "story": {
       "type": "story-section",
-      "settings": {
-        "subtitle": "Our Story",
-        "title": "Rooted in Tradition, Crafted with Love",
-        "description_1": "Laushe was born from a simple belief: that the best health solutions come from nature itself.",
-        "description_2": "We source our ingredients directly from trusted farms, ensuring every product meets the highest standards."
-      }
+      "settings": {}
     },
     "athlete": {
       "type": "athlete-endorsement",
-      "settings": {
-        "athlete_name": "Sarah Miller",
-        "athlete_title": "Olympic Gold Medalist",
-        "quote": "Laushe has been my teammate for over two years. Its purity is unparalleled."
-      }
-    },
-    "product_offer": {
-      "type": "product-offer-section",
-      "settings": {
-        "section_title": "Choose Your Wellness Plan"
-      }
-    },
-    "faq": {
-      "type": "faq-accordion",
-      "settings": {
-        "subtitle": "QUESTIONS & ANSWERS",
-        "title": "Frequent Questions"
-      },
-      "blocks": {
-        "f1": { "type": "faq", "settings": { "question": "Are your products 100% natural?", "answer": "Yes, every ingredient is ethically sourced and tested for purity." } },
-        "f2": { "type": "faq", "settings": { "question": "What is the shelf life?", "answer": "Our products last for 12 months in a cool, dry place." } }
-      },
-      "block_order": ["f1", "f2"]
-    },
-    "comparison": {
-      "type": "comparison-table",
-      "settings": {
-        "section_title": "Why Laushe Stands Alone"
-      },
-      "blocks": {
-        "c1": { "type": "row", "settings": { "feature": "Ingredient Sourcing", "laushe_value": "100% Organic", "generic_value": "Synthetic" } }
-      },
-      "block_order": ["c1"]
-    },
-    "social_proof": {
-      "type": "social-proof-carousel",
-      "settings": {
-        "section_title": "Pure, Potent, Proven",
-        "section_subtitle": "Here is what our customers report after 3 months of using Laushe products."
-      },
-      "blocks": {
-        "st1": { "type": "social_stat", "settings": { "number": "95%", "label": "Overall health improved" } },
-        "st2": { "type": "social_stat", "settings": { "number": "67%", "label": "Better digestion" } }
-      },
-      "block_order": ["st1", "st2"]
-    },
-    "final_cta": {
-      "type": "final-cta"
+      "settings": {}
     }
   },
-  "order": ["hero", "stats_bar", "benefits_grid", "problem_solution", "story", "athlete", "product_offer", "faq", "comparison", "social_proof", "final_cta"]
+  "order": ["hero", "stats_bar", "benefits_grid", "story", "athlete"]
 }
