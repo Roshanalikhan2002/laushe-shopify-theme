@@ -380,6 +380,7 @@
     },
     "video_grid": {
       "type": "video-grid",
+      "name": "Social Video Grid",
       "blocks": {
         "v1": { "type": "video" },
         "v2": { "type": "video" },
