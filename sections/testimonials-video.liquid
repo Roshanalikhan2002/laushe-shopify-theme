@@ -1,0 +1,236 @@
+<!-- 
+  Section: Testimonials Video & Reviews
+  Aesthetics: High-trust, Visual, Social Proof
+-->
+
+{% schema %}
+{
+  "name": "Video Reviews",
+  "settings": [
+    {
+      "id": "section_title",
+      "type": "text",
+      "label": "Section Title",
+      "default": "Real Results from Real People"
+    },
+    {
+       "id": "bg_color",
+       "type": "color",
+       "label": "Background Color",
+       "default": "#F9FDF9"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "video_review",
+      "name": "Video Testimonial",
+      "settings": [
+        {
+          "id": "video_url",
+          "type": "video_url",
+          "label": "Video URL (Youtube/Vimeo)",
+          "accept": ["youtube", "vimeo"]
+        },
+        {
+          "id": "thumbnail",
+          "type": "image_picker",
+          "label": "Video Thumbnail"
+        },
+        {
+          "id": "name",
+          "type": "text",
+          "label": "Customer Name",
+          "default": "Sarah J."
+        },
+        {
+          "id": "quote",
+          "type": "text",
+          "label": "Short Quote",
+          "default": "Completely changed how I feel every morning!"
+        }
+      ]
+    },
+    {
+      "type": "text_review",
+      "name": "Text Review",
+      "settings": [
+        {
+          "id": "review_text",
+          "type": "textarea",
+          "label": "Review Text",
+          "default": "I have been using Laushe for 3 months and the results are incredible."
+        },
+        {
+          "id": "author",
+          "type": "text",
+          "label": "Author",
+          "default": "Michael K."
+        }
+      ]
+    }
+  ],
+  "presets": [
+     {
+       "name": "Video Reviews",
+       "category": "Custom"
+     }
+  ]
+}
+{% endschema %}
+
+<section class="testimonials-video-section section-padding" style="background-color: {{ section.settings.bg_color }};">
+  <div class="container-wide">
+    <div class="section-badge-wrapper text-center">
+       <span class="sub-badge">TRANSFORMATION STORIES</span>
+    </div>
+    <h2 class="text-center h1 testimonials-title">{{ section.settings.section_title }}</h2>
+    
+    <div class="video-testimonials-grid">
+      {% for block in section.blocks %}
+        {% if block.type == 'video_review' %}
+          <div class="video-testimonial-card animate-fade-up" {{ block.shopify_attributes }}>
+             <div class="video-overlay-wrapper">
+                {% if block.settings.thumbnail %}
+                  <img src="{{ block.settings.thumbnail | img_url: '400x400' }}" alt="{{ block.settings.name }}" class="video-thumb">
+                {% else %}
+                  <div class="placeholder-video-thumb">🎥 Video Playback</div>
+                {% endif %}
+                <div class="play-button-overlay">▶</div>
+             </div>
+             <p class="testimonial-quote">"{{ block.settings.quote }}"</p>
+             <span class="testimonial-author-name">- {{ block.settings.name }}</span>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+    
+    <div class="text-reviews-grid section-padding">
+       {% for block in section.blocks %}
+        {% if block.type == 'text_review' %}
+          <div class="text-review-card animate-fade-up" {{ block.shopify_attributes }}>
+             <div class="rating-stars">★★★★★</div>
+             <p class="review-body">"{{ block.settings.review_text }}"</p>
+             <p class="review-author-meta">Verified Buyer: <strong>{{ block.settings.author }}</strong></p>
+          </div>
+        {% endif %}
+       {% endfor %}
+    </div>
+  </div>
+</section>
+
+<style>
+  .testimonials-title {
+    margin-bottom: 60px;
+    color: var(--primary-green);
+  }
+  
+  .video-testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-bottom: 60px;
+  }
+  
+  .video-testimonial-card {
+    background: #FFF;
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    box-shadow: var(--shadow-soft);
+    text-align: center;
+    padding-bottom: 25px;
+  }
+  
+  .video-overlay-wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 9/16; /* Portrait style video usually works better for conversion */
+    background: #000;
+    cursor: pointer;
+    overflow: hidden;
+  }
+  
+  .video-thumb {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.8;
+    transition: var(--transition);
+  }
+  
+  .video-testimonial-card:hover .video-thumb {
+    transform: scale(1.05);
+    opacity: 1;
+  }
+  
+  .play-button-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60px;
+    height: 60px;
+    background: rgba(255, 183, 0, 0.9);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFF;
+    font-size: 1.5rem;
+  }
+  
+  .testimonial-quote {
+    font-style: italic;
+    font-size: 1.1rem;
+    padding: 20px 15px 5px;
+    color: var(--text-muted);
+  }
+  
+  .testimonial-author-name {
+    display: block;
+    font-weight: 700;
+    color: var(--primary-green);
+    text-transform: uppercase;
+    font-size: 0.9rem;
+  }
+  
+  .text-reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    border-top: 1px solid #EEE;
+  }
+  
+  .text-review-card {
+    background: #FFF;
+    padding: 30px;
+    border-radius: var(--radius-card);
+    border: 1px solid #F0F0F0;
+  }
+  
+  .rating-stars {
+    color: var(--accent-gold);
+    margin-bottom: 12px;
+  }
+  
+  .review-body {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-bottom: 15px;
+  }
+  
+  .review-author-meta {
+    font-size: 0.8rem;
+    color: var(--primary-green);
+  }
+  
+  @media (max-width: 991px) {
+    .video-testimonials-grid, .text-reviews-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .video-overlay-wrapper {
+      aspect-ratio: 16/9; /* Landscape for mobile if grid is single col */
+    }
+  }
+</style>

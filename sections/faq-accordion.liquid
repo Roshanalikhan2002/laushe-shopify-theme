@@ -1,0 +1,177 @@
+{% schema %}
+{
+  "name": "FAQ Accordion (Laushe)",
+  "settings": [
+    {
+      "id": "subtitle",
+      "type": "text",
+      "label": "Subtitle",
+      "default": "QUESTIONS & ANSWERS"
+    },
+    {
+      "id": "title",
+      "type": "text",
+      "label": "Title",
+      "default": "Frequently Asked Questions"
+    },
+    {
+       "id": "bg_color",
+       "type": "color",
+       "label": "Background Color",
+       "default": "#FAF7F2"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "faq",
+      "name": "FAQ Item",
+      "settings": [
+        {
+          "id": "question",
+          "type": "text",
+          "label": "Question",
+          "default": "What are the key ingredients?"
+        },
+        {
+          "id": "answer",
+          "type": "textarea",
+          "label": "Answer",
+          "default": "Our formula contains 100% organic ingredients sourced from the purest environments."
+        }
+      ]
+    }
+  ],
+  "presets": [
+     {
+       "name": "FAQ Accordion (Laushe)",
+       "category": "Laushe Sections"
+     }
+  ]
+}
+{% endschema %}
+
+<section class="faq-wrapper" style="background-color: {{ section.settings.bg_color }};">
+  <div class="container faq-container">
+    <div class="faq-header-box">
+      <p class="faq-subtitle">{{ section.settings.subtitle }}</p>
+      <h2 class="faq-title">{{ section.settings.title }}</h2>
+    </div>
+
+    <div class="faq-list">
+      {% for block in section.blocks %}
+        <div class="faq-card" {{ block.shopify_attributes }}>
+          <button class="faq-trigger" onclick="toggleFaq(this)">
+            <span class="faq-question-text">{{ block.settings.question }}</span>
+            <div class="faq-icon-box">
+              <ion-icon name="chevron-down-outline"></ion-icon>
+            </div>
+          </button>
+          <div class="faq-content">
+            <div class="faq-text-inner">
+              {{ block.settings.answer }}
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<script>
+  function toggleFaq(button) {
+    const card = button.closest('.faq-card');
+    const isActive = card.classList.contains('active');
+    
+    // Close others
+    document.querySelectorAll('.faq-card').forEach(c => c.classList.remove('active'));
+    
+    if (!isActive) {
+      card.classList.add('active');
+    }
+  }
+</script>
+
+<style>
+  .faq-wrapper {
+    padding: 100px 0;
+  }
+  .faq-container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .faq-header-box {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+  .faq-subtitle {
+    color: #D4AF37; /* --accent-gold */
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+  }
+  .faq-title {
+    font-size: 44px;
+    color: #004225; /* --deep-forest */
+    font-family: 'Poppins', sans-serif;
+    font-weight: 800;
+  }
+  .faq-card {
+    background: white;
+    border-radius: 16px;
+    margin-bottom: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+    transition: all 0.3s ease;
+    border: 1px solid #EEE;
+  }
+  .faq-card:hover {
+    box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+  }
+  .faq-trigger {
+    width: 100%;
+    padding: 24px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    outline: none;
+  }
+  .faq-question-text {
+    font-size: 17px;
+    font-weight: 700;
+    color: #004225;
+    font-family: 'Poppins', sans-serif;
+  }
+  .faq-icon-box {
+    font-size: 20px;
+    color: #004225;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .faq-card.active .faq-icon-box {
+    transform: rotate(180deg);
+  }
+  .faq-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    background: white;
+  }
+  .faq-card.active .faq-content {
+    max-height: 500px;
+  }
+  .faq-text-inner {
+    padding: 0 30px 30px 30px;
+    font-size: 15px;
+    line-height: 1.7;
+    color: #555;
+  }
+  @media (max-width: 768px) {
+    .faq-title { font-size: 32px; }
+    .faq-trigger { padding: 20px; }
+  }
+</style>

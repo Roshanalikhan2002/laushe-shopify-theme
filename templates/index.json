@@ -1,0 +1,161 @@
+{
+  "name": "Laushe Funnel Home",
+  "sections": {
+    "hero": {
+      "type": "hero-funnel",
+      "settings": {
+        "pre_title": "⭐⭐⭐⭐⭐ 4.8 stars from 10,000+ reviews | 50,000+ customers",
+        "headline": "Transform Your Health Naturally. Laushe Provides the Essentials.",
+        "benefit_1": "100% Pure & Natural Ingredients",
+        "benefit_2": "Clinically Tested & Sunnah Blessed",
+        "benefit_3": "No Artificial Additives",
+        "cta_text": "Save 25% + Free Shipping",
+        "risk_free_text": "Try It Risk-Free For 30 Days",
+        "limited_offer_badge": "LIMITED TIME OFFER",
+        "trust_icon_text": "Nutritionist Recommended",
+        "trust_icon_sub": "Certified Choice"
+      }
+    },
+    "stats_bar": {
+      "type": "stats-bar",
+      "blocks": {
+        "s1": { "type": "stat", "settings": { "number": "15,000+", "label": "Happy Families" } },
+        "s2": { "type": "stat", "settings": { "number": "98%", "label": "Customer Satisfaction" } },
+        "s3": { "type": "stat", "settings": { "number": "100%", "label": "Natural Ingredients" } },
+        "s4": { "type": "stat", "settings": { "number": "8", "label": "Premium Products" } }
+      },
+      "block_order": ["s1", "s2", "s3", "s4"]
+    },
+    "benefits_grid": {
+      "type": "benefits-grid",
+      "blocks": {
+        "gut": { "type": "benefit", "settings": { "title": "Gut Health", "description": "Promotes healthy digestion and a balanced microbiome." } },
+        "immunity": { "type": "benefit", "settings": { "title": "Immunity", "description": "Strengthens your defense system with potent antioxidants." } },
+        "energy": { "type": "benefit", "settings": { "title": "Sustained Energy", "description": "No jitters or crashes, just pure natural focus." } },
+        "brain": { "type": "benefit", "settings": { "title": "Brain Clarity", "description": "Enhances focus and cognitive function throughout the day." } }
+      },
+      "block_order": ["gut", "immunity", "energy", "brain"]
+    },
+    "problem_solution": {
+      "type": "problem-solution",
+      "settings": {
+        "problem_subtitle": "The Problem",
+        "problem_title": "Most Health Products Are Full of Hidden Chemicals",
+        "problem_description": "The market is flooded with supplements and health products that promise results but deliver artificial fillers, synthetic additives, and questionable ingredients. Your body deserves better.",
+        "solution_subtitle": "The Laushe Solution",
+        "solution_title": "100% Pure, 100% Natural, 100% Effective",
+        "solution_description": "Every Laushe product is crafted from ethically sourced, natural ingredients with complete transparency. Our Sunnah-blessed formulations combine ancient wisdom with modern quality standards."
+      },
+      "blocks": {
+        "p1": { "type": "problem_point", "settings": { "text": "Artificial preservatives and fillers" } },
+        "p2": { "type": "problem_point", "settings": { "text": "Synthetic vitamins with low absorption" } },
+        "p3": { "type": "problem_point", "settings": { "text": "Hidden sugars and processed ingredients" } },
+        "p4": { "type": "problem_point", "settings": { "text": "No transparency in sourcing" } },
+        "s1": { "type": "solution_point", "settings": { "text": "100% natural, ethically sourced ingredients" } },
+        "s2": { "type": "solution_point", "settings": { "text": "Sunnah-blessed traditional formulations" } },
+        "s3": { "type": "solution_point", "settings": { "text": "Zero artificial additives or preservatives" } },
+        "s4": { "type": "solution_point", "settings": { "text": "Full ingredient transparency on every product" } }
+      },
+      "block_order": ["p1", "p2", "p3", "p4", "s1", "s2", "s3", "s4"]
+    },
+    "social_proof": {
+      "type": "social-proof-carousel",
+      "settings": {
+        "section_title": "Pure, Potent, Proven",
+        "section_subtitle": "Here is what our customers report after 3 months of using Laushe products."
+      },
+      "blocks": {
+        "st1": { "type": "stat", "settings": { "number": "95%", "label": "Overall health improved" } },
+        "st2": { "type": "stat", "settings": { "number": "67%", "label": "Better digestion" } },
+        "st3": { "type": "stat", "settings": { "number": "88%", "label": "More daily energy" } },
+        "st4": { "type": "stat", "settings": { "number": "92%", "label": "Would recommend to family" } }
+      },
+      "block_order": ["st1", "st2", "st3", "st4"]
+    },
+    "story": {
+      "type": "story-section",
+      "settings": {
+        "subtitle": "Our Story",
+        "title": "Rooted in Tradition, Crafted with Love",
+        "description_1": "Laushe was born from a simple belief: that the best health solutions come from nature itself. Founded by Zahra, a passionate advocate for natural wellness, every product in our collection is a tribute to the healing traditions passed down through generations.",
+        "description_2": "We source our ingredients directly from trusted farms, ensuring every product meets the highest standards of purity and potency. Our Sunnah-blessed formulations combine prophetic medicine with modern nutritional science.",
+        "badge_text": "Est. 2024"
+      },
+      "blocks": {
+        "b1": { "type": "stat", "settings": { "number": "15K+", "label": "Families Served" } },
+        "b2": { "type": "stat", "settings": { "number": "100%", "label": "Organic Sourced" } },
+        "b3": { "type": "stat", "settings": { "number": "5 Yrs", "label": "Of Research" } }
+      },
+      "block_order": ["b1", "b2", "b3"]
+    },
+    "athlete": {
+      "type": "athlete-endorsement",
+      "settings": {
+        "quote": "Laushe has completely transformed my performance and recovery. I trust these natural products.",
+        "body": "After incorporating Laushe into my daily routine, I noticed a dramatic improvement in my energy levels, mental focus, and overall wellbeing. This is the only brand I trust for natural performance nutrition.",
+        "name": "Arshad Nadeem",
+        "title": "Pakistan's Olympic Gold Medalist",
+        "cta_text": "Shop Laushe Now",
+        "disclaimer": "Individual results may vary. Testimonial reflects the personal experience of the individual."
+      }
+    },
+    "qa_section": {
+      "type": "quality-assurance",
+      "blocks": {
+        "q1": { "type": "badge", "settings": { "label": "Certified Organic" } },
+        "q2": { "type": "badge", "settings": { "label": "Non-GMO" } },
+        "q3": { "type": "badge", "settings": { "label": "Eco-friendly Packaging" } },
+        "q4": { "type": "badge", "settings": { "label": "Third-Party Tested" } }
+      },
+      "block_order": ["q1", "q2", "q3", "q4"]
+    },
+    "product_offer": {
+      "type": "product-offer-section",
+      "settings": {
+        "section_title": "Choose Your Wellness Plan"
+      }
+    },
+    "faq": {
+      "type": "faq-accordion",
+      "settings": {
+        "subtitle": "QUESTIONS & ANSWERS",
+        "title": "Frequently Asked Questions"
+      },
+      "blocks": {
+        "f1": { "type": "faq", "settings": { "question": "What are the key ingredients?", "answer": "Our formula contains 100% organic, naturally sourced ingredients including premium Desi Ghee, Kashmiri Honey, Black Seed Oil, and other Sunnah-blessed herbs. Every ingredient is traceable to its source." } },
+        "f2": { "type": "faq", "settings": { "question": "When can I expect results?", "answer": "Most customers report feeling an improvement in energy and digestion within 3-5 days. Full benefits including sustained energy and improved immunity typically emerge after 3 weeks of consistent use." } },
+        "f3": { "type": "faq", "settings": { "question": "Are all your products 100% natural?", "answer": "Yes! Every Laushe product is crafted with 100% natural, organic ingredients. We have zero artificial additives, preservatives, or synthetic fillers. What you see on the label is exactly what's inside." } },
+        "f4": { "type": "faq", "settings": { "question": "Do you offer a money-back guarantee?", "answer": "Absolutely. We offer a 30-day risk-free trial. If you are not completely satisfied with your results, contact us and we will provide a full refund — no questions asked." } },
+        "f5": { "type": "faq", "settings": { "question": "Do you ship across Pakistan?", "answer": "Yes, we deliver across all major cities in Pakistan including Lahore, Karachi, Islamabad, Rawalpindi, and more. Free shipping is available on qualifying orders." } }
+      },
+      "block_order": ["f1", "f2", "f3", "f4", "f5"]
+    },
+    "comparison": {
+      "type": "comparison-table",
+      "blocks": {
+        "r1": { "type": "row", "settings": { "feature": "Organic Certification", "laushe_value": "100% Certified", "generic_value": "Vague or None" } },
+        "r2": { "type": "row", "settings": { "feature": "Artificial Fillers", "laushe_value": "Zero Fillers", "generic_value": "Heavy Synthetic Fillers" } },
+        "r3": { "type": "row", "settings": { "feature": "Money Back Guarantee", "laushe_value": "30-Day Risk Free", "generic_value": "Complex Return Policy" } },
+        "r4": { "type": "row", "settings": { "feature": "Ingredient Transparency", "laushe_value": "Full Transparency", "generic_value": "Hidden or Unclear" } }
+      },
+      "block_order": ["r1", "r2", "r3", "r4"]
+    },
+    "final_cta": {
+      "type": "final-cta"
+    }
+  },
+  "order": [
+    "hero",
+    "stats_bar",
+    "benefits_grid",
+    "problem_solution",
+    "social_proof",
+    "story",
+    "athlete",
+    "qa_section",
+    "product_offer",
+    "faq",
+    "comparison",
+    "final_cta"
+  ]
+}

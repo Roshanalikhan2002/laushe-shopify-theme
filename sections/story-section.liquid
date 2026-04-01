@@ -1,0 +1,182 @@
+{% schema %}
+{
+  "name": "Our Story (Laushe)",
+  "settings": [
+    {
+      "id": "subtitle",
+      "type": "text",
+      "label": "Subtitle",
+      "default": "Our Story"
+    },
+    {
+      "id": "title",
+      "type": "text",
+      "label": "Title",
+      "default": "Rooted in Tradition, Crafted with Love"
+    },
+    {
+      "id": "description_1",
+      "type": "textarea",
+      "label": "Description Paragraph 1",
+      "default": "Laushe was born from a simple belief: that the best health solutions come from nature itself."
+    },
+    {
+      "id": "description_2",
+      "type": "textarea",
+      "label": "Description Paragraph 2",
+      "default": "We source our ingredients directly from trusted farms, ensuring every product meets the highest standards of purity and potency."
+    },
+    {
+      "id": "image",
+      "type": "image_picker",
+      "label": "Story Image"
+    },
+    {
+      "id": "badge_text",
+      "type": "text",
+      "label": "Badge Text",
+      "default": "Est. 2024"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "stat",
+      "name": "Story Stat",
+      "limit": 3,
+      "settings": [
+        {
+          "id": "number",
+          "type": "text",
+          "label": "Stat Number",
+          "default": "100%"
+        },
+        {
+          "id": "label",
+          "type": "text",
+          "label": "Stat Label",
+          "default": "Pure Ingredients"
+        }
+      ]
+    }
+  ],
+  "presets": [
+     {
+       "name": "Our Story (Laushe)",
+       "category": "Laushe Sections"
+     }
+  ]
+}
+{% endschema %}
+
+<section class="story-laushe">
+  <div class="container story-grid">
+    <div class="story-content-box">
+      <p class="story-subtitle">{{ section.settings.subtitle }}</p>
+      <h2 class="story-title">{{ section.settings.title }}</h2>
+      
+      <p class="story-body">{{ section.settings.description_1 }}</p>
+      <p class="story-body">{{ section.settings.description_2 }}</p>
+
+      <div class="story-stats-grid">
+        {% for block in section.blocks %}
+          <div class="story-stat-item" {{ block.shopify_attributes }}>
+            <h4>{{ block.settings.number }}</h4>
+            <p>{{ block.settings.label }}</p>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="story-image-relative">
+      {% if section.settings.image %}
+        <img src="{{ section.settings.image | img_url: '800x' }}" alt="Our Story" class="story-main-img">
+      {% else %}
+        <img src="https://laushebyzahra.com/cdn/shop/files/SkinnySips-Lifestyle.jpg" alt="Our Story" class="story-main-img">
+      {% endif %}
+      <div class="story-badge">{{ section.settings.badge_text }}</div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .story-laushe {
+    background-color: #FAF7F2;
+    padding: 100px 0;
+    overflow: hidden;
+  }
+  .story-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .story-subtitle {
+    color: #D4AF37;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+  .story-title {
+    font-size: 42px;
+    color: #004225;
+    margin-bottom: 30px;
+    line-height: 1.2;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 800;
+  }
+  .story-body {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #555;
+    margin-bottom: 30px;
+  }
+  .story-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 40px;
+  }
+  .story-stat-item h4 {
+    font-size: 28px;
+    color: #004225;
+    margin-bottom: 5px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 800;
+  }
+  .story-stat-item p {
+    font-size: 13px;
+    font-weight: 600;
+    color: #888;
+  }
+  .story-image-relative {
+    position: relative;
+  }
+  .story-main-img {
+    width: 100%;
+    border-radius: 24px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+  }
+  .story-badge {
+    position: absolute;
+    bottom: 30px;
+    left: -20px;
+    background: #D4AF37;
+    color: white;
+    padding: 10px 24px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 14px;
+    box-shadow: 0 8px 20px rgba(212,175,55,0.3);
+  }
+
+  @media (max-width: 992px) {
+    .story-grid {
+      grid-template-columns: 1fr;
+      gap: 50px;
+    }
+    .story-title { font-size: 32px; }
+    .story-badge { left: 20px; bottom: 20px; }
+  }
+</style>

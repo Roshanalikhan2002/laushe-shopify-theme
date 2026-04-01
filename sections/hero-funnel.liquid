@@ -1,0 +1,128 @@
+{% schema %}
+{
+  "name": "Hero Funnel",
+  "settings": [
+    { "id": "pre_title", "type": "text", "label": "Pre Title Badge", "default": "⭐⭐⭐⭐⭐ 4.8 stars from 10,000+ reviews | 50,000+ customers" },
+    { "id": "headline", "type": "textarea", "label": "Headline", "default": "Transform Your Health Naturally. Laushe Provides the Essentials." },
+    { "id": "benefit_1", "type": "text", "label": "Benefit 1", "default": "100% Pure & Natural Ingredients" },
+    { "id": "benefit_2", "type": "text", "label": "Benefit 2", "default": "Clinically Tested & Sunnah Blessed" },
+    { "id": "benefit_3", "type": "text", "label": "Benefit 3", "default": "No Artificial Additives" },
+    { "id": "cta_text", "type": "text", "label": "CTA Button Text", "default": "Save 25% + Free Shipping" },
+    { "id": "cta_link", "type": "url", "label": "CTA Button Link" },
+    { "id": "risk_free_text", "type": "text", "label": "Risk Free Text", "default": "Try It Risk-Free For 30 Days" },
+    { "id": "limited_offer_badge", "type": "text", "label": "Limited Offer Badge", "default": "LIMITED TIME OFFER" },
+    { "id": "hero_image", "type": "image_picker", "label": "Hero Image" },
+    { "id": "trust_icon_text", "type": "text", "label": "Trust Widget Text", "default": "Nutritionist Recommended" },
+    { "id": "trust_icon_sub", "type": "text", "label": "Trust Widget Sub", "default": "Certified Choice" }
+  ],
+  "presets": [{ "name": "Hero Funnel", "category": "Laushe Sections" }]
+}
+{% endschema %}
+
+<section class="hero-wrapper">
+  <div class="container hero-grid">
+    <div class="hero-content">
+      <div class="ratings-badge">{{ section.settings.pre_title }}</div>
+      <h1>{{ section.settings.headline }}</h1>
+
+      <div class="benefit-list" style="margin-bottom: 40px;">
+        {% if section.settings.benefit_1 != blank %}
+          <div class="benefit-item">
+            <span class="checkmark">✓</span>
+            <p>{{ section.settings.benefit_1 }}</p>
+          </div>
+        {% endif %}
+        {% if section.settings.benefit_2 != blank %}
+          <div class="benefit-item">
+            <span class="checkmark">✓</span>
+            <p>{{ section.settings.benefit_2 }}</p>
+          </div>
+        {% endif %}
+        {% if section.settings.benefit_3 != blank %}
+          <div class="benefit-item">
+            <span class="checkmark">✓</span>
+            <p>{{ section.settings.benefit_3 }}</p>
+          </div>
+        {% endif %}
+      </div>
+
+      <a href="{{ section.settings.cta_link | default: '/collections/all' }}" class="btn-pill btn-yellow">{{ section.settings.cta_text }}</a>
+      <p class="risk-free">{{ section.settings.risk_free_text }}</p>
+    </div>
+
+    <div class="hero-image" style="position: relative;">
+      {% if section.settings.limited_offer_badge != blank %}
+        <span style="position: absolute; top: -10px; right: -10px; background: var(--deep-forest); color: white; padding: 5px 15px; border-radius: 50px; font-weight: 800; z-index: 10; font-size: 12px;">{{ section.settings.limited_offer_badge }}</span>
+      {% endif %}
+
+      {% if section.settings.hero_image %}
+        <img src="{{ section.settings.hero_image | img_url: '1000x' }}" alt="{{ section.settings.headline }}" style="width: 100%; border-radius: 40px; box-shadow: var(--shadow-luxe);">
+      {% else %}
+        <img src="https://laushebyzahra.com/cdn/shop/files/SkinnySips-Front.jpg" alt="Laushe Products" style="width: 100%; border-radius: 40px; box-shadow: var(--shadow-luxe);">
+      {% endif %}
+
+      <div style="position: absolute; bottom: -20px; left: -20px; background: white; padding: 15px 25px; border-radius: 20px; box-shadow: var(--shadow-luxe); display: flex; align-items: center; gap: 10px;">
+        <ion-icon name="medal-outline" style="color: var(--accent-gold); font-size: 32px;"></ion-icon>
+        <div>
+          <p style="font-weight: 800; font-size: 14px; margin: 0;">{{ section.settings.trust_icon_text }}</p>
+          <p style="font-size: 12px; margin: 0; opacity: 0.7;">{{ section.settings.trust_icon_sub }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero-wrapper {
+    background-color: var(--soft-mint);
+    padding: 100px 0;
+    overflow: hidden;
+  }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .ratings-badge {
+    color: var(--accent-gold);
+    font-weight: 800;
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+  .hero-content h1 {
+    font-size: 56px;
+    line-height: 1.1;
+    margin-bottom: 30px;
+  }
+  .benefit-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+  .checkmark {
+    color: var(--deep-forest);
+    font-weight: 900;
+  }
+  .risk-free {
+    font-size: 14px;
+    color: var(--charcoal);
+    margin-top: 20px;
+    opacity: 0.8;
+  }
+  @media (max-width: 992px) {
+    .hero-grid {
+      grid-template-columns: 1fr;
+      text-align: center;
+      gap: 40px;
+    }
+    .hero-content h1 { font-size: 40px; }
+    .benefit-item { justify-content: center; }
+    .hero-image { order: -1; }
+  }
+  @media (max-width: 576px) {
+    .hero-content h1 { font-size: 32px; }
+    .hero-wrapper { padding: 60px 0; }
+  }
+</style>

@@ -1,0 +1,115 @@
+<!-- 
+  Section: Final CTA Banner
+  Aesthetics: Bold, high-energy, compelling
+-->
+
+{% schema %}
+{
+  "name": "Final CTA Banner",
+  "settings": [
+    {
+      "id": "headline",
+      "type": "text",
+      "label": "Headline",
+      "default": "Ready to Transform Your Health?"
+    },
+    {
+      "id": "subtext",
+      "type": "textarea",
+      "label": "Subtext",
+      "default": "Join over 50,000+ satisfied customers today and experience the Laushe difference."
+    },
+    {
+      "id": "cta_text",
+      "type": "text",
+      "label": "CTA Text",
+      "default": "SHOP NOW - SAVE 25%"
+    },
+    {
+      "id": "cta_url",
+      "type": "url",
+      "label": "CTA Link"
+    },
+    {
+       "id": "bg_color",
+       "type": "color",
+       "label": "Background Color",
+       "default": "#1B4332"
+    }
+  ],
+  "presets": [
+     {
+       "name": "Final CTA Banner",
+       "category": "Custom"
+     }
+  ]
+}
+{% endschema %}
+
+<section class="final-cta-section section-padding" style="background-color: {{ section.settings.bg_color }};">
+  <div class="container-wide">
+    <div class="final-cta-wrapper text-center animate-fade-up">
+       <h2 class="final-cta-headline h1">{{ section.settings.headline }}</h2>
+       <p class="final-cta-subtext">{{ section.settings.subtext }}</p>
+       
+       <div class="final-cta-actions">
+          <a href="{{ section.settings.cta_url }}" class="button-primary final-btn">{{ section.settings.cta_text }}</a>
+          <p class="final-trust-badge text-muted">✅ 30-Day Money Back Guarantee | ⭐ 4.9/5 Star Rating</p>
+       </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .final-cta-section {
+    position: relative;
+    overflow: hidden;
+    color: #FFF;
+  }
+  
+  .final-cta-headline {
+    font-size: 3.5rem;
+    color: #FFF;
+    margin-bottom: 24px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .final-cta-subtext {
+    font-size: 1.3rem;
+    color: #F0F0F0;
+    margin-bottom: 40px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .final-btn {
+    font-size: 1.2rem;
+    padding: 22px 50px;
+    box-shadow: 0 10px 40px rgba(255, 183, 0, 0.4);
+  }
+  
+  .final-btn:hover {
+     box-shadow: 0 15px 50px rgba(255, 183, 0, 0.5);
+  }
+  
+  .final-trust-badge {
+    margin-top: 24px;
+    color: #FFF;
+    opacity: 0.8;
+    font-size: 0.85rem;
+    font-weight: 500;
+  }
+  
+  @media (max-width: 768px) {
+    .final-cta-headline {
+      font-size: 2.5rem;
+    }
+    
+    .final-cta-subtext {
+      font-size: 1.1rem;
+    }
+  }
+</style>

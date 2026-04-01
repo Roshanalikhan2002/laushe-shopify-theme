@@ -1,0 +1,189 @@
+<!-- 
+  Section: Benefits Grid (Icon-based)
+  Aesthetics: High-quality icons, Soft backgrounds, Clean text
+-->
+
+{% schema %}
+{
+  "name": "Benefits Grid",
+  "settings": [
+    {
+      "id": "section_title",
+      "type": "text",
+      "label": "Title",
+      "default": "Whole Body Benefits In Every Scoop"
+    },
+    {
+      "id": "section_subtitle",
+      "type": "textarea",
+      "label": "Subtitle",
+      "default": "Everything your body needs, nothing it doesn't."
+    },
+    {
+       "id": "bg_color",
+       "type": "color",
+       "label": "Background Color",
+       "default": "#F9FDF9"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "benefit",
+      "name": "Benefit Item",
+      "limit": 4,
+      "settings": [
+        {
+          "id": "benefit_image",
+          "type": "image_picker",
+          "label": "Benefit Icon/Image"
+        },
+        {
+          "id": "title",
+          "type": "text",
+          "label": "Benefit Name",
+          "default": "Gut Health"
+        },
+        {
+           "id": "description",
+           "type": "textarea",
+           "label": "Description",
+           "default": "Promotes healthy digestion and a balanced microbiome."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Benefits Grid",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}
+
+<section class="benefits-grid-section section-padding" style="background-color: {{ section.settings.bg_color }};">
+  <div class="container-wide">
+    <div class="section-header text-center">
+      <h2 class="section-title h1">{{ section.settings.section_title }}</h2>
+      <p class="section-subtitle">{{ section.settings.section_subtitle }}</p>
+    </div>
+    
+    <div class="benefits-grid">
+      {% for block in section.blocks %}
+        <div class="benefit-card animate-fade-up" {{ block.shopify_attributes }}>
+           <div class="benefit-icon-wrapper">
+             {% if block.settings.benefit_image %}
+               <img src="{{ block.settings.benefit_image | img_url: '200x' }}" alt="{{ block.settings.title }}">
+             {% else %}
+               <!-- Default Icons if no image provided (Simple SVGs could go here) -->
+               <div class="placeholder-icon">🌱</div>
+             {% endif %}
+           </div>
+           
+           <h3 class="benefit-title h4">{{ block.settings.title }}</h3>
+           <p class="benefit-desc">{{ block.settings.description }}</p>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<style>
+  .benefits-grid-section {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .section-header {
+    margin-bottom: 60px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .section-title {
+    font-size: 2.5rem;
+    color: var(--primary-green);
+    margin-bottom: 15px;
+  }
+  
+  .section-subtitle {
+     font-size: 1.2rem;
+     color: var(--text-muted);
+  }
+  
+  .benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+  }
+  
+  .benefit-card {
+    background: #FFF;
+    padding: 40px 30px;
+    border-radius: var(--radius-card);
+    text-align: center;
+    box-shadow: var(--shadow-soft);
+    transition: var(--transition);
+    border: 1px solid rgba(0,0,0,0.05);
+  }
+  
+  .benefit-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-hover);
+    border-color: var(--soft-mint);
+  }
+  
+  .benefit-icon-wrapper {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 30px;
+    background: var(--soft-mint);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+  }
+  
+  .benefit-card:hover .benefit-icon-wrapper {
+    background: var(--primary-green);
+  }
+  
+  .benefit-icon-wrapper img {
+    max-width: 60%;
+    height: auto;
+  }
+  
+  .placeholder-icon {
+    font-size: 40px;
+  }
+  
+  .benefit-title {
+     margin-bottom: 15px;
+     font-weight: 700;
+     color: var(--primary-green);
+  }
+  
+  .benefit-desc {
+     font-size: 0.95rem;
+     color: var(--text-muted);
+     line-height: 1.6;
+  }
+  
+  @media (max-width: 1100px) {
+    .benefits-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (max-width: 600px) {
+    .benefits-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .section-title {
+      font-size: 2rem;
+    }
+  }
+</style>

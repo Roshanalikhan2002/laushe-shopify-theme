@@ -1,0 +1,106 @@
+{% schema %}
+{
+  "name": "Statistics Bar",
+  "settings": [
+    {
+      "id": "bg_color",
+      "type": "color",
+      "label": "Background Color",
+      "default": "#E8F3ED"
+    },
+    {
+       "id": "border_color",
+       "type": "color",
+       "label": "Border Color",
+       "default": "rgba(0,66,37,0.08)"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "stat",
+      "name": "Statistic Block",
+      "limit": 4,
+      "settings": [
+        {
+          "id": "number",
+          "type": "text",
+          "label": "Stat Number (e.g. 15,000+)",
+          "default": "15,000+"
+        },
+        {
+          "id": "label",
+          "type": "text",
+          "label": "Label (e.g. Happy Families)",
+          "default": "Happy Families"
+        }
+      ]
+    }
+  ],
+  "presets": [
+     {
+       "name": "Statistics Bar (Laushe)",
+       "category": "Laushe Sections"
+     }
+  ]
+}
+{% endschema %}
+
+<section class="stats-bar-laushe" style="background-color: {{ section.settings.bg_color }}; border-top: 1px solid {{ section.settings.border_color }}; border-bottom: 1px solid {{ section.settings.border_color }};">
+  <div class="container">
+    <div class="stats-grid">
+      {% for block in section.blocks %}
+        <div class="stat-item" {{ block.shopify_attributes }}>
+          <div class="stat-value">{{ block.settings.number }}</div>
+          <p class="stat-label">{{ block.settings.label }}</p>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<style>
+  .stats-bar-laushe {
+    padding: 80px 0;
+  }
+  
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    text-align: center;
+  }
+  
+  .stat-value {
+    font-family: 'Poppins', sans-serif;
+    font-size: 56px;
+    font-weight: 800;
+    color: #004225; /* --deep-forest */
+    line-height: 1;
+  }
+  
+  .stat-label {
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #D4AF37; /* --accent-gold */
+    margin-top: 10px;
+  }
+  
+  @media (max-width: 992px) {
+    .stats-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 40px;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .stats-grid {
+      grid-template-columns: 1fr;
+      gap: 50px;
+    }
+    .stat-value {
+      font-size: 48px !important;
+    }
+  }
+</style>

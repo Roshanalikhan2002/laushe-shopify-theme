@@ -1,0 +1,206 @@
+<!-- 
+  Section: Comparison Table (Laushe vs Generic)
+  Aesthetics: High-contrast comparisons, Compelling headlines
+-->
+
+{% schema %}
+{
+  "name": "Comparison Table",
+  "settings": [
+    {
+       "id": "section_title",
+       "type": "text",
+       "label": "Section Title",
+       "default": "Why Laushe Stands Alone"
+    },
+    {
+       "id": "bg_color",
+       "type": "color",
+       "label": "Background Color",
+       "default": "#FFFFFF"
+    }
+  ],
+  "blocks": [
+    {
+       "type": "row",
+       "name": "Feature Comparison Row",
+       "settings": [
+         {
+           "id": "feature",
+           "type": "text",
+           "label": "Feature Name",
+           "default": "Ingredient Sourcing"
+         },
+         {
+           "id": "laushe_value",
+           "type": "text",
+           "label": "Laushe Value",
+           "default": "100% Organic & Traceable"
+         },
+         {
+           "id": "generic_value",
+           "type": "text",
+           "label": "Generic Value",
+           "default": "Synthetic & Hidden Sources"
+         }
+       ]
+    }
+  ],
+  "presets": [
+     {
+       "name": "Comparison Table",
+       "category": "Custom"
+     }
+  ]
+}
+{% endschema %}
+
+<section class="comparison-table-section section-padding" style="background-color: {{ section.settings.bg_color }};">
+  <div class="container-wide">
+    <div class="section-badge-wrapper text-center">
+       <span class="sub-badge">UPGRADE YOUR STANDARD</span>
+    </div>
+    <h2 class="text-center h1 comparison-title">{{ section.settings.section_title }}</h2>
+    
+    <div class="table-container">
+      <table class="laushe-comparison-table">
+         <thead>
+            <tr>
+               <th class="feature-col">Feature</th>
+               <th class="laushe-col">
+                  <div class="laushe-th-wrapper">
+                    <span class="th-top-badge">WINNER</span>
+                    <h3 class="th-brand-name">Laushe</h3>
+                  </div>
+               </th>
+               <th class="generic-col">Other Brands</th>
+            </tr>
+         </thead>
+         <tbody>
+            {% for block in section.blocks %}
+               <tr {{ block.shopify_attributes }}>
+                  <td class="feature-name">{{ block.settings.feature }}</td>
+                  <td class="laushe-cell">
+                     <span class="cell-check">✔</span> {{ block.settings.laushe_value }}
+                  </td>
+                  <td class="generic-cell">
+                     <span class="cell-x">✕</span> {{ block.settings.generic_value }}
+                  </td>
+               </tr>
+            {% endfor %}
+         </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<style>
+  .comparison-title {
+    margin-bottom: 60px;
+    color: var(--primary-green);
+  }
+  
+  .table-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    overflow-x: auto;
+    background: #FFF;
+    border-radius: 20px;
+    box-shadow: var(--shadow-soft);
+    padding: 0;
+    border: 1px solid #EEE;
+  }
+  
+  .laushe-comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 600px;
+  }
+  
+  .laushe-comparison-table th, .laushe-comparison-table td {
+    padding: 25px 30px;
+    text-align: center;
+    border-bottom: 1px solid #EEE;
+  }
+  
+  .feature-col {
+    text-align: left !important;
+    width: 30%;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+  
+  .laushe-col {
+    background-color: var(--soft-mint);
+    position: relative;
+  }
+  
+  .laushe-th-wrapper {
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     gap: 8px;
+  }
+  
+  .th-top-badge {
+     font-size: 0.65rem;
+     background: var(--accent-gold);
+     color: var(--primary-green);
+     padding: 4px 10px;
+     border-radius: 4px;
+     font-weight: 900;
+     letter-spacing: 1px;
+  }
+  
+  .th-brand-name {
+     margin: 0;
+     font-size: 1.8rem;
+     color: var(--primary-green);
+  }
+  
+  .generic-col {
+    background-color: #FAFAFA;
+    font-size: 1.2rem;
+    color: #999;
+  }
+  
+  .feature-name {
+     text-align: left;
+     font-weight: 600;
+     color: var(--text-charcoal);
+     font-size: 1.1rem;
+  }
+  
+  .laushe-cell {
+     background-color: #F8FDF9;
+     font-weight: 700;
+     color: var(--primary-green);
+     font-size: 1.1rem;
+  }
+  
+  .generic-cell {
+     background-color: #FFF;
+     color: #888;
+     font-size: 1rem;
+  }
+  
+  .cell-check {
+     color: var(--primary-green);
+     font-size: 1.25rem;
+     margin-right: 8px;
+  }
+  
+  .cell-x {
+     color: #D62828;
+     font-size: 1rem;
+     margin-right: 8px;
+  }
+  
+  @media (max-width: 768px) {
+    .laushe-comparison-table th, .laushe-comparison-table td {
+      padding: 15px 20px;
+    }
+  }
+</style>

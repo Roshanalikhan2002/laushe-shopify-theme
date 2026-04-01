@@ -1,0 +1,140 @@
+<!-- 
+  Section: Quality Assurance
+  Aesthetics: Trust badges, Clean icons, Premium feel
+-->
+
+{% schema %}
+{
+  "name": "Quality Assurance",
+  "settings": [
+    {
+      "id": "section_title",
+      "type": "text",
+      "label": "Section Title",
+      "default": "Trusted by Experts, Backed by Science"
+    },
+    {
+       "id": "bg_color",
+       "type": "color",
+       "label": "Background Color",
+       "default": "#FFFFFF"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "badge",
+      "name": "Quality Badge",
+      "limit": 6,
+      "settings": [
+        {
+          "id": "badge_image",
+          "type": "image_picker",
+          "label": "Badge Icon"
+        },
+        {
+          "id": "label",
+          "type": "text",
+          "label": "Badge Label (e.g. 100% Organic)",
+          "default": "100% Organic"
+        }
+      ]
+    }
+  ],
+  "presets": [
+     {
+       "name": "Quality Assurance",
+       "category": "Custom"
+     }
+  ]
+}
+{% endschema %}
+
+<section class="qa-section section-padding" style="background-color: {{ section.settings.bg_color }};">
+  <div class="container-wide">
+    <div class="qa-wrapper text-center">
+       <h2 class="qa-title h1">{{ section.settings.section_title }}</h2>
+       
+       <div class="qa-badges-grid">
+         {% for block in section.blocks %}
+           <div class="qa-badge-item animate-fade-up" {{ block.shopify_attributes }}>
+              <div class="qa-badge-icon">
+                {% if block.settings.badge_image %}
+                  <img src="{{ block.settings.badge_image | img_url: '150x' }}" alt="{{ block.settings.label }}">
+                {% else %}
+                  <div class="placeholder-qa">🛡️</div>
+                {% endif %}
+              </div>
+              <p class="qa-badge-label">{{ block.settings.label }}</p>
+           </div>
+         {% endfor %}
+       </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .qa-title {
+    margin-bottom: 60px;
+    font-size: 2.2rem;
+    color: var(--primary-green);
+  }
+  
+  .qa-badges-grid {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 50px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  
+  .qa-badge-item {
+    flex: 0 1 180px;
+    text-align: center;
+  }
+  
+  .qa-badge-icon {
+     width: 100px;
+     height: 100px;
+     margin: 0 auto 20px;
+     background: var(--soft-mint);
+     border-radius: 50%;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     transition: var(--transition);
+     border: 2px solid transparent;
+  }
+  
+  .qa-badge-item:hover .qa-badge-icon {
+     border-color: var(--accent-gold);
+     transform: scale(1.05);
+  }
+  
+  .qa-badge-icon img {
+     max-width: 60%;
+     height: auto;
+  }
+  
+  .placeholder-qa {
+     font-size: 40px;
+  }
+  
+  .qa-badge-label {
+     font-size: 0.95rem;
+     font-weight: 700;
+     color: var(--primary-green);
+     text-transform: uppercase;
+     letter-spacing: 0.5px;
+  }
+  
+  @media (max-width: 991px) {
+    .qa-badges-grid {
+      gap: 30px;
+    }
+    
+    .qa-badge-item {
+      flex: 0 1 140px;
+    }
+  }
+</style>

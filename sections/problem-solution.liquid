@@ -1,0 +1,225 @@
+{% schema %}
+{
+  "name": "Problem vs Solution (Luxe)",
+  "settings": [
+    {
+       "id": "section_bg",
+       "type": "color",
+       "label": "Background Color",
+       "default": "#002B18"
+    },
+    {
+       "id": "problem_subtitle",
+       "type": "text",
+       "label": "Problem Subtitle",
+       "default": "The Problem"
+    },
+    {
+       "id": "problem_title",
+       "type": "text",
+       "label": "Problem Title",
+       "default": "Most Health Products Are Full of Hidden Chemicals"
+    },
+    {
+       "id": "problem_description",
+       "type": "textarea",
+       "label": "Problem Description",
+       "default": "The market is flooded with supplements and health products that promise results but deliver artificial fillers, synthetic additives, and questionable ingredients."
+    },
+    {
+       "id": "solution_subtitle",
+       "type": "text",
+       "label": "Solution Subtitle",
+       "default": "The Laushe Solution"
+    },
+    {
+       "id": "solution_title",
+       "type": "text",
+       "label": "Solution Title",
+       "default": "100% Pure, 100% Natural, 100% Effective"
+    },
+    {
+       "id": "solution_description",
+       "type": "textarea",
+       "label": "Solution Description",
+       "default": "Every Laushe product is crafted from ethically sourced, natural ingredients with complete transparency."
+    }
+  ],
+  "blocks": [
+    {
+       "type": "problem_point",
+       "name": "Problem Point",
+       "settings": [
+         {
+           "id": "text",
+           "type": "text",
+           "label": "Point Text",
+           "default": "Artificial preservatives and fillers"
+         }
+       ]
+    },
+    {
+       "type": "solution_point",
+       "name": "Solution Point",
+       "settings": [
+         {
+           "id": "text",
+           "type": "text",
+           "label": "Point Text",
+           "default": "100% natural, ethically sourced ingredients"
+         }
+       ]
+    }
+  ],
+  "presets": [
+     {
+       "name": "Problem vs Solution (Luxe)",
+       "category": "Laushe Sections"
+     }
+  ]
+}
+{% endschema %}
+
+<section class="prob-sol-luxe" style="background-color: {{ section.settings.section_bg }};">
+  <div class="container container-laushe">
+    <div class="prob-sol-grid">
+
+      <!-- LEFT: THE PROBLEM -->
+      <div class="prob-col">
+        <p class="prob-label">{{ section.settings.problem_subtitle }}</p>
+        <h2 class="prob-heading">{{ section.settings.problem_title }}</h2>
+        <p class="prob-desc">{{ section.settings.problem_description }}</p>
+
+        <div class="point-list">
+          {% for block in section.blocks %}
+            {% if block.type == 'problem_point' %}
+              <div class="point-item" {{ block.shopify_attributes }}>
+                <span class="icon-x">✕</span>
+                <span class="point-text">{{ block.settings.text }}</span>
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+
+      <!-- RIGHT: THE SOLUTION -->
+      <div class="sol-col-card">
+        <p class="sol-label">{{ section.settings.solution_subtitle }}</p>
+        <h2 class="sol-heading">{{ section.settings.solution_title }}</h2>
+        <p class="sol-desc">{{ section.settings.solution_description }}</p>
+
+        <div class="point-list">
+          {% for block in section.blocks %}
+            {% if block.type == 'solution_point' %}
+              <div class="point-item" {{ block.shopify_attributes }}>
+                <span class="icon-check">✓</span>
+                <span class="point-text-sol">{{ block.settings.text }}</span>
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  .prob-sol-luxe {
+    padding: 100px 0;
+  }
+  .container-laushe {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  .prob-sol-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: start;
+  }
+  .prob-label, .sol-label {
+    color: #D4AF37; /* --accent-gold */
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+  }
+  .prob-heading, .sol-heading {
+    color: white;
+    font-size: 38px;
+    line-height: 1.2;
+    margin-bottom: 20px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 800;
+  }
+  .sol-heading {
+    font-size: 32px;
+  }
+  .prob-desc, .sol-desc {
+    color: rgba(255,255,255,0.65);
+    font-size: 16px;
+    line-height: 1.8;
+    margin-bottom: 36px;
+  }
+  .point-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .point-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .icon-x {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: rgba(220,50,50,0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: #FF6B6B;
+    font-weight: 800;
+    font-size: 14px;
+  }
+  .icon-check {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: rgba(212,175,55,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: #D4AF37;
+    font-weight: 800;
+    font-size: 14px;
+  }
+  .point-text {
+    color: rgba(255,255,255,0.75);
+    font-size: 15px;
+  }
+  .point-text-sol {
+    color: rgba(255,255,255,0.85);
+    font-size: 15px;
+    font-weight: 500;
+  }
+  .sol-col-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 24px;
+    padding: 48px;
+  }
+
+  @media (max-width: 992px) {
+    .prob-sol-grid {
+      grid-template-columns: 1fr;
+      gap: 50px;
+    }
+  }
+</style>

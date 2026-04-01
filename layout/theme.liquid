@@ -1,0 +1,182 @@
+<!doctype html>
+<html class="no-js" lang="{{ request.locale.iso_code }}">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="theme-color" content="#004225">
+    <link rel="canonical" href="{{ canonical_url }}">
+
+    {%- if settings.favicon != blank -%}
+      <link rel="icon" type="image/png" href="{{ settings.favicon | img_url: '32x32' }}">
+    {%- endif -%}
+
+    <title>
+      {{ page_title }}
+      {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
+      {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
+      {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
+    </title>
+
+    {% if page_description %}
+      <meta name="description" content="{{ page_description | escape }}">
+    {% endif %}
+
+    {{ content_for_header }}
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&family=Poppins:wght@400;700;800&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Laushe Base CSS -->
+    {{ 'base-redesign.css' | asset_url | stylesheet_tag }}
+
+    <!-- Ionicons -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+  </head>
+
+  <body class="gradient">
+
+    <!-- ANNOUNCEMENT BAR -->
+    <div class="announcement-bar">
+      ✨ Limited Time Sale ✨ Save 25% + free shipping on your first order
+    </div>
+
+    <!-- STICKY HEADER -->
+    <header class="sticky-header">
+      <div class="container header-flex">
+        <!-- Hamburger (mobile only) -->
+        <div class="menu-toggle" onclick="toggleMobileMenu()">
+          <ion-icon name="menu-outline"></ion-icon>
+        </div>
+
+        <!-- Logo -->
+        <div class="logo-emblem" style="flex: 0 0 auto;">
+          <a href="/" style="text-decoration: none; font-size: 28px; font-weight: 900; color: #D4AF37; font-family: 'Poppins', sans-serif;">LAUSHE</a>
+        </div>
+
+        <!-- Right Nav (desktop) -->
+        <div class="right-nav" style="display: flex; flex: 1; align-items: center; justify-content: flex-end; gap: 30px;">
+          <div class="nav-links" style="display: flex; gap: 15px; align-items: center;">
+            <a href="/" style="text-decoration: none; color: #004225; font-weight: 700; font-size: 14px; letter-spacing: 0.05em; padding: 10px 15px;">HOME</a>
+            <div class="nav-dropdown" style="position: relative; display: inline-flex; align-items: center;">
+              <button class="nav-dropdown-btn" style="background: none; border: none; cursor: pointer; font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 14px; letter-spacing: 0.05em; color: #004225; padding: 10px 15px; display: flex; align-items: center; gap: 5px;">
+                COLLECTIONS <span style="font-size: 9px;">&#9660;</span>
+              </button>
+              <div class="nav-dropdown-menu" style="position: absolute; top: calc(100% + 8px); left: 0; background: white; border-radius: 12px; box-shadow: 0 10px 40px rgba(0,0,0,0.12); min-width: 200px; padding: 10px 0; opacity: 0; visibility: hidden; transform: translateY(-8px); transition: all 0.25s ease; z-index: 2000;">
+                <a href="/collections/healthcare" style="display: block; padding: 12px 24px; font-size: 14px; font-weight: 600; color: #333; text-decoration: none;">Healthcare</a>
+                <a href="/collections/organic" style="display: block; padding: 12px 24px; font-size: 14px; font-weight: 600; color: #333; text-decoration: none;">Organic Products</a>
+              </div>
+            </div>
+            <a href="/pages/contact" style="text-decoration: none; color: #004225; font-weight: 700; font-size: 14px; letter-spacing: 0.05em; padding: 10px 15px;">CONTACT</a>
+          </div>
+
+          <div class="header-icons nav-links" style="display: flex; gap: 20px; align-items: center;">
+            <a href="/search"><ion-icon name="search-outline" style="font-size: 20px; color: #004225;"></ion-icon></a>
+            <a href="/account"><ion-icon name="person-outline" style="font-size: 20px; color: #004225;"></ion-icon></a>
+            <a href="/cart" style="position: relative;">
+              <ion-icon name="bag-handle-outline" style="font-size: 20px; color: #004225;"></ion-icon>
+              {%- if cart.item_count > 0 -%}
+                <span style="position: absolute; top: -5px; right: -5px; background: #004225; color: white; font-size: 10px; padding: 2px 5px; border-radius: 50%;">{{ cart.item_count }}</span>
+              {%- endif -%}
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main id="MainContent" class="content-for-layout focus-none" role="main" tabindex="-1">
+      {{ content_for_layout }}
+    </main>
+
+    <!-- FOOTER -->
+    <footer id="footer" style="background-color: #F9F9F9; padding: 80px 0 40px; border-top: 1px solid #EEE;">
+      <div class="container">
+        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px;">
+          <div>
+            <h4 style="color: #004225; font-family: 'Poppins', sans-serif; font-size: 20px; margin-bottom: 20px;">LAUSHE</h4>
+            <p style="font-size: 14px; color: #777; line-height: 1.8;">Pure. Natural. Effective. Wellness rooted in tradition, crafted for today.</p>
+          </div>
+          <div>
+            <h4 style="margin-bottom: 20px; font-size: 14px; text-transform: uppercase; letter-spacing: 0.1em;">Shop</h4>
+            <ul style="list-style: none; padding: 0;">
+              <li style="margin-bottom: 10px;"><a href="/collections/healthcare" style="text-decoration: none; color: #555; font-size: 14px;">Healthcare</a></li>
+              <li style="margin-bottom: 10px;"><a href="/collections/organic" style="text-decoration: none; color: #555; font-size: 14px;">Organic Products</a></li>
+              <li style="margin-bottom: 10px;"><a href="/collections/all" style="text-decoration: none; color: #555; font-size: 14px;">All Products</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 style="margin-bottom: 20px; font-size: 14px; text-transform: uppercase; letter-spacing: 0.1em;">Company</h4>
+            <ul style="list-style: none; padding: 0;">
+              <li style="margin-bottom: 10px;"><a href="/pages/about" style="text-decoration: none; color: #555; font-size: 14px;">Our Story</a></li>
+              <li style="margin-bottom: 10px;"><a href="/pages/contact" style="text-decoration: none; color: #555; font-size: 14px;">Contact Us</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 style="margin-bottom: 20px; font-size: 14px; text-transform: uppercase; letter-spacing: 0.1em;">Contact</h4>
+            <p style="font-size: 14px; color: #777; margin-bottom: 10px;">laushebyzahra@gmail.com</p>
+            <p style="font-size: 14px; color: #777;">Pakistan 🇵🇰</p>
+            <div style="display: flex; gap: 15px; margin-top: 20px;">
+              <a href="{{ shop.instagram_url }}" style="color: #555; font-size: 22px;"><ion-icon name="logo-instagram"></ion-icon></a>
+              <a href="{{ shop.facebook_url }}" style="color: #555; font-size: 22px;"><ion-icon name="logo-facebook"></ion-icon></a>
+            </div>
+          </div>
+        </div>
+        <div style="border-top: 1px solid #EEE; margin-top: 60px; padding-top: 30px; text-align: center; font-size: 13px; color: #999;">
+          © {{ 'now' | date: '%Y' }} {{ shop.name }}. All rights reserved.
+        </div>
+      </div>
+    </footer>
+
+    <!-- MOBILE NAVIGATION DRAWER -->
+    <div id="mobile-drawer-overlay" class="mobile-drawer-overlay" onclick="toggleMobileMenu()"></div>
+    <div id="mobile-drawer" class="mobile-drawer">
+      <div class="mobile-drawer-header">
+        <div class="mobile-drawer-close" onclick="toggleMobileMenu()">&times;</div>
+        <div class="mobile-drawer-logo">
+          <a href="/">
+            <span class="logo-main">LAUSHE</span>
+            <span class="logo-sub">BY ZAHRA</span>
+          </a>
+        </div>
+      </div>
+      <nav class="mobile-drawer-nav">
+        <a href="/" onclick="toggleMobileMenu()">HOME</a>
+        <a href="/collections/healthcare" onclick="toggleMobileMenu()">HEALTHCARE</a>
+        <a href="/collections/organic" onclick="toggleMobileMenu()">ORGANIC PRODUCTS</a>
+        <a href="/pages/contact" onclick="toggleMobileMenu()">CONTACT US</a>
+      </nav>
+    </div>
+
+    <!-- INLINE SCRIPTS (Dropdown + Mobile Drawer) -->
+    <script>
+      // Dropdown hover fix for mobile (touchscreen)
+      document.querySelectorAll('.nav-dropdown').forEach(function(el) {
+        el.addEventListener('mouseenter', function() {
+          el.querySelector('.nav-dropdown-menu').style.opacity = '1';
+          el.querySelector('.nav-dropdown-menu').style.visibility = 'visible';
+          el.querySelector('.nav-dropdown-menu').style.transform = 'translateY(0)';
+        });
+        el.addEventListener('mouseleave', function() {
+          el.querySelector('.nav-dropdown-menu').style.opacity = '0';
+          el.querySelector('.nav-dropdown-menu').style.visibility = 'hidden';
+          el.querySelector('.nav-dropdown-menu').style.transform = 'translateY(-8px)';
+        });
+      });
+
+      // Mobile Drawer
+      function toggleMobileMenu() {
+        const drawer = document.getElementById('mobile-drawer');
+        const overlay = document.getElementById('mobile-drawer-overlay');
+        drawer.classList.toggle('open');
+        overlay.classList.toggle('active');
+        document.body.style.overflow = drawer.classList.contains('open') ? 'hidden' : '';
+      }
+      window.toggleMobileMenu = toggleMobileMenu;
+    </script>
+
+  </body>
+</html>

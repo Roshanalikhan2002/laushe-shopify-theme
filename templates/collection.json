@@ -1,0 +1,11 @@
+{
+  "sections": {
+    "main": {
+      "type": "collection-grid-ag1",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

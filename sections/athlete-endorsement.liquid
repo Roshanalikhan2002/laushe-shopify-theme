@@ -1,0 +1,203 @@
+{% schema %}
+{
+  "name": "Athlete Endorsement (Laushe)",
+  "settings": [
+    {
+      "id": "image",
+      "type": "image_picker",
+      "label": "Athlete/Celebrity Image"
+    },
+    {
+      "id": "quote",
+      "type": "textarea",
+      "label": "Main Quote",
+      "default": "Laushe changed my performance and recovery completely."
+    },
+    {
+      "id": "body",
+      "type": "textarea",
+      "label": "Description Paragraph",
+      "default": "After incorporating Laushe into my daily routine, I noticed a dramatic improvement in my energy, focus, and overall wellbeing. The quality of these natural products is unmatched."
+    },
+    {
+      "id": "name",
+      "type": "text",
+      "label": "Name",
+      "default": "Arshad Nadeem"
+    },
+    {
+      "id": "title",
+      "type": "text",
+      "label": "Title / Credential",
+      "default": "Pakistan's Olympic Gold Medalist"
+    },
+    {
+      "id": "cta_text",
+      "type": "text",
+      "label": "Button Text",
+      "default": "Shop Laushe Now"
+    },
+    {
+      "id": "cta_link",
+      "type": "url",
+      "label": "Button Link"
+    },
+    {
+      "id": "disclaimer",
+      "type": "text",
+      "label": "Disclaimer (optional)",
+      "default": "Individual results may vary. This testimonial reflects the personal experience of the individual."
+    }
+  ],
+  "presets": [
+     {
+       "name": "Athlete Endorsement (Laushe)",
+       "category": "Laushe Sections"
+     }
+  ]
+}
+{% endschema %}
+
+<section class="athlete-wrapper">
+  <div class="container athlete-grid">
+
+    <div class="athlete-image-box">
+      {% if section.settings.image %}
+        <img src="{{ section.settings.image | img_url: '800x' }}" alt="{{ section.settings.name }}" class="athlete-img">
+      {% else %}
+        <img src="https://laushebyzahra.com/cdn/shop/files/athlete_placeholder.jpg" alt="{{ section.settings.name }}" class="athlete-img">
+      {% endif %}
+    </div>
+
+    <div class="athlete-content">
+      <div class="athlete-quote">{{ section.settings.quote }}</div>
+
+      <p class="athlete-body">{{ section.settings.body }}</p>
+
+      <div class="athlete-credentials">
+        <div class="athlete-name">{{ section.settings.name }}</div>
+        <div class="athlete-title-badge">{{ section.settings.title }}</div>
+      </div>
+
+      <a href="{{ section.settings.cta_link | default: '/collections/all' }}" class="athlete-btn btn-pill btn-forest">
+        {{ section.settings.cta_text }}
+        <ion-icon name="arrow-forward-outline"></ion-icon>
+      </a>
+
+      {% if section.settings.disclaimer != blank %}
+        <p class="athlete-disclaimer">{{ section.settings.disclaimer }}</p>
+      {% endif %}
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .athlete-wrapper {
+    background-color: #fff;
+    padding: 100px 0;
+    overflow: hidden;
+  }
+  .athlete-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .athlete-img {
+    width: 100%;
+    border-radius: 24px;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.12);
+    display: block;
+  }
+  .athlete-quote {
+    font-size: 40px;
+    line-height: 1.2;
+    color: #004225;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 800;
+    margin-bottom: 30px;
+    position: relative;
+    padding-left: 40px;
+  }
+  .athlete-quote::before {
+    content: '\201C';
+    position: absolute;
+    left: -20px;
+    top: -20px;
+    font-size: 120px;
+    opacity: 0.08;
+    color: #004225;
+    line-height: 1;
+    font-family: Georgia, serif;
+  }
+  .athlete-body {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #555;
+    margin-bottom: 30px;
+  }
+  .athlete-credentials {
+    margin-bottom: 40px;
+  }
+  .athlete-name {
+    font-size: 22px;
+    font-weight: 800;
+    color: #004225;
+    margin-bottom: 4px;
+    font-family: 'Poppins', sans-serif;
+  }
+  .athlete-title-badge {
+    font-size: 14px;
+    color: #D4AF37;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .athlete-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background-color: #004225;
+    color: white;
+    padding: 18px 40px;
+    border-radius: 50px;
+    font-weight: 800;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 25px rgba(0,66,37,0.15);
+    font-size: 16px;
+  }
+  .athlete-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 35px rgba(0,66,37,0.25);
+    background-color: #002b18;
+    color: white;
+  }
+  .athlete-disclaimer {
+    margin-top: 24px;
+    font-size: 12px;
+    color: #999;
+    line-height: 1.6;
+    font-style: italic;
+  }
+
+  @media (max-width: 992px) {
+    .athlete-grid {
+      grid-template-columns: 1fr;
+      gap: 50px;
+    }
+    .athlete-quote {
+      font-size: 30px;
+      padding-left: 20px;
+    }
+    .athlete-quote::before {
+      font-size: 80px;
+      left: -10px;
+    }
+  }
+  @media (max-width: 576px) {
+    .athlete-quote { font-size: 26px; }
+    .athlete-wrapper { padding: 60px 0; }
+  }
+</style>

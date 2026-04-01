@@ -1,0 +1,234 @@
+<!-- 
+  Section: Product Offer (Subscription vs One-time)
+  Aesthetics: Clean purchase UI, Savings highlight, Modern radio buttons
+-->
+
+{% schema %}
+{
+  "name": "Product Offer Section",
+  "settings": [
+    {
+       "id": "section_title",
+       "type": "text",
+       "label": "Title",
+       "default": "Choose Your Wellness Plan"
+    },
+    {
+       "id": "section_subtitle",
+       "type": "textarea",
+       "label": "Subtitle",
+       "default": "Most customers choose the subscription for max savings and results."
+    },
+    {
+      "id": "product_ref",
+      "type": "product",
+      "label": "Select Product"
+    },
+    {
+       "id": "bg_color",
+       "type": "color",
+       "label": "Background Color",
+       "default": "#F9FDF9"
+    }
+  ],
+  "presets": [
+     {
+       "name": "Product Offer Section",
+       "category": "Custom"
+     }
+  ]
+}
+{% endschema %}
+
+{%- assign product = all_products[section.settings.product_ref] -%}
+
+<section class="offer-section section-padding" style="background-color: {{ section.settings.bg_color }};">
+  <div class="container-wide">
+    <div class="section-badge-wrapper text-center">
+       <span class="sub-badge">THE LAUSHE EXPERIENCE</span>
+    </div>
+    
+    <h2 class="text-center h1 offer-title">{{ section.settings.section_title }}</h2>
+    <p class="text-center offer-subtitle">{{ section.settings.section_subtitle }}</p>
+    
+    <div class="offer-main-container">
+      <div class="offer-visual-column">
+         {% if product.featured_image %}
+           <img src="{{ product.featured_image | img_url: '800x' }}" alt="{{ product.title }}" class="offer-product-img">
+         {% else %}
+           <img src="https://cdn.shopify.com/s/files/1/0533/2089/files/placeholder-supplement.png?v=162" alt="Product" class="offer-product-img">
+         {% endif %}
+      </div>
+      
+      <div class="offer-form-column">
+         <div class="offer-form-card">
+            <h3 class="h2 offer-product-title">{{ product.title | default: "Daily Wellness Bundle" }}</h3>
+            <p class="offer-rating">⭐ ⭐ ⭐ ⭐ ⭐ <span class="rating-count">(2,500+ Reviews)</span></p>
+            
+            <div class="purchase-options">
+               <!-- Subscription UI (Mockup setup for customization) -->
+               <div class="purchase-option-item active" id="option-sub">
+                  <input type="radio" name="purchase_type" id="sub_radio" checked>
+                  <label for="sub_radio" class="purchase-label">
+                     <span class="option-name">Subscribe & Save (25% OFF)</span>
+                     <span class="option-price">$49.99 <del class="text-muted">$64.99</del></span>
+                  </label>
+                  <div class="sub-benefits">
+                    <p>✔ Free Shipping</p>
+                    <p>✔ Cancel anytime</p>
+                  </div>
+               </div>
+               
+               <div class="purchase-option-item" id="option-onetime">
+                  <input type="radio" name="purchase_type" id="onetime_radio">
+                  <label for="onetime_radio" class="purchase-label">
+                     <span class="option-name">One-Time Purchase</span>
+                     <span class="option-price">$64.99</span>
+                  </label>
+               </div>
+            </div>
+            
+            <button class="button-primary checkout-btn-offer">ADD TO CART - $49.99</button>
+            <p class="offer-trust-copy text-center">🔒 256-bit Secure Checkout | ✈ Fast Worldwide Shipping</p>
+            
+            <div class="bundle-trust-badges">
+               <!-- Trust icons or standard credit card logos -->
+               <img src="https://cdn.shopify.com/s/files/1/0533/2089/files/trust-badges-transparent.png?v=162" alt="Trust Badges" class="trust-icons-img">
+            </div>
+         </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .offer-title {
+    margin-bottom: 10px;
+    color: var(--primary-green);
+  }
+  
+  .offer-subtitle {
+     margin-bottom: 50px;
+     color: var(--text-muted);
+     font-size: 1.1rem;
+  }
+  
+  .offer-main-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .offer-product-img {
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0 20px 40px rgba(0,0,0,0.1));
+  }
+  
+  .offer-form-card {
+    background: #FFF;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: var(--shadow-hover);
+    border: 1px solid var(--soft-mint);
+  }
+  
+  .offer-product-title {
+    margin-bottom: 8px;
+    color: var(--primary-green);
+  }
+  
+  .offer-rating {
+    margin-bottom: 24px;
+    color: #F8B400;
+    font-weight: 700;
+  }
+  
+  .rating-count {
+     color: var(--text-muted);
+     font-weight: 500;
+     margin-left: 10px;
+  }
+  
+  .purchase-options {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 30px;
+  }
+  
+  .purchase-option-item {
+     border: 2px solid #EEE;
+     padding: 20px;
+     border-radius: 12px;
+     cursor: pointer;
+     transition: var(--transition);
+     position: relative;
+  }
+  
+  .purchase-option-item.active {
+     border-color: var(--primary-green);
+     background-color: #F8FDF9;
+  }
+  
+  .purchase-option-item:hover {
+     border-color: var(--secondary-green);
+  }
+  
+  .purchase-label {
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+     width: 100%;
+     cursor: pointer;
+     font-weight: 700;
+     font-size: 1.1rem;
+  }
+  
+  .sub-benefits {
+     margin-top: 10px;
+     font-size: 0.9rem;
+     color: var(--primary-green);
+     display: flex;
+     gap: 15px;
+  }
+  
+  .checkout-btn-offer {
+    width: 100%;
+    font-size: 1.2rem;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .offer-trust-copy {
+    font-size: 12px;
+    color: var(--text-muted);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  
+  .trust-icons-img {
+     width: 100%;
+     max-width: 300px;
+     display: block;
+     margin: 20px auto 0;
+  }
+  
+  @media (max-width: 991px) {
+    .offer-main-container {
+      grid-template-columns: 1fr;
+    }
+    
+    .offer-visual-column {
+      order: -1;
+    }
+    
+    .offer-form-card {
+       padding: 30px 20px;
+    }
+  }
+</style>

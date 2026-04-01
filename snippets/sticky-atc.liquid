@@ -1,0 +1,79 @@
+<!-- 
+  Snippet: Sticky Add to Cart (Mobile)
+  Aesthetics: High-contrast, Minimalist, High-Conversion
+-->
+
+<div id="sticky-atc-mobile" class="sticky-atc-wrapper">
+  <div class="sticky-atc-container">
+    <div class="sticky-atc-info">
+      <h4 class="sticky-product-title">{{ product.title | truncate: 25 }}</h4>
+      <p class="sticky-product-price">{{ product.price | money }}</p>
+    </div>
+    <button class="button-primary sticky-atc-btn" 
+            onclick="document.querySelector('.checkout-btn-offer').click()">
+      ADD TO CART
+    </button>
+  </div>
+</div>
+
+<style>
+  #sticky-atc-mobile {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: #FFF;
+    box-shadow: 0 -4px 20px rgba(0,0,0,0.1);
+    z-index: 9999;
+    padding: 15px;
+    display: none; /* Only show on scroll and mobile */
+    border-top: 1px solid var(--soft-mint);
+  }
+  
+  .sticky-atc-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .sticky-product-title {
+    font-size: 14px;
+    margin: 0;
+    font-weight: 700;
+    color: var(--primary-green);
+  }
+  
+  .sticky-product-price {
+    font-size: 16px;
+    margin: 0;
+    font-weight: 700;
+    color: var(--secondary-green);
+  }
+  
+  .sticky-atc-btn {
+    padding: 12px 25px;
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+  
+  @media (max-width: 768px) {
+    #sticky-atc-mobile.visible {
+      display: block;
+    }
+  }
+</style>
+
+<script>
+  window.addEventListener('scroll', function() {
+    const stickyAtc = document.getElementById('sticky-atc-mobile');
+    const triggerPoint = 600; // Show after scrolling down 600px
+    
+    if (window.scrollY > triggerPoint) {
+      stickyAtc.classList.add('visible');
+    } else {
+      stickyAtc.classList.remove('visible');
+    }
+  });
+</script>
