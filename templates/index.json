@@ -1,67 +1,173 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "hero": {
       "type": "hero-funnel",
-      "settings": {}
+      "settings": {
+        "pre_title": "⭐⭐⭐⭐⭐ 4.8 stars from 10,000+ reviews | 50,000+ customers",
+        "headline": "Transform Your Health Naturally. Laushe Provides the Essentials.",
+        "benefit_1": "100% Pure & Natural Ingredients",
+        "benefit_2": "Clinically Tested & Sunnah Blessed",
+        "benefit_3": "No Artificial Additives",
+        "cta_text": "Save 25% + Free Shipping",
+        "cta_link": "",
+        "risk_free_text": "Try It Risk-Free For 30 Days",
+        "limited_offer_badge": "LIMITED TIME OFFER",
+        "hero_image": "shopify://shop_images/hero_lifestyle.jpg",
+        "trust_icon_text": "Nutritionist Recommended",
+        "trust_icon_sub": "Certified Choice"
+      }
     },
     "stats_bar": {
       "type": "stats-bar",
       "blocks": {
-        "s1": { "type": "stat", "settings": { "number": "15,000+", "label": "Happy Families" } },
-        "s2": { "type": "stat", "settings": { "number": "98%", "label": "Customer Satisfaction" } },
-        "s3": { "type": "stat", "settings": { "number": "100%", "label": "Natural Ingredients" } },
-        "s4": { "type": "stat", "settings": { "number": "8", "label": "Premium Products" } }
+        "s1": {
+          "type": "stat",
+          "settings": {
+            "number": "15,000+",
+            "label": "Happy Families"
+          }
+        },
+        "s2": {
+          "type": "stat",
+          "settings": {
+            "number": "98%",
+            "label": "Customer Satisfaction"
+          }
+        },
+        "s3": {
+          "type": "stat",
+          "settings": {
+            "number": "100%",
+            "label": "Natural Ingredients"
+          }
+        },
+        "s4": {
+          "type": "stat",
+          "settings": {
+            "number": "8",
+            "label": "Premium Products"
+          }
+        }
       },
-      "block_order": ["s1", "s2", "s3", "s4"]
+      "block_order": [
+        "s1",
+        "s2",
+        "s3",
+        "s4"
+      ],
+      "settings": {
+        "bg_color": "#e8f3ed",
+        "border_color": "#00422514"
+      }
     },
     "benefits_grid": {
       "type": "benefits-grid",
       "blocks": {
-        "gut": { "type": "benefit", "settings": { "title": "Gut Health", "description": "Promotes healthy digestion and a balanced microbiome." } },
-        "immunity": { "type": "benefit", "settings": { "title": "Immunity", "description": "Strengthens your defense system with potent antioxidants." } },
-        "energy": { "type": "benefit", "settings": { "title": "Sustained Energy", "description": "No jitters or crashes, just pure natural focus." } },
-        "brain": { "type": "benefit", "settings": { "title": "Brain Clarity", "description": "Enhances focus and cognitive function throughout the day." } }
+        "gut": {
+          "type": "benefit",
+          "settings": {
+            "title": "Gut Health",
+            "description": "Promotes healthy digestion and a balanced microbiome."
+          }
+        },
+        "immunity": {
+          "type": "benefit",
+          "settings": {
+            "title": "Immunity",
+            "description": "Strengthens your defense system with potent antioxidants."
+          }
+        },
+        "energy": {
+          "type": "benefit",
+          "settings": {
+            "title": "Sustained Energy",
+            "description": "No jitters or crashes, just pure natural focus."
+          }
+        },
+        "brain": {
+          "type": "benefit",
+          "settings": {
+            "title": "Brain Clarity",
+            "description": "Enhances focus and cognitive function throughout the day."
+          }
+        }
       },
-      "block_order": ["gut", "immunity", "energy", "brain"]
-    },
-    "problem_solution": {
-      "type": "problem-solution",
+      "block_order": [
+        "gut",
+        "immunity",
+        "energy",
+        "brain"
+      ],
       "settings": {
-        "heading": "The Problem"
+        "section_title": "Whole Body Benefits In Every Scoop",
+        "section_subtitle": "Everything your body needs, nothing it doesn't.",
+        "bg_color": "#f9fdf9"
+      }
+    },
+    "story": {
+      "type": "story-section",
+      "settings": {
+        "subtitle": "Our Story",
+        "title": "Rooted in Tradition, Crafted with Love",
+        "description_1": "Laushe was born from a simple belief: that the best health solutions come from nature itself.",
+        "description_2": "We source our ingredients directly from trusted farms, ensuring every product meets the highest standards.",
+        "badge_text": "Est. 2024"
       }
     },
     "social_proof": {
       "type": "social-proof-carousel",
+      "blocks": {
+        "st1": {
+          "type": "social_stat",
+          "settings": {
+            "number": "95%",
+            "label": "Overall health improved"
+          }
+        },
+        "st2": {
+          "type": "social_stat",
+          "settings": {
+            "number": "67%",
+            "label": "Better digestion"
+          }
+        }
+      },
+      "block_order": [
+        "st1",
+        "st2"
+      ],
       "settings": {
         "section_title": "Pure, Potent, Proven",
-        "section_subtitle": "Here is what our customers report after 3 months of using Laushe products."
-      },
-      "blocks": {
-        "st1": { "type": "social_stat", "settings": { "number": "95%", "label": "Overall health improved" } },
-        "st2": { "type": "social_stat", "settings": { "number": "67%", "label": "Better digestion" } }
-      },
-      "block_order": ["st1", "st2"]
-    },
-    "story": {
-      "type": "story-section",
-      "settings": {}
-    },
-    "athlete": {
-      "type": "athlete-endorsement",
-      "settings": {}
+        "section_subtitle": "Here is what our customers report after 3 months of using Laushe products.",
+        "bg_color": "#fff9e9"
+      }
     },
     "final_cta": {
-      "type": "final-cta"
-    },
-    "bestsellers": {
-      "type": "bestsellers",
-      "blocks": {
-        "b1": { "type": "product", "settings": { "stars_count": "1259" } },
-        "b2": { "type": "product", "settings": { "stars_count": "3373", "show_badge": true, "badge_text": "9% OFF" } },
-        "b3": { "type": "product", "settings": { "stars_count": "1340" } }
-      },
-      "block_order": ["b1", "b2", "b3"]
+      "type": "final-cta",
+      "settings": {
+        "headline": "Ready to Transform Your Health?",
+        "subtext": "Join over 50,000+ satisfied customers today and experience the Laushe difference.",
+        "cta_text": "SHOP NOW - SAVE 25%",
+        "cta_url": "",
+        "bg_color": "#1b4332"
+      }
     }
   },
-  "order": ["hero", "bestsellers", "stats_bar", "benefits_grid", "problem_solution", "social_proof", "story", "athlete", "final_cta"]
+  "order": [
+    "hero",
+    "stats_bar",
+    "benefits_grid",
+    "story",
+    "social_proof",
+    "final_cta"
+  ]
 }
