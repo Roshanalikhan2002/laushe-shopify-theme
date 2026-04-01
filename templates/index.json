@@ -35,28 +35,15 @@
       },
       "block_order": ["gut", "immunity", "energy", "brain"]
     },
-    "social_proof": {
-      "type": "social-proof-carousel",
+    "story": {
+      "type": "story-section",
       "settings": {
-        "section_title": "Pure, Potent, Proven",
-        "section_subtitle": "Here is what our customers report after 3 months of using Laushe products."
-      },
-      "blocks": {
-        "st1": { "type": "stat", "settings": { "number": "95%", "label": "Overall health improved" } },
-        "st2": { "type": "stat", "settings": { "number": "67%", "label": "Better digestion" } },
-        "st3": { "type": "stat", "settings": { "number": "88%", "label": "More daily energy" } },
-        "st4": { "type": "stat", "settings": { "number": "92%", "label": "Would recommend to family" } }
-      },
-      "block_order": ["st1", "st2", "st3", "st4"]
-    },
-    "problem_solution": {
-      "type": "problem-solution",
-      "settings": {
-        "problem_subtitle": "The Problem",
-        "problem_title": "Most Health Products Are Full of Hidden Chemicals",
-        "problem_description": "The market is flooded with supplements and health products that promise results but deliver artificial fillers, synthetic additives, and questionable ingredients."
+        "subtitle": "Our Story",
+        "title": "Rooted in Tradition, Crafted with Love",
+        "description_1": "Laushe was born from a simple belief: that the best health solutions come from nature itself.",
+        "description_2": "We source our ingredients directly from trusted farms, ensuring every product meets the highest standards."
       }
     }
   },
-  "order": ["hero", "stats_bar", "benefits_grid", "social_proof", "problem_solution"]
+  "order": ["hero", "stats_bar", "benefits_grid", "story"]
 }
