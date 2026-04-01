@@ -20,13 +20,13 @@
       "default": "After incorporating Laushe into my daily routine, I noticed a dramatic improvement in my energy, focus, and overall wellbeing. The quality of these natural products is unmatched."
     },
     {
-      "id": "name",
+      "id": "athlete_name",
       "type": "text",
       "label": "Name",
       "default": "Arshad Nadeem"
     },
     {
-      "id": "title",
+      "id": "athlete_title",
       "type": "text",
       "label": "Title / Credential",
       "default": "Pakistan's Olympic Gold Medalist"
@@ -63,9 +63,9 @@
 
     <div class="athlete-image-box">
       {% if section.settings.image %}
-        <img src="{{ section.settings.image | img_url: '800x' }}" alt="{{ section.settings.name }}" class="athlete-img">
+        <img src="{{ section.settings.image | img_url: '800x' }}" alt="{{ section.settings.athlete_name }}" class="athlete-img">
       {% else %}
-        <img src="https://laushebyzahra.com/cdn/shop/files/athlete_placeholder.jpg" alt="{{ section.settings.name }}" class="athlete-img">
+        <img src="https://laushebyzahra.com/cdn/shop/files/athlete_placeholder.jpg" alt="{{ section.settings.athlete_name }}" class="athlete-img">
       {% endif %}
     </div>
 
@@ -75,8 +75,8 @@
       <p class="athlete-body">{{ section.settings.body }}</p>
 
       <div class="athlete-credentials">
-        <div class="athlete-name">{{ section.settings.name }}</div>
-        <div class="athlete-title-badge">{{ section.settings.title }}</div>
+        <div class="athlete-name">{{ section.settings.athlete_name }}</div>
+        <div class="athlete-title-badge">{{ section.settings.athlete_title }}</div>
       </div>
 
       <a href="{{ section.settings.cta_link | default: '/collections/all' }}" class="athlete-btn btn-pill btn-forest">
