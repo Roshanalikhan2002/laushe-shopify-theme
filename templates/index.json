@@ -295,6 +295,13 @@
         "disclaimer": "Arshad Nadeem is a proud ambassador and user of Laushe. He trusts our natural formulations for his recovery and peak performance."
       }
     },
+    "catalog_grid": {
+      "type": "catalog-grid",
+      "settings": {
+        "heading": "Shop Our Entire Wellness Collection",
+        "subheading": "Pure, Raw, and Bio-available supplements for every stage of your health journey."
+      }
+    },
     "story": {
       "type": "story-section",
       "blocks": {
@@ -383,6 +390,7 @@
     "benefits_grid",
     "problem_solution",
     "athlete_endorsement",
+    "catalog_grid",
     "story",
     "social_proof",
     "final_cta"

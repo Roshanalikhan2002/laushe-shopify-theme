@@ -1,0 +1,261 @@
+{% schema %}
+{
+  "name": "Wellness Collection Grid",
+  "settings": [
+    { "id": "heading", "type": "text", "label": "Heading", "default": "Shop Our Entire Wellness Collection" },
+    { "id": "subheading", "type": "text", "label": "Subheading", "default": "Pure, Raw, and Bio-available supplements for every stage of your health journey." },
+    { "id": "collection", "type": "collection", "label": "Source Collection" }
+  ],
+  "presets": [{ "name": "Wellness Collection Grid", "category": "Laushe Sections" }]
+}
+{% endschema %}
+
+<section class="wellness-catalog section-padding" style="background-color: #e9f3ed;">
+  <div class="container">
+    
+    <!-- HEADER -->
+    <div class="catalog-header text-center" style="margin-bottom: 60px;">
+      <h2 class="catalog-title">{{ section.settings.heading }}</h2>
+      <p class="catalog-subtitle">{{ section.settings.subheading }}</p>
+    </div>
+
+    <!-- FILTER BAR -->
+    <div class="catalog-filters">
+      <button class="filter-btn active" data-filter="all">All Products</button>
+      <button class="filter-btn" data-filter="healthcare">Healthcare</button>
+      <button class="filter-btn" data-filter="organic">Organic</button>
+    </div>
+
+    <!-- PRODUCT GRID -->
+    <div class="catalog-grid" id="laushe-catalog-grid">
+      {% assign target_collection = section.settings.collection | default: collections.all %}
+      {% for product in target_collection.products %}
+        {% assign is_healthcare = false %}
+        {% assign is_organic = false %}
+        {% for tag in product.tags %}
+           {% assign tag_low = tag | downcase %}
+           {% if tag_low contains 'healthcare' %}{% assign is_healthcare = true %}{% endif %}
+           {% if tag_low contains 'organic' %}{% assign is_organic = true %}{% endif %}
+        {% endfor %}
+
+        <div class="catalog-item" 
+             data-healthcare="{{ is_healthcare }}" 
+             data-organic="{{ is_organic }}"
+             {{ block.shopify_attributes }}>
+          
+          <div class="catalog-card">
+            <!-- Badge -->
+            {% if product.compare_at_price > product.price %}
+              {% assign saving = product.compare_at_price | minus: product.price | times: 100 | divided_by: product.compare_at_price %}
+              <div class="card-badge">{{ saving }}% OFF</div>
+            {% endif %}
+
+            <!-- Image -->
+            <a href="{{ product.url }}" class="card-img-link">
+              <img src="{{ product.featured_image | img_url: '600x600', crop: 'center' }}" alt="{{ product.title }}" class="card-img">
+            </a>
+
+            <div class="card-content">
+              <!-- Stars (Mock/Standard) -->
+              <div class="card-stars">
+                <span class="stars-gold">★★★★★</span>
+                <span class="review-count">(2134)</span>
+              </div>
+
+              <h3 class="card-title">{{ product.title }}</h3>
+              <p class="card-short-desc">{{ product.description | strip_html | truncate: 80 }}</p>
+
+              <div class="card-price-row">
+                <span class="price-main">{{ product.price | money }}</span>
+                {% if product.compare_at_price > product.price %}
+                  <span class="price-compare">{{ product.compare_at_price | money }}</span>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .wellness-catalog {
+    padding: 120px 0;
+  }
+  .catalog-title {
+    font-size: 40px;
+    font-weight: 800;
+    color: #004225;
+    margin-bottom: 15px;
+    font-family: 'Poppins', sans-serif;
+  }
+  .catalog-subtitle {
+    font-size: 16px;
+    color: #555;
+    opacity: 0.8;
+  }
+  
+  .catalog-filters {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 60px;
+  }
+  
+  .filter-btn {
+    padding: 12px 30px;
+    border-radius: 50px;
+    border: none;
+    background: white;
+    color: #004225;
+    font-weight: 700;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  }
+  
+  .filter-btn.active {
+    background: #004225;
+    color: white;
+    box-shadow: 0 10px 20px rgba(0,66,37,0.2);
+  }
+  
+  .catalog-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+  }
+  
+  .catalog-card {
+    background: white;
+    border-radius: 20px;
+    padding: 20px;
+    height: 100%;
+    position: relative;
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .catalog-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .card-badge {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: #D4AF37;
+    color: white;
+    font-size: 11px;
+    font-weight: 800;
+    padding: 4px 10px;
+    border-radius: 6px;
+    z-index: 2;
+  }
+  
+  .card-img-link {
+    display: block;
+    aspect-ratio: 1;
+    margin-bottom: 20px;
+    overflow: hidden;
+    border-radius: 12px;
+  }
+  
+  .card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  
+  .card-stars {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .stars-gold {
+    color: #D4AF37;
+    font-size: 14px;
+    letter-spacing: 2px;
+  }
+  
+  .review-count {
+    font-size: 12px;
+    color: #888;
+    font-weight: 500;
+  }
+  
+  .card-title {
+    font-size: 18px;
+    font-weight: 800;
+    color: #004225;
+    margin-bottom: 10px;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  .card-short-desc {
+    font-size: 13px;
+    color: #666;
+    line-height: 1.5;
+    margin-bottom: 20px;
+    flex-grow: 1;
+  }
+  
+  .card-price-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  
+  .price-main {
+    font-size: 18px;
+    font-weight: 800;
+    color: #004225;
+  }
+  
+  .price-compare {
+    font-size: 14px;
+    color: #999;
+    text-decoration: line-through;
+  }
+  
+  @media (max-width: 1100px) {
+    .catalog-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  
+  @media (max-width: 600px) {
+    .catalog-grid { grid-template-columns: 1fr; }
+    .catalog-title { font-size: 32px; }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const filters = document.querySelectorAll('.filter-btn');
+    const items = document.querySelectorAll('.catalog-item');
+    
+    filters.forEach(btn => {
+      btn.addEventListener('click', () => {
+        // Update active class
+        filters.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        
+        const filter = btn.getAttribute('data-filter');
+        
+        items.forEach(item => {
+          if (filter === 'all') {
+            item.style.display = 'block';
+          } else {
+            const isMatch = item.getAttribute('data-' + filter) === 'true';
+            item.style.display = isMatch ? 'block' : 'none';
+          }
+        });
+      });
+    });
+  });
+</script>
