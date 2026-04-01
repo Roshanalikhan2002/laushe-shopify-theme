@@ -56,7 +56,30 @@
         "s4": { "type": "solution_point", "settings": { "text": "Full ingredient transparency on every product" } }
       },
       "block_order": ["p1", "p2", "p3", "p4", "s1", "s2", "s3", "s4"]
+    },
+    "social_proof": {
+      "type": "social-proof-carousel",
+      "settings": {
+        "section_title": "Pure, Potent, Proven",
+        "section_subtitle": "Here is what our customers report after 3 months of using Laushe products."
+      },
+      "blocks": {
+        "st1": { "type": "stat", "settings": { "number": "95%", "label": "Overall health improved" } },
+        "st2": { "type": "stat", "settings": { "number": "67%", "label": "Better digestion" } },
+        "st3": { "type": "stat", "settings": { "number": "88%", "label": "More daily energy" } },
+        "st4": { "type": "stat", "settings": { "number": "92%", "label": "Would recommend to family" } }
+      },
+      "block_order": ["st1", "st2", "st3", "st4"]
+    },
+    "story": {
+      "type": "story-section",
+      "settings": {
+        "subtitle": "Our Story",
+        "title": "Rooted in Tradition, Crafted with Love",
+        "description_1": "Laushe was born from a simple belief: that the best health solutions come from nature itself.",
+        "description_2": "We source our ingredients directly from trusted farms, ensuring every product meets the highest standards."
+      }
     }
   },
-  "order": ["hero", "stats_bar", "benefits_grid", "problem_solution"]
+  "order": ["hero", "stats_bar", "benefits_grid", "problem_solution", "social_proof", "story"]
 }
