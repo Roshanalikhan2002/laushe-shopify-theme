@@ -2,18 +2,7 @@
   "sections": {
     "hero": {
       "type": "hero-funnel",
-      "settings": {
-        "pre_title": "⭐⭐⭐⭐⭐ 4.8 stars from 10,000+ reviews | 50,000+ customers",
-        "headline": "Transform Your Health Naturally. Laushe Provides the Essentials.",
-        "benefit_1": "100% Pure & Natural Ingredients",
-        "benefit_2": "Clinically Tested & Sunnah Blessed",
-        "benefit_3": "No Artificial Additives",
-        "cta_text": "Save 25% + Free Shipping",
-        "risk_free_text": "Try It Risk-Free For 30 Days",
-        "limited_offer_badge": "LIMITED TIME OFFER",
-        "trust_icon_text": "Nutritionist Recommended",
-        "trust_icon_sub": "Certified Choice"
-      }
+      "settings": {}
     },
     "stats_bar": {
       "type": "stats-bar",
@@ -35,13 +24,10 @@
       },
       "block_order": ["gut", "immunity", "energy", "brain"]
     },
-    "story": {
-      "type": "story-section",
+    "problem_solution": {
+      "type": "problem-solution",
       "settings": {
-        "subtitle": "Our Story",
-        "title": "Rooted in Tradition, Crafted with Love",
-        "description_1": "Laushe was born from a simple belief: that the best health solutions come from nature itself.",
-        "description_2": "We source our ingredients directly from trusted farms, ensuring every product meets the highest standards."
+        "heading": "The Problem"
       }
     },
     "social_proof": {
@@ -56,9 +42,17 @@
       },
       "block_order": ["st1", "st2"]
     },
+    "story": {
+      "type": "story-section",
+      "settings": {}
+    },
+    "athlete": {
+      "type": "athlete-endorsement",
+      "settings": {}
+    },
     "final_cta": {
       "type": "final-cta"
     }
   },
-  "order": ["hero", "stats_bar", "benefits_grid", "story", "social_proof", "final_cta"]
+  "order": ["hero", "stats_bar", "benefits_grid", "problem_solution", "social_proof", "story", "athlete", "final_cta"]
 }
