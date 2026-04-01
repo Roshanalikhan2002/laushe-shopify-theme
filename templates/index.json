@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "hero": {
@@ -290,24 +299,73 @@
       "type": "catalog-grid",
       "settings": {
         "heading": "Shop Our Entire Wellness Collection",
-        "subheading": "Pure, Raw, and Bio-available supplements for every stage of your health journey."
+        "subheading": "Pure, Raw, and Bio-available supplements for every stage of your health journey.",
+        "collection": "",
+        "tab1_label": "All Products",
+        "tab2_label": "Healthcare",
+        "tab2_tag": "healthcare",
+        "tab3_label": "Organic",
+        "tab3_tag": "organic"
       }
     },
     "faq_accordion": {
       "type": "faq-accordion",
       "blocks": {
-        "f1": { "type": "faq", "settings": { "question": "Why Choose Laushe?", "answer": "Laushe products are 100% natural, ethically sourced, and crafted with Sunnah-blessed ingredients. We never use artificial additives, preservatives, or chemicals. Every product undergoes rigorous quality testing to ensure purity and potency." } },
-        "f2": { "type": "faq", "settings": { "question": "Are your products safe for everyone?", "answer": "Yes, our products are formulated with natural ingredients safe for adults of all ages. However, if you have specific allergies or medical conditions, we recommend consulting your healthcare provider before use. Pregnant and nursing mothers should consult their doctor." } },
-        "f3": { "type": "faq", "settings": { "question": "What makes your ingredients special?", "answer": "We source our ingredients directly from trusted farms and suppliers who share our commitment to purity. Our formulations combine traditional Sunnah-blessed remedies with modern nutritional science, ensuring both authenticity and efficacy." } },
-        "f4": { "type": "faq", "settings": { "question": "How long until I see results?", "answer": "Results vary by product and individual. For Skinny Sips, most customers report noticeable changes within 2-4 weeks of consistent use. For hair oil and honey, benefits are often felt within the first week. We recommend a minimum 3-month commitment for optimal results." } },
-        "f5": { "type": "faq", "settings": { "question": "Do you offer free shipping?", "answer": "Yes! We offer free shipping on all orders above Rs. 3,000 across Pakistan. Standard delivery takes 3-5 business days. You can track your order in real-time through our website." } },
-        "f6": { "type": "faq", "settings": { "question": "What is your return policy?", "answer": "We offer a 30-day money-back guarantee on all products. If you're not completely satisfied, simply contact our support team for a hassle-free return. Your satisfaction is our priority." } }
+        "f1": {
+          "type": "faq",
+          "settings": {
+            "question": "Why Choose Laushe?",
+            "answer": "Laushe products are 100% natural, ethically sourced, and crafted with Sunnah-blessed ingredients. We never use artificial additives, preservatives, or chemicals. Every product undergoes rigorous quality testing to ensure purity and potency."
+          }
+        },
+        "f2": {
+          "type": "faq",
+          "settings": {
+            "question": "Are your products safe for everyone?",
+            "answer": "Yes, our products are formulated with natural ingredients safe for adults of all ages. However, if you have specific allergies or medical conditions, we recommend consulting your healthcare provider before use. Pregnant and nursing mothers should consult their doctor."
+          }
+        },
+        "f3": {
+          "type": "faq",
+          "settings": {
+            "question": "What makes your ingredients special?",
+            "answer": "We source our ingredients directly from trusted farms and suppliers who share our commitment to purity. Our formulations combine traditional Sunnah-blessed remedies with modern nutritional science, ensuring both authenticity and efficacy."
+          }
+        },
+        "f4": {
+          "type": "faq",
+          "settings": {
+            "question": "How long until I see results?",
+            "answer": "Results vary by product and individual. For Skinny Sips, most customers report noticeable changes within 2-4 weeks of consistent use. For hair oil and honey, benefits are often felt within the first week. We recommend a minimum 3-month commitment for optimal results."
+          }
+        },
+        "f5": {
+          "type": "faq",
+          "settings": {
+            "question": "Do you offer free shipping?",
+            "answer": "Yes! We offer free shipping on all orders above Rs. 3,000 across Pakistan. Standard delivery takes 3-5 business days. You can track your order in real-time through our website."
+          }
+        },
+        "f6": {
+          "type": "faq",
+          "settings": {
+            "question": "What is your return policy?",
+            "answer": "We offer a 30-day money-back guarantee on all products. If you're not completely satisfied, simply contact our support team for a hassle-free return. Your satisfaction is our priority."
+          }
+        }
       },
-      "block_order": ["f1", "f2", "f3", "f4", "f5", "f6"],
+      "block_order": [
+        "f1",
+        "f2",
+        "f3",
+        "f4",
+        "f5",
+        "f6"
+      ],
       "settings": {
-        "title": "Frequently Asked Questions",
         "subtitle": "GOT QUESTIONS?",
-        "bg_color": "#FAF7F2"
+        "title": "Frequently Asked Questions",
+        "bg_color": "#faf7f2"
       }
     },
     "story": {
@@ -377,16 +435,6 @@
         "section_subtitle": "Here is what our customers report after 3 months of using Laushe products.",
         "bg_color": "#fff9e9"
       }
-    },
-    "final_cta": {
-      "type": "final-cta",
-      "settings": {
-        "headline": "Ready to Transform Your Health?",
-        "subtext": "Join over 50,000+ satisfied customers today and experience the Laushe difference.",
-        "cta_text": "SHOP NOW - SAVE 25%",
-        "cta_url": "",
-        "bg_color": "#1b4332"
-      }
     }
   },
   "order": [
@@ -401,7 +449,6 @@
     "catalog_grid",
     "faq_accordion",
     "story",
-    "social_proof",
-    "final_cta"
+    "social_proof"
   ]
 }
