@@ -379,7 +379,7 @@
       }
     },
     "video_grid": {
-      "type": "social-video-grid",
+      "type": "video-grid",
       "blocks": {
         "v1": { "type": "video" },
         "v2": { "type": "video" },
