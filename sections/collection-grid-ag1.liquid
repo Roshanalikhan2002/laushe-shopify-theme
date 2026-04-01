@@ -1,71 +1,89 @@
 {% style %}
   /* COLLECTION HEADER */
-  .collection-hero { background: var(--primary-green); color: #FFF; padding: 80px 0; text-align: center; }
-  .collection-hero h1 { font-size: 48px; margin: 0 0 15px 0; color: var(--accent-gold); }
+  .collection-hero { background: #004225; color: #FFF; padding: 80px 0; text-align: center; }
+  .collection-hero h1 { font-size: 48px; margin: 0 0 15px 0; color: #D4AF37; }
   .collection-hero p { font-size: 18px; max-width: 600px; margin: 0 auto; opacity: 0.9; }
 
   /* FILTER TABS (AG1 Style) */
   .filter-nav { background: #FFF; padding: 20px 0; border-bottom: 1px solid #EEE; position: sticky; top: 0; z-index: 100; }
   .tab-list { display: flex; justify-content: center; gap: 40px; list-style: none; margin: 0; padding: 0; }
-  .tab-link { font-weight: 600; color: #888; text-decoration: none; padding-bottom: 5px; border-bottom: 2px solid transparent; transition: 0.3s; cursor: pointer; }
-  .tab-link.active, .tab-link:hover { color: var(--primary-green); border-bottom-color: var(--primary-green); }
+  .tab-link { font-weight: 600; color: #888; text-decoration: none; padding-bottom: 5px; border-bottom: 2px solid transparent; transition: 0.3s; cursor: pointer; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; }
+  .tab-link.active, .tab-link:hover { color: #004225; border-bottom-color: #004225; }
 
   /* PRODUCT GRID */
-  .grid-section { padding: 60px 0; background: #FAFAFA; }
-  .grid-title { font-size: 32px; border-bottom: 2px solid #EEE; padding-bottom: 15px; margin-bottom: 40px; }
-  .product-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+  .grid-section { padding: 60px 0; background: #FAFAFA; min-height: 400px; }
+  .product-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; transition: opacity 0.3s ease; }
   
   /* PRODUCT CARD */
-  .product-card { background: #FFF; border-radius: 20px; overflow: hidden; box-shadow: var(--shadow-luxe); transition: 0.3s; position: relative; }
-  .product-card:hover { transform: translateY(-5px); }
-  .product-img { width: 100%; height: 280px; object-fit: cover; background: #EEE; }
-  .best-seller-badge { position: absolute; top: 15px; left: 15px; background: var(--accent-gold); color: #FFF; font-size: 11px; font-weight: 800; padding: 5px 12px; border-radius: 50px; text-transform: uppercase; }
+  .product-card { background: #FFF; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1); position: relative; display: block; }
+  .product-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+  .product-img { width: 100%; height: 320px; object-fit: cover; background: #F4F4F4; display: block; }
   
-  .product-info { padding: 25px; }
-  .product-title { font-size: 20px; margin: 0 0 10px 0; }
-  .product-desc { font-size: 14px; color: #666; margin-bottom: 20px; line-height: 1.5; }
-  .product-price { font-weight: 800; font-size: 18px; color: var(--primary-green); margin-bottom: 20px; display: block; }
+  .best-seller-badge { position: absolute; top: 15px; left: 15px; background: #D4AF37; color: #FFF; font-size: 10px; font-weight: 800; padding: 4px 12px; border-radius: 50px; text-transform: uppercase; z-index: 2; }
   
-  .btn-add { background: var(--soft-mint); color: var(--primary-green); width: 100%; border: none; padding: 15px; border-radius: 50px; font-weight: 700; cursor: pointer; transition: 0.3s; font-size: 15px; display: block; text-align: center; text-decoration: none; box-sizing: border-box; }
-  .btn-add:hover { background: var(--primary-green); color: #FFF; }
+  .product-info { padding: 25px; text-align: center; }
+  .product-title { font-size: 18px; margin: 0 0 8px 0; font-weight: 700; color: #333; }
+  .product-desc { font-size: 13px; color: #777; margin-bottom: 15px; line-height: 1.5; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; height: 40px; }
+  .product-price { font-weight: 800; font-size: 17px; color: #004225; margin-bottom: 15px; display: block; }
+  
+  .btn-add { background: #E8F3EE; color: #004225; width: 100%; border: none; padding: 14px; border-radius: 50px; font-weight: 700; cursor: pointer; transition: 0.3s; font-size: 14px; display: block; text-align: center; text-decoration: none; }
+  .btn-add:hover { background: #004225; color: #FFF; }
 
-  @media (max-width: 768px) {
-      .product-grid { grid-template-columns: 1fr; }
-      .tab-list { gap: 20px; overflow-x: auto; padding-bottom: 10px; }
+  .collection-group--hidden { display: none !important; }
+
+  @media (max-width: 991px) {
+    .product-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 600px) {
+    .product-grid { grid-template-columns: 1fr; }
+    .tab-list { gap: 15px; overflow-x: auto; padding: 0 20px 10px; justify-content: flex-start; -webkit-overflow-scrolling: touch; }
+    .tab-link { white-space: nowrap; font-size: 11px; }
   }
 {% endstyle %}
 
 <!-- HERO -->
 <header class="collection-hero">
     <div class="container-wide">
-        <h1>{{ collection.title | default: 'All Products' }}</h1>
-        <p>{{ collection.description | default: 'Laushe is so much more than weight loss. Discover our pure organic and healthcare essentials.' }}</p>
+        <h1>{{ collection.title | default: 'Wellness Essentials' }}</h1>
+        <p>{{ collection.description | default: 'Pure, Sunnah-blessed health solutions crafted for your modern lifestyle.' }}</p>
     </div>
 </header>
 
-<!-- AG1 STYLE FILTER TABS -->
+<!-- FILTER TABS -->
 <nav class="filter-nav">
     <div class="container-wide">
         <ul class="tab-list">
             <li><a href="javascript:void(0)" class="tab-link active" data-filter="all">Shop All</a></li>
             <li><a href="javascript:void(0)" class="tab-link" data-filter="healthcare">Healthcare</a></li>
-            <li><a href="javascript:void(0)" class="tab-link" data-filter="organic">Organic Products</a></li>
-            <li><a href="javascript:void(0)" class="tab-link" data-filter="bundles">Bundles & Save</a></li>
+            <li><a href="javascript:void(0)" class="tab-link" data-filter="organic">Organic</a></li>
+            <li><a href="javascript:void(0)" class="tab-link" data-filter="bundle">Bundles</a></li>
         </ul>
     </div>
 </nav>
 
 <main class="grid-section">
     <div class="container-wide">
-        <div class="product-grid" style="margin-bottom: 80px;">
+        <div class="product-grid" id="ProductGrid">
             {% for product in collection.products %}
-                <div class="product-card collection-group" data-category="{% if product.tags contains 'healthcare' %}healthcare{% elsif product.tags contains 'organic' %}organic{% else %}general{% endif %}">
-                    {% if forloop.first %}
-                        <div class="best-seller-badge">#1 Best Seller</div>
+                {%- assign product_tags = product.tags | join: ',' | downcase -%}
+                {%- assign cat = 'general' -%}
+                {%- if product_tags contains 'healthcare' or product_tags contains 'health' -%}
+                  {%- assign cat = cat | append: ' healthcare' -%}
+                {%- endif -%}
+                {%- if product_tags contains 'organic' or product_tags contains 'natural' -%}
+                  {%- assign cat = cat | append: ' organic' -%}
+                {%- endif -%}
+                {%- if product_tags contains 'bundle' or product_tags contains 'pack' -%}
+                  {%- assign cat = cat | append: ' bundle' -%}
+                {%- endif -%}
+
+                <div class="product-card collection-group" data-category="{{ cat }}">
+                    {% if product.tags contains 'Best Seller' or product.tags contains 'best-seller' %}
+                        <div class="best-seller-badge">Best Seller</div>
                     {% endif %}
                     
                     <a href="{{ product.url }}">
-                        <img src="{{ product.featured_image | img_url: '600x600', crop: 'center' }}" class="product-img" alt="{{ product.title }}">
+                        <img src="{{ product.featured_image | img_url: '600x800', crop: 'center' }}" class="product-img" alt="{{ product.title }}" loading="lazy">
                     </a>
                     
                     <div class="product-info">
@@ -80,39 +98,48 @@
                     </div>
                 </div>
             {% else %}
-                <p>No products found in this collection.</p>
+                <div class="text-center" style="width: 100%; padding: 40px;">
+                   <p>No products found in this collection.</p>
+                </div>
             {% endfor %}
         </div>
     </div>
 </main>
 
 <script>
-    // Real Filter Functionality based on product tags applied to the card
     document.addEventListener("DOMContentLoaded", function() {
         const tabs = document.querySelectorAll('.tab-link');
         const groups = document.querySelectorAll('.collection-group');
+        const grid = document.getElementById('ProductGrid');
 
         tabs.forEach(tab => {
             tab.addEventListener('click', (e) => {
                 e.preventDefault();
                 
+                // Update Active Tab
                 tabs.forEach(t => t.classList.remove('active'));
-                e.target.classList.add('active');
+                tab.classList.add('active');
 
-                const filter = e.target.getAttribute('data-filter');
-                groups.forEach(group => {
-                    if (filter === 'all') {
-                        group.style.display = 'block';
-                    } else if (filter === 'bundles') {
-                        group.style.display = 'none'; 
-                    } else {
-                        if (group.getAttribute('data-category').includes(filter)) {
-                            group.style.display = 'block';
+                const filter = tab.getAttribute('data-filter');
+                
+                // Apply Filter with Fade Effect
+                grid.style.opacity = '0.3';
+                
+                setTimeout(() => {
+                    groups.forEach(group => {
+                        const categories = group.getAttribute('data-category');
+                        if (filter === 'all') {
+                            group.classList.remove('collection-group--hidden');
                         } else {
-                            group.style.display = 'none';
+                            if (categories.includes(filter)) {
+                                group.classList.remove('collection-group--hidden');
+                            } else {
+                                group.classList.add('collection-group--hidden');
+                            }
                         }
-                    }
-                });
+                    });
+                    grid.style.opacity = '1';
+                }, 200);
             });
         });
     });
