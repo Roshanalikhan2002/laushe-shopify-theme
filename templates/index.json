@@ -53,18 +53,6 @@
       },
       "block_order": ["p1", "p2", "s1", "s2"]
     },
-    "social_proof": {
-      "type": "social-proof-carousel",
-      "settings": {
-        "section_title": "Pure, Potent, Proven",
-        "section_subtitle": "Here is what our customers report after 3 months of using Laushe products."
-      },
-      "blocks": {
-        "st1": { "type": "social_stat", "settings": { "number": "95%", "label": "Overall health improved" } },
-        "st2": { "type": "social_stat", "settings": { "number": "67%", "label": "Better digestion" } }
-      },
-      "block_order": ["st1", "st2"]
-    },
     "story": {
       "type": "story-section",
       "settings": {
@@ -78,5 +66,5 @@
       "type": "final-cta"
     }
   },
-  "order": ["hero", "stats_bar", "benefits_grid", "problem_solution", "social_proof", "story", "final_cta"]
+  "order": ["hero", "stats_bar", "benefits_grid", "problem_solution", "story", "final_cta"]
 }
