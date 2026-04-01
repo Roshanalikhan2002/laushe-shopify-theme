@@ -378,8 +378,9 @@
         "bg_color": "#FAFAFA"
       }
     },
-    "comparison_table": {
-      "type": "comparison-table",
+    "laushe_comparison_v2": {
+      "type": "laushe-comparison-table",
+      "name": "Comparison Table (Laushe)",
       "blocks": {
         "r1": { "type": "row", "settings": { "feature": "100% Natural Ingredients", "laushe": true, "generic": false } },
         "r2": { "type": "row", "settings": { "feature": "Sunnah Blessed Formulation", "laushe": true, "generic": false } },
@@ -396,9 +397,9 @@
         "bg_color": "#FAF7F2"
       }
     },
-    "video_grid": {
-      "type": "video-grid",
-      "name": "Social Video Grid",
+    "laushe_video_v2": {
+      "type": "laushe-video-grid",
+      "name": "Social Video Grid (Laushe)",
       "blocks": {
         "v1": { "type": "video" },
         "v2": { "type": "video" },
@@ -478,6 +479,8 @@
   },
   "order": [
     "hero",
+    "laushe_comparison_v2",
+    "laushe_video_v2",
     "bestsellers_CXGzp8",
     "modern_living_gpDB8F",
     "stats_bar",
@@ -488,8 +491,6 @@
     "catalog_grid",
     "faq_accordion",
     "filtered_reviews",
-    "comparison_table",
-    "video_grid",
     "story",
     "social_proof",
     "final_cta"
