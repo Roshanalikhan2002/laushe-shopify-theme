@@ -378,7 +378,7 @@
         "bg_color": "#FAFAFA"
       }
     },
-    "laushe_comparison_v2": {
+    "aaa_laushe_comparison": {
       "type": "laushe-comparison-table",
       "name": "Comparison Table (Laushe)",
       "blocks": {
@@ -397,7 +397,7 @@
         "bg_color": "#FAF7F2"
       }
     },
-    "laushe_video_v2": {
+    "aaa_laushe_video": {
       "type": "laushe-video-grid",
       "name": "Social Video Grid (Laushe)",
       "blocks": {
@@ -478,9 +478,9 @@
     }
   },
   "order": [
+    "aaa_laushe_comparison",
+    "aaa_laushe_video",
     "hero",
-    "laushe_comparison_v2",
-    "laushe_video_v2",
     "bestsellers_CXGzp8",
     "modern_living_gpDB8F",
     "stats_bar",
