@@ -8,7 +8,7 @@
         "benefit_1": "100% Pure & Natural Ingredients",
         "benefit_2": "Clinically Tested & Sunnah Blessed",
         "benefit_3": "No Artificial Additives",
-        "cta_text": "SYNC TEST - REFRESH NOW",
+        "cta_text": "Save 25% + Free Shipping",
         "cta_link": "",
         "risk_free_text": "Try It Risk-Free For 30 Days",
         "limited_offer_badge": "LIMITED TIME OFFER",
@@ -378,7 +378,7 @@
         "bg_color": "#FAFAFA"
       }
     },
-    "aaa_laushe_comparison": {
+    "comparison_table": {
       "type": "laushe-comparison-table",
       "name": "Comparison Table (Laushe)",
       "blocks": {
@@ -397,7 +397,7 @@
         "bg_color": "#FAF7F2"
       }
     },
-    "aaa_laushe_video": {
+    "video_grid": {
       "type": "laushe-video-grid",
       "name": "Social Video Grid (Laushe)",
       "blocks": {
@@ -478,8 +478,6 @@
     }
   },
   "order": [
-    "aaa_laushe_comparison",
-    "aaa_laushe_video",
     "hero",
     "bestsellers_CXGzp8",
     "modern_living_gpDB8F",
@@ -491,6 +489,8 @@
     "catalog_grid",
     "faq_accordion",
     "filtered_reviews",
+    "comparison_table",
+    "video_grid",
     "story",
     "social_proof",
     "final_cta"
