@@ -118,11 +118,17 @@
     },
     "story": {
       "type": "story-section",
+      "blocks": {
+        "s1": { "type": "stat", "settings": { "number": "100%", "label": "Natural" } },
+        "s2": { "type": "stat", "settings": { "number": "0", "label": "Chemicals" } },
+        "s3": { "type": "stat", "settings": { "number": "15K+", "label": "Happy Families" } }
+      },
+      "block_order": ["s1", "s2", "s3"],
       "settings": {
-        "subtitle": "Our Story",
+        "subtitle": "OUR STORY",
         "title": "Rooted in Tradition, Crafted with Love",
-        "description_1": "Laushe was born from a simple belief: that the best health solutions come from nature itself.",
-        "description_2": "We source our ingredients directly from trusted farms, ensuring every product meets the highest standards.",
+        "description_1": "Laushe was born from a simple belief: that the best health solutions come from nature itself. Founded by Zahra, a passionate advocate for natural wellness, every product in our collection is a tribute to the healing traditions passed down through generations.",
+        "description_2": "We source our ingredients directly from trusted farms, ensuring every product meets the highest standards of purity and potency. Our Sunnah-blessed formulations combine prophetic medicine with modern nutritional science to deliver real, measurable results.",
         "badge_text": "Est. 2024"
       }
     },
