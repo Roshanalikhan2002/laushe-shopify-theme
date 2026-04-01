@@ -35,28 +35,6 @@
       },
       "block_order": ["gut", "immunity", "energy", "brain"]
     },
-    "problem_solution": {
-      "type": "problem-solution",
-      "settings": {
-        "problem_subtitle": "The Problem",
-        "problem_title": "Most Health Products Are Full of Hidden Chemicals",
-        "problem_description": "The market is flooded with supplements and health products that promise results but deliver artificial fillers, synthetic additives, and questionable ingredients. Your body deserves better.",
-        "solution_subtitle": "The Laushe Solution",
-        "solution_title": "100% Pure, 100% Natural, 100% Effective",
-        "solution_description": "Every Laushe product is crafted from ethically sourced, natural ingredients with complete transparency. Our Sunnah-blessed formulations combine ancient wisdom with modern quality standards."
-      },
-      "blocks": {
-        "p1": { "type": "problem_point", "settings": { "text": "Artificial preservatives and fillers" } },
-        "p2": { "type": "problem_point", "settings": { "text": "Synthetic vitamins with low absorption" } },
-        "p3": { "type": "problem_point", "settings": { "text": "Hidden sugars and processed ingredients" } },
-        "p4": { "type": "problem_point", "settings": { "text": "No transparency in sourcing" } },
-        "s1": { "type": "solution_point", "settings": { "text": "100% natural, ethically sourced ingredients" } },
-        "s2": { "type": "solution_point", "settings": { "text": "Sunnah-blessed traditional formulations" } },
-        "s3": { "type": "solution_point", "settings": { "text": "Zero artificial additives or preservatives" } },
-        "s4": { "type": "solution_point", "settings": { "text": "Full ingredient transparency on every product" } }
-      },
-      "block_order": ["p1", "p2", "p3", "p4", "s1", "s2", "s3", "s4"]
-    },
     "social_proof": {
       "type": "social-proof-carousel",
       "settings": {
@@ -71,15 +49,14 @@
       },
       "block_order": ["st1", "st2", "st3", "st4"]
     },
-    "story": {
-      "type": "story-section",
+    "problem_solution": {
+      "type": "problem-solution",
       "settings": {
-        "subtitle": "Our Story",
-        "title": "Rooted in Tradition, Crafted with Love",
-        "description_1": "Laushe was born from a simple belief: that the best health solutions come from nature itself.",
-        "description_2": "We source our ingredients directly from trusted farms, ensuring every product meets the highest standards."
+        "problem_subtitle": "The Problem",
+        "problem_title": "Most Health Products Are Full of Hidden Chemicals",
+        "problem_description": "The market is flooded with supplements and health products that promise results but deliver artificial fillers, synthetic additives, and questionable ingredients."
       }
     }
   },
-  "order": ["hero", "stats_bar", "benefits_grid", "problem_solution", "social_proof", "story"]
+  "order": ["hero", "stats_bar", "benefits_grid", "social_proof", "problem_solution"]
 }
