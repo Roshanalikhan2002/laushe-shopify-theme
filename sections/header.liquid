@@ -55,8 +55,7 @@
       </nav>
 
       <div class="header-icons nav-links" style="display: flex; gap: 20px; align-items: center;">
-        <a href="/search"><ion-icon name="search-outline" style="font-size: 20px; color: #004225;"></ion-icon></a>
-        <a href="/account"><ion-icon name="person-outline" style="font-size: 20px; color: #004225;"></ion-icon></a>
+        <a href="javascript:void(0)" onclick="toggleSearchBar()"><ion-icon name="search-outline" style="font-size: 20px; color: #004225;"></ion-icon></a>
         <a href="/cart" class="header-cart-link" onclick="event.preventDefault(); LausheCart.open();" style="position: relative;">
           <ion-icon name="bag-handle-outline" style="font-size: 20px; color: #004225;"></ion-icon>
           <span class="header-cart-count {% if cart.item_count == 0 %}hidden{% endif %}" style="position: absolute; top: -5px; right: -5px; background: #004225; color: white; font-size: 10px; padding: 2px 5px; border-radius: 50%; min-width: 16px; height: 16px; display: {% if cart.item_count > 0 %}flex{% else %}none{% endif %}; align-items: center; justify-content: center;">
@@ -65,6 +64,17 @@
         </a>
       </div>
     </div>
+  </div>
+  
+  <!-- SEARCH BAR OVERLAY -->
+  <div id="search-bar">
+    <form action="/search" method="get" role="search" style="width: 100%; max-width: 600px; display: flex; position: relative; margin: 0 auto;">
+        <input type="hidden" name="type" value="product">
+        <input type="search" name="q" placeholder="Search our store..." value="{{ search.terms | escape }}" />
+        <button type="submit" style="position: absolute; right: 20px; top: 18px; background: none; border: none; cursor: pointer;">
+            <ion-icon name="search-outline" style="font-size: 24px; color: #004225;"></ion-icon>
+        </button>
+    </form>
   </div>
 </header>
 
@@ -137,5 +147,28 @@
       .catch(err => console.error('Error fetching cart:', err));
   });
 
+  // Search Bar Toggle Logic
+  function toggleSearchBar() {
+    const searchBar = document.getElementById('search-bar');
+    if (searchBar) {
+      searchBar.classList.toggle('active');
+      if (searchBar.classList.contains('active')) {
+        searchBar.querySelector('input[type="search"]').focus();
+      }
+    }
+  }
+
+  // Close search when clicking outside
+  document.addEventListener('click', function(e) {
+    const searchBar = document.getElementById('search-bar');
+    const searchIcon = document.querySelector('[onclick="toggleSearchBar()"]');
+    if (searchBar && searchBar.classList.contains('active')) {
+      if (!searchBar.contains(e.target) && !searchIcon.contains(e.target)) {
+        searchBar.classList.remove('active');
+      }
+    }
+  });
+
   window.toggleMobileMenu = toggleMobileMenu;
+  window.toggleSearchBar = toggleSearchBar;
 </script>
