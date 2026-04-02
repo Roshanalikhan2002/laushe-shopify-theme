@@ -33,15 +33,15 @@
     </div>
 
     <!-- FOOTER (Total & Checkout) -->
-    <div id="CartDrawerFooter" class="drawer-footer">
+    <form action="/cart" method="post" id="CartDrawerFooter" class="drawer-footer">
       <div class="footer-row">
         <span class="total-label">Subtotal</span>
         <span id="CartDrawerTotal" class="total-value">Rs. 0.00</span>
       </div>
       <p class="footer-note">Shipping & taxes calculated at checkout</p>
-      <a href="/checkout" class="checkout-btn">Checkout Now</a>
-      <button class="continue-shopping" onclick="LausheCart.close()">Continue Shopping</button>
-    </div>
+      <button type="submit" name="checkout" class="checkout-btn">Checkout Now</button>
+      <button type="button" class="continue-shopping" onclick="LausheCart.close()">Continue Shopping</button>
+    </form>
 
   </div>
 </div>
