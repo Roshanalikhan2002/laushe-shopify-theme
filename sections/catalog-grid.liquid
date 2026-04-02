@@ -253,13 +253,17 @@
           btn.style.opacity = '0.7';
           btn.disabled = true;
 
-          const formData = new FormData(form);
+          const variantId = form.querySelector('input[name="id"]').value;
 
           fetch('/cart/add.js', {
             method: 'POST',
-            body: formData
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ id: parseInt(variantId), quantity: 1 })
           })
-          .then(response => response.json())
+          .then(res => {
+            if (!res.ok) throw new Error('Cart add failed');
+            return res.json();
+          })
           .then(data => {
             // Success State
             atcLoading.style.display = 'none';
@@ -269,9 +273,11 @@
             btn.style.opacity = '1';
 
             // Trigger cart drawer if available
-            document.dispatchEvent(new CustomEvent('cart:updated', {
-              detail: data
-            }));
+            if (window.LausheCart) {
+              LausheCart.open();
+            } else {
+              document.dispatchEvent(new CustomEvent('cart:updated', { detail: data }));
+            }
 
             // Reset after 2 seconds
             setTimeout(() => {
@@ -286,6 +292,10 @@
             atcText.style.display = 'inline';
             atcText.innerText = 'Error! Try again';
             btn.disabled = false;
+            btn.style.opacity = '1';
+            setTimeout(() => {
+               atcText.innerText = 'Add to Cart';
+            }, 2500);
           });
         });
       });
