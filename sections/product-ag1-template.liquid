@@ -173,15 +173,21 @@
   /* Grid Layout */
   .product-grid-v3 { display: grid; grid-template-columns: 1.1fr 1fr; gap: 80px; align-items: flex-start; }
   
-  /* Visuals Column */
+  /* Visuals Column — stays fixed while right column scrolls */
   .product-visuals-v3 { position: sticky; top: 120px; }
+  
+  /* Buying column scrolls naturally — no sticky, no overflow hiding */
+  .product-buying-v3 { overflow: visible; }
   .promo-banner-v3 { background: #00FF00; color: #000; font-weight: 800; font-size: 14px; text-align: center; padding: 12px; border-radius: 4px; margin-bottom: 30px; }
   .main-img-v3 { width: 100%; height: auto; border-radius: 12px; transition: opacity 0.3s ease; }
   .product-thumbs-v3 { display: flex; gap: 15px; margin-top: 20px; overflow-x: auto; }
   .thumb-v3 { width: 80px; height: 80px; object-fit: cover; border-radius: 8px; cursor: pointer; border: 2px solid transparent; }
   .thumb-v3.active { border-color: #004225; }
 
-  /* Buying Column */
+  /* Buying column — all content visible, no clipping */
+  .sticky-box-v3 { position: static; }
+  
+  /* Product Title */
   .product-title-v3 { font-size: 48px; font-weight: 800; color: #004225; margin-bottom: 40px; font-family: 'Poppins', sans-serif; line-height: 1.1; }
   
   .variant-label-v3 { font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; color: #999; margin-bottom: 15px; }
