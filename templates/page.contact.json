@@ -1,0 +1,14 @@
+{
+  "sections": {
+    "contact": {
+      "type": "contact-form",
+      "settings": {
+        "heading": "Get in Touch",
+        "subtext": "Have questions? We'd love to hear from you. Send us a message and we'll respond as soon as possible."
+      }
+    }
+  },
+  "order": [
+    "contact"
+  ]
+}
