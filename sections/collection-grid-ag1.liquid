@@ -91,9 +91,13 @@
                         <p class="product-desc">{{ product.metafields.custom.short_description | default: 'Premium wellness essential for your daily routine.' }}</p>
                         <span class="product-price">{{ product.price | money }}</span>
                         
-                        <form method="post" action="/cart/add">
-                            <input type="hidden" name="id" value="{{ product.variants.first.id }}" />
-                            <button type="submit" class="btn-add">Add to Cart</button>
+                        <form method="post" action="/cart/add" class="laushe-collection-atc">
+                            <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}" />
+                            <input type="hidden" name="quantity" value="1" />
+                            <button type="submit" class="btn-add">
+                                <span class="atc-text">Add to Cart</span>
+                                <span class="atc-loading" style="display: none;">Adding...</span>
+                            </button>
                         </form>
                     </div>
                 </div>
@@ -153,6 +157,72 @@
                 window.scrollTo({ top: gridTop - 100, behavior: 'smooth' });
             }
         }
+
+        // AJAX ADD TO CART
+        const atcForms = document.querySelectorAll('.laushe-collection-atc');
+        atcForms.forEach(form => {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const btn = form.querySelector('.btn-add');
+                const atcText = btn.querySelector('.atc-text');
+                const atcLoading = btn.querySelector('.atc-loading');
+                const variantId = form.querySelector('input[name="id"]').value;
+
+                if (!variantId) {
+                  alert('Please select a valid product variant.');
+                  return;
+                }
+
+                atcText.style.display = 'none';
+                atcLoading.style.display = 'inline';
+                btn.style.opacity = '0.7';
+                btn.disabled = true;
+
+                fetch('/cart/add.js', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ id: parseInt(variantId), quantity: 1 })
+                })
+                .then(res => {
+                    if (!res.ok) throw new Error('Cart add failed');
+                    return res.json();
+                })
+                .then(data => {
+                    // Success visual
+                    atcLoading.style.display = 'none';
+                    atcText.style.display = 'inline';
+                    atcText.innerText = 'Added! ✓';
+                    btn.style.background = '#4CAF50';
+                    btn.style.color = '#FFF';
+                    btn.style.opacity = '1';
+
+                    // Trigger cart drawer
+                    if (window.LausheCart) {
+                        LausheCart.open();
+                    } else {
+                        document.dispatchEvent(new CustomEvent('cart:updated', { detail: data }));
+                    }
+
+                    setTimeout(() => {
+                        atcText.innerText = 'Add to Cart';
+                        btn.style.background = '';
+                        btn.style.color = '';
+                        btn.disabled = false;
+                    }, 2000);
+                })
+                .catch(err => {
+                    console.error('ATC error:', err);
+                    atcLoading.style.display = 'none';
+                    atcText.style.display = 'inline';
+                    atcText.innerText = 'Error!';
+                    btn.disabled = false;
+                    btn.style.opacity = '1';
+                    setTimeout(() => {
+                        atcText.innerText = 'Add to Cart';
+                    }, 2500);
+                });
+            });
+        });
     });
 </script>
 
