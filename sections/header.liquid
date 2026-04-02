@@ -57,11 +57,11 @@
       <div class="header-icons nav-links" style="display: flex; gap: 20px; align-items: center;">
         <a href="/search"><ion-icon name="search-outline" style="font-size: 20px; color: #004225;"></ion-icon></a>
         <a href="/account"><ion-icon name="person-outline" style="font-size: 20px; color: #004225;"></ion-icon></a>
-        <a href="/cart" style="position: relative;">
+        <a href="/cart" class="header-cart-link" style="position: relative;">
           <ion-icon name="bag-handle-outline" style="font-size: 20px; color: #004225;"></ion-icon>
-          {%- if cart.item_count > 0 -%}
-            <span style="position: absolute; top: -5px; right: -5px; background: #004225; color: white; font-size: 10px; padding: 2px 5px; border-radius: 50%;">{{ cart.item_count }}</span>
-          {%- endif -%}
+          <span class="header-cart-count {% if cart.item_count == 0 %}hidden{% endif %}" style="position: absolute; top: -5px; right: -5px; background: #004225; color: white; font-size: 10px; padding: 2px 5px; border-radius: 50%; min-width: 16px; height: 16px; display: {% if cart.item_count > 0 %}flex{% else %}none{% endif %}; align-items: center; justify-content: center;">
+            {{ cart.item_count }}
+          </span>
         </a>
       </div>
     </div>
@@ -119,5 +119,23 @@
       document.body.style.overflow = drawer.classList.contains('open') ? 'hidden' : '';
     }
   }
+  // Update cart count AJAX
+  document.addEventListener('cart:updated', function() {
+    fetch('/cart.js')
+      .then(res => res.json())
+      .then(cart => {
+        const counts = document.querySelectorAll('.header-cart-count');
+        counts.forEach(el => {
+          el.textContent = cart.item_count;
+          if (cart.item_count > 0) {
+            el.style.display = 'flex';
+          } else {
+            el.style.display = 'none';
+          }
+        });
+      })
+      .catch(err => console.error('Error fetching cart:', err));
+  });
+
   window.toggleMobileMenu = toggleMobileMenu;
 </script>
