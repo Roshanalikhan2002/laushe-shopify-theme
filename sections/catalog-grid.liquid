@@ -18,7 +18,7 @@
 }
 {% endschema %}
 
-<section class="wellness-catalog section-padding" style="background-color: #e9f3ed;" id="section-{{ section.id }}">
+<section class="wellness-catalog section-padding" style="background-color: #e9f3ed;" id="laushe-shop" data-section-id="{{ section.id }}">
   <div class="container">
     
     <!-- HEADER -->
@@ -135,44 +135,67 @@
 
 <script>
   (function() {
-    function initCatalogFilters() {
-      const section = document.querySelector('#section-{{ section.id }}');
-      if (!section) return;
-
+    function applyFilter(section, filterValue) {
       const filters = section.querySelectorAll('.filter-btn');
       const items = section.querySelectorAll('.catalog-item');
       const grid = section.querySelector('.catalog-grid');
       const emptyState = section.querySelector('.catalog-empty-state');
 
+      filters.forEach(b => b.classList.remove('active'));
+      let matched = false;
+      filters.forEach(btn => {
+        if (btn.getAttribute('data-filter').toLowerCase() === filterValue) {
+          btn.classList.add('active');
+          matched = true;
+        }
+      });
+      if (!matched) filters[0] && filters[0].classList.add('active');
+
+      let visibleCount = 0;
+      items.forEach(item => {
+        if (filterValue === 'all' || !matched) {
+          item.style.display = 'block';
+          visibleCount++;
+        } else {
+          const tags = item.getAttribute('data-tags').split(',');
+          const isMatch = tags.includes(filterValue);
+          item.style.display = isMatch ? 'block' : 'none';
+          if (isMatch) visibleCount++;
+        }
+      });
+
+      if (visibleCount === 0) {
+        grid.style.display = 'none';
+        emptyState.style.display = 'block';
+      } else {
+        grid.style.display = 'grid';
+        emptyState.style.display = 'none';
+      }
+    }
+
+    function initCatalogFilters() {
+      const section = document.querySelector('#laushe-shop');
+      if (!section) return;
+
+      const filters = section.querySelectorAll('.filter-btn');
+
+      // Wire up click handlers
       filters.forEach(btn => {
         btn.addEventListener('click', () => {
-          filters.forEach(b => b.classList.remove('active'));
-          btn.classList.add('active');
-
-          const filter = btn.getAttribute('data-filter').toLowerCase();
-          let visibleCount = 0;
-
-          items.forEach(item => {
-            if (filter === 'all') {
-              item.style.display = 'block';
-              visibleCount++;
-            } else {
-              const tags = item.getAttribute('data-tags').split(',');
-              const isMatch = tags.includes(filter);
-              item.style.display = isMatch ? 'block' : 'none';
-              if (isMatch) visibleCount++;
-            }
-          });
-
-          if (visibleCount === 0) {
-            grid.style.display = 'none';
-            emptyState.style.display = 'block';
-          } else {
-            grid.style.display = 'grid';
-            emptyState.style.display = 'none';
-          }
+          applyFilter(section, btn.getAttribute('data-filter').toLowerCase());
         });
       });
+
+      // Auto-activate filter from URL param ?filter=healthcare
+      const urlParams = new URLSearchParams(window.location.search);
+      const filterParam = (urlParams.get('filter') || '').toLowerCase();
+      if (filterParam) {
+        applyFilter(section, filterParam);
+        // Smooth scroll to section
+        setTimeout(() => {
+          section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 200);
+      }
     }
 
     document.addEventListener('DOMContentLoaded', initCatalogFilters);
