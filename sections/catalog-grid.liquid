@@ -18,7 +18,8 @@
 }
 {% endschema %}
 
-<section class="wellness-catalog section-padding" style="background-color: #e9f3ed;" id="laushe-shop" data-section-id="{{ section.id }}">
+<section class="wellness-catalog section-padding" style="background-color: #e9f3ed;" id="section-{{ section.id }}" data-section-id="{{ section.id }}">
+  <div id="laushe-shop" style="position: absolute; top: -100px;"></div>
   <div class="container">
     
     <!-- HEADER -->
@@ -174,7 +175,8 @@
     }
 
     function initCatalogFilters() {
-      const section = document.querySelector('#laushe-shop');
+      const anchor = document.querySelector('#laushe-shop');
+      const section = anchor ? anchor.closest('.wellness-catalog') : null;
       if (!section) return;
 
       const filters = section.querySelectorAll('.filter-btn');
