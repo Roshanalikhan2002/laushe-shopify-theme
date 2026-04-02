@@ -1,0 +1,327 @@
+{% schema %}
+{
+  "name": "Product (AG1-Inspired)",
+  "settings": [
+    { "id": "promo_banner", "type": "text", "label": "Promo Banner Text", "default": "Includes a FREE Frother**" },
+    { "id": "stars_count", "type": "text", "label": "Review Count Label", "default": "50,000+ verified 5-star reviews for Laushe products" },
+    { "id": "sub_discount", "type": "number", "label": "Subscription Discount (%)", "default": 25 }
+  ],
+  "blocks": [
+    {
+      "type": "accordion",
+      "name": "Info Accordion",
+      "settings": [
+        { "id": "title", "type": "text", "label": "Accordion Title", "default": "What is it?" },
+        { "id": "content", "type": "textarea", "label": "Accordion Content", "default": "Laushe product is a nighttime drink designed to support restful, restorative sleep." }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Product (AG1-Inspired)", "category": "Laushe Product" }]
+}
+{% endschema %}
+
+<section class="laushe-product-v3" data-section-id="{{ section.id }}">
+  <div class="container-wide">
+    
+    <!-- TOP NAVIGATION & RATINGS -->
+    <div class="product-top-meta">
+      <div class="breadcrumbs">
+        <a href="/collections/all">Shop All</a> / <span class="current-crumb">{{ product.title }}</span>
+      </div>
+      <div class="top-ratings">
+        <span class="stars-v3">★★★★★</span>
+        <span class="reviews-v3">{{ section.settings.stars_count }}</span>
+      </div>
+    </div>
+
+    <!-- MAIN PRODUCT GRID -->
+    <div class="product-grid-v3">
+      
+      <!-- LEFT: VISUALS -->
+      <div class="product-visuals-v3">
+        <div class="promo-banner-v3">{{ section.settings.promo_banner }}</div>
+        <div class="product-img-wrapper-v3">
+          <img src="{{ product.featured_image | img_url: '1000x1000' }}" alt="{{ product.title }}" class="main-img-v3" id="MainProductImage">
+        </div>
+        <!-- Thumbnails gallery (optional but adds premium feel) -->
+        <div class="product-thumbs-v3">
+           {% for image in product.images %}
+             <img src="{{ image | img_url: '200x200', crop: 'center' }}" class="thumb-v3 {% if forloop.first %}active{% endif %}" onclick="switchProductImg(this, '{{ image | img_url: '1000x1000' }}')">
+           {% endfor %}
+        </div>
+      </div>
+
+      <!-- RIGHT: PURCHASING (Sticky Column) -->
+      <div class="product-buying-v3">
+        <div class="sticky-box-v3">
+          <h1 class="product-title-v3">{{ product.title }}</h1>
+          
+          <form method="post" action="/cart/add" id="AG1ProductForm" class="laushe-atc-form-v3">
+            <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}" id="SelectedVariantId">
+            <input type="hidden" name="quantity" value="1">
+
+            <!-- 1. SERVING SELECTION (If variant "Size" exists) -->
+            {%- assign serving_option = product.options_with_values | where: 'name', 'Size' | first -%}
+            {% if serving_option %}
+              <div class="variant-label-v3">Select Size</div>
+              <div class="serving-selector-v3">
+                {% for value in serving_option.values %}
+                  <div class="serving-box {% if serving_option.selected_value == value %}active{% endif %}" 
+                       data-value="{{ value }}"
+                       onclick="switchServing(this, '{{ value }}')">
+                    <div class="serving-badge">{% if forloop.last %}BEST VALUE{% else %}MOST POPULAR{% endif %}</div>
+                    <div class="serving-name">{{ value }}</div>
+                    <div class="serving-price-unit">{{ product.variants[forloop.index0].price | money }}/serving</div>
+                  </div>
+                {% endfor %}
+              </div>
+            {% endif %}
+
+            <!-- 2. FLAVOR SELECTION (If variant "Flavor" exists) -->
+            {%- assign flavor_option = product.options_with_values | where: 'name', 'Flavor' | first -%}
+            {% if flavor_option %}
+              <div class="variant-label-v3">Flavor</div>
+              <div class="flavor-selector-v3">
+                {% for value in flavor_option.values %}
+                  <div class="flavor-swatch-v3 {% if flavor_option.selected_value == value %}active{% endif %}"
+                       data-value="{{ value }}"
+                       onclick="switchFlavor(this, '{{ value }}')">
+                    <span class="swatch-circle" style="background: #D4AF37;"></span>
+                    <span class="swatch-name">{{ value }}</span>
+                  </div>
+                {% endfor %}
+              </div>
+            {% endif %}
+
+            <!-- 3. PURCHASE OPTIONS -->
+            <div class="purchase-box-v3">
+               <div class="sub-pricing-banner">
+                 <ion-icon name="sparkles-outline"></ion-icon>
+                 Unlock {{ section.settings.sub_discount }}% Pricing with a Laushe Subscription
+               </div>
+               
+               <!-- Subscribe Option -->
+               <div class="purchase-method active" onclick="switchPurchaseMethod(this, 'sub')">
+                  <div class="method-radio"><div class="radio-inner"></div></div>
+                  <div class="method-content">
+                    <div class="method-header">
+                      <span class="method-name">Subscribe & Save</span>
+                      <span class="method-price" id="SubPrice">{{ product.selected_or_first_available_variant.price | times: 0.75 | money }}/mo</span>
+                    </div>
+                    <ul class="method-benefits">
+                      <li>✔ Free shipping delivered every 30 days</li>
+                      <li>✔ Includes a Free Frother**</li>
+                      <li>✔ Easily pause, skip, or cancel</li>
+                      <li>✔ 90-Day Money Back Guarantee</li>
+                    </ul>
+                  </div>
+               </div>
+
+               <!-- One-time Option -->
+               <div class="purchase-method" onclick="switchPurchaseMethod(this, 'onetime')">
+                  <div class="method-radio"><div class="radio-inner"></div></div>
+                  <div class="method-content">
+                    <div class="method-header">
+                      <span class="method-name">Buy one time</span>
+                      <span class="method-price" id="OneTimePrice">{{ product.selected_or_first_available_variant.price | money }}</span>
+                    </div>
+                  </div>
+               </div>
+            </div>
+
+            <!-- ADD TO CART -->
+            <button type="submit" class="atc-btn-v3">
+              <span class="atc-text">Add to Cart &rarr;</span>
+              <span class="atc-loading" style="display: none;">Adding...</span>
+            </button>
+          </form>
+
+          <!-- ACCORDIONS -->
+          <div class="product-accordions-v3">
+            {% for block in section.blocks %}
+               <div class="accordion-v3" {{ block.shopify_attributes }}>
+                 <div class="accordion-header-v3" onclick="toggleAccordion(this)">
+                   {{ block.settings.title }}
+                   <ion-icon name="add-outline" class="acc-icon"></ion-icon>
+                 </div>
+                 <div class="accordion-content-v3">
+                   {{ block.settings.content }}
+                 </div>
+               </div>
+            {% endfor %}
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  .laushe-product-v3 { padding: 40px 0 100px; background: #fff; }
+  .container-wide { max-width: 1300px; margin: 0 auto; padding: 0 30px; }
+  
+  .product-top-meta { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; padding-bottom: 20px; border-bottom: 1px solid #f0f0f0; }
+  .breadcrumbs { font-size: 13px; color: #888; font-weight: 500; }
+  .breadcrumbs a { color: #888; text-decoration: none; }
+  .current-crumb { color: #333; font-weight: 700; margin-left: 5px; }
+  
+  .stars-v3 { color: #4CAF50; font-size: 14px; letter-spacing: 2px; }
+  .reviews-v3 { font-size: 13px; color: #555; font-weight: 600; margin-left: 10px; }
+
+  /* Grid Layout */
+  .product-grid-v3 { display: grid; grid-template-columns: 1.1fr 1fr; gap: 80px; align-items: flex-start; }
+  
+  /* Visuals Column */
+  .product-visuals-v3 { position: sticky; top: 120px; }
+  .promo-banner-v3 { background: #00FF00; color: #000; font-weight: 800; font-size: 14px; text-align: center; padding: 12px; border-radius: 4px; margin-bottom: 30px; }
+  .main-img-v3 { width: 100%; height: auto; border-radius: 12px; transition: opacity 0.3s ease; }
+  .product-thumbs-v3 { display: flex; gap: 15px; margin-top: 20px; overflow-x: auto; }
+  .thumb-v3 { width: 80px; height: 80px; object-fit: cover; border-radius: 8px; cursor: pointer; border: 2px solid transparent; }
+  .thumb-v3.active { border-color: #004225; }
+
+  /* Buying Column */
+  .product-title-v3 { font-size: 48px; font-weight: 800; color: #004225; margin-bottom: 40px; font-family: 'Poppins', sans-serif; line-height: 1.1; }
+  
+  .variant-label-v3 { font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; color: #999; margin-bottom: 15px; }
+  
+  /* Serving Selector */
+  .serving-selector-v3 { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 35px; }
+  .serving-box { border: 1.5px solid #eee; border-radius: 10px; padding: 25px 20px; cursor: pointer; transition: all 0.2s ease; position: relative; }
+  .serving-box.active { border-color: #004225; background: #f9fdf9; }
+  .serving-badge { background: #00FF00; color: #000; font-size: 10px; font-weight: 800; padding: 3px 8px; border-radius: 4px; position: absolute; top: -10px; left: 20px; }
+  .serving-name { font-size: 20px; font-weight: 800; color: #004225; margin-bottom: 5px; }
+  .serving-price-unit { font-size: 13px; color: #888; font-weight: 600; }
+
+  /* Flavor Selector */
+  .flavor-selector-v3 { display: flex; gap: 15px; flex-wrap: wrap; margin-bottom: 40px; }
+  .flavor-swatch-v3 { border: 1.5px solid #eee; border-radius: 50px; padding: 8px 18px; display: flex; align-items: center; gap: 10px; cursor: pointer; transition: all 0.2s; }
+  .flavor-swatch-v3.active { border-color: #004225; background: #f9fdf9; }
+  .swatch-circle { width: 14px; height: 14px; border-radius: 50%; display: block; }
+  .swatch-name { font-size: 14px; font-weight: 700; color: #333; }
+
+  /* Purchase Options */
+  .purchase-box-v3 { border-radius: 12px; overflow: hidden; border: 1px solid #004225; margin-bottom: 40px; }
+  .sub-pricing-banner { background: #004225; color: white; padding: 12px 20px; display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 14px; }
+  
+  .purchase-method { padding: 25px 20px; display: flex; gap: 15px; cursor: pointer; transition: background 0.2s; border-bottom: 1px solid #f0f0f0; }
+  .purchase-method:last-child { border-bottom: none; }
+  .purchase-method.active { background: #f9fdf9; }
+  
+  .method-radio { width: 22px; height: 22px; border: 2px solid #ddd; border-radius: 50%; flex-shrink: 0; margin-top: 2px; display: flex; align-items: center; justify-content: center; }
+  .purchase-method.active .method-radio { border-color: #004225; }
+  .radio-inner { width: 12px; height: 12px; border-radius: 50%; background: #004225; transform: scale(0); transition: transform 0.2s; }
+  .purchase-method.active .radio-inner { transform: scale(1); }
+  
+  .method-content { flex: 1; }
+  .method-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px; }
+  .method-name { font-size: 18px; font-weight: 800; color: #004225; }
+  .method-price { font-size: 18px; font-weight: 800; color: #333; }
+  
+  .method-benefits { list-style: none; padding: 0; margin: 15px 0 0; display: none; }
+  .purchase-method.active .method-benefits { display: block; }
+  .method-benefits li { font-size: 14px; color: #555; margin-bottom: 8px; font-weight: 600; }
+
+  /* ATC Button */
+  .atc-btn-v3 { width: 100%; padding: 22px; background: #004225; color: white; border: none; border-radius: 50px; font-size: 18px; font-weight: 800; cursor: pointer; transition: all 0.3s ease; margin-bottom: 40px; font-family: 'Poppins', sans-serif; }
+  .atc-btn-v3:hover { background: #002b1b; transform: translateY(-3px); box-shadow: 0 15px 30px rgba(0,66,37,0.2); }
+
+  /* Accordions */
+  .accordion-v3 { border-bottom: 1px solid #f0f0f0; }
+  .accordion-header-v3 { padding: 20px 0; display: flex; justify-content: space-between; align-items: center; cursor: pointer; font-size: 18px; font-weight: 800; color: #004225; transition: color 0.2s; }
+  .accordion-header-v3:hover { color: #D4AF37; }
+  .accordion-content-v3 { padding-bottom: 25px; font-size: 14px; color: #666; line-height: 1.6; display: none; }
+  .accordion-v3.active .accordion-content-v3 { display: block; }
+  .acc-icon { transition: transform 0.3s; font-size: 20px; }
+  .accordion-v3.active .acc-icon { transform: rotate(45deg); }
+
+  @media (max-width: 1000px) {
+    .product-grid-v3 { grid-template-columns: 1fr; gap: 50px; }
+    .product-visuals-v3 { position: static; }
+    .product-title-v3 { font-size: 36px; }
+  }
+</style>
+
+<script>
+  // Store product variants for JS switching
+  window.currentProductVariants = {{ product.variants | json }};
+  
+  function updateVariantId() {
+    const activeSize = document.querySelector('.serving-box.active')?.dataset.value;
+    const activeFlavor = document.querySelector('.flavor-swatch-v3.active')?.dataset.value;
+    
+    const variant = window.currentProductVariants.find(v => {
+      let match = true;
+      if (activeSize && v.option1 !== activeSize && v.option2 !== activeSize && v.option3 !== activeSize) match = false;
+      if (activeFlavor && v.option1 !== activeFlavor && v.option2 !== activeFlavor && v.option3 !== activeFlavor) match = false;
+      return match;
+    });
+
+    if (variant) {
+      document.getElementById('SelectedVariantId').value = variant.id;
+      // Update prices
+      document.getElementById('OneTimePrice').innerText = LausheCart.formatMoney(variant.price);
+      document.getElementById('SubPrice').innerText = LausheCart.formatMoney(variant.price * 0.75);
+    }
+  }
+
+  function switchProductImg(el, src) {
+    document.getElementById('MainProductImage').src = src;
+    document.querySelectorAll('.thumb-v3').forEach(t => t.classList.remove('active'));
+    el.classList.add('active');
+  }
+
+  function toggleAccordion(el) {
+    el.parentElement.classList.toggle('active');
+  }
+
+  function switchServing(el, val) {
+    document.querySelectorAll('.serving-box').forEach(b => b.classList.remove('active'));
+    el.classList.add('active');
+    updateVariantId();
+  }
+
+  function switchFlavor(el, val) {
+    document.querySelectorAll('.flavor-swatch-v3').forEach(s => s.classList.remove('active'));
+    el.classList.add('active');
+    updateVariantId();
+  }
+
+  function switchPurchaseMethod(el, method) {
+    document.querySelectorAll('.purchase-method').forEach(m => m.classList.remove('active'));
+    el.classList.add('active');
+  }
+
+  // Handle Form Submission with AJAX (Connecting to existing Cart Drawer)
+  document.getElementById('AG1ProductForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const btn = this.querySelector('.atc-btn-v3');
+    const text = btn.querySelector('.atc-text');
+    const loading = btn.querySelector('.atc-loading');
+
+    text.style.display = 'none';
+    loading.style.display = 'inline';
+    btn.disabled = true;
+
+    const formData = new FormData(this);
+
+    fetch('/cart/add.js', {
+      method: 'POST',
+      body: formData
+    })
+    .then(res => res.json())
+    .then(data => {
+      text.style.display = 'inline';
+      loading.style.display = 'none';
+      btn.disabled = false;
+      document.dispatchEvent(new CustomEvent('cart:updated', { detail: data }));
+    })
+    .catch(err => {
+      console.error(err);
+      text.style.display = 'inline';
+      loading.style.display = 'none';
+      btn.disabled = false;
+    });
+  });
+</script>

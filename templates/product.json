@@ -11,12 +11,47 @@
   "layout": "theme",
   "sections": {
     "product_main": {
-      "type": "product-offer-section",
+      "type": "product-ag1-template",
+      "blocks": {
+        "acc1": {
+          "type": "accordion",
+          "settings": {
+            "title": "What is it?",
+            "content": "Laushe's signature wellness formula is designed to support deep, restorative health through ancient tradtion and modern science."
+          }
+        },
+        "acc2": {
+          "type": "accordion",
+          "settings": {
+            "title": "Who's it for",
+            "content": "Perfect for anyone looking to optimize their daily health routine with pure, raw, and bio-available supplements."
+          }
+        },
+        "acc3": {
+          "type": "accordion",
+          "settings": {
+            "title": "Benefits",
+            "content": "Supports metabolism, boosts naturally, and promotes long-term vitality without synthetic fillers."
+          }
+        },
+        "acc4": {
+          "type": "accordion",
+          "settings": {
+            "title": "How to use",
+            "content": "Simply mix one scoop into 8-12 oz of water or your favorite smoothie once daily for maximum results."
+          }
+        }
+      },
+      "block_order": [
+        "acc1",
+        "acc2",
+        "acc3",
+        "acc4"
+      ],
       "settings": {
-        "section_title": "Choose Your Wellness Plan",
-        "section_subtitle": "Most customers choose the subscription for max savings and results.",
-        "product_ref": "chia-seeds300gm",
-        "bg_color": "#f9fdf9"
+        "promo_banner": "Includes a FREE Frother**",
+        "stars_count": "50,000+ verified 5-star reviews for Laushe products",
+        "sub_discount": 25
       }
     },
     "benefits": {
