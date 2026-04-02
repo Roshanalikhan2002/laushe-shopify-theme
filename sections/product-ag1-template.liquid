@@ -250,25 +250,35 @@
 </style>
 
 <script>
-  // Store product variants for JS switching
-  window.currentProductVariants = {{ product.variants | json }};
-  
+  // === LAUSHE PRODUCT PAGE v3 ===
+
+  // Store all variants from Shopify
+  window.lausheVariants = {{ product.variants | json }};
+  window.lausheSelectedVariantId = {{ product.selected_or_first_available_variant.id }};
+
+  // Keep the hidden input in sync
+  function syncVariantInput() {
+    document.getElementById('SelectedVariantId').value = window.lausheSelectedVariantId;
+  }
+
   function updateVariantId() {
     const activeSize = document.querySelector('.serving-box.active')?.dataset.value;
     const activeFlavor = document.querySelector('.flavor-swatch-v3.active')?.dataset.value;
-    
-    const variant = window.currentProductVariants.find(v => {
-      let match = true;
-      if (activeSize && v.option1 !== activeSize && v.option2 !== activeSize && v.option3 !== activeSize) match = false;
-      if (activeFlavor && v.option1 !== activeFlavor && v.option2 !== activeFlavor && v.option3 !== activeFlavor) match = false;
-      return match;
+
+    const variant = window.lausheVariants.find(v => {
+      const vals = [v.option1, v.option2, v.option3].filter(Boolean);
+      if (activeSize && !vals.includes(activeSize)) return false;
+      if (activeFlavor && !vals.includes(activeFlavor)) return false;
+      return true;
     });
 
     if (variant) {
-      document.getElementById('SelectedVariantId').value = variant.id;
-      // Update prices
-      document.getElementById('OneTimePrice').innerText = LausheCart.formatMoney(variant.price);
-      document.getElementById('SubPrice').innerText = LausheCart.formatMoney(variant.price * 0.75);
+      window.lausheSelectedVariantId = variant.id;
+      syncVariantInput();
+      // Update displayed prices
+      const priceInPaise = variant.price;
+      document.getElementById('OneTimePrice').innerText = 'Rs. ' + (priceInPaise / 100).toLocaleString();
+      document.getElementById('SubPrice').innerText = 'Rs. ' + Math.round(priceInPaise * 0.75 / 100).toLocaleString() + '/mo';
     }
   }
 
@@ -299,35 +309,71 @@
     el.classList.add('active');
   }
 
-  // Handle Form Submission with AJAX (Connecting to existing Cart Drawer)
+  // Sync on page load
+  syncVariantInput();
+
+  // === AJAX ADD TO CART ===
   document.getElementById('AG1ProductForm').addEventListener('submit', function(e) {
     e.preventDefault();
+
     const btn = this.querySelector('.atc-btn-v3');
-    const text = btn.querySelector('.atc-text');
-    const loading = btn.querySelector('.atc-loading');
+    const textEl = btn.querySelector('.atc-text');
+    const loadEl = btn.querySelector('.atc-loading');
 
-    text.style.display = 'none';
-    loading.style.display = 'inline';
+    // Ensure latest variant is set
+    syncVariantInput();
+
+    const variantId = document.getElementById('SelectedVariantId').value;
+    if (!variantId) {
+      alert('Please select a variant.');
+      return;
+    }
+
+    // Button loading state
+    textEl.style.display = 'none';
+    loadEl.style.display = 'inline';
     btn.disabled = true;
-
-    const formData = new FormData(this);
 
     fetch('/cart/add.js', {
       method: 'POST',
-      body: formData
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ id: parseInt(variantId), quantity: 1 })
     })
-    .then(res => res.json())
+    .then(res => {
+      if (!res.ok) throw new Error('Cart add failed');
+      return res.json();
+    })
     .then(data => {
-      text.style.display = 'inline';
-      loading.style.display = 'none';
+      // Restore button with success animation
+      textEl.innerText = '✓ Added to Cart!';
+      textEl.style.display = 'inline';
+      loadEl.style.display = 'none';
       btn.disabled = false;
-      document.dispatchEvent(new CustomEvent('cart:updated', { detail: data }));
+      btn.style.background = '#2d7a4f';
+
+      setTimeout(() => {
+        textEl.innerText = 'Add to Cart →';
+        btn.style.background = '';
+      }, 2000);
+
+      // Open the cart drawer
+      if (window.LausheCart) {
+        LausheCart.open();
+      } else {
+        document.dispatchEvent(new CustomEvent('cart:updated', { detail: data }));
+      }
     })
     .catch(err => {
-      console.error(err);
-      text.style.display = 'inline';
-      loading.style.display = 'none';
+      console.error('ATC error:', err);
+      textEl.innerText = 'Error – Try Again';
+      textEl.style.display = 'inline';
+      loadEl.style.display = 'none';
       btn.disabled = false;
+      btn.style.background = '#c0392b';
+      setTimeout(() => {
+        textEl.innerText = 'Add to Cart →';
+        btn.style.background = '';
+      }, 2500);
     });
   });
 </script>
