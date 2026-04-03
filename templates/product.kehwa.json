@@ -1,33 +1,281 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "layout": "theme",
   "sections": {
     "product_main": {
       "type": "product-ag1-template",
       "blocks": {
-        "acc1": { "type": "accordion", "settings": { "title": "What is it?", "content": "Laushe's signature wellness formula." } }
+        "acc1": {
+          "type": "accordion",
+          "settings": {
+            "title": "What is it?",
+            "content": "Skinny Sips is Laushe's signature herbal weight-loss kehwa, crafted from a Sunnah-blessed blend of natural herbs and botanicals designed to boost metabolism, curb appetite, and support healthy fat loss — one soothing cup at a time."
+          }
+        },
+        "acc2": {
+          "type": "accordion",
+          "settings": {
+            "title": "Who's it for",
+            "content": "Perfect for anyone looking to manage their weight naturally, reduce bloating, and feel energized throughout the day without relying on artificial stimulants or crash diets."
+          }
+        },
+        "acc3": {
+          "type": "accordion",
+          "settings": {
+            "title": "Benefits",
+            "content": "Supports natural fat burning and healthy weight management\nBoosts metabolism to help your body burn more efficiently\nReduces bloating and supports a flatter, more comfortable stomach\nCurbs appetite and helps you feel fuller for longer\nProvides a gentle, natural energy lift without caffeine crashes\nSunnah-blessed herbal blend with no artificial additives"
+          }
+        },
+        "acc4": {
+          "type": "accordion",
+          "settings": {
+            "title": "How to use",
+            "content": "Steep one sachet or teaspoon in hot water for 3–5 minutes\nDrink once daily, preferably in the morning on an empty stomach\nAdd a squeeze of lemon for enhanced detox benefits\nUse consistently for best results alongside a balanced diet"
+          }
+        }
       },
-      "block_order": ["acc1"],
-      "settings": { "promo_banner": "Includes a FREE Frother**", "stars_count": "50,000+ verified 5-star reviews", "sub_discount": 25 }
+      "block_order": [
+        "acc1",
+        "acc2",
+        "acc3",
+        "acc4"
+      ],
+      "settings": {
+        "promo_banner": "Natural Weight Loss Support",
+        "stars_count": "50,000+ verified 5-star reviews for Laushe products",
+        "sub_discount": 25,
+        "custom_one_time_price": "",
+        "custom_sub_price": ""
+      }
+    },
+    "benefits": {
+      "type": "benefits-grid",
+      "settings": {
+        "heading": "A powerful herbal blend to support your wellness journey.",
+        "subheading": "Supported by nature, backed by tradition.",
+        "center_image": "shopify://shop_images/SKINNY_SIPS-100_jpg.jpg"
+      }
+    },
+    "ingredients": {
+      "type": "ingredients-grid",
+      "blocks": {
+        "b1": {
+          "type": "ingredient",
+          "settings": {
+            "title": "Green Tea Extract",
+            "desc": "Boosts metabolism and supports fat oxidation naturally"
+          }
+        },
+        "b2": {
+          "type": "ingredient",
+          "settings": {
+            "title": "Cinnamon",
+            "desc": "Helps regulate blood sugar and reduce cravings"
+          }
+        },
+        "b3": {
+          "type": "ingredient",
+          "settings": {
+            "title": "Ginger",
+            "desc": "Supports digestion and helps reduce bloating"
+          }
+        },
+        "b4": {
+          "type": "ingredient",
+          "settings": {
+            "title": "Cardamom (Elaichi)",
+            "desc": "Aids digestion and adds a natural, soothing aroma"
+          }
+        },
+        "b5": {
+          "type": "ingredient",
+          "settings": {
+            "title": "Senna Leaves",
+            "desc": "A traditional herb used to support gentle cleansing"
+          }
+        },
+        "b6": {
+          "type": "ingredient",
+          "settings": {
+            "title": "Lemon Peel",
+            "desc": "Rich in vitamin C, helps detox and refresh the body"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4",
+        "b5",
+        "b6"
+      ],
+      "settings": {
+        "headline": "Pure, Natural Herbal Ingredients"
+      }
     },
     "usage": {
       "type": "usage-steps",
       "settings": {
-        "heading": "Delicious, Herbal Formula",
-        "step1_text": "Step 1",
-        "step2_text": "Step 2",
-        "step3_text": "Step 3",
-        "step4_text": "Step 4"
+        "heading": "Your Daily Slimming Ritual",
+        "step1_text": "Steep one sachet or teaspoon in hot water for 3–5 minutes",
+        "step2_text": "Drink once daily, preferably in the morning on an empty stomach",
+        "step3_text": "Add a squeeze of lemon for enhanced detox benefits",
+        "step4_text": "Use consistently for best results alongside a balanced diet"
+      }
+    },
+    "comparison": {
+      "type": "laushe-comparison-table",
+      "blocks": {
+        "row_1": {
+          "type": "row",
+          "settings": {
+            "feature": "100% Natural Ingredients",
+            "laushe": true,
+            "generic": false
+          }
+        },
+        "row_2": {
+          "type": "row",
+          "settings": {
+            "feature": "Sunnah-Blessed Formulation",
+            "laushe": true,
+            "generic": false
+          }
+        },
+        "row_3": {
+          "type": "row",
+          "settings": {
+            "feature": "No Artificial Additives",
+            "laushe": true,
+            "generic": false
+          }
+        },
+        "row_4": {
+          "type": "row",
+          "settings": {
+            "feature": "Scientifically Verified",
+            "laushe": true,
+            "generic": false
+          }
+        },
+        "row_5": {
+          "type": "row",
+          "settings": {
+            "feature": "Ethically Sourced",
+            "laushe": true,
+            "generic": false
+          }
+        },
+        "row_6": {
+          "type": "row",
+          "settings": {
+            "feature": "Money-Back Guarantee",
+            "laushe": true,
+            "generic": false
+          }
+        },
+        "row_7": {
+          "type": "row",
+          "settings": {
+            "feature": "Fresh & Sealed Packaging",
+            "laushe": true,
+            "generic": false
+          }
+        },
+        "row_8": {
+          "type": "row",
+          "settings": {
+            "feature": "Fair & Transparent Pricing",
+            "laushe": true,
+            "generic": false
+          }
+        }
+      },
+      "block_order": [
+        "row_1",
+        "row_2",
+        "row_3",
+        "row_4",
+        "row_5",
+        "row_6",
+        "row_7",
+        "row_8"
+      ],
+      "settings": {
+        "heading": "Skinny Sips vs. Other Brands",
+        "bg_color": "#faf7f2"
+      }
+    },
+    "faq": {
+      "type": "faq-accordion",
+      "blocks": {
+        "faq_1": {
+          "type": "faq",
+          "settings": {
+            "question": "How does Skinny Sips help with weight loss?",
+            "answer": "Skinny Sips combines metabolism-boosting herbs like green tea and ginger with natural digestive aids to help your body burn fat more efficiently, reduce bloating, and curb appetite for lasting results."
+          }
+        },
+        "faq_2": {
+          "type": "faq",
+          "settings": {
+            "question": "When should I drink Skinny Sips?",
+            "answer": "For best results, drink one cup every morning on an empty stomach. You can also enjoy it before meals to help reduce appetite and support digestion throughout the day."
+          }
+        },
+        "faq_3": {
+          "type": "faq",
+          "settings": {
+            "question": "How long before I see results?",
+            "answer": "Many customers notice reduced bloating and improved digestion within the first 1–2 weeks. For visible weight management results, consistent use for at least 4–8 weeks alongside a balanced diet is recommended."
+          }
+        },
+        "faq_4": {
+          "type": "faq",
+          "settings": {
+            "question": "Is Skinny Sips safe to use daily?",
+            "answer": "Yes, Skinny Sips is made from natural, herbal ingredients and is safe for daily use. If you are pregnant, nursing, or have a medical condition, please consult your healthcare provider before use."
+          }
+        },
+        "faq_5": {
+          "type": "faq",
+          "settings": {
+            "question": "Does it contain caffeine or artificial stimulants?",
+            "answer": "Skinny Sips contains a mild natural caffeine source from green tea extract. It contains no artificial stimulants, chemicals, or preservatives — just pure, natural herbs for a gentle energy lift."
+          }
+        }
+      },
+      "block_order": [
+        "faq_1",
+        "faq_2",
+        "faq_3",
+        "faq_4",
+        "faq_5"
+      ],
+      "settings": {
+        "subtitle": "QUESTIONS & ANSWERS",
+        "title": "Frequently Asked Questions",
+        "bg_color": "#faf7f2"
+      }
+    },
+    "final_cta": {
+      "type": "final-cta",
+      "settings": {
+        "headline": "Start Your Slimming Journey Today",
+        "subtext": "Sip your way to a healthier, lighter you with Laushe's Skinny Sips Kehwa — pure, natural, and Sunnah-blessed.",
+        "cta_text": "SHOP NOW - SAVE 25%",
+        "cta_url": "",
+        "bg_color": "#1b4332"
       }
     }
   },
-  "order": ["product_main", "usage"]
+  "order": [
+    "product_main",
+    "benefits",
+    "ingredients",
+    "usage",
+    "comparison",
+    "faq",
+    "final_cta"
+  ]
 }
