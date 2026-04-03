@@ -61,36 +61,36 @@
         "b1": {
           "type": "ingredient",
           "settings": {
-            "title": "Turmeric (Haldi)",
-            "desc": "Packed with antioxidants and gentle inflammation support"
+            "title": "Whole Wheat Flour",
+            "desc": "Provides steady nourishment and keeps you energized"
           }
         },
         "b2": {
           "type": "ingredient",
           "settings": {
-            "title": "Raw Honey",
-            "desc": "Naturally soothing and promoting overall well-being"
+            "title": "Pure Desi Ghee",
+            "desc": "Rich, wholesome fat to enhance nutrient absorption"
           }
         },
         "b3": {
           "type": "ingredient",
           "settings": {
-            "title": "Black Pepper",
-            "desc": "Boosts absorption for maximum benefit"
+            "title": "Almonds & Pistachios",
+            "desc": "Premium nuts delivering protein and healthy fats"
           }
         },
         "b4": {
           "type": "ingredient",
           "settings": {
-            "title": "Ginger",
-            "desc": "Supports digestion and eases discomfort"
+            "title": "Gond (Edible Gum)",
+            "desc": "Traditional support for strong bones and joints"
           }
         },
         "b5": {
           "type": "ingredient",
           "settings": {
-            "title": "Cinnamon",
-            "desc": "Regulates blood sugar and abdominal fat."
+            "title": "Fennel & Cardamom",
+            "desc": "Gentle spices that aid digestion and add natural flavor"
           }
         }
       },
