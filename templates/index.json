@@ -222,49 +222,49 @@
         "p1": {
           "type": "problem_point",
           "settings": {
-            "text": "Artificial preservatives and fillers"
+            "text": "Over-processed ingredients that reduce nutritional value"
           }
         },
         "p2": {
           "type": "problem_point",
           "settings": {
-            "text": "Synthetic vitamins with low absorption"
+            "text": "Artificial enhancers added for taste or shelf life"
           }
         },
         "p3": {
           "type": "problem_point",
           "settings": {
-            "text": "Hidden sugars and processed ingredients"
+            "text": "Low-quality compounds with poor absorption"
           }
         },
         "p4": {
           "type": "problem_point",
           "settings": {
-            "text": "No transparency in sourcing"
+            "text": "Limited clarity around sourcing and production"
           }
         },
         "s1": {
           "type": "solution_point",
           "settings": {
-            "text": "100% natural, ethically sourced ingredients"
+            "text": "Carefully sourced natural ingredients with uncompromised quality"
           }
         },
         "s2": {
           "type": "solution_point",
           "settings": {
-            "text": "Sunnah-blessed traditional formulations"
+            "text": "Time-tested formulations designed for real, lasting benefits"
           }
         },
         "s3": {
           "type": "solution_point",
           "settings": {
-            "text": "Zero artificial additives or preservatives"
+            "text": "Completely free from artificial additives or unnecessary fillers"
           }
         },
         "s4": {
           "type": "solution_point",
           "settings": {
-            "text": "Full ingredient transparency on every product"
+            "text": "Clear, honest labeling so you always know what you’re choosing"
           }
         }
       },
