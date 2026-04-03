@@ -68,25 +68,32 @@
         "b1": {
           "type": "ingredient",
           "settings": {
-            "title": "Hibiscus Flower",
-            "desc": "Assists in fat reduction and liver support."
+            "title": "Turmeric (Haldi)",
+            "desc": "Packed with antioxidants and gentle inflammation support"
           }
         },
         "b2": {
           "type": "ingredient",
           "settings": {
-            "title": "Dried Ginger",
-            "desc": "Increases metabolism and suppresses appetite."
+            "title": "Raw Honey",
+            "desc": "Naturally soothing and promoting overall well-being"
           }
         },
         "b3": {
           "type": "ingredient",
           "settings": {
-            "title": "Black Seeds",
-            "desc": "The 'Ancient Secret' for immunity and fat loss."
+            "title": "Black Pepper",
+            "desc": "Boosts absorption for maximum benefit"
           }
         },
         "b4": {
+          "type": "ingredient",
+          "settings": {
+            "title": "Ginger",
+            "desc": "Supports digestion and eases discomfort"
+          }
+        },
+        "b5": {
           "type": "ingredient",
           "settings": {
             "title": "Cinnamon",
@@ -98,7 +105,8 @@
         "b1",
         "b2",
         "b3",
-        "b4"
+        "b4",
+        "b5"
       ],
       "settings": {
         "headline": "High-Quality, Natural Ingredients"
