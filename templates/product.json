@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "layout": "theme",
   "sections": {
@@ -22,14 +31,14 @@
           "type": "accordion",
           "settings": {
             "title": "Benefits",
-            "content": "Supports metabolism, boosts naturally, and promotes long-term vitality without synthetic fillers."
+            "content": "Packed with omega-3s to support cardiovascular health\nAbundant fiber to aid smooth digestion\nA plant-based protein with all essential amino acids\nSupports balanced blood sugar naturally\nKeeps you full and helps manage appetite\nRich in calcium, magnesium, and essential mineral"
           }
         },
         "acc4": {
           "type": "accordion",
           "settings": {
             "title": "How to use",
-            "content": "Simply mix one scoop into 8-12 oz of water or your favorite smoothie once daily for maximum results."
+            "content": "Mix 1–2 tablespoons into water, smoothies, or yogurt for a nutrient boost\nSoak for 10–15 minutes until it forms a gel-like texture\nTop salads, oatmeal, or baked treats for added crunch and nutrition\nSubstitute for eggs in your favorite vegan baking recipes"
           }
         }
       },
@@ -48,9 +57,9 @@
     "benefits": {
       "type": "benefits-grid",
       "settings": {
-        "heading": "Transform Your Health",
+        "heading": "A powerhouse superfood rich in nutrients to fuel your daily health.",
         "subheading": "Supported by nature, backed by tradition.",
-        "center_image": "shopify://shop_images/ingredients_detail.jpg"
+        "center_image": "shopify://shop_images/chia_seeds-100_jpg.jpg"
       }
     },
     "ingredients": {
