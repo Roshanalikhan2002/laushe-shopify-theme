@@ -204,13 +204,45 @@
         "faq_1": {
           "type": "faq",
           "settings": {
-            "question": "What makes our products special?",
-            "answer": "Our products are 100% natural, nutrient-dense, and carefully selected for maximum quality, ensuring every serving supports your overall health."
+            "question": "Who can benefit from Panjiri?",
+            "answer": "Panjiri is ideal for anyone looking to boost strength, maintain stamina, or support postpartum recovery. Its nutrient-rich blend also helps those seeking added nourishment during colder months."
+          }
+        },
+        "faq_2": {
+          "type": "faq",
+          "settings": {
+            "question": "How much should I take daily?",
+            "answer": "We recommend 2–3 tablespoons per day. You can consume it as a snack or mix it into warm milk for a more comforting and nourishing drink."
+          }
+        },
+        "faq_3": {
+          "type": "faq",
+          "settings": {
+            "question": "Is Panjiri safe for new mothers?",
+            "answer": "Yes! Panjiri is crafted to support postpartum recovery, providing essential nutrients, iron, and calcium to help restore energy and strength safely."
+          }
+        },
+        "faq_4": {
+          "type": "faq",
+          "settings": {
+            "question": "What makes Laushe Panjiri different from other brands?",
+            "answer": "Every ingredient is carefully selected for purity and potency. We use premium dry fruits, traditional desi ghee, and wholesome herbs without fillers, additives, or artificial ingredients."
+          }
+        },
+        "faq_5": {
+          "type": "faq",
+          "settings": {
+            "question": "Can I consume Panjiri year-round?",
+            "answer": "Absolutely! While it’s especially warming during colder months, Panjiri can be enjoyed anytime you want a nutrient boost, stronger bones, or enhanced vitality."
           }
         }
       },
       "block_order": [
-        "faq_1"
+        "faq_1",
+        "faq_2",
+        "faq_3",
+        "faq_4",
+        "faq_5"
       ],
       "settings": {
         "subtitle": "QUESTIONS & ANSWERS",
