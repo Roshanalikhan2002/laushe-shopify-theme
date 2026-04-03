@@ -108,6 +108,48 @@
       "type": "usage-steps",
       "settings": {}
     },
+    "comparison": {
+      "type": "laushe-comparison-table",
+      "settings": {
+        "heading": "Laushe vs. Other Brands",
+        "bg_color": "#faf7f2"
+      },
+      "blocks": {
+        "row_1": {
+          "type": "row",
+          "settings": { "feature": "100% Natural Ingredients", "laushe": true, "generic": false }
+        },
+        "row_2": {
+          "type": "row",
+          "settings": { "feature": "Sunnah-Blessed Formulation", "laushe": true, "generic": false }
+        },
+        "row_3": {
+          "type": "row",
+          "settings": { "feature": "No Artificial Additives", "laushe": true, "generic": false }
+        },
+        "row_4": {
+          "type": "row",
+          "settings": { "feature": "Scientifically Verified", "laushe": true, "generic": false }
+        },
+        "row_5": {
+          "type": "row",
+          "settings": { "feature": "Ethically Sourced", "laushe": true, "generic": false }
+        },
+        "row_6": {
+          "type": "row",
+          "settings": { "feature": "Money-Back Guarantee", "laushe": true, "generic": false }
+        },
+        "row_7": {
+          "type": "row",
+          "settings": { "feature": "Fresh & Sealed Packaging", "laushe": true, "generic": false }
+        },
+        "row_8": {
+          "type": "row",
+          "settings": { "feature": "Fair & Transparent Pricing", "laushe": true, "generic": false }
+        }
+      },
+      "block_order": ["row_1", "row_2", "row_3", "row_4", "row_5", "row_6", "row_7", "row_8"]
+    },
     "faq": {
       "type": "faq-accordion",
       "blocks": {
@@ -160,6 +202,7 @@
     "benefits",
     "ingredients",
     "usage",
+    "comparison",
     "faq",
     "final_cta"
   ]
