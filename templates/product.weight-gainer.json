@@ -60,7 +60,8 @@
       "type": "benefits-grid",
       "settings": {
         "heading": "A natural, nutrient-packed formula with proteins, good fats, and complex carbs to help you build healthy muscle and gain strength.",
-        "subheading": "Supported by nature, backed by tradition."
+        "subheading": "Supported by nature, backed by tradition.",
+        "center_image": "shopify://shop_images/IMG_6182.png"
       }
     },
     "ingredients": {
