@@ -107,10 +107,9 @@
     "usage": {
       "type": "usage-steps",
       "settings": {
-        "heading": "Delicious, Herbal Formula",
-        "step1_text": "Consume 1–2 tablespoons daily on an empty stomach for best results",
-        "step2_text": "Stir into warm water with lemon to create a natural detox drink",
-        "step3_text": "Add to tea or smoothies as a healthy natural sweetener"
+        "step1_text": "Mix 1–2 tablespoons into water, smoothies, or yogurt for a nutrient boost",
+        "step2_text": "Soak for 10–15 minutes until it forms a gel-like texture",
+        "step3_text": "Top salads, oatmeal, or baked treats for added crunch and nutrition"
       }
     },
     "comparison": {
