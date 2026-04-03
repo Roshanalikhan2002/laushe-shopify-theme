@@ -61,13 +61,21 @@
         "b1": {
           "type": "ingredient",
           "settings": {
-            "title": "100% Pure Milk Fat",
-            "desc": "Extracted from fresh, high-quality milk for maximum purity"
+            "title": "Pure Cow Milk",
+            "desc": "Sourced from grass-fed cows for rich, natural quality"
+          }
+        },
+        "b2": {
+          "type": "ingredient",
+          "settings": {
+            "title": "Traditional Cultures",
+            "desc": "Naturally fermented to develop authentic taste and aroma"
           }
         }
       },
       "block_order": [
-        "b1"
+        "b1",
+        "b2"
       ],
       "settings": {
         "headline": "Simple, Pure Perfection"
