@@ -33,6 +33,8 @@
           "type": "product",
           "settings": {
             "product": "pure-honey450-gm",
+            "title_override": "",
+            "desc_override": "",
             "stars_count": "1250",
             "show_badge": false,
             "badge_text": "9% OFF"
@@ -42,6 +44,8 @@
           "type": "product",
           "settings": {
             "product": "golden-elixir",
+            "title_override": "",
+            "desc_override": "",
             "stars_count": "1250",
             "show_badge": false,
             "badge_text": "9% OFF"
@@ -51,6 +55,8 @@
           "type": "product",
           "settings": {
             "product": "skinny-sips-weight-loss-kehwa",
+            "title_override": "",
+            "desc_override": "",
             "stars_count": "1250",
             "show_badge": false,
             "badge_text": "9% OFF"
@@ -632,8 +638,8 @@
       "type": "laushe-promo-cta",
       "name": "Promo CTA (Laushe)",
       "settings": {
-        "headline": "Ready to Transform Your Health Naturally?",
-        "cta_text": "Shop Laushe Now",
+        "headline": "Be part of over 15,000 families who rely on Laushe for safe, natural, and effective health solutions. Every",
+        "cta_text": "Get Started Today",
         "cta_link": "",
         "bg_color": "#000000",
         "btn_color": "#fffa00"
