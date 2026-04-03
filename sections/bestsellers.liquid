@@ -11,6 +11,9 @@
       "limit": 3,
       "settings": [
         { "id": "product", "type": "product", "label": "Select Product" },
+        { "id": "title_override", "type": "text", "label": "Custom Title (Optional)", "info": "Leave blank to use product title" },
+        { "id": "desc_override", "type": "textarea", "label": "Custom Description (Optional)", "info": "Leave blank to use product description" },
+        { "id": "image_override", "type": "image_picker", "label": "Custom Image (Optional)", "info": "Leave blank to use product featured image" },
         { "id": "stars_count", "type": "text", "label": "Review Count (manual)", "default": "1250" },
         { "id": "show_badge", "type": "checkbox", "label": "Show Sale Badge", "default": false },
         { "id": "badge_text", "type": "text", "label": "Badge Text", "default": "9% OFF" }
@@ -34,15 +37,22 @@
               {% if block.settings.show_badge %}
                 <div class="badge-sale-v2">{{ block.settings.badge_text }}</div>
               {% endif %}
-              <img src="{{ prod.featured_image | img_url: '600x' }}" alt="{{ prod.title }}">
+              
+              {% if block.settings.image_override != blank %}
+                <img src="{{ block.settings.image_override | img_url: '600x' }}" alt="{{ block.settings.title_override | default: prod.title }}">
+              {% else %}
+                <img src="{{ prod.featured_image | img_url: '600x' }}" alt="{{ prod.title }}">
+              {% endif %}
             </div>
             
             <div class="card-content">
               <div class="stars-line">
                 ⭐⭐⭐⭐⭐ <span class="review-count">({{ block.settings.stars_count }})</span>
               </div>
-              <h3 class="card-title">{{ prod.title }}</h3>
-              <p class="card-desc">{{ prod.description | strip_html | truncate: 120 }}</p>
+              <h3 class="card-title">{{ block.settings.title_override | default: prod.title }}</h3>
+              <p class="card-desc">
+                {{ block.settings.desc_override | default: prod.description | strip_html | truncate: 120 }}
+              </p>
               
               <div class="card-price-row">
                 <span class="curr-price">{{ prod.price | money }}</span>
