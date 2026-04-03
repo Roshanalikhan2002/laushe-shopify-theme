@@ -3,7 +3,13 @@
   "name": "Problem vs Solution",
   "settings": [
     { "id": "bg_color", "type": "color", "label": "Background Color", "default": "#002b1b" },
-    { "id": "heading_color", "type": "color", "label": "Heading Color", "default": "#ffffff" }
+    { "id": "heading_color", "type": "color", "label": "Heading Color", "default": "#ffffff" },
+    { "id": "prob_label", "type": "text", "label": "Problem Label", "default": "The Reality Behind Modern Wellness" },
+    { "id": "prob_heading", "type": "text", "label": "Problem Heading", "default": "Most Health Products Are Full of Hidden Chemicals" },
+    { "id": "prob_desc", "type": "textarea", "label": "Problem Description", "default": "The market is flooded with supplements and health products that promise results but deliver artificial fillers, synthetic additives, and questionable ingredients. Your body deserves better than processed chemicals disguised as wellness." },
+    { "id": "sol_label", "type": "text", "label": "Solution Label", "default": "THE LAUSHE SOLUTION" },
+    { "id": "sol_heading", "type": "text", "label": "Solution Heading", "default": "100% Pure, 100% Natural, 100% Effective" },
+    { "id": "sol_desc", "type": "textarea", "label": "Solution Description", "default": "Every Laushe product is crafted from ethically sourced, natural ingredients with complete transparency. Our Sunnah-blessed formulations combine ancient wisdom with modern quality standards." }
   ],
   "blocks": [
     {
@@ -31,9 +37,9 @@
       
       <!-- LEFT: PROBLEM -->
       <div class="prob-side">
-        <span class="luxe-label">The Reality Behind Modern Wellness</span>
-        <h2 class="luxe-heading">Most Health Products Are Full of Hidden Chemicals</h2>
-        <p class="luxe-desc">The market is flooded with supplements and health products that promise results but deliver artificial fillers, synthetic additives, and questionable ingredients. Your body deserves better than processed chemicals disguised as wellness.</p>
+        <span class="luxe-label">{{ section.settings.prob_label }}</span>
+        <h2 class="luxe-heading">{{ section.settings.prob_heading }}</h2>
+        <p class="luxe-desc">{{ section.settings.prob_desc }}</p>
         
         <div class="luxe-points">
           {% for block in section.blocks %}
@@ -49,9 +55,9 @@
 
       <!-- RIGHT: SOLUTION CARD -->
       <div class="sol-card">
-        <span class="luxe-label" style="color: #D4AF37;">THE LAUSHE SOLUTION</span>
-        <h2 class="luxe-heading-sm">100% Pure, 100% Natural, 100% Effective</h2>
-        <p class="luxe-desc" style="color: rgba(255,255,255,0.7);">Every Laushe product is crafted from ethically sourced, natural ingredients with complete transparency. Our Sunnah-blessed formulations combine ancient wisdom with modern quality standards.</p>
+        <span class="luxe-label" style="color: #D4AF37;">{{ section.settings.sol_label }}</span>
+        <h2 class="luxe-heading-sm">{{ section.settings.sol_heading }}</h2>
+        <p class="luxe-desc" style="color: rgba(255,255,255,0.7);">{{ section.settings.sol_desc }}</p>
         
         <div class="luxe-points">
           {% for block in section.blocks %}
