@@ -1,0 +1,24 @@
+{
+  "layout": "theme",
+  "sections": {
+    "product_main": {
+      "type": "product-ag1-template",
+      "blocks": {
+        "acc1": { "type": "accordion", "settings": { "title": "What is it?", "content": "Pure, unprocessed honey from trusted apiaries, a Sunnah superfood for immunity." } }
+      },
+      "block_order": ["acc1"],
+      "settings": { "promo_banner": "100% Pure Honey", "stars_count": "15,000+ verified 5-star reviews", "sub_discount": 25 }
+    },
+    "usage": {
+      "type": "usage-steps",
+      "settings": {
+        "heading": "Daily Healthy Ritual",
+        "step1_text": "Take a tablespoon daily on an empty stomach",
+        "step2_text": "Mix into warm water or tea",
+        "step3_text": "Use as a natural sweetener in smoothies",
+        "step4_text": "Use daily for optimal benefits"
+      }
+    }
+  },
+  "order": ["product_main", "usage"]
+}

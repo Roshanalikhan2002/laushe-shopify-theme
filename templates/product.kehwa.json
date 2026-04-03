@@ -1,0 +1,24 @@
+{
+  "layout": "theme",
+  "sections": {
+    "product_main": {
+      "type": "product-ag1-template",
+      "blocks": {
+        "acc1": { "type": "accordion", "settings": { "title": "What is it?", "content": "A natural herbal tea that supports metabolism and healthy weight loss." } }
+      },
+      "block_order": ["acc1"],
+      "settings": { "promo_banner": "Metabolism Boost", "stars_count": "15,000+ verified 5-star reviews", "sub_discount": 25 }
+    },
+    "usage": {
+      "type": "usage-steps",
+      "settings": {
+        "heading": "How to Brew",
+        "step1_text": "Boil fresh water",
+        "step2_text": "Add 1 teaspoon of Skinny Sips blend",
+        "step3_text": "Steep for 3-5 minutes and enjoy",
+        "step4_text": "Drink twice daily for best results"
+      }
+    }
+  },
+  "order": ["product_main", "usage"]
+}

@@ -1,0 +1,241 @@
+{
+  "layout": "theme",
+  "sections": {
+    "product_main": {
+      "type": "product-ag1-template",
+      "blocks": {
+        "acc1": {
+          "type": "accordion",
+          "settings": {
+            "title": "What is it?",
+            "content": "Laushe's signature wellness formula is designed to support deep, restorative health through ancient tradtion and modern science."
+          }
+        },
+        "acc2": {
+          "type": "accordion",
+          "settings": {
+            "title": "Who's it for",
+            "content": "Perfect for anyone looking to optimize their daily health routine with pure, raw, and bio-available supplements."
+          }
+        },
+        "acc3": {
+          "type": "accordion",
+          "settings": {
+            "title": "Benefits",
+            "content": "efits You Can Feel \nHelps ease occasional joint discomfort and promotes mobility\nSupports smooth digestion and gut comfort\nRich in antioxidants for overall body support\nEnhances daily vitality without stimulants\nSoothes and balances internal inflammation\nSunnah-blessed blend crafted with traditional herbs"
+          }
+        },
+        "acc4": {
+          "type": "accordion",
+          "settings": {
+            "title": "How to use",
+            "content": "Consume one tablespoon each day, ideally in the morning\nStir into warm water or milk to make a soothing golden drink\nTake directly if you prefer a more concentrated serving\nUse daily for optimal benefits and consistent results"
+          }
+        }
+      },
+      "block_order": [
+        "acc1",
+        "acc2",
+        "acc3",
+        "acc4"
+      ],
+      "settings": {
+        "promo_banner": "Includes a FREE Frother**",
+        "stars_count": "50,000+ verified 5-star reviews for Laushe products",
+        "sub_discount": 25,
+        "custom_one_time_price": "",
+        "custom_sub_price": ""
+      }
+    },
+    "benefits": {
+      "type": "benefits-grid",
+      "settings": {
+        "heading": "A powerhouse superfood rich in nutrients to fuel your daily health.",
+        "subheading": "Supported by nature, backed by tradition.",
+        "center_image": "shopify://shop_images/IMG_8798.png"
+      }
+    },
+    "ingredients": {
+      "type": "ingredients-grid",
+      "blocks": {
+        "b1": {
+          "type": "ingredient",
+          "settings": {
+            "title": "Turmeric (Haldi)",
+            "desc": "Packed with antioxidants and gentle inflammation support"
+          }
+        },
+        "b2": {
+          "type": "ingredient",
+          "settings": {
+            "title": "Raw Honey",
+            "desc": "Naturally soothing and promoting overall well-being"
+          }
+        },
+        "b3": {
+          "type": "ingredient",
+          "settings": {
+            "title": "Black Pepper",
+            "desc": "Boosts absorption for maximum benefit"
+          }
+        },
+        "b4": {
+          "type": "ingredient",
+          "settings": {
+            "title": "Ginger",
+            "desc": "Supports digestion and eases discomfort"
+          }
+        },
+        "b5": {
+          "type": "ingredient",
+          "settings": {
+            "title": "Cinnamon",
+            "desc": "Regulates blood sugar and abdominal fat."
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4",
+        "b5"
+      ],
+      "settings": {
+        "headline": "High-Quality, Natural Ingredients"
+      }
+    },
+    "usage": {
+      "type": "usage-steps",
+      "settings": {
+        "heading": "Delicious, Herbal Formula",
+        "step1_text": "Consume one tablespoon each day, ideally in the morning",
+        "step2_text": "Stir into warm water or milk to make a soothing golden drink",
+        "step3_text": "Take directly if you prefer a more concentrated serving",
+        "step4_text": "Use daily for optimal benefits and consistent results"
+      }
+    },
+    "comparison": {
+      "type": "laushe-comparison-table",
+      "blocks": {
+        "row_1": {
+          "type": "row",
+          "settings": {
+            "feature": "100% Natural Ingredients",
+            "laushe": true,
+            "generic": false
+          }
+        },
+        "row_2": {
+          "type": "row",
+          "settings": {
+            "feature": "Sunnah-Blessed Formulation",
+            "laushe": true,
+            "generic": false
+          }
+        },
+        "row_3": {
+          "type": "row",
+          "settings": {
+            "feature": "No Artificial Additives",
+            "laushe": true,
+            "generic": false
+          }
+        },
+        "row_4": {
+          "type": "row",
+          "settings": {
+            "feature": "Scientifically Verified",
+            "laushe": true,
+            "generic": false
+          }
+        },
+        "row_5": {
+          "type": "row",
+          "settings": {
+            "feature": "Ethically Sourced",
+            "laushe": true,
+            "generic": false
+          }
+        },
+        "row_6": {
+          "type": "row",
+          "settings": {
+            "feature": "Money-Back Guarantee",
+            "laushe": true,
+            "generic": false
+          }
+        },
+        "row_7": {
+          "type": "row",
+          "settings": {
+            "feature": "Fresh & Sealed Packaging",
+            "laushe": true,
+            "generic": false
+          }
+        },
+        "row_8": {
+          "type": "row",
+          "settings": {
+            "feature": "Fair & Transparent Pricing",
+            "laushe": true,
+            "generic": false
+          }
+        }
+      },
+      "block_order": [
+        "row_1",
+        "row_2",
+        "row_3",
+        "row_4",
+        "row_5",
+        "row_6",
+        "row_7",
+        "row_8"
+      ],
+      "settings": {
+        "heading": "Laushe vs. Other Brands",
+        "bg_color": "#faf7f2"
+      }
+    },
+    "faq": {
+      "type": "faq-accordion",
+      "blocks": {
+        "faq_1": {
+          "type": "faq",
+          "settings": {
+            "question": "What makes this product special?",
+            "answer": "Our products are 100% natural, nutrient-dense, and carefully selected for maximum quality, ensuring every serving supports your overall health."
+          }
+        }
+      },
+      "block_order": [
+        "faq_1"
+      ],
+      "settings": {
+        "subtitle": "QUESTIONS & ANSWERS",
+        "title": "Frequently Asked Questions",
+        "bg_color": "#faf7f2"
+      }
+    },
+    "final_cta": {
+      "type": "final-cta",
+      "settings": {
+        "headline": "Unlock Daily Vitality",
+        "subtext": "Fuel your body with nutrient-dense supplements for natural energy, improved digestion, and overall health.",
+        "cta_text": "SHOP NOW - SAVE 25%",
+        "cta_url": "",
+        "bg_color": "#1b4332"
+      }
+    }
+  },
+  "order": [
+    "product_main",
+    "benefits",
+    "ingredients",
+    "usage",
+    "comparison",
+    "faq",
+    "final_cta"
+  ]
+}

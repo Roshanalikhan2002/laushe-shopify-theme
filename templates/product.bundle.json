@@ -1,0 +1,24 @@
+{
+  "layout": "theme",
+  "sections": {
+    "product_main": {
+      "type": "product-ag1-template",
+      "blocks": {
+        "acc1": { "type": "accordion", "settings": { "title": "What is it?", "content": "Our ultimate wellness collection, curated for complete body and mind support." } }
+      },
+      "block_order": ["acc1"],
+      "settings": { "promo_banner": "Bundle & Save 25%", "stars_count": "15,000+ verified 5-star reviews", "sub_discount": 25 }
+    },
+    "usage": {
+      "type": "usage-steps",
+      "settings": {
+        "heading": "How to Use The Bundle",
+        "step1_text": "Follow daily instructions for each individual product",
+        "step2_text": "Combine as part of your holistic health routine",
+        "step3_text": "Track your progress weekly",
+        "step4_text": "Join our community for tips and guides"
+      }
+    }
+  },
+  "order": ["product_main", "usage"]
+}

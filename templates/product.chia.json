@@ -1,0 +1,112 @@
+{
+  "layout": "theme",
+  "sections": {
+    "product_main": {
+      "type": "product-ag1-template",
+      "blocks": {
+        "acc1": {
+          "type": "accordion",
+          "settings": {
+            "title": "What is it?",
+            "content": "Laushe's Chia Seeds are a premium superfood, packed with essential nutrients to support your daily wellness journey."
+          }
+        },
+        "acc2": {
+          "type": "accordion",
+          "settings": {
+            "title": "Who's it for",
+            "content": "Perfect for health-conscious individuals, athletes, and anyone looking to boost their fiber and omega-3 intake naturally."
+          }
+        },
+        "acc3": {
+          "type": "accordion",
+          "settings": {
+            "title": "Benefits",
+            "content": "Rich in Omega-3 fatty acids for heart health\nHigh fiber content for healthy digestion\nPacked with plant-based protein\nSupports long-lasting energy levels\nHelps maintain healthy weight through satiety\n100% Organic and minimally processed"
+          }
+        },
+        "acc4": {
+          "type": "accordion",
+          "settings": {
+            "title": "How to use",
+            "content": "Mix 1–2 tablespoons into water, smoothies, or yogurt\nSoak for 10–15 minutes until it forms a gel-like texture\nTop salads, oatmeal, or baked treats for added crunch\nUse daily for optimal benefits and consistent results"
+          }
+        }
+      },
+      "block_order": [
+        "acc1",
+        "acc2",
+        "acc3",
+        "acc4"
+      ],
+      "settings": {
+        "promo_banner": "High-Fiber Superfood",
+        "stars_count": "15,000+ verified 5-star reviews",
+        "sub_discount": 25
+      }
+    },
+    "benefits": {
+      "type": "benefits-grid",
+      "settings": {
+        "heading": "A powerhouse superfood rich in nutrients to fuel your daily health.",
+        "subheading": "Supported by nature, backed by tradition.",
+        "center_image": "shopify://shop_images/chia_seeds-100_jpg.jpg"
+      }
+    },
+    "ingredients": {
+      "type": "ingredients-grid",
+      "blocks": {
+        "b1": {
+          "type": "ingredient",
+          "settings": {
+            "title": "Organic Chia Seeds",
+            "desc": "100% pure, raw, and organic seeds for maximum nutrition"
+          }
+        }
+      },
+      "block_order": [
+        "b1"
+      ],
+      "settings": {
+        "headline": "Pure & Simple Ingredients"
+      }
+    },
+    "usage": {
+      "type": "usage-steps",
+      "settings": {
+        "heading": "Daily Healthy Ritual",
+        "step1_text": "Mix 1–2 tablespoons into water, smoothies, or yogurt for a nutrient boost",
+        "step2_text": "Soak for 10–15 minutes until it forms a gel-like texture",
+        "step3_text": "Top salads, oatmeal, or baked treats for added crunch and nutrition",
+        "step4_text": "Use daily for optimal benefits and consistent results"
+      }
+    },
+    "faq": {
+      "type": "faq-accordion",
+      "blocks": {
+        "faq_1": {
+          "type": "faq",
+          "settings": {
+            "question": "What makes Laushe Chia Seeds special?",
+            "answer": "Our chia seeds are 100% organic, nutrient-dense, and carefully selected for maximum quality."
+          }
+        }
+      },
+      "block_order": [
+        "faq_1"
+      ],
+      "settings": {
+        "subtitle": "QUESTIONS & ANSWERS",
+        "title": "Frequently Asked Questions",
+        "bg_color": "#faf7f2"
+      }
+    }
+  },
+  "order": [
+    "product_main",
+    "benefits",
+    "ingredients",
+    "usage",
+    "faq"
+  ]
+}

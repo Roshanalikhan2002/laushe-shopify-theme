@@ -1,0 +1,24 @@
+{
+  "layout": "theme",
+  "sections": {
+    "product_main": {
+      "type": "product-ag1-template",
+      "blocks": {
+        "acc1": { "type": "accordion", "settings": { "title": "What is it?", "content": "Roasted mix of nuts, seeds, and semolina, a traditional postpartum and energy-boosting snack." } }
+      },
+      "block_order": ["acc1"],
+      "settings": { "promo_banner": "Traditional Superfood", "stars_count": "15,000+ verified 5-star reviews", "sub_discount": 25 }
+    },
+    "usage": {
+      "type": "usage-steps",
+      "settings": {
+        "heading": "Daily Healthy Ritual",
+        "step1_text": "Consume 2-3 tablespoons daily with warm milk",
+        "step2_text": "Perfect as a morning breakfast boost",
+        "step3_text": "Enjoy as a healthy evening snack",
+        "step4_text": "Use daily for consistent energy"
+      }
+    }
+  },
+  "order": ["product_main", "usage"]
+}
