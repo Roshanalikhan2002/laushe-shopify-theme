@@ -183,24 +183,24 @@
           "type": "benefit",
           "settings": {
             "icon_name": "flash",
-            "title": "Energy & Body",
-            "desc": "Sustain energy levels throughout the day without crashes."
+            "title": "Pure & Organic",
+            "desc": "Every ingredient is responsibly sourced, minimally processed, and completely free from chemicals or artificial interference."
           }
         },
         "immunity": {
           "type": "benefit",
           "settings": {
             "icon_name": "shield",
-            "title": "Immunity",
-            "desc": "Protect your system with nature's strongest defenses."
+            "title": "Heart Wellness",
+            "desc": "Carefully selected natural ingredients that help support a healthy heart and maintain balanced cholesterol levels, gently, and effectively."
           }
         },
         "brain": {
           "type": "benefit",
           "settings": {
             "icon_name": "bulb",
-            "title": "Brain Health",
-            "desc": "Support cognitive focus and long-term mental clarity."
+            "title": "Sunnah-Inspired Healing",
+            "desc": "Rooted in prophetic traditions and trusted remedies, each formulation reflects centuries of natural healing wisdom."
           }
         }
       },
