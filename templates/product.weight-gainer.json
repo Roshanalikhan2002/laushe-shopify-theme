@@ -69,43 +69,29 @@
         "b1": {
           "type": "ingredient",
           "settings": {
-            "title": "Organic Oats",
-            "desc": "A rich source of complex carbs for sustained energy and healthy calorie intake"
+            "title": "Almond & Cashew Powder",
+            "desc": "Nutrient-rich fats and protein for lean mass"
           }
         },
         "b2": {
           "type": "ingredient",
           "settings": {
-            "title": "Dates (Khajoor)",
-            "desc": "Naturally sweet, energy-dense Sunnah food rich in fiber and minerals"
+            "title": "Whey Protein (Natural)",
+            "desc": "Pure protein to build and repair muscles"
           }
         },
         "b3": {
           "type": "ingredient",
           "settings": {
-            "title": "Desi Ghee",
-            "desc": "Provides healthy fats that support hormone balance and energy storage"
+            "title": "Banana Powder",
+            "desc": "Natural sweetness with potassium for performance"
           }
         },
         "b4": {
           "type": "ingredient",
           "settings": {
-            "title": "Panjiri Mix",
-            "desc": "A traditional blend of nuts and seeds to nourish and strengthen the body"
-          }
-        },
-        "b5": {
-          "type": "ingredient",
-          "settings": {
-            "title": "Almonds & Walnuts",
-            "desc": "Loaded with healthy fats and protein to support muscle recovery and growth"
-          }
-        },
-        "b6": {
-          "type": "ingredient",
-          "settings": {
-            "title": "Natural Herbs & Spices",
-            "desc": "Sunnah-blessed botanicals that enhance absorption and overall well-being"
+            "title": "Flaxseed Meal",
+            "desc": "Plant-based omega-3s and fiber for digestion"
           }
         }
       },
@@ -113,9 +99,7 @@
         "b1",
         "b2",
         "b3",
-        "b4",
-        "b5",
-        "b6"
+        "b4"
       ],
       "settings": {
         "headline": "100% Organic, Natural Ingredients"
@@ -125,10 +109,10 @@
       "type": "usage-steps",
       "settings": {
         "heading": "Your Daily Mass-Building Ritual",
-        "step1_text": "Mix 2 tablespoons with warm milk or water and stir well",
-        "step2_text": "Consume once or twice daily, ideally after your workout",
-        "step3_text": "Pair with a nutritious diet and regular exercise for optimal gains",
-        "step4_text": "Use consistently for 8–12 weeks for best and lasting results"
+        "step1_text": "Combine 2 scoops with 300ml of milk or water and stir well",
+        "step2_text": "Consume two times a day — once in the morning and once after exercise",
+        "step3_text": "Add to smoothies or shakes for extra calories and protein",
+        "step4_text": "Use regularly alongside a balanced diet for optimal results"
       }
     },
     "comparison": {
@@ -161,7 +145,7 @@
         "row_4": {
           "type": "row",
           "settings": {
-            "feature": "No Steroids or Hormones",
+            "feature": "Scientifically Verified",
             "laushe": true,
             "generic": false
           }
@@ -220,36 +204,36 @@
         "faq_1": {
           "type": "faq",
           "settings": {
-            "question": "Is this weight gainer completely natural and organic?",
-            "answer": "Yes, Laushe's Weight Gainer is made from 100% organic, natural ingredients with no artificial additives, steroids, or synthetic hormones — just clean, wholesome nutrition to support healthy weight gain."
+            "question": "Who can use Weight Gainer 100% Organic?",
+            "answer": "This formula is ideal for anyone looking to increase healthy body mass, including active adults, athletes, or those struggling to gain weight naturally. It's suitable for most adults when combined with a balanced diet."
           }
         },
         "faq_2": {
           "type": "faq",
           "settings": {
-            "question": "How soon will I start seeing results?",
-            "answer": "Results vary, but most users notice improved energy and appetite within the first 2 weeks. With consistent use and a balanced diet, visible weight and muscle gain can be expected within 6–12 weeks."
+            "question": "How quickly will I see results?",
+            "answer": "Results vary depending on diet and exercise routine. With consistent use and proper nutrition, most users notice gradual, healthy weight gain within 4–6 weeks."
           }
         },
         "faq_3": {
           "type": "faq",
           "settings": {
-            "question": "Can I use it without going to the gym?",
-            "answer": "Yes. While pairing it with exercise will maximize results, Laushe's Weight Gainer also supports healthy weight gain for those who want to naturally increase body mass through improved nutrition."
+            "question": "Can it replace meals?",
+            "answer": "Weight Gainer is meant to complement your diet, not replace meals. It works best when taken alongside regular meals to provide additional nutrients, protein, and calories for muscle growth."
           }
         },
         "faq_4": {
           "type": "faq",
           "settings": {
-            "question": "How should I prepare and take it?",
-            "answer": "Mix 2 tablespoons into warm milk or water, stir well, and consume once or twice daily — ideally after a workout or as a nutritious meal supplement. Take consistently for the best results."
+            "question": "Is it safe for sensitive stomachs?",
+            "answer": "Yes, this formula is made from gentle, organic ingredients and is easy to digest. If you have specific dietary concerns or allergies, consult a healthcare professional before use."
           }
         },
         "faq_5": {
           "type": "faq",
           "settings": {
-            "question": "Is it safe for teenagers and adults?",
-            "answer": "Laushe's Weight Gainer is made from natural, food-grade ingredients suitable for teenagers and adults. If you have any underlying health conditions, we recommend consulting your doctor before use."
+            "question": "Can it be mixed with other drinks or foods?",
+            "answer": "Absolutely! You can blend it with milk, water, smoothies, or even add it to oatmeal or shakes to boost calories and protein intake without affecting taste."
           }
         }
       },
