@@ -321,15 +321,15 @@
         "f1": {
           "type": "faq",
           "settings": {
-            "question": "Why Choose Laushe?",
-            "answer": "Laushe products are 100% natural, ethically sourced, and crafted with Sunnah-blessed ingredients. We never use artificial additives, preservatives, or chemicals. Every product undergoes rigorous quality testing to ensure purity and potency."
+            "question": "What Makes Laushe Different?",
+            "answer": "Every Laushe product is carefully crafted with natural, ethically sourced ingredients. Sunnah-blessed formulations combine prophetic medicine with modern nutritional science to deliver real benefits. We avoid artificial additives and preservatives, ensuring every product you choose is pure, safe, and effective."
           }
         },
         "f2": {
           "type": "faq",
           "settings": {
-            "question": "Are your products safe for everyone?",
-            "answer": "Yes, our products are formulated with natural ingredients safe for adults of all ages. However, if you have specific allergies or medical conditions, we recommend consulting your healthcare provider before use. Pregnant and nursing mothers should consult their doctor."
+            "question": "Who Can Use Laushe Products?",
+            "answer": "Our products are made from natural ingredients suitable for adults of all ages. If you have specific allergies or ongoing medical conditions, it’s best to consult your healthcare provider before use. Pregnant and nursing mothers should also seek medical advice before using any product."
           }
         },
         "f3": {
@@ -342,22 +342,22 @@
         "f4": {
           "type": "faq",
           "settings": {
-            "question": "How long until I see results?",
-            "answer": "Results vary by product and individual. For Skinny Sips, most customers report noticeable changes within 2-4 weeks of consistent use. For hair oil and honey, benefits are often felt within the first week. We recommend a minimum 3-month commitment for optimal results."
+            "question": "Why Our Ingredients Stand Out",
+            "answer": "We select every ingredient with care from trusted suppliers who share our commitment to quality. By blending traditional Sunnah-blessed remedies with modern nutritional science, we create formulations that are both authentic and effective, delivering measurable health benefits with every use."
           }
         },
         "f5": {
           "type": "faq",
           "settings": {
-            "question": "Do you offer free shipping?",
-            "answer": "Yes! We offer free shipping on all orders above Rs. 3,000 across Pakistan. Standard delivery takes 3-5 business days. You can track your order in real-time through our website."
+            "question": "When Will I Notice Results?",
+            "answer": "Results depend on the product and individual consistency. For Skinny Sips, many customers notice changes in 2-4 weeks, while hair oils and honey often show benefits within the first week. For best outcomes, we recommend using products regularly for at least three months."
           }
         },
         "f6": {
           "type": "faq",
           "settings": {
-            "question": "What is your return policy?",
-            "answer": "We offer a 30-day money-back guarantee on all products. If you're not completely satisfied, simply contact our support team for a hassle-free return. Your satisfaction is our priority."
+            "question": "Do You Offer Free Shipping?",
+            "answer": "Yes! Orders above Rs. 3,000 qualify for free shipping across Pakistan. Delivery typically takes 3–5 business days, and you can track your order in real time directly from our website for peace of mind."
           }
         }
       },
@@ -384,8 +384,8 @@
             "category": "taste",
             "rating": 5,
             "headline": "Best weight loss kehwa!",
-            "quote": "I noticed results within the first month. No more bloating. The taste is genuinely delicious — like a warm hug in a cup.",
-            "author": "Ahmed K.",
+            "quote": "The Skinny Sips Kehwa has become a key part of my daily routine. I feel lighter and more active throughout the day,",
+            "author": "Ayesha Khan",
             "product_name": "Skinny Sips Kehwa"
           }
         },
