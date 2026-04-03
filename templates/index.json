@@ -34,7 +34,8 @@
           "settings": {
             "product": "pure-honey450-gm",
             "title_override": "",
-            "desc_override": "",
+            "desc_override": "Unprocessed, natural honey from trusted apiaries, a Sunnah superfood for immunity, vitality, and overall wellness.",
+            "image_override": "shopify://shop_images/honey-100_jpg.jpg",
             "stars_count": "1250",
             "show_badge": false,
             "badge_text": "9% OFF"
@@ -310,16 +311,6 @@
     },
     "catalog_grid": {
       "type": "catalog-grid",
-      "settings": {
-        "heading": "Shop Our Entire Wellness Collection",
-        "subheading": "Pure, Raw, and Bio-available supplements for every stage of your health journey.",
-        "collection": "",
-        "tab1_label": "All Products",
-        "tab2_label": "Healthcare",
-        "tab2_tag": "healthcare",
-        "tab3_label": "Organic",
-        "tab3_tag": "organic"
-      },
       "blocks": {
         "chia_override": {
           "type": "product_override",
@@ -331,7 +322,19 @@
           }
         }
       },
-      "block_order": ["chia_override"]
+      "block_order": [
+        "chia_override"
+      ],
+      "settings": {
+        "heading": "Shop Our Entire Wellness Collection",
+        "subheading": "Pure, Raw, and Bio-available supplements for every stage of your health journey.",
+        "collection": "",
+        "tab1_label": "All Products",
+        "tab2_label": "Healthcare",
+        "tab2_tag": "healthcare",
+        "tab3_label": "Organic",
+        "tab3_tag": "organic"
+      }
     },
     "faq_accordion": {
       "type": "faq-accordion",
