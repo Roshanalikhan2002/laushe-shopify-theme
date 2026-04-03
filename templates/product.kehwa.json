@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "layout": "theme",
   "sections": {
@@ -22,14 +31,14 @@
           "type": "accordion",
           "settings": {
             "title": "Benefits",
-            "content": "Supports natural fat burning and healthy weight management\nBoosts metabolism to help your body burn more efficiently\nReduces bloating and supports a flatter, more comfortable stomach\nCurbs appetite and helps you feel fuller for longer\nProvides a gentle, natural energy lift without caffeine crashes\nSunnah-blessed herbal blend with no artificial additives"
+            "content": "Targets stubborn fat and helps burn calories faster\nBoosts metabolism to turn food into energy efficiently\nCleanses your body naturally by flushing out toxins\nSupports a flatter stomach and smoother digestion\nReduces cravings and helps you manage portions better\nWorks seamlessly as part of your daily health routine"
           }
         },
         "acc4": {
           "type": "accordion",
           "settings": {
             "title": "How to use",
-            "content": "Steep one sachet or teaspoon in hot water for 3–5 minutes\nDrink once daily, preferably in the morning on an empty stomach\nAdd a squeeze of lemon for enhanced detox benefits\nUse consistently for best results alongside a balanced diet"
+            "content": "Each box includes 30 sachets for a full month of use\nEnjoy 1 sachet after each main meal, up to 3 times daily\nFollow daily for 3 months to see lasting, noticeable results"
           }
         }
       },
