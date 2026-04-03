@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "layout": "theme",
   "sections": {
@@ -22,14 +31,14 @@
           "type": "accordion",
           "settings": {
             "title": "Benefits",
-            "content": "Supports healthy, natural weight and muscle gain\nProvides sustained energy for workouts and daily activity\nRich in natural proteins, healthy fats, and complex carbs\nAids muscle recovery and reduces fatigue after exercise\nFree from artificial hormones, steroids, or chemicals\nSunnah-blessed blend crafted with 100% organic ingredients"
+            "content": "Made from wholesome, 100% organic ingredients\nSupports gradual, healthy weight gain without unhealthy fats\nPacked with natural proteins to fuel muscle growth\nComplex carbs provide long-lasting energy throughout the day\nFree from artificial additives, fillers, and processed sugars\nGentle on the stomach and easy to incorporate into meals"
           }
         },
         "acc4": {
           "type": "accordion",
           "settings": {
             "title": "How to use",
-            "content": "Mix 2 tablespoons with warm milk or water and stir well\nConsume once or twice daily, ideally after your workout\nFor best results, take consistently for at least 8–12 weeks\nPair with a nutritious diet and regular exercise for optimal gains"
+            "content": "Combine 2 scoops with 300ml of milk or water and stir well\nConsume two times a day — once in the morning and once after exercise\nAdd to smoothies or shakes for extra calories and protein\nUse regularly alongside a balanced diet for optimal results"
           }
         }
       },
@@ -51,8 +60,7 @@
       "type": "benefits-grid",
       "settings": {
         "heading": "A clean, organic formula to fuel healthy weight gain.",
-        "subheading": "Supported by nature, backed by tradition.",
-        "center_image": "shopify://shop_images/weight_gainer.jpg"
+        "subheading": "Supported by nature, backed by tradition."
       }
     },
     "ingredients": {
