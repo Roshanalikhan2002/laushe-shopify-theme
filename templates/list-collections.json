@@ -1,7 +1,17 @@
 {
   "sections": {
     "main": {
-      "type": "main-list-collections"
+      "type": "catalog-grid",
+      "settings": {
+        "heading": "Shop Our Entire Wellness Collection",
+        "subheading": "Pure, Raw, and Bio-available supplements for every stage of your health journey.",
+        "collection": "all",
+        "tab1_label": "All Products",
+        "tab2_label": "Healthcare",
+        "tab2_tag": "healthcare",
+        "tab3_label": "Organic",
+        "tab3_tag": "organic"
+      }
     }
   },
   "order": [
