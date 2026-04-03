@@ -31,7 +31,7 @@
           "type": "accordion",
           "settings": {
             "title": "Benefits",
-            "content": "Packed with omega-3s to support cardiovascular health\nAbundant fiber to aid smooth digestion\nA plant-based protein with all essential amino acids\nSupports balanced blood sugar naturally\nKeeps you full and helps manage appetite\nRich in calcium, magnesium, and essential mineral"
+            "content": "Packed with omega-3s to support cardiovascular health\nAbundant fiber to aid smooth digestion\nA plant-based protein with all essential amino acids\nSupports balanced blood sugar naturally\nKeeps you full and helps manage appetite\nRich in calcium, magnesium, and essential minerals"
           }
         },
         "acc4": {
@@ -106,49 +106,95 @@
     },
     "usage": {
       "type": "usage-steps",
-      "settings": {}
+      "settings": {
+        "heading": "Delicious, Herbal Formula",
+        "step1_text": "Consume 1–2 tablespoons daily on an empty stomach for best results",
+        "step2_text": "Stir into warm water with lemon to create a natural detox drink",
+        "step3_text": "Add to tea or smoothies as a healthy natural sweetener"
+      }
     },
     "comparison": {
       "type": "laushe-comparison-table",
-      "settings": {
-        "heading": "Laushe vs. Other Brands",
-        "bg_color": "#faf7f2"
-      },
       "blocks": {
         "row_1": {
           "type": "row",
-          "settings": { "feature": "100% Natural Ingredients", "laushe": true, "generic": false }
+          "settings": {
+            "feature": "100% Natural Ingredients",
+            "laushe": true,
+            "generic": false
+          }
         },
         "row_2": {
           "type": "row",
-          "settings": { "feature": "Sunnah-Blessed Formulation", "laushe": true, "generic": false }
+          "settings": {
+            "feature": "Sunnah-Blessed Formulation",
+            "laushe": true,
+            "generic": false
+          }
         },
         "row_3": {
           "type": "row",
-          "settings": { "feature": "No Artificial Additives", "laushe": true, "generic": false }
+          "settings": {
+            "feature": "No Artificial Additives",
+            "laushe": true,
+            "generic": false
+          }
         },
         "row_4": {
           "type": "row",
-          "settings": { "feature": "Scientifically Verified", "laushe": true, "generic": false }
+          "settings": {
+            "feature": "Scientifically Verified",
+            "laushe": true,
+            "generic": false
+          }
         },
         "row_5": {
           "type": "row",
-          "settings": { "feature": "Ethically Sourced", "laushe": true, "generic": false }
+          "settings": {
+            "feature": "Ethically Sourced",
+            "laushe": true,
+            "generic": false
+          }
         },
         "row_6": {
           "type": "row",
-          "settings": { "feature": "Money-Back Guarantee", "laushe": true, "generic": false }
+          "settings": {
+            "feature": "Money-Back Guarantee",
+            "laushe": true,
+            "generic": false
+          }
         },
         "row_7": {
           "type": "row",
-          "settings": { "feature": "Fresh & Sealed Packaging", "laushe": true, "generic": false }
+          "settings": {
+            "feature": "Fresh & Sealed Packaging",
+            "laushe": true,
+            "generic": false
+          }
         },
         "row_8": {
           "type": "row",
-          "settings": { "feature": "Fair & Transparent Pricing", "laushe": true, "generic": false }
+          "settings": {
+            "feature": "Fair & Transparent Pricing",
+            "laushe": true,
+            "generic": false
+          }
         }
       },
-      "block_order": ["row_1", "row_2", "row_3", "row_4", "row_5", "row_6", "row_7", "row_8"]
+      "block_order": [
+        "row_1",
+        "row_2",
+        "row_3",
+        "row_4",
+        "row_5",
+        "row_6",
+        "row_7",
+        "row_8"
+      ],
+      "settings": {
+        "heading": "Laushe vs. Other Brands",
+        "bg_color": "#faf7f2"
+      }
     },
     "faq": {
       "type": "faq-accordion",
