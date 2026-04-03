@@ -22,7 +22,7 @@
           "type": "accordion",
           "settings": {
             "title": "Benefits",
-            "content": "efits You Can Feel \nHelps ease occasional joint discomfort and promotes mobility\nSupports smooth digestion and gut comfort\nRich in antioxidants for overall body support\nEnhances daily vitality without stimulants\nSoothes and balances internal inflammation\nSunnah-blessed blend crafted with traditional herbs"
+            "content": "Helps ease occasional joint discomfort and promotes mobility\nSupports smooth digestion and gut comfort\nRich in antioxidants for overall body support\nEnhances daily vitality without stimulants\nSoothes and balances internal inflammation\nSunnah-blessed blend crafted with traditional herbs"
           }
         },
         "acc4": {
@@ -50,7 +50,7 @@
     "benefits": {
       "type": "benefits-grid",
       "settings": {
-        "heading": "A powerhouse superfood rich in nutrients to fuel your daily health.",
+        "heading": "A flavorful blend of turmeric, honey, and herbs for a healthy daily ritual.",
         "subheading": "Supported by nature, backed by tradition.",
         "center_image": "shopify://shop_images/IMG_8798.png"
       }
