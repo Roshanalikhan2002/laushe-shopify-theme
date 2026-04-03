@@ -4,7 +4,9 @@
   "settings": [
     { "id": "promo_banner", "type": "text", "label": "Promo Banner Text", "default": "Includes a FREE Frother**" },
     { "id": "stars_count", "type": "text", "label": "Review Count Label", "default": "50,000+ verified 5-star reviews for Laushe products" },
-    { "id": "sub_discount", "type": "number", "label": "Subscription Discount (%)", "default": 25 }
+    { "id": "sub_discount", "type": "number", "label": "Subscription Discount (%)", "default": 25 },
+    { "id": "custom_one_time_price", "type": "text", "label": "Custom One-Time Price (e.g. Rs.1,490)", "info": "Leave blank to use Shopify's price." },
+    { "id": "custom_sub_price", "type": "text", "label": "Custom Subscription Price (e.g. Rs.1,117)", "info": "Leave blank to use auto-calculated price." }
   ],
   "blocks": [
     {
@@ -106,7 +108,10 @@
                   <div class="method-content">
                     <div class="method-header">
                       <span class="method-name">Subscribe & Save</span>
-                      <span class="method-price" id="SubPrice">{{ product.selected_or_first_available_variant.price | times: 0.75 | money }}/mo</span>
+                      {% assign default_sub_price = product.selected_or_first_available_variant.price | times: 0.75 | money %}
+                      <span class="method-price" id="SubPrice">
+                        {{ section.settings.custom_sub_price | default: default_sub_price | append: '/mo' }}
+                      </span>
                     </div>
                     <ul class="method-benefits">
                       <li>✔ Free shipping delivered every 30 days</li>
@@ -123,7 +128,9 @@
                   <div class="method-content">
                     <div class="method-header">
                       <span class="method-name">Buy one time</span>
-                      <span class="method-price" id="OneTimePrice">{{ product.selected_or_first_available_variant.price | money }}</span>
+                      <span class="method-price" id="OneTimePrice">
+                        {{ section.settings.custom_one_time_price | default: product.selected_or_first_available_variant.price | money }}
+                      </span>
                     </div>
                   </div>
                </div>
@@ -277,8 +284,20 @@
       syncVariantInput();
       // Update displayed prices
       const priceInPaise = variant.price;
-      document.getElementById('OneTimePrice').innerText = 'Rs. ' + (priceInPaise / 100).toLocaleString();
-      document.getElementById('SubPrice').innerText = 'Rs. ' + Math.round(priceInPaise * 0.75 / 100).toLocaleString() + '/mo';
+      const customOneTime = "{{ section.settings.custom_one_time_price }}";
+      const customSub = "{{ section.settings.custom_sub_price }}";
+
+      if (customOneTime) {
+        document.getElementById('OneTimePrice').innerText = customOneTime;
+      } else {
+        document.getElementById('OneTimePrice').innerText = 'Rs. ' + (priceInPaise / 100).toLocaleString();
+      }
+
+      if (customSub) {
+        document.getElementById('SubPrice').innerText = customSub + '/mo';
+      } else {
+        document.getElementById('SubPrice').innerText = 'Rs. ' + Math.round(priceInPaise * 0.75 / 100).toLocaleString() + '/mo';
+      }
     }
   }
 
