@@ -45,8 +45,8 @@
           "type": "product",
           "settings": {
             "product": "golden-elixir",
-            "title_override": "",
-            "desc_override": "",
+            "title_override": "Golden Elixir",
+            "desc_override": "A flavorful blend of turmeric, honey, and herbs for a healthy daily ritual.",
             "stars_count": "1250",
             "show_badge": false,
             "badge_text": "9% OFF"
@@ -58,9 +58,10 @@
             "product": "skinny-sips-weight-loss-kehwa",
             "title_override": "",
             "desc_override": "",
+            "image_override": "shopify://shop_images/SKINNY_SIPS-100_jpg.jpg",
             "stars_count": "1250",
             "show_badge": false,
-            "badge_text": "9% OFF"
+            "badge_text": ""
           }
         }
       },
