@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "layout": "theme",
   "sections": {
@@ -22,7 +31,7 @@
           "type": "accordion",
           "settings": {
             "title": "Benefits",
-            "content": "Natural source of antioxidants and healthy enzymes\nProvides a quick energy boost without refined sugars\nSoothes occasional throat discomfort and promotes wellness\nSupports healthy digestion and gut balance\nEthically harvested and raw for maximum nutritional benefit\nNo artificial additives, fillers, or sweeteners"
+            "content": "Strengthens your body’s natural defenses with every spoonful\nCalms the throat and helps maintain clear, healthy airways\nProvides gentle, sustained energy without artificial sugars\nPromotes skin health and supports natural recovery\nPacked with natural enzymes to aid smooth digestion\nA Sunnah-blessed superfood rooted in timeless tradition"
           }
         },
         "acc4": {
@@ -50,9 +59,9 @@
     "benefits": {
       "type": "benefits-grid",
       "settings": {
-        "heading": "Raw, Pure, and Rooted in Tradition.",
+        "heading": "Unprocessed, natural honey from trusted apiaries, a Sunnah superfood for immunity, vitality, and overall wellness.",
         "subheading": "Supported by nature, backed by tradition.",
-        "center_image": "shopify://shop_images/hone_png.png"
+        "center_image": "shopify://shop_images/honey-100_jpg.jpg"
       }
     },
     "ingredients": {
