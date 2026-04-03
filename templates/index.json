@@ -280,7 +280,13 @@
       ],
       "settings": {
         "bg_color": "#002b1b",
-        "heading_color": "#ffffff"
+        "heading_color": "#ffffff",
+        "prob_label": "The Reality Behind Modern Wellness",
+        "prob_heading": "What You’re Really Consuming Matters",
+        "prob_desc": "Many products in today’s health market focus more on marketing than meaningful results. Behind appealing labels, they often rely on low-quality ingredients, artificial enhancements, and unclear sourcing. Over time, this disconnect can limit the benefits you expect from your daily wellness routine.",
+        "sol_label": "The Laushe Difference",
+        "sol_heading": "Purity, Transparency, and Purpose in Every Product",
+        "sol_desc": "Laushe is built on a simple belief: wellness should be honest, effective, and rooted in nature. Every product is thoughtfully created using carefully selected ingredients, combining traditional knowledge with modern quality practices to deliver results you can trust."
       }
     },
     "athlete_endorsement": {
