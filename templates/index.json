@@ -175,8 +175,8 @@
           "type": "benefit",
           "settings": {
             "icon_name": "leaf",
-            "title": "Gut Health",
-            "desc": "Optimize digestion and nutrient absorption naturally."
+            "title": "Real Wellness",
+            "desc": "Every Laushe product is thoughtfully crafted to deliver meaningful health benefits, combining pure ingredients, time-honored traditions, and modern quality standards you can rely on."
           }
         },
         "energy": {
@@ -211,8 +211,8 @@
         "brain"
       ],
       "settings": {
-        "heading": "Transform Your Health",
-        "subheading": "Supported by nature, backed by tradition.",
+        "heading": "Benefits",
+        "subheading": "Why People Trust Laushe?",
         "center_image": "shopify://shop_images/ingredients_detail.jpg"
       }
     },
