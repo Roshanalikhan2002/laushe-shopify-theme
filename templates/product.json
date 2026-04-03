@@ -31,14 +31,14 @@
           "type": "accordion",
           "settings": {
             "title": "Benefits",
-            "content": "Packed with omega-3s to support cardiovascular health\nAbundant fiber to aid smooth digestion\nA plant-based protein with all essential amino acids\nSupports balanced blood sugar naturally\nKeeps you full and helps manage appetite\nRich in calcium, magnesium, and essential minerals"
+            "content": "Helps ease occasional joint discomfort and promotes mobility\nSupports smooth digestion and gut comfort\nRich in antioxidants for overall body support\nEnhances daily vitality without stimulants\nSoothes and balances internal inflammation\nSunnah-blessed blend crafted with traditional herbs"
           }
         },
         "acc4": {
           "type": "accordion",
           "settings": {
             "title": "How to use",
-            "content": "Mix 1–2 tablespoons into water, smoothies, or yogurt for a nutrient boost\nSoak for 10–15 minutes until it forms a gel-like texture\nTop salads, oatmeal, or baked treats for added crunch and nutrition\nSubstitute for eggs in your favorite vegan baking recipes"
+            "content": "Consume one tablespoon each day, ideally in the morning\nStir into warm water or milk to make a soothing golden drink\nTake directly if you prefer a more concentrated serving\nUse daily for optimal benefits and consistent results"
           }
         }
       },
@@ -107,6 +107,7 @@
     "usage": {
       "type": "usage-steps",
       "settings": {
+        "heading": "Delicious, Herbal Formula",
         "step1_text": "Mix 1–2 tablespoons into water, smoothies, or yogurt for a nutrient boost",
         "step2_text": "Soak for 10–15 minutes until it forms a gel-like texture",
         "step3_text": "Top salads, oatmeal, or baked treats for added crunch and nutrition"
