@@ -25,7 +25,13 @@
             "content": "Packed with nourishing fats and essential fat-soluble vitamins\nPromotes smoother digestion and supports a healthy gut\nStrengthens natural defenses and enhances daily vitality\nStable at high heat — perfect for everyday cooking\nPrepared using the traditional bilona process for maximum nutrition\nCompletely pure with no added chemicals or preservatives"
           }
         },
+        "acc4": {
+          "type": "accordion",
+          "settings": {
+            "title": "How to use",
             "content": "Perfect for cooking, frying, or spreading on your favorite foods\nMix a spoonful into dal, rice, or roti to enhance taste\nConsume one teaspoon on an empty stomach to support digestion"
+          }
+        }
       },
       "block_order": [
         "acc1",
