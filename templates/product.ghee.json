@@ -13,10 +13,22 @@
     "product_main": {
       "type": "product-ag1-template",
       "blocks": {
-        "acc1": { "type": "accordion", "settings": { "title": "What is it?", "content": "Clarified butter from grass-fed cows, rich in healthy fats and vitamins." } }
+        "acc1": {
+          "type": "accordion",
+          "settings": {
+            "title": "What is it?",
+            "content": "Clarified butter from grass-fed cows, rich in healthy fats and vitamins."
+          }
+        }
       },
-      "block_order": ["acc1"],
-      "settings": { "promo_banner": "Grass-Fed Ghee", "stars_count": "15,000+ verified 5-star reviews", "sub_discount": 25 }
+      "block_order": [
+        "acc1"
+      ],
+      "settings": {
+        "promo_banner": "Grass-Fed Ghee",
+        "stars_count": "15,000+ verified 5-star reviews",
+        "sub_discount": 25
+      }
     },
     "usage": {
       "type": "usage-steps",
@@ -29,5 +41,8 @@
       }
     }
   },
-  "order": ["product_main", "usage"]
+  "order": [
+    "product_main",
+    "usage"
+  ]
 }

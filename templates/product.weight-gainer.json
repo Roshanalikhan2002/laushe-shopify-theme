@@ -4,10 +4,10 @@
     "product_main": {
       "type": "product-ag1-template",
       "blocks": {
-        "acc1": { "type": "accordion", "settings": { "title": "What is it?", "content": "Laushe's signature wellness formula." } }
+        "acc1": { "type": "accordion", "settings": { "title": "What is it?", "content": "Laushe's Weight Gainer 100% Organic." } }
       },
       "block_order": ["acc1"],
-      "settings": { "promo_banner": "Includes a FREE Frother**", "stars_count": "50,000+ verified 5-star reviews", "sub_discount": 25 }
+      "settings": { "promo_banner": "Go Organic", "stars_count": "50,000+ verified 5-star reviews", "sub_discount": 25 }
     },
     "usage": {
       "type": "usage-steps",
