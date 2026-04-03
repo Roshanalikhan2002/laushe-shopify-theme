@@ -592,7 +592,7 @@
         "row_bjcm3h": {
           "type": "row",
           "settings": {
-            "feature": "Clinically Tested",
+            "feature": "Scientifically Verified",
             "laushe": true,
             "generic": false
           }
@@ -624,7 +624,7 @@
       ],
       "name": "Comparison Table (Laushe)",
       "settings": {
-        "heading": "The Laushe Standard",
+        "heading": "Laushe vs. Other Brands",
         "bg_color": "#faf7f2"
       }
     },
