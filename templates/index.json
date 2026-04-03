@@ -319,7 +319,19 @@
         "tab2_tag": "healthcare",
         "tab3_label": "Organic",
         "tab3_tag": "organic"
-      }
+      },
+      "blocks": {
+        "chia_override": {
+          "type": "product_override",
+          "settings": {
+            "target_product": "chia-seeds-380g",
+            "title": "Chia Seeds 380g",
+            "desc": "High-quality chia seeds, a powerful superfood loaded with omega-3, fiber, and protein to support everyday health.",
+            "price": "Rs.2,990"
+          }
+        }
+      },
+      "block_order": ["chia_override"]
     },
     "faq_accordion": {
       "type": "faq-accordion",

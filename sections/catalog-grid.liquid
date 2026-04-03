@@ -14,6 +14,19 @@
     { "id": "tab3_label", "type": "text", "label": "Label", "default": "Organic" },
     { "id": "tab3_tag", "type": "text", "label": "Tag to Match", "default": "organic", "info": "Products must have this tag to show in this tab." }
   ],
+  "blocks": [
+    {
+      "type": "product_override",
+      "name": "Product Override",
+      "settings": [
+        { "id": "target_product", "type": "product", "label": "Apply to this Product" },
+        { "id": "title", "type": "text", "label": "Custom Title" },
+        { "id": "desc", "type": "textarea", "label": "Custom Description" },
+        { "id": "image", "type": "image_picker", "label": "Custom Image" },
+        { "id": "price", "type": "text", "label": "Custom Price Text (e.g. Rs.2,990)" }
+      ]
+    }
+  ],
   "presets": [{ "name": "Wellness Collection Grid", "category": "Laushe Sections" }]
 }
 {% endschema %}
@@ -46,9 +59,22 @@
         {% for product in target_collection.products %}
           {% assign product_tags_string = product.tags | join: ',' | downcase %}
           
-          <div class="catalog-item" 
-               data-tags="{{ product_tags_string }}"
-               {{ block.shopify_attributes }}>
+          {% comment %} CHECK FOR OVERRIDES {% endcomment %}
+          {% assign display_title = product.title %}
+          {% assign display_desc = product.description | strip_html | truncate: 80 %}
+          {% assign display_img = product.featured_image | img_url: '600x600', crop: 'center' %}
+          {% assign display_price = product.price | money %}
+          
+          {% for block in section.blocks %}
+            {% if block.type == 'product_override' and block.settings.target_product == product.handle %}
+              {% if block.settings.title != blank %}{% assign display_title = block.settings.title %}{% endif %}
+              {% if block.settings.desc != blank %}{% assign display_desc = block.settings.desc %}{% endif %}
+              {% if block.settings.image != blank %}{% assign display_img = block.settings.image | img_url: '600x600', crop: 'center' %}{% endif %}
+              {% if block.settings.price != blank %}{% assign display_price = block.settings.price %}{% endif %}
+            {% endif %}
+          {% endfor %}
+          
+          <div class="catalog-item" data-tags="{{ product_tags_string }}">
             
             <div class="catalog-card">
               <!-- Badge -->
@@ -59,7 +85,7 @@
 
               <!-- Image -->
               <a href="{{ product.url }}" class="card-img-link">
-                <img src="{{ product.featured_image | img_url: '600x600', crop: 'center' }}" alt="{{ product.title }}" class="card-img" loading="lazy">
+                <img src="{{ display_img }}" alt="{{ display_title }}" class="card-img" loading="lazy">
               </a>
 
               <div class="card-content">
@@ -69,11 +95,11 @@
                   <span class="review-count">(2134)</span>
                 </div>
 
-                <h3 class="card-title">{{ product.title }}</h3>
-                <p class="card-short-desc">{{ product.description | strip_html | truncate: 80 }}</p>
+                <h3 class="card-title">{{ display_title }}</h3>
+                <p class="card-short-desc">{{ display_desc }}</p>
 
                 <div class="card-price-row">
-                  <span class="price-main">{{ product.price | money }}</span>
+                  <span class="price-main">{{ display_price }}</span>
                   {% if product.compare_at_price > product.price %}
                     <span class="price-compare">{{ product.compare_at_price | money }}</span>
                   {% endif %}
