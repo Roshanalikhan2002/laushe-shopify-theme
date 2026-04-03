@@ -1,33 +1,281 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "layout": "theme",
   "sections": {
     "product_main": {
       "type": "product-ag1-template",
       "blocks": {
-        "acc1": { "type": "accordion", "settings": { "title": "What is it?", "content": "Laushe's Weight Gainer 100% Organic." } }
+        "acc1": {
+          "type": "accordion",
+          "settings": {
+            "title": "What is it?",
+            "content": "Laushe's Organic Weight Gainer is a 100% natural, Sunnah-blessed formula designed to help you build healthy mass, strengthen muscles, and support your body's energy needs — without artificial fillers or harmful additives."
+          }
+        },
+        "acc2": {
+          "type": "accordion",
+          "settings": {
+            "title": "Who's it for",
+            "content": "Ideal for those who struggle to gain weight naturally, gym-goers looking to build lean muscle, or anyone who wants a clean, organic way to support healthy body mass and sustained energy levels."
+          }
+        },
+        "acc3": {
+          "type": "accordion",
+          "settings": {
+            "title": "Benefits",
+            "content": "Supports healthy, natural weight and muscle gain\nProvides sustained energy for workouts and daily activity\nRich in natural proteins, healthy fats, and complex carbs\nAids muscle recovery and reduces fatigue after exercise\nFree from artificial hormones, steroids, or chemicals\nSunnah-blessed blend crafted with 100% organic ingredients"
+          }
+        },
+        "acc4": {
+          "type": "accordion",
+          "settings": {
+            "title": "How to use",
+            "content": "Mix 2 tablespoons with warm milk or water and stir well\nConsume once or twice daily, ideally after your workout\nFor best results, take consistently for at least 8–12 weeks\nPair with a nutritious diet and regular exercise for optimal gains"
+          }
+        }
       },
-      "block_order": ["acc1"],
-      "settings": { "promo_banner": "Go Organic", "stars_count": "50,000+ verified 5-star reviews", "sub_discount": 25 }
+      "block_order": [
+        "acc1",
+        "acc2",
+        "acc3",
+        "acc4"
+      ],
+      "settings": {
+        "promo_banner": "100% Organic — No Steroids, No Chemicals",
+        "stars_count": "50,000+ verified 5-star reviews for Laushe products",
+        "sub_discount": 25,
+        "custom_one_time_price": "",
+        "custom_sub_price": ""
+      }
+    },
+    "benefits": {
+      "type": "benefits-grid",
+      "settings": {
+        "heading": "A clean, organic formula to fuel healthy weight gain.",
+        "subheading": "Supported by nature, backed by tradition.",
+        "center_image": "shopify://shop_images/weight_gainer.jpg"
+      }
+    },
+    "ingredients": {
+      "type": "ingredients-grid",
+      "blocks": {
+        "b1": {
+          "type": "ingredient",
+          "settings": {
+            "title": "Organic Oats",
+            "desc": "A rich source of complex carbs for sustained energy and healthy calorie intake"
+          }
+        },
+        "b2": {
+          "type": "ingredient",
+          "settings": {
+            "title": "Dates (Khajoor)",
+            "desc": "Naturally sweet, energy-dense Sunnah food rich in fiber and minerals"
+          }
+        },
+        "b3": {
+          "type": "ingredient",
+          "settings": {
+            "title": "Desi Ghee",
+            "desc": "Provides healthy fats that support hormone balance and energy storage"
+          }
+        },
+        "b4": {
+          "type": "ingredient",
+          "settings": {
+            "title": "Panjiri Mix",
+            "desc": "A traditional blend of nuts and seeds to nourish and strengthen the body"
+          }
+        },
+        "b5": {
+          "type": "ingredient",
+          "settings": {
+            "title": "Almonds & Walnuts",
+            "desc": "Loaded with healthy fats and protein to support muscle recovery and growth"
+          }
+        },
+        "b6": {
+          "type": "ingredient",
+          "settings": {
+            "title": "Natural Herbs & Spices",
+            "desc": "Sunnah-blessed botanicals that enhance absorption and overall well-being"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4",
+        "b5",
+        "b6"
+      ],
+      "settings": {
+        "headline": "100% Organic, Natural Ingredients"
+      }
     },
     "usage": {
       "type": "usage-steps",
       "settings": {
-        "heading": "Delicious, Herbal Formula",
-        "step1_text": "Step 1",
-        "step2_text": "Step 2",
-        "step3_text": "Step 3",
-        "step4_text": "Step 4"
+        "heading": "Your Daily Mass-Building Ritual",
+        "step1_text": "Mix 2 tablespoons with warm milk or water and stir well",
+        "step2_text": "Consume once or twice daily, ideally after your workout",
+        "step3_text": "Pair with a nutritious diet and regular exercise for optimal gains",
+        "step4_text": "Use consistently for 8–12 weeks for best and lasting results"
+      }
+    },
+    "comparison": {
+      "type": "laushe-comparison-table",
+      "blocks": {
+        "row_1": {
+          "type": "row",
+          "settings": {
+            "feature": "100% Natural Ingredients",
+            "laushe": true,
+            "generic": false
+          }
+        },
+        "row_2": {
+          "type": "row",
+          "settings": {
+            "feature": "Sunnah-Blessed Formulation",
+            "laushe": true,
+            "generic": false
+          }
+        },
+        "row_3": {
+          "type": "row",
+          "settings": {
+            "feature": "No Artificial Additives",
+            "laushe": true,
+            "generic": false
+          }
+        },
+        "row_4": {
+          "type": "row",
+          "settings": {
+            "feature": "No Steroids or Hormones",
+            "laushe": true,
+            "generic": false
+          }
+        },
+        "row_5": {
+          "type": "row",
+          "settings": {
+            "feature": "Ethically Sourced",
+            "laushe": true,
+            "generic": false
+          }
+        },
+        "row_6": {
+          "type": "row",
+          "settings": {
+            "feature": "Money-Back Guarantee",
+            "laushe": true,
+            "generic": false
+          }
+        },
+        "row_7": {
+          "type": "row",
+          "settings": {
+            "feature": "Fresh & Sealed Packaging",
+            "laushe": true,
+            "generic": false
+          }
+        },
+        "row_8": {
+          "type": "row",
+          "settings": {
+            "feature": "Fair & Transparent Pricing",
+            "laushe": true,
+            "generic": false
+          }
+        }
+      },
+      "block_order": [
+        "row_1",
+        "row_2",
+        "row_3",
+        "row_4",
+        "row_5",
+        "row_6",
+        "row_7",
+        "row_8"
+      ],
+      "settings": {
+        "heading": "Laushe Weight Gainer vs. Others",
+        "bg_color": "#faf7f2"
+      }
+    },
+    "faq": {
+      "type": "faq-accordion",
+      "blocks": {
+        "faq_1": {
+          "type": "faq",
+          "settings": {
+            "question": "Is this weight gainer completely natural and organic?",
+            "answer": "Yes, Laushe's Weight Gainer is made from 100% organic, natural ingredients with no artificial additives, steroids, or synthetic hormones — just clean, wholesome nutrition to support healthy weight gain."
+          }
+        },
+        "faq_2": {
+          "type": "faq",
+          "settings": {
+            "question": "How soon will I start seeing results?",
+            "answer": "Results vary, but most users notice improved energy and appetite within the first 2 weeks. With consistent use and a balanced diet, visible weight and muscle gain can be expected within 6–12 weeks."
+          }
+        },
+        "faq_3": {
+          "type": "faq",
+          "settings": {
+            "question": "Can I use it without going to the gym?",
+            "answer": "Yes. While pairing it with exercise will maximize results, Laushe's Weight Gainer also supports healthy weight gain for those who want to naturally increase body mass through improved nutrition."
+          }
+        },
+        "faq_4": {
+          "type": "faq",
+          "settings": {
+            "question": "How should I prepare and take it?",
+            "answer": "Mix 2 tablespoons into warm milk or water, stir well, and consume once or twice daily — ideally after a workout or as a nutritious meal supplement. Take consistently for the best results."
+          }
+        },
+        "faq_5": {
+          "type": "faq",
+          "settings": {
+            "question": "Is it safe for teenagers and adults?",
+            "answer": "Laushe's Weight Gainer is made from natural, food-grade ingredients suitable for teenagers and adults. If you have any underlying health conditions, we recommend consulting your doctor before use."
+          }
+        }
+      },
+      "block_order": [
+        "faq_1",
+        "faq_2",
+        "faq_3",
+        "faq_4",
+        "faq_5"
+      ],
+      "settings": {
+        "subtitle": "QUESTIONS & ANSWERS",
+        "title": "Frequently Asked Questions",
+        "bg_color": "#faf7f2"
+      }
+    },
+    "final_cta": {
+      "type": "final-cta",
+      "settings": {
+        "headline": "Build a Healthier, Stronger You Naturally",
+        "subtext": "Gain healthy weight and build real strength with Laushe's 100% organic, Sunnah-blessed Weight Gainer — no shortcuts, no chemicals.",
+        "cta_text": "SHOP NOW - SAVE 25%",
+        "cta_url": "",
+        "bg_color": "#1b4332"
       }
     }
   },
-  "order": ["product_main", "usage"]
+  "order": [
+    "product_main",
+    "benefits",
+    "ingredients",
+    "usage",
+    "comparison",
+    "faq",
+    "final_cta"
+  ]
 }
