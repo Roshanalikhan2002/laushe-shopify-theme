@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "layout": "theme",
   "sections": {
@@ -22,14 +31,14 @@
           "type": "accordion",
           "settings": {
             "title": "Benefits",
-            "content": "efits You Can Feel \nHelps ease occasional joint discomfort and promotes mobility\nSupports smooth digestion and gut comfort\nRich in antioxidants for overall body support\nEnhances daily vitality without stimulants\nSoothes and balances internal inflammation\nSunnah-blessed blend crafted with traditional herbs"
+            "content": "Promotes faster postpartum recovery and overall vitality\nHelps maintain stamina and physical resilience naturally\nPacked with iron, calcium, and essential nourishing nutrients\nWarming blend perfect for colder months\nSupports strong bones and healthy joints\nMade with premium dry fruits and traditional desi ghee"
           }
         },
         "acc4": {
           "type": "accordion",
           "settings": {
             "title": "How to use",
-            "content": "Consume one tablespoon each day, ideally in the morning\nStir into warm water or milk to make a soothing golden drink\nTake directly if you prefer a more concentrated serving\nUse daily for optimal benefits and consistent results"
+            "content": "Consume 2–3 tablespoons daily as a wholesome snack or with milk\nEspecially helpful during colder months to stay warm and nourished\nPerfect for supporting new mothers during postpartum recovery\nBlend into warm milk for a comforting, nutrient-rich drink"
           }
         }
       },
