@@ -201,29 +201,45 @@
         "faq_1": {
           "type": "faq",
           "settings": {
-            "question": "How soon will I see results?",
-            "answer": "Most users report improved energy and sleep quality within the first 7-14 days of consistent use."
+            "question": "What makes Laushe Chia Seeds special?",
+            "answer": "Our chia seeds are 100% organic, nutrient-dense, and carefully selected for maximum quality. They are naturally rich in omega-3, fiber, protein, and essential minerals, ensuring every serving supports your overall health."
           }
         },
         "faq_2": {
           "type": "faq",
           "settings": {
-            "question": "Is Laushe safe to take with other supplements?",
-            "answer": "Yes, our formula is 100% natural and generally safe. However, we always recommend consulting with your healthcare provider."
+            "question": "How should I include chia seeds in my daily diet?",
+            "answer": "You can mix them into water, smoothies, or yogurt, soak them to form a gel, sprinkle on salads or oatmeal, or even use as an egg substitute in vegan baking. Flexibility makes it easy to add nutrients to every meal."
           }
         },
         "faq_3": {
           "type": "faq",
           "settings": {
-            "question": "Do I need to refrigerate it?",
-            "answer": "No refrigeration required! Just store in a cool, dry place away from direct sunlight."
+            "question": "How much chia should I consume each day?",
+            "answer": "For best results, 1–2 tablespoons daily is ideal. You can adjust based on your diet and activity level, but this amount provides a solid dose of omega-3s, fiber, and protein."
+          }
+        },
+        "faq_4": {
+          "type": "faq",
+          "settings": {
+            "question": "Can chia seeds help with digestion and weight management?",
+            "answer": "Yes! Their high fiber content promotes smooth digestion and helps you feel full longer, which naturally supports appetite control and healthy weight management."
+          }
+        },
+        "faq_5": {
+          "type": "faq",
+          "settings": {
+            "question": "Are Laushe chia seeds safe for everyone?",
+            "answer": "Absolutely. They are plant-based, gluten-free, and vegan-friendly. However, if you have specific allergies or medical conditions, we recommend consulting your healthcare provider before adding chia seeds to your routine."
           }
         }
       },
       "block_order": [
         "faq_1",
         "faq_2",
-        "faq_3"
+        "faq_3",
+        "faq_4",
+        "faq_5"
       ],
       "settings": {
         "subtitle": "QUESTIONS & ANSWERS",
@@ -234,8 +250,8 @@
     "final_cta": {
       "type": "final-cta",
       "settings": {
-        "headline": "Ready to Transform Your Health?",
-        "subtext": "Join over 50,000+ satisfied customers today and experience the Laushe difference.",
+        "headline": "Unlock Daily Vitality",
+        "subtext": "Fuel your body with nutrient-dense chia seeds for natural energy, improved digestion, and overall health.",
         "cta_text": "SHOP NOW - SAVE 25%",
         "cta_url": "",
         "bg_color": "#1b4332"
