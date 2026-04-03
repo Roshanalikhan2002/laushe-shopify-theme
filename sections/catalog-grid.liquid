@@ -65,16 +65,18 @@
           {% assign display_img = product.featured_image | img_url: '600x600', crop: 'center' %}
           {% assign display_price = product.price | money %}
           
+          {% assign override_block = nil %}
           {% for block in section.blocks %}
             {% if block.type == 'product_override' and block.settings.target_product == product.handle %}
               {% if block.settings.title != blank %}{% assign display_title = block.settings.title %}{% endif %}
               {% if block.settings.desc != blank %}{% assign display_desc = block.settings.desc %}{% endif %}
               {% if block.settings.image != blank %}{% assign display_img = block.settings.image | img_url: '600x600', crop: 'center' %}{% endif %}
               {% if block.settings.price != blank %}{% assign display_price = block.settings.price %}{% endif %}
+              {% assign override_block = block %}
             {% endif %}
           {% endfor %}
           
-          <div class="catalog-item" data-tags="{{ product_tags_string }}">
+          <div class="catalog-item" data-tags="{{ product_tags_string }}" {{ override_block.shopify_attributes }}>
             
             <div class="catalog-card">
               <!-- Badge -->
