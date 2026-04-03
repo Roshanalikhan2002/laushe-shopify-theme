@@ -1,12 +1,3 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "layout": "theme",
   "sections": {
@@ -17,32 +8,166 @@
           "type": "accordion",
           "settings": {
             "title": "What is it?",
-            "content": "Clarified butter from grass-fed cows, rich in healthy fats and vitamins."
+            "content": "Laushe's pure Desi Ghee is a nutrient-dense, traditional superfood made with fresh milk to support overall health and vitality."
+          }
+        },
+        "acc2": {
+          "type": "accordion",
+          "settings": {
+            "title": "Who's it for",
+            "content": "Ideal for anyone looking for a wholesome, high-quality cooking fat that promotes better digestion and nutrient absorption."
+          }
+        },
+        "acc3": {
+          "type": "accordion",
+          "settings": {
+            "title": "Benefits",
+            "content": "Rich in healthy fats to fuel natural energy and metabolism\nSupports smooth digestion and gut health\nEnhances the absorption of fat-soluble vitamins (A, D, E, K)\nPromotes glowing skin and supple joints\nSunnah-friendly ingredients for a traditional daily diet\nPure and free from artificial additives or preservatives"
+          }
+        },
+        "acc4": {
+          "type": "accordion",
+          "settings": {
+            "title": "How to use",
+            "content": "Use for healthy cooking, sautéing, or as a spread on warm rotis\nStir a teaspoon into warm milk or herbal tea for extra nourishment\nDrizzle over lentils (daal) or vegetables to enhance flavor and health\nUse as a foundation for traditional herbal remedies and recipes"
           }
         }
       },
       "block_order": [
-        "acc1"
+        "acc1",
+        "acc2",
+        "acc3",
+        "acc4"
       ],
       "settings": {
-        "promo_banner": "Grass-Fed Ghee",
-        "stars_count": "15,000+ verified 5-star reviews",
-        "sub_discount": 25
+        "promo_banner": "Nurtured by Nature",
+        "stars_count": "50,000+ verified 5-star reviews for Laushe products",
+        "sub_discount": 25,
+        "custom_one_time_price": "",
+        "custom_sub_price": ""
+      }
+    },
+    "benefits": {
+      "type": "benefits-grid",
+      "settings": {
+        "heading": "Pure, Wholesome Vitality in Every Spoon.",
+        "subheading": "Supported by nature, backed by tradition.",
+        "center_image": "shopify://shop_images/ghee_png.png"
+      }
+    },
+    "ingredients": {
+      "type": "ingredients-grid",
+      "blocks": {
+        "b1": {
+          "type": "ingredient",
+          "settings": {
+            "title": "100% Pure Milk Fat",
+            "desc": "Extracted from fresh, high-quality milk for maximum purity"
+          }
+        }
+      },
+      "block_order": [
+        "b1"
+      ],
+      "settings": {
+        "headline": "Simple, Pure Perfection"
       }
     },
     "usage": {
       "type": "usage-steps",
       "settings": {
-        "heading": "Culinary Uses",
-        "step1_text": "Use in daily cooking as a healthy oil substitute",
-        "step2_text": "Add to warm milk or coffee",
-        "step3_text": "Drizzle over rotis or rice",
-        "step4_text": "Store in a cool, dry place"
+        "heading": "Wholesome Daily Support",
+        "step1_text": "Use for healthy cooking and sautéing",
+        "step2_text": "Stir a teaspoon into warm milk",
+        "step3_text": "Drizzle over rotis or traditional meals",
+        "step4_text": "Use daily for consistent natural vitality"
+      }
+    },
+    "comparison": {
+      "type": "laushe-comparison-table",
+      "blocks": {
+        "row_1": {
+          "type": "row",
+          "settings": {
+            "feature": "100% Natural & Pure",
+            "laushe": true,
+            "generic": false
+          }
+        },
+        "row_2": {
+          "type": "row",
+          "settings": {
+            "feature": "No Seed Oils or Additives",
+            "laushe": true,
+            "generic": false
+          }
+        },
+        "row_3": {
+          "type": "row",
+          "settings": {
+            "feature": "Rich in Nutrients",
+            "laushe": true,
+            "generic": false
+          }
+        },
+        "row_4": {
+          "type": "row",
+          "settings": {
+            "feature": "Traditonally Crafted",
+            "laushe": true,
+            "generic": false
+          }
+        }
+      },
+      "block_order": [
+        "row_1",
+        "row_2",
+        "row_3",
+        "row_4"
+      ],
+      "settings": {
+        "heading": "Laushe Ghee vs. Others",
+        "bg_color": "#faf7f2"
+      }
+    },
+    "faq": {
+      "type": "faq-accordion",
+      "blocks": {
+        "faq_1": {
+          "type": "faq",
+          "settings": {
+            "question": "What is Desi Ghee?",
+            "answer": "Desi Ghee is clarified butter made from cow or buffalo milk, rich in healthy fats and widely used in traditional cooking for its nutritional benefits."
+          }
+        }
+      },
+      "block_order": [
+        "faq_1"
+      ],
+      "settings": {
+        "subtitle": "QUESTIONS & ANSWERS",
+        "title": "Frequently Asked Questions",
+        "bg_color": "#faf7f2"
+      }
+    },
+    "final_cta": {
+      "type": "final-cta",
+      "settings": {
+        "headline": "Unlock Traditional Health",
+        "subtext": "Nourish your body with pure, golden desi ghee for improved digestion and natural energy.",
+        "cta_text": "SHOP NOW - SAVE 25%",
+        "cta_url": "",
+        "bg_color": "#1b4332"
       }
     }
   },
   "order": [
     "product_main",
-    "usage"
+    "benefits",
+    "ingredients",
+    "usage",
+    "comparison",
+    "faq",
+    "final_cta"
   ]
 }
