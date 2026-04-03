@@ -180,13 +180,45 @@
         "faq_1": {
           "type": "faq",
           "settings": {
-            "question": "What is Desi Ghee?",
-            "answer": "Desi Ghee is clarified butter made from cow or buffalo milk, rich in healthy fats and widely used in traditional cooking for its nutritional benefits."
+            "question": "Is this ghee suitable for everyday cooking?",
+            "answer": "Yes, our Pure Desi Ghee has a high smoke point, making it ideal for frying, sautéing, or spreading. It keeps its nutrients intact while enhancing flavor."
+          }
+        },
+        "faq_2": {
+          "type": "faq",
+          "settings": {
+            "question": "What makes Laushe Desi Ghee different from regular ghee?",
+            "answer": "Unlike ordinary ghee, ours is prepared using the traditional bilona method with carefully selected milk, preserving essential nutrients and delivering rich, authentic taste."
+          }
+        },
+        "faq_3": {
+          "type": "faq",
+          "settings": {
+            "question": "Can I consume it directly for health benefits?",
+            "answer": "Absolutely. Taking one teaspoon on an empty stomach supports digestion and provides natural nourishment, making it a simple addition to your daily routine."
+          }
+        },
+        "faq_4": {
+          "type": "faq",
+          "settings": {
+            "question": "Is Laushe Desi Ghee free from additives and preservatives?",
+            "answer": "Yes. It is completely pure, with no artificial chemicals, fillers, or shortcuts, just wholesome, traditional ghee crafted for quality and nutrition."
+          }
+        },
+        "faq_5": {
+          "type": "faq",
+          "settings": {
+            "question": "How should I store the ghee for best freshness?",
+            "answer": "Keep it in a cool, dry place away from direct sunlight. Proper storage ensures it remains flavorful, nutrient-rich, and ready for use in cooking or as a daily supplement."
           }
         }
       },
       "block_order": [
-        "faq_1"
+        "faq_1",
+        "faq_2",
+        "faq_3",
+        "faq_4",
+        "faq_5"
       ],
       "settings": {
         "subtitle": "QUESTIONS & ANSWERS",
