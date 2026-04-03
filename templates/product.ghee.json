@@ -59,8 +59,9 @@
     "benefits": {
       "type": "benefits-grid",
       "settings": {
-        "heading": "Pure, Wholesome Vitality in Every Spoon.",
-        "subheading": "Supported by nature, backed by tradition."
+        "heading": "Pure, traditionally prepared desi ghee from high-quality milk — full of rich flavor, essential nutrients, and heritage.",
+        "subheading": "Supported by nature, backed by tradition.",
+        "center_image": "shopify://shop_images/desi_ghee-100_jpg.jpg"
       }
     },
     "ingredients": {
