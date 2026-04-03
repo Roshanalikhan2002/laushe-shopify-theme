@@ -1,12 +1,3 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "layout": "theme",
   "sections": {
@@ -118,10 +109,10 @@
       "type": "usage-steps",
       "settings": {
         "heading": "Delicious, Herbal Formula",
-        "step1_text": "Consume one tablespoon each day, ideally in the morning",
-        "step2_text": "Stir into warm water or milk to make a soothing golden drink",
-        "step3_text": "Take directly if you prefer a more concentrated serving",
-        "step4_text": "Use daily for optimal benefits and consistent results"
+        "step1_text": "Consume 2–3 tablespoons daily as a wholesome snack or with milk",
+        "step2_text": "Especially helpful during colder months to stay warm and nourished",
+        "step3_text": "Perfect for supporting new mothers during postpartum recovery",
+        "step4_text": "Blend into warm milk for a comforting, nutrient-rich drink"
       }
     },
     "comparison": {
