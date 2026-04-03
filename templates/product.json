@@ -31,7 +31,7 @@
           "type": "accordion",
           "settings": {
             "title": "Benefits",
-            "content": "Helps ease occasional joint discomfort and promotes mobility\nSupports smooth digestion and gut comfort\nRich in antioxidants for overall body support\nEnhances daily vitality without stimulants\nSoothes and balances internal inflammation\nSunnah-blessed blend crafted with traditional herbs"
+            "content": "efits You Can Feel \nHelps ease occasional joint discomfort and promotes mobility\nSupports smooth digestion and gut comfort\nRich in antioxidants for overall body support\nEnhances daily vitality without stimulants\nSoothes and balances internal inflammation\nSunnah-blessed blend crafted with traditional herbs"
           }
         },
         "acc4": {
@@ -51,7 +51,9 @@
       "settings": {
         "promo_banner": "Includes a FREE Frother**",
         "stars_count": "50,000+ verified 5-star reviews for Laushe products",
-        "sub_discount": 25
+        "sub_discount": 25,
+        "custom_one_time_price": "",
+        "custom_sub_price": ""
       }
     },
     "benefits": {
@@ -59,7 +61,7 @@
       "settings": {
         "heading": "A powerhouse superfood rich in nutrients to fuel your daily health.",
         "subheading": "Supported by nature, backed by tradition.",
-        "center_image": "shopify://shop_images/chia_seeds-100_jpg.jpg"
+        "center_image": "shopify://shop_images/IMG_8798.png"
       }
     },
     "ingredients": {
