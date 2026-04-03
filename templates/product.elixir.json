@@ -1,12 +1,3 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "layout": "theme",
   "sections": {
@@ -213,36 +204,36 @@
         "faq_1": {
           "type": "faq",
           "settings": {
-            "question": "What makes Laushe Chia Seeds special?",
-            "answer": "Our chia seeds are 100% organic, nutrient-dense, and carefully selected for maximum quality. They are naturally rich in omega-3, fiber, protein, and essential minerals, ensuring every serving supports your overall health."
+            "question": "What makes Golden Elixir special?",
+            "answer": "Golden Elixir combines turmeric with honey and traditional herbs in a Sunnah-blessed formulation. Each ingredient is carefully selected for potency, purity, and effectiveness, ensuring you get more than just flavor, a blend designed for real daily support."
           }
         },
         "faq_2": {
           "type": "faq",
           "settings": {
-            "question": "How should I include chia seeds in my daily diet?",
-            "answer": "You can mix them into water, smoothies, or yogurt, soak them to form a gel, sprinkle on salads or oatmeal, or even use as an egg substitute in vegan baking. Flexibility makes it easy to add nutrients to every meal."
+            "question": "Can I take Golden Elixir if I have a sensitive stomach?",
+            "answer": "Yes. Golden Elixir is gentle on the digestive system. Turmeric and ginger support digestion naturally, while honey soothes the stomach, making it suitable for most adults. If you have specific medical conditions, consult your doctor first."
           }
         },
         "faq_3": {
           "type": "faq",
           "settings": {
-            "question": "How much chia should I consume each day?",
-            "answer": "For best results, 1–2 tablespoons daily is ideal. You can adjust based on your diet and activity level, but this amount provides a solid dose of omega-3s, fiber, and protein."
+            "question": "How should I include it into my daily routine?",
+            "answer": "For best results, take one tablespoon in the morning. You can stir it into warm water or milk for a comforting drink, or take it directly for a concentrated boost. Daily use helps maintain consistent benefits."
           }
         },
         "faq_4": {
           "type": "faq",
           "settings": {
-            "question": "Can chia seeds help with digestion and weight management?",
-            "answer": "Yes! Their high fiber content promotes smooth digestion and helps you feel full longer, which naturally supports appetite control and healthy weight management."
+            "question": "Is it safe to use alongside other supplements or medications?",
+            "answer": "Golden Elixir is made from natural ingredients without additives. However, if you are taking prescription medications or have health concerns, check with your healthcare provider before adding any new supplement to your routine."
           }
         },
         "faq_5": {
           "type": "faq",
           "settings": {
-            "question": "Are Laushe chia seeds safe for everyone?",
-            "answer": "Absolutely. They are plant-based, gluten-free, and vegan-friendly. However, if you have specific allergies or medical conditions, we recommend consulting your healthcare provider before adding chia seeds to your routine."
+            "question": "How long until I notice benefits?",
+            "answer": "Results can vary depending on your lifestyle and health goals. Many users notice gentle improvements in digestion, joint comfort, and overall balance within a few weeks of daily use. Consistency is key to experiencing full benefits."
           }
         }
       },
