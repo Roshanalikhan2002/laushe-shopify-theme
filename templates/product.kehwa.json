@@ -70,43 +70,43 @@
         "b1": {
           "type": "ingredient",
           "settings": {
-            "title": "Green Tea Extract",
-            "desc": "Boosts metabolism and supports fat oxidation naturally"
+            "title": "Dried Hibiscus Flower",
+            "desc": "Supports fat management, aids digestion, and promotes liver health"
           }
         },
         "b2": {
           "type": "ingredient",
           "settings": {
-            "title": "Cinnamon",
-            "desc": "Helps regulate blood sugar and reduce cravings"
+            "title": "Dried Ginger",
+            "desc": "Boosts metabolism, eases inflammation, and helps control appetite"
           }
         },
         "b3": {
           "type": "ingredient",
           "settings": {
-            "title": "Ginger",
-            "desc": "Supports digestion and helps reduce bloating"
+            "title": "Cinnamon Stick",
+            "desc": "Helps balance blood sugar and reduce belly fat naturally"
           }
         },
         "b4": {
           "type": "ingredient",
           "settings": {
-            "title": "Cardamom (Elaichi)",
-            "desc": "Aids digestion and adds a natural, soothing aroma"
+            "title": "Black Seeds (Kalonji)",
+            "desc": "Enhances fat-burning and strengthens your immune system"
           }
         },
         "b5": {
           "type": "ingredient",
           "settings": {
-            "title": "Senna Leaves",
-            "desc": "A traditional herb used to support gentle cleansing"
+            "title": "Cumin Seeds",
+            "desc": "Improves digestion, reduces bloating, and stimulates metabolism"
           }
         },
         "b6": {
           "type": "ingredient",
           "settings": {
-            "title": "Lemon Peel",
-            "desc": "Rich in vitamin C, helps detox and refresh the body"
+            "title": "Lemongrass",
+            "desc": "Detoxifies gently and supports healthy weight management"
           }
         }
       },
@@ -126,10 +126,10 @@
       "type": "usage-steps",
       "settings": {
         "heading": "Your Daily Slimming Ritual",
-        "step1_text": "Steep one sachet or teaspoon in hot water for 3–5 minutes",
-        "step2_text": "Drink once daily, preferably in the morning on an empty stomach",
-        "step3_text": "Add a squeeze of lemon for enhanced detox benefits",
-        "step4_text": "Use consistently for best results alongside a balanced diet"
+        "step1_text": "Each box includes 30 sachets for a full month of use",
+        "step2_text": "Enjoy 1 sachet after each main meal, up to 3 times daily",
+        "step3_text": "Follow daily for 3 months to see lasting, noticeable results",
+        "step4_text": ""
       }
     },
     "comparison": {
@@ -221,36 +221,36 @@
         "faq_1": {
           "type": "faq",
           "settings": {
-            "question": "How does Skinny Sips help with weight loss?",
-            "answer": "Skinny Sips combines metabolism-boosting herbs like green tea and ginger with natural digestive aids to help your body burn fat more efficiently, reduce bloating, and curb appetite for lasting results."
+            "question": "Can I use Skinny Sips without dieting?",
+            "answer": "Yes, Skinny Sips is designed to support your body naturally, even without strict dieting. However, combining it with a balanced diet and an active lifestyle can help you achieve faster and more noticeable results."
           }
         },
         "faq_2": {
           "type": "faq",
           "settings": {
-            "question": "When should I drink Skinny Sips?",
-            "answer": "For best results, drink one cup every morning on an empty stomach. You can also enjoy it before meals to help reduce appetite and support digestion throughout the day."
+            "question": "How does Skinny Sips help with weight loss?",
+            "answer": "Skinny Sips works by supporting fat burning, improving metabolism, and helping control cravings. Its natural ingredients also aid digestion and detoxification, making your body more efficient over time."
           }
         },
         "faq_3": {
           "type": "faq",
           "settings": {
-            "question": "How long before I see results?",
-            "answer": "Many customers notice reduced bloating and improved digestion within the first 1–2 weeks. For visible weight management results, consistent use for at least 4–8 weeks alongside a balanced diet is recommended."
+            "question": "Is it safe for daily use?",
+            "answer": "Skinny Sips is made with natural herbal ingredients and is safe for regular use when taken as directed. If you have any medical conditions or are pregnant, it's best to consult your doctor before use."
           }
         },
         "faq_4": {
           "type": "faq",
           "settings": {
-            "question": "Is Skinny Sips safe to use daily?",
-            "answer": "Yes, Skinny Sips is made from natural, herbal ingredients and is safe for daily use. If you are pregnant, nursing, or have a medical condition, please consult your healthcare provider before use."
+            "question": "When is the best time to take Skinny Sips?",
+            "answer": "For best results, take one sachet after your main meals. This helps support digestion, manage cravings, and allows the ingredients to work effectively throughout the day."
           }
         },
         "faq_5": {
           "type": "faq",
           "settings": {
-            "question": "Does it contain caffeine or artificial stimulants?",
-            "answer": "Skinny Sips contains a mild natural caffeine source from green tea extract. It contains no artificial stimulants, chemicals, or preservatives — just pure, natural herbs for a gentle energy lift."
+            "question": "What results can I expect with regular use?",
+            "answer": "With consistent use, many users notice reduced bloating, better digestion, and gradual weight loss within a few weeks. Continued use supports long-term results and a healthier routine."
           }
         }
       },
