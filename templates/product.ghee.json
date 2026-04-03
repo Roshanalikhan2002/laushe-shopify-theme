@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "layout": "theme",
   "sections": {
@@ -22,14 +31,14 @@
           "type": "accordion",
           "settings": {
             "title": "Benefits",
-            "content": "Rich in healthy fats to fuel natural energy and metabolism\nSupports smooth digestion and gut health\nEnhances the absorption of fat-soluble vitamins (A, D, E, K)\nPromotes glowing skin and supple joints\nSunnah-friendly ingredients for a traditional daily diet\nPure and free from artificial additives or preservatives"
+            "content": "Packed with nourishing fats and essential fat-soluble vitamins\nPromotes smoother digestion and supports a healthy gut\nStrengthens natural defenses and enhances daily vitality\nStable at high heat — perfect for everyday cooking\nPrepared using the traditional bilona process for maximum nutrition\nCompletely pure with no added chemicals or preservatives"
           }
         },
         "acc4": {
           "type": "accordion",
           "settings": {
             "title": "How to use",
-            "content": "Use for healthy cooking, sautéing, or as a spread on warm rotis\nStir a teaspoon into warm milk or herbal tea for extra nourishment\nDrizzle over lentils (daal) or vegetables to enhance flavor and health\nUse as a foundation for traditional herbal remedies and recipes"
+            "content": "Perfect for cooking, frying, or spreading on your favorite foods\nMix a spoonful into dal, rice, or roti to enhance taste\nConsume one teaspoon on an empty stomach to support digestion"
           }
         }
       },
@@ -50,9 +59,9 @@
     "benefits": {
       "type": "benefits-grid",
       "settings": {
-        "heading": "Pure, Wholesome Vitality in Every Spoon.",
+        "heading": "Pure, traditionally prepared desi ghee from high-quality milk — full of rich flavor, essential nutrients, and heritage.",
         "subheading": "Supported by nature, backed by tradition.",
-        "center_image": "shopify://shop_images/ghee_png.png"
+        "center_image": "shopify://shop_images/desi_ghee-100_jpg.jpg"
       }
     },
     "ingredients": {
