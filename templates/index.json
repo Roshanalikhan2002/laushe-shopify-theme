@@ -1,20 +1,29 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "hero": {
       "type": "hero-funnel",
       "settings": {
-        "pre_title": "⭐⭐⭐⭐⭐ 4.8 stars from 10,000+ reviews | 50,000+ customers",
-        "headline": "Transform Your Health Naturally. Laushe Provides the Essentials.",
+        "pre_title": "4.8 stars from 15,000+ happy families",
+        "headline": "“Transform Your Health Naturally. Discover Laushe’s Sunnah-Blessed Essentials.”",
         "benefit_1": "100% Pure & Natural Ingredients",
-        "benefit_2": "Clinically Tested & Sunnah Blessed",
-        "benefit_3": "No Artificial Additives",
-        "cta_text": "Save 25% + Free Shipping",
+        "benefit_2": "Sunnah-Blessed Formulations with Proven Benefits",
+        "benefit_3": "Zero Artificial Additives or Chemicals",
+        "cta_text": "Save 20% + Free Shipping",
         "cta_link": "",
         "risk_free_text": "Try It Risk-Free For 30 Days",
         "limited_offer_badge": "LIMITED TIME OFFER",
-        "hero_image": "shopify://shop_images/hero_lifestyle.jpg",
-        "trust_icon_text": "Nutritionist Recommended",
-        "trust_icon_sub": "Certified Choice"
+        "hero_image": "shopify://shop_images/image_6-100_jpg.jpg",
+        "trust_icon_text": "Clinically Endorsed",
+        "trust_icon_sub": "Certified ChoiceNutritionist Approved"
       }
     },
     "bestsellers_CXGzp8": {
@@ -166,32 +175,32 @@
           "type": "benefit",
           "settings": {
             "icon_name": "leaf",
-            "title": "Gut Health",
-            "desc": "Optimize digestion and nutrient absorption naturally."
+            "title": "Real Wellness",
+            "desc": "Every Laushe product is thoughtfully crafted to deliver meaningful health benefits, combining pure ingredients, time-honored traditions, and modern quality standards you can rely on."
           }
         },
         "energy": {
           "type": "benefit",
           "settings": {
             "icon_name": "flash",
-            "title": "Energy & Body",
-            "desc": "Sustain energy levels throughout the day without crashes."
+            "title": "Pure & Organic",
+            "desc": "Every ingredient is responsibly sourced, minimally processed, and completely free from chemicals or artificial interference."
           }
         },
         "immunity": {
           "type": "benefit",
           "settings": {
             "icon_name": "shield",
-            "title": "Immunity",
-            "desc": "Protect your system with nature's strongest defenses."
+            "title": "Heart Wellness",
+            "desc": "Carefully selected natural ingredients that help support a healthy heart and maintain balanced cholesterol levels, gently, and effectively."
           }
         },
         "brain": {
           "type": "benefit",
           "settings": {
             "icon_name": "bulb",
-            "title": "Brain Health",
-            "desc": "Support cognitive focus and long-term mental clarity."
+            "title": "Sunnah-Inspired Healing",
+            "desc": "Rooted in prophetic traditions and trusted remedies, each formulation reflects centuries of natural healing wisdom."
           }
         }
       },
@@ -202,8 +211,8 @@
         "brain"
       ],
       "settings": {
-        "heading": "Transform Your Health",
-        "subheading": "Supported by nature, backed by tradition.",
+        "heading": "Benefits",
+        "subheading": "Why People Trust Laushe?",
         "center_image": "shopify://shop_images/ingredients_detail.jpg"
       }
     },
@@ -270,7 +279,8 @@
         "s4"
       ],
       "settings": {
-        "bg_color": "#002b1b"
+        "bg_color": "#002b1b",
+        "heading_color": "#ffffff"
       }
     },
     "athlete_endorsement": {
@@ -362,55 +372,120 @@
     "filtered_reviews": {
       "type": "filtered-reviews",
       "blocks": {
-        "t1": { "type": "review", "settings": { "category": "taste", "headline": "Best weight loss kehwa!", "quote": "I noticed results within the first month. No more bloating. The taste is genuinely delicious — like a warm hug in a cup.", "author": "Ahmed K.", "product_name": "Skinny Sips Kehwa" } },
-        "t2": { "type": "review", "settings": { "category": "taste", "headline": "Delicious golden milk!", "quote": "The Golden Elixir tastes amazing with warm milk. My kids love it too! It's the only health drink they actually ask for.", "author": "Fatima Z.", "product_name": "Golden Elixir" } },
-        "t3": { "type": "review", "settings": { "category": "taste", "headline": "Honey like no other.", "quote": "This is the purest honey I've ever tasted. Rich, floral, and you can tell it's real. I use it in my tea every morning.", "author": "Zainab S.", "product_name": "Pure Honey" } },
-        "v1": { "type": "review", "settings": { "category": "value", "headline": "Worth every penny.", "quote": "The quality of these ingredients justifies the price. You get what you pay for — pure, raw wellness without fillers.", "author": "Omar D.", "product_name": "Wellness Bundle" } },
-        "v2": { "type": "review", "settings": { "category": "value", "headline": "Great value for money.", "quote": "I've tried cheaper alternatives but nothing compares to Laushe. The results are much better and more sustainable.", "author": "Sarah M.", "product_name": "Panjiri" } },
-        "b1": { "type": "review", "settings": { "category": "benefits", "headline": "Life changing benefits.", "quote": "Since I started using the Elixir, my joint pain has significantly decreased. I feel much more active and mobile now.", "author": "Bilal A.", "product_name": "Golden Elixir" } },
-        "b2": { "type": "review", "settings": { "category": "benefits", "headline": "Energy levels are up!", "quote": "The Honey and Panjiri combo has given me so much energy during the day. I no longer feel the afternoon slump.", "author": "Hiba R.", "product_name": "Organic Duo" } },
-        "q1": { "type": "review", "settings": { "category": "quality", "headline": "Unmatched purity.", "quote": "You can smell the authenticity as soon as you open the jar. The traditional processing really makes a difference.", "author": "Maryam S.", "product_name": "Pure Desi Ghee" } },
-        "q2": { "type": "review", "settings": { "category": "quality", "headline": "Traditional & Effective.", "quote": "It's rare to find products that stay true to traditional methods while delivering modern results. Laushe nailed it.", "author": "Hassan K.", "product_name": "Royce Hair Oil" } }
+        "t1": {
+          "type": "review",
+          "settings": {
+            "category": "taste",
+            "rating": 5,
+            "headline": "Best weight loss kehwa!",
+            "quote": "I noticed results within the first month. No more bloating. The taste is genuinely delicious — like a warm hug in a cup.",
+            "author": "Ahmed K.",
+            "product_name": "Skinny Sips Kehwa"
+          }
+        },
+        "t2": {
+          "type": "review",
+          "settings": {
+            "category": "taste",
+            "rating": 5,
+            "headline": "Delicious golden milk!",
+            "quote": "The Golden Elixir tastes amazing with warm milk. My kids love it too! It's the only health drink they actually ask for.",
+            "author": "Fatima Z.",
+            "product_name": "Golden Elixir"
+          }
+        },
+        "t3": {
+          "type": "review",
+          "settings": {
+            "category": "taste",
+            "rating": 5,
+            "headline": "Honey like no other.",
+            "quote": "This is the purest honey I've ever tasted. Rich, floral, and you can tell it's real. I use it in my tea every morning.",
+            "author": "Zainab S.",
+            "product_name": "Pure Honey"
+          }
+        },
+        "v1": {
+          "type": "review",
+          "settings": {
+            "category": "value",
+            "rating": 5,
+            "headline": "Worth every penny.",
+            "quote": "The quality of these ingredients justifies the price. You get what you pay for — pure, raw wellness without fillers.",
+            "author": "Omar D.",
+            "product_name": "Wellness Bundle"
+          }
+        },
+        "v2": {
+          "type": "review",
+          "settings": {
+            "category": "value",
+            "rating": 5,
+            "headline": "Great value for money.",
+            "quote": "I've tried cheaper alternatives but nothing compares to Laushe. The results are much better and more sustainable.",
+            "author": "Sarah M.",
+            "product_name": "Panjiri"
+          }
+        },
+        "b1": {
+          "type": "review",
+          "settings": {
+            "category": "benefits",
+            "rating": 5,
+            "headline": "Life changing benefits.",
+            "quote": "Since I started using the Elixir, my joint pain has significantly decreased. I feel much more active and mobile now.",
+            "author": "Bilal A.",
+            "product_name": "Golden Elixir"
+          }
+        },
+        "b2": {
+          "type": "review",
+          "settings": {
+            "category": "benefits",
+            "rating": 5,
+            "headline": "Energy levels are up!",
+            "quote": "The Honey and Panjiri combo has given me so much energy during the day. I no longer feel the afternoon slump.",
+            "author": "Hiba R.",
+            "product_name": "Organic Duo"
+          }
+        },
+        "q1": {
+          "type": "review",
+          "settings": {
+            "category": "quality",
+            "rating": 5,
+            "headline": "Unmatched purity.",
+            "quote": "You can smell the authenticity as soon as you open the jar. The traditional processing really makes a difference.",
+            "author": "Maryam S.",
+            "product_name": "Pure Desi Ghee"
+          }
+        },
+        "q2": {
+          "type": "review",
+          "settings": {
+            "category": "quality",
+            "rating": 5,
+            "headline": "Traditional & Effective.",
+            "quote": "It's rare to find products that stay true to traditional methods while delivering modern results. Laushe nailed it.",
+            "author": "Hassan K.",
+            "product_name": "Royce Hair Oil"
+          }
+        }
       },
-      "block_order": ["t1", "t2", "t3", "v1", "v2", "b1", "b2", "q1", "q2"],
+      "block_order": [
+        "t1",
+        "t2",
+        "t3",
+        "v1",
+        "v2",
+        "b1",
+        "b2",
+        "q1",
+        "q2"
+      ],
       "settings": {
         "heading": "Join Thousands Improving Their Health",
-        "bg_color": "#FAFAFA"
-      }
-    },
-    "comparison_table": {
-      "type": "laushe-comparison-table",
-      "name": "Comparison Table (Laushe)",
-      "blocks": {
-        "r1": { "type": "row", "settings": { "feature": "100% Natural Ingredients", "laushe": true, "generic": false } },
-        "r2": { "type": "row", "settings": { "feature": "Sunnah Blessed Formulation", "laushe": true, "generic": false } },
-        "r3": { "type": "row", "settings": { "feature": "No Artificial Additives", "laushe": true, "generic": false } },
-        "r4": { "type": "row", "settings": { "feature": "Clinically Tested", "laushe": true, "generic": false } },
-        "r5": { "type": "row", "settings": { "feature": "Ethically Sourced", "laushe": true, "generic": false } },
-        "r6": { "type": "row", "settings": { "feature": "Money-Back Guarantee", "laushe": true, "generic": false } },
-        "r7": { "type": "row", "settings": { "feature": "Premium Packaging", "laushe": true, "generic": true } },
-        "r8": { "type": "row", "settings": { "feature": "Affordable Pricing", "laushe": true, "generic": true } }
-      },
-      "block_order": ["r1", "r2", "r3", "r4", "r5", "r6", "r7", "r8"],
-      "settings": {
-        "heading": "The Laushe Standard",
-        "bg_color": "#FAF7F2"
-      }
-    },
-    "video_grid": {
-      "type": "laushe-video-grid",
-      "name": "Social Video Grid (Laushe)",
-      "blocks": {
-        "v1": { "type": "video" },
-        "v2": { "type": "video" },
-        "v3": { "type": "video" },
-        "v4": { "type": "video" },
-        "v5": { "type": "video" }
-      },
-      "block_order": ["v1", "v2", "v3", "v4", "v5"],
-      "settings": {
-        "heading": "",
-        "bg_color": "#FAFAFA"
+        "bg_color": "#fafafa"
       }
     },
     "story": {
@@ -456,23 +531,106 @@
     "social_proof": {
       "type": "social-proof-carousel",
       "blocks": {
-        "st1": { "type": "social_stat", "settings": { "number": "95%", "label": "Overall health improved" } },
-        "st2": { "type": "social_stat", "settings": { "number": "67%", "label": "Better digestion" } }
+        "st1": {
+          "type": "social_stat",
+          "settings": {
+            "number": "95%",
+            "label": "Overall health improved"
+          }
+        },
+        "st2": {
+          "type": "social_stat",
+          "settings": {
+            "number": "67%",
+            "label": "Better digestion"
+          }
+        }
       },
-      "block_order": [ "st1", "st2" ],
+      "block_order": [
+        "st1",
+        "st2"
+      ],
       "settings": {
         "section_title": "Pure, Potent, Proven",
         "section_subtitle": "Here is what our customers report after 3 months of using Laushe products.",
         "bg_color": "#fff9e9"
       }
     },
-    "promo_cta": {
+    "laushe_comparison_table_BtaEPh": {
+      "type": "laushe-comparison-table",
+      "blocks": {
+        "row_xxQNgm": {
+          "type": "row",
+          "settings": {
+            "feature": "100% Natural Ingredients",
+            "laushe": true,
+            "generic": false
+          }
+        },
+        "row_X3F4Me": {
+          "type": "row",
+          "settings": {
+            "feature": "Sunnah Blessed Formulation",
+            "laushe": true,
+            "generic": false
+          }
+        },
+        "row_twDFyp": {
+          "type": "row",
+          "settings": {
+            "feature": "No Artificial Additives",
+            "laushe": true,
+            "generic": false
+          }
+        },
+        "row_bjcm3h": {
+          "type": "row",
+          "settings": {
+            "feature": "Clinically Tested",
+            "laushe": true,
+            "generic": false
+          }
+        },
+        "row_awbg3x": {
+          "type": "row",
+          "settings": {
+            "feature": "Ethically Sourced",
+            "laushe": true,
+            "generic": false
+          }
+        },
+        "row_Gdy6w9": {
+          "type": "row",
+          "settings": {
+            "feature": "Money-Back Guarantee",
+            "laushe": true,
+            "generic": false
+          }
+        }
+      },
+      "block_order": [
+        "row_xxQNgm",
+        "row_X3F4Me",
+        "row_twDFyp",
+        "row_bjcm3h",
+        "row_awbg3x",
+        "row_Gdy6w9"
+      ],
+      "name": "Comparison Table (Laushe)",
+      "settings": {
+        "heading": "The Laushe Standard",
+        "bg_color": "#faf7f2"
+      }
+    },
+    "laushe_promo_cta_wwzJAq": {
       "type": "laushe-promo-cta",
+      "name": "Promo CTA (Laushe)",
       "settings": {
         "headline": "Ready to Transform Your Health Naturally?",
         "cta_text": "Shop Laushe Now",
+        "cta_link": "",
         "bg_color": "#000000",
-        "btn_color": "#FFFA00"
+        "btn_color": "#fffa00"
       }
     }
   },
@@ -488,10 +646,9 @@
     "catalog_grid",
     "faq_accordion",
     "filtered_reviews",
-    "comparison_table",
-    "video_grid",
     "story",
     "social_proof",
-    "promo_cta"
+    "laushe_comparison_table_BtaEPh",
+    "laushe_promo_cta_wwzJAq"
   ]
 }
