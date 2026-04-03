@@ -98,7 +98,7 @@
         "row_1": {
           "type": "row",
           "settings": {
-            "feature": "100% Raw & Unprocessed",
+            "feature": "100% Natural Ingredients",
             "laushe": true,
             "generic": false
           }
@@ -106,7 +106,7 @@
         "row_2": {
           "type": "row",
           "settings": {
-            "feature": "No Added Sugars or Fillers",
+            "feature": "Sunnah-Blessed Formulation",
             "laushe": true,
             "generic": false
           }
@@ -114,7 +114,7 @@
         "row_3": {
           "type": "row",
           "settings": {
-            "feature": "Rich in Natural Enzymes",
+            "feature": "No Artificial Additives",
             "laushe": true,
             "generic": false
           }
@@ -122,7 +122,39 @@
         "row_4": {
           "type": "row",
           "settings": {
-            "feature": "Sunnah-Blessed Sourcing",
+            "feature": "Scientifically Verified",
+            "laushe": true,
+            "generic": false
+          }
+        },
+        "row_5": {
+          "type": "row",
+          "settings": {
+            "feature": "Ethically Sourced",
+            "laushe": true,
+            "generic": false
+          }
+        },
+        "row_6": {
+          "type": "row",
+          "settings": {
+            "feature": "Money-Back Guarantee",
+            "laushe": true,
+            "generic": false
+          }
+        },
+        "row_7": {
+          "type": "row",
+          "settings": {
+            "feature": "Fresh & Sealed Packaging",
+            "laushe": true,
+            "generic": false
+          }
+        },
+        "row_8": {
+          "type": "row",
+          "settings": {
+            "feature": "Fair & Transparent Pricing",
             "laushe": true,
             "generic": false
           }
@@ -132,7 +164,11 @@
         "row_1",
         "row_2",
         "row_3",
-        "row_4"
+        "row_4",
+        "row_5",
+        "row_6",
+        "row_7",
+        "row_8"
       ],
       "settings": {
         "heading": "Laushe Honey vs. Others",
@@ -145,13 +181,45 @@
         "faq_1": {
           "type": "faq",
           "settings": {
-            "question": "Is your honey raw?",
-            "answer": "Yes, our honey is 100% raw, unfiltered, and unprocessed to ensure you get every natural enzyme and nutritional benefit."
+            "question": "Is your honey completely raw and unprocessed?",
+            "answer": "Yes, our honey is 100% raw and unprocessed, carefully collected from natural apiaries to preserve its natural enzymes, nutrients, and rich taste."
+          }
+        },
+        "faq_2": {
+          "type": "faq",
+          "settings": {
+            "question": "Can I use this honey daily?",
+            "answer": "Absolutely. You can consume 1–2 tablespoons daily as part of your routine to support immunity, energy, and overall wellness."
+          }
+        },
+        "faq_3": {
+          "type": "faq",
+          "settings": {
+            "question": "Does this honey contain any added sugar or preservatives?",
+            "answer": "No, it is completely pure with no added sugars, chemicals, or preservatives — only natural honey in its original form."
+          }
+        },
+        "faq_4": {
+          "type": "faq",
+          "settings": {
+            "question": "Is it suitable for skin application?",
+            "answer": "Yes, it can be applied topically to help nourish and hydrate the skin, thanks to its natural antibacterial and moisturizing properties."
+          }
+        },
+        "faq_5": {
+          "type": "faq",
+          "settings": {
+            "question": "What makes this honey Sunnah-blessed?",
+            "answer": "Honey is a Sunnah-recommended food known for its healing benefits, and our product stays true to that tradition by maintaining purity, authenticity, and natural goodness."
           }
         }
       },
       "block_order": [
-        "faq_1"
+        "faq_1",
+        "faq_2",
+        "faq_3",
+        "faq_4",
+        "faq_5"
       ],
       "settings": {
         "subtitle": "QUESTIONS & ANSWERS",
