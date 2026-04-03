@@ -322,10 +322,20 @@
             "image": "shopify://shop_images/chia_seeds-100_jpg.jpg",
             "price": "Rs.2,990"
           }
+        },
+        "elixir_override": {
+          "type": "product_override",
+          "settings": {
+            "target_product": "golden-elixir",
+            "title": "Golden Elixir",
+            "desc": "A flavorful blend of turmeric, honey, and herbs for a healthy daily ritual.",
+            "price": "Rs.1,490"
+          }
         }
       },
       "block_order": [
-        "chia_override"
+        "chia_override",
+        "elixir_override"
       ],
       "settings": {
         "heading": "Shop Our Entire Wellness Collection",
