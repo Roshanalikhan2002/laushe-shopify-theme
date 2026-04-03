@@ -29,7 +29,7 @@
           "type": "accordion",
           "settings": {
             "title": "How to use",
-            "content": "Enjoy a spoonful daily on its own for natural energy\nUse as a healthy sweetener in herbal teas or desserts\nDrizzle over yogurt, oatmeal, or fresh fruit\nCombine with warm water and lemon for a soothing morning drink"
+            "content": "Consume 1–2 tablespoons daily on an empty stomach for best results\nStir into warm water with lemon to create a natural detox drink\nAdd to tea or smoothies as a healthy natural sweetener\nApply gently on skin to support nourishment and hydration"
           }
         }
       },
@@ -77,10 +77,10 @@
       "type": "usage-steps",
       "settings": {
         "heading": "Daily Natural Wellness",
-        "step1_text": "One spoonful daily for natural energy",
-        "step2_text": "Use as a healthy natural sweetener",
-        "step3_text": "Drizzle over healthy meals",
-        "step4_text": "Use daily for consistent vitality"
+        "step1_text": "Consume 1–2 tablespoons daily on an empty stomach for best results",
+        "step2_text": "Stir into warm water with lemon to create a natural detox drink",
+        "step3_text": "Add to tea or smoothies as a healthy natural sweetener",
+        "step4_text": "Apply gently on skin to support nourishment and hydration"
       }
     },
     "comparison": {
