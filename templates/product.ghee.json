@@ -94,7 +94,7 @@
     "comparison": {
       "type": "laushe-comparison-table",
       "blocks": {
-        "row_1": {
+        "ghee_comp_1": {
           "type": "row",
           "settings": {
             "feature": "100% Natural Ingredients",
@@ -102,7 +102,7 @@
             "generic": false
           }
         },
-        "row_2": {
+        "ghee_comp_2": {
           "type": "row",
           "settings": {
             "feature": "Sunnah-Blessed Formulation",
@@ -110,7 +110,7 @@
             "generic": false
           }
         },
-        "row_3": {
+        "ghee_comp_3": {
           "type": "row",
           "settings": {
             "feature": "No Artificial Additives",
@@ -118,7 +118,7 @@
             "generic": false
           }
         },
-        "row_4": {
+        "ghee_comp_4": {
           "type": "row",
           "settings": {
             "feature": "Scientifically Verified",
@@ -126,7 +126,7 @@
             "generic": false
           }
         },
-        "row_5": {
+        "ghee_comp_5": {
           "type": "row",
           "settings": {
             "feature": "Ethically Sourced",
@@ -134,7 +134,7 @@
             "generic": false
           }
         },
-        "row_6": {
+        "ghee_comp_6": {
           "type": "row",
           "settings": {
             "feature": "Money-Back Guarantee",
@@ -142,7 +142,7 @@
             "generic": false
           }
         },
-        "row_7": {
+        "ghee_comp_7": {
           "type": "row",
           "settings": {
             "feature": "Fresh & Sealed Packaging",
@@ -150,7 +150,7 @@
             "generic": false
           }
         },
-        "row_8": {
+        "ghee_comp_8": {
           "type": "row",
           "settings": {
             "feature": "Fair & Transparent Pricing",
@@ -160,14 +160,14 @@
         }
       },
       "block_order": [
-        "row_1",
-        "row_2",
-        "row_3",
-        "row_4",
-        "row_5",
-        "row_6",
-        "row_7",
-        "row_8"
+        "ghee_comp_1",
+        "ghee_comp_2",
+        "ghee_comp_3",
+        "ghee_comp_4",
+        "ghee_comp_5",
+        "ghee_comp_6",
+        "ghee_comp_7",
+        "ghee_comp_8"
       ],
       "settings": {
         "heading": "Laushe Ghee vs. Others",
