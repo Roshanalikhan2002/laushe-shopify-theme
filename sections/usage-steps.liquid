@@ -5,7 +5,8 @@
     { "id": "heading", "type": "text", "label": "Heading", "default": "Delicious, Herbal Formula" },
     { "id": "step1_text", "type": "textarea", "label": "Step 1 Text", "default": "Consume 1–2 tablespoons daily on an empty stomach for best results" },
     { "id": "step2_text", "type": "textarea", "label": "Step 2 Text", "default": "Stir into warm water with lemon to create a natural detox drink" },
-    { "id": "step3_text", "type": "textarea", "label": "Step 3 Text", "default": "Add to tea or smoothies as a healthy natural sweetener" }
+    { "id": "step3_text", "type": "textarea", "label": "Step 3 Text", "default": "Add to tea or smoothies as a healthy natural sweetener" },
+    { "id": "step4_text", "type": "textarea", "label": "Step 4 Text", "default": "Use daily for optimal benefits and consistent results" }
   ],
   "presets": [{ "name": "Usage Steps", "category": "Luxe Funnel" }]
 }
@@ -27,13 +28,19 @@
          <div class="step-num">3</div>
          <p style="font-size: 16px; line-height: 1.6;">{{ section.settings.step3_text }}</p>
       </div>
+      <div class="step-card">
+         <div class="step-num">4</div>
+         <p style="font-size: 16px; line-height: 1.6;">{{ section.settings.step4_text }}</p>
+      </div>
     </div>
   </div>
 </section>
 
 <style>
-  .steps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
-  .step-card { background: #FFF; padding: 50px 40px; border-radius: 30px; box-shadow: 0 15px 40px rgba(0,0,0,0.05); }
-  .step-num { background: #1B4332; color: #D4AF37; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 30px; font-weight: 800; font-size: 20px; }
+  .steps-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; }
+  .step-card { background: #FFF; padding: 40px 30px; border-radius: 30px; box-shadow: 0 15px 40px rgba(0,0,0,0.05); display: flex; flex-direction: column; align-items: center; }
+  .step-num { background: #1B4332; color: #D4AF37; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 30px; font-weight: 800; font-size: 20px; flex-shrink: 0; }
+  @media (max-width: 1024px) { .steps-grid { grid-template-columns: repeat(2, 1fr); } }
   @media (max-width: 768px) { .steps-grid { grid-template-columns: 1fr; } }
 </style>
+
