@@ -325,6 +325,7 @@
         },
         "elixir_override": {
           "type": "product_override",
+          "disabled": true,
           "settings": {
             "target_product": "golden-elixir",
             "title": "Golden Elixir",
