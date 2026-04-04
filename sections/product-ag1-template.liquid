@@ -172,12 +172,6 @@
                {% endif %}
 
                {% if enable_bogo %}
-                 {% unless enable_sub %}
-                   <div class="sub-pricing-banner" style="background: #e67e22;">
-                     <ion-icon name="flash-outline"></ion-icon>
-                     {% if force_bogo %}VALENTINES SPECIAL{% else %}{{ section.settings.bogo_badge }}{% endif %}
-                   </div>
-                 {% endunless %}
 
                  <!-- BOGO Option -->
                  <div class="purchase-method {% unless enable_sub %}active{% endunless %}" data-method="bogo" onclick="switchPurchaseMethod(this, 'bogo')">
