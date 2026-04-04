@@ -126,31 +126,35 @@
   }
   .trust-widget {
     position: absolute; 
-    bottom: -10px; 
+    bottom: -8px; 
     left: 20px; 
     background: white; 
-    padding: 6px 14px; 
-    border-radius: 8px; 
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08); 
+    padding: 4px 12px !important; 
+    border-radius: 50px !important; 
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1); 
     display: flex; 
     align-items: center; 
-    gap: 8px;
+    gap: 6px;
     z-index: 10;
+    max-width: fit-content;
   }
   .trust-icon {
     color: var(--accent-gold); 
-    font-size: 18px;
+    font-size: 14px !important;
   }
   .trust-title {
     font-weight: 800; 
-    font-size: 11px; 
+    font-size: 10px !important; 
     margin: 0;
     color: var(--deep-forest);
+    line-height: 1;
+    white-space: nowrap;
   }
   .trust-sub {
-    font-size: 9px; 
+    font-size: 8px !important; 
     margin: 0; 
     opacity: 0.7;
+    white-space: nowrap;
   }
   @media (max-width: 992px) {
     .hero-grid {
@@ -158,18 +162,18 @@
       text-align: center;
       gap: 40px;
     }
-    .hero-content h1 { font-size: 40px; }
+    .hero-content h1 { font-size: 38px; }
     .benefit-item { justify-content: center; }
     .hero-image { order: -1; margin-bottom: 30px; }
-    .limited-badge { right: 10px; top: 10px; }
-    .trust-widget { left: 50%; transform: translateX(-50%); bottom: -8px; padding: 4px 12px; width: auto; white-space: nowrap; }
+    .limited-badge { right: 10px; top: 10px; padding: 4px 12px; font-size: 10px; }
+    .trust-widget { left: 50%; transform: translateX(-50%); bottom: -5px; padding: 3px 10px !important; }
   }
   @media (max-width: 576px) {
-    .hero-content h1 { font-size: 32px; }
+    .hero-content h1 { font-size: 28px; }
     .hero-wrapper { padding: 40px 0; }
-    .trust-widget { padding: 4px 10px; }
-    .trust-icon { font-size: 16px; }
-    .trust-title { font-size: 10px; }
-    .trust-sub { font-size: 8px; }
+    .trust-widget { padding: 3px 8px !important; }
+    .trust-icon { font-size: 12px !important; }
+    .trust-title { font-size: 9px !important; }
+    .trust-sub { font-size: 7px !important; }
   }
 </style>
