@@ -35,8 +35,10 @@
 
 {% comment %} Force BOGO for specific products {% endcomment %}
 {% assign force_bogo = false %}
+{% assign hide_onetime = false %}
 {% if prod_title contains 'chia' or prod_title contains 'hair oil' or prod_title contains 'skin sips' %}
   {% assign force_bogo = true %}
+  {% assign hide_onetime = true %}
 {% endif %}
 
 {% comment %} GLOBAL: Remove subscription from all pages as per user request {% endcomment %}
@@ -174,47 +176,72 @@
                           {% if force_bogo %}Rs.1,690{% else %}{{ section.settings.bogo_price }}{% endif %}
                         </span>
                       </div>
-                      {% comment %}
-                      <ul class="method-benefits" {% unless enable_sub %}style="display:block;"{% endunless %}>
-                        {% if force_bogo %}
-                          {% if prod_title contains 'chia' %}
-                            <li>✔ Get 2 jars of 380g Chia Seeds</li>
-                          {% elsif prod_title contains 'hair oil' %}
-                            <li>✔ Get 2 bottles of Hair Growth Oil</li>
-                          {% elsif prod_title contains 'skin sips' %}
-                            <li>✔ Get 2 packs of Skin Sips Formula</li>
-                          {% else %}
-                            <li>✔ Get 2 for the price of 1</li>
-                          {% endif %}
-                          <li>✔ Free Nationwide Delivery</li>
-                          <li>✔ Premium Quality Guaranteed</li>
-                        {% else %}
-                          {% assign bogo_benefits = section.settings.bogo_benefits | newline_to_br | split: '<br />' %}
-                          {% for benefit in bogo_benefits %}
-                            {% assign b_trimmed = benefit | strip %}
-                            {% if b_trimmed != "" %}
-                              <li>✔ {{ b_trimmed }}</li>
-                            {% endif %}
-                          {% endfor %}
-                        {% endif %}
-                      </ul>
-                      {% endcomment %}
+                      
+                      {% if force_bogo %}
+                         <div class="gwp-selection-v3">
+                            <div class="gwp-header-v3">
+                              <ion-icon name="gift-outline"></ion-icon>
+                              <span>Choose your free item</span>
+                            </div>
+                            
+                            <div class="gwp-options-v3">
+                               {% assign current_handle = product.handle %}
+                               {% comment %} Handles: chia, hair-oil, elixir (Skin Sips) {% endcomment %}
+                               {% assign handles = "chia,hair-oil,elixir" | split: "," %}
+                               
+                               {% for h in handles %}
+                                 {% if h != current_handle %}
+                                   {% assign g_prod = all_products[h] %}
+                                   {% if g_prod != blank %}
+                                     <div class="gwp-item-v3" onclick="selectGWP(this, '{{ g_prod.selected_or_first_available_variant.id }}', event)">
+                                        <div class="gwp-radio-v3"></div>
+                                        <img src="{{ g_prod.featured_image | img_url: '100x100', crop: 'center' }}" alt="{{ g_prod.title }}">
+                                        <div class="gwp-info-v3">
+                                          <div class="gwp-name-v3">{{ g_prod.title }}</div>
+                                          <div class="gwp-price-row-v3">
+                                            <span class="gwp-old-price-v3">{{ g_prod.price | money }}</span>
+                                            <span class="gwp-free-v3">FREE</span>
+                                          </div>
+                                        </div>
+                                     </div>
+                                   {% endif %}
+                                 {% endif %}
+                               {% endfor %}
+                               
+                               {% comment %} If current product is one of the bogo products, add itself as an option too if they want 2 of the same {% endcomment %}
+                               <div class="gwp-item-v3 active" onclick="selectGWP(this, '{{ product.selected_or_first_available_variant.id }}', event)">
+                                  <div class="gwp-radio-v3"></div>
+                                  <img src="{{ product.featured_image | img_url: '100x100', crop: 'center' }}" alt="{{ product.title }}">
+                                  <div class="gwp-info-v3">
+                                    <div class="gwp-name-v3">{{ product.title }} (Another one)</div>
+                                    <div class="gwp-price-row-v3">
+                                      <span class="gwp-old-price-v3">{{ product.price | money }}</span>
+                                      <span class="gwp-free-v3">FREE</span>
+                                    </div>
+                                  </div>
+                               </div>
+                            </div>
+                         </div>
+                         <input type="hidden" name="gift_id" id="SelectedGiftId" value="{{ product.selected_or_first_available_variant.id }}">
+                       {% endif %}
                     </div>
                  </div>
                {% endif %}
 
-               <!-- One-time Option -->
-               <div class="purchase-method {% if enable_sub == false and enable_bogo == false %}active{% endif %}" data-method="onetime" onclick="switchPurchaseMethod(this, 'onetime')">
-                  <div class="method-radio"><div class="radio-inner"></div></div>
-                  <div class="method-content">
-                    <div class="method-header">
-                      <span class="method-name">Buy one time</span>
-                      <span class="method-price" id="OneTimePrice">
-                        {{ section.settings.custom_one_time_price | default: product.selected_or_first_available_variant.price | money }}
-                      </span>
+               {% unless hide_onetime %}
+                 <!-- One-time Option -->
+                 <div class="purchase-method {% if enable_sub == false and enable_bogo == false %}active{% endif %}" data-method="onetime" onclick="switchPurchaseMethod(this, 'onetime')">
+                    <div class="method-radio"><div class="radio-inner"></div></div>
+                    <div class="method-content">
+                      <div class="method-header">
+                        <span class="method-name">Buy one time</span>
+                        <span class="method-price" id="OneTimePrice">
+                          {{ section.settings.custom_one_time_price | default: product.selected_or_first_available_variant.price | money }}
+                        </span>
+                      </div>
                     </div>
-                  </div>
-               </div>
+                 </div>
+               {% endunless %}
             </div>
 
             <!-- ADD TO CART -->
@@ -330,6 +357,25 @@
   .acc-icon { transition: transform 0.3s; font-size: 20px; }
   .accordion-v3.active .acc-icon { transform: rotate(45deg); }
 
+  /* GWP Selection */
+  .gwp-selection-v3 { margin-top: 20px; padding-top: 20px; border-top: 1px solid #eee; }
+  .gwp-header-v3 { display: flex; align-items: center; gap: 8px; font-weight: 700; color: #333; font-size: 14px; margin-bottom: 15px; }
+  .gwp-options-v3 { display: flex; flex-direction: column; gap: 10px; }
+  .gwp-item-v3 { display: flex; align-items: center; gap: 12px; padding: 12px; border: 1px solid #eee; border-radius: 8px; cursor: pointer; transition: all 0.2s; position: relative; }
+  .gwp-item-v3:hover { background: #f9f9f9; }
+  .gwp-item-v3.active { border-color: #004225; background: #f0f7f3; }
+  
+  .gwp-radio-v3 { width: 16px; height: 16px; border: 2px solid #ddd; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .gwp-item-v3.active .gwp-radio-v3 { border-color: #004225; }
+  .gwp-item-v3.active .gwp-radio-v3::after { content: ""; width: 8px; height: 8px; background: #004225; border-radius: 50%; display: block; }
+  
+  .gwp-item-v3 img { width: 45px !important; height: 45px !important; object-fit: cover; border-radius: 4px; }
+  .gwp-info-v3 { flex: 1; }
+  .gwp-name-v3 { font-size: 14px; font-weight: 700; color: #004225; }
+  .gwp-price-row-v3 { display: flex; align-items: center; gap: 8px; font-size: 12px; margin-top: 2px; }
+  .gwp-old-price-v3 { text-decoration: line-through; color: #888; }
+  .gwp-free-v3 { color: #666; font-weight: 800; }
+
   @media (max-width: 1000px) {
     .product-grid-v3 { grid-template-columns: 1fr; gap: 50px; }
     .product-visuals-v3 { position: static; }
@@ -409,6 +455,13 @@
     el.classList.add('active');
   }
 
+  function selectGWP(el, giftId, e) {
+    e.stopPropagation();
+    document.querySelectorAll('.gwp-item-v3').forEach(i => i.classList.remove('active'));
+    el.classList.add('active');
+    document.getElementById('SelectedGiftId').value = giftId;
+  }
+
   // Sync on page load
   syncVariantInput();
 
@@ -435,13 +488,22 @@
     btn.disabled = true;
 
     const activeMethod = document.querySelector('.purchase-method.active')?.dataset.method;
-    let quantity = 1;
-    // if (activeMethod === 'bogo') quantity = 2; // Keep it at 1 for now if BOGO is a visual offer for 1 SKU
+    let itemsToAdd = [{ id: parseInt(variantId), quantity: 1 }];
+
+    if (activeMethod === 'bogo') {
+      const giftId = document.getElementById('SelectedGiftId')?.value;
+      if (giftId) {
+        itemsToAdd.push({ id: parseInt(giftId), quantity: 1 });
+      } else {
+        // Fallback for generic BOGO if no GWP UI
+        itemsToAdd[0].quantity = 2;
+      }
+    }
 
     fetch('/cart/add.js', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ id: parseInt(variantId), quantity: quantity })
+      body: JSON.stringify({ items: itemsToAdd })
     })
     .then(res => {
       if (!res.ok) throw new Error('Cart add failed');
