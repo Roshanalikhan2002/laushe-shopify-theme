@@ -36,7 +36,7 @@
 {% comment %} Force BOGO for specific products {% endcomment %}
 {% assign force_bogo = false %}
 {% assign hide_onetime = false %}
-{% if prod_title contains 'chia' or prod_title contains 'hair oil' or prod_title contains 'skin sips' %}
+{% if prod_title contains 'chia' or prod_title contains 'hair oil' or prod_title contains 'skin sips' or prod_title contains 'skinny sips' %}
   {% assign force_bogo = true %}
   {% assign hide_onetime = true %}
 {% endif %}
@@ -186,8 +186,8 @@
                             
                             <div class="gwp-options-v3">
                                {% assign current_handle = product.handle %}
-                               {% comment %} Handles: chia, hair-oil, elixir (Skin Sips) {% endcomment %}
-                               {% assign handles = "chia,hair-oil,elixir" | split: "," %}
+                               {% comment %} Correct Handles for the Trio {% endcomment %}
+                               {% assign handles = "skinny-sips-weight-loss-kehwa,hair-oil,chia-seeds-380g" | split: "," %}
                                
                                {% for h in handles %}
                                  {% if h != current_handle %}
@@ -208,7 +208,7 @@
                                  {% endif %}
                                {% endfor %}
                                
-                               {% comment %} If current product is one of the bogo products, add itself as an option too if they want 2 of the same {% endcomment %}
+                               {% comment %} Option for a second unit of the current product {% endcomment %}
                                <div class="gwp-item-v3 active" onclick="selectGWP(this, '{{ product.selected_or_first_available_variant.id }}', event)">
                                   <div class="gwp-radio-v3"></div>
                                   <img src="{{ product.featured_image | img_url: '100x100', crop: 'center' }}" alt="{{ product.title }}">
