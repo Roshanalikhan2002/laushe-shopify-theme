@@ -64,7 +64,7 @@
     transition: all 0.3s ease;
   }
 
-  .cart-drawer-wrapper.open {
+  .cart-drawer-wrapper.is-open {
     visibility: visible;
   }
 
@@ -81,12 +81,12 @@
     z-index: 10;
   }
 
-  .cart-drawer-wrapper.open .cart-drawer-overlay {
+  .cart-drawer-wrapper.is-open .cart-drawer-overlay {
     opacity: 1;
   }
 
   .cart-drawer {
-    position: absolute;
+    position: fixed;
     top: 0;
     right: 0;
     width: 100%;
@@ -98,10 +98,10 @@
     transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
     display: flex;
     flex-direction: column;
-    z-index: 20;
+    z-index: 10001;
   }
 
-  .cart-drawer-wrapper.open .cart-drawer {
+  .cart-drawer-wrapper.is-open .cart-drawer {
     transform: translateX(0);
   }
 
@@ -317,13 +317,15 @@
     threshold: {{ section.settings.free_shipping_threshold | default: 3000 }},
     
     open: function() {
-      document.getElementById('LausheCartDrawer').classList.add('open');
+      const drawer = document.getElementById('LausheCartDrawer');
+      if (drawer) drawer.classList.add('is-open');
       document.body.style.overflow = 'hidden';
       this.refresh();
     },
 
     close: function() {
-      document.getElementById('LausheCartDrawer').classList.remove('open');
+      const drawer = document.getElementById('LausheCartDrawer');
+      if (drawer) drawer.classList.remove('is-open');
       document.body.style.overflow = '';
     },
 
