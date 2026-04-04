@@ -33,17 +33,18 @@
   <script>window.location.href = "/";</script>
 {% endif %}
 
-{% comment %} Force BOGO for Chia Seeds {% endcomment %}
+{% comment %} Force BOGO for specific products {% endcomment %}
 {% assign force_bogo = false %}
-{% if prod_title contains 'chia' %}
+{% if prod_title contains 'chia' or prod_title contains 'hair oil' or prod_title contains 'skin sips' %}
   {% assign force_bogo = true %}
 {% endif %}
 
+{% comment %} GLOBAL: Remove subscription from all pages as per user request {% endcomment %}
+{% assign enable_sub = false %}
+
 {% if force_bogo %}
-  {% assign enable_sub = false %}
   {% assign enable_bogo = true %}
 {% else %}
-  {% assign enable_sub = section.settings.enable_subscription %}
   {% assign enable_bogo = section.settings.enable_bogo %}
 {% endif %}
 
@@ -66,7 +67,7 @@
       
       <!-- LEFT: VISUALS -->
       <div class="product-visuals-v3">
-        <div class="promo-banner-v3">{{ section.settings.promo_banner }}</div>
+        {% comment %} <div class="promo-banner-v3">{{ section.settings.promo_banner }}</div> {% endcomment %}
         <div class="product-img-wrapper-v3">
           {% assign main_img = product.featured_image | img_url: '1000x1000' %}
           {% if product.handle contains 'hair-oil' %}
@@ -173,7 +174,15 @@
                       </div>
                       <ul class="method-benefits" {% unless enable_sub %}style="display:block;"{% endunless %}>
                         {% if force_bogo %}
-                          <li>✔ Get 2 jars of 380g Chia Seeds</li>
+                          {% if prod_title contains 'chia' %}
+                            <li>✔ Get 2 jars of 380g Chia Seeds</li>
+                          {% elsif prod_title contains 'hair oil' %}
+                            <li>✔ Get 2 bottles of Hair Growth Oil</li>
+                          {% elsif prod_title contains 'skin sips' %}
+                            <li>✔ Get 2 packs of Skin Sips Formula</li>
+                          {% else %}
+                            <li>✔ Get 2 for the price of 1</li>
+                          {% endif %}
                           <li>✔ Free Nationwide Delivery</li>
                           <li>✔ Premium Quality Guaranteed</li>
                         {% else %}
