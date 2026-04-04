@@ -33,6 +33,20 @@
   <script>window.location.href = "/";</script>
 {% endif %}
 
+{% comment %} Force BOGO for Chia Seeds {% endcomment %}
+{% assign force_bogo = false %}
+{% if prod_title contains 'chia' %}
+  {% assign force_bogo = true %}
+{% endif %}
+
+{% if force_bogo %}
+  {% assign enable_sub = false %}
+  {% assign enable_bogo = true %}
+{% else %}
+  {% assign enable_sub = section.settings.enable_subscription %}
+  {% assign enable_bogo = section.settings.enable_bogo %}
+{% endif %}
+
 <section class="laushe-product-v3" data-section-id="{{ section.id }}">
   <div class="container-wide">
     
@@ -112,7 +126,7 @@
 
             <!-- 3. PURCHASE OPTIONS -->
             <div class="purchase-box-v3">
-               {% if section.settings.enable_subscription %}
+               {% if enable_sub %}
                  <div class="sub-pricing-banner">
                    <ion-icon name="sparkles-outline"></ion-icon>
                    Unlock {{ section.settings.sub_discount }}% Pricing with a Laushe Subscription
@@ -139,39 +153,45 @@
                  </div>
                {% endif %}
 
-               {% if section.settings.enable_bogo %}
-                 {% unless section.settings.enable_subscription %}
+               {% if enable_bogo %}
+                 {% unless enable_sub %}
                    <div class="sub-pricing-banner" style="background: #e67e22;">
                      <ion-icon name="flash-outline"></ion-icon>
-                     {{ section.settings.bogo_badge }}
+                     {% if force_bogo %}VALENTINES SPECIAL{% else %}{{ section.settings.bogo_badge }}{% endif %}
                    </div>
                  {% endunless %}
 
                  <!-- BOGO Option -->
-                 <div class="purchase-method {% unless section.settings.enable_subscription %}active{% endunless %}" data-method="bogo" onclick="switchPurchaseMethod(this, 'bogo')">
+                 <div class="purchase-method {% unless enable_sub %}active{% endunless %}" data-method="bogo" onclick="switchPurchaseMethod(this, 'bogo')">
                     <div class="method-radio"><div class="radio-inner"></div></div>
                     <div class="method-content">
                       <div class="method-header">
-                        <span class="method-name">{{ section.settings.bogo_title }}</span>
+                        <span class="method-name">{% if force_bogo %}Buy 1 Get 1 FREE Offer{% else %}{{ section.settings.bogo_title }}{% endif %}</span>
                         <span class="method-price" id="BogoPrice">
-                          {{ section.settings.bogo_price }}
+                          {% if force_bogo %}Rs.1,690{% else %}{{ section.settings.bogo_price }}{% endif %}
                         </span>
                       </div>
-                      <ul class="method-benefits" {% unless section.settings.enable_subscription %}style="display:block;"{% endunless %}>
-                        {% assign bogo_benefits = section.settings.bogo_benefits | newline_to_br | split: '<br />' %}
-                        {% for benefit in bogo_benefits %}
-                          {% assign b_trimmed = benefit | strip %}
-                          {% if b_trimmed != "" %}
-                            <li>✔ {{ b_trimmed }}</li>
-                          {% endif %}
-                        {% endfor %}
+                      <ul class="method-benefits" {% unless enable_sub %}style="display:block;"{% endunless %}>
+                        {% if force_bogo %}
+                          <li>✔ Get 2 jars of 380g Chia Seeds</li>
+                          <li>✔ Free Nationwide Delivery</li>
+                          <li>✔ Premium Quality Guaranteed</li>
+                        {% else %}
+                          {% assign bogo_benefits = section.settings.bogo_benefits | newline_to_br | split: '<br />' %}
+                          {% for benefit in bogo_benefits %}
+                            {% assign b_trimmed = benefit | strip %}
+                            {% if b_trimmed != "" %}
+                              <li>✔ {{ b_trimmed }}</li>
+                            {% endif %}
+                          {% endfor %}
+                        {% endif %}
                       </ul>
                     </div>
                  </div>
                {% endif %}
 
                <!-- One-time Option -->
-               <div class="purchase-method {% if section.settings.enable_subscription == false and section.settings.enable_bogo == false %}active{% endif %}" data-method="onetime" onclick="switchPurchaseMethod(this, 'onetime')">
+               <div class="purchase-method {% if enable_sub == false and enable_bogo == false %}active{% endif %}" data-method="onetime" onclick="switchPurchaseMethod(this, 'onetime')">
                   <div class="method-radio"><div class="radio-inner"></div></div>
                   <div class="method-content">
                     <div class="method-header">
