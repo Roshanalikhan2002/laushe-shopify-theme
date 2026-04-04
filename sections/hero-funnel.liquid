@@ -126,27 +126,29 @@
   }
   .trust-widget {
     position: absolute; 
-    bottom: -20px; 
-    left: -20px; 
+    bottom: -15px; 
+    left: 20px; 
     background: white; 
-    padding: 15px 25px; 
-    border-radius: 20px; 
-    box-shadow: var(--shadow-luxe); 
+    padding: 8px 18px; 
+    border-radius: 12px; 
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
     display: flex; 
     align-items: center; 
     gap: 10px;
+    z-index: 10;
   }
   .trust-icon {
     color: var(--accent-gold); 
-    font-size: 32px;
+    font-size: 24px;
   }
   .trust-title {
     font-weight: 800; 
-    font-size: 14px; 
+    font-size: 12px; 
     margin: 0;
+    color: var(--deep-forest);
   }
   .trust-sub {
-    font-size: 12px; 
+    font-size: 10px; 
     margin: 0; 
     opacity: 0.7;
   }
@@ -158,15 +160,15 @@
     }
     .hero-content h1 { font-size: 40px; }
     .benefit-item { justify-content: center; }
-    .hero-image { order: -1; }
+    .hero-image { order: -1; margin-bottom: 20px; }
     .limited-badge { right: 10px; top: 10px; }
-    .trust-widget { left: 10px; bottom: -10px; padding: 12px 20px; }
+    .trust-widget { left: 50%; transform: translateX(-50%); bottom: -10px; padding: 6px 14px; width: auto; white-space: nowrap; }
   }
   @media (max-width: 576px) {
     .hero-content h1 { font-size: 32px; }
-    .hero-wrapper { padding: 60px 0; }
-    .trust-widget { padding: 10px 15px; }
-    .trust-icon { font-size: 24px; }
-    .trust-title { font-size: 13px; }
+    .hero-wrapper { padding: 40px 0; }
+    .trust-widget { padding: 6px 12px; }
+    .trust-icon { font-size: 20px; }
+    .trust-title { font-size: 11px; }
   }
 </style>
