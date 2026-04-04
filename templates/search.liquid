@@ -31,6 +31,9 @@
       <div class="search-grid">
         {% for item in search.results %}
           {% if item.object_type == 'product' %}
+            {% if item.handle == 'golden-elixir' or item.handle == 'weight-gainer' %}
+              {% continue %}
+            {% endif %}
             <div class="product-card-v2" onclick="location.href='{{ item.url }}'">
               <div class="card-image-area">
                 {% if item.featured_image != blank %}

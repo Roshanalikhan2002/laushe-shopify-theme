@@ -22,6 +22,10 @@
 }
 {% endschema %}
 
+{% if product.handle == 'golden-elixir' or product.handle == 'weight-gainer' %}
+  <script>window.location.href = "/";</script>
+{% endif %}
+
 <section class="laushe-product-v3" data-section-id="{{ section.id }}">
   <div class="container-wide">
     

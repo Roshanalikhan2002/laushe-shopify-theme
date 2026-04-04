@@ -57,6 +57,9 @@
       <div class="catalog-grid" id="laushe-catalog-grid-{{ section.id }}">
         {% assign target_collection = section.settings.collection | default: collections.all %}
         {% for product in target_collection.products %}
+          {% if product.handle == 'golden-elixir' or product.handle == 'weight-gainer' %}
+            {% continue %}
+          {% endif %}
           {% assign product_tags_string = product.tags | join: ',' | downcase %}
           
           {% comment %} CHECK FOR OVERRIDES {% endcomment %}
