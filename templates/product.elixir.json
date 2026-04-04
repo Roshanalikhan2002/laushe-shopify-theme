@@ -1,12 +1,3 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "layout": "theme",
   "sections": {
@@ -31,14 +22,14 @@
           "type": "accordion",
           "settings": {
             "title": "Benefits",
-            "content": "Helps ease occasional joint discomfort and promotes mobility\nSupports smooth digestion and gut comfort\nRich in antioxidants for overall body support\nEnhances daily vitality without stimulants\nSoothes and balances internal inflammation\nSunnah-blessed blend crafted with traditional herbs"
+            "content": "Aids in relaxation and calm for body and mind\nSupports healthy internal inflammation balance\nSunnah-blessed blend with turmeric and honey\nPromotes overall vitality and daily energy\nConvenient daily ritual for sustainable health\nRich in antioxidants for full-body wellness"
           }
         },
         "acc4": {
           "type": "accordion",
           "settings": {
             "title": "How to use",
-            "content": "Consume one tablespoon each day, ideally in the morning\nStir into warm water or milk to make a soothing golden drink\nTake directly if you prefer a more concentrated serving\nUse daily for optimal benefits and consistent results"
+            "content": "Take one tablespoon daily, ideally in the morning\nMix into warm water, milk, or your favorite herbal tea\nEnjoy directly for a rich and natural intake\nConsistent daily use provides the best results"
           }
         }
       },
@@ -51,7 +42,7 @@
       "settings": {
         "promo_banner": "Includes a FREE Frother**",
         "stars_count": "50,000+ verified 5-star reviews for Laushe products",
-        "sub_discount": 25,
+        "sub_discount": 20,
         "custom_one_time_price": "",
         "custom_sub_price": ""
       }
@@ -59,9 +50,9 @@
     "benefits": {
       "type": "benefits-grid",
       "settings": {
-        "heading": "A flavorful blend of turmeric, honey, and herbs for a healthy daily ritual.",
+        "heading": "A powerhouse superfood rich in nutrients to fuel your daily health.",
         "subheading": "Supported by nature, backed by tradition.",
-        "center_image": "shopify://shop_images/IMG_8798.png"
+        "center_image": "shopify://shop_images/golden_elixir-100_jpg.jpg"
       }
     },
     "ingredients": {
@@ -118,10 +109,10 @@
       "type": "usage-steps",
       "settings": {
         "heading": "Delicious, Herbal Formula",
-        "step1_text": "Consume one tablespoon each day, ideally in the morning",
-        "step2_text": "Stir into warm water or milk to make a soothing golden drink",
-        "step3_text": "Take directly if you prefer a more concentrated serving",
-        "step4_text": "Use daily for optimal benefits and consistent results"
+        "step1_text": "Take one tablespoon daily, ideally in the morning",
+        "step2_text": "Mix into warm water, milk, or your favorite herbal tea",
+        "step3_text": "Enjoy directly for a rich and natural intake",
+        "step4_text": "Consistent daily use provides the best results"
       }
     },
     "comparison": {
@@ -213,36 +204,36 @@
         "faq_1": {
           "type": "faq",
           "settings": {
-            "question": "What makes Golden Elixir special?",
-            "answer": "Golden Elixir combines turmeric with honey and traditional herbs in a Sunnah-blessed formulation. Each ingredient is carefully selected for potency, purity, and effectiveness, ensuring you get more than just flavor, a blend designed for real daily support."
+            "question": "What is the Golden Elixir and its primary benefits?",
+            "answer": "Our Golden Elixir is a signature blend crafted with turmeric, honey, and traditional herbs to support relaxation, balanced inflammation, and overall vitality for a daily wellness boost."
           }
         },
         "faq_2": {
           "type": "faq",
           "settings": {
-            "question": "Can I take Golden Elixir if I have a sensitive stomach?",
-            "answer": "Yes. Golden Elixir is gentle on the digestive system. Turmeric and ginger support digestion naturally, while honey soothes the stomach, making it suitable for most adults. If you have specific medical conditions, consult your doctor first."
+            "question": "How should I consume it for best results?",
+            "answer": "We recommend taking one tablespoon daily, ideally in the morning. You can mix it into warm water or milk, or simply enjoy it directly for a rich, natural experience."
           }
         },
         "faq_3": {
           "type": "faq",
           "settings": {
-            "question": "How should I include it into my daily routine?",
-            "answer": "For best results, take one tablespoon in the morning. You can stir it into warm water or milk for a comforting drink, or take it directly for a concentrated boost. Daily use helps maintain consistent benefits."
+            "question": "Is it suitable for daily use?",
+            "answer": "Absolutely! Consistent daily use provides the most sustainable results for long-term health and vitality."
           }
         },
         "faq_4": {
           "type": "faq",
           "settings": {
-            "question": "Is it safe to use alongside other supplements or medications?",
-            "answer": "Golden Elixir is made from natural ingredients without additives. However, if you are taking prescription medications or have health concerns, check with your healthcare provider before adding any new supplement to your routine."
+            "question": "Are your ingredients 100% natural?",
+            "answer": "Yes, we use only 100% pure, natural, and Sunnah-blessed ingredients with zero artificial additives or chemicals."
           }
         },
         "faq_5": {
           "type": "faq",
           "settings": {
-            "question": "How long until I notice benefits?",
-            "answer": "Results can vary depending on your lifestyle and health goals. Many users notice gentle improvements in digestion, joint comfort, and overall balance within a few weeks of daily use. Consistency is key to experiencing full benefits."
+            "question": "Is have any side effects?",
+            "answer": "Our Golden Elixir is crafted with gentle, natural herbs. However, we always recommend consulting with your healthcare provider if you have specific medical conditions or concerns."
           }
         }
       },
@@ -263,8 +254,8 @@
       "type": "final-cta",
       "settings": {
         "headline": "Unlock Daily Vitality",
-        "subtext": "Fuel your body with nutrient-dense chia seeds for natural energy, improved digestion, and overall health.",
-        "cta_text": "SHOP NOW - SAVE 25%",
+        "subtext": "Soothe inflammation and boost vitality with our Sunnah-blessed Golden Elixir formula.",
+        "cta_text": "SHOP NOW - SAVE 20%",
         "cta_url": "",
         "bg_color": "#1b4332"
       }
