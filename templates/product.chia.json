@@ -45,7 +45,13 @@
         "stars_count": "50,000+ verified 5-star reviews for Laushe products",
         "sub_discount": 20,
         "custom_one_time_price": "",
-        "custom_sub_price": ""
+        "custom_sub_price": "",
+        "enable_subscription": false,
+        "enable_bogo": true,
+        "bogo_badge": "VALENTINES SPECIAL",
+        "bogo_title": "Buy 1 Get 1 FREE",
+        "bogo_price": "Rs.1,690",
+        "bogo_benefits": "Get 2 jars of 380g Chia Seeds\nFree Nationwide Delivery\nPremium Quality Guaranteed"
       }
     },
     "benefits": {

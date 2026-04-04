@@ -6,7 +6,13 @@
     { "id": "stars_count", "type": "text", "label": "Review Count Label", "default": "50,000+ verified 5-star reviews for Laushe products" },
     { "id": "sub_discount", "type": "number", "label": "Subscription Discount (%)", "default": 25 },
     { "id": "custom_one_time_price", "type": "text", "label": "Custom One-Time Price (e.g. Rs.1,490)", "info": "Leave blank to use Shopify's price." },
-    { "id": "custom_sub_price", "type": "text", "label": "Custom Subscription Price (e.g. Rs.1,117)", "info": "Leave blank to use auto-calculated price." }
+    { "id": "custom_sub_price", "type": "text", "label": "Custom Subscription Price (e.g. Rs.1,117)", "info": "Leave blank to use auto-calculated price." },
+    { "id": "enable_subscription", "type": "checkbox", "label": "Enable Subscription Option", "default": true },
+    { "id": "enable_bogo", "type": "checkbox", "label": "Enable BOGO Offer", "default": false },
+    { "id": "bogo_badge", "type": "text", "label": "BOGO Badge Text", "default": "LIMITED TIME OFFER" },
+    { "id": "bogo_title", "type": "text", "label": "BOGO Title", "default": "Buy 1 Get 1 FREE" },
+    { "id": "bogo_price", "type": "text", "label": "BOGO Price Label", "default": "Rs.1,690" },
+    { "id": "bogo_benefits", "type": "textarea", "label": "BOGO Benefits (one per line)", "default": "Get 2 jars of Chia Seeds\nFree Nationwide Delivery\nPremium Quality Guaranteed" }
   ],
   "blocks": [
     {
@@ -106,33 +112,66 @@
 
             <!-- 3. PURCHASE OPTIONS -->
             <div class="purchase-box-v3">
-               <div class="sub-pricing-banner">
-                 <ion-icon name="sparkles-outline"></ion-icon>
-                 Unlock {{ section.settings.sub_discount }}% Pricing with a Laushe Subscription
-               </div>
-               
-               <!-- Subscribe Option -->
-               <div class="purchase-method active" onclick="switchPurchaseMethod(this, 'sub')">
-                  <div class="method-radio"><div class="radio-inner"></div></div>
-                  <div class="method-content">
-                    <div class="method-header">
-                      <span class="method-name">Subscribe & Save</span>
-                      {% assign default_sub_price = product.selected_or_first_available_variant.price | times: 0.75 | money %}
-                      <span class="method-price" id="SubPrice">
-                        {{ section.settings.custom_sub_price | default: default_sub_price | append: '/mo' }}
-                      </span>
+               {% if section.settings.enable_subscription %}
+                 <div class="sub-pricing-banner">
+                   <ion-icon name="sparkles-outline"></ion-icon>
+                   Unlock {{ section.settings.sub_discount }}% Pricing with a Laushe Subscription
+                 </div>
+                 
+                 <!-- Subscribe Option -->
+                 <div class="purchase-method active" data-method="sub" onclick="switchPurchaseMethod(this, 'sub')">
+                    <div class="method-radio"><div class="radio-inner"></div></div>
+                    <div class="method-content">
+                      <div class="method-header">
+                        <span class="method-name">Subscribe & Save</span>
+                        {% assign default_sub_price = product.selected_or_first_available_variant.price | times: 0.75 | money %}
+                        <span class="method-price" id="SubPrice">
+                          {{ section.settings.custom_sub_price | default: default_sub_price | append: '/mo' }}
+                        </span>
+                      </div>
+                      <ul class="method-benefits">
+                        <li>✔ Free shipping delivered every 30 days</li>
+                        <li>✔ Includes a Free Frother**</li>
+                        <li>✔ Easily pause, skip, or cancel</li>
+                        <li>✔ 90-Day Money Back Guarantee</li>
+                      </ul>
                     </div>
-                    <ul class="method-benefits">
-                      <li>✔ Free shipping delivered every 30 days</li>
-                      <li>✔ Includes a Free Frother**</li>
-                      <li>✔ Easily pause, skip, or cancel</li>
-                      <li>✔ 90-Day Money Back Guarantee</li>
-                    </ul>
-                  </div>
-               </div>
+                 </div>
+               {% endif %}
+
+               {% if section.settings.enable_bogo %}
+                 {% unless section.settings.enable_subscription %}
+                   <div class="sub-pricing-banner" style="background: #e67e22;">
+                     <ion-icon name="flash-outline"></ion-icon>
+                     {{ section.settings.bogo_badge }}
+                   </div>
+                 {% endunless %}
+
+                 <!-- BOGO Option -->
+                 <div class="purchase-method {% unless section.settings.enable_subscription %}active{% endunless %}" data-method="bogo" onclick="switchPurchaseMethod(this, 'bogo')">
+                    <div class="method-radio"><div class="radio-inner"></div></div>
+                    <div class="method-content">
+                      <div class="method-header">
+                        <span class="method-name">{{ section.settings.bogo_title }}</span>
+                        <span class="method-price" id="BogoPrice">
+                          {{ section.settings.bogo_price }}
+                        </span>
+                      </div>
+                      <ul class="method-benefits" {% unless section.settings.enable_subscription %}style="display:block;"{% endunless %}>
+                        {% assign bogo_benefits = section.settings.bogo_benefits | newline_to_br | split: '<br />' %}
+                        {% for benefit in bogo_benefits %}
+                          {% assign b_trimmed = benefit | strip %}
+                          {% if b_trimmed != "" %}
+                            <li>✔ {{ b_trimmed }}</li>
+                          {% endif %}
+                        {% endfor %}
+                      </ul>
+                    </div>
+                 </div>
+               {% endif %}
 
                <!-- One-time Option -->
-               <div class="purchase-method" onclick="switchPurchaseMethod(this, 'onetime')">
+               <div class="purchase-method {% if section.settings.enable_subscription == false and section.settings.enable_bogo == false %}active{% endif %}" data-method="onetime" onclick="switchPurchaseMethod(this, 'onetime')">
                   <div class="method-radio"><div class="radio-inner"></div></div>
                   <div class="method-content">
                     <div class="method-header">
@@ -362,10 +401,14 @@
     loadEl.style.display = 'inline';
     btn.disabled = true;
 
+    const activeMethod = document.querySelector('.purchase-method.active')?.dataset.method;
+    let quantity = 1;
+    // if (activeMethod === 'bogo') quantity = 2; // Keep it at 1 for now if BOGO is a visual offer for 1 SKU
+
     fetch('/cart/add.js', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ id: parseInt(variantId), quantity: 1 })
+      body: JSON.stringify({ id: parseInt(variantId), quantity: quantity })
     })
     .then(res => {
       if (!res.ok) throw new Error('Cart add failed');
