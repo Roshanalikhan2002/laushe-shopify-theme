@@ -22,7 +22,8 @@
 }
 {% endschema %}
 
-{% if product.handle == 'golden-elixir' or product.handle == 'weight-gainer' %}
+{% assign prod_title = product.title | downcase %}
+{% if product.handle contains 'elixir' or product.handle contains 'weight-gainer' or prod_title contains 'weight gainer' or prod_title contains 'golden elixir' %}
   <script>window.location.href = "/";</script>
 {% endif %}
 

@@ -72,7 +72,8 @@
     <div class="container-wide">
         <div class="product-grid" id="ProductGrid">
             {% for product in collection.products %}
-                {% if product.handle == 'golden-elixir' or product.handle == 'weight-gainer' %}
+                {% assign prod_title = product.title | downcase %}
+                {% if product.handle contains 'elixir' or product.handle contains 'weight-gainer' or prod_title contains 'weight gainer' or prod_title contains 'golden elixir' %}
                     {% continue %}
                 {% endif %}
                 {%- assign product_tags = product.tags | join: ',' | downcase -%}
