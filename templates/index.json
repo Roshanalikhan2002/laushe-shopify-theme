@@ -12,8 +12,8 @@
     "hero_giveaway": {
       "type": "hero-giveaway",
       "settings": {
-        "image_desktop": "shopify://shop_images/GIVEAWAY_BANNER_2-100.jpg_1.jpg",
-        "image_mobile": "shopify://shop_images/GIVEAWAY_BANNER_2-100.jpg_1.jpg",
+        "image_desktop": "shopify://shop_images/GIVEAWAY_BANNER_2-100.jpg_1_cc0eff60-7470-409b-9f84-83fb44b7991a.jpg",
+        "image_mobile": "shopify://shop_images/GIVEAWAY_BANNER_2-100.jpg_1_cc0eff60-7470-409b-9f84-83fb44b7991a.jpg",
         "link": ""
       }
     },
