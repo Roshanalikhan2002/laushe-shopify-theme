@@ -2,6 +2,13 @@
 
 html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+body {
+    overflow-x: hidden;
+    width: 100%;
+    position: relative;
 }
 
 :root {
@@ -15,7 +22,7 @@ html {
     --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
-* {
+*, *::before, *::after {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -26,6 +33,18 @@ body {
     background-color: var(--white);
     color: var(--charcoal);
     line-height: 1.6;
+    overflow-x: clip;
+    width: 100%;
+    position: relative;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-overflow-scrolling: touch;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
 }
 
 h1, h2, h3, h4, .font-heading {
@@ -97,9 +116,12 @@ h1, h2, h3, h4, .font-heading {
     background-color: var(--deep-forest);
     color: var(--white);
     text-align: center;
-    padding: 10px 0;
+    padding: 10px 15px;
     font-size: 14px;
     font-weight: 700;
+    overflow: hidden;
+    width: 100%;
+    white-space: normal;
 }
 
 header.sticky-header {
@@ -417,7 +439,7 @@ footer {
 .cart-drawer {
     position: fixed;
     top: 0;
-    right: -400px;
+    right: 0;
     width: 400px;
     height: 100%;
     background: white;
@@ -427,10 +449,13 @@ footer {
     padding: 30px;
     display: flex;
     flex-direction: column;
+    transform: translateX(100%);
+    visibility: hidden;
 }
 
 .cart-drawer.open {
-    right: 0;
+    transform: translateX(0);
+    visibility: visible;
 }
 
 .cart-header {
@@ -618,7 +643,7 @@ footer {
 .mobile-drawer {
     position: fixed;
     top: 0;
-    left: -100%;
+    left: 0;
     width: 85%;
     max-width: 320px;
     height: 100%;
@@ -628,10 +653,13 @@ footer {
     z-index: 10003;
     display: flex;
     flex-direction: column;
+    transform: translateX(-100%);
+    visibility: hidden;
 }
 
 .mobile-drawer.open {
-    left: 0;
+    transform: translateX(0);
+    visibility: visible;
 }
 
 .mobile-drawer-header {

@@ -52,7 +52,7 @@
 
     <div class="hero-image" style="position: relative;">
       {% if section.settings.limited_offer_badge != blank %}
-        <span style="position: absolute; top: -10px; right: -10px; background: var(--deep-forest); color: white; padding: 5px 15px; border-radius: 50px; font-weight: 800; z-index: 10; font-size: 12px;">{{ section.settings.limited_offer_badge }}</span>
+        <span class="limited-badge">{{ section.settings.limited_offer_badge }}</span>
       {% endif %}
 
       {% if section.settings.hero_image %}
@@ -61,11 +61,11 @@
         <img src="https://laushebyzahra.com/cdn/shop/files/SkinnySips-Front.jpg" alt="Laushe Products" style="width: 100%; border-radius: 40px; box-shadow: var(--shadow-luxe);">
       {% endif %}
 
-      <div style="position: absolute; bottom: -20px; left: -20px; background: white; padding: 15px 25px; border-radius: 20px; box-shadow: var(--shadow-luxe); display: flex; align-items: center; gap: 10px;">
-        <ion-icon name="medal-outline" style="color: var(--accent-gold); font-size: 32px;"></ion-icon>
+      <div class="trust-widget">
+        <ion-icon name="medal-outline" class="trust-icon"></ion-icon>
         <div>
-          <p style="font-weight: 800; font-size: 14px; margin: 0;">{{ section.settings.trust_icon_text }}</p>
-          <p style="font-size: 12px; margin: 0; opacity: 0.7;">{{ section.settings.trust_icon_sub }}</p>
+          <p class="trust-title">{{ section.settings.trust_icon_text }}</p>
+          <p class="trust-sub">{{ section.settings.trust_icon_sub }}</p>
         </div>
       </div>
     </div>
@@ -111,6 +111,45 @@
     margin-top: 20px;
     opacity: 0.8;
   }
+  .limited-badge {
+    position: absolute; 
+    top: -10px; 
+    right: -10px; 
+    background: var(--deep-forest); 
+    color: white; 
+    padding: 5px 15px; 
+    border-radius: 50px; 
+    font-weight: 800; 
+    z-index: 10; 
+    font-size: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  }
+  .trust-widget {
+    position: absolute; 
+    bottom: -20px; 
+    left: -20px; 
+    background: white; 
+    padding: 15px 25px; 
+    border-radius: 20px; 
+    box-shadow: var(--shadow-luxe); 
+    display: flex; 
+    align-items: center; 
+    gap: 10px;
+  }
+  .trust-icon {
+    color: var(--accent-gold); 
+    font-size: 32px;
+  }
+  .trust-title {
+    font-weight: 800; 
+    font-size: 14px; 
+    margin: 0;
+  }
+  .trust-sub {
+    font-size: 12px; 
+    margin: 0; 
+    opacity: 0.7;
+  }
   @media (max-width: 992px) {
     .hero-grid {
       grid-template-columns: 1fr;
@@ -120,9 +159,14 @@
     .hero-content h1 { font-size: 40px; }
     .benefit-item { justify-content: center; }
     .hero-image { order: -1; }
+    .limited-badge { right: 10px; top: 10px; }
+    .trust-widget { left: 10px; bottom: -10px; padding: 12px 20px; }
   }
   @media (max-width: 576px) {
     .hero-content h1 { font-size: 32px; }
     .hero-wrapper { padding: 60px 0; }
+    .trust-widget { padding: 10px 15px; }
+    .trust-icon { font-size: 24px; }
+    .trust-title { font-size: 13px; }
   }
 </style>
