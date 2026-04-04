@@ -47,7 +47,7 @@
               {% else %}
                 {% assign display_img = prod.featured_image | img_url: '600x' %}
                 {% if prod.handle contains 'hair-oil' %}
-                  {% assign display_img = 'hair oil-100.jpg.jpeg' | asset_url %}
+                  {% assign display_img = 'hair-oil-v2.jpg' | asset_url %}
                 {% endif %}
                 <img src="{{ display_img }}" alt="{{ prod.title }}">
               {% endif %}

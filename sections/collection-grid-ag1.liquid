@@ -95,7 +95,7 @@
                     
                     {% assign prod_img = product.featured_image | img_url: '600x800', crop: 'center' %}
                     {% if product.handle contains 'hair-oil' %}
-                        {% assign prod_img = 'hair oil-100.jpg.jpeg' | asset_url %}
+                        {% assign prod_img = 'hair-oil-v2.jpg' | asset_url %}
                     {% endif %}
 
                     <a href="{{ product.url }}">

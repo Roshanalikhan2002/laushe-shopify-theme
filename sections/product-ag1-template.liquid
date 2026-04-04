@@ -50,7 +50,7 @@
         <div class="product-img-wrapper-v3">
           {% assign main_img = product.featured_image | img_url: '1000x1000' %}
           {% if product.handle contains 'hair-oil' %}
-            {% assign main_img = 'hair oil-100.jpg.jpeg' | asset_url %}
+            {% assign main_img = 'hair-oil-v2.jpg' | asset_url %}
           {% endif %}
           <img src="{{ main_img }}" alt="{{ product.title }}" class="main-img-v3" id="MainProductImage">
         </div>
