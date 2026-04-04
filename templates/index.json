@@ -1,6 +1,10 @@
 
 {
   "sections": {
+    "hero_giveaway": {
+      "type": "hero-giveaway",
+      "settings": {}
+    },
     "hero": {
       "type": "hero-funnel",
       "settings": {
@@ -681,6 +685,7 @@
     }
   },
   "order": [
+    "hero_giveaway",
     "hero",
     "review_scroller",
     "bestsellers_CXGzp8",
