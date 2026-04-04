@@ -41,14 +41,14 @@
         "acc4"
       ],
       "settings": {
-        "promo_banner": "Includes a FREE Frother**",
+        "promo_banner": "BUY 1 GET 1 FREE - Premium Chia Seeds",
         "stars_count": "50,000+ verified 5-star reviews for Laushe products",
-        "sub_discount": 20,
+        "sub_discount": 0,
         "custom_one_time_price": "",
         "custom_sub_price": "",
         "enable_subscription": false,
         "enable_bogo": true,
-        "bogo_badge": "VALENTINES SPECIAL",
+        "bogo_badge": "LIMITED TIME OFFER",
         "bogo_title": "Buy 1 Get 1 FREE",
         "bogo_price": "Rs.1,690",
         "bogo_benefits": "Get 2 jars of 380g Chia Seeds\nFree Nationwide Delivery\nPremium Quality Guaranteed"
@@ -262,7 +262,7 @@
       "settings": {
         "headline": "Unlock Daily Vitality",
         "subtext": "Fuel your body with nutrient-dense chia seeds for natural energy, improved digestion, and overall health.",
-        "cta_text": "SHOP NOW - SAVE 20%",
+        "cta_text": "SHOP NOW - BUY 1 GET 1 FREE",
         "cta_url": "",
         "bg_color": "#1b4332"
       }

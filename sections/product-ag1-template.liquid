@@ -96,6 +96,13 @@
         <div class="sticky-box-v3">
           <h1 class="product-title-v3">{{ product.title }}</h1>
           
+          {% if force_bogo %}
+            <div class="bogo-glimmer-badge">
+              <ion-icon name="flash-outline"></ion-icon>
+              <span>BUY 1 GET 1 FREE OFFER</span>
+            </div>
+          {% endif %}
+          
           <form method="post" action="/cart/add" id="AG1ProductForm" class="laushe-atc-form-v3">
             <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}" id="SelectedVariantId">
             <input type="hidden" name="quantity" value="1">
@@ -397,6 +404,30 @@
   .gwp-price-row-v3 { display: flex; align-items: center; gap: 8px; font-size: 12px; margin-top: 2px; }
   .gwp-old-price-v3 { text-decoration: line-through; color: #888; }
   .gwp-free-v3 { color: #666; font-weight: 800; }
+
+  /* BOGO Badge Styles */
+  .bogo-glimmer-badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #e67e22;
+    color: #fff;
+    padding: 10px 18px;
+    border-radius: 50px;
+    font-size: 14px;
+    font-weight: 800;
+    margin-bottom: 25px;
+    width: fit-content;
+    box-shadow: 0 4px 15px rgba(230, 126, 34, 0.3);
+    border: 1px solid rgba(255,255,255,0.2);
+    animation: pulse-orange 2s infinite;
+  }
+
+  @keyframes pulse-orange {
+    0% { transform: scale(1); box-shadow: 0 4px 15px rgba(230, 126, 34, 0.3); }
+    50% { transform: scale(1.02); box-shadow: 0 6px 20px rgba(230, 126, 34, 0.5); }
+    100% { transform: scale(1); box-shadow: 0 4px 15px rgba(230, 126, 34, 0.3); }
+  }
 
   @media (max-width: 1000px) {
     .product-grid-v3 { grid-template-columns: 1fr; gap: 50px; }

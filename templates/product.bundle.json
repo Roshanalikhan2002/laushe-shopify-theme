@@ -42,7 +42,7 @@
       "settings": {
         "promo_banner": "Includes a FREE Frother**",
         "stars_count": "50,000+ verified 5-star reviews for Laushe products",
-        "sub_discount": 20,
+        "sub_discount": 0,
         "custom_one_time_price": "",
         "custom_sub_price": ""
       }
@@ -161,7 +161,7 @@
         "row_6": {
           "type": "row",
           "settings": {
-            "feature": "Money-Back Guarantee",
+            "feature": "Tested for Purity",
             "laushe": true,
             "generic": false
           }
@@ -255,7 +255,7 @@
       "settings": {
         "headline": "Unlock Daily Vitality",
         "subtext": "Fuel your body with nutrient-dense chia seeds for natural energy, improved digestion, and overall health.",
-        "cta_text": "SHOP NOW - SAVE 20%",
+        "cta_text": "SHOP NOW",
         "cta_url": "",
         "bg_color": "#1b4332"
       }
