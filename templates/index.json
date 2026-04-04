@@ -1,12 +1,4 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
+
 {
   "sections": {
     "hero": {
@@ -25,6 +17,10 @@
         "trust_icon_text": "Clinically Endorsed",
         "trust_icon_sub": "Certified ChoiceNutritionist Approved"
       }
+    },
+    "review_scroller": {
+      "type": "review-scroller",
+      "settings": {}
     },
     "bestsellers_CXGzp8": {
       "type": "bestsellers",
@@ -686,6 +682,7 @@
   },
   "order": [
     "hero",
+    "review_scroller",
     "bestsellers_CXGzp8",
     "modern_living_gpDB8F",
     "stats_bar",

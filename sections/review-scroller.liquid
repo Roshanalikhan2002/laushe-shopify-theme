@@ -1,0 +1,132 @@
+{% schema %}
+{
+  "name": "Review Scroller",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "WHAT PEOPLE ARE SAYING" },
+    { "type": "color", "id": "bg_color", "label": "Background Color", "default": "#faf7f2" },
+    { "type": "range", "id": "speed", "label": "Scroll Speed (seconds)", "min": 10, "max": 60, "step": 5, "default": 30 }
+  ],
+  "presets": [
+    { "name": "Review Scroller", "category": "Laushe Sections" }
+  ]
+}
+{% endschema %}
+
+<section class="review-scroller-section" style="background-color: {{ section.settings.bg_color }};">
+  <div class="scroller-header">
+    <h2>{{ section.settings.heading }}</h2>
+  </div>
+  
+  <div class="scroller-container">
+    <div class="scroller-inner" style="animation-duration: {{ section.settings.speed }}s;">
+      {%- capture reviews_content -%}
+        <div class="scroller-item">
+          <span class="quote-icon">“</span>
+          <p>Skinny Sips Kehwa keeps me feeling light and active every day.</p>
+          <span class="author">— Ayesha Khan</span>
+        </div>
+        <div class="scroller-item">
+          <span class="quote-icon">“</span>
+          <p>Fresh, high-quality chia seeds that truly make a difference.</p>
+          <span class="author">— Momal</span>
+        </div>
+        <div class="scroller-item">
+          <span class="quote-icon">“</span>
+          <p>Royce Hair Oil gave my hair shine, strength, and reduced hair fall.</p>
+          <span class="author">— Kainat</span>
+        </div>
+        <div class="scroller-item">
+          <span class="quote-icon">“</span>
+          <p>Desi ghee that tastes just like homemade and enhances every meal.</p>
+          <span class="author">— Ahmed Raza</span>
+        </div>
+        <div class="scroller-item">
+          <span class="quote-icon">“</span>
+          <p>Pure honey with rich taste and amazing daily use quality.</p>
+          <span class="author">— Sana Ali</span>
+        </div>
+        <div class="scroller-item">
+          <span class="quote-icon">“</span>
+          <p>Every product I’ve tried delivers consistent and impressive results.</p>
+          <span class="author">— Bano</span>
+        </div>
+      {%- endcapture -%}
+
+      {{ reviews_content }}
+      {{ reviews_content }} <!-- Duplicate for seamless loop -->
+    </div>
+  </div>
+</section>
+
+<style>
+  .review-scroller-section {
+    padding: 60px 0;
+    overflow: hidden;
+    border-bottom: 1px solid rgba(0,0,0,0.03);
+  }
+  .scroller-header {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  .scroller-header h2 {
+    font-size: 13px;
+    letter-spacing: 0.2em;
+    font-weight: 600;
+    color: #888;
+    text-transform: uppercase;
+    margin: 0;
+  }
+  .scroller-container {
+    width: 100%;
+    display: flex;
+    overflow: hidden;
+    position: relative;
+  }
+  .scroller-inner {
+    display: flex;
+    white-space: nowrap;
+    animation: scroll-left linear infinite;
+  }
+  .scroller-item {
+    display: inline-flex;
+    align-items: center;
+    padding: 0 60px;
+    gap: 15px;
+  }
+  .quote-icon {
+    color: #D4AF37;
+    font-size: 24px;
+    font-family: serif;
+    font-weight: 800;
+  }
+  .scroller-item p {
+    font-size: 16px;
+    color: #444;
+    font-style: italic;
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+  }
+  .author {
+    font-size: 13px;
+    font-weight: 700;
+    color: #999;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  @keyframes scroll-left {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  /* Pause on hover */
+  .scroller-container:hover .scroller-inner {
+    animation-play-state: paused;
+  }
+
+  @media (max-width: 768px) {
+    .review-scroller-section { padding: 40px 0; }
+    .scroller-item { padding: 0 30px; }
+    .scroller-item p { font-size: 14px; }
+  }
+</style>
