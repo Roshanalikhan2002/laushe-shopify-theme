@@ -48,7 +48,11 @@
       <div class="product-visuals-v3">
         <div class="promo-banner-v3">{{ section.settings.promo_banner }}</div>
         <div class="product-img-wrapper-v3">
-          <img src="{{ product.featured_image | img_url: '1000x1000' }}" alt="{{ product.title }}" class="main-img-v3" id="MainProductImage">
+          {% assign main_img = product.featured_image | img_url: '1000x1000' %}
+          {% if product.handle contains 'hair-oil' %}
+            {% assign main_img = 'hair oil-100.jpg.jpeg' | asset_url %}
+          {% endif %}
+          <img src="{{ main_img }}" alt="{{ product.title }}" class="main-img-v3" id="MainProductImage">
         </div>
         <!-- Thumbnails gallery (optional but adds premium feel) -->
         <div class="product-thumbs-v3">

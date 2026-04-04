@@ -45,7 +45,11 @@
               {% if block.settings.image_override != blank %}
                 <img src="{{ block.settings.image_override | img_url: '600x' }}" alt="{{ block.settings.title_override | default: prod.title }}">
               {% else %}
-                <img src="{{ prod.featured_image | img_url: '600x' }}" alt="{{ prod.title }}">
+                {% assign display_img = prod.featured_image | img_url: '600x' %}
+                {% if prod.handle contains 'hair-oil' %}
+                  {% assign display_img = 'hair oil-100.jpg.jpeg' | asset_url %}
+                {% endif %}
+                <img src="{{ display_img }}" alt="{{ prod.title }}">
               {% endif %}
             </div>
             

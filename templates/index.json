@@ -332,11 +332,21 @@
             "desc": "A flavorful blend of turmeric, honey, and herbs for a healthy daily ritual.",
             "price": "Rs.1,490"
           }
+        },
+        "royce_override": {
+          "type": "product_override",
+          "settings": {
+            "target_product": "hair-oil",
+            "title": "Royce Hair Oil - Sunnah Blessed",
+            "desc": "100ml Infused with Sunnah Blessings for Stronger, Healthier Hair Ingredients ...",
+            "image": "shopify://shop_images/hair_oil_v2.jpg"
+          }
         }
       },
       "block_order": [
         "chia_override",
-        "elixir_override"
+        "elixir_override",
+        "royce_override"
       ],
       "settings": {
         "heading": "Shop Our Entire Wellness Collection",

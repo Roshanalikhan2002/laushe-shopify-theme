@@ -67,6 +67,9 @@
           {% assign display_title = product.title %}
           {% assign display_desc = product.description | strip_html | truncate: 80 %}
           {% assign display_img = product.featured_image | img_url: '600x600', crop: 'center' %}
+          {% if product.handle contains 'hair-oil' %}
+            {% assign display_img = 'hair oil-100.jpg.jpeg' | asset_url %}
+          {% endif %}
           {% assign display_price = product.price | money %}
           
           {% assign override_block = nil %}
