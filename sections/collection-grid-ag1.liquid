@@ -35,7 +35,14 @@
     .product-grid { grid-template-columns: repeat(2, 1fr); }
   }
   @media (max-width: 600px) {
-    .product-grid { grid-template-columns: 1fr; }
+    .product-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .product-info { padding: 15px; }
+    .product-title { font-size: 14px; margin-bottom: 5px; }
+    .product-desc { font-size: 11px; height: 34px; margin-bottom: 10px; }
+    .product-price { font-size: 15px; margin-bottom: 10px; }
+    .product-img { height: 180px; }
+    .btn-add { padding: 10px; font-size: 12px; }
+    
     .tab-list { gap: 15px; overflow-x: auto; padding: 0 20px 10px; justify-content: flex-start; -webkit-overflow-scrolling: touch; }
     .tab-link { white-space: nowrap; font-size: 11px; }
   }

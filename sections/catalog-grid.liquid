@@ -213,7 +213,16 @@
   }
 
   @media (max-width: 1100px) { #section-{{ section.id }} .catalog-grid { grid-template-columns: repeat(2, 1fr); } }
-  @media (max-width: 600px) { #section-{{ section.id }} .catalog-grid { grid-template-columns: 1fr; } #section-{{ section.id }} .catalog-title { font-size: 32px; } }
+  @media (max-width: 600px) { 
+    #section-{{ section.id }} .catalog-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; } 
+    #section-{{ section.id }} .catalog-card { padding: 12px; }
+    #section-{{ section.id }} .card-title { font-size: 14px; margin-bottom: 5px; }
+    #section-{{ section.id }} .card-short-desc { font-size: 11px; height: 34px; margin-bottom: 10px; }
+    #section-{{ section.id }} .price-main { font-size: 15px; }
+    #section-{{ section.id }} .card-img-link { height: 160px; margin-bottom: 10px; }
+    #section-{{ section.id }} .atc-btn-main { padding: 10px; font-size: 12px; border-radius: 8px; }
+    #section-{{ section.id }} .catalog-title { font-size: 28px; } 
+  }
 </style>
 
 <script>
