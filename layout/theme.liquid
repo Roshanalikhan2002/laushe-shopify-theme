@@ -7,9 +7,7 @@
     <meta name="theme-color" content="#004225">
     <link rel="canonical" href="{{ canonical_url }}">
 
-    {%- if settings.favicon != blank -%}
-      <link rel="icon" type="image/png" href="{{ settings.favicon | img_url: '32x32' }}">
-    {%- endif -%}
+    <link rel="icon" type="image/jpeg" href="{{ 'laushe-logo.jpg' | asset_url }}">
 
     <title>
       {{ page_title }}

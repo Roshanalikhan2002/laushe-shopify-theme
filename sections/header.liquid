@@ -27,7 +27,9 @@
 
     <!-- Logo -->
     <div class="logo-emblem" style="flex: 0 0 auto;">
-      <a href="/" style="text-decoration: none; font-size: 28px; font-weight: 900; color: #D4AF37; font-family: 'Poppins', sans-serif;">LAUSHE</a>
+      <a href="/" style="text-decoration: none; display: flex; align-items: center;">
+        <img src="{{ 'laushe-logo.jpg' | asset_url }}" alt="Laushe Logo" style="height: 60px; width: auto; object-fit: contain;">
+      </a>
     </div>
 
     <!-- Right Nav (desktop) -->
@@ -83,10 +85,9 @@
 <div id="mobile-drawer" class="mobile-drawer">
   <div class="mobile-drawer-header">
     <div class="mobile-drawer-close" onclick="window.toggleMobileMenu()">&times;</div>
-    <div class="mobile-drawer-logo">
+    <div class="mobile-drawer-logo" style="text-align: center;">
       <a href="/">
-        <span class="logo-main">LAUSHE</span>
-        <span class="logo-sub">BY ZAHRA</span>
+        <img src="{{ 'laushe-logo.jpg' | asset_url }}" alt="Laushe Logo" style="height: 70px; width: auto; object-fit: contain; margin-bottom: 20px;">
       </a>
     </div>
   </div>
