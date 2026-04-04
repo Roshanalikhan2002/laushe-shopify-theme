@@ -1,9 +1,21 @@
-
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "hero_giveaway": {
       "type": "hero-giveaway",
-      "settings": {}
+      "settings": {
+        "image_desktop": "shopify://shop_images/GIVEAWAY_BANNER_2-100.jpg_1.jpg",
+        "image_mobile": "shopify://shop_images/GIVEAWAY_BANNER_2-100.jpg_1.jpg",
+        "link": ""
+      }
     },
     "hero": {
       "type": "hero-funnel",
@@ -24,7 +36,11 @@
     },
     "review_scroller": {
       "type": "review-scroller",
-      "settings": {}
+      "settings": {
+        "heading": "WHAT PEOPLE ARE SAYING",
+        "bg_color": "#faf7f2",
+        "speed": 30
+      }
     },
     "bestsellers_CXGzp8": {
       "type": "bestsellers",
@@ -339,7 +355,7 @@
             "target_product": "hair-oil",
             "title": "Royce Hair Oil - Sunnah Blessed",
             "desc": "100ml Infused with Sunnah Blessings for Stronger, Healthier Hair Ingredients ...",
-            "image": "shopify://shop_images/hair_oil_v2.jpg"
+            "price": ""
           }
         }
       },
