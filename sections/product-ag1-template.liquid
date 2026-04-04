@@ -576,7 +576,7 @@
           const giftId = document.getElementById('SelectedGiftId').value;
           itemsToAdd = [
             { id: parseInt(variantId), quantity: 1 },
-            { id: parseInt(giftId), quantity: 1 }
+            { id: parseInt(giftId), quantity: 1, properties: { '_is_gift': 'true' } }
           ];
         } else if (method === 'bundle') {
           itemsToAdd = [{ id: parseInt(variantId), quantity: 3 }];

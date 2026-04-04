@@ -256,17 +256,23 @@
       var footer = document.getElementById('CartDrawerFooter');
       if (!itemsEl) return;
 
-      if (totalEl) totalEl.innerText = this.fmt(cart.total_price);
+      var totalRs = 0;
+      cart.items.forEach(function(i) {
+        if (!i.properties || !i.properties._is_gift) {
+          totalRs += (i.final_line_price / 100);
+        }
+      });
+      
+      if (totalEl) totalEl.innerText = 'Rs. ' + totalRs.toLocaleString('en-PK');
 
       if (bar && barText) {
-        var rs = cart.total_price / 100;
-        var pct = Math.min((rs / this.threshold) * 100, 100);
+        var pct = Math.min((totalRs / this.threshold) * 100, 100);
         bar.style.width = pct + '%';
-        if (rs >= this.threshold) {
+        if (totalRs >= this.threshold) {
           barText.innerHTML = "&#10024; You've unlocked <strong>FREE SHIPPING!</strong>";
           bar.style.background = '#4caf50';
         } else {
-          var rem = this.threshold - rs;
+          var rem = this.threshold - totalRs;
           barText.innerHTML = "You're <strong>Rs. " + Math.round(rem).toLocaleString() + "</strong> away from FREE shipping!";
           bar.style.background = '#004225';
         }
@@ -281,11 +287,14 @@
       if (footer) footer.style.display = 'block';
 
       itemsEl.innerHTML = cart.items.map(function(item) {
+        var isGift = (item.properties && item.properties._is_gift === 'true');
+        var priceDisplay = isGift ? '<span style="color: #2d7a4f; font-weight: 800;">FREE GIFT</span>' : LausheCart.fmt(item.original_line_price);
+        
         return '<div class="cart-item" data-key="' + item.key + '">' +
           '<img src="' + (item.image || '') + '" class="item-img" alt="' + item.title + '">' +
           '<div class="item-info">' +
             '<a href="' + item.url + '" class="item-title">' + item.product_title + '</a>' +
-            '<div class="item-price">' + LausheCart.fmt(item.original_line_price) + '</div>' +
+            '<div class="item-price">' + priceDisplay + '</div>' +
             '<div class="item-controls">' +
               '<div class="qty-selector">' +
                 '<button class="qty-btn" onclick="LausheCart.changeQty(\'' + item.key + '\',' + (item.quantity - 1) + ')">&#8722;</button>' +
