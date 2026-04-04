@@ -528,48 +528,54 @@
     document.getElementById('SelectedGiftId').value = giftId;
   }
 
-  // Auto-detect the active purchase method on page load
-  (function initPurchaseMethod() {
-    var activeMethod = document.querySelector('.purchase-method.active');
-    if (activeMethod) {
-      window.laushe_selected_purchase_method = activeMethod.dataset.method;
-    } else {
-      // Fallback: pick the first visible method
-      var firstMethod = document.querySelector('.purchase-method');
-      if (firstMethod) {
-        firstMethod.classList.add('active');
-        window.laushe_selected_purchase_method = firstMethod.dataset.method;
-      }
-    }
-  })();
-
   // Sync on page load
-  syncVariantInput();
+  document.addEventListener('DOMContentLoaded', function() {
+    syncVariantInput();
+    
+    // Auto-detect the active purchase method on page load
+    (function initPurchaseMethod() {
+      var activeMethod = document.querySelector('.purchase-method.active');
+      if (activeMethod) {
+        window.laushe_selected_purchase_method = activeMethod.dataset.method;
+      } else {
+        // Fallback: pick the first visible method
+        var firstMethod = document.querySelector('.purchase-method');
+        if (firstMethod) {
+          firstMethod.classList.add('active');
+          window.laushe_selected_purchase_method = firstMethod.dataset.method;
+        }
+      }
+    })();
+  });
 
   // === AJAX ADD TO CART ===
-  document.getElementById('AG1ProductForm').addEventListener('submit', function(e) {
-    e.preventDefault();
+  document.addEventListener('DOMContentLoaded', function() {
+    const productForm = document.getElementById('AG1ProductForm');
+    if (!productForm) return;
 
-    const btn = this.querySelector('.atc-btn-v3');
-    const textEl = btn.querySelector('.atc-text');
-    const loadEl = btn.querySelector('.atc-loading');
+    productForm.addEventListener('submit', function(e) {
+      e.preventDefault();
 
-    // Ensure latest variant is set
-    syncVariantInput();
+      const btn = this.querySelector('.atc-btn-v3');
+      const textEl = btn.querySelector('.atc-text');
+      const loadEl = btn.querySelector('.atc-loading');
 
-    const variantId = document.getElementById('SelectedVariantId').value;
-    if (!variantId) {
-      alert('Please select a variant.');
-      return;
-    }
+      // Ensure latest variant is set
+      syncVariantInput();
 
-    // Button loading state
-    textEl.style.display = 'none';
-    loadEl.style.display = 'inline';
-    btn.disabled = true;
+      const variantId = document.getElementById('SelectedVariantId').value;
+      if (!variantId) {
+        alert('Please select a variant.');
+        return;
+      }
 
-    const method = window.laushe_selected_purchase_method;
-    let itemsToAdd = [{ id: parseInt(variantId), quantity: 1 }];
+      // Button loading state
+      textEl.style.display = 'none';
+      loadEl.style.display = 'inline';
+      btn.disabled = true;
+
+      const method = window.laushe_selected_purchase_method;
+      let itemsToAdd = [];
 
       if (method === 'bogo') {
         const giftId = document.getElementById('SelectedGiftId').value;
@@ -580,70 +586,66 @@
         ];
       } else if (method === 'bundle') {
         const mainId = document.getElementById('SelectedVariantId').value;
-        itemsToAdd = [
-          { id: parseInt(mainId), quantity: 3 }
-        ];
+        itemsToAdd = [{ id: parseInt(mainId), quantity: 3 }];
       } else {
         const mainId = document.getElementById('SelectedVariantId').value;
-        itemsToAdd = [
-          { id: parseInt(mainId), quantity: 1 }
-        ];
+        itemsToAdd = [{ id: parseInt(mainId), quantity: 1 }];
       }
 
-    fetch('/cart/add.js', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ items: itemsToAdd })
-    })
-    .then(res => {
-      if (!res.ok) {
-        return res.json().then(errData => {
-          throw new Error(errData.description || errData.message || 'Cart add failed');
-        });
-      }
-      return res.json();
-    })
-    .then(data => {
-      // Restore button with success animation
-      textEl.innerText = '\u2713 Added to Cart!';
-      textEl.style.display = 'inline';
-      loadEl.style.display = 'none';
-      btn.disabled = false;
-      btn.style.background = '#2d7a4f';
+      fetch('/cart/add.js', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ items: itemsToAdd })
+      })
+      .then(res => {
+        if (!res.ok) {
+          return res.json().then(errData => {
+            throw new Error(errData.description || errData.message || 'Cart add failed');
+          });
+        }
+        return res.json();
+      })
+      .then(data => {
+        // Success feedback
+        textEl.innerText = '\u2713 Added to Cart!';
+        textEl.style.display = 'inline';
+        loadEl.style.display = 'none';
+        btn.disabled = false;
+        btn.style.background = '#2d7a4f';
 
-      setTimeout(() => {
-        textEl.innerText = 'Add to Cart \u2192';
-        btn.style.background = '';
-      }, 2000);
+        setTimeout(() => {
+          textEl.innerText = 'Add to Cart \u2192';
+          btn.style.background = '';
+        }, 2000);
 
-      // Update cart count if element exists
-      fetch('/cart.js')
-        .then(r => r.json())
-        .then(cart => {
-          var countEl = document.querySelector('.cart-count, [data-cart-count], .cart-item-count');
-          if (countEl) countEl.textContent = cart.item_count;
-        }).catch(() => {});
+        // Update global cart counts
+        fetch('/cart.js')
+          .then(r => r.json())
+          .then(cart => {
+            document.querySelectorAll('.cart-count, [data-cart-count], .cart-item-count').forEach(el => {
+              el.textContent = cart.item_count;
+            });
+          }).catch(() => {});
 
-      // Open the cart drawer
-      if (window.LausheCart) {
-        LausheCart.open();
-      } else {
-        document.dispatchEvent(new CustomEvent('cart:updated', { detail: data }));
-        // Fallback: redirect to cart
-        window.location.href = '/cart';
-      }
-    })
-    .catch(err => {
-      console.error('ATC error:', err);
-      textEl.innerText = err.message || 'Error \u2013 Try Again';
-      textEl.style.display = 'inline';
-      loadEl.style.display = 'none';
-      btn.disabled = false;
-      btn.style.background = '#c0392b';
-      setTimeout(() => {
-        textEl.innerText = 'Add to Cart \u2192';
-        btn.style.background = '';
-      }, 2500);
+        // Open drawer or dispatch event
+        if (window.LausheCart && typeof window.LausheCart.open === 'function') {
+          window.LausheCart.open();
+        } else {
+          document.dispatchEvent(new CustomEvent('cart:updated', { detail: data }));
+        }
+      })
+      .catch(err => {
+        console.error('ATC error:', err);
+        textEl.innerText = err.message || 'Error \u2013 Try Again';
+        textEl.style.display = 'inline';
+        loadEl.style.display = 'none';
+        btn.disabled = false;
+        btn.style.background = '#c0392b';
+        setTimeout(() => {
+          textEl.innerText = 'Add to Cart \u2192';
+          btn.style.background = '';
+        }, 2500);
+      });
     });
   });
 </script>
