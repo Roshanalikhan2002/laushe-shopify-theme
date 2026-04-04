@@ -144,12 +144,14 @@
                           {{ section.settings.custom_sub_price | default: default_sub_price | append: '/mo' }}
                         </span>
                       </div>
+                      {% comment %}
                       <ul class="method-benefits">
                         <li>✔ Free shipping delivered every 30 days</li>
                         <li>✔ Includes a Free Frother**</li>
                         <li>✔ Easily pause, skip, or cancel</li>
                         <li>✔ 90-Day Money Back Guarantee</li>
                       </ul>
+                      {% endcomment %}
                     </div>
                  </div>
                {% endif %}
@@ -172,6 +174,7 @@
                           {% if force_bogo %}Rs.1,690{% else %}{{ section.settings.bogo_price }}{% endif %}
                         </span>
                       </div>
+                      {% comment %}
                       <ul class="method-benefits" {% unless enable_sub %}style="display:block;"{% endunless %}>
                         {% if force_bogo %}
                           {% if prod_title contains 'chia' %}
@@ -195,6 +198,7 @@
                           {% endfor %}
                         {% endif %}
                       </ul>
+                      {% endcomment %}
                     </div>
                  </div>
                {% endif %}
