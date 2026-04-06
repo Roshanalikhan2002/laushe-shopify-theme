@@ -2,7 +2,8 @@
 {
   "name": "Cart Drawer (Laushe)",
   "settings": [
-    { "id": "free_shipping_threshold", "type": "number", "label": "Free Shipping Threshold (Rs.)", "default": 3000 }
+    { "id": "free_shipping_threshold", "type": "number", "label": "Free Shipping Threshold (Rs.)", "default": 3000 },
+    { "id": "bogo_discount_code", "type": "text", "label": "BOGO Discount Code", "default": "BOGO", "info": "This code will be automatically applied to the checkout if a BOGO gift is in the cart." }
   ]
 }
 {% endschema %}
@@ -30,6 +31,7 @@
   </div>
 
   <form action="/cart" method="post" id="CartDrawerFooter" class="drawer-footer" style="display:none;">
+    <div id="CartDrawerDiscountContainer"></div>
     <div class="footer-row">
       <span class="total-label">Subtotal</span>
       <span id="CartDrawerTotal" class="total-value">Rs. 0</span>
@@ -223,6 +225,7 @@
 <script>
   window.LausheCart = {
     threshold: {{ section.settings.free_shipping_threshold | default: 3000 }},
+    bogo_code: "{{ section.settings.bogo_discount_code | default: 'BOGO' }}",
 
     open: function() {
       document.getElementById('LausheCartOverlay').classList.add('active');
@@ -254,15 +257,26 @@
       var bar = document.getElementById('ProgressBar');
       var barText = document.getElementById('ProgressText');
       var footer = document.getElementById('CartDrawerFooter');
+      var discountContainer = document.getElementById('CartDrawerDiscountContainer');
       if (!itemsEl) return;
 
-      var totalRs = 0;
+      var totalRs = cart.total_price / 100;
+      var hasGift = false;
       cart.items.forEach(function(i) {
-        if (!i.properties || !i.properties._is_gift) {
-          totalRs += (i.final_line_price / 100);
+        if (i.properties && (i.properties._is_gift === 'true' || i.properties.is_gift === 'true')) {
+          hasGift = true;
         }
       });
       
+      // If gift is present, automatically apply the discount code to the form (Backup)
+      if (discountContainer) {
+        if (hasGift) {
+          discountContainer.innerHTML = '<input type="hidden" name="discount" value="' + (this.bogo_code || "BOGO") + '">';
+        } else {
+          discountContainer.innerHTML = '';
+        }
+      }
+
       if (totalEl) totalEl.innerText = 'Rs. ' + totalRs.toLocaleString('en-PK');
 
       if (bar && barText) {
@@ -287,7 +301,7 @@
       if (footer) footer.style.display = 'block';
 
       itemsEl.innerHTML = cart.items.map(function(item) {
-        var isGift = (item.properties && item.properties._is_gift === 'true');
+        var isGift = (item.properties && (item.properties._is_gift === 'true' || item.properties.is_gift === 'true'));
         var priceDisplay = isGift ? '<span style="color: #2d7a4f; font-weight: 800;">FREE GIFT</span>' : LausheCart.fmt(item.original_line_price);
         
         return '<div class="cart-item" data-key="' + item.key + '">' +
