@@ -2,7 +2,7 @@
 {
   "name": "Cart Drawer (Laushe)",
   "settings": [
-    { "id": "free_shipping_threshold", "type": "number", "label": "Free Shipping Threshold (Rs.)", "default": 3000 },
+    { "id": "free_shipping_threshold", "type": "number", "label": "Free Shipping Threshold (Rs.)", "default": 10000 },
     { "id": "bogo_discount_code", "type": "text", "label": "BOGO Discount Code", "default": "BOGO", "info": "This code will be automatically applied to the checkout if a BOGO gift is in the cart." }
   ]
 }
@@ -224,7 +224,7 @@
 
 <script>
   window.LausheCart = {
-    threshold: {{ section.settings.free_shipping_threshold | default: 3000 }},
+    threshold: {{ section.settings.free_shipping_threshold | default: 10000 }},
     bogo_code: "{{ section.settings.bogo_discount_code | default: 'BOGO' }}",
 
     open: function() {
