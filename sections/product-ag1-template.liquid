@@ -180,7 +180,7 @@
                       <div class="method-header">
                         <span class="method-name">{% if force_bogo %}Buy 1 Get 1 FREE Offer{% else %}{{ section.settings.bogo_title }}{% endif %}</span>
                         <span class="method-price" id="BogoPrice">
-                          {% if force_bogo %}Rs.1,690{% else %}{{ section.settings.bogo_price }}{% endif %}
+                          {% if force_bogo %}{{ product.selected_or_first_available_variant.price | money }}{% else %}{{ section.settings.bogo_price }}{% endif %}
                         </span>
                       </div>
                       
@@ -472,7 +472,7 @@
       }
 
       const bogoPriceEl = document.getElementById('BogoPrice');
-      if (bogoPriceEl && !"{% if force_bogo %}true{% endif %}") {
+      if (bogoPriceEl) {
         bogoPriceEl.innerText = customOneTime || ('Rs. ' + (priceInPaise / 100).toLocaleString());
       }
     }
