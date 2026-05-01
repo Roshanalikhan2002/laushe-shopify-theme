@@ -915,6 +915,7 @@
     const swatchList = document.querySelector('.swatch-list');
     swatchList.innerHTML = `
         <div class="swatch-node active" style="background: #d49b70;" onclick="updateProductUI('Natural'); this.parentElement.querySelectorAll('.swatch-node').forEach(s=>s.classList.remove('active')); this.classList.add('active');"></div>
+        <div class="swatch-node" style="background: #d49b70;" onclick="updateProductUI('Natural'); this.parentElement.querySelectorAll('.swatch-node').forEach(s=>s.classList.remove('active')); this.classList.add('active');"></div>
     `;
 
     // 4. Quantity
