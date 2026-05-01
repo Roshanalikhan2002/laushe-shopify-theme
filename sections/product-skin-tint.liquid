@@ -861,6 +861,10 @@
         'Natural': [
             "{{ 'natural-skin-tint-1.jpg' | asset_url }}",
             "{{ 'natural-skin-tint-1-texture.jpg' | asset_url }}"
+        ],
+        'Light Natural': [
+            "{{ 'natural-skin-tint-1.jpg' | asset_url }}",
+            "{{ 'natural-skin-tint-1-texture.jpg' | asset_url }}"
         ]
     };
 
@@ -915,7 +919,7 @@
     const swatchList = document.querySelector('.swatch-list');
     swatchList.innerHTML = `
         <div class="swatch-node active" style="background: #d49b70;" onclick="updateProductUI('Natural'); this.parentElement.querySelectorAll('.swatch-node').forEach(s=>s.classList.remove('active')); this.classList.add('active');"></div>
-        <div class="swatch-node" style="background: #d49b70;" onclick="updateProductUI('Natural'); this.parentElement.querySelectorAll('.swatch-node').forEach(s=>s.classList.remove('active')); this.classList.add('active');"></div>
+        <div class="swatch-node" style="background: #f7caa1;" onclick="updateProductUI('Light Natural'); this.parentElement.querySelectorAll('.swatch-node').forEach(s=>s.classList.remove('active')); this.classList.add('active');"></div>
     `;
 
     // 4. Quantity
