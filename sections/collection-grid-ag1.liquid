@@ -73,7 +73,7 @@
         <div class="product-grid" id="ProductGrid">
             {% for product in collection.products %}
                 {% assign prod_title = product.title | downcase %}
-                {% if product.handle contains 'elixir' or product.handle contains 'weight-gainer' or prod_title contains 'weight gainer' or prod_title contains 'golden elixir' %}
+                {% if product.handle contains 'elixir' or product.handle contains 'weight-gainer' or prod_title contains 'weight gainer' or prod_title contains 'golden elixir' or product.handle contains 'skin-tint' or product.handle contains 'liquid-blush' %}
                     {% continue %}
                 {% endif %}
                 {%- assign product_tags = product.tags | join: ',' | downcase -%}
