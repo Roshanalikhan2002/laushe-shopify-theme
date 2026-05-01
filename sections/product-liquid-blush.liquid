@@ -925,11 +925,19 @@
         const list = document.getElementById('thumbList');
         if(!list) return;
         list.innerHTML = '';
-        const thumbs = [mainSrc]; // In reality, you'd pull all product images
+        
+        // Product specific images + variant image
+        const thumbs = [
+            mainSrc,
+            "{{ 'liquid-blush-petal-1.jpg' | asset_url }}",
+            "{{ 'liquid-blush-petal-1-texture.jpg' | asset_url }}"
+        ];
+
         thumbs.forEach((t, i) => {
+            if(!t || t.includes('no-image')) return;
             const node = document.createElement('div');
             node.className = 'thumb-node' + (i === 0 ? ' active' : '');
-            if(t) node.style.backgroundImage = `url('${t}')`;
+            node.style.backgroundImage = `url('${t}')`;
             node.onclick = () => {
                 document.getElementById('mainImg').src = t;
                 document.querySelectorAll('.thumb-node').forEach(tn => tn.classList.remove('active'));
@@ -939,9 +947,9 @@
         });
     }
 
-    // Initialize first image
-    const firstImg = document.querySelector('.swatch-node')?.dataset.variantImg;
-    if(firstImg) updateImages(firstImg);
+    // Initialize first images
+    const initialMainImg = "{{ 'liquid-blush-petal-1.jpg' | asset_url }}";
+    updateImages(initialMainImg);
 
     // 4. Quantity
     function changeQty(v) {
