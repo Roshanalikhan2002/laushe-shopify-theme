@@ -885,7 +885,11 @@
         'ing': 'Enriched with Vitamin E, Hyaluronic Acid, and calming botanicals. 100% Vegan and Cruelty-Free.'
     };
 
-    let selectedVariantId = {{ product.selected_or_first_available_variant.id }};
+    // Use the first variant ID from Shopify as a fallback
+    let selectedVariantId = {{ product.variants[0].id | default: 0 }};
+    if (!selectedVariantId) {
+        console.error("No variant ID found for this product.");
+    }
 
     // 1. Tab Logic
     document.querySelectorAll('.tab-node').forEach(btn => {
@@ -969,9 +973,15 @@
 
     // 5. Add to Cart (Integrate with LausheCart Drawer)
     function addToCart() {
-        const qty = parseInt(document.getElementById('qtyVal').innerText);
+        const qtyVal = document.getElementById('qtyVal');
+        const mQtyVal = document.getElementById('mQtyVal');
+        const qty = parseInt(qtyVal ? qtyVal.innerText : (mQtyVal ? mQtyVal.innerText : 1));
         
-        // Use the selectedVariantId (which defaults to the first variant if no selection made)
+        if (!selectedVariantId || selectedVariantId === 0) {
+            alert("This product is not ready to be added to cart. Please check if variants are set up in Shopify Admin.");
+            return;
+        }
+
         let formData = {
             'items': [{
                 'id': selectedVariantId,
@@ -987,7 +997,7 @@
         .then(response => response.json())
         .then(data => {
             if(data.status && data.status === 'error') {
-                alert('Error: ' + data.description);
+                alert('Shopify Error: ' + data.description);
                 return;
             }
             
@@ -1000,7 +1010,7 @@
         })
         .catch((error) => {
             console.error('Error:', error);
-            alert('Something went wrong. Please try again.');
+            alert('Something went wrong: ' + error.message);
         });
     }
 
