@@ -977,8 +977,10 @@
         const mQtyVal = document.getElementById('mQtyVal');
         const qty = parseInt(qtyVal ? qtyVal.innerText : (mQtyVal ? mQtyVal.innerText : 1));
         
+        console.log("Attempting to add to cart:", { id: selectedVariantId, quantity: qty });
+
         if (!selectedVariantId || selectedVariantId === 0) {
-            alert("This product is not ready to be added to cart. Please check if variants are set up in Shopify Admin.");
+            alert("Error: No Variant ID found. Please make sure this product has variants in Shopify.");
             return;
         }
 
@@ -989,18 +991,23 @@
             }]
         };
 
-        fetch(window.Shopify.routes.root + 'cart/add.js', {
+        fetch('/cart/add.js', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(formData)
         })
         .then(response => response.json())
         .then(data => {
+            console.log("Shopify Add to Cart Response:", data);
+            
             if(data.status && data.status === 'error') {
-                alert('Shopify Error: ' + data.description);
+                alert('Shopify Error: ' + data.description + (data.message ? ' (' + data.message + ')' : ''));
                 return;
             }
             
+            // Success alert for testing
+            alert("Product added successfully! Opening cart...");
+
             // Trigger the cart drawer
             if(window.LausheCart) {
                 window.LausheCart.open();
@@ -1009,8 +1016,8 @@
             }
         })
         .catch((error) => {
-            console.error('Error:', error);
-            alert('Something went wrong: ' + error.message);
+            console.error('Fetch Error:', error);
+            alert('Fetch Error: ' + error.message);
         });
     }
 
