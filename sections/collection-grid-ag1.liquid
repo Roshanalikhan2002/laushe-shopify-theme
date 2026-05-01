@@ -64,6 +64,7 @@
             <li><a href="javascript:void(0)" class="tab-link" data-filter="healthcare">Healthcare</a></li>
             <li><a href="javascript:void(0)" class="tab-link" data-filter="organic">Organic</a></li>
             <li><a href="javascript:void(0)" class="tab-link" data-filter="makeup">Makeup</a></li>
+            <li><a href="javascript:void(0)" class="tab-link" data-filter="skindeep">Skindeep</a></li>
         </ul>
     </div>
 </nav>
@@ -89,6 +90,9 @@
                 {%- endif -%}
                 {%- if product_tags contains 'makeup' or product_tags contains 'blush' or product.handle contains 'skin-tint' or product.handle contains 'liquid-blush' -%}
                   {%- assign cat = cat | append: ' makeup' -%}
+                {%- endif -%}
+                {%- if product.handle contains 'skin-tint' or product.handle contains 'liquid-blush' -%}
+                  {%- assign cat = cat | append: ' skindeep' -%}
                 {%- endif -%}
 
                 <div class="product-card collection-group" data-category="{{ cat }}">
