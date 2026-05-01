@@ -33,7 +33,7 @@
         {% assign prod = all_products[block.settings.product] %}
         {% if prod != blank %}
           {% assign prod_title = prod.title | downcase %}
-          {% if prod.handle contains 'elixir' or prod.handle contains 'weight-gainer' or prod_title contains 'weight gainer' or prod_title contains 'golden elixir' %}
+          {% if prod.handle contains 'elixir' or prod.handle contains 'weight-gainer' or prod_title contains 'weight gainer' or prod_title contains 'golden elixir' or prod.handle contains 'skin-tint' or prod.handle contains 'liquid-blush' %}
             {% continue %}
           {% endif %}
           <div class="product-card-v2" onclick="location.href='{{ prod.url }}'">
