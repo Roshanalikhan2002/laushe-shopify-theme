@@ -73,7 +73,7 @@
         <div class="product-grid" id="ProductGrid">
             {% for product in collection.products %}
                 {% assign prod_title = product.title | downcase %}
-                {% if product.handle contains 'elixir' or product.handle contains 'weight-gainer' or prod_title contains 'weight gainer' or prod_title contains 'golden elixir' or product.handle contains 'skin-tint' or product.handle contains 'liquid-blush' %}
+                {% if product.handle contains 'elixir' or product.handle contains 'weight-gainer' or prod_title contains 'weight gainer' or prod_title contains 'golden elixir' %}
                     {% continue %}
                 {% endif %}
                 {%- assign product_tags = product.tags | join: ',' | downcase -%}
@@ -91,7 +91,7 @@
                   {%- assign cat = cat | append: ' makeup' -%}
                 {%- endif -%}
 
-                <div class="product-card collection-group" data-category="{{ cat }}">
+                <div class="product-card collection-group {% if product.handle contains 'skin-tint' or product.handle contains 'liquid-blush' %}collection-group--hidden{% endif %}" data-category="{{ cat }}" {% if product.handle contains 'skin-tint' or product.handle contains 'liquid-blush' %}data-exclusive="makeup"{% endif %}>
                     {% if product.tags contains 'Best Seller' or product.tags contains 'best-seller' %}
                         <div class="best-seller-badge">Best Seller</div>
                     {% endif %}
@@ -141,8 +141,14 @@
             setTimeout(() => {
                 groups.forEach(group => {
                     const categories = group.getAttribute('data-category');
+                    const isExclusive = group.getAttribute('data-exclusive');
+                    
                     if (filter === 'all') {
-                        group.classList.remove('collection-group--hidden');
+                        if (isExclusive) {
+                            group.classList.add('collection-group--hidden');
+                        } else {
+                            group.classList.remove('collection-group--hidden');
+                        }
                     } else {
                         if (categories.includes(filter)) {
                             group.classList.remove('collection-group--hidden');
