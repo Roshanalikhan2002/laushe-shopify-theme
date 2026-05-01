@@ -845,11 +845,15 @@
         'ing': 'Enriched with Vitamin E, Hyaluronic Acid, and calming botanicals. 100% Vegan and Cruelty-Free.'
     };
 
-    // Use the first variant ID from Shopify as a fallback
+    // Pull real variant IDs from Shopify
+    const allVariants = {
+        {% for variant in product.variants %}
+            "{{ variant.title }}": {{ variant.id }},
+        {% endfor %}
+    };
+
+    // Use the first variant ID from Shopify as a default
     let selectedVariantId = {{ product.variants[0].id | default: 0 }};
-    if (!selectedVariantId) {
-        console.error("No variant ID found for this product.");
-    }
 
     // 1. Tab Logic
     document.querySelectorAll('.tab-node').forEach(btn => {
@@ -862,18 +866,24 @@
 
     // 2. Swatch & Image Logic
     const variantImages = {
-        'Petal 1': [
+        'Liquid Blush': [
             "{{ 'liquid-blush-petal-1.jpg' | asset_url }}",
             "{{ 'liquid-blush-petal-1-texture.jpg' | asset_url }}"
         ],
-        'Petal 2': [
+        'Soft Liquid Blush': [
             "{{ 'soft-bloom-liquid-blush-2.jpg' | asset_url }}",
             "{{ 'soft-petal-blush-2-texture.jpg' | asset_url }}"
         ]
     };
 
     function updateProductUI(colorName) {
-        const images = variantImages[colorName] || variantImages['Petal 1'];
+        const images = variantImages[colorName] || variantImages['Liquid Blush'];
+        
+        // Update the selected variant ID based on the color name
+        if (allVariants[colorName]) {
+            selectedVariantId = allVariants[colorName];
+            console.log("Selected Variant ID updated to:", selectedVariantId);
+        }
         
         // Update main image
         const mainImg = document.getElementById('mainImg');
@@ -917,14 +927,13 @@
     }
 
     // Initial Load
-    updateProductUI('Petal 1');
+    updateProductUI('Liquid Blush');
 
-    // Handle Swatch Clicks (Mocking 2 variants if Shopify data is empty)
-    // We will inject 2 swatches manually for now to show the user how it works
+    // Handle Swatch Clicks (Manual injection for now)
     const swatchList = document.querySelector('.swatch-list');
     swatchList.innerHTML = `
-        <div class="swatch-node active" style="background: #c83233;" onclick="updateProductUI('Petal 1'); this.parentElement.querySelectorAll('.swatch-node').forEach(s=>s.classList.remove('active')); this.classList.add('active');"></div>
-        <div class="swatch-node" style="background: #ff7b94;" onclick="updateProductUI('Petal 2'); this.parentElement.querySelectorAll('.swatch-node').forEach(s=>s.classList.remove('active')); this.classList.add('active');"></div>
+        <div class="swatch-node active" style="background: #c83233;" onclick="updateProductUI('Liquid Blush'); this.parentElement.querySelectorAll('.swatch-node').forEach(s=>s.classList.remove('active')); this.classList.add('active');"></div>
+        <div class="swatch-node" style="background: #ff7b94;" onclick="updateProductUI('Soft Liquid Blush'); this.parentElement.querySelectorAll('.swatch-node').forEach(s=>s.classList.remove('active')); this.classList.add('active');"></div>
     `;
 
     // 4. Quantity
