@@ -63,7 +63,7 @@
             <li><a href="javascript:void(0)" class="tab-link active" data-filter="all">Shop All</a></li>
             <li><a href="javascript:void(0)" class="tab-link" data-filter="healthcare">Healthcare</a></li>
             <li><a href="javascript:void(0)" class="tab-link" data-filter="organic">Organic</a></li>
-            <li><a href="javascript:void(0)" class="tab-link" data-filter="bundle">Bundles</a></li>
+            <li><a href="javascript:void(0)" class="tab-link" data-filter="makeup">Makeup</a></li>
         </ul>
     </div>
 </nav>
@@ -86,6 +86,9 @@
                 {%- endif -%}
                 {%- if product_tags contains 'bundle' or product_tags contains 'pack' -%}
                   {%- assign cat = cat | append: ' bundle' -%}
+                {%- endif -%}
+                {%- if product_tags contains 'makeup' or product_tags contains 'blush' -%}
+                  {%- assign cat = cat | append: ' makeup' -%}
                 {%- endif -%}
 
                 <div class="product-card collection-group" data-category="{{ cat }}">
