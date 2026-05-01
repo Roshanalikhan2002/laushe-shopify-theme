@@ -1,0 +1,1007 @@
+{% comment %}
+  Custom Product Template for Liquid Blush
+  Inspired by Skindeep design
+{% endcomment %}
+
+<style>
+    :root {
+        --olive-bg: #d8d9c1;
+        --olive-inner: #dfe2c8;
+        --cream-bg: #f9f9f1;
+        --dark-green: #1a2e22;
+        --accent-green: #09655D;
+        --text-gray: #666666;
+        --star-gold: #e79d3d;
+        --sticky-h: 84px;
+    }
+
+    .laushe-product-container {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        -webkit-font-smoothing: antialiased;
+        font-family: 'Outfit', sans-serif;
+        background-color: var(--cream-bg);
+        color: var(--dark-green);
+        width: 100%;
+        overflow-x: hidden;
+    }
+
+    /* Full Width Container */
+    .product-section {
+        display: flex;
+        width: 100%;
+        min-height: 100vh;
+    }
+
+    /* Left Visuals (50%) */
+    .left-visuals {
+        width: 50%;
+        background-color: var(--olive-bg);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 2vw;
+        position: sticky;
+        top: 0;
+        height: 100vh;
+    }
+
+    .hero-box {
+        width: 90%;
+        height: 85%;
+        background: var(--olive-inner);
+        border-radius: 15px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+    }
+
+    .main-img-container {
+        width: 85%;
+        height: 75%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .main-img-container img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        filter: drop-shadow(0 40px 80px rgba(0,0,0,0.12));
+    }
+
+    /* Thumbnail Carousel */
+    .thumb-nav {
+        position: absolute;
+        bottom: 30px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .thumb-btn {
+        background: rgba(255,255,255,0.9);
+        border: 0;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        cursor: pointer;
+        font-size: 18px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .thumb-list {
+        display: flex;
+        gap: 10px;
+        overflow: hidden;
+    }
+
+    .thumb-node {
+        width: clamp(60px, 5.5vw, 90px);
+        height: clamp(60px, 5.5vw, 90px);
+        border-radius: 50%;
+        border: 4px solid white;
+        background-size: cover;
+        background-position: center;
+        cursor: pointer;
+        position: relative;
+        transition: 0.3s;
+        background-color: #eee; /* Placeholder bg */
+    }
+
+    .thumb-node.active { border-color: var(--dark-green); transform: scale(1.1); }
+    .thumb-node.has-video::after {
+        content: '▶';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: white;
+        font-size: 18px;
+        text-shadow: 0 2px 5px rgba(0,0,0,0.5);
+    }
+
+    /* Right Content (50%) */
+    .right-content {
+        width: 50%;
+        background-color: var(--cream-bg);
+        padding: clamp(40px, 5vw, 100px) clamp(30px, 6vw, 120px);
+        display: flex;
+        flex-direction: column;
+    }
+
+    .prod-title {
+        font-family: 'Outfit', sans-serif;
+        font-size: clamp(34px, 3.5vw, 65px);
+        font-weight: 800;
+        color: var(--dark-green);
+        line-height: 1.1;
+        margin-bottom: 20px;
+    }
+
+    .prod-rating {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 25px;
+        color: var(--star-gold);
+        font-size: clamp(16px, 1.3vw, 22px);
+    }
+
+    .prod-rating span { color: #435247; font-weight: 600; }
+
+    .prod-price {
+        display: flex;
+        align-items: baseline;
+        gap: 20px;
+        margin-bottom: 35px;
+    }
+
+    .price-was { font-size: clamp(18px, 1.5vw, 24px); color: #8b9086; text-decoration: line-through; font-weight: 500; }
+    .price-is { font-size: clamp(38px, 3.5vw, 65px); font-weight: 800; color: #2f442f; }
+
+    .prod-badges {
+        display: flex;
+        gap: 30px;
+        padding: 25px 0;
+        border-top: 1px solid rgba(0,0,0,0.08);
+        margin-bottom: 25px;
+    }
+
+    .badge-node {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: clamp(13px, 1.1vw, 18px);
+        font-weight: 700;
+        color: var(--dark-green);
+    }
+
+    /* Tabs Section */
+    .tabs-nav {
+        display: flex;
+        gap: 30px;
+        border-bottom: 1.5px solid #d2d0b8;
+        margin-bottom: 25px;
+    }
+
+    .tab-node {
+        padding: 12px 0;
+        font-size: clamp(14px, 1.2vw, 20px);
+        font-weight: 700;
+        color: #8a918c;
+        cursor: pointer;
+        position: relative;
+        background: none;
+        border: 0;
+        font-family: inherit;
+    }
+
+    .tab-node.active { color: var(--dark-green); }
+    .tab-node.active::after {
+        content: '';
+        position: absolute;
+        bottom: -1.5px;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background: var(--dark-green);
+    }
+
+    .tab-content {
+        font-size: clamp(16px, 1.3vw, 20px);
+        line-height: 1.7;
+        color: #435247;
+        margin-bottom: 40px;
+        min-height: 80px;
+    }
+
+    /* Videos Section */
+    .video-header { font-size: clamp(16px, 1.3vw, 22px); font-weight: 800; margin-bottom: 15px; }
+    .video-scroll-wrap {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-bottom: 40px;
+    }
+    .video-container {
+        display: flex;
+        gap: 15px;
+        overflow-x: auto;
+        padding-bottom: 15px;
+        scrollbar-width: thin;
+        scrollbar-color: #c9c7b1 transparent;
+    }
+    .video-item {
+        min-width: clamp(200px, 18vw, 300px);
+        aspect-ratio: 3/4.8;
+        border-radius: 15px;
+        overflow: hidden;
+        background: #e0ddd0;
+        border: 1px solid rgba(0,0,0,0.05);
+    }
+    .video-item img { width: 100%; height: 100%; object-fit: cover; }
+
+    /* Swatches Section */
+    .swatch-header { font-size: clamp(15px, 1.2vw, 19px); font-weight: 700; margin-bottom: 15px; }
+    .swatch-list { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 50px; }
+    .swatch-node {
+        width: clamp(38px, 3.2vw, 50px);
+        height: clamp(38px, 3.2vw, 50px);
+        border-radius: 50%;
+        border: 2px solid #ccc;
+        cursor: pointer;
+        transition: 0.2s;
+    }
+    .swatch-node.active {
+        border: 2px solid var(--dark-green);
+        box-shadow: 0 0 0 2px var(--cream-bg), 0 0 0 4px var(--dark-green);
+        transform: scale(1.1);
+    }
+
+    /* Desktop Sticky Bar */
+    .sticky-footer {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: var(--sticky-h);
+        background: white;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 4vw;
+        box-shadow: 0 -5px 25px rgba(0,0,0,0.08);
+        z-index: 3000;
+    }
+
+    .footer-left { display: flex; align-items: center; gap: 15px; }
+    .footer-left img { width: 55px; height: 55px; background: #f5f5f0; border-radius: 8px; object-fit: contain; }
+    .footer-info { display: flex; flex-direction: column; }
+    .footer-title { font-weight: 800; font-size: 14px; }
+    .footer-stars { color: var(--star-gold); font-size: 12px; }
+
+    .footer-right { display: flex; align-items: center; gap: 25px; }
+    .qty-box {
+        display: flex;
+        align-items: center;
+        border: 1px solid #b8c4bb;
+        border-radius: 999px;
+        padding: 8px 18px;
+        gap: 15px;
+        background: #fafaf8;
+    }
+    .qty-box button { background: 0; border: 0; font-size: 22px; cursor: pointer; color: var(--dark-green); }
+    .qty-box span { font-weight: 700; min-width: 20px; text-align: center; }
+
+    .footer-price { font-weight: 800; font-size: 18px; }
+    .footer-atc {
+        background: var(--dark-green);
+        color: white;
+        border: 0;
+        border-radius: 999px;
+        height: 50px;
+        padding: 0 40px;
+        font-weight: 800;
+        font-size: 13px;
+        cursor: pointer;
+        letter-spacing: 0.5px;
+    }
+
+    /* Floating UI */
+    .f-cart { position: fixed; right: 25px; top: 50%; transform: translateY(-50%); width: 56px; height: 56px; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 25px rgba(0,0,0,0.12); z-index: 3100; cursor: pointer; font-size: 22px; }
+    .f-chat { position: fixed; right: 25px; bottom: 105px; background: var(--dark-green); color: white; border-radius: 999px; padding: 12px 20px; font-weight: 700; font-size: 13px; display: flex; align-items: center; gap: 8px; z-index: 3100; cursor: pointer; box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
+
+    /* Badges Section */
+    .badges-section {
+        background-color: #f5f5ea;
+        background-image: url('https://www.transparenttextures.com/patterns/natural-paper.png');
+        padding: clamp(40px, 5vw, 80px) 2vw;
+        width: 100%;
+        text-align: center;
+        border-top: 1px solid rgba(0,0,0,0.03);
+        border-bottom: 1px solid rgba(0,0,0,0.03);
+    }
+
+    .badges-row {
+        display: flex;
+        justify-content: center;
+        gap: clamp(20px, 4vw, 80px);
+        max-width: 1400px;
+        margin: 0 auto;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        scrollbar-width: none;
+        -webkit-overflow-scrolling: touch;
+    }
+    .badges-row::-webkit-scrollbar { display: none; }
+
+    .badge-card {
+        flex: 0 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+        scroll-snap-align: center;
+        min-width: 150px;
+    }
+
+    .badge-icon {
+        width: clamp(70px, 6vw, 100px);
+        height: clamp(70px, 6vw, 100px);
+        border: 2px solid var(--dark-green);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        position: relative;
+    }
+
+    .badge-icon svg { width: 100%; height: 100%; color: var(--dark-green); }
+
+    .badge-label {
+        font-size: clamp(13px, 1.1vw, 18px);
+        font-weight: 700;
+        color: var(--dark-green);
+        white-space: nowrap;
+    }
+
+    /* Pagination Dots (Mobile Only) */
+    .badge-dots {
+        display: none;
+        justify-content: center;
+        gap: 8px;
+        margin-top: 25px;
+    }
+
+    .dot {
+        width: 6px;
+        height: 6px;
+        background: #bbb;
+        border-radius: 50%;
+        transition: 0.3s;
+    }
+    .dot.active { background: var(--dark-green); width: 12px; border-radius: 4px; }
+
+    /* Feature Section: Text with Image */
+    .feature-section {
+        display: flex;
+        width: 100%;
+        min-height: 80vh;
+        background-color: #40ad8b;
+    }
+
+    .feature-text {
+        width: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 5vw;
+        color: white;
+        text-align: left;
+    }
+
+    .feature-text h2 {
+        font-size: clamp(40px, 5.5vw, 90px);
+        font-weight: 800;
+        line-height: 1.1;
+        max-width: 12ch;
+        letter-spacing: -0.03em;
+    }
+
+    .feature-image {
+        width: 50%;
+        overflow: hidden;
+        background-color: #eee; /* Placeholder */
+    }
+
+    .feature-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+
+    /* Reinvented Section */
+    .reinvented-section {
+        background-color: #f5f5ea;
+        background-image: url('https://www.transparenttextures.com/patterns/natural-paper.png');
+        padding: clamp(60px, 8vw, 120px) 5vw;
+        text-align: center;
+    }
+
+    .reinvented-section h2 {
+        font-size: clamp(32px, 4vw, 70px);
+        font-weight: 800;
+        margin-bottom: clamp(40px, 6vw, 80px);
+        color: var(--dark-green);
+    }
+
+    .reinvented-grid {
+        display: grid;
+        grid-template-columns: 1fr 1.2fr 1fr;
+        align-items: center;
+        gap: 40px;
+        max-width: 1600px;
+        margin: 0 auto;
+    }
+
+    .features-col {
+        display: flex;
+        flex-direction: column;
+        gap: clamp(30px, 4vw, 60px);
+    }
+
+    .feature-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+        text-align: center;
+    }
+
+    .feat-icon {
+        width: 40px;
+        height: 40px;
+        border: 1.5px solid var(--dark-green);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--dark-green);
+        margin-bottom: 5px;
+    }
+
+    .feat-title { font-size: clamp(16px, 1.3vw, 24px); font-weight: 800; color: #3a4a3e; }
+    .feat-desc { font-size: clamp(14px, 1.1vw, 18px); color: #6a7a6e; line-height: 1.5; max-width: 30ch; }
+
+    .center-group-img {
+        background-color: transparent;
+    }
+    .center-group-img img {
+        width: 100%;
+        max-width: 600px;
+        filter: drop-shadow(0 30px 60px rgba(0,0,0,0.1));
+    }
+
+    /* Reviews Section */
+    .reviews-section {
+        background-color: #f5f5ea;
+        padding: clamp(60px, 8vw, 100px) 5vw;
+    }
+
+    .reviews-header {
+        max-width: 1400px;
+        margin: 0 auto 50px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1.5px solid #d2d0b8;
+        padding-bottom: 25px;
+    }
+
+    .header-stats { display: flex; align-items: center; gap: 15px; }
+    .header-stars { color: var(--star-gold); font-size: 24px; }
+    .header-count { font-weight: 700; font-size: 18px; color: var(--dark-green); }
+
+    .write-review { font-weight: 700; font-size: 16px; color: var(--dark-green); text-decoration: underline; cursor: pointer; }
+
+    .reviews-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+
+    .review-card {
+        background: white;
+        border-radius: 12px;
+        padding: 30px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+        text-align: left;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .rev-user { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 18px; }
+    .rev-verified { color: #1da1f2; font-size: 14px; }
+    .rev-date { font-size: 14px; color: #999; margin-bottom: 5px; }
+    .rev-stars { color: var(--star-gold); font-size: 18px; }
+    .rev-text { font-size: 16px; line-height: 1.6; color: #435247; }
+    .rev-item { font-size: 14px; color: #666; font-weight: 600; margin-top: 10px; }
+    .rev-img { width: 100%; max-width: 150px; border-radius: 8px; margin-top: 15px; object-fit: cover; }
+
+    /* Mobile Inline Buy Bar */
+    .mobile-buy-bar {
+        display: none;
+        margin-top: 30px;
+        gap: 15px;
+        align-items: center;
+    }
+
+    .m-qty {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border: 1px solid #b8c4bb;
+        border-radius: 999px;
+        height: 56px;
+        padding: 0 15px;
+        min-width: 110px;
+        background: #fafaf8;
+    }
+    .m-qty button { background: 0; border: 0; font-size: 20px; color: var(--dark-green); cursor: pointer; }
+    .m-qty span { font-weight: 700; font-size: 16px; }
+
+    .m-atc {
+        flex: 1;
+        background: var(--dark-green);
+        color: white;
+        border: 0;
+        border-radius: 999px;
+        height: 56px;
+        font-weight: 800;
+        font-size: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        cursor: pointer;
+    }
+
+    /* Mobile Sticky Bar */
+    .mobile-footer {
+        display: none;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background: white;
+        padding: 12px 20px;
+        box-shadow: 0 -10px 30px rgba(0,0,0,0.1);
+        z-index: 4000;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+        .product-section { flex-direction: column; }
+        .left-visuals, .right-content { width: 100%; height: auto; position: relative; padding: 40px 20px; }
+        .left-visuals { padding-bottom: 80px; }
+        .hero-box { height: auto; aspect-ratio: 1/1; }
+        .sticky-footer, .f-cart, .f-chat { display: none; }
+        .mobile-buy-bar { display: flex; }
+        .mobile-footer { display: flex; }
+        .feature-section { flex-direction: column; }
+        .feature-text, .feature-image { width: 100%; height: auto; }
+        .feature-text { padding: 60px 30px; text-align: center; }
+        .feature-image { height: 50vh; }
+        .reinvented-grid { grid-template-columns: 1fr; gap: 50px; }
+        .features-col.left-col { order: 1; }
+        .center-group-img { order: 2; }
+        .features-col.right-col { order: 3; }
+        .reviews-grid { grid-template-columns: 1fr; }
+        .reviews-header { flex-direction: column; gap: 20px; align-items: flex-start; }
+        .badges-row { justify-content: flex-start; padding: 0 20px; }
+        .badge-card { min-width: 100%; }
+        .badge-dots { display: flex; }
+    }
+</style>
+
+<div class="laushe-product-container">
+    <main class="product-section">
+        <!-- Visuals (Left) -->
+        <section class="left-visuals">
+            <div class="hero-box">
+                <div class="main-img-container">
+                    <img src="" id="mainImg" alt="Product Image Placeholder">
+                </div>
+                <div class="thumb-nav">
+                    <button class="thumb-btn">‹</button>
+                    <div class="thumb-list" id="thumbList">
+                        <!-- Thumbs will be here -->
+                    </div>
+                    <button class="thumb-btn">›</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Details (Right) -->
+        <section class="right-content">
+            <h1 class="prod-title">{{ product.title | default: "Liquid Blush" }}</h1>
+            
+            <div class="prod-rating">
+                ★★★★★ <span>(55)</span>
+            </div>
+
+            <div class="prod-price">
+                <span class="price-was">{{ product.compare_at_price | money }}</span>
+                <span class="price-is">{{ product.price | money }}</span>
+            </div>
+
+            <div class="prod-badges">
+                <div class="badge-node">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L4.5 20.29l.71.71L12 18l6.79 3 .71-.71z"/></svg>
+                    Trusted by 1m+ Customers
+                </div>
+                <div class="badge-node">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M20 8l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                    Ships Internationally
+                </div>
+            </div>
+
+            <!-- Tabs Section -->
+            <nav class="tabs-nav">
+                <button class="tab-node active" data-tab="details">Details</button>
+                <button class="tab-node" data-tab="works">How it Works</button>
+                <button class="tab-node" data-tab="use">How To Use</button>
+                <button class="tab-node" data-tab="ing">Ingredients</button>
+            </nav>
+            <div class="tab-content" id="tabText">
+                Liquid Blush is your everyday juicy cheek obsession. It delivers a natural flush with the comfort and care of skincare—no stickiness, no heavy feel. Just soft, pop-worthy cheeks that look as good as they feel.
+            </div>
+
+            <!-- Video Section -->
+            <div class="video-scroll-wrap">
+                <div class="video-header">See it in action</div>
+                <div class="video-container">
+                    <div class="video-item"><img src="" alt="Video Placeholder 1"></div>
+                    <div class="video-item"><img src="" alt="Video Placeholder 2"></div>
+                    <div class="video-item"><img src="" alt="Video Placeholder 3"></div>
+                </div>
+            </div>
+
+            <!-- Swatches Section -->
+            <div class="swatch-header">Color: <span id="colorName" style="font-weight: 500;">Select Shade</span></div>
+            <div class="swatch-list">
+                {% for variant in product.variants %}
+                    <div class="swatch-node" 
+                         style="background: {{ variant.metafields.custom.color_hex | default: '#ccc' }};"
+                         data-variant-id="{{ variant.id }}"
+                         data-variant-name="{{ variant.title }}"
+                         data-variant-img="{{ variant.image | img_url: 'master' }}">
+                    </div>
+                {% endfor %}
+            </div>
+
+            <!-- Mobile Inline Buy Bar -->
+            <div class="mobile-buy-bar">
+                <div class="m-qty">
+                    <button onclick="changeQty(-1)">−</button>
+                    <span id="mQtyVal">1</span>
+                    <button onclick="changeQty(1)">+</button>
+                </div>
+                <button class="m-atc" onclick="addToCart()">Add to cart <span style="font-size: 18px;">→</span></button>
+            </div>
+        </section>
+    </main>
+
+    <!-- Badges Section -->
+    <section class="badges-section">
+        <div class="badges-row" id="badgeSlider">
+            <div class="badge-card">
+                <div class="badge-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 5a2 2 0 1 1 4 0c.5 0 2.5 2.5 2.5 4.5s-1.5 4-2.5 4-1-.5-1-1.5c-1 1-1.5 1.5-2.5 1.5s-2.5-2-2.5-4 2-4.5 2.5-4.5Z"/><path d="M12 14c-1 0-2 .5-2 1.5s1 2.5 2 2.5 2-1.5 2-2.5-1-1.5-2-1.5Z"/><line x1="4" y1="4" x2="20" y2="20"/></svg>
+                </div>
+                <div class="badge-label">Cruelty free</div>
+            </div>
+            <div class="badge-card">
+                <div class="badge-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/><line x1="4" y1="4" x2="20" y2="20"/></svg>
+                </div>
+                <div class="badge-label">Mineral Oil Free</div>
+            </div>
+            <div class="badge-card">
+                <div class="badge-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M3 12h18M12 8l4 4-4 4M12 8l-4 4 4 4"/><line x1="4" y1="4" x2="20" y2="20"/></svg>
+                </div>
+                <div class="badge-label">Paraben Free</div>
+            </div>
+            <div class="badge-card">
+                <div class="badge-icon">
+                    <span style="font-weight: 800; font-size: 24px;">pH</span>
+                </div>
+                <div class="badge-label">pH 5.0 ≈ 1.0</div>
+            </div>
+            <div class="badge-card">
+                <div class="badge-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2v3M14 2v3M6 10a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v10a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V10Z"/><path d="M10 10h4"/><line x1="4" y1="4" x2="20" y2="20"/></svg>
+                </div>
+                <div class="badge-label">No Artificial Fragrance</div>
+            </div>
+            <div class="badge-card">
+                <div class="badge-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m14 7-2-2H8l-2 2v10l2 2h8l2-2V9l-2-2z"/><path d="M10 7v4a2 2 0 1 0 4 0V7"/><line x1="4" y1="4" x2="20" y2="20"/></svg>
+                </div>
+                <div class="badge-label">Silicone Free</div>
+            </div>
+        </div>
+        <div class="badge-dots" id="badgeDots">
+            <div class="dot active"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </div>
+    </section>
+    
+    <!-- Feature Section: Text with Image -->
+    <section class="feature-section">
+        <div class="feature-text">
+            <h2>Natural Flush. Skin-First Care.</h2>
+        </div>
+        <div class="feature-image">
+            <img src="" alt="Lifestyle Placeholder">
+        </div>
+    </section>
+
+    <!-- Gloss Reinvented Section -->
+    <section class="reinvented-section">
+        <h2>Blush, reinvented.</h2>
+        <div class="reinvented-grid">
+            <div class="features-col left-col">
+                <div class="feature-item">
+                    <div class="feat-icon">✓</div>
+                    <div class="feat-title">Seamless Blend</div>
+                    <div class="feat-desc">Melts into skin for a natural, streak-free finish.</div>
+                </div>
+                <div class="feature-item">
+                    <div class="feat-icon">✓</div>
+                    <div class="feat-title">Buildably Pigmented</div>
+                    <div class="feat-desc">From a sheer hint to a bold pop of color.</div>
+                </div>
+                <div class="feature-item">
+                    <div class="feat-icon">✓</div>
+                    <div class="feat-title">Skin-Loving Ingredients</div>
+                    <div class="feat-desc">Infused with botanicals to nourish while you wear.</div>
+                </div>
+            </div>
+
+            <div class="center-group-img">
+                <img src="" alt="Group Product Placeholder">
+            </div>
+
+            <div class="features-col right-col">
+                <div class="feature-item">
+                    <div class="feat-icon">✓</div>
+                    <div class="feat-title">Long-Lasting Glow</div>
+                    <div class="feat-desc">Stays vibrant all day without fading.</div>
+                </div>
+                <div class="feature-item">
+                    <div class="feat-icon">✓</div>
+                    <div class="feat-title">Breathable Feel</div>
+                    <div class="feat-desc">Lightweight formula that lets skin breathe.</div>
+                </div>
+                <div class="feature-item">
+                    <div class="feat-icon">✓</div>
+                    <div class="feat-title">Dewy Finish</div>
+                    <div class="feat-desc">Gives a healthy, lit-from-within radiance.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section class="reviews-section">
+        <div class="reviews-header">
+            <div class="header-stats">
+                <div class="header-stars">★★★★★</div>
+                <div class="header-count">55 Reviews</div>
+            </div>
+            <div class="write-review">Write a review</div>
+        </div>
+
+        <div class="reviews-grid">
+            <!-- Static Reviews as requested (100% same match) -->
+            <div class="review-card">
+                <div class="rev-user">Shehzana G. <span class="rev-verified">●</span></div>
+                <div class="rev-date">28/04/2026</div>
+                <div class="rev-stars">★★★★★</div>
+                <div class="rev-text">Very pigmented ❤️ highly recommend ❤️ The blend is incredible and it stays on for hours.</div>
+                <div class="rev-item">Item type: Rosy</div>
+            </div>
+            <div class="review-card">
+                <div class="rev-user">Zainab R. <span class="rev-verified">●</span></div>
+                <div class="rev-date">28/03/2026</div>
+                <div class="rev-stars">★★★★★</div>
+                <div class="rev-text">Got the liquid blush in "Mocha" and it's perfect! Best purchase.</div>
+                <div class="rev-item">Item type: Mocha</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Desktop Sticky Footer -->
+    <div class="sticky-footer">
+        <div class="footer-left">
+            <img src="" id="footerImg" alt="Thumb">
+            <div class="footer-info">
+                <div class="footer-title">{{ product.title | default: "Liquid Blush" }}</div>
+                <div class="footer-stars">★★★★★</div>
+            </div>
+        </div>
+        <div class="footer-right">
+            <div class="qty-box">
+                <button onclick="changeQty(-1)">−</button>
+                <span id="qtyVal">1</span>
+                <button onclick="changeQty(1)">+</button>
+            </div>
+            <div class="footer-price">{{ product.price | money }}</div>
+            <button class="footer-atc" onclick="addToCart()">ADD TO CART</button>
+        </div>
+    </div>
+
+    <!-- Floating UI -->
+    <div class="f-cart">🛒 <span id="cartCount" style="position:absolute; top:6px; right:6px; background:red; color:white; font-size:10px; border-radius:50%; width:18px; height:18px; display:flex; align-items:center; justify-content:center; font-weight:800;">{{ cart.item_count }}</span></div>
+    <div class="f-chat">💬 Live chat <span style="background:red; width:18px; height:18px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:10px;">1</span></div>
+
+    <!-- Mobile Sticky Bar -->
+    <div class="mobile-footer">
+        <div style="display: flex; align-items: center; gap: 12px;">
+            <img src="" id="mobileImg" width="45" height="45">
+            <div style="font-weight: 800; font-size: 14px;">{{ product.title | default: "Liquid Blush" }}</div>
+        </div>
+        <button style="background:var(--dark-green); color:white; border:0; border-radius:100px; padding:10px 22px; font-weight:800; font-size:12px;" onclick="addToCart()">ADD TO CART</button>
+    </div>
+</div>
+
+<script>
+    const tabData = {
+        'details': 'Liquid Blush is your everyday juicy cheek obsession. It delivers a natural flush with the comfort and care of skincare—no stickiness, no heavy feel. Just soft, pop-worthy cheeks that look as good as they feel.',
+        'works': 'A unique weightless formula that blends seamlessly into the skin. It uses micro-pigments to provide buildable color while keeping the skin hydrated.',
+        'use': 'Apply 1-2 dots to the apples of your cheeks using the applicator. Blend with fingertips, a sponge, or a brush for a seamless flush.',
+        'ing': 'Enriched with Vitamin E, Hyaluronic Acid, and calming botanicals. 100% Vegan and Cruelty-Free.'
+    };
+
+    let selectedVariantId = {{ product.selected_or_first_available_variant.id }};
+
+    // 1. Tab Logic
+    document.querySelectorAll('.tab-node').forEach(btn => {
+        btn.onclick = () => {
+            document.querySelectorAll('.tab-node').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            document.getElementById('tabText').innerText = tabData[btn.dataset.tab];
+        };
+    });
+
+    // 2. Swatch Logic
+    document.querySelectorAll('.swatch-node').forEach((node, idx) => {
+        if(idx === 0) node.classList.add('active');
+        node.onclick = () => {
+            document.querySelectorAll('.swatch-node').forEach(s => s.classList.remove('active'));
+            node.classList.add('active');
+            
+            const name = node.dataset.variantName;
+            const img = node.dataset.variantImg;
+            selectedVariantId = node.dataset.variantId;
+            
+            document.getElementById('colorName').innerText = name;
+            updateImages(img);
+        };
+    });
+
+    function updateImages(src) {
+        if(!src) return;
+        document.getElementById('mainImg').src = src;
+        document.getElementById('footerImg').src = src;
+        document.getElementById('mobileImg').src = src;
+        renderThumbs(src);
+    }
+
+    // 3. Thumbnails
+    function renderThumbs(mainSrc) {
+        const list = document.getElementById('thumbList');
+        if(!list) return;
+        list.innerHTML = '';
+        const thumbs = [mainSrc]; // In reality, you'd pull all product images
+        thumbs.forEach((t, i) => {
+            const node = document.createElement('div');
+            node.className = 'thumb-node' + (i === 0 ? ' active' : '');
+            if(t) node.style.backgroundImage = `url('${t}')`;
+            node.onclick = () => {
+                document.getElementById('mainImg').src = t;
+                document.querySelectorAll('.thumb-node').forEach(tn => tn.classList.remove('active'));
+                node.classList.add('active');
+            };
+            list.appendChild(node);
+        });
+    }
+
+    // Initialize first image
+    const firstImg = document.querySelector('.swatch-node')?.dataset.variantImg;
+    if(firstImg) updateImages(firstImg);
+
+    // 4. Quantity
+    function changeQty(v) {
+        const span = document.getElementById('qtyVal');
+        const mSpan = document.getElementById('mQtyVal');
+        let n = parseInt(span.innerText);
+        n = Math.max(1, n + v);
+        span.innerText = n;
+        if (mSpan) mSpan.innerText = n;
+    }
+
+    // 5. Add to Cart (Basic Shopify AJAX)
+    function addToCart() {
+        const qty = parseInt(document.getElementById('qtyVal').innerText);
+        let formData = {
+            'items': [{
+                'id': selectedVariantId,
+                'quantity': qty
+            }]
+        };
+        fetch(window.Shopify.routes.root + 'cart/add.js', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(formData)
+        })
+        .then(response => response.json())
+        .then(data => {
+            window.location.href = '/cart';
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
+    }
+
+    // 6. Badge Slider Observer
+    const slider = document.getElementById('badgeSlider');
+    const dots = document.querySelectorAll('#badgeDots .dot');
+    const cards = document.querySelectorAll('.badge-card');
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const index = Array.from(cards).indexOf(entry.target);
+                dots.forEach(d => d.classList.remove('active'));
+                if (dots[index]) dots[index].classList.add('active');
+            }
+        });
+    }, { root: slider, threshold: 0.6 });
+
+    cards.forEach(card => observer.observe(card));
+</script>
+
+{% schema %}
+{
+  "name": "Liquid Blush Template",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Liquid Blush Template"
+    }
+  ]
+}
+{% endschema %}
