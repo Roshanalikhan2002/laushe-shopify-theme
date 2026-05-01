@@ -587,8 +587,9 @@
     @media (max-width: 1024px) {
         .product-section { flex-direction: column; }
         .left-visuals, .right-content { width: 100%; height: auto; position: relative; padding: 40px 20px; }
-        .left-visuals { padding-bottom: 80px; }
-        .hero-box { height: auto; aspect-ratio: 1/1; }
+        .left-visuals { padding: 0 !important; padding-bottom: 60px !important; }
+        .hero-box { width: 100%; border-radius: 0; background: white; height: auto; aspect-ratio: 1/1; }
+        .thumb-nav { margin-top: 50px !important; }
         .sticky-footer, .f-cart, .f-chat, .mobile-footer { display: none !important; }
         .mobile-buy-bar { display: flex; }
         .feature-section { flex-direction: column; }
@@ -658,6 +659,7 @@
             </div>
 
             <!-- Video Section -->
+            {% comment %}
             <div class="video-scroll-wrap">
                 <div class="video-header">See it in action</div>
                 <div class="video-container">
@@ -666,6 +668,7 @@
                     <div class="video-item"><img src="" alt="Video Placeholder 3"></div>
                 </div>
             </div>
+            {% endcomment %}
             <!-- Swatches Section -->
             <div class="swatch-header">Color: <span id="colorName" style="font-weight: 500;">Select Shade</span></div>
             <div class="swatch-list">
