@@ -876,15 +876,21 @@
         const images = variantImages[colorName] || variantImages['Petal 1'];
         
         // Update main image
-        document.getElementById('mainImg').src = images[0];
-        document.getElementById('footerImg').src = images[0];
-        document.getElementById('mobileImg').src = images[0];
+        const mainImg = document.getElementById('mainImg');
+        if (mainImg) mainImg.src = images[0];
+        
+        const footerImg = document.getElementById('footerImg');
+        if (footerImg) footerImg.src = images[0];
+        
+        const mobileImg = document.getElementById('mobileImg');
+        if (mobileImg) mobileImg.src = images[0];
         
         // Render exactly 2 thumbnails
         renderThumbs(images);
         
         // Update color name text
-        document.getElementById('colorName').innerText = colorName;
+        const colorNameEl = document.getElementById('colorName');
+        if (colorNameEl) colorNameEl.innerText = colorName;
     }
 
     // 3. Thumbnails (Limited to 2)
