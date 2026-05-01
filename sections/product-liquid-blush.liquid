@@ -943,14 +943,16 @@
         const mQtyVal = document.getElementById('mQtyVal');
         const qty = parseInt(qtyVal ? qtyVal.innerText : (mQtyVal ? mQtyVal.innerText : 1));
         
+        alert("Debug: Adding Variant ID " + selectedVariantId + " with Qty " + qty);
+
         if (!selectedVariantId || selectedVariantId === 0) {
-            alert("Error: No Variant ID found. Please make sure this product has variants in Shopify.");
+            alert("Error: No Variant ID found. Please check Shopify Admin.");
             return;
         }
 
         let formData = {
             'items': [{
-                'id': selectedVariantId,
+                'id': parseInt(selectedVariantId),
                 'quantity': qty
             }]
         };
@@ -962,25 +964,27 @@
         })
         .then(response => response.json())
         .then(data => {
+            console.log("Add to Cart Response:", data);
+            
             if(data.status && data.status === 'error') {
-                alert('Shopify Error: ' + data.description + (data.message ? ' (' + data.message + ')' : ''));
+                alert('Shopify Error: ' + data.description);
                 return;
             }
             
-            // Trigger the cart drawer after a short delay to ensure cart.js is updated
+            alert("Success! Item ID " + (data.id || data.items[0].id) + " added. Opening drawer...");
+
+            // Trigger the cart drawer after a short delay
             setTimeout(() => {
                 if(window.LausheCart) {
                     window.LausheCart.open();
-                    // Also dispatch event for other listeners
-                    document.dispatchEvent(new CustomEvent('cart:updated'));
                 } else {
                     window.location.href = '/cart';
                 }
-            }, 500);
+            }, 800);
         })
         .catch((error) => {
             console.error('Fetch Error:', error);
-            alert('Something went wrong. Please try again.');
+            alert('Network Error: ' + error.message);
         });
     }
 
