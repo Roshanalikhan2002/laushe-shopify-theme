@@ -627,11 +627,8 @@
         <!-- Details (Right) -->
         <section class="right-content">
             <h1 class="prod-title">{{ product.title | default: "Liquid Blush" }}</h1>
+            <div class="prod-subtitle">Dewy • Lightweight • Buildable</div>
             
-            <div class="prod-rating">
-                ★★★★★ <span>(55)</span>
-            </div>
-
             <div class="prod-price">
                 <span class="price-was">{{ product.compare_at_price | default: 189000 | money }}</span>
                 <span class="price-is">{{ product.price | default: 129000 | money }}</span>
@@ -839,10 +836,10 @@
 
 <script>
     const tabData = {
-        'details': 'Liquid Blush is your everyday juicy cheek obsession. It delivers a natural flush with the comfort and care of skincare—no stickiness, no heavy feel. Just soft, pop-worthy cheeks that look as good as they feel.',
-        'works': 'A unique weightless formula that blends seamlessly into the skin. It uses micro-pigments to provide buildable color while keeping the skin hydrated.',
-        'use': 'Apply 1-2 dots to the apples of your cheeks using the applicator. Blend with fingertips, a sponge, or a brush for a seamless flush.',
-        'ing': 'Enriched with Vitamin E, Hyaluronic Acid, and calming botanicals. 100% Vegan and Cruelty-Free.'
+        'details': 'A silky, lightweight liquid blush designed to add a fresh, natural flush to the cheeks. The blendable formula melts seamlessly into the skin, delivering a soft radiant glow that looks effortlessly natural. (15 ml ℮ / 0.50 fl oz)',
+        'works': 'Key Benefits:\n• Natural radiant flush\n• Lightweight & blendable formula\n• Buildable color payoff\n• Long-lasting wear\n• Smooth, seamless finish\n• Suitable for all skin types',
+        'use': 'Apply 1–2 small dots on the cheeks and blend using fingertips, brush, or sponge. Layer to build desired intensity.',
+        'ing': 'Hero Ingredients:\nHyaluronic Acid – Helps maintain skin hydration\nVitamin E – Antioxidant protection\nRose Extract – Helps refresh and soften skin\nGlycerin – Supports skin moisture balance'
     };
 
     // Pull real variant IDs from Shopify

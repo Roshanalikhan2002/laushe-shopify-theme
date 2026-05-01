@@ -627,7 +627,11 @@
         <!-- Details (Right) -->
         <section class="right-content">
             <h1 class="prod-title">{{ product.title | default: "Skin Tint" }}</h1>
-            <div class="prod-subtitle">Flawless Finish. weightless Feel.</div>
+            <div class="prod-subtitle">Lightweight • Skin-Enhancing • Breathable</div>
+            
+            <div class="prod-rating">
+                ★★★★★ <span>(55)</span>
+            </div>
             <div class="prod-price">
                 <span class="price-was">{{ product.compare_at_price | default: 249000 | money }}</span>
                 <span class="price-is">{{ product.price | default: 189000 | money }}</span>
@@ -835,10 +839,10 @@
 
 <script>
     const tabData = {
-        'details': 'Skin Tint is your ultimate secret to a "no-makeup" makeup look. It provides sheer-to-medium coverage that blurs imperfections while letting your natural skin shine through. Infused with hydrating serums for all-day comfort.',
-        'works': 'Formulated with breathable pigments that even out skin tone without clogging pores. The serum-like texture melts into the skin for a dewy, healthy glow.',
-        'use': 'Shake well before use. Apply a few drops to your face and blend with your fingers or a brush for a seamless, natural finish.',
-        'ing': 'Enriched with Squalane, Vitamin C, and SPF protection. 100% Vegan and Cruelty-Free.'
+        'details': 'A lightweight, skin-enhancing BB cream designed to even tone, blur imperfections, and deliver a natural radiant finish. Infused with skin-loving ingredients for breathable, everyday wear. (30 ml ℮ / 1.01 fl oz)',
+        'works': 'Key Benefits:\n• Evens skin tone\n• Blurs pores & imperfections\n• Lightweight, buildable coverage\n• Hydrating & non-greasy\n• Non-comedogenic\n• Suitable for all skin types',
+        'use': 'Apply a small amount to clean, moisturized skin using fingertips, brush, or sponge. Blend evenly. Build as desired.\n\nCaution: For external use only. Avoid direct contact with eyes. Discontinue use if irritation occurs.',
+        'ing': 'Hero Ingredients:\nNiacinamide – Helps improve skin clarity\nHyaluronic Acid – Provides lasting hydration\nVitamin E – Antioxidant protection\nAloe Vera Extract – Soothes & calms'
     };
 
     // Pull real variant IDs from Shopify
