@@ -87,7 +87,7 @@
                 {%- if product_tags contains 'bundle' or product_tags contains 'pack' -%}
                   {%- assign cat = cat | append: ' bundle' -%}
                 {%- endif -%}
-                {%- if product_tags contains 'makeup' or product_tags contains 'blush' -%}
+                {%- if product_tags contains 'makeup' or product_tags contains 'blush' or product.handle contains 'skin-tint' or product.handle contains 'liquid-blush' -%}
                   {%- assign cat = cat | append: ' makeup' -%}
                 {%- endif -%}
 
