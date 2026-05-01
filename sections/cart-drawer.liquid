@@ -210,7 +210,7 @@
     },
 
     refresh: function() {
-      fetch('/cart.js')
+      fetch('/cart.js?v=' + Date.now())
         .then(function(res) { return res.json(); })
         .then(function(cart) { LausheCart.render(cart); })
         .catch(function(e) { console.error('Cart refresh error:', e); });
