@@ -967,15 +967,18 @@
         if (mSpan) mSpan.innerText = n;
     }
 
-    // 5. Add to Cart (Basic Shopify AJAX)
+    // 5. Add to Cart (Integrate with LausheCart Drawer)
     function addToCart() {
         const qty = parseInt(document.getElementById('qtyVal').innerText);
+        
+        // Use the selectedVariantId (which defaults to the first variant if no selection made)
         let formData = {
             'items': [{
                 'id': selectedVariantId,
                 'quantity': qty
             }]
         };
+
         fetch(window.Shopify.routes.root + 'cart/add.js', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -983,10 +986,21 @@
         })
         .then(response => response.json())
         .then(data => {
-            window.location.href = '/cart';
+            if(data.status && data.status === 'error') {
+                alert('Error: ' + data.description);
+                return;
+            }
+            
+            // Trigger the cart drawer
+            if(window.LausheCart) {
+                window.LausheCart.open();
+            } else {
+                window.location.href = '/cart';
+            }
         })
         .catch((error) => {
             console.error('Error:', error);
+            alert('Something went wrong. Please try again.');
         });
     }
 
