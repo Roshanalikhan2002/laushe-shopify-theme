@@ -858,13 +858,9 @@
 
     // 2. Swatch & Image Logic
     const variantImages = {
-        'Petal 1': [
-            "{{ 'liquid-blush-petal-1.jpg' | asset_url }}",
-            "{{ 'liquid-blush-petal-1-texture.jpg' | asset_url }}"
-        ],
-        'Petal 2': [
-            "{{ 'soft-bloom-liquid-blush-2.jpg' | asset_url }}",
-            "{{ 'soft-petal-blush-2-texture.jpg' | asset_url }}"
+        'Natural': [
+            "{{ 'natural-skin-tint-1.jpg' | asset_url }}",
+            "{{ 'natural-skin-tint-1-texture.jpg' | asset_url }}"
         ]
     };
 
@@ -913,14 +909,12 @@
     }
 
     // Initial Load
-    updateProductUI('Petal 1');
+    updateProductUI('Natural');
 
-    // Handle Swatch Clicks (Mocking 2 variants if Shopify data is empty)
-    // We will inject 2 swatches manually for now to show the user how it works
+    // Handle Swatch Clicks (Manual injection for now)
     const swatchList = document.querySelector('.swatch-list');
     swatchList.innerHTML = `
-        <div class="swatch-node active" style="background: #c83233;" onclick="updateProductUI('Petal 1'); this.parentElement.querySelectorAll('.swatch-node').forEach(s=>s.classList.remove('active')); this.classList.add('active');"></div>
-        <div class="swatch-node" style="background: #ff7b94;" onclick="updateProductUI('Petal 2'); this.parentElement.querySelectorAll('.swatch-node').forEach(s=>s.classList.remove('active')); this.classList.add('active');"></div>
+        <div class="swatch-node active" style="background: #d49b70;" onclick="updateProductUI('Natural'); this.parentElement.querySelectorAll('.swatch-node').forEach(s=>s.classList.remove('active')); this.classList.add('active');"></div>
     `;
 
     // 4. Quantity
