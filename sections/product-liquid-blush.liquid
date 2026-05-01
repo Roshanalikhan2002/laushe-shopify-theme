@@ -896,44 +896,43 @@
         };
     });
 
-    // 2. Swatch Logic
-    document.querySelectorAll('.swatch-node').forEach((node, idx) => {
-        if(idx === 0) node.classList.add('active');
-        node.onclick = () => {
-            document.querySelectorAll('.swatch-node').forEach(s => s.classList.remove('active'));
-            node.classList.add('active');
-            
-            const name = node.dataset.variantName;
-            const img = node.dataset.variantImg;
-            selectedVariantId = node.dataset.variantId;
-            
-            document.getElementById('colorName').innerText = name;
-            updateImages(img);
-        };
-    });
+    // 2. Swatch & Image Logic
+    const variantImages = {
+        'Petal 1': [
+            "{{ 'liquid-blush-petal-1.jpg' | asset_url }}",
+            "{{ 'liquid-blush-petal-1-texture.jpg' | asset_url }}"
+        ],
+        'Petal 2': [
+            "https://cdn.shopify.com/s/files/1/0816/0654/1561/files/Main_Product_Image_1.png?v=1714571234", // Placeholder
+            "https://cdn.shopify.com/s/files/1/0816/0654/1561/files/Main_Product_Image_2.png?v=1714571234"  // Placeholder
+        ]
+    };
 
-    function updateImages(src) {
-        if(!src) return;
-        document.getElementById('mainImg').src = src;
-        document.getElementById('footerImg').src = src;
-        document.getElementById('mobileImg').src = src;
-        renderThumbs(src);
+    function updateProductUI(colorName) {
+        const images = variantImages[colorName] || variantImages['Petal 1'];
+        
+        // Update main image
+        document.getElementById('mainImg').src = images[0];
+        document.getElementById('footerImg').src = images[0];
+        document.getElementById('mobileImg').src = images[0];
+        
+        // Render exactly 2 thumbnails
+        renderThumbs(images);
+        
+        // Update color name text
+        document.getElementById('colorName').innerText = colorName;
     }
 
-    // 3. Thumbnails
-    function renderThumbs(mainSrc) {
+    // 3. Thumbnails (Limited to 2)
+    function renderThumbs(images) {
         const list = document.getElementById('thumbList');
         if(!list) return;
         list.innerHTML = '';
         
-        // Product specific images + variant image
-        const thumbs = [
-            mainSrc,
-            "{{ 'liquid-blush-petal-1.jpg' | asset_url }}",
-            "{{ 'liquid-blush-petal-1-texture.jpg' | asset_url }}"
-        ];
+        // Take only the first 2 images
+        const thumbsToShow = images.slice(0, 2);
 
-        thumbs.forEach((t, i) => {
+        thumbsToShow.forEach((t, i) => {
             if(!t || t.includes('no-image')) return;
             const node = document.createElement('div');
             node.className = 'thumb-node' + (i === 0 ? ' active' : '');
@@ -947,9 +946,16 @@
         });
     }
 
-    // Initialize first images
-    const initialMainImg = "{{ 'liquid-blush-petal-1.jpg' | asset_url }}";
-    updateImages(initialMainImg);
+    // Initial Load
+    updateProductUI('Petal 1');
+
+    // Handle Swatch Clicks (Mocking 2 variants if Shopify data is empty)
+    // We will inject 2 swatches manually for now to show the user how it works
+    const swatchList = document.querySelector('.swatch-list');
+    swatchList.innerHTML = `
+        <div class="swatch-node active" style="background: #e09ba5;" onclick="updateProductUI('Petal 1'); this.parentElement.querySelectorAll('.swatch-node').forEach(s=>s.classList.remove('active')); this.classList.add('active');"></div>
+        <div class="swatch-node" style="background: #c96b7d;" onclick="updateProductUI('Petal 2'); this.parentElement.querySelectorAll('.swatch-node').forEach(s=>s.classList.remove('active')); this.classList.add('active');"></div>
+    `;
 
     // 4. Quantity
     function changeQty(v) {
