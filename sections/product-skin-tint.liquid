@@ -841,11 +841,15 @@
         'ing': 'Enriched with Squalane, Vitamin C, and SPF protection. 100% Vegan and Cruelty-Free.'
     };
 
-    // Use the first variant ID from Shopify as a fallback
+    // Pull real variant IDs from Shopify
+    const allVariants = {
+        {% for variant in product.variants %}
+            "{{ variant.title }}": {{ variant.id }},
+        {% endfor %}
+    };
+
+    // Use the first variant ID from Shopify as a default
     let selectedVariantId = {{ product.variants[0].id | default: 0 }};
-    if (!selectedVariantId) {
-        console.error("No variant ID found for this product.");
-    }
 
     // 1. Tab Logic
     document.querySelectorAll('.tab-node').forEach(btn => {
@@ -869,7 +873,13 @@
     };
 
     function updateProductUI(colorName) {
-        const images = variantImages[colorName] || variantImages['Petal 1'];
+        const images = variantImages[colorName] || variantImages['Natural'];
+        
+        // Update the selected variant ID based on the color name
+        if (allVariants[colorName]) {
+            selectedVariantId = allVariants[colorName];
+            console.log("Selected Variant ID updated to:", selectedVariantId);
+        }
         
         // Update main image
         const mainImg = document.getElementById('mainImg');
