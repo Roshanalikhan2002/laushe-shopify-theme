@@ -647,8 +647,8 @@
             </div>
 
             <div class="prod-price">
-                <span class="price-was">{{ product.compare_at_price | money }}</span>
-                <span class="price-is">{{ product.price | money }}</span>
+                <span class="price-was">{{ product.compare_at_price | default: 189000 | money }}</span>
+                <span class="price-is">{{ product.price | default: 129000 | money }}</span>
             </div>
 
             <div class="prod-badges">
@@ -858,7 +858,7 @@
                 <span id="qtyVal">1</span>
                 <button onclick="changeQty(1)">+</button>
             </div>
-            <div class="footer-price">{{ product.price | money }}</div>
+            <div class="footer-price">{{ product.price | default: 129000 | money }}</div>
             <button class="footer-atc" onclick="addToCart()">ADD TO CART</button>
         </div>
     </div>
