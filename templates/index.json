@@ -703,6 +703,7 @@
   "order": [
     "hero_giveaway",
     "hero",
+    "catalog_grid",
     "review_scroller",
     "bestsellers_CXGzp8",
     "modern_living_gpDB8F",
@@ -711,7 +712,6 @@
     "benefits_grid",
     "problem_solution",
     "athlete_endorsement",
-    "catalog_grid",
     "faq_accordion",
     "filtered_reviews",
     "story",
