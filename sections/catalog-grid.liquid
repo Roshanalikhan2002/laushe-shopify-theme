@@ -70,6 +70,13 @@
             {% assign display_img = product.featured_image | img_url: '600x600', crop: 'center' %}
             {% assign display_price = product.price | money %}
             
+            {% assign compare_price = product.compare_at_price %}
+            {% if product.handle contains 'skin-tint' and compare_price == blank %}
+              {% assign compare_price = 249000 %}
+            {% elsif product.handle contains 'liquid-blush' and compare_price == blank %}
+              {% assign compare_price = 189000 %}
+            {% endif %}
+            
             {% assign override_block = nil %}
             {% for block in section.blocks %}
               {% if block.type == 'product_override' and block.settings.target_product == product.handle %}
@@ -83,8 +90,8 @@
             
             <div class="catalog-item" data-tags="{{ product_tags_string }}" data-exclusive="makeup" {{ override_block.shopify_attributes }}>
               <div class="catalog-card">
-                {% if product.compare_at_price > product.price %}
-                  {% assign saving = product.compare_at_price | minus: product.price | times: 100 | divided_by: product.compare_at_price %}
+                {% if compare_price > product.price %}
+                  {% assign saving = compare_price | minus: product.price | times: 100 | divided_by: compare_price %}
                   <div class="card-badge">{{ saving }}% OFF</div>
                 {% endif %}
                 <a href="{{ product.url }}" class="card-img-link"><img src="{{ display_img }}" alt="{{ display_title }}" class="card-img" loading="lazy"></a>
@@ -94,7 +101,7 @@
                   <p class="card-short-desc">{{ display_desc }}</p>
                   <div class="card-price-row">
                     <span class="price-main">{{ display_price }}</span>
-                    {% if product.compare_at_price > product.price %}<span class="price-compare">{{ product.compare_at_price | money }}</span>{% endif %}
+                    {% if compare_price > product.price %}<span class="price-compare">{{ compare_price | money }}</span>{% endif %}
                   </div>
                   <div class="card-atc-wrapper">
                     <form method="post" action="/cart/add" class="laushe-atc-form"><input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}"><input type="hidden" name="quantity" value="1"><button type="submit" class="atc-btn-main"><span class="atc-text">Add to Cart</span><span class="atc-loading" style="display: none;">Adding...</span></button></form>
