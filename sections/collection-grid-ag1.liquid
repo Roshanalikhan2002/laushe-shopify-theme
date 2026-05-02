@@ -116,8 +116,15 @@
                         {% endunless %}
                         
                         <div class="product-price-wrapper">
-                          {% if product.compare_at_price > product.price %}
-                            <span class="product-price-old">{{ product.compare_at_price | money }}</span>
+                          {% assign compare_price = product.compare_at_price %}
+                          {% if product.handle contains 'skin-tint' and compare_price == blank %}
+                            {% assign compare_price = 249000 %}
+                          {% elsif product.handle contains 'liquid-blush' and compare_price == blank %}
+                            {% assign compare_price = 189000 %}
+                          {% endif %}
+
+                          {% if compare_price > product.price %}
+                            <span class="product-price-old">{{ compare_price | money }}</span>
                           {% endif %}
                           <span class="product-price">{{ product.price | money }}</span>
                         </div>
