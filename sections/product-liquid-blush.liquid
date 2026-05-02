@@ -879,6 +879,10 @@
         'Soft Liquid Blush': [
             "{{ 'soft-bloom-liquid-blush-2.jpg' | asset_url }}",
             "{{ 'soft-petal-blush-2-texture.jpg' | asset_url }}"
+        ],
+        'Petal Nude': [
+            "{{ 'petal-nude-variant-3.jpg' | asset_url }}",
+            "{{ 'petal-nude-variant-texture-3.jpg' | asset_url }}"
         ]
     };
 
@@ -940,6 +944,7 @@
     swatchList.innerHTML = `
         <div class="swatch-node active" style="background: #c83233;" onclick="updateProductUI('Liquid Blush'); this.parentElement.querySelectorAll('.swatch-node').forEach(s=>s.classList.remove('active')); this.classList.add('active');"></div>
         <div class="swatch-node" style="background: #ff7b94;" onclick="updateProductUI('Soft Liquid Blush'); this.parentElement.querySelectorAll('.swatch-node').forEach(s=>s.classList.remove('active')); this.classList.add('active');"></div>
+        <div class="swatch-node" style="background: #e16951;" onclick="updateProductUI('Petal Nude'); this.parentElement.querySelectorAll('.swatch-node').forEach(s=>s.classList.remove('active')); this.classList.add('active');"></div>
     `;
 
     // 4. Quantity
