@@ -106,7 +106,14 @@
                       {% if compare_price > product.price %}<span class="price-compare">{{ compare_price | money }}</span>{% endif %}
                     </div>
                     <div class="card-atc-wrapper">
-                      <form method="post" action="/cart/add" class="laushe-atc-form"><input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}"><input type="hidden" name="quantity" value="1"><button type="submit" class="atc-btn-main"><span class="atc-text">Add to Cart</span><span class="atc-loading" style="display: none;">Adding...</span></button></form>
+                      <form method="post" action="/cart/add" class="laushe-atc-form" data-handle="{{ product.handle }}">
+                        <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+                        <input type="hidden" name="quantity" value="1">
+                        <button type="submit" class="atc-btn-main">
+                          <span class="atc-text">Add to Cart</span>
+                          <span class="atc-loading" style="display: none;">Adding...</span>
+                        </button>
+                      </form>
                     </div>
                   </div>
                 </div>
@@ -159,7 +166,14 @@
                   {% if product.compare_at_price > product.price %}<span class="price-compare">{{ product.compare_at_price | money }}</span>{% endif %}
                 </div>
                 <div class="card-atc-wrapper">
-                  <form method="post" action="/cart/add" class="laushe-atc-form"><input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}"><input type="hidden" name="quantity" value="1"><button type="submit" class="atc-btn-main"><span class="atc-text">Add to Cart</span><span class="atc-loading" style="display: none;">Adding...</span></button></form>
+                  <form method="post" action="/cart/add" class="laushe-atc-form" data-handle="{{ product.handle }}">
+                    <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+                    <input type="hidden" name="quantity" value="1">
+                    <button type="submit" class="atc-btn-main">
+                      <span class="atc-text">Add to Cart</span>
+                      <span class="atc-loading" style="display: none;">Adding...</span>
+                    </button>
+                  </form>
                 </div>
               </div>
             </div>
@@ -333,11 +347,26 @@
           btn.disabled = true;
 
           const variantId = form.querySelector('input[name="id"]').value;
+          const handle = form.getAttribute('data-handle') || '';
+          
+          // BOGO Products
+          const bogoHandles = ['skinny-sips-weight-loss-kehwa', 'royce-hair-oil-sunnah-blessed', 'hair-oil', 'chia-seeds-380g', 'chia-seeds300gm'];
+          const isBogo = bogoHandles.includes(handle);
+
+          let itemsToAdd = [];
+          if (isBogo) {
+            itemsToAdd = [
+              { id: parseInt(variantId), quantity: 1 },
+              { id: parseInt(variantId), quantity: 1, properties: { '_is_gift': 'true' } }
+            ];
+          } else {
+            itemsToAdd = [{ id: parseInt(variantId), quantity: 1 }];
+          }
 
           fetch('/cart/add.js', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ id: parseInt(variantId), quantity: 1 })
+            body: JSON.stringify({ items: itemsToAdd })
           })
           .then(res => {
             if (!res.ok) throw new Error('Cart add failed');

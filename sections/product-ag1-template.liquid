@@ -174,7 +174,7 @@
                {% if enable_bogo %}
 
                  <!-- BOGO Option -->
-                 <div class="purchase-method {% unless enable_sub %}active{% endunless %}" data-method="bogo" onclick="switchPurchaseMethod(this, 'bogo')">
+                  <div class="purchase-method active" data-method="bogo" onclick="switchPurchaseMethod(this, 'bogo')">
                     <div class="method-radio"><div class="radio-inner"></div></div>
                     <div class="method-content">
                       <div class="method-header">
@@ -237,7 +237,7 @@
 
                 {% unless hide_onetime %}
                   <!-- One-time Option -->
-                  <div class="purchase-method active" data-method="onetime" onclick="switchPurchaseMethod(this, 'onetime')">
+                  <div class="purchase-method {% unless enable_bogo or enable_sub %}active{% endunless %}" data-method="onetime" onclick="switchPurchaseMethod(this, 'onetime')">
                      <div class="method-radio"><div class="radio-inner"></div></div>
                      <div class="method-content">
                        <div class="method-header">
