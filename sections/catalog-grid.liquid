@@ -50,6 +50,7 @@
       {% if section.settings.tab3_label != blank %}
         <button class="filter-btn" data-filter="{{ section.settings.tab3_tag | handle }}">{{ section.settings.tab3_label }}</button>
       {% endif %}
+      <button class="filter-btn" data-filter="makeup">Makeup</button>
     </div>
 
     <!-- PRODUCT GRID -->
@@ -58,10 +59,13 @@
         {% assign target_collection = section.settings.collection | default: collections.all %}
         {% for product in target_collection.products %}
           {% assign prod_title = product.title | downcase %}
-          {% if product.handle contains 'elixir' or product.handle contains 'weight-gainer' or prod_title contains 'weight gainer' or prod_title contains 'golden elixir' or product.handle contains 'skin-tint' or product.handle contains 'liquid-blush' %}
+          {% if product.handle contains 'elixir' or product.handle contains 'weight-gainer' or prod_title contains 'weight gainer' or prod_title contains 'golden elixir' %}
             {% continue %}
           {% endif %}
           {% assign product_tags_string = product.tags | join: ',' | downcase %}
+          {% if product.handle contains 'skin-tint' or product.handle contains 'liquid-blush' %}
+             {% assign product_tags_string = product_tags_string | append: ',makeup' %}
+          {% endif %}
           
           {% comment %} CHECK FOR OVERRIDES {% endcomment %}
           {% assign display_title = product.title %}
@@ -83,7 +87,7 @@
             {% endif %}
           {% endfor %}
           
-          <div class="catalog-item" data-tags="{{ product_tags_string }}" {{ override_block.shopify_attributes }}>
+          <div class="catalog-item" data-tags="{{ product_tags_string }}" {% if product.handle contains 'skin-tint' or product.handle contains 'liquid-blush' %}data-exclusive="makeup"{% endif %} {{ override_block.shopify_attributes }}>
             
             <div class="catalog-card">
               <!-- Badge -->
@@ -253,8 +257,13 @@
       let visibleCount = 0;
       items.forEach(item => {
         if (filterValue === 'all' || !matched) {
-          item.style.display = 'block';
-          visibleCount++;
+          const isExclusive = item.getAttribute('data-exclusive');
+          if (isExclusive && filterValue === 'all') {
+            item.style.display = 'none';
+          } else {
+            item.style.display = 'block';
+            visibleCount++;
+          }
         } else {
           const tags = item.getAttribute('data-tags').split(',');
           const isMatch = tags.includes(filterValue);
