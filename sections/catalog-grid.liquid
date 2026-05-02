@@ -57,65 +57,71 @@
     <div class="catalog-grid-wrapper">
       <div class="catalog-grid" id="laushe-catalog-grid-{{ section.id }}">
         {% assign target_collection = section.settings.collection | default: collections.all %}
-        
-        {% comment %} PASS 1: MAKEUP PRODUCTS FIRST {% endcomment %}
-        {% for product in target_collection.products %}
-          {% if product.handle contains 'skin-tint' or product.handle contains 'liquid-blush' %}
-            {% assign prod_title = product.title | downcase %}
-            {% assign product_tags_string = product.tags | join: ',' | downcase | append: ',makeup' %}
-            
-            {% comment %} RENDER CARD {% endcomment %}
-            {% assign display_title = product.title %}
-            {% assign display_desc = product.description | strip_html | truncate: 80 %}
-            {% assign display_img = product.featured_image | img_url: '600x600', crop: 'center' %}
-            {% assign display_price = product.price | money %}
-            
-            {% assign compare_price = product.compare_at_price %}
-            {% if product.handle contains 'skin-tint' and compare_price == blank %}
-              {% assign compare_price = 249000 %}
-            {% elsif product.handle contains 'liquid-blush' and compare_price == blank %}
-              {% assign compare_price = 189000 %}
-            {% endif %}
-            
-            {% assign override_block = nil %}
-            {% for block in section.blocks %}
-              {% if block.type == 'product_override' and block.settings.target_product == product.handle %}
-                {% if block.settings.title != blank %}{% assign display_title = block.settings.title %}{% endif %}
-                {% if block.settings.desc != blank %}{% assign display_desc = block.settings.desc %}{% endif %}
-                {% if block.settings.image != blank %}{% assign display_img = block.settings.image | img_url: '600x600', crop: 'center' %}{% endif %}
-                {% if block.settings.price != blank %}{% assign display_price = block.settings.price %}{% endif %}
-                {% assign override_block = block %}
+        {% assign priority_handles = "liquid-blush,skin-tint,skinny-sips-weight-loss-kehwa,hair-oil,chia-seeds-380g" | split: "," %}
+
+        {% comment %} PASS 1: SPECIFIC SORTED ORDER {% endcomment %}
+        {% for p_handle in priority_handles %}
+          {% for product in target_collection.products %}
+            {% if product.handle == p_handle %}
+              {% assign prod_title = product.title | downcase %}
+              {% assign product_tags_string = product.tags | join: ',' | downcase %}
+              {% if product.handle contains 'skin-tint' or product.handle contains 'liquid-blush' %}
+                 {% assign product_tags_string = product_tags_string | append: ',makeup' %}
               {% endif %}
-            {% endfor %}
-            
-            <div class="catalog-item" data-tags="{{ product_tags_string }}" data-exclusive="makeup" {{ override_block.shopify_attributes }}>
-              <div class="catalog-card">
-                {% if compare_price > product.price %}
-                  {% assign saving = compare_price | minus: product.price | times: 100 | divided_by: compare_price %}
-                  <div class="card-badge">{{ saving }}% OFF</div>
+              
+              {% assign display_title = product.title %}
+              {% assign display_desc = product.description | strip_html | truncate: 80 %}
+              {% assign display_img = product.featured_image | img_url: '600x600', crop: 'center' %}
+              {% if product.handle contains 'hair-oil' %}{% assign display_img = 'hair-oil-v2.jpg' | asset_url %}{% endif %}
+              {% assign display_price = product.price | money %}
+
+              {% assign compare_price = product.compare_at_price %}
+              {% if product.handle contains 'skin-tint' and compare_price == blank %}{% assign compare_price = 249000 %}{% endif %}
+              {% if product.handle contains 'liquid-blush' and compare_price == blank %}{% assign compare_price = 189000 %}{% endif %}
+              
+              {% assign override_block = nil %}
+              {% for block in section.blocks %}
+                {% if block.type == 'product_override' and block.settings.target_product == product.handle %}
+                  {% if block.settings.title != blank %}{% assign display_title = block.settings.title %}{% endif %}
+                  {% if block.settings.desc != blank %}{% assign display_desc = block.settings.desc %}{% endif %}
+                  {% if block.settings.image != blank %}{% assign display_img = block.settings.image | img_url: '600x600', crop: 'center' %}{% endif %}
+                  {% if block.settings.price != blank %}{% assign display_price = block.settings.price %}{% endif %}
+                  {% assign override_block = block %}
                 {% endif %}
-                <a href="{{ product.url }}" class="card-img-link"><img src="{{ display_img }}" alt="{{ display_title }}" class="card-img" loading="lazy"></a>
-                <div class="card-content">
-                  <div class="card-stars"><span class="stars-gold">★★★★★</span><span class="review-count">(2134)</span></div>
-                  <h3 class="card-title">{{ display_title }}</h3>
-                  <p class="card-short-desc">{{ display_desc }}</p>
-                  <div class="card-price-row">
-                    <span class="price-main">{{ display_price }}</span>
-                    {% if compare_price > product.price %}<span class="price-compare">{{ compare_price | money }}</span>{% endif %}
-                  </div>
-                  <div class="card-atc-wrapper">
-                    <form method="post" action="/cart/add" class="laushe-atc-form"><input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}"><input type="hidden" name="quantity" value="1"><button type="submit" class="atc-btn-main"><span class="atc-text">Add to Cart</span><span class="atc-loading" style="display: none;">Adding...</span></button></form>
+              {% endfor %}
+              
+              <div class="catalog-item" data-tags="{{ product_tags_string }}" {% if product.handle contains 'skin-tint' or product.handle contains 'liquid-blush' %}data-exclusive="makeup"{% endif %} {{ override_block.shopify_attributes }}>
+                <div class="catalog-card">
+                  {% if compare_price > product.price %}
+                    {% assign saving = compare_price | minus: product.price | times: 100 | divided_by: compare_price %}
+                    <div class="card-badge">{{ saving }}% OFF</div>
+                  {% endif %}
+                  <a href="{{ product.url }}" class="card-img-link"><img src="{{ display_img }}" alt="{{ display_title }}" class="card-img" loading="lazy"></a>
+                  <div class="card-content">
+                    <div class="card-stars"><span class="stars-gold">★★★★★</span><span class="review-count">(2134)</span></div>
+                    <h3 class="card-title">{{ display_title }}</h3>
+                    <p class="card-short-desc">{{ display_desc }}</p>
+                    <div class="card-price-row">
+                      <span class="price-main">{{ display_price }}</span>
+                      {% if compare_price > product.price %}<span class="price-compare">{{ compare_price | money }}</span>{% endif %}
+                    </div>
+                    <div class="card-atc-wrapper">
+                      <form method="post" action="/cart/add" class="laushe-atc-form"><input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}"><input type="hidden" name="quantity" value="1"><button type="submit" class="atc-btn-main"><span class="atc-text">Add to Cart</span><span class="atc-loading" style="display: none;">Adding...</span></button></form>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          {% endif %}
+            {% endif %}
+          {% endfor %}
         {% endfor %}
 
         {% comment %} PASS 2: ALL OTHER PRODUCTS {% endcomment %}
         {% for product in target_collection.products %}
+          {% if priority_handles contains product.handle %}
+            {% continue %}
+          {% endif %}
           {% assign prod_title = product.title | downcase %}
-          {% if product.handle contains 'elixir' or product.handle contains 'weight-gainer' or prod_title contains 'weight gainer' or prod_title contains 'golden elixir' or product.handle contains 'skin-tint' or product.handle contains 'liquid-blush' %}
+          {% if product.handle contains 'elixir' or product.handle contains 'weight-gainer' or prod_title contains 'weight gainer' or prod_title contains 'golden elixir' %}
             {% continue %}
           {% endif %}
           
