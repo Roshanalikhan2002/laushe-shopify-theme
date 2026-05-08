@@ -57,7 +57,9 @@
       <!-- CENTER COLUMN (IMAGE) -->
       <div class="benefit-center">
         <div class="center-circle-wrap">
-          {% if section.settings.center_image %}
+          {% if product and product.handle == 'golden-elixir' %}
+            <img src="{{ 'golden-elixir.webp' | asset_url }}" class="circle-img" alt="Golden Elixir">
+          {% elsif section.settings.center_image %}
             <img src="{{ section.settings.center_image | img_url: '800x' }}" class="circle-img" alt="Health">
           {% else %}
             <div class="circle-placeholder" style="background: #EEE; border-radius: 50%; width: 100%; padding-bottom: 100%;"></div>
