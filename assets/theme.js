@@ -112,7 +112,7 @@ const products = [
         description: "The smart, herbal solution specifically targeted for sustainable weight loss, metabolism boosting, and comprehensive detox."
     },
     {
-        id: "weight-gainer",
+        id: "weight-gainer-100-organic",
         title: "Weight Gainer",
         price: 1990,
         originalPrice: null,

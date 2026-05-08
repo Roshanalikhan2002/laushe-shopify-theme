@@ -29,9 +29,6 @@
 {% endschema %}
 
 {% assign prod_title = product.title | downcase %}
-{% if product.handle contains 'elixir' or product.handle contains 'weight-gainer' or prod_title contains 'weight gainer' or prod_title contains 'golden elixir' %}
-  <script>window.location.href = "/";</script>
-{% endif %}
 
 {% comment %} Force BOGO for specific products {% endcomment %}
 {% assign force_bogo = false %}
