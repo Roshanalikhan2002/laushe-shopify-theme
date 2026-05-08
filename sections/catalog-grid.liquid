@@ -127,10 +127,6 @@
           {% if priority_handles contains product.handle %}
             {% continue %}
           {% endif %}
-          {% assign prod_title = product.title | downcase %}
-          {% if product.handle contains 'elixir' or product.handle contains 'weight-gainer' or prod_title contains 'weight gainer' or prod_title contains 'golden elixir' %}
-            {% continue %}
-          {% endif %}
           
           {% assign product_tags_string = product.tags | join: ',' | downcase %}
           {% assign display_title = product.title %}
