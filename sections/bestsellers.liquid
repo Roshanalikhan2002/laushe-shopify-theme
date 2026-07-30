@@ -2,7 +2,8 @@
 {
   "name": "Our Top Bestsellers",
   "settings": [
-    { "id": "heading", "type": "text", "label": "Heading", "default": "Our Top Bestsellers" }
+    { "id": "heading", "type": "text", "label": "Heading", "default": "Our Bestsellers" },
+    { "id": "subheading", "type": "text", "label": "Subheading", "default": "Tried and true wellness essentials that top our leaderboards." }
   ],
   "blocks": [
     {
@@ -11,12 +12,13 @@
       "limit": 3,
       "settings": [
         { "id": "product", "type": "product", "label": "Select Product" },
-        { "id": "title_override", "type": "text", "label": "Custom Title (Optional)", "info": "Leave blank to use product title" },
-        { "id": "desc_override", "type": "textarea", "label": "Custom Description (Optional)", "info": "Leave blank to use product description" },
-        { "id": "image_override", "type": "image_picker", "label": "Custom Image (Optional)", "info": "Leave blank to use product featured image" },
-        { "id": "stars_count", "type": "text", "label": "Review Count (manual)", "default": "1250" },
+        { "id": "title_override", "type": "text", "label": "Custom Title (Optional)" },
+        { "id": "image_override", "type": "image_picker", "label": "Custom Image (Optional)" },
+        { "id": "stars_count", "type": "text", "label": "Review Count", "default": "1250" },
+        { "id": "rating", "type": "text", "label": "Rating", "default": "4.8" },
         { "id": "show_badge", "type": "checkbox", "label": "Show Sale Badge", "default": false },
-        { "id": "badge_text", "type": "text", "label": "Badge Text", "default": "9% OFF" }
+        { "id": "badge_text", "type": "text", "label": "Badge Text", "default": "BESTSELLER" },
+        { "id": "card_bg", "type": "color", "label": "Image background", "default": "#E4EFE8" }
       ]
     }
   ],
@@ -24,85 +26,84 @@
 }
 {% endschema %}
 
-<section class="section-padding" style="background: white;">
+<section class="bs-section section-padding">
   <div class="container text-center">
-    <h2 style="font-size: 44px; margin-bottom: 50px;">{{ section.settings.heading }}</h2>
+    <h2 class="bs-heading">{{ section.settings.heading }}</h2>
+    {% if section.settings.subheading != blank %}
+      <p class="bs-subheading">{{ section.settings.subheading }}</p>
+    {% endif %}
 
-    <div class="bestsellers-grid">
+    <div class="bs-grid">
       {% assign shown = 0 %}
+      {% assign pastel_bgs = "#F3E6E0,#E4EFE8,#F0EADF,#E8F1F4,#F5EDE3,#E9F0E6" | split: "," %}
       {% for block in section.blocks %}
         {% assign prod = all_products[block.settings.product] %}
         {% if prod != blank %}
-          {% assign prod_title = prod.title | downcase %}
-          {% if prod.handle contains 'elixir' or prod.handle contains 'weight-gainer-100-organic' or prod_title contains 'weight gainer' or prod_title contains 'golden elixir' or prod.handle contains 'skin-tint' or prod.handle contains 'liquid-blush' %}
-            {% continue %}
-          {% endif %}
           {% assign shown = shown | plus: 1 %}
-          <div class="product-card-v2" onclick="location.href='{{ prod.url }}'" {{ block.shopify_attributes }}>
-            <div class="card-image-area">
-              {% if block.settings.show_badge %}
-                <div class="badge-sale-v2">{{ block.settings.badge_text }}</div>
+          {% assign bg = block.settings.card_bg | default: pastel_bgs[forloop.index0] %}
+          <article class="bs-card" {{ block.shopify_attributes }}>
+            <div class="bs-media" style="background: {{ bg }};">
+              {% if block.settings.show_badge and block.settings.badge_text != blank %}
+                <span class="bs-badge">{{ block.settings.badge_text }}</span>
               {% endif %}
-
-              {% if block.settings.image_override != blank %}
-                <img src="{{ block.settings.image_override | image_url: width: 600 }}" alt="{{ block.settings.title_override | default: prod.title | escape }}">
-              {% elsif prod.featured_image %}
-                {% assign display_img = prod.featured_image | image_url: width: 600 %}
-                {% if prod.handle contains 'hair-oil' %}
-                  {% assign display_img = 'hair-oil-v2.jpg' | asset_url %}
+              <a href="{{ prod.url }}" class="bs-img-link">
+                {% if block.settings.image_override != blank %}
+                  <img src="{{ block.settings.image_override | image_url: width: 700 }}" alt="{{ block.settings.title_override | default: prod.title | escape }}">
+                {% elsif prod.featured_image %}
+                  <img src="{{ prod.featured_image | image_url: width: 700 }}" alt="{{ prod.title | escape }}">
+                {% else %}
+                  <span class="bs-placeholder">Add image</span>
                 {% endif %}
-                <img src="{{ display_img }}" alt="{{ prod.title | escape }}">
-              {% else %}
-                <div style="background:#EEE;min-height:240px;display:flex;align-items:center;justify-content:center;color:#999;">No image</div>
-              {% endif %}
+              </a>
             </div>
-
-            <div class="card-content">
-              <div class="stars-line">
-                ★★★★★ <span class="review-count">({{ block.settings.stars_count }})</span>
+            <div class="bs-content">
+              <h3 class="bs-title"><a href="{{ prod.url }}">{{ block.settings.title_override | default: prod.title }}</a></h3>
+              <div class="bs-stars">
+                <span class="bs-stars-gold">★★★★★</span>
+                <span class="bs-rating">{{ block.settings.rating }}</span>
+                <span class="bs-reviews">({{ block.settings.stars_count }})</span>
               </div>
-              <h3 class="card-title">{{ block.settings.title_override | default: prod.title }}</h3>
-              <p class="card-desc">
-                {{ block.settings.desc_override | default: prod.description | strip_html | truncate: 120 }}
-              </p>
-
-              <div class="card-price-row">
-                <span class="curr-price">{{ prod.price | money }}</span>
-                {% if prod.compare_at_price > prod.price %}
-                  <span class="old-price">{{ prod.compare_at_price | money }}</span>
+              <div class="bs-price-row">
+                <span class="bs-price">{{ prod.price | money }}</span>
+                {% if prod.price > 0 and prod.compare_at_price > prod.price %}
+                  <span class="bs-compare">{{ prod.compare_at_price | money }}</span>
                 {% endif %}
               </div>
+              <a href="{{ prod.url }}" class="bs-shop-now">SHOP NOW</a>
             </div>
-          </div>
+          </article>
         {% endif %}
       {% endfor %}
 
       {% if shown == 0 %}
         {% for prod in collections.all.products limit: 3 %}
-          <div class="product-card-v2" onclick="location.href='{{ prod.url }}'">
-            <div class="card-image-area">
-              {% if prod.featured_image %}
-                <img src="{{ prod.featured_image | image_url: width: 600 }}" alt="{{ prod.title | escape }}">
-              {% else %}
-                <div style="background:#EEE;min-height:240px;display:flex;align-items:center;justify-content:center;color:#999;">No image</div>
-              {% endif %}
-            </div>
-            <div class="card-content">
-              <div class="stars-line">★★★★★</div>
-              <h3 class="card-title">{{ prod.title }}</h3>
-              <p class="card-desc">{{ prod.description | strip_html | truncate: 120 }}</p>
-              <div class="card-price-row">
-                <span class="curr-price">{{ prod.price | money }}</span>
-                {% if prod.compare_at_price > prod.price %}
-                  <span class="old-price">{{ prod.compare_at_price | money }}</span>
+          {% assign bg_i = forloop.index0 | modulo: 6 %}
+          <article class="bs-card">
+            <div class="bs-media" style="background: {{ pastel_bgs[bg_i] }};">
+              <a href="{{ prod.url }}" class="bs-img-link">
+                {% if prod.featured_image %}
+                  <img src="{{ prod.featured_image | image_url: width: 700 }}" alt="{{ prod.title | escape }}">
+                {% else %}
+                  <span class="bs-placeholder">Add image</span>
                 {% endif %}
-              </div>
+              </a>
             </div>
-          </div>
+            <div class="bs-content">
+              <h3 class="bs-title"><a href="{{ prod.url }}">{{ prod.title }}</a></h3>
+              <div class="bs-stars">
+                <span class="bs-stars-gold">★★★★★</span>
+                <span class="bs-rating">4.8</span>
+              </div>
+              <div class="bs-price-row">
+                <span class="bs-price">{{ prod.price | money }}</span>
+              </div>
+              <a href="{{ prod.url }}" class="bs-shop-now">SHOP NOW</a>
+            </div>
+          </article>
         {% else %}
-          <div class="product-card-v2 placeholder-card" style="grid-column: 1 / -1; text-align:center; padding:40px;">
-            <h3 style="color:#004225;">No products on this store yet</h3>
-            <p style="color:#666; margin-top:10px;">Shopify Admin → Products → Add product (with image). Then Theme Editor → Bestsellers → Select Product.</p>
+          <div class="bs-empty">
+            <h3>No products yet</h3>
+            <p>Add products in Shopify Admin, set price + image, then assign them here.</p>
           </div>
         {% endfor %}
       {% endif %}
@@ -111,132 +112,112 @@
 </section>
 
 <style>
-  .bestsellers-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
-  }
-
-  .product-card-v2 {
-    padding: 0;
-    text-align: left;
-    background: white;
-    border: 1px solid #EEE;
-    display: flex;
-    flex-direction: column;
-    border-radius: 20px;
-    overflow: hidden;
-    cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-
-  .product-card-v2:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 15px 35px rgba(0,0,0,0.08);
-    border-color: #004225;
-  }
-
-  .card-image-area {
-    background-color: #FAFAFA;
-    border-radius: 20px 20px 0 0;
-    position: relative;
-    padding: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 280px;
-  }
-
-  .card-image-area img {
-    width: 100%;
-    max-height: 220px;
-    object-fit: contain;
-    mix-blend-mode: multiply;
-  }
-
-  .badge-sale-v2 {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    background: #C3985F;
-    color: white;
-    font-size: 11px;
-    font-weight: 800;
-    padding: 5px 12px;
-    border-radius: 20px;
-    z-index: 2;
-  }
-
-  .card-content {
-    padding: 24px;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .stars-line {
-    font-size: 11px;
-    color: #D4AF37;
-    margin-bottom: 12px;
-    display: flex;
-    gap: 5px;
-    align-items: center;
-  }
-
-  .review-count {
-    color: #888;
-    font-weight: 500;
-  }
-
-  .card-title {
-    font-size: 20px;
-    margin-bottom: 10px;
-    color: #333;
+  .bs-section { background: #fff; padding: 80px 0; }
+  .bs-heading {
     font-family: 'Poppins', sans-serif;
+    font-size: clamp(32px, 4vw, 44px);
     font-weight: 800;
+    color: #1a1a1a;
+    margin: 0 0 12px;
+    letter-spacing: -0.02em;
   }
-
-  .card-desc {
-    font-size: 13px;
-    color: #777;
-    line-height: 1.6;
-    margin-bottom: 20px;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
+  .bs-subheading {
+    color: #5a6b62;
+    font-size: 16px;
+    margin: 0 auto 48px;
+    max-width: 560px;
+  }
+  .bs-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 28px;
+    text-align: left;
+  }
+  .bs-card { display: flex; flex-direction: column; }
+  .bs-media {
+    position: relative;
+    border-radius: 28px;
     overflow: hidden;
+    aspect-ratio: 1 / 1.05;
+    margin-bottom: 18px;
   }
-
-  .card-price-row {
-    margin-top: auto;
-    display: flex;
-    gap: 12px;
-    align-items: center;
-  }
-
-  .curr-price {
+  .bs-badge {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    z-index: 2;
+    background: rgba(255,255,255,0.92);
+    color: #1a1a1a;
+    font-size: 11px;
     font-weight: 800;
-    font-size: 20px;
-    color: #004225;
+    padding: 6px 12px;
+    border-radius: 999px;
+    font-family: 'Poppins', sans-serif;
   }
-
-  .old-price {
-    font-size: 14px;
-    color: #999;
-    text-decoration: line-through;
-    font-weight: 500;
+  .bs-img-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    padding: 28px;
+    box-sizing: border-box;
   }
-
-  @media (max-width: 992px) {
-    .bestsellers-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
+  .bs-img-link img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: transform 0.4s ease;
   }
-
+  .bs-card:hover .bs-img-link img { transform: scale(1.04); }
+  .bs-placeholder { color: rgba(0,66,37,0.45); font-weight: 600; }
+  .bs-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+    font-weight: 800;
+    margin: 0 0 8px;
+    line-height: 1.25;
+  }
+  .bs-title a { color: #1a1a1a; text-decoration: none; }
+  .bs-stars { display: flex; align-items: center; gap: 6px; margin-bottom: 10px; }
+  .bs-stars-gold { color: #C9A227; letter-spacing: 1px; font-size: 13px; }
+  .bs-rating { font-weight: 700; font-size: 13px; }
+  .bs-reviews { color: #777; font-size: 13px; }
+  .bs-price-row { display: flex; gap: 10px; align-items: center; margin-bottom: 16px; }
+  .bs-price { font-weight: 800; font-size: 16px; color: #1a1a1a; }
+  .bs-compare { color: #999; text-decoration: line-through; font-size: 14px; }
+  .bs-shop-now {
+    margin-top: auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 14px 18px;
+    border-radius: 999px;
+    border: 1.5px solid #1a1a1a;
+    color: #1a1a1a;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    font-family: 'Poppins', sans-serif;
+    transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+  }
+  .bs-shop-now:hover {
+    background: #004225;
+    border-color: #004225;
+    color: #fff;
+  }
+  .bs-empty {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 40px;
+    color: #666;
+  }
+  @media (max-width: 900px) {
+    .bs-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
   @media (max-width: 600px) {
-    .bestsellers-grid {
-      grid-template-columns: 1fr;
-    }
-    .card-image-area { min-height: 240px; }
+    .bs-grid { grid-template-columns: 1fr; }
   }
 </style>
