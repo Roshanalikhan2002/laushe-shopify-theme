@@ -27,8 +27,9 @@
 <section class="section-padding" style="background: white;">
   <div class="container text-center">
     <h2 style="font-size: 44px; margin-bottom: 50px;">{{ section.settings.heading }}</h2>
-    
+
     <div class="bestsellers-grid">
+      {% assign shown = 0 %}
       {% for block in section.blocks %}
         {% assign prod = all_products[block.settings.product] %}
         {% if prod != blank %}
@@ -36,32 +37,60 @@
           {% if prod.handle contains 'elixir' or prod.handle contains 'weight-gainer-100-organic' or prod_title contains 'weight gainer' or prod_title contains 'golden elixir' or prod.handle contains 'skin-tint' or prod.handle contains 'liquid-blush' %}
             {% continue %}
           {% endif %}
-          <div class="product-card-v2" onclick="location.href='{{ prod.url }}'">
+          {% assign shown = shown | plus: 1 %}
+          <div class="product-card-v2" onclick="location.href='{{ prod.url }}'" {{ block.shopify_attributes }}>
             <div class="card-image-area">
               {% if block.settings.show_badge %}
                 <div class="badge-sale-v2">{{ block.settings.badge_text }}</div>
               {% endif %}
-              
+
               {% if block.settings.image_override != blank %}
-                <img src="{{ block.settings.image_override | img_url: '600x' }}" alt="{{ block.settings.title_override | default: prod.title }}">
-              {% else %}
-                {% assign display_img = prod.featured_image | img_url: '600x' %}
+                <img src="{{ block.settings.image_override | image_url: width: 600 }}" alt="{{ block.settings.title_override | default: prod.title | escape }}">
+              {% elsif prod.featured_image %}
+                {% assign display_img = prod.featured_image | image_url: width: 600 %}
                 {% if prod.handle contains 'hair-oil' %}
                   {% assign display_img = 'hair-oil-v2.jpg' | asset_url %}
                 {% endif %}
-                <img src="{{ display_img }}" alt="{{ prod.title }}">
+                <img src="{{ display_img }}" alt="{{ prod.title | escape }}">
+              {% else %}
+                <div style="background:#EEE;min-height:240px;display:flex;align-items:center;justify-content:center;color:#999;">No image</div>
               {% endif %}
             </div>
-            
+
             <div class="card-content">
               <div class="stars-line">
-                ⭐⭐⭐⭐⭐ <span class="review-count">({{ block.settings.stars_count }})</span>
+                ★★★★★ <span class="review-count">({{ block.settings.stars_count }})</span>
               </div>
               <h3 class="card-title">{{ block.settings.title_override | default: prod.title }}</h3>
               <p class="card-desc">
                 {{ block.settings.desc_override | default: prod.description | strip_html | truncate: 120 }}
               </p>
-              
+
+              <div class="card-price-row">
+                <span class="curr-price">{{ prod.price | money }}</span>
+                {% if prod.compare_at_price > prod.price %}
+                  <span class="old-price">{{ prod.compare_at_price | money }}</span>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+
+      {% if shown == 0 %}
+        {% for prod in collections.all.products limit: 3 %}
+          <div class="product-card-v2" onclick="location.href='{{ prod.url }}'">
+            <div class="card-image-area">
+              {% if prod.featured_image %}
+                <img src="{{ prod.featured_image | image_url: width: 600 }}" alt="{{ prod.title | escape }}">
+              {% else %}
+                <div style="background:#EEE;min-height:240px;display:flex;align-items:center;justify-content:center;color:#999;">No image</div>
+              {% endif %}
+            </div>
+            <div class="card-content">
+              <div class="stars-line">★★★★★</div>
+              <h3 class="card-title">{{ prod.title }}</h3>
+              <p class="card-desc">{{ prod.description | strip_html | truncate: 120 }}</p>
               <div class="card-price-row">
                 <span class="curr-price">{{ prod.price | money }}</span>
                 {% if prod.compare_at_price > prod.price %}
@@ -71,19 +100,12 @@
             </div>
           </div>
         {% else %}
-           <!-- Placeholder for visual guidance in editor -->
-           <div class="product-card-v2 placeholder-card">
-             <div class="card-image-area" style="background: #EEE;">
-                <p style="padding: 50px; opacity: 0.5;">Select a Product</p>
-             </div>
-             <div class="card-content">
-                <p>⭐ (0)</p>
-                <h3>Sample Title</h3>
-                <p>Rs. 0</p>
-             </div>
-           </div>
-        {% endif %}
-      {% endfor %}
+          <div class="product-card-v2 placeholder-card" style="grid-column: 1 / -1; text-align:center; padding:40px;">
+            <h3 style="color:#004225;">No products on this store yet</h3>
+            <p style="color:#666; margin-top:10px;">Shopify Admin → Products → Add product (with image). Then Theme Editor → Bestsellers → Select Product.</p>
+          </div>
+        {% endfor %}
+      {% endif %}
     </div>
   </div>
 </section>
@@ -94,7 +116,7 @@
     grid-template-columns: repeat(3, 1fr);
     gap: 30px;
   }
-  
+
   .product-card-v2 {
     padding: 0;
     text-align: left;
@@ -107,13 +129,13 @@
     cursor: pointer;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
-  
+
   .product-card-v2:hover {
     transform: translateY(-8px);
     box-shadow: 0 15px 35px rgba(0,0,0,0.08);
     border-color: #004225;
   }
-  
+
   .card-image-area {
     background-color: #FAFAFA;
     border-radius: 20px 20px 0 0;
@@ -124,14 +146,14 @@
     align-items: center;
     min-height: 280px;
   }
-  
+
   .card-image-area img {
     width: 100%;
     max-height: 220px;
     object-fit: contain;
     mix-blend-mode: multiply;
   }
-  
+
   .badge-sale-v2 {
     position: absolute;
     top: 20px;
@@ -144,14 +166,14 @@
     border-radius: 20px;
     z-index: 2;
   }
-  
+
   .card-content {
     padding: 24px;
     flex: 1;
     display: flex;
     flex-direction: column;
   }
-  
+
   .stars-line {
     font-size: 11px;
     color: #D4AF37;
@@ -160,12 +182,12 @@
     gap: 5px;
     align-items: center;
   }
-  
+
   .review-count {
     color: #888;
     font-weight: 500;
   }
-  
+
   .card-title {
     font-size: 20px;
     margin-bottom: 10px;
@@ -173,7 +195,7 @@
     font-family: 'Poppins', sans-serif;
     font-weight: 800;
   }
-  
+
   .card-desc {
     font-size: 13px;
     color: #777;
@@ -184,33 +206,33 @@
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
-  
+
   .card-price-row {
     margin-top: auto;
     display: flex;
     gap: 12px;
     align-items: center;
   }
-  
+
   .curr-price {
     font-weight: 800;
     font-size: 20px;
     color: #004225;
   }
-  
+
   .old-price {
     font-size: 14px;
     color: #999;
     text-decoration: line-through;
     font-weight: 500;
   }
-  
+
   @media (max-width: 992px) {
     .bestsellers-grid {
       grid-template-columns: repeat(2, 1fr);
     }
   }
-  
+
   @media (max-width: 600px) {
     .bestsellers-grid {
       grid-template-columns: 1fr;
