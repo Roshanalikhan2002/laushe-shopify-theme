@@ -594,6 +594,23 @@
         "badge_text": "Est. 2024"
       }
     },
+    "influencer_reviews": {
+      "type": "influencer-reviews",
+      "blocks": {
+        "inf1": { "type": "influencer", "settings": { "handle": "@laushebyzahra", "link": "" } },
+        "inf2": { "type": "influencer", "settings": { "handle": "@zahra.wellness", "link": "" } },
+        "inf3": { "type": "influencer", "settings": { "handle": "@natural.glow", "link": "" } },
+        "inf4": { "type": "influencer", "settings": { "handle": "@pure.rituals", "link": "" } },
+        "inf5": { "type": "influencer", "settings": { "handle": "@sunnah.care", "link": "" } },
+        "inf6": { "type": "influencer", "settings": { "handle": "@daily.elixir", "link": "" } }
+      },
+      "block_order": ["inf1", "inf2", "inf3", "inf4", "inf5", "inf6"],
+      "settings": {
+        "heading": "Laushe with Us",
+        "bg_color": "#f7f3ea",
+        "heading_color": "#004225"
+      }
+    },
     "social_proof": {
       "type": "social-proof-carousel",
       "blocks": {
@@ -714,6 +731,7 @@
     "athlete_endorsement",
     "faq_accordion",
     "filtered_reviews",
+    "influencer_reviews",
     "story",
     "social_proof",
     "laushe_comparison_table_BtaEPh",
