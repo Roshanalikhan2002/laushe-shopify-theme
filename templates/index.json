@@ -12,8 +12,6 @@
     "hero_giveaway": {
       "type": "hero-giveaway",
       "settings": {
-        "image_desktop": "shopify://shop_images/GIVEAWAY_BANNER_2-100.jpg_1_cc0eff60-7470-409b-9f84-83fb44b7991a.jpg",
-        "image_mobile": "shopify://shop_images/GIVEAWAY_BANNER_2-100.jpg_1_cc0eff60-7470-409b-9f84-83fb44b7991a.jpg",
         "link": ""
       }
     },
@@ -30,9 +28,100 @@
         "cta_link": "",
         "risk_free_text": "Try It Risk-Free For 30 Days",
         "limited_offer_badge": "LIMITED TIME OFFER",
-        "hero_image": "shopify://shop_images/image_6-100_jpg.jpg",
         "trust_icon_text": "Clinically Endorsed",
         "trust_icon_sub": "Certified ChoiceNutritionist Approved"
+      }
+    },
+    "quality_trust": {
+      "type": "quality-assurance",
+      "blocks": {
+        "q1": {
+          "type": "badge",
+          "settings": {
+            "icon_name": "beaker",
+            "label": "No Pesticides"
+          }
+        },
+        "q2": {
+          "type": "badge",
+          "settings": {
+            "icon_name": "skull",
+            "label": "No Heavy Metals"
+          }
+        },
+        "q3": {
+          "type": "badge",
+          "settings": {
+            "icon_name": "leaf",
+            "label": "100% Organic"
+          }
+        },
+        "q4": {
+          "type": "badge",
+          "settings": {
+            "icon_name": "globe",
+            "label": "Ethically Sourced"
+          }
+        }
+      },
+      "block_order": [
+        "q1",
+        "q2",
+        "q3",
+        "q4"
+      ],
+      "disabled": true,
+      "settings": {
+        "heading": "",
+        "subheading": "Our products are regularly tested to ensure purity and authenticity."
+      }
+    },
+    "catalog_grid": {
+      "type": "catalog-grid",
+      "blocks": {
+        "chia_override": {
+          "type": "product_override",
+          "settings": {
+            "target_product": "chia-seeds-380g",
+            "title": "Chia Seeds 380g",
+            "desc": "High-quality chia seeds,  a powerful superfood loaded with omega-3, fiber, and protein to support everyday health.",
+            "price": "Rs.2,990"
+          }
+        },
+        "elixir_override": {
+          "type": "product_override",
+          "disabled": true,
+          "settings": {
+            "target_product": "golden-elixir",
+            "title": "Golden Elixir",
+            "desc": "A flavorful blend of turmeric, honey, and herbs for a healthy daily ritual.",
+            "price": "Rs.1,490"
+          }
+        },
+        "royce_override": {
+          "type": "product_override",
+          "settings": {
+            "target_product": "royce-hair-oil-sunnah-blessed",
+            "title": "Royce Hair Oil - Sunnah Blessed",
+            "desc": "100ml Infused with Sunnah Blessings for Stronger, Healthier Hair Ingredients ...",
+            "price": ""
+          }
+        }
+      },
+      "block_order": [
+        "chia_override",
+        "elixir_override",
+        "royce_override"
+      ],
+      "settings": {
+        "heading": "Our Best Collection",
+        "subheading": "Pure, Raw, and Bio-available supplements for every stage of your health journey.",
+        "collection": "",
+        "tab1_label": "All Products",
+        "tab2_label": "Healthcare",
+        "tab2_tag": "healthcare",
+        "tab3_label": "Organic",
+        "tab3_tag": "organic"
       }
     },
     "review_scroller": {
@@ -51,11 +140,11 @@
           "settings": {
             "product": "weight-gainer-100-organic",
             "title_override": "Weight Gainer",
-            "desc_override": "",
             "stars_count": "1250",
             "rating": "4.8",
             "show_badge": true,
-            "badge_text": "BESTSELLER"
+            "badge_text": "BESTSELLER",
+            "card_bg": "#e4efe8"
           }
         },
         "product_hair_oil": {
@@ -63,11 +152,11 @@
           "settings": {
             "product": "royce-hair-oil-sunnah-blessed",
             "title_override": "Hair Oil",
-            "desc_override": "",
             "stars_count": "1250",
             "rating": "4.8",
             "show_badge": true,
-            "badge_text": "BESTSELLER"
+            "badge_text": "BESTSELLER",
+            "card_bg": "#f3e6e0"
           }
         },
         "product_liquid_blush": {
@@ -75,11 +164,11 @@
           "settings": {
             "product": "liquid-blush",
             "title_override": "Liquid Blush",
-            "desc_override": "",
             "stars_count": "980",
             "rating": "4.8",
             "show_badge": true,
-            "badge_text": "BESTSELLER"
+            "badge_text": "BESTSELLER",
+            "card_bg": "#f0eadf"
           }
         },
         "product_skin_tint": {
@@ -87,11 +176,11 @@
           "settings": {
             "product": "skin-tint",
             "title_override": "Skin Tint",
-            "desc_override": "",
             "stars_count": "1120",
             "rating": "4.8",
             "show_badge": true,
-            "badge_text": "BESTSELLER"
+            "badge_text": "BESTSELLER",
+            "card_bg": "#e8f1f4"
           }
         }
       },
@@ -118,8 +207,7 @@
         "stat_2_num": "61%",
         "stat_2_txt": "experience regular digestive issues.",
         "btn_txt": "Start Your Journey",
-        "btn_link": "",
-        "side_image": "shopify://shop_images/IMG_5457_2.jpg"
+        "btn_link": ""
       }
     },
     "stats_bar": {
@@ -163,49 +251,6 @@
       "settings": {
         "bg_color": "#007e40",
         "border_color": "#007e4014"
-      }
-    },
-    "quality_trust": {
-      "type": "quality-assurance",
-      "blocks": {
-        "q1": {
-          "type": "badge",
-          "settings": {
-            "icon_name": "beaker",
-            "label": "No Pesticides"
-          }
-        },
-        "q2": {
-          "type": "badge",
-          "settings": {
-            "icon_name": "skull",
-            "label": "No Heavy Metals"
-          }
-        },
-        "q3": {
-          "type": "badge",
-          "settings": {
-            "icon_name": "leaf",
-            "label": "100% Organic"
-          }
-        },
-        "q4": {
-          "type": "badge",
-          "settings": {
-            "icon_name": "globe",
-            "label": "Ethically Sourced"
-          }
-        }
-      },
-      "block_order": [
-        "q1",
-        "q2",
-        "q3",
-        "q4"
-      ],
-      "settings": {
-        "heading": "",
-        "subheading": "Our products are regularly tested to ensure purity and authenticity."
       }
     },
     "benefits_grid": {
@@ -252,8 +297,7 @@
       ],
       "settings": {
         "heading": "Benefits",
-        "subheading": "Why People Trust Laushe?",
-        "center_image": "shopify://shop_images/image_5-100.jpg_2.jpg"
+        "subheading": "Why People Trust Laushe?"
       }
     },
     "problem_solution": {
@@ -332,7 +376,6 @@
     "athlete_endorsement": {
       "type": "athlete-endorsement",
       "settings": {
-        "image": "shopify://shop_images/WhatsApp_Image_2026-04-04_at_10.44.16_AM.jpg",
         "quote": "I feel stronger, more focused, and ready to take on every day.",
         "description": "With Laushe, I’ve found natural support that fits seamlessly into my routine.\nIts Sunnah-blessed formulations give me confidence in what I consume.\nI trust it to help me stay consistent and feel my best every day",
         "name": "Sara Khan",
@@ -340,55 +383,6 @@
         "btn_txt": "Shop Laushe Now",
         "btn_link": "",
         "disclaimer": "Sara Khan is a dedicated Health & Fitness Advocate and user of Laushe. She relies on our natural formulations to support her daily performance and overall vitality."
-      }
-    },
-    "catalog_grid": {
-      "type": "catalog-grid",
-      "blocks": {
-        "chia_override": {
-          "type": "product_override",
-          "settings": {
-            "target_product": "chia-seeds-380g",
-            "title": "Chia Seeds 380g",
-            "desc": "High-quality chia seeds,  a powerful superfood loaded with omega-3, fiber, and protein to support everyday health.",
-            "image": "shopify://shop_images/chia_seeds-100_jpg.jpg",
-            "price": "Rs.2,990"
-          }
-        },
-        "elixir_override": {
-          "type": "product_override",
-          "disabled": true,
-          "settings": {
-            "target_product": "golden-elixir",
-            "title": "Golden Elixir",
-            "desc": "A flavorful blend of turmeric, honey, and herbs for a healthy daily ritual.",
-            "price": "Rs.1,490"
-          }
-        },
-        "royce_override": {
-          "type": "product_override",
-          "settings": {
-            "target_product": "royce-hair-oil-sunnah-blessed",
-            "title": "Royce Hair Oil - Sunnah Blessed",
-            "desc": "100ml Infused with Sunnah Blessings for Stronger, Healthier Hair Ingredients ...",
-            "price": ""
-          }
-        }
-      },
-      "block_order": [
-        "chia_override",
-        "elixir_override",
-        "royce_override"
-      ],
-      "settings": {
-        "heading": "Our Best Collection",
-        "subheading": "Pure, Raw, and Bio-available supplements for every stage of your health journey.",
-        "collection": "",
-        "tab1_label": "All Products",
-        "tab2_label": "Healthcare",
-        "tab2_tag": "healthcare",
-        "tab3_label": "Organic",
-        "tab3_tag": "organic"
       }
     },
     "faq_accordion": {
@@ -570,6 +564,66 @@
         "bg_color": "#007e40"
       }
     },
+    "influencer_reviews": {
+      "type": "influencer-reviews",
+      "blocks": {
+        "inf1": {
+          "type": "influencer",
+          "settings": {
+            "handle": "@laushebyzahra",
+            "link": ""
+          }
+        },
+        "inf2": {
+          "type": "influencer",
+          "settings": {
+            "handle": "@zahra.wellness",
+            "link": ""
+          }
+        },
+        "inf3": {
+          "type": "influencer",
+          "settings": {
+            "handle": "@natural.glow",
+            "link": ""
+          }
+        },
+        "inf4": {
+          "type": "influencer",
+          "settings": {
+            "handle": "@pure.rituals",
+            "link": ""
+          }
+        },
+        "inf5": {
+          "type": "influencer",
+          "settings": {
+            "handle": "@sunnah.care",
+            "link": ""
+          }
+        },
+        "inf6": {
+          "type": "influencer",
+          "settings": {
+            "handle": "@daily.elixir",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "inf1",
+        "inf2",
+        "inf3",
+        "inf4",
+        "inf5",
+        "inf6"
+      ],
+      "settings": {
+        "heading": "Laushe with Us",
+        "bg_color": "#007e40",
+        "heading_color": "#ffffff"
+      }
+    },
     "story": {
       "type": "story-section",
       "blocks": {
@@ -606,25 +660,7 @@
         "title": "Where Tradition Meets Thoughtful Care",
         "description_1": "It all began with a simple realization: true health is rarely found in shortcuts or artificial solutions. People were searching for remedies that actually nourished the body and honored the wisdom of generations before us. From this desire, Laushe was born, a promise to create products that are pure, intentional, and deeply connected to nature.\nFounded by Zahra, Laushe is a reflection of her commitment to authentic, mindful living. Every formulation she guides is Sunnah-blessed, thoughtfully combining prophetic medicine with modern nutritional insight. Her vision was never just about creating products; it was about offering families a way to care for themselves naturally, safely, and effectively, without compromise.",
         "description_2": "Today, Laushe stands as more than a brand; it’s a movement. Each product embodies purity, care, and heritage, delivering measurable benefits while respecting time-honored practices. With every jar, bottle, and blend, we bring you closer to nature’s wisdom, inspired by Zahra’s passion and dedication to creating health solutions that truly make a difference.",
-        "image": "shopify://shop_images/Artboard_25-100.jpg_1.jpg",
         "badge_text": "Est. 2024"
-      }
-    },
-    "influencer_reviews": {
-      "type": "influencer-reviews",
-      "blocks": {
-        "inf1": { "type": "influencer", "settings": { "handle": "@laushebyzahra", "link": "" } },
-        "inf2": { "type": "influencer", "settings": { "handle": "@zahra.wellness", "link": "" } },
-        "inf3": { "type": "influencer", "settings": { "handle": "@natural.glow", "link": "" } },
-        "inf4": { "type": "influencer", "settings": { "handle": "@pure.rituals", "link": "" } },
-        "inf5": { "type": "influencer", "settings": { "handle": "@sunnah.care", "link": "" } },
-        "inf6": { "type": "influencer", "settings": { "handle": "@daily.elixir", "link": "" } }
-      },
-      "block_order": ["inf1", "inf2", "inf3", "inf4", "inf5", "inf6"],
-      "settings": {
-        "heading": "Laushe with Us",
-        "bg_color": "#007e40",
-        "heading_color": "#ffffff"
       }
     },
     "social_proof": {
@@ -736,10 +772,11 @@
   },
   "order": [
     "hero_giveaway",
-    "bestsellers_CXGzp8",
     "hero",
+    "quality_trust",
     "catalog_grid",
     "review_scroller",
+    "bestsellers_CXGzp8",
     "modern_living_gpDB8F",
     "stats_bar",
     "benefits_grid",

@@ -2,7 +2,7 @@
 {
   "name": "Quality Trust Badges",
   "settings": [
-    { "id": "heading", "type": "text", "label": "Heading (optional)", "default": "" },
+    { "id": "heading", "type": "text", "label": "Heading", "default": "Quality You Can Trust" },
     { "id": "subheading", "type": "text", "label": "Subheading", "default": "Our products are regularly tested to ensure purity and authenticity." }
   ],
   "blocks": [
@@ -12,11 +12,11 @@
       "limit": 4,
       "settings": [
         { "id": "icon_name", "type": "select", "label": "Icon", "options": [
-            {"value": "beaker", "label": "Lab Flask (No Pesticides)"},
-            {"value": "skull", "label": "Banned Drop (No Heavy Metals)"},
+            {"value": "beaker", "label": "Beaker (Pesticides)"},
+            {"value": "skull", "label": "Skull (Heavy Metals)"},
             {"value": "leaf", "label": "Leaf (Organic)"},
-            {"value": "globe", "label": "Globe (Ethically Sourced)"}
-          ], "default": "leaf"
+            {"value": "globe", "label": "Globe (Sourced)"}
+          ], "default": "leaf" 
         },
         { "id": "label", "type": "text", "label": "Label", "default": "100% Organic" }
       ]
@@ -26,21 +26,17 @@
 }
 {% endschema %}
 
-<section class="quality-trust quality-trust--strip">
+<section class="quality-trust section-padding">
   <div class="container text-center">
-    <div class="trust-header">
-      {% if section.settings.heading != blank %}
-        <h2 class="trust-title">{{ section.settings.heading }}</h2>
-      {% endif %}
-      {% if section.settings.subheading != blank %}
-        <p class="trust-subtitle">{{ section.settings.subheading }}</p>
-      {% endif %}
+    <div class="trust-header" style="margin-bottom: 60px;">
+      <h2 class="trust-title">{{ section.settings.heading }}</h2>
+      <p class="trust-subtitle">{{ section.settings.subheading }}</p>
     </div>
 
     <div class="trust-grid">
       {% for block in section.blocks %}
         <div class="trust-item" {{ block.shopify_attributes }}>
-          <div class="trust-icon" aria-hidden="true">
+          <div class="trust-icon">
             {% render 'icon-laushe', name: block.settings.icon_name %}
           </div>
           <h3 class="trust-item-label">{{ block.settings.label }}</h3>
@@ -51,88 +47,58 @@
 </section>
 
 <style>
-  .quality-trust--strip {
-    background: #007e40;
-    padding: 56px 0;
-  }
-
-  .quality-trust--strip .trust-header {
-    margin-bottom: 40px;
-  }
-
-  .quality-trust--strip .trust-title {
-    font-size: clamp(36px, 5vw, 52px);
+  .trust-title {
+    font-size: clamp(42px, 6vw, 64px);
     font-weight: 900;
     color: #ffffff;
-    margin-bottom: 14px;
+    margin-bottom: 18px;
     font-family: 'Nunito', sans-serif;
     line-height: 1.1;
+    letter-spacing: -0.02em;
   }
-
-  .quality-trust--strip .trust-subtitle {
-    font-size: clamp(16px, 2.2vw, 20px);
+  
+  .trust-subtitle {
+    font-size: 18px;
     color: #ffffff;
-    max-width: 720px;
+    max-width: 640px;
     margin: 0 auto;
-    font-weight: 700;
-    line-height: 1.45;
+    font-weight: 600;
   }
-
-  .quality-trust--strip .trust-grid {
+  
+  .trust-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 28px;
+    gap: 40px;
     max-width: 1100px;
     margin: 0 auto;
   }
-
-  .quality-trust--strip .trust-item {
+  
+  .trust-item {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 16px;
+    gap: 20px;
   }
-
-  .quality-trust--strip .trust-icon {
-    width: 72px;
-    height: 72px;
-    border-radius: 50%;
-    border: 2px solid #ffcc33;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: transparent;
-  }
-
-  .quality-trust--strip .trust-icon svg {
-    width: 36px;
-    height: 36px;
+  
+  .trust-icon svg {
+    width: 48px;
+    height: 48px;
     color: #ffcc33;
+    stroke-width: 1.5;
   }
-
-  .quality-trust--strip .trust-item-label {
-    font-size: 16px;
+  
+  .trust-item-label {
+    font-size: 18px;
     font-weight: 800;
     color: #ffffff;
     font-family: 'Nunito', sans-serif;
-    margin: 0;
   }
-
+  
   @media (max-width: 768px) {
-    .quality-trust--strip {
-      padding: 40px 0;
-    }
-    .quality-trust--strip .trust-grid {
+    .trust-grid {
       grid-template-columns: repeat(2, 1fr);
-      gap: 28px 16px;
+      gap: 50px 20px;
     }
-    .quality-trust--strip .trust-icon {
-      width: 64px;
-      height: 64px;
-    }
-    .quality-trust--strip .trust-icon svg {
-      width: 30px;
-      height: 30px;
-    }
+    .trust-title { font-size: 36px; }
   }
 </style>
