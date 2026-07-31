@@ -1,0 +1,281 @@
+{
+  "layout": "theme",
+  "sections": {
+    "product_main": {
+      "type": "product-ag1-template",
+      "blocks": {
+        "acc1": {
+          "type": "accordion",
+          "settings": {
+            "title": "What is it?",
+            "content": "Laushe's signature wellness formula is designed to support deep, restorative health through ancient tradtion and modern science."
+          }
+        },
+        "acc2": {
+          "type": "accordion",
+          "settings": {
+            "title": "Who's it for",
+            "content": "Perfect for anyone looking to optimize their daily health routine with pure, raw, and bio-available supplements."
+          }
+        },
+        "acc3": {
+          "type": "accordion",
+          "settings": {
+            "title": "Benefits",
+            "content": "Helps reduce hair fall and strengthens roots effectively\nDeeply nourishes and repairs dry, damaged hair strands\nEnhances natural shine and leaves hair soft and smooth\nSupports healthy hair growth with regular, consistent use\nSoothes the scalp and keeps it hydrated and balanced\nMade with 100% natural, Sunnah-blessed ingredients"
+          }
+        },
+        "acc4": {
+          "type": "accordion",
+          "settings": {
+            "title": "How to use",
+            "content": "Spread a generous layer over your scalp and hair\nGently massage in small circular motions for 5–10 minutes\nAllow it to sit for 2 hours or overnight for maximum effect\nRinse thoroughly with a mild shampoo"
+          }
+        }
+      },
+      "block_order": [
+        "acc1",
+        "acc2",
+        "acc3",
+        "acc4"
+      ],
+      "settings": {
+        "promo_banner": "BUY 1 GET 1 FREE - Sunnah-Blessed Hair Care",
+        "stars_count": "50,000+ verified 5-star reviews for Laushe products",
+        "sub_discount": 0,
+        "custom_one_time_price": "",
+        "custom_sub_price": ""
+      }
+    },
+    "benefits": {
+      "type": "benefits-grid",
+      "settings": {
+        "heading": "A powerhouse superfood rich in nutrients to fuel your daily health.",
+        "subheading": "Supported by nature, backed by tradition.",
+        "center_image": "shopify://shop_images/hair_oil-100_jpg.jpg"
+      }
+    },
+    "ingredients": {
+      "type": "ingredients-grid",
+      "blocks": {
+        "b1": {
+          "type": "ingredient",
+          "settings": {
+            "title": "Black Seed Oil",
+            "desc": "Helps strengthen hair roots and minimizes hair fall over time"
+          }
+        },
+        "b2": {
+          "type": "ingredient",
+          "settings": {
+            "title": "Olive Oil",
+            "desc": "Provides deep moisture and helps keep hair soft and hydrated"
+          }
+        },
+        "b3": {
+          "type": "ingredient",
+          "settings": {
+            "title": "Coconut Oil",
+            "desc": "Nourishes deeply by absorbing into the hair from within"
+          }
+        },
+        "b4": {
+          "type": "ingredient",
+          "settings": {
+            "title": "Almond Oil",
+            "desc": "Enhances natural shine and helps control dryness and frizz"
+          }
+        },
+        "b5": {
+          "type": "ingredient",
+          "settings": {
+            "title": "Castor Oil",
+            "desc": "Supports thicker-looking hair and encourages healthy growth"
+          }
+        },
+        "b6": {
+          "type": "ingredient",
+          "settings": {
+            "title": "Essential Botanicals",
+            "desc": "Refreshes the scalp and supports overall hair health"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4",
+        "b5",
+        "b6"
+      ],
+      "settings": {
+        "headline": "High-Quality, Natural Ingredients"
+      }
+    },
+    "usage": {
+      "type": "usage-steps",
+      "settings": {
+        "heading": "How to Apply Royce Hair Oil",
+        "step1_text": "Spread a generous layer over your scalp and hair",
+        "step2_text": "Gently massage in small circular motions for 5–10 minutes",
+        "step3_text": "Allow it to sit for 2 hours or overnight for maximum effect",
+        "step4_text": "Rinse thoroughly with a mild shampoo"
+      }
+    },
+    "comparison": {
+      "type": "laushe-comparison-table",
+      "blocks": {
+        "row_1": {
+          "type": "row",
+          "settings": {
+            "feature": "100% Natural Ingredients",
+            "laushe": true,
+            "generic": false
+          }
+        },
+        "row_2": {
+          "type": "row",
+          "settings": {
+            "feature": "Sunnah-Blessed Formulation",
+            "laushe": true,
+            "generic": false
+          }
+        },
+        "row_3": {
+          "type": "row",
+          "settings": {
+            "feature": "No Artificial Additives",
+            "laushe": true,
+            "generic": false
+          }
+        },
+        "row_4": {
+          "type": "row",
+          "settings": {
+            "feature": "Scientifically Verified",
+            "laushe": true,
+            "generic": false
+          }
+        },
+        "row_5": {
+          "type": "row",
+          "settings": {
+            "feature": "Ethically Sourced",
+            "laushe": true,
+            "generic": false
+          }
+        },
+        "row_6": {
+          "type": "row",
+          "settings": {
+            "feature": "Money-Back Guarantee",
+            "laushe": true,
+            "generic": false
+          }
+        },
+        "row_7": {
+          "type": "row",
+          "settings": {
+            "feature": "Fresh & Sealed Packaging",
+            "laushe": true,
+            "generic": false
+          }
+        },
+        "row_8": {
+          "type": "row",
+          "settings": {
+            "feature": "Fair & Transparent Pricing",
+            "laushe": true,
+            "generic": false
+          }
+        }
+      },
+      "block_order": [
+        "row_1",
+        "row_2",
+        "row_3",
+        "row_4",
+        "row_5",
+        "row_6",
+        "row_7",
+        "row_8"
+      ],
+      "settings": {
+        "heading": "Laushe vs. Other Brands",
+        "bg_color": "#faf7f2"
+      }
+    },
+    "faq": {
+      "type": "faq-accordion",
+      "blocks": {
+        "faq_1": {
+          "type": "faq",
+          "settings": {
+            "question": "Is Royce Hair Oil safe for all hair types?",
+            "answer": "Yes, Royce Hair Oil is designed for all hair types, whether dry, oily, or normal. Its natural, Sunnah-blessed ingredients nourish without causing buildup, leaving your hair healthy and shiny."
+          }
+        },
+        "faq_2": {
+          "type": "faq",
+          "settings": {
+            "question": "How often should I use Royce Hair Oil?",
+            "answer": "For best results, apply 2–3 times a week. Regular use strengthens hair, reduces fall, and promotes natural growth while keeping your scalp moisturized."
+          }
+        },
+        "faq_3": {
+          "type": "faq",
+          "settings": {
+            "question": "Can it help with hair thinning or hair loss?",
+            "answer": "Absolutely. The blend of black seed, castor, and almond oils works to strengthen follicles, reduce breakage, and stimulate healthier, thicker hair over time."
+          }
+        },
+        "faq_4": {
+          "type": "faq",
+          "settings": {
+            "question": "How long should I leave the oil on my hair?",
+            "answer": "For maximum benefits, leave it on for at least 2 hours or overnight. This allows deep penetration to nourish hair from root to tip."
+          }
+        },
+        "faq_5": {
+          "type": "faq",
+          "settings": {
+            "question": "Will Royce Hair Oil make my hair greasy?",
+            "answer": "No. When applied correctly and washed with a mild shampoo, it leaves hair soft, shiny, and manageable without a heavy or greasy feel."
+          }
+        }
+      },
+      "block_order": [
+        "faq_1",
+        "faq_2",
+        "faq_3",
+        "faq_4",
+        "faq_5"
+      ],
+      "settings": {
+        "subtitle": "QUESTIONS & ANSWERS",
+        "title": "Frequently Asked Questions",
+        "bg_color": "#faf7f2"
+      }
+    },
+    "final_cta": {
+      "type": "final-cta",
+      "settings": {
+        "headline": "Unlock Daily Vitality",
+        "subtext": "Revitalize your hair with Royce Hair Oil for natural strength, shine, and overall hair health.",
+        "cta_text": "SHOP NOW - BUY 1 GET 1 FREE",
+        "cta_url": "",
+        "bg_color": "#007e40"
+      }
+    }
+  },
+  "order": [
+    "product_main",
+    "benefits",
+    "ingredients",
+    "usage",
+    "comparison",
+    "faq",
+    "final_cta"
+  ]
+}

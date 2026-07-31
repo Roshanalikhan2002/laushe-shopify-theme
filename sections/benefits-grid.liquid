@@ -1,0 +1,175 @@
+{% schema %}
+{
+  "name": "Health Benefits Grid",
+  "settings": [
+    { "id": "heading", "type": "text", "label": "Heading", "default": "Transform Your Health" },
+    { "id": "subheading", "type": "text", "label": "Subheading", "default": "Supported by nature, backed by tradition." },
+    { "id": "center_image", "type": "image_picker", "label": "Center Circular Image" }
+  ],
+  "blocks": [
+    {
+      "type": "benefit",
+      "name": "Benefit Item",
+      "limit": 4,
+      "settings": [
+        { "id": "icon", "type": "image_picker", "label": "Icon (Optional)" },
+        { "id": "icon_name", "type": "select", "label": "Or Choose Icon", "options": [
+            {"value": "leaf", "label": "Leaf"},
+            {"value": "flash", "label": "Energy"},
+            {"value": "shield", "label": "Immunity"},
+            {"value": "bulb", "label": "Brain"}
+          ], "default": "leaf" 
+        },
+        { "id": "title", "type": "text", "label": "Title", "default": "Gut Health" },
+        { "id": "desc", "type": "textarea", "label": "Description", "default": "Optimize digestion and nutrient absorption naturally." }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Health Benefits Grid", "category": "Laushe Sections" }]
+}
+{% endschema %}
+
+<section class="benefits-outer section-padding">
+  <div class="container text-center">
+    <div class="header-group" style="margin-bottom: 60px;">
+      <h2 style="font-size: 48px; margin-bottom: 15px;">{{ section.settings.heading }}</h2>
+      <p style="color: #777; font-size: 16px;">{{ section.settings.subheading }}</p>
+    </div>
+
+    <div class="benefits-circle-grid">
+      <!-- LEFT COLUMN -->
+      <div class="benefit-col benefit-left">
+        {% for block in section.blocks limit: 2 %}
+          <div class="benefit-item-v2" {{ block.shopify_attributes }}>
+            <div class="icon-box">
+              {% if block.settings.icon %}
+                <img src="{{ block.settings.icon | img_url: '60x' }}" alt="Icon">
+              {% else %}
+                {% render 'icon-laushe', name: block.settings.icon_name %}
+              {% endif %}
+            </div>
+            <h3 class="benefit-title">{{ block.settings.title }}</h3>
+            <p class="benefit-desc">{{ block.settings.desc }}</p>
+          </div>
+        {% endfor %}
+      </div>
+
+      <!-- CENTER COLUMN (IMAGE) -->
+      <div class="benefit-center">
+        <div class="center-circle-wrap">
+          {% if product and product.handle == 'golden-elixir' %}
+            <img src="{{ 'golden-elixir.webp' | asset_url }}" class="circle-img" alt="Golden Elixir">
+          {% elsif section.settings.center_image %}
+            <img src="{{ section.settings.center_image | img_url: '800x' }}" class="circle-img" alt="Health">
+          {% else %}
+            <div class="circle-placeholder" style="background: #EEE; border-radius: 50%; width: 100%; padding-bottom: 100%;"></div>
+          {% endif %}
+        </div>
+      </div>
+
+      <!-- RIGHT COLUMN -->
+      <div class="benefit-col benefit-right">
+        {% for block in section.blocks offset: 2 limit: 2 %}
+          <div class="benefit-item-v2" {{ block.shopify_attributes }}>
+            <div class="icon-box">
+              {% if block.settings.icon %}
+                <img src="{{ block.settings.icon | img_url: '60x' }}" alt="Icon">
+              {% else %}
+                {% render 'icon-laushe', name: block.settings.icon_name %}
+              {% endif %}
+            </div>
+            <h3 class="benefit-title">{{ block.settings.title }}</h3>
+            <p class="benefit-desc">{{ block.settings.desc }}</p>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .benefits-circle-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr 1fr;
+    align-items: center;
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .benefit-col {
+    display: flex;
+    flex-direction: column;
+    gap: 100px; /* Space between the two items vertically */
+  }
+  
+  .benefit-left { text-align: right; }
+  .benefit-right { text-align: left; }
+  
+  .benefit-item-v2 {
+    transition: transform 0.3s ease;
+  }
+  
+  .benefit-left .icon-box { justify-content: flex-end; }
+  .benefit-right .icon-box { justify-content: flex-start; }
+  
+  .icon-box {
+    display: flex;
+    margin-bottom: 15px;
+  }
+  
+  .icon-box svg, .icon-box img {
+    width: 44px;
+    height: 44px;
+    color: #007e40;
+  }
+  
+  .benefit-title {
+    font-size: 22px;
+    font-weight: 800;
+    margin-bottom: 8px;
+    color: #007e40;
+  }
+  
+  .benefit-desc {
+    font-size: 15px;
+    color: #666;
+    line-height: 1.5;
+    max-width: 280px;
+  }
+  
+  .benefit-left .benefit-desc { margin-left: auto; }
+  
+  /* CIRCLE IMAGE */
+  .center-circle-wrap {
+    position: relative;
+    padding: 20px;
+  }
+  
+  .circle-img {
+    width: 100%;
+    height: auto;
+    border-radius: 50%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.12);
+    border: 1px solid #EEE;
+  }
+  
+  @media (max-width: 1024px) {
+    .benefits-circle-grid {
+      grid-template-columns: 1fr;
+      gap: 60px;
+    }
+    
+    .benefit-center { order: 1; max-width: 400px; margin: 0 auto; }
+    .benefit-left { order: 2; text-align: center; gap: 40px; }
+    .benefit-right { order: 3; text-align: center; gap: 40px; }
+    
+    .benefit-left .icon-box, .benefit-right .icon-box { justify-content: center; }
+    .benefit-left .benefit-desc { margin: 0 auto; }
+    .benefit-desc { max-width: 100%; }
+    
+    .benefit-col { gap: 40px; }
+  }
+</style>

@@ -1,0 +1,241 @@
+{
+  "layout": "theme",
+  "sections": {
+    "product_main": {
+      "type": "product-ag1-template",
+      "blocks": {
+        "acc1": {
+          "type": "accordion",
+          "settings": {
+            "title": "What is it?",
+            "content": "Laushe's Pure Honey is a 100% raw, sunnah-blessed superfood harvested with care to preserve its natural enzymes and healing properties."
+          }
+        },
+        "acc2": {
+          "type": "accordion",
+          "settings": {
+            "title": "Who's it for",
+            "content": "Perfect for anyone seeking a natural sweetener that also supports immune health and overall daily vitality."
+          }
+        },
+        "acc3": {
+          "type": "accordion",
+          "settings": {
+            "title": "Benefits",
+            "content": "Natural source of antioxidants and healthy enzymes\nProvides a quick energy boost without refined sugars\nSoothes occasional throat discomfort and promotes wellness\nSupports healthy digestion and gut balance\nEthically harvested and raw for maximum nutritional benefit\nNo artificial additives, fillers, or sweeteners"
+          }
+        },
+        "acc4": {
+          "type": "accordion",
+          "settings": {
+            "title": "How to use",
+            "content": "Enjoy a spoonful daily on its own for natural energy\nUse as a healthy sweetener in herbal teas or desserts\nDrizzle over yogurt, oatmeal, or fresh fruit\nCombine with warm water and lemon for a soothing morning drink"
+          }
+        }
+      },
+      "block_order": [
+        "acc1",
+        "acc2",
+        "acc3",
+        "acc4"
+      ],
+      "settings": {
+        "promo_banner": "Nurtured by Nature",
+        "stars_count": "50,000+ verified 5-star reviews for Laushe products",
+        "sub_discount": 0,
+        "custom_one_time_price": "",
+        "custom_sub_price": ""
+      }
+    },
+    "benefits": {
+      "type": "benefits-grid",
+      "settings": {
+        "heading": "Raw, Pure, and Rooted in Tradition.",
+        "subheading": "Supported by nature, backed by tradition.",
+        "center_image": "shopify://shop_images/honey-100_jpg.jpg"
+      }
+    },
+    "ingredients": {
+      "type": "ingredients-grid",
+      "blocks": {
+        "b1": {
+          "type": "ingredient",
+          "settings": {
+            "title": "100% Raw Honey",
+            "desc": "Unprocessed and unfiltered to maintain every natural benefit"
+          }
+        }
+      },
+      "block_order": [
+        "b1"
+      ],
+      "settings": {
+        "headline": "Nothing But Pure Honey"
+      }
+    },
+    "usage": {
+      "type": "usage-steps",
+      "settings": {
+        "heading": "Daily Natural Wellness",
+        "step1_text": "Consume 1–2 tablespoons daily on an empty stomach for best results",
+        "step2_text": "Stir into warm water with lemon to create a natural detox drink",
+        "step3_text": "Add to tea or smoothies as a healthy natural sweetener",
+        "step4_text": "Apply gently on skin to support nourishment and hydration"
+      }
+    },
+    "comparison": {
+      "type": "laushe-comparison-table",
+      "blocks": {
+        "row_1": {
+          "type": "row",
+          "settings": {
+            "feature": "100% Natural Ingredients",
+            "laushe": true,
+            "generic": false
+          }
+        },
+        "row_2": {
+          "type": "row",
+          "settings": {
+            "feature": "Sunnah-Blessed Formulation",
+            "laushe": true,
+            "generic": false
+          }
+        },
+        "row_3": {
+          "type": "row",
+          "settings": {
+            "feature": "No Artificial Additives",
+            "laushe": true,
+            "generic": false
+          }
+        },
+        "row_4": {
+          "type": "row",
+          "settings": {
+            "feature": "Scientifically Verified",
+            "laushe": true,
+            "generic": false
+          }
+        },
+        "row_5": {
+          "type": "row",
+          "settings": {
+            "feature": "Ethically Sourced",
+            "laushe": true,
+            "generic": false
+          }
+        },
+        "row_6": {
+          "type": "row",
+          "settings": {
+            "feature": "Money-Back Guarantee",
+            "laushe": true,
+            "generic": false
+          }
+        },
+        "row_7": {
+          "type": "row",
+          "settings": {
+            "feature": "Fresh & Sealed Packaging",
+            "laushe": true,
+            "generic": false
+          }
+        },
+        "row_8": {
+          "type": "row",
+          "settings": {
+            "feature": "Fair & Transparent Pricing",
+            "laushe": true,
+            "generic": false
+          }
+        }
+      },
+      "block_order": [
+        "row_1",
+        "row_2",
+        "row_3",
+        "row_4",
+        "row_5",
+        "row_6",
+        "row_7",
+        "row_8"
+      ],
+      "settings": {
+        "heading": "Laushe Honey vs. Others",
+        "bg_color": "#faf7f2"
+      }
+    },
+    "faq": {
+      "type": "faq-accordion",
+      "blocks": {
+        "faq_1": {
+          "type": "faq",
+          "settings": {
+            "question": "Is your honey completely raw and unprocessed?",
+            "answer": "Yes, our honey is 100% raw and unprocessed, carefully collected from natural apiaries to preserve its natural enzymes, nutrients, and rich taste."
+          }
+        },
+        "faq_2": {
+          "type": "faq",
+          "settings": {
+            "question": "Can I use this honey daily?",
+            "answer": "Absolutely. You can consume 1–2 tablespoons daily as part of your routine to support immunity, energy, and overall wellness."
+          }
+        },
+        "faq_3": {
+          "type": "faq",
+          "settings": {
+            "question": "Does this honey contain any added sugar or preservatives?",
+            "answer": "No, it is completely pure with no added sugars, chemicals, or preservatives — only natural honey in its original form."
+          }
+        },
+        "faq_4": {
+          "type": "faq",
+          "settings": {
+            "question": "Is it suitable for skin application?",
+            "answer": "Yes, it can be applied topically to help nourish and hydrate the skin, thanks to its natural antibacterial and moisturizing properties."
+          }
+        },
+        "faq_5": {
+          "type": "faq",
+          "settings": {
+            "question": "What makes this honey Sunnah-blessed?",
+            "answer": "Honey is a Sunnah-recommended food known for its healing benefits, and our product stays true to that tradition by maintaining purity, authenticity, and natural goodness."
+          }
+        }
+      },
+      "block_order": [
+        "faq_1",
+        "faq_2",
+        "faq_3",
+        "faq_4",
+        "faq_5"
+      ],
+      "settings": {
+        "subtitle": "QUESTIONS & ANSWERS",
+        "title": "Frequently Asked Questions",
+        "bg_color": "#faf7f2"
+      }
+    },
+    "final_cta": {
+      "type": "final-cta",
+      "settings": {
+        "headline": "Unlock Nature's Sweetness",
+        "subtext": "Nourish your body with pure, raw honey for improved immunity and natural energy.",
+        "cta_text": "SHOP NOW",
+        "cta_url": "",
+        "bg_color": "#007e40"
+      }
+    }
+  },
+  "order": [
+    "product_main",
+    "benefits",
+    "ingredients",
+    "usage",
+    "comparison",
+    "faq",
+    "final_cta"
+  ]
+}

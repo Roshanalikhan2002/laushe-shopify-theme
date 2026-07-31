@@ -1,0 +1,184 @@
+{% schema %}
+{
+  "name": "Problem vs Solution",
+  "settings": [
+    { "id": "bg_color", "type": "color", "label": "Background Color", "default": "#005c2e" },
+    { "id": "heading_color", "type": "color", "label": "Heading Color", "default": "#ffffff" },
+    { "id": "prob_label", "type": "text", "label": "Problem Label", "default": "The Reality Behind Modern Wellness" },
+    { "id": "prob_heading", "type": "text", "label": "Problem Heading", "default": "Most Health Products Are Full of Hidden Chemicals" },
+    { "id": "prob_desc", "type": "textarea", "label": "Problem Description", "default": "The market is flooded with supplements and health products that promise results but deliver artificial fillers, synthetic additives, and questionable ingredients. Your body deserves better than processed chemicals disguised as wellness." },
+    { "id": "sol_label", "type": "text", "label": "Solution Label", "default": "THE LAUSHE SOLUTION" },
+    { "id": "sol_heading", "type": "text", "label": "Solution Heading", "default": "100% Pure, 100% Natural, 100% Effective" },
+    { "id": "sol_desc", "type": "textarea", "label": "Solution Description", "default": "Every Laushe product is crafted from ethically sourced, natural ingredients with complete transparency. Our Sunnah-blessed formulations combine ancient wisdom with modern quality standards." }
+  ],
+  "blocks": [
+    {
+      "type": "problem_point",
+      "name": "Problem Point",
+      "settings": [
+        { "id": "text", "type": "text", "label": "Text", "default": "Artificial preservatives and fillers" }
+      ]
+    },
+    {
+      "type": "solution_point",
+      "name": "Solution Point",
+      "settings": [
+        { "id": "text", "type": "text", "label": "Text", "default": "100% natural, ethically sourced ingredients" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Problem vs Solution", "category": "Laushe Sections" }]
+}
+{% endschema %}
+
+<section class="problem-solution-v2" style="background-color: {{ section.settings.bg_color }}; --heading-color: {{ section.settings.heading_color }};">
+  <div class="container">
+    <div class="prob-sol-grid-v2">
+      
+      <!-- LEFT: PROBLEM -->
+      <div class="prob-side">
+        <span class="luxe-label">{{ section.settings.prob_label }}</span>
+        <h2 class="luxe-heading">{{ section.settings.prob_heading }}</h2>
+        <p class="luxe-desc">{{ section.settings.prob_desc }}</p>
+        
+        <div class="luxe-points">
+          {% for block in section.blocks %}
+            {% if block.type == 'problem_point' %}
+              <div class="luxe-point-item">
+                <span class="icon-circle icon-red">✕</span>
+                <span class="point-text">{{ block.settings.text }}</span>
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+
+      <!-- RIGHT: SOLUTION CARD -->
+      <div class="sol-card">
+        <span class="luxe-label" style="color: #ffcc33;">{{ section.settings.sol_label }}</span>
+        <h2 class="luxe-heading-sm">{{ section.settings.sol_heading }}</h2>
+        <p class="luxe-desc" style="color: rgba(255,255,255,0.7);">{{ section.settings.sol_desc }}</p>
+        
+        <div class="luxe-points">
+          {% for block in section.blocks %}
+            {% if block.type == 'solution_point' %}
+              <div class="luxe-point-item">
+                <span class="icon-circle icon-gold">✓</span>
+                <span class="point-text" style="color: white;">{{ block.settings.text }}</span>
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  .problem-solution-v2 {
+    padding: 120px 0;
+    color: white;
+    overflow: hidden;
+  }
+  
+  .prob-sol-grid-v2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+  
+  .sol-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 60px;
+    border-radius: 40px;
+    backdrop-filter: blur(10px);
+  }
+  
+  .luxe-label {
+    display: block;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.2em;
+    color: #ffcc33;
+    margin-bottom: 20px;
+  }
+  
+  .luxe-heading {
+    font-size: 44px;
+    line-height: 1.1;
+    margin-bottom: 30px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    color: var(--heading-color, #ffffff) !important;
+  }
+  
+  .luxe-heading-sm {
+    font-size: 32px;
+    line-height: 1.2;
+    margin-bottom: 25px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    color: var(--heading-color, #ffffff) !important;
+  }
+  
+  .luxe-desc {
+    font-size: 15px;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 40px;
+  }
+  
+  .luxe-points {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .luxe-point-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+  
+  .icon-circle {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 900;
+    flex-shrink: 0;
+  }
+  
+  .icon-red {
+    background: rgba(255, 71, 71, 0.15);
+    color: #FF4747;
+  }
+  
+  .icon-gold {
+    background: rgba(212, 175, 55, 0.2);
+    color: #ffcc33;
+  }
+  
+  .point-text {
+    font-size: 15px;
+    color: rgba(255,255,255,0.8);
+    font-weight: 500;
+  }
+  
+  @media (max-width: 1024px) {
+    .prob-sol-grid-v2 {
+      grid-template-columns: 1fr;
+      gap: 60px;
+    }
+    .sol-card {
+      padding: 40px;
+    }
+    .luxe-heading { font-size: 32px; }
+  }
+</style>

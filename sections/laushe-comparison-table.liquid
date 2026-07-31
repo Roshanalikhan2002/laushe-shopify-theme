@@ -1,0 +1,155 @@
+<section class="comparison-section section-padding" style="background-color: {{ section.settings.bg_color }};" id="section-{{ section.id }}">
+  <div class="container container-narrow">
+    
+    {% if section.settings.heading != blank %}
+      <div class="section-header text-center" style="margin-bottom: 50px;">
+        <h2 style="color: #007e40; font-weight: 800;">{{ section.settings.heading }}</h2>
+      </div>
+    {% endif %}
+
+    <div class="comparison-table-v2">
+      <div class="table-header">
+        <div class="header-col first">FEATURE</div>
+        <div class="header-col">LAUSHE</div>
+        <div class="header-col">GENERIC</div>
+      </div>
+
+      <div class="table-body">
+        {% for block in section.blocks %}
+          <div class="table-row" {{ block.shopify_attributes }}>
+            <div class="row-col first">{{ block.settings.feature }}</div>
+            <div class="row-col">
+              {% if block.settings.laushe %}
+                <span class="status-icon check">✓</span>
+              {% else %}
+                <span class="status-icon cross">✕</span>
+              {% endif %}
+            </div>
+            <div class="row-col">
+              {% if block.settings.generic %}
+                <span class="status-icon check">✓</span>
+              {% else %}
+                <span class="status-icon cross">✕</span>
+              {% endif %}
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  #section-{{ section.id }} .comparison-section {
+    padding: 100px 0;
+  }
+  #section-{{ section.id }} .container-narrow {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  #section-{{ section.id }} .comparison-table-v2 {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+    border: 1px solid rgba(0,0,0,0.05);
+  }
+  #section-{{ section.id }} .table-header {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    background: #007e40;
+    color: white;
+    padding: 20px 40px;
+    font-weight: 800;
+    font-size: 14px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  #section-{{ section.id }} .header-col {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  #section-{{ section.id }} .header-col.first {
+    justify-content: flex-start;
+  }
+  #section-{{ section.id }} .table-row {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    padding: 25px 40px;
+    border-bottom: 1px solid rgba(0,0,0,0.03);
+    align-items: center;
+  }
+  #section-{{ section.id }} .table-row:nth-child(even) {
+    background: #FAF7F2;
+  }
+  #section-{{ section.id }} .table-row:last-child {
+    border-bottom: none;
+  }
+  #section-{{ section.id }} .row-col {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    font-weight: 700;
+    color: #444;
+  }
+  #section-{{ section.id }} .row-col.first {
+    justify-content: flex-start;
+    color: #333;
+  }
+  #section-{{ section.id }} .status-icon {
+    font-size: 20px;
+    font-weight: 800;
+  }
+  #section-{{ section.id }} .status-icon.check {
+    color: #007e40;
+  }
+  #section-{{ section.id }} .status-icon.cross {
+    color: #D32F2F;
+    opacity: 0.6;
+  }
+  @media (max-width: 600px) {
+    #section-{{ section.id }} .table-header,
+    #section-{{ section.id }} .table-row {
+      padding: 15px 20px;
+      grid-template-columns: 1.5fr 1fr 1fr;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Comparison Table (Laushe)",
+  "settings": [
+    { "id": "heading", "type": "text", "label": "Heading", "default": "The Laushe Standard" },
+    { "id": "bg_color", "type": "color", "label": "Background Color", "default": "#FAF7F2" }
+  ],
+  "blocks": [
+    {
+      "type": "row",
+      "name": "Comparison Row",
+      "settings": [
+        { "id": "feature", "type": "text", "label": "Feature", "default": "100% Natural Ingredients" },
+        { "id": "laushe", "type": "checkbox", "label": "Laushe (Check)", "default": true },
+        { "id": "generic", "type": "checkbox", "label": "Generic (Check)", "default": false }
+      ]
+    }
+  ],
+  "presets": [
+    { 
+      "name": "Comparison Table (Laushe)", 
+      "category": "Laushe Sections",
+      "blocks": [
+        { "type": "row", "settings": { "feature": "100% Natural Ingredients", "laushe": true, "generic": false } },
+        { "type": "row", "settings": { "feature": "Sunnah Blessed Formulation", "laushe": true, "generic": false } },
+        { "type": "row", "settings": { "feature": "No Artificial Additives", "laushe": true, "generic": false } },
+        { "type": "row", "settings": { "feature": "Clinically Tested", "laushe": true, "generic": false } },
+        { "type": "row", "settings": { "feature": "Ethically Sourced", "laushe": true, "generic": false } },
+        { "type": "row", "settings": { "feature": "Tested for Purity", "laushe": true, "generic": false } }
+      ]
+    }
+  ]
+}
+{% endschema %}

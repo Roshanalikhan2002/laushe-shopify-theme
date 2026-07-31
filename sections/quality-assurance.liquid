@@ -1,0 +1,101 @@
+{% schema %}
+{
+  "name": "Quality Trust Badges",
+  "settings": [
+    { "id": "heading", "type": "text", "label": "Heading", "default": "Quality You Can Trust" },
+    { "id": "subheading", "type": "text", "label": "Subheading", "default": "Our products are regularly tested to ensure purity and authenticity." }
+  ],
+  "blocks": [
+    {
+      "type": "badge",
+      "name": "Badge Item",
+      "limit": 4,
+      "settings": [
+        { "id": "icon_name", "type": "select", "label": "Icon", "options": [
+            {"value": "beaker", "label": "Beaker (Pesticides)"},
+            {"value": "skull", "label": "Skull (Heavy Metals)"},
+            {"value": "leaf", "label": "Leaf (Organic)"},
+            {"value": "globe", "label": "Globe (Sourced)"}
+          ], "default": "leaf" 
+        },
+        { "id": "label", "type": "text", "label": "Label", "default": "100% Organic" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Quality Trust Badges", "category": "Laushe Sections" }]
+}
+{% endschema %}
+
+<section class="quality-trust section-padding">
+  <div class="container text-center">
+    <div class="trust-header" style="margin-bottom: 60px;">
+      <h2 class="trust-title">{{ section.settings.heading }}</h2>
+      <p class="trust-subtitle">{{ section.settings.subheading }}</p>
+    </div>
+
+    <div class="trust-grid">
+      {% for block in section.blocks %}
+        <div class="trust-item" {{ block.shopify_attributes }}>
+          <div class="trust-icon">
+            {% render 'icon-laushe', name: block.settings.icon_name %}
+          </div>
+          <h3 class="trust-item-label">{{ block.settings.label }}</h3>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<style>
+  .trust-title {
+    font-size: 36px;
+    font-weight: 800;
+    color: #007e40;
+    margin-bottom: 15px;
+    font-family: 'Nunito', sans-serif;
+  }
+  
+  .trust-subtitle {
+    font-size: 16px;
+    color: #666;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .trust-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  
+  .trust-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+  
+  .trust-icon svg {
+    width: 48px;
+    height: 48px;
+    color: #007e40;
+    stroke-width: 1.5;
+  }
+  
+  .trust-item-label {
+    font-size: 18px;
+    font-weight: 800;
+    color: #007e40;
+    font-family: 'Nunito', sans-serif;
+  }
+  
+  @media (max-width: 768px) {
+    .trust-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 50px 20px;
+    }
+    .trust-title { font-size: 28px; }
+  }
+</style>

@@ -1,0 +1,637 @@
+{% schema %}
+{
+  "name": "Product (AG1-Inspired)",
+  "settings": [
+    { "id": "promo_banner", "type": "text", "label": "Promo Banner Text", "default": "Includes a FREE Frother**" },
+    { "id": "stars_count", "type": "text", "label": "Review Count Label", "default": "50,000+ verified 5-star reviews for Laushe products" },
+    { "id": "sub_discount", "type": "number", "label": "Subscription Discount (%)", "default": 25 },
+    { "id": "custom_one_time_price", "type": "text", "label": "Custom One-Time Price (e.g. Rs.1,490)", "info": "Leave blank to use Shopify's price." },
+    { "id": "custom_sub_price", "type": "text", "label": "Custom Subscription Price (e.g. Rs.1,117)", "info": "Leave blank to use auto-calculated price." },
+    { "id": "enable_subscription", "type": "checkbox", "label": "Enable Subscription Option", "default": true },
+    { "id": "enable_bogo", "type": "checkbox", "label": "Enable BOGO Offer", "default": false },
+    { "id": "bogo_badge", "type": "text", "label": "BOGO Badge Text", "default": "LIMITED TIME OFFER" },
+    { "id": "bogo_title", "type": "text", "label": "BOGO Title", "default": "Buy 1 Get 1 FREE" },
+    { "id": "bogo_price", "type": "text", "label": "BOGO Price Label", "default": "Rs.1,690" },
+    { "id": "bogo_benefits", "type": "textarea", "label": "BOGO Benefits (one per line)", "default": "Get 2 jars of Chia Seeds\nPremium Quality Guaranteed" }
+  ],
+  "blocks": [
+    {
+      "type": "accordion",
+      "name": "Info Accordion",
+      "settings": [
+        { "id": "title", "type": "text", "label": "Accordion Title", "default": "What is it?" },
+        { "id": "content", "type": "textarea", "label": "Accordion Content", "default": "Laushe product is a nighttime drink designed to support restful, restorative sleep." }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Product (AG1-Inspired)", "category": "Laushe Product" }]
+}
+{% endschema %}
+
+{% assign prod_title = product.title | downcase %}
+
+{% comment %} Force BOGO for specific products {% endcomment %}
+{% assign force_bogo = false %}
+{% assign hide_onetime = false %}
+{% if prod_title contains 'chia' or prod_title contains 'hair oil' or prod_title contains 'skin sips' or prod_title contains 'skinny sips' %}
+  {% assign force_bogo = true %}
+  {% assign hide_onetime = true %}
+{% endif %}
+
+{% comment %} Handle Bundle of 3 for Panjiri, Ghee, and Honey {% endcomment %}
+{% assign enable_bundle = false %}
+{% if prod_title contains 'panjiri' or prod_title contains 'ghee' or prod_title contains 'honey' %}
+  {% assign enable_bundle = true %}
+{% endif %}
+
+{% comment %} GLOBAL: Remove subscription from all pages as per user request {% endcomment %}
+{% assign enable_sub = false %}
+
+{% if force_bogo %}
+  {% assign enable_bogo = true %}
+{% else %}
+  {% assign enable_bogo = section.settings.enable_bogo %}
+{% endif %}
+
+<section class="laushe-product-v3" data-section-id="{{ section.id }}">
+  <div class="container-wide">
+    
+    <!-- TOP NAVIGATION & RATINGS -->
+    <div class="product-top-meta">
+      <div class="breadcrumbs">
+        <a href="/collections/all">Shop All</a> / <span class="current-crumb">{{ product.title }}</span>
+      </div>
+      <div class="top-ratings">
+        <span class="stars-v3">★★★★★</span>
+        <span class="reviews-v3">{{ section.settings.stars_count }}</span>
+      </div>
+    </div>
+
+    <!-- MAIN PRODUCT GRID -->
+    <div class="product-grid-v3">
+      
+      <!-- LEFT: VISUALS -->
+      <div class="product-visuals-v3">
+        {% comment %} <div class="promo-banner-v3">{{ section.settings.promo_banner }}</div> {% endcomment %}
+        <div class="product-img-wrapper-v3">
+          {% assign main_img = product.featured_image | img_url: '1000x1000' %}
+          {% if product.handle contains 'hair-oil' %}
+            {% assign main_img = 'hair-oil-v2.jpg' | asset_url %}
+          {% endif %}
+          <img src="{{ main_img }}" alt="{{ product.title }}" class="main-img-v3" id="MainProductImage">
+        </div>
+        <!-- Thumbnails gallery (optional but adds premium feel) -->
+        <div class="product-thumbs-v3">
+           {% for image in product.images %}
+             <img src="{{ image | img_url: '200x200', crop: 'center' }}" class="thumb-v3 {% if forloop.first %}active{% endif %}" onclick="switchProductImg(this, '{{ image | img_url: '1000x1000' }}')">
+           {% endfor %}
+        </div>
+      </div>
+
+      <!-- RIGHT: PURCHASING (Sticky Column) -->
+      <div class="product-buying-v3">
+        <div class="sticky-box-v3">
+          <h1 class="product-title-v3">{{ product.title }}</h1>
+          
+          {% if force_bogo %}
+            <div class="bogo-glimmer-badge">
+              <ion-icon name="flash-outline"></ion-icon>
+              <span>BUY 1 GET 1 FREE OFFER</span>
+            </div>
+          {% endif %}
+          
+          <form method="post" action="/cart/add" id="AG1ProductForm" class="laushe-atc-form-v3">
+            <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}" id="SelectedVariantId">
+            <input type="hidden" name="quantity" value="1">
+
+            <!-- 1. SERVING SELECTION (If variant "Size" exists) -->
+            {%- assign serving_option = product.options_with_values | where: 'name', 'Size' | first -%}
+            {% if serving_option %}
+              <div class="variant-label-v3">Select Size</div>
+              <div class="serving-selector-v3">
+                {% for value in serving_option.values %}
+                  <div class="serving-box {% if serving_option.selected_value == value %}active{% endif %}" 
+                       data-value="{{ value }}"
+                       onclick="switchServing(this, '{{ value }}')">
+                    <div class="serving-badge">{% if forloop.last %}BEST VALUE{% else %}MOST POPULAR{% endif %}</div>
+                    <div class="serving-name">{{ value }}</div>
+                    <div class="serving-price-unit">{{ product.variants[forloop.index0].price | money }}/serving</div>
+                  </div>
+                {% endfor %}
+              </div>
+            {% endif %}
+
+            <!-- 2. FLAVOR SELECTION (If variant "Flavor" exists) -->
+            {%- assign flavor_option = product.options_with_values | where: 'name', 'Flavor' | first -%}
+            {% if flavor_option %}
+              <div class="variant-label-v3">Flavor</div>
+              <div class="flavor-selector-v3">
+                {% for value in flavor_option.values %}
+                  <div class="flavor-swatch-v3 {% if flavor_option.selected_value == value %}active{% endif %}"
+                       data-value="{{ value }}"
+                       onclick="switchFlavor(this, '{{ value }}')">
+                    <span class="swatch-circle" style="background: #ffcc33;"></span>
+                    <span class="swatch-name">{{ value }}</span>
+                  </div>
+                {% endfor %}
+              </div>
+            {% endif %}
+
+            <!-- 3. PURCHASE OPTIONS -->
+            <div class="purchase-box-v3">
+               {% if enable_sub %}
+                 <div class="sub-pricing-banner">
+                   <ion-icon name="sparkles-outline"></ion-icon>
+                   Unlock {{ section.settings.sub_discount }}% Pricing with a Laushe Subscription
+                 </div>
+                 
+                 <!-- Subscribe Option -->
+                 <div class="purchase-method active" data-method="sub" onclick="switchPurchaseMethod(this, 'sub')">
+                    <div class="method-radio"><div class="radio-inner"></div></div>
+                    <div class="method-content">
+                      <div class="method-header">
+                        <span class="method-name">Subscribe & Save</span>
+                        {% assign default_sub_price = product.selected_or_first_available_variant.price | times: 0.75 | money %}
+                        <span class="method-price" id="SubPrice">
+                          {{ section.settings.custom_sub_price | default: default_sub_price | append: '/mo' }}
+                        </span>
+                      </div>
+                      {% comment %}
+                      <ul class="method-benefits">
+                        <li>✔ Free shipping delivered every 30 days</li>
+                        <li>✔ Includes a Free Frother**</li>
+                        <li>✔ Easily pause, skip, or cancel</li>
+                        <li>✔ 90-Day Money Back Guarantee</li>
+                      </ul>
+                      {% endcomment %}
+                    </div>
+                 </div>
+               {% endif %}
+
+               {% if enable_bogo %}
+
+                 <!-- BOGO Option -->
+                  <div class="purchase-method active" data-method="bogo" onclick="switchPurchaseMethod(this, 'bogo')">
+                    <div class="method-radio"><div class="radio-inner"></div></div>
+                    <div class="method-content">
+                      <div class="method-header">
+                        <span class="method-name">{% if force_bogo %}Buy 1 Get 1 FREE Offer{% else %}{{ section.settings.bogo_title }}{% endif %}</span>
+                        <span class="method-price" id="BogoPrice">
+                          {% if force_bogo %}{{ product.selected_or_first_available_variant.price | money }}{% else %}{{ section.settings.bogo_price }}{% endif %}
+                        </span>
+                      </div>
+                      
+                      {% if force_bogo %}
+                         <div class="gwp-selection-v3">
+                            <div class="gwp-header-v3">
+                              <ion-icon name="gift-outline"></ion-icon>
+                              <span>Choose your free item</span>
+                            </div>
+                            
+                            <div class="gwp-options-v3">
+                               {% assign current_handle = product.handle %}
+                               {% comment %} Correct Handles for the Trio {% endcomment %}
+                               {% assign handles = "skinny-sips-weight-loss-kehwa,royce-hair-oil-sunnah-blessed,hair-oil,chia-seeds300gm,chia-seeds-380g" | split: "," %}
+                               
+                               {% for h in handles %}
+                                 {% if h != current_handle %}
+                                   {% assign g_prod = all_products[h] %}
+                                   {% if g_prod != blank %}
+                                     <div class="gwp-item-v3" onclick="selectGWP(this, '{{ g_prod.selected_or_first_available_variant.id }}', event)">
+                                        <div class="gwp-radio-v3"></div>
+                                        <img src="{{ g_prod.featured_image | img_url: '100x100', crop: 'center' }}" alt="{{ g_prod.title }}">
+                                        <div class="gwp-info-v3">
+                                          <div class="gwp-name-v3">{{ g_prod.title }}</div>
+                                          <div class="gwp-price-row-v3">
+                                            <span class="gwp-old-price-v3">{{ g_prod.price | money }}</span>
+                                            <span class="gwp-free-v3">FREE</span>
+                                          </div>
+                                        </div>
+                                     </div>
+                                   {% endif %}
+                                 {% endif %}
+                               {% endfor %}
+                               
+                               {% comment %} Option for a second unit of the current product {% endcomment %}
+                               <div class="gwp-item-v3 active" onclick="selectGWP(this, '{{ product.selected_or_first_available_variant.id }}', event)">
+                                  <div class="gwp-radio-v3"></div>
+                                  <img src="{{ product.featured_image | img_url: '100x100', crop: 'center' }}" alt="{{ product.title }}">
+                                  <div class="gwp-info-v3">
+                                    <div class="gwp-name-v3">{{ product.title }} (Another one)</div>
+                                    <div class="gwp-price-row-v3">
+                                      <span class="gwp-old-price-v3">{{ product.price | money }}</span>
+                                      <span class="gwp-free-v3">FREE</span>
+                                    </div>
+                                  </div>
+                               </div>
+                            </div>
+                         </div>
+                         <input type="hidden" name="gift_id" id="SelectedGiftId" value="{{ product.selected_or_first_available_variant.id }}">
+                       {% endif %}
+                    </div>
+                 </div>
+               {% endif %}
+
+                {% unless hide_onetime %}
+                  <!-- One-time Option -->
+                  <div class="purchase-method {% unless enable_bogo or enable_sub %}active{% endunless %}" data-method="onetime" onclick="switchPurchaseMethod(this, 'onetime')">
+                     <div class="method-radio"><div class="radio-inner"></div></div>
+                     <div class="method-content">
+                       <div class="method-header">
+                         <span class="method-name">Buy one time</span>
+                         <span class="method-price" id="OneTimePrice">
+                           {{ section.settings.custom_one_time_price | default: product.selected_or_first_available_variant.price | money }}
+                         </span>
+                       </div>
+                     </div>
+                  </div>
+                {% endunless %}
+
+                {% if enable_bundle %}
+                  <!-- Bundle Option -->
+                  <div class="purchase-method" data-method="bundle" onclick="switchPurchaseMethod(this, 'bundle')">
+                     <div class="method-radio"><div class="radio-inner"></div></div>
+                     <div class="method-content">
+                       <div class="method-header">
+                         <span class="method-name">Buy bundle of 3</span>
+                         <span class="method-badge-v3" style="background: #ffcc33; color: white; padding: 2px 8px; border-radius: 4px; font-size: 10px; margin-left: 10px; font-weight: 800;">SAVE MORE</span>
+                         <span class="method-price" id="BundlePrice">
+                           {{ product.selected_or_first_available_variant.price | times: 3 | money }}
+                         </span>
+                       </div>
+                     </div>
+                  </div>
+                {% endif %}
+            </div>
+
+            <!-- ADD TO CART -->
+            <button type="submit" class="atc-btn-v3">
+              <span class="atc-text">Add to Cart &rarr;</span>
+              <span class="atc-loading" style="display: none;">Adding...</span>
+            </button>
+          </form>
+
+          <!-- ACCORDIONS -->
+          <div class="product-accordions-v3">
+            {% for block in section.blocks %}
+               <div class="accordion-v3" {{ block.shopify_attributes }}>
+                 <div class="accordion-header-v3" onclick="toggleAccordion(this)">
+                   {{ block.settings.title }}
+                   <ion-icon name="add-outline" class="acc-icon"></ion-icon>
+                 </div>
+                 <div class="accordion-content-v3">
+                   {{ block.settings.content }}
+                 </div>
+               </div>
+            {% endfor %}
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  .laushe-product-v3 { padding: 40px 0 100px; background: #fff; }
+  .container-wide { max-width: 1300px; margin: 0 auto; padding: 0 30px; }
+  
+  .product-top-meta { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; padding-bottom: 20px; border-bottom: 1px solid #f0f0f0; }
+  .breadcrumbs { font-size: 13px; color: #888; font-weight: 500; }
+  .breadcrumbs a { color: #888; text-decoration: none; }
+  .current-crumb { color: #333; font-weight: 700; margin-left: 5px; }
+  
+  .stars-v3 { color: #4CAF50; font-size: 14px; letter-spacing: 2px; }
+  .reviews-v3 { font-size: 13px; color: #555; font-weight: 600; margin-left: 10px; }
+
+  /* Grid Layout */
+  .product-grid-v3 { display: grid; grid-template-columns: 1.1fr 1fr; gap: 80px; align-items: flex-start; }
+  
+  /* Visuals Column — stays fixed while right column scrolls */
+  .product-visuals-v3 { position: sticky; top: 120px; }
+  
+  /* Buying column scrolls naturally — no sticky, no overflow hiding */
+  .product-buying-v3 { overflow: visible; }
+  .promo-banner-v3 { background: #00FF00; color: #000; font-weight: 800; font-size: 14px; text-align: center; padding: 12px; border-radius: 4px; margin-bottom: 30px; }
+  .main-img-v3 { width: 100%; height: auto; border-radius: 12px; transition: opacity 0.3s ease; }
+  .product-thumbs-v3 { display: flex; gap: 15px; margin-top: 20px; overflow-x: auto; }
+  .thumb-v3 { width: 80px; height: 80px; object-fit: cover; border-radius: 8px; cursor: pointer; border: 2px solid transparent; }
+  .thumb-v3.active { border-color: #007e40; }
+
+  /* Buying column — all content visible, no clipping */
+  .sticky-box-v3 { position: static; }
+  
+  /* Product Title */
+  .product-title-v3 { font-size: 48px; font-weight: 800; color: #007e40; margin-bottom: 40px; font-family: 'Nunito', sans-serif; line-height: 1.1; }
+  
+  .variant-label-v3 { font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; color: #999; margin-bottom: 15px; }
+  
+  /* Serving Selector */
+  .serving-selector-v3 { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 35px; }
+  .serving-box { border: 1.5px solid #eee; border-radius: 10px; padding: 25px 20px; cursor: pointer; transition: all 0.2s ease; position: relative; }
+  .serving-box.active { border-color: #007e40; background: #f9fdf9; }
+  .serving-badge { background: #00FF00; color: #000; font-size: 10px; font-weight: 800; padding: 3px 8px; border-radius: 4px; position: absolute; top: -10px; left: 20px; }
+  .serving-name { font-size: 20px; font-weight: 800; color: #007e40; margin-bottom: 5px; }
+  .serving-price-unit { font-size: 13px; color: #888; font-weight: 600; }
+
+  /* Flavor Selector */
+  .flavor-selector-v3 { display: flex; gap: 15px; flex-wrap: wrap; margin-bottom: 40px; }
+  .flavor-swatch-v3 { border: 1.5px solid #eee; border-radius: 50px; padding: 8px 18px; display: flex; align-items: center; gap: 10px; cursor: pointer; transition: all 0.2s; }
+  .flavor-swatch-v3.active { border-color: #007e40; background: #f9fdf9; }
+  .swatch-circle { width: 14px; height: 14px; border-radius: 50%; display: block; }
+  .swatch-name { font-size: 14px; font-weight: 700; color: #333; }
+
+  /* Purchase Options */
+  .purchase-box-v3 { border-radius: 12px; overflow: hidden; border: 1px solid #007e40; margin-bottom: 40px; }
+  .sub-pricing-banner { background: #007e40; color: white; padding: 12px 20px; display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 14px; }
+  
+  .purchase-method { padding: 25px 20px; display: flex; gap: 15px; cursor: pointer; transition: background 0.2s; border-bottom: 1px solid #f0f0f0; }
+  .purchase-method:last-child { border-bottom: none; }
+  .purchase-method.active { background: #f9fdf9; }
+  
+  .method-radio { width: 22px; height: 22px; border: 2px solid #ddd; border-radius: 50%; flex-shrink: 0; margin-top: 2px; display: flex; align-items: center; justify-content: center; }
+  .purchase-method.active .method-radio { border-color: #007e40; }
+  .radio-inner { width: 12px; height: 12px; border-radius: 50%; background: #007e40; transform: scale(0); transition: transform 0.2s; }
+  .purchase-method.active .radio-inner { transform: scale(1); }
+  
+  .method-content { flex: 1; }
+  .method-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px; }
+  .method-name { font-size: 18px; font-weight: 800; color: #007e40; }
+  .method-price { font-size: 18px; font-weight: 800; color: #333; }
+  
+  .method-benefits { list-style: none; padding: 0; margin: 15px 0 0; display: none; }
+  .purchase-method.active .method-benefits { display: block; }
+  .method-benefits li { font-size: 14px; color: #555; margin-bottom: 8px; font-weight: 600; }
+
+  /* ATC Button */
+  .atc-btn-v3 { width: 100%; padding: 22px; background: #007e40; color: white; border: none; border-radius: 50px; font-size: 18px; font-weight: 800; cursor: pointer; transition: all 0.3s ease; margin-bottom: 40px; font-family: 'Nunito', sans-serif; }
+  .atc-btn-v3:hover { background: #005c2e; transform: translateY(-3px); box-shadow: 0 15px 30px rgba(0, 126, 64,0.2); }
+
+  /* Accordions */
+  .accordion-v3 { border-bottom: 1px solid #f0f0f0; }
+  .accordion-header-v3 { padding: 20px 0; display: flex; justify-content: space-between; align-items: center; cursor: pointer; font-size: 18px; font-weight: 800; color: #007e40; transition: color 0.2s; }
+  .accordion-header-v3:hover { color: #ffcc33; }
+  .accordion-content-v3 { padding-bottom: 25px; font-size: 14px; color: #666; line-height: 1.6; display: none; }
+  .accordion-v3.active .accordion-content-v3 { display: block; }
+  .acc-icon { transition: transform 0.3s; font-size: 20px; }
+  .accordion-v3.active .acc-icon { transform: rotate(45deg); }
+
+  /* GWP Selection */
+  .gwp-selection-v3 { margin-top: 20px; padding-top: 20px; border-top: 1px solid #eee; }
+  .gwp-header-v3 { display: flex; align-items: center; gap: 8px; font-weight: 700; color: #333; font-size: 14px; margin-bottom: 15px; }
+  .gwp-options-v3 { display: flex; flex-direction: column; gap: 10px; }
+  .gwp-item-v3 { display: flex; align-items: center; gap: 12px; padding: 12px; border: 1px solid #eee; border-radius: 8px; cursor: pointer; transition: all 0.2s; position: relative; }
+  .gwp-item-v3:hover { background: #f9f9f9; }
+  .gwp-item-v3.active { border-color: #007e40; background: #f0f7f3; }
+  
+  .gwp-radio-v3 { width: 16px; height: 16px; border: 2px solid #ddd; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .gwp-item-v3.active .gwp-radio-v3 { border-color: #007e40; }
+  .gwp-item-v3.active .gwp-radio-v3::after { content: ""; width: 8px; height: 8px; background: #007e40; border-radius: 50%; display: block; }
+  
+  .gwp-item-v3 img { width: 45px !important; height: 45px !important; object-fit: cover; border-radius: 4px; }
+  .gwp-info-v3 { flex: 1; }
+  .gwp-name-v3 { font-size: 14px; font-weight: 700; color: #007e40; }
+  .gwp-price-row-v3 { display: flex; align-items: center; gap: 8px; font-size: 12px; margin-top: 2px; }
+  .gwp-old-price-v3 { text-decoration: line-through; color: #888; }
+  .gwp-free-v3 { color: #666; font-weight: 800; }
+
+  /* BOGO Badge Styles */
+  .bogo-glimmer-badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #e67e22;
+    color: #fff;
+    padding: 10px 18px;
+    border-radius: 50px;
+    font-size: 14px;
+    font-weight: 800;
+    margin-bottom: 25px;
+    width: fit-content;
+    box-shadow: 0 4px 15px rgba(230, 126, 34, 0.3);
+    border: 1px solid rgba(255,255,255,0.2);
+    animation: pulse-orange 2s infinite;
+  }
+
+  @keyframes pulse-orange {
+    0% { transform: scale(1); box-shadow: 0 4px 15px rgba(230, 126, 34, 0.3); }
+    50% { transform: scale(1.02); box-shadow: 0 6px 20px rgba(230, 126, 34, 0.5); }
+    100% { transform: scale(1); box-shadow: 0 4px 15px rgba(230, 126, 34, 0.3); }
+  }
+
+  @media (max-width: 1000px) {
+    .product-grid-v3 { grid-template-columns: 1fr; gap: 50px; }
+    .product-visuals-v3 { position: static; }
+    .product-title-v3 { font-size: 36px; }
+  }
+</style>
+
+<script>
+  // === LAUSHE PRODUCT PAGE v3 ===
+
+  // Store all variants from Shopify
+  window.lausheVariants = {{ product.variants | json }};
+  window.lausheSelectedVariantId = {{ product.selected_or_first_available_variant.id }};
+
+  // Keep the hidden input in sync
+  function syncVariantInput() {
+    document.getElementById('SelectedVariantId').value = window.lausheSelectedVariantId;
+  }
+
+  function updateVariantId() {
+    const activeSize = document.querySelector('.serving-box.active')?.dataset.value;
+    const activeFlavor = document.querySelector('.flavor-swatch-v3.active')?.dataset.value;
+
+    const variant = window.lausheVariants.find(v => {
+      const vals = [v.option1, v.option2, v.option3].filter(Boolean);
+      if (activeSize && !vals.includes(activeSize)) return false;
+      if (activeFlavor && !vals.includes(activeFlavor)) return false;
+      return true;
+    });
+
+    if (variant) {
+      window.lausheSelectedVariantId = variant.id;
+      syncVariantInput();
+      // Update displayed prices — guard against elements not existing on BOGO-only pages
+      const priceInPaise = variant.price;
+      const customOneTime = "{{ section.settings.custom_one_time_price }}";
+      const customSub = "{{ section.settings.custom_sub_price }}";
+
+      const oneTimePriceEl = document.getElementById('OneTimePrice');
+      if (oneTimePriceEl) {
+        oneTimePriceEl.innerText = customOneTime || ('Rs. ' + (priceInPaise / 100).toLocaleString());
+      }
+
+      const subPriceEl = document.getElementById('SubPrice');
+      if (subPriceEl) {
+        subPriceEl.innerText = customSub ? (customSub + '/mo') : ('Rs. ' + Math.round(priceInPaise * 0.75 / 100).toLocaleString() + '/mo');
+      }
+
+      const bogoPriceEl = document.getElementById('BogoPrice');
+      if (bogoPriceEl) {
+        bogoPriceEl.innerText = customOneTime || ('Rs. ' + (priceInPaise / 100).toLocaleString());
+      }
+    }
+  }
+
+  function switchProductImg(el, src) {
+    document.getElementById('MainProductImage').src = src;
+    document.querySelectorAll('.thumb-v3').forEach(t => t.classList.remove('active'));
+    el.classList.add('active');
+  }
+
+  function toggleAccordion(el) {
+    el.parentElement.classList.toggle('active');
+  }
+
+  function switchServing(el, val) {
+    document.querySelectorAll('.serving-box').forEach(b => b.classList.remove('active'));
+    el.classList.add('active');
+    updateVariantId();
+  }
+
+  function switchFlavor(el, val) {
+    document.querySelectorAll('.flavor-swatch-v3').forEach(s => s.classList.remove('active'));
+    el.classList.add('active');
+    updateVariantId();
+  }
+
+    window.switchPurchaseMethod = function(el, method) {
+      document.querySelectorAll('.purchase-method').forEach(m => m.classList.remove('active'));
+      el.classList.add('active');
+      window.laushe_selected_purchase_method = method;
+      
+      // Update quantity or hidden fields if needed
+      if (method === 'bundle') {
+        document.querySelector('input[name="quantity"]').value = "3";
+      } else if (method === 'bogo') {
+        document.querySelector('input[name="quantity"]').value = "1";
+      } else {
+        document.querySelector('input[name="quantity"]').value = "1";
+      }
+    };
+
+  function selectGWP(el, giftId, e) {
+    e.stopPropagation();
+    document.querySelectorAll('.gwp-item-v3').forEach(i => i.classList.remove('active'));
+    el.classList.add('active');
+    document.getElementById('SelectedGiftId').value = giftId;
+  }
+
+  // === LAUSHE PRODUCT PAGE v3 ===
+  document.addEventListener('DOMContentLoaded', function() {
+    syncVariantInput();
+    
+    // 1. Auto-detect the active purchase method
+    (function initPurchaseMethod() {
+      var activeMethod = document.querySelector('.purchase-method.is-active, .purchase-method.active');
+      if (activeMethod) {
+        window.laushe_selected_purchase_method = activeMethod.dataset.method;
+      } else {
+        var firstMethod = document.querySelector('.purchase-method');
+        if (firstMethod) {
+          firstMethod.classList.add('active');
+          window.laushe_selected_purchase_method = firstMethod.dataset.method;
+        }
+      }
+    })();
+
+    // 2. Setup Add to Cart handler
+    const productForm = document.getElementById('AG1ProductForm');
+    if (productForm) {
+      productForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const btn = this.querySelector('.atc-btn-v3');
+        const textEl = btn.querySelector('.atc-text');
+        const loadEl = btn.querySelector('.atc-loading');
+
+        syncVariantInput();
+
+        const variantId = document.getElementById('SelectedVariantId').value;
+        if (!variantId) {
+          alert('Please select a variant.');
+          return;
+        }
+
+        // Button loading state
+        if (textEl) textEl.style.display = 'none';
+        if (loadEl) loadEl.style.display = 'inline';
+        if (btn) btn.disabled = true;
+
+        const method = window.laushe_selected_purchase_method;
+        let itemsToAdd = [];
+
+        if (method === 'bogo') {
+          const giftId = document.getElementById('SelectedGiftId').value;
+          itemsToAdd = [
+            { id: parseInt(variantId), quantity: 1 },
+            { id: parseInt(giftId), quantity: 1, properties: { '_is_gift': 'true' } }
+          ];
+        } else if (method === 'bundle') {
+          itemsToAdd = [{ id: parseInt(variantId), quantity: 3 }];
+        } else {
+          itemsToAdd = [{ id: parseInt(variantId), quantity: 1 }];
+        }
+
+        fetch('/cart/add.js', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ items: itemsToAdd })
+        })
+        .then(res => {
+          if (!res.ok) return res.json().then(errData => { throw new Error(errData.description || errData.message || 'Cart add failed'); });
+          return res.json();
+        })
+        .then(data => {
+          // Success feedback
+          if (textEl) {
+            textEl.innerText = '\u2713 Added to Cart!';
+            textEl.style.display = 'inline';
+          }
+          if (loadEl) loadEl.style.display = 'none';
+          if (btn) {
+            btn.disabled = false;
+            btn.style.background = '#2d7a4f';
+          }
+
+          setTimeout(() => {
+            if (textEl) textEl.innerText = 'Add to Cart \u2192';
+            if (btn) btn.style.background = '';
+          }, 2000);
+
+          // Update counts and open drawer
+          fetch('/cart.js').then(r => r.json()).then(cart => {
+            document.querySelectorAll('.cart-count, [data-cart-count], .cart-item-count, .header-cart-count').forEach(el => {
+              el.textContent = cart.item_count;
+              if (el.classList.contains('header-cart-count')) el.style.display = cart.item_count > 0 ? 'flex' : 'none';
+            });
+          }).catch(() => {});
+
+          if (window.LausheCart && typeof window.LausheCart.open === 'function') {
+            window.LausheCart.open();
+          } else {
+            document.dispatchEvent(new CustomEvent('cart:updated', { detail: data }));
+          }
+        })
+        .catch(err => {
+          console.error('ATC error:', err);
+          if (textEl) {
+            textEl.innerText = err.message || 'Error \u2013 Try Again';
+            textEl.style.display = 'inline';
+          }
+          if (loadEl) loadEl.style.display = 'none';
+          if (btn) {
+            btn.disabled = false;
+            btn.style.background = '#c0392b';
+          }
+          setTimeout(() => {
+            if (textEl) textEl.innerText = 'Add to Cart \u2192';
+            if (btn) btn.style.background = '';
+          }, 2500);
+        });
+      });
+    }
+  });
+</script>

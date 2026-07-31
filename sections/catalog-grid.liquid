@@ -1,0 +1,472 @@
+{% schema %}
+{
+  "name": "Wellness Collection Grid",
+  "settings": [
+    { "id": "heading", "type": "text", "label": "Heading", "default": "Shop Our Entire Wellness Collection" },
+    { "id": "subheading", "type": "text", "label": "Subheading", "default": "Pure, Raw, and Bio-available supplements for every stage of your health journey." },
+    { "id": "collection", "type": "collection", "label": "Source Collection", "info": "Select the collection to show (e.g. 'All Products')" },
+    { "type": "header", "content": "Filter Tab 1" },
+    { "id": "tab1_label", "type": "text", "label": "Label", "default": "All Products" },
+    { "type": "header", "content": "Filter Tab 2" },
+    { "id": "tab2_label", "type": "text", "label": "Label", "default": "Healthcare" },
+    { "id": "tab2_tag", "type": "text", "label": "Tag to Match", "default": "healthcare", "info": "Products must have this tag to show in this tab." },
+    { "type": "header", "content": "Filter Tab 3" },
+    { "id": "tab3_label", "type": "text", "label": "Label", "default": "Organic" },
+    { "id": "tab3_tag", "type": "text", "label": "Tag to Match", "default": "organic", "info": "Products must have this tag to show in this tab." }
+  ],
+  "blocks": [
+    {
+      "type": "product_override",
+      "name": "Product Override",
+      "settings": [
+        { "id": "target_product", "type": "product", "label": "Apply to this Product" },
+        { "id": "title", "type": "text", "label": "Custom Title" },
+        { "id": "desc", "type": "textarea", "label": "Custom Description" },
+        { "id": "image", "type": "image_picker", "label": "Custom Image" },
+        { "id": "price", "type": "text", "label": "Custom Price Text (e.g. Rs.2,990)" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Wellness Collection Grid", "category": "Laushe Sections" }]
+}
+{% endschema %}
+
+<section class="wellness-catalog section-padding" style="background-color: #e9f3ed; border-top: 20px solid #FFF;" id="section-{{ section.id }}" data-section-id="{{ section.id }}">
+  <div id="laushe-shop" style="position: absolute; top: -100px;"></div>
+  <div class="container">
+    
+    <!-- HEADER -->
+    <div class="catalog-header text-center" style="margin-bottom: 60px;">
+      <h2 class="catalog-title">{{ section.settings.heading }}</h2>
+      <p class="catalog-subtitle">{{ section.settings.subheading }}</p>
+    </div>
+
+    <!-- FILTER BAR -->
+    <div class="catalog-filters">
+      <button class="filter-btn active" data-filter="all">{{ section.settings.tab1_label }}</button>
+      {% if section.settings.tab2_label != blank %}
+        <button class="filter-btn" data-filter="{{ section.settings.tab2_tag | handle }}">{{ section.settings.tab2_label }}</button>
+      {% endif %}
+      {% if section.settings.tab3_label != blank %}
+        <button class="filter-btn" data-filter="{{ section.settings.tab3_tag | handle }}">{{ section.settings.tab3_label }}</button>
+      {% endif %}
+      <button class="filter-btn" data-filter="makeup">Makeup</button>
+    </div>
+
+    <!-- PRODUCT GRID -->
+    <div class="catalog-grid-wrapper">
+      <div class="catalog-grid" id="laushe-catalog-grid-{{ section.id }}">
+        {% assign target_collection = section.settings.collection | default: collections.all %}
+        {% assign priority_handles = "liquid-blush,skin-tint,skinny-sips-weight-loss-kehwa,royce-hair-oil-sunnah-blessed,chia-seeds-380g,desi-ghee,golden-elixir,pure-honey450-gm" | split: "," %}
+        {% assign pastel_bgs = "#F3E6E0,#E4EFE8,#F0EADF,#E8F1F4,#F5EDE3,#E9F0E6" | split: "," %}
+        {% assign card_index = 0 %}
+
+        {% comment %} PASS 1: SPECIFIC SORTED ORDER {% endcomment %}
+        {% for p_handle in priority_handles %}
+          {% for product in target_collection.products %}
+            {% if product.handle == p_handle %}
+              {% assign product_tags_string = product.tags | join: ',' | downcase %}
+              {% if product.handle contains 'skin-tint' or product.handle contains 'liquid-blush' %}
+                 {% assign product_tags_string = product_tags_string | append: ',makeup' %}
+              {% endif %}
+
+              {% assign display_title = product.title %}
+              {% assign display_img = blank %}
+              {% if product.featured_image %}
+                {% assign display_img = product.featured_image | image_url: width: 800 %}
+              {% endif %}
+              {% if product.handle contains 'hair-oil' %}{% assign display_img = 'hair-oil-v2.jpg' | asset_url %}{% endif %}
+              {% assign display_price = product.price | money %}
+              {% assign compare_price = product.compare_at_price %}
+
+              {% assign override_block = nil %}
+              {% for block in section.blocks %}
+                {% if block.type == 'product_override' and block.settings.target_product == product.handle %}
+                  {% if block.settings.title != blank %}{% assign display_title = block.settings.title %}{% endif %}
+                  {% if block.settings.image != blank %}{% assign display_img = block.settings.image | image_url: width: 800 %}{% endif %}
+                  {% if block.settings.price != blank %}{% assign display_price = block.settings.price %}{% endif %}
+                  {% assign override_block = block %}
+                {% endif %}
+              {% endfor %}
+
+              {% assign bg_i = card_index | modulo: 6 %}
+              {% assign card_bg = pastel_bgs[bg_i] %}
+              {% assign card_index = card_index | plus: 1 %}
+
+              <div class="catalog-item" data-tags="{{ product_tags_string }}" {% if product.handle contains 'skin-tint' or product.handle contains 'liquid-blush' %}data-exclusive="makeup"{% endif %} {{ override_block.shopify_attributes }}>
+                <article class="catalog-card blume-card">
+                  <div class="card-media" style="background: {{ card_bg }};">
+                    {% if product.price > 0 and compare_price > product.price %}
+                      {% assign saving = compare_price | minus: product.price | times: 100 | divided_by: compare_price %}
+                      <span class="card-badge card-badge--sale">{{ saving }}% OFF</span>
+                    {% endif %}
+                    {% if product.tags contains 'bestseller' or forloop.parentloop.first %}
+                      <span class="card-badge card-badge--tag">BESTSELLER</span>
+                    {% endif %}
+                    <a href="{{ product.url }}" class="card-img-link" aria-label="{{ display_title | escape }}">
+                      {% if display_img != blank %}
+                        <img src="{{ display_img }}" alt="{{ display_title | escape }}" class="card-img" loading="lazy" width="600" height="600">
+                      {% else %}
+                        <span class="card-img-placeholder">Add image</span>
+                      {% endif %}
+                    </a>
+                  </div>
+                  <div class="card-content">
+                    <h3 class="card-title"><a href="{{ product.url }}">{{ display_title }}</a></h3>
+                    <div class="card-stars">
+                      <span class="stars-gold" aria-hidden="true">★★★★★</span>
+                      <span class="rating-num">4.8</span>
+                      <span class="review-count">(2134)</span>
+                    </div>
+                    <div class="card-price-row">
+                      <span class="price-main">{{ display_price }}</span>
+                      {% if product.price > 0 and compare_price > product.price %}
+                        <span class="price-compare">{{ compare_price | money }}</span>
+                      {% endif %}
+                    </div>
+                    <a href="{{ product.url }}" class="shop-now-btn">SHOP NOW</a>
+                  </div>
+                </article>
+              </div>
+            {% endif %}
+          {% endfor %}
+        {% endfor %}
+
+        {% comment %} PASS 2: ALL OTHER PRODUCTS {% endcomment %}
+        {% for product in target_collection.products %}
+          {% if priority_handles contains product.handle %}
+            {% continue %}
+          {% endif %}
+
+          {% assign product_tags_string = product.tags | join: ',' | downcase %}
+          {% assign display_title = product.title %}
+          {% assign display_img = blank %}
+          {% if product.featured_image %}
+            {% assign display_img = product.featured_image | image_url: width: 800 %}
+          {% endif %}
+          {% if product.handle contains 'hair-oil' %}{% assign display_img = 'hair-oil-v2.jpg' | asset_url %}{% endif %}
+          {% assign display_price = product.price | money %}
+          {% assign compare_price = product.compare_at_price %}
+
+          {% assign override_block = nil %}
+          {% for block in section.blocks %}
+            {% if block.type == 'product_override' and block.settings.target_product == product.handle %}
+              {% if block.settings.title != blank %}{% assign display_title = block.settings.title %}{% endif %}
+              {% if block.settings.image != blank %}{% assign display_img = block.settings.image | image_url: width: 800 %}{% endif %}
+              {% if block.settings.price != blank %}{% assign display_price = block.settings.price %}{% endif %}
+              {% assign override_block = block %}
+            {% endif %}
+          {% endfor %}
+
+          {% assign bg_i = card_index | modulo: 6 %}
+          {% assign card_bg = pastel_bgs[bg_i] %}
+          {% assign card_index = card_index | plus: 1 %}
+
+          <div class="catalog-item" data-tags="{{ product_tags_string }}" {{ override_block.shopify_attributes }}>
+            <article class="catalog-card blume-card">
+              <div class="card-media" style="background: {{ card_bg }};">
+                {% if product.price > 0 and compare_price > product.price %}
+                  {% assign saving = compare_price | minus: product.price | times: 100 | divided_by: compare_price %}
+                  <span class="card-badge card-badge--sale">{{ saving }}% OFF</span>
+                {% endif %}
+                <a href="{{ product.url }}" class="card-img-link" aria-label="{{ display_title | escape }}">
+                  {% if display_img != blank %}
+                    <img src="{{ display_img }}" alt="{{ display_title | escape }}" class="card-img" loading="lazy" width="600" height="600">
+                  {% else %}
+                    <span class="card-img-placeholder">Add image</span>
+                  {% endif %}
+                </a>
+              </div>
+              <div class="card-content">
+                <h3 class="card-title"><a href="{{ product.url }}">{{ display_title }}</a></h3>
+                <div class="card-stars">
+                  <span class="stars-gold" aria-hidden="true">★★★★★</span>
+                  <span class="rating-num">4.8</span>
+                  <span class="review-count">(2134)</span>
+                </div>
+                <div class="card-price-row">
+                  <span class="price-main">{{ display_price }}</span>
+                  {% if product.price > 0 and compare_price > product.price %}
+                    <span class="price-compare">{{ compare_price | money }}</span>
+                  {% endif %}
+                </div>
+                <a href="{{ product.url }}" class="shop-now-btn">SHOP NOW</a>
+              </div>
+            </article>
+          </div>
+        {% endfor %}
+      </div>
+      
+      <!-- Empty State -->
+      <div class="catalog-empty-state" style="display: none; text-align: center; padding: 60px 0;">
+        <p style="font-size: 18px; color: #555; opacity: 0.6;">No products found with this tag.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  #section-{{ section.id }} .wellness-catalog { padding: 100px 0; }
+  #section-{{ section.id }} .catalog-title {
+    font-size: clamp(32px, 4vw, 44px);
+    font-weight: 800;
+    color: #007e40;
+    margin-bottom: 12px;
+    font-family: 'Nunito', sans-serif;
+    letter-spacing: -0.02em;
+  }
+  #section-{{ section.id }} .catalog-subtitle {
+    font-size: 16px;
+    color: #5a6b62;
+    max-width: 640px;
+    margin: 0 auto;
+    line-height: 1.5;
+  }
+  #section-{{ section.id }} .catalog-filters {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 48px;
+    flex-wrap: wrap;
+  }
+
+  #section-{{ section.id }} .filter-btn {
+    padding: 12px 28px;
+    border-radius: 999px;
+    border: 1px solid rgba(0, 126, 64,0.15);
+    background: #fff;
+    color: #007e40;
+    font-weight: 700;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+    font-family: 'Nunito', sans-serif;
+  }
+  #section-{{ section.id }} .filter-btn.active {
+    background: #007e40;
+    color: #fff;
+    border-color: #007e40;
+  }
+
+  #section-{{ section.id }} .catalog-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 28px;
+  }
+  #section-{{ section.id }} .catalog-item { width: 100%; display: flex; }
+  #section-{{ section.id }} .blume-card {
+    width: 100%;
+    background: transparent;
+    border-radius: 0;
+    padding: 0;
+    height: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    box-shadow: none;
+  }
+
+  #section-{{ section.id }} .card-media {
+    position: relative;
+    border-radius: 28px;
+    overflow: hidden;
+    margin-bottom: 18px;
+    aspect-ratio: 1 / 1.05;
+  }
+  #section-{{ section.id }} .card-badge {
+    position: absolute;
+    z-index: 2;
+    top: 14px;
+    font-size: 11px;
+    font-weight: 800;
+    padding: 6px 12px;
+    border-radius: 999px;
+    letter-spacing: 0.04em;
+    font-family: 'Nunito', sans-serif;
+  }
+  #section-{{ section.id }} .card-badge--sale {
+    left: 14px;
+    background: rgba(255,255,255,0.92);
+    color: #1a1a1a;
+  }
+  #section-{{ section.id }} .card-badge--tag {
+    right: 14px;
+    left: auto;
+    background: rgba(0, 126, 64,0.9);
+    color: #fff;
+  }
+  #section-{{ section.id }} .card-img-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    padding: 28px;
+    box-sizing: border-box;
+  }
+  #section-{{ section.id }} .card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: transform 0.4s ease;
+  }
+  #section-{{ section.id }} .blume-card:hover .card-img { transform: scale(1.04); }
+  #section-{{ section.id }} .card-img-placeholder {
+    color: rgba(0, 126, 64,0.45);
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  #section-{{ section.id }} .card-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    padding: 0 4px;
+  }
+  #section-{{ section.id }} .card-title {
+    font-size: 18px;
+    font-weight: 800;
+    color: #1a1a1a;
+    margin: 0 0 8px;
+    font-family: 'Nunito', sans-serif;
+    line-height: 1.25;
+  }
+  #section-{{ section.id }} .card-title a {
+    color: inherit;
+    text-decoration: none;
+  }
+  #section-{{ section.id }} .card-stars {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  #section-{{ section.id }} .stars-gold {
+    color: #C9A227;
+    font-size: 13px;
+    letter-spacing: 1px;
+  }
+  #section-{{ section.id }} .rating-num {
+    font-size: 13px;
+    font-weight: 700;
+    color: #1a1a1a;
+  }
+  #section-{{ section.id }} .review-count {
+    font-size: 13px;
+    color: #777;
+    font-weight: 500;
+  }
+  #section-{{ section.id }} .card-price-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+  #section-{{ section.id }} .price-main {
+    font-size: 16px;
+    font-weight: 800;
+    color: #1a1a1a;
+  }
+  #section-{{ section.id }} .price-compare {
+    font-size: 14px;
+    color: #999;
+    text-decoration: line-through;
+  }
+  #section-{{ section.id }} .shop-now-btn {
+    margin-top: auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 14px 18px;
+    border-radius: 999px;
+    border: 1.5px solid #1a1a1a;
+    background: transparent;
+    color: #1a1a1a;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    text-decoration: none;
+    font-family: 'Nunito', sans-serif;
+    transition: background 0.25s ease, color 0.25s ease;
+  }
+  #section-{{ section.id }} .shop-now-btn:hover {
+    background: #007e40;
+    border-color: #007e40;
+    color: #fff;
+  }
+
+  @media (max-width: 1100px) {
+    #section-{{ section.id }} .catalog-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 600px) {
+    #section-{{ section.id }} .catalog-grid { grid-template-columns: 1fr; gap: 36px; }
+    #section-{{ section.id }} .card-media { border-radius: 24px; }
+  }
+</style>
+
+<script>
+  (function() {
+    function applyFilter(section, filterValue) {
+      const filters = section.querySelectorAll('.filter-btn');
+      const items = section.querySelectorAll('.catalog-item');
+      const grid = section.querySelector('.catalog-grid');
+      const emptyState = section.querySelector('.catalog-empty-state');
+
+      filters.forEach(b => b.classList.remove('active'));
+      let matched = false;
+      filters.forEach(btn => {
+        if (btn.getAttribute('data-filter').toLowerCase() === filterValue) {
+          btn.classList.add('active');
+          matched = true;
+        }
+      });
+      if (!matched && filters[0]) filters[0].classList.add('active');
+
+      let visibleCount = 0;
+      items.forEach(item => {
+        if (filterValue === 'all' || !matched) {
+          item.style.display = 'flex';
+          visibleCount++;
+        } else {
+          const tags = (item.getAttribute('data-tags') || '').split(',');
+          const isMatch = tags.includes(filterValue);
+          item.style.display = isMatch ? 'flex' : 'none';
+          if (isMatch) visibleCount++;
+        }
+      });
+
+      if (visibleCount === 0) {
+        grid.style.display = 'none';
+        emptyState.style.display = 'block';
+      } else {
+        grid.style.display = 'grid';
+        emptyState.style.display = 'none';
+      }
+    }
+
+    function initCatalogFilters() {
+      const anchor = document.querySelector('#laushe-shop');
+      const section = anchor ? anchor.closest('.wellness-catalog') : null;
+      if (!section) return;
+
+      section.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          applyFilter(section, btn.getAttribute('data-filter').toLowerCase());
+        });
+      });
+
+      const urlParams = new URLSearchParams(window.location.search);
+      const filterParam = (urlParams.get('filter') || '').toLowerCase();
+      if (filterParam) {
+        applyFilter(section, filterParam);
+        setTimeout(() => section.scrollIntoView({ behavior: 'smooth', block: 'start' }), 200);
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', initCatalogFilters);
+    document.addEventListener('shopify:section:load', initCatalogFilters);
+  })();
+</script>

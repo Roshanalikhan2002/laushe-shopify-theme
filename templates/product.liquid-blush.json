@@ -1,0 +1,11 @@
+{
+  "sections": {
+    "main": {
+      "type": "product-liquid-blush",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

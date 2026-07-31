@@ -1,0 +1,223 @@
+{% schema %}
+{
+  "name": "Our Top Bestsellers",
+  "settings": [
+    { "id": "heading", "type": "text", "label": "Heading", "default": "Our Bestsellers" },
+    { "id": "subheading", "type": "text", "label": "Subheading", "default": "Tried and true wellness essentials that top our leaderboards." }
+  ],
+  "blocks": [
+    {
+      "type": "product",
+      "name": "Product Card",
+      "limit": 3,
+      "settings": [
+        { "id": "product", "type": "product", "label": "Select Product" },
+        { "id": "title_override", "type": "text", "label": "Custom Title (Optional)" },
+        { "id": "image_override", "type": "image_picker", "label": "Custom Image (Optional)" },
+        { "id": "stars_count", "type": "text", "label": "Review Count", "default": "1250" },
+        { "id": "rating", "type": "text", "label": "Rating", "default": "4.8" },
+        { "id": "show_badge", "type": "checkbox", "label": "Show Sale Badge", "default": false },
+        { "id": "badge_text", "type": "text", "label": "Badge Text", "default": "BESTSELLER" },
+        { "id": "card_bg", "type": "color", "label": "Image background", "default": "#E4EFE8" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Our Top Bestsellers", "category": "Laushe Sections" }]
+}
+{% endschema %}
+
+<section class="bs-section section-padding">
+  <div class="container text-center">
+    <h2 class="bs-heading">{{ section.settings.heading }}</h2>
+    {% if section.settings.subheading != blank %}
+      <p class="bs-subheading">{{ section.settings.subheading }}</p>
+    {% endif %}
+
+    <div class="bs-grid">
+      {% assign shown = 0 %}
+      {% assign pastel_bgs = "#F3E6E0,#E4EFE8,#F0EADF,#E8F1F4,#F5EDE3,#E9F0E6" | split: "," %}
+      {% for block in section.blocks %}
+        {% assign prod = all_products[block.settings.product] %}
+        {% if prod != blank %}
+          {% assign shown = shown | plus: 1 %}
+          {% assign bg = block.settings.card_bg | default: pastel_bgs[forloop.index0] %}
+          <article class="bs-card" {{ block.shopify_attributes }}>
+            <div class="bs-media" style="background: {{ bg }};">
+              {% if block.settings.show_badge and block.settings.badge_text != blank %}
+                <span class="bs-badge">{{ block.settings.badge_text }}</span>
+              {% endif %}
+              <a href="{{ prod.url }}" class="bs-img-link">
+                {% if block.settings.image_override != blank %}
+                  <img src="{{ block.settings.image_override | image_url: width: 700 }}" alt="{{ block.settings.title_override | default: prod.title | escape }}">
+                {% elsif prod.featured_image %}
+                  <img src="{{ prod.featured_image | image_url: width: 700 }}" alt="{{ prod.title | escape }}">
+                {% else %}
+                  <span class="bs-placeholder">Add image</span>
+                {% endif %}
+              </a>
+            </div>
+            <div class="bs-content">
+              <h3 class="bs-title"><a href="{{ prod.url }}">{{ block.settings.title_override | default: prod.title }}</a></h3>
+              <div class="bs-stars">
+                <span class="bs-stars-gold">★★★★★</span>
+                <span class="bs-rating">{{ block.settings.rating }}</span>
+                <span class="bs-reviews">({{ block.settings.stars_count }})</span>
+              </div>
+              <div class="bs-price-row">
+                <span class="bs-price">{{ prod.price | money }}</span>
+                {% if prod.price > 0 and prod.compare_at_price > prod.price %}
+                  <span class="bs-compare">{{ prod.compare_at_price | money }}</span>
+                {% endif %}
+              </div>
+              <a href="{{ prod.url }}" class="bs-shop-now">SHOP NOW</a>
+            </div>
+          </article>
+        {% endif %}
+      {% endfor %}
+
+      {% if shown == 0 %}
+        {% for prod in collections.all.products limit: 3 %}
+          {% assign bg_i = forloop.index0 | modulo: 6 %}
+          <article class="bs-card">
+            <div class="bs-media" style="background: {{ pastel_bgs[bg_i] }};">
+              <a href="{{ prod.url }}" class="bs-img-link">
+                {% if prod.featured_image %}
+                  <img src="{{ prod.featured_image | image_url: width: 700 }}" alt="{{ prod.title | escape }}">
+                {% else %}
+                  <span class="bs-placeholder">Add image</span>
+                {% endif %}
+              </a>
+            </div>
+            <div class="bs-content">
+              <h3 class="bs-title"><a href="{{ prod.url }}">{{ prod.title }}</a></h3>
+              <div class="bs-stars">
+                <span class="bs-stars-gold">★★★★★</span>
+                <span class="bs-rating">4.8</span>
+              </div>
+              <div class="bs-price-row">
+                <span class="bs-price">{{ prod.price | money }}</span>
+              </div>
+              <a href="{{ prod.url }}" class="bs-shop-now">SHOP NOW</a>
+            </div>
+          </article>
+        {% else %}
+          <div class="bs-empty">
+            <h3>No products yet</h3>
+            <p>Add products in Shopify Admin, set price + image, then assign them here.</p>
+          </div>
+        {% endfor %}
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+<style>
+  .bs-section { background: #fff; padding: 80px 0; }
+  .bs-heading {
+    font-family: 'Nunito', sans-serif;
+    font-size: clamp(32px, 4vw, 44px);
+    font-weight: 800;
+    color: #1a1a1a;
+    margin: 0 0 12px;
+    letter-spacing: -0.02em;
+  }
+  .bs-subheading {
+    color: #5a6b62;
+    font-size: 16px;
+    margin: 0 auto 48px;
+    max-width: 560px;
+  }
+  .bs-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 28px;
+    text-align: left;
+  }
+  .bs-card { display: flex; flex-direction: column; }
+  .bs-media {
+    position: relative;
+    border-radius: 28px;
+    overflow: hidden;
+    aspect-ratio: 1 / 1.05;
+    margin-bottom: 18px;
+  }
+  .bs-badge {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    z-index: 2;
+    background: rgba(255,255,255,0.92);
+    color: #1a1a1a;
+    font-size: 11px;
+    font-weight: 800;
+    padding: 6px 12px;
+    border-radius: 999px;
+    font-family: 'Nunito', sans-serif;
+  }
+  .bs-img-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    padding: 28px;
+    box-sizing: border-box;
+  }
+  .bs-img-link img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: transform 0.4s ease;
+  }
+  .bs-card:hover .bs-img-link img { transform: scale(1.04); }
+  .bs-placeholder { color: rgba(0, 126, 64,0.45); font-weight: 600; }
+  .bs-title {
+    font-family: 'Nunito', sans-serif;
+    font-size: 18px;
+    font-weight: 800;
+    margin: 0 0 8px;
+    line-height: 1.25;
+  }
+  .bs-title a { color: #1a1a1a; text-decoration: none; }
+  .bs-stars { display: flex; align-items: center; gap: 6px; margin-bottom: 10px; }
+  .bs-stars-gold { color: #C9A227; letter-spacing: 1px; font-size: 13px; }
+  .bs-rating { font-weight: 700; font-size: 13px; }
+  .bs-reviews { color: #777; font-size: 13px; }
+  .bs-price-row { display: flex; gap: 10px; align-items: center; margin-bottom: 16px; }
+  .bs-price { font-weight: 800; font-size: 16px; color: #1a1a1a; }
+  .bs-compare { color: #999; text-decoration: line-through; font-size: 14px; }
+  .bs-shop-now {
+    margin-top: auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 14px 18px;
+    border-radius: 999px;
+    border: 1.5px solid #1a1a1a;
+    color: #1a1a1a;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    font-family: 'Nunito', sans-serif;
+    transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+  }
+  .bs-shop-now:hover {
+    background: #007e40;
+    border-color: #007e40;
+    color: #fff;
+  }
+  .bs-empty {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 40px;
+    color: #666;
+  }
+  @media (max-width: 900px) {
+    .bs-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+  @media (max-width: 600px) {
+    .bs-grid { grid-template-columns: 1fr; }
+  }
+</style>

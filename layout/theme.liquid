@@ -1,0 +1,96 @@
+<!doctype html>
+<html class="no-js" lang="{{ request.locale.iso_code }}">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="theme-color" content="#007e40">
+    <link rel="canonical" href="{{ canonical_url }}">
+
+    <link rel="icon" type="image/jpeg" href="{{ 'laushe-logo.jpg' | asset_url }}">
+
+    <title>
+      {{ page_title }}
+      {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
+      {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
+      {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
+    </title>
+
+    {% if page_description %}
+      <meta name="description" content="{{ page_description | escape }}">
+    {% endif %}
+
+    {{ content_for_header }}
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Laushe Base CSS -->
+    {{ 'base-redesign.css' | asset_url | stylesheet_tag }}
+
+    <!-- Ionicons -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+  </head>
+
+  <body class="gradient">
+
+    <!-- ANNOUNCEMENT BAR -->
+    <div class="announcement-bar">
+      ✨ Limited Time Sale ✨ Buy 1 Get 1 FREE
+    </div>
+
+    <!-- STICKY HEADER -->
+    {% section 'header' %}
+
+    <!-- MAIN CONTENT -->
+    <main id="MainContent" class="content-for-layout focus-none" role="main" tabindex="-1">
+      {{ content_for_layout }}
+    </main>
+
+    <!-- FOOTER -->
+    <footer id="footer" style="background-color: #F9F9F9; padding: 80px 0 40px; border-top: 1px solid #EEE;">
+      <div class="container">
+        <div class="footer-grid">
+          <div>
+            <h4 style="color: #007e40; font-family: 'Nunito', sans-serif; font-size: 20px; margin-bottom: 20px;">LAUSHE</h4>
+            <p style="font-size: 14px; color: #777; line-height: 1.8;">Pure. Natural. Effective. Wellness rooted in tradition, crafted for today.</p>
+          </div>
+          <div>
+            <h4 style="margin-bottom: 20px; font-size: 14px; text-transform: uppercase; letter-spacing: 0.1em;">Shop</h4>
+            <ul style="list-style: none; padding: 0;">
+              <li style="margin-bottom: 10px;"><a href="/#laushe-shop?filter=healthcare" style="text-decoration: none; color: #555; font-size: 14px;">Healthcare</a></li>
+              <li style="margin-bottom: 10px;"><a href="/#laushe-shop?filter=organic" style="text-decoration: none; color: #555; font-size: 14px;">Organic Products</a></li>
+              <li style="margin-bottom: 10px;"><a href="/#laushe-shop?filter=all" style="text-decoration: none; color: #555; font-size: 14px;">All Products</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 style="margin-bottom: 20px; font-size: 14px; text-transform: uppercase; letter-spacing: 0.1em;">Company</h4>
+            <ul style="list-style: none; padding: 0;">
+              <li style="margin-bottom: 10px;"><a href="/#laushe-story" style="text-decoration: none; color: #555; font-size: 14px;">Our Story</a></li>
+              <li style="margin-bottom: 10px;"><a href="/pages/contact" style="text-decoration: none; color: #555; font-size: 14px;">Contact Us</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 style="margin-bottom: 20px; font-size: 14px; text-transform: uppercase; letter-spacing: 0.1em;">Contact</h4>
+            <p style="font-size: 14px; color: #777; margin-bottom: 10px;">laushebyzahra@gmail.com</p>
+            <p style="font-size: 14px; color: #777;">Pakistan 🇵🇰</p>
+            <div style="display: flex; gap: 15px; margin-top: 20px;">
+              <a href="https://www.instagram.com/laushebyzahra?igsh=MWx5ZXMxN2czNDQ2cA%3D%3D" target="_blank" style="color: #555; font-size: 22px;"><ion-icon name="logo-instagram"></ion-icon></a>
+              <a href="{{ shop.facebook_url }}" style="color: #555; font-size: 22px;"><ion-icon name="logo-facebook"></ion-icon></a>
+            </div>
+          </div>
+        </div>
+        <div style="border-top: 1px solid #EEE; margin-top: 60px; padding-top: 30px; text-align: center; font-size: 13px; color: #999;">
+          © {{ 'now' | date: '%Y' }} {{ shop.name }}. All rights reserved.
+        </div>
+      </div>
+    </footer>
+
+
+
+    {% section 'cart-drawer' %}
+  </body>
+</html>
