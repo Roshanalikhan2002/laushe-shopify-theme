@@ -563,6 +563,7 @@
         "q1",
         "q2"
       ],
+      "disabled": true,
       "settings": {
         "heading": "Join Thousands Improving Their Health",
         "bg_color": "#007e40"
@@ -631,20 +632,62 @@
     "members_getting_around": {
       "type": "members-getting-around",
       "blocks": {
-        "card_1": { "type": "card", "settings": {} },
-        "card_2": { "type": "card", "settings": {} },
-        "card_3": { "type": "card", "settings": {} },
-        "card_4": { "type": "card", "settings": {} },
-        "card_5": { "type": "card", "settings": {} },
-        "card_6": { "type": "card", "settings": {} },
-        "card_7": { "type": "card", "settings": {} },
-        "card_8": { "type": "card", "settings": {} },
-        "card_9": { "type": "card", "settings": {} },
-        "card_10": { "type": "card", "settings": {} },
-        "card_11": { "type": "card", "settings": {} },
-        "card_12": { "type": "card", "settings": {} },
-        "card_13": { "type": "card", "settings": {} },
-        "card_14": { "type": "card", "settings": {} }
+        "card_1": {
+          "type": "card",
+          "settings": {}
+        },
+        "card_2": {
+          "type": "card",
+          "settings": {}
+        },
+        "card_3": {
+          "type": "card",
+          "settings": {}
+        },
+        "card_4": {
+          "type": "card",
+          "settings": {}
+        },
+        "card_5": {
+          "type": "card",
+          "settings": {}
+        },
+        "card_6": {
+          "type": "card",
+          "settings": {}
+        },
+        "card_7": {
+          "type": "card",
+          "settings": {}
+        },
+        "card_8": {
+          "type": "card",
+          "settings": {}
+        },
+        "card_9": {
+          "type": "card",
+          "settings": {}
+        },
+        "card_10": {
+          "type": "card",
+          "settings": {}
+        },
+        "card_11": {
+          "type": "card",
+          "settings": {}
+        },
+        "card_12": {
+          "type": "card",
+          "settings": {}
+        },
+        "card_13": {
+          "type": "card",
+          "settings": {}
+        },
+        "card_14": {
+          "type": "card",
+          "settings": {}
+        }
       },
       "block_order": [
         "card_1",
@@ -666,9 +709,9 @@
         "heading_line1": "15,000+ FAMILIES.",
         "heading_line2": "WE'VE BEEN",
         "heading_line3": "GETTING AROUND",
-        "bg_color": "#FCF8ED",
+        "bg_color": "#fcf8ed",
         "line1_color": "#007e40",
-        "line2_color": "#0A1F14",
+        "line2_color": "#0a1f14",
         "icon_bg": "#007e40",
         "orbit_speed": 40,
         "orbit_radius": 360,
