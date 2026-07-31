@@ -11,62 +11,6 @@
   "sections": {
     "hero_giveaway": {
       "type": "hero-giveaway",
-      "blocks": {
-        "product_weight_gainer": {
-          "type": "product",
-          "settings": {
-            "product": "weight-gainer-100-organic",
-            "title_override": "Weight Gainer",
-            "stars_count": "1250",
-            "rating": "4.8",
-            "show_badge": true,
-            "badge_text": "BESTSELLER",
-            "card_bg": "#e4efe8"
-          }
-        },
-        "product_hair_oil": {
-          "type": "product",
-          "settings": {
-            "product": "royce-hair-oil-sunnah-blessed",
-            "title_override": "Hair Oil",
-            "stars_count": "1250",
-            "rating": "4.8",
-            "show_badge": true,
-            "badge_text": "BESTSELLER",
-            "card_bg": "#f3e6e0"
-          }
-        },
-        "product_liquid_blush": {
-          "type": "product",
-          "settings": {
-            "product": "liquid-blush",
-            "title_override": "Liquid Blush",
-            "stars_count": "980",
-            "rating": "4.8",
-            "show_badge": true,
-            "badge_text": "BESTSELLER",
-            "card_bg": "#f0eadf"
-          }
-        },
-        "product_skin_tint": {
-          "type": "product",
-          "settings": {
-            "product": "skin-tint",
-            "title_override": "Skin Tint",
-            "stars_count": "1120",
-            "rating": "4.8",
-            "show_badge": true,
-            "badge_text": "BESTSELLER",
-            "card_bg": "#e8f1f4"
-          }
-        }
-      },
-      "block_order": [
-        "product_weight_gainer",
-        "product_hair_oil",
-        "product_liquid_blush",
-        "product_skin_tint"
-      ],
       "settings": {
         "link": "",
         "strip_text": "Our products are regularly tested to ensure purity and authenticity.",
@@ -193,6 +137,62 @@
     },
     "bestsellers_CXGzp8": {
       "type": "bestsellers",
+      "blocks": {
+        "product_weight_gainer": {
+          "type": "product",
+          "settings": {
+            "product": "weight-gainer-100-organic",
+            "title_override": "Weight Gainer",
+            "stars_count": "1250",
+            "rating": "4.8",
+            "show_badge": true,
+            "badge_text": "BESTSELLER",
+            "card_bg": "#e4efe8"
+          }
+        },
+        "product_hair_oil": {
+          "type": "product",
+          "settings": {
+            "product": "royce-hair-oil-sunnah-blessed",
+            "title_override": "Hair Oil",
+            "stars_count": "1250",
+            "rating": "4.8",
+            "show_badge": true,
+            "badge_text": "BESTSELLER",
+            "card_bg": "#f3e6e0"
+          }
+        },
+        "product_liquid_blush": {
+          "type": "product",
+          "settings": {
+            "product": "liquid-blush",
+            "title_override": "Liquid Blush",
+            "stars_count": "980",
+            "rating": "4.8",
+            "show_badge": true,
+            "badge_text": "BESTSELLER",
+            "card_bg": "#f0eadf"
+          }
+        },
+        "product_skin_tint": {
+          "type": "product",
+          "settings": {
+            "product": "skin-tint",
+            "title_override": "Skin Tint",
+            "stars_count": "1120",
+            "rating": "4.8",
+            "show_badge": true,
+            "badge_text": "BESTSELLER",
+            "card_bg": "#e8f1f4"
+          }
+        }
+      },
+      "block_order": [
+        "product_weight_gainer",
+        "product_hair_oil",
+        "product_liquid_blush",
+        "product_skin_tint"
+      ],
       "disabled": true,
       "name": "Our Top Bestsellers",
       "settings": {
@@ -776,20 +776,22 @@
   },
   "order": [
     "hero_giveaway",
-    "catalog_grid",
-    "stats_bar",
     "hero",
-    "modern_living_gpDB8F",
-    "problem_solution",
-    "benefits_grid",
-    "laushe_comparison_table_BtaEPh",
+    "quality_trust",
+    "catalog_grid",
     "review_scroller",
+    "bestsellers_CXGzp8",
+    "modern_living_gpDB8F",
+    "stats_bar",
+    "benefits_grid",
+    "problem_solution",
+    "athlete_endorsement",
+    "faq_accordion",
     "filtered_reviews",
     "influencer_reviews",
-    "athlete_endorsement",
     "story",
     "social_proof",
-    "faq_accordion",
+    "laushe_comparison_table_BtaEPh",
     "laushe_promo_cta_wwzJAq"
   ]
 }
