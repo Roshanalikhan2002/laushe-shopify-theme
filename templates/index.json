@@ -642,7 +642,9 @@
         "card_9": { "type": "card", "settings": {} },
         "card_10": { "type": "card", "settings": {} },
         "card_11": { "type": "card", "settings": {} },
-        "card_12": { "type": "card", "settings": {} }
+        "card_12": { "type": "card", "settings": {} },
+        "card_13": { "type": "card", "settings": {} },
+        "card_14": { "type": "card", "settings": {} }
       },
       "block_order": [
         "card_1",
@@ -656,7 +658,9 @@
         "card_9",
         "card_10",
         "card_11",
-        "card_12"
+        "card_12",
+        "card_13",
+        "card_14"
       ],
       "settings": {
         "heading_line1": "15,000+ FAMILIES.",
@@ -666,8 +670,8 @@
         "line1_color": "#007e40",
         "line2_color": "#0A1F14",
         "icon_bg": "#007e40",
-        "orbit_speed": 36,
-        "orbit_radius": 250,
+        "orbit_speed": 40,
+        "orbit_radius": 420,
         "instagram_url": "https://www.instagram.com/laushebyzahra",
         "tiktok_url": "",
         "youtube_url": "",

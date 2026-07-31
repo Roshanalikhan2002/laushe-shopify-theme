@@ -1,7 +1,7 @@
 <section
   id="members-around-{{ section.id }}"
   class="members-around"
-  style="--ma-bg: {{ section.settings.bg_color }}; --ma-line1: {{ section.settings.line1_color }}; --ma-icon: {{ section.settings.icon_bg }}; --ma-orbit: {{ section.settings.orbit_speed | default: 36 }}s; --ma-radius: {{ section.settings.orbit_radius | default: 260 }}px;"
+  style="--ma-bg: {{ section.settings.bg_color }}; --ma-line1: {{ section.settings.line1_color }}; --ma-icon: {{ section.settings.icon_bg }}; --ma-orbit: {{ section.settings.orbit_speed | default: 40 }}s; --ma-radius: {{ section.settings.orbit_radius | default: 420 }}px;"
 >
   <div class="members-around__inner">
     <div class="members-around__copy">
@@ -34,9 +34,11 @@
     </div>
 
     {%- comment -%}
-      Grüns-style: cards packed on a U-arc (circle center above).
-      Wheel spins anti-clockwise; each face counter-rotates so it always stays front/upright.
-      Visible motion on the front arc: RIGHT → CENTER → LEFT.
+      Grüns fan: pivot BELOW the cards.
+      Bottoms sit close together (connected at lower edges), tops fan outward.
+      Wheel turns anti-clockwise → cards rise out of the green bar on the RIGHT,
+      travel across the arc, and exit into the green bar on the LEFT.
+      Cards stay face-forward (2D plane only — no flip).
     {%- endcomment -%}
     <div class="members-around__stage" aria-hidden="true">
       {% assign card_count = 0 %}
@@ -45,7 +47,7 @@
           {% assign card_count = card_count | plus: 1 %}
         {% endif %}
       {% endfor %}
-      {% if card_count == 0 %}{% assign card_count = 12 %}{% endif %}
+      {% if card_count == 0 %}{% assign card_count = 14 %}{% endif %}
 
       <div class="members-around__wheel" style="--count: {{ card_count }};">
         {% assign shown = 0 %}
@@ -75,7 +77,7 @@
         {% endfor %}
 
         {% if shown == 0 %}
-          {% for i in (1..12) %}
+          {% for i in (1..14) %}
             <article class="members-around__card" style="--i: {{ forloop.index0 }};">
               <div class="members-around__card-face">
                 <div class="members-around__placeholder"><span>Add image</span></div>
@@ -86,6 +88,8 @@
       </div>
     </div>
   </div>
+
+  <div class="members-around__ground" aria-hidden="true"></div>
 </section>
 
 <style>
@@ -105,7 +109,7 @@
   #members-around-{{ section.id }} .members-around__copy {
     text-align: center;
     padding: 0 20px;
-    margin-bottom: 8px;
+    margin-bottom: 4px;
     position: relative;
     z-index: 2;
   }
@@ -146,7 +150,7 @@
     justify-content: center;
     align-items: center;
     gap: 12px;
-    margin-top: clamp(20px, 3vw, 28px);
+    margin-top: clamp(18px, 3vw, 26px);
   }
 
   #members-around-{{ section.id }} .members-around__social {
@@ -172,57 +176,57 @@
     color: #fff;
   }
 
-  /* Only the packed bottom U-arc is visible (Grüns framing) */
+  /*
+    Stage shows only the TOP of the circle.
+    Pivot sits in the green ground below → bottoms cluster & connect,
+    tops fan out (Grüns hand-of-cards look).
+  */
   #members-around-{{ section.id }} .members-around__stage {
     position: relative;
     width: 100%;
-    height: clamp(320px, 42vw, 440px);
+    height: clamp(340px, 46vw, 480px);
     overflow: hidden;
-    -webkit-mask-image: linear-gradient(to bottom, #000 55%, transparent 100%);
-    mask-image: linear-gradient(to bottom, #000 55%, transparent 100%);
+    z-index: 1;
   }
 
-  /*
-    Wheel hub sits ABOVE the stage → cards hang on a U-curve
-    (sides higher, center lower), tightly packed and overlapping.
-  */
   #members-around-{{ section.id }} .members-around__wheel {
-    --count: 12;
+    --count: 14;
     position: absolute;
     left: 50%;
-    top: -4%;
+    /* Hub BELOW the visible stage — cards grow upward from the green bar */
+    top: 108%;
     width: 0;
     height: 0;
     transform-origin: center center;
-    animation: ma-wheel-{{ section.id }} var(--ma-orbit, 36s) linear infinite;
+    animation: ma-wheel-{{ section.id }} var(--ma-orbit, 40s) linear infinite;
   }
 
   #members-around-{{ section.id }} .members-around__card {
     position: absolute;
     top: 0;
     left: 0;
-    width: clamp(148px, 15.5vw, 200px);
-    height: clamp(210px, 22vw, 290px);
-    margin-left: calc(clamp(148px, 15.5vw, 200px) / -2);
-    margin-top: calc(clamp(210px, 22vw, 290px) / -2);
-    /* Place on ring, then untwist so slot angle doesn't tilt the photo */
+    width: clamp(150px, 14.5vw, 210px);
+    height: clamp(230px, 28vw, 360px);
+    margin-left: calc(clamp(150px, 14.5vw, 210px) / -2);
+    /* Anchor near the BOTTOM of the card so lower edges sit close on the arc */
+    margin-top: calc(clamp(230px, 28vw, 360px) * -0.92);
+    /*
+      Keep radial tilt (no counter-rotate):
+      bottoms hug each other near the pivot, tops fan open.
+    */
     transform:
       rotate(calc(var(--i) * 360deg / var(--count)))
-      translateY(var(--ma-radius, 260px))
-      rotate(calc(var(--i) * -360deg / var(--count)));
-    transform-origin: center center;
+      translateY(calc(var(--ma-radius, 420px) * -1));
+    transform-origin: center bottom;
   }
 
-  /* Counter only the wheel turn — photo stays front-facing */
   #members-around-{{ section.id }} .members-around__card-face {
     width: 100%;
     height: 100%;
-    border-radius: 26px;
+    border-radius: 28px;
     overflow: hidden;
     background: #e8efe6;
-    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.15);
-    transform-origin: center center;
-    animation: ma-face-{{ section.id }} var(--ma-orbit, 36s) linear infinite;
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.18);
   }
 
   #members-around-{{ section.id }} .members-around__card-face img {
@@ -236,8 +240,9 @@
     width: 100%;
     height: 100%;
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     justify-content: center;
+    padding-bottom: 28px;
     background:
       linear-gradient(145deg, rgba(0, 126, 64, 0.12), rgba(0, 126, 64, 0.28)),
       repeating-linear-gradient(
@@ -261,36 +266,43 @@
     border-radius: 999px;
   }
 
-  /* Anti-clockwise wheel (negative rotation) → front arc moves RIGHT → LEFT */
+  /* Green bar cards rise out of / sink into (matches next homepage section) */
+  #members-around-{{ section.id }} .members-around__ground {
+    position: relative;
+    z-index: 2;
+    height: 72px;
+    margin-top: -48px;
+    background: #007e40;
+  }
+
+  /* Anti-clockwise: emerge from RIGHT green edge → arc → exit LEFT */
   @keyframes ma-wheel-{{ section.id }} {
     from { transform: rotate(0deg); }
     to { transform: rotate(-360deg); }
   }
 
-  /* Keep faces upright / front-facing while the wheel turns */
-  @keyframes ma-face-{{ section.id }} {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-  }
-
   @media (max-width: 900px) {
     #members-around-{{ section.id }} {
-      --ma-radius: 200px;
+      --ma-radius: 320px;
     }
     #members-around-{{ section.id }} .members-around__stage {
-      height: clamp(280px, 58vw, 360px);
+      height: clamp(300px, 62vw, 400px);
     }
     #members-around-{{ section.id }} .members-around__card {
-      width: clamp(120px, 26vw, 160px);
-      height: clamp(170px, 36vw, 230px);
-      margin-left: calc(clamp(120px, 26vw, 160px) / -2);
-      margin-top: calc(clamp(170px, 36vw, 230px) / -2);
+      width: clamp(120px, 24vw, 160px);
+      height: clamp(190px, 42vw, 270px);
+      margin-left: calc(clamp(120px, 24vw, 160px) / -2);
+      margin-top: calc(clamp(190px, 42vw, 270px) * -0.92);
+    }
+    #members-around-{{ section.id }} .members-around__ground {
+      height: 56px;
+      margin-top: -36px;
     }
   }
 
   @media (max-width: 600px) {
     #members-around-{{ section.id }} {
-      --ma-radius: 160px;
+      --ma-radius: 250px;
       padding-top: 48px;
     }
     #members-around-{{ section.id }} .members-around__heading,
@@ -301,13 +313,15 @@
       font-size: clamp(22px, 7vw, 32px) !important;
     }
     #members-around-{{ section.id }} .members-around__stage {
-      height: 300px;
+      height: 280px;
+    }
+    #members-around-{{ section.id }} .members-around__wheel {
+      top: 112%;
     }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    #members-around-{{ section.id }} .members-around__wheel,
-    #members-around-{{ section.id }} .members-around__card-face {
+    #members-around-{{ section.id }} .members-around__wheel {
       animation: none;
     }
   }
@@ -365,22 +379,22 @@
       "type": "range",
       "id": "orbit_speed",
       "label": "Orbit speed (seconds per loop)",
-      "min": 20,
-      "max": 60,
+      "min": 24,
+      "max": 70,
       "step": 2,
-      "default": 36,
+      "default": 40,
       "unit": "s"
     },
     {
       "type": "range",
       "id": "orbit_radius",
-      "label": "Orbit size (card spacing)",
-      "min": 180,
-      "max": 340,
+      "label": "Fan radius",
+      "min": 280,
+      "max": 520,
       "step": 10,
-      "default": 260,
+      "default": 420,
       "unit": "px",
-      "info": "Smaller = tighter / more overlap like Grüns"
+      "info": "Larger radius = flatter fan, bottoms stay closer"
     },
     {
       "type": "url",
@@ -421,6 +435,8 @@
       "name": "Members Getting Around",
       "category": "Laushe Sections",
       "blocks": [
+        { "type": "card" },
+        { "type": "card" },
         { "type": "card" },
         { "type": "card" },
         { "type": "card" },
