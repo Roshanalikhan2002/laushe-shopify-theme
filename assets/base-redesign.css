@@ -866,9 +866,20 @@ footer a:hover {
 }
 
 /* ===== GLOBAL GREEN THEME OVERRIDES ===== */
+
+/* White page canvas so gaps between green sections are visible */
 html, body, main, .content-for-layout {
-    background-color: #007e40 !important;
+    background-color: #ffffff !important;
+    color: #007e40;
+}
+
+/* Green sections with white spacing between them */
+#MainContent > section,
+.content-for-layout > section,
+main > section {
+    background-color: #007e40;
     color: #ffffff;
+    margin: 28px 0;
 }
 
 section,
@@ -885,11 +896,43 @@ section h4 {
     color: #ffffff !important;
 }
 
-section p,
-section li,
-section span,
-section label {
-    color: inherit;
+section > .container > p,
+section .section-sub,
+section .header-group > p {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* White text cards / panels: dark text for contrast */
+.faq-card,
+.faq-card .faq-question-text,
+.faq-card .faq-icon-box,
+.faq-card .faq-text-inner,
+.faq-content,
+.step-card,
+.step-card h3,
+.step-card p,
+.ingredient-item,
+.ingredient-item .ing-title,
+.ingredient-item .ing-desc,
+.ingredient-item .ing-icon,
+.product-card,
+.product-card .product-title,
+.product-card .product-price,
+.product-card .product-desc,
+.review-card,
+.filtered-review-card,
+.athlete-card,
+.trust-widget,
+.trust-widget .trust-title,
+.trust-widget .trust-sub {
+    color: #007e40 !important;
+}
+
+.faq-card h1, .faq-card h2, .faq-card h3, .faq-card h4,
+.step-card h1, .step-card h2, .step-card h3, .step-card h4,
+.ingredient-item h1, .ingredient-item h2, .ingredient-item h3, .ingredient-item h4,
+.product-card h1, .product-card h2, .product-card h3, .product-card h4 {
+    color: #007e40 !important;
 }
 
 .menu-toggle ion-icon {
@@ -927,16 +970,55 @@ section label {
 }
 
 .ingredient-detail-card,
-.product-card-dynamic,
-.faq-item {
-    background: rgba(255,255,255,0.08) !important;
-    border: 2px solid rgba(255,255,255,0.45) !important;
-    color: #ffffff;
-    box-shadow: none;
+.product-card-dynamic {
+    background: #ffffff !important;
+    border: 2px solid rgba(255, 255, 255, 0.9) !important;
+    color: #007e40 !important;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+.ingredient-detail-card h1,
+.ingredient-detail-card h2,
+.ingredient-detail-card h3,
+.ingredient-detail-card h4,
+.ingredient-detail-card p,
+.product-card-dynamic h1,
+.product-card-dynamic h2,
+.product-card-dynamic h3,
+.product-card-dynamic h4,
+.product-card-dynamic p {
+    color: #007e40 !important;
 }
 
 .text-yellow,
 .highlight {
     color: #ffcc33 !important;
+}
+
+/* Benefit text panels on green: white cards for readability */
+.benefit-item-v2 {
+    background: #ffffff;
+    padding: 22px 24px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+.benefit-item-v2 .benefit-title,
+.benefit-item-v2 .benefit-desc,
+.benefit-item-v2 .icon-box svg,
+.benefit-item-v2 .icon-box {
+    color: #007e40 !important;
+}
+
+.benefit-item-v2 .benefit-desc {
+    color: #2f5b45 !important;
+}
+
+@media (max-width: 768px) {
+    #MainContent > section,
+    .content-for-layout > section,
+    main > section {
+        margin: 18px 0;
+    }
 }
 
