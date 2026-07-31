@@ -189,7 +189,7 @@
         "q4"
       ],
       "settings": {
-        "heading": "Quality You Can Trust",
+        "heading": "",
         "subheading": "Our products are regularly tested to ensure purity and authenticity."
       }
     },
@@ -366,7 +366,7 @@
         "royce_override"
       ],
       "settings": {
-        "heading": "Shop Our Entire Wellness Collection",
+        "heading": "Our Best Collection",
         "subheading": "Pure, Raw, and Bio-available supplements for every stage of your health journey.",
         "collection": "",
         "tab1_label": "All Products",
@@ -721,12 +721,12 @@
   "order": [
     "hero_giveaway",
     "hero",
+    "quality_trust",
     "catalog_grid",
     "review_scroller",
     "bestsellers_CXGzp8",
     "modern_living_gpDB8F",
     "stats_bar",
-    "quality_trust",
     "benefits_grid",
     "problem_solution",
     "athlete_endorsement",
