@@ -1,0 +1,14 @@
+---
+description: Always commit and push code changes to GitHub after finishing work
+alwaysApply: true
+---
+
+# Always Push Code
+
+After completing any code changes in this project:
+
+1. Commit the changes with a clear message (unless the user said not to commit).
+2. Immediately `git push` to `origin` on the current branch (usually `main`).
+3. Do this by default without waiting for the user to ask — the user wants code pushed every time.
+
+If push needs approval or fails, retry/fix and tell the user the result with the repo URL.
