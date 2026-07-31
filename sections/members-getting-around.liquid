@@ -313,7 +313,7 @@
   /* Mobile — Grüns style: tall cards, ~2 visible half/half */
   @media (max-width: 600px) {
     #members-around-{{ section.id }} {
-      --ma-radius: 132px;
+      --ma-radius: 155px;
       padding-top: 32px;
     }
     #members-around-{{ section.id }} .members-around__heading,
@@ -324,25 +324,24 @@
       font-size: clamp(18px, 6vw, 26px) !important;
     }
     #members-around-{{ section.id }} .members-around__copy {
-      margin-bottom: 6px;
+      margin-bottom: 28px;
       position: relative;
       z-index: 2;
       background: var(--ma-bg, #fcf8ed);
       padding-bottom: 2px;
     }
     #members-around-{{ section.id }} .members-around__stage {
-      /* Tall enough for long cards with tops fully visible */
-      height: 520px;
+      height: 480px;
       margin-top: 0;
       overflow: hidden;
     }
     #members-around-{{ section.id }} .members-around__wheel {
+      /* Lower fan so cards sit in the empty space, not under icons */
       top: auto;
-      bottom: 0;
+      bottom: -22%;
       left: 50%;
     }
     #members-around-{{ section.id }} .members-around__card {
-      /* Long portrait — about 2 cards half/half like Grüns mobile */
       width: 58vw;
       max-width: 240px;
       height: 360px;
