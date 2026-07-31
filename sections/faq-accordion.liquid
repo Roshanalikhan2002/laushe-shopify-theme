@@ -112,10 +112,12 @@
     margin-bottom: 15px;
   }
   .faq-title {
-    font-size: 44px;
-    color: #ffffff; /* --deep-forest */
+    font-size: clamp(40px, 6vw, 64px);
+    color: #ffffff;
     font-family: 'Montserrat', sans-serif;
-    font-weight: 800;
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    line-height: 1.05;
   }
   .faq-card {
     background: white;
@@ -171,7 +173,7 @@
     color: #000000;
   }
   @media (max-width: 768px) {
-    .faq-title { font-size: 32px; }
+    .faq-title { font-size: clamp(28px, 7vw, 36px); font-weight: 900; }
     .faq-trigger { padding: 20px; }
   }
 </style>

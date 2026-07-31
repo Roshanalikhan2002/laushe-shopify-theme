@@ -84,10 +84,12 @@
     padding: 100px 0;
   }
   #section-{{ section.id }} .reviews-title {
-    font-size: 36px;
-    font-weight: 800;
+    font-size: clamp(36px, 5.5vw, 58px);
+    font-weight: 900;
     color: #ffffff;
     font-family: 'Montserrat', sans-serif;
+    letter-spacing: -0.03em;
+    line-height: 1.05;
   }
   
   #section-{{ section.id }} .reviews-tabs {

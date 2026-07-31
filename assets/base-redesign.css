@@ -32,14 +32,18 @@ body {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    font-family: var(--font-main);
 }
 
-html, body, button, input, select, textarea {
-    font-family: var(--font-main);
+html, body, button, input, select, textarea, a, p, span, li, label,
+.btn, .btn-pill, .btn-primary, .btn-secondary {
+    font-family: var(--font-main) !important;
 }
 
 body {
-    font-family: var(--font-main);
+    font-family: var(--font-main) !important;
+    font-size: 16px;
+    font-weight: 500;
     background-color: var(--deep-forest);
     color: var(--white);
     line-height: 1.6;
@@ -57,15 +61,41 @@ img {
     display: block;
 }
 
-h1, h2, h3, h4, h5, h6, .font-heading {
-    font-family: var(--font-main);
+/* AG1-style big bold headings */
+h1, h2, h3, h4, h5, h6, .font-heading,
+.bs-heading, .catalog-title, .trust-title, .modern-heading,
+.comparison-heading, .faq-title, .story-title-v2, .luxe-heading,
+.inf-reviews__title, .athlete-luxe-quote, .product-title-v3 {
+    font-family: var(--font-main) !important;
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+}
+
+h1, .h1 {
+    font-size: clamp(42px, 7vw, 72px);
+    font-weight: 900;
     color: var(--white);
+}
+
+h2, .h2, section h2 {
+    font-size: clamp(34px, 5.5vw, 58px) !important;
+    font-weight: 900 !important;
+    color: var(--white);
+}
+
+h3, .h3 {
+    font-size: clamp(22px, 3vw, 32px);
+    font-weight: 800;
+    color: var(--white);
+}
+
+h4, h5, h6 {
     font-weight: 800;
     letter-spacing: -0.02em;
 }
 
-button, .btn, input, select, textarea, a, p, span, li, label {
-    font-family: var(--font-main);
+button, .btn, .btn-pill, input, select, textarea, a, p, span, li, label {
+    font-family: var(--font-main) !important;
 }
 
 h1 .highlight,
@@ -196,8 +226,10 @@ header.sticky-header {
 }
 
 .hero-content h1 {
-    font-size: 56px;
-    line-height: 1.1;
+    font-size: clamp(48px, 7vw, 72px);
+    font-weight: 900;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
     margin-bottom: 30px;
     color: var(--white);
 }
@@ -680,9 +712,9 @@ footer a:hover {
     
     .review-grid { grid-template-columns: 1fr !important; }
     
-    .hero-content h1 { font-size: 44px; }
+    .hero-content h1 { font-size: 52px; }
     .stat-number { font-size: 48px; }
-    section h2 { font-size: 34px !important; }
+    section h2 { font-size: clamp(36px, 5vw, 48px) !important; }
 }
 
 /* --- MOBILE DRAWER MENU --- */
@@ -827,9 +859,9 @@ footer a:hover {
     
     .header-icons { display: flex !important; } /* Keep icons visible */
     
-    .hero-content h1 { font-size: 32px; }
+    .hero-content h1 { font-size: 36px; font-weight: 900; }
     .stat-number { font-size: 36px; }
-    section h2 { font-size: 28px !important; line-height: 1.2; }
+    section h2 { font-size: clamp(28px, 7vw, 36px) !important; line-height: 1.1; font-weight: 900 !important; }
     
     .benefit-item { justify-content: center; }
     .footer-grid { grid-template-columns: 1fr; text-align: center; gap: 30px; }
