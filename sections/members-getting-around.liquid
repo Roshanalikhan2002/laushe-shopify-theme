@@ -1,7 +1,7 @@
 <section
   id="members-around-{{ section.id }}"
   class="members-around"
-  style="--ma-bg: {{ section.settings.bg_color }}; --ma-line1: {{ section.settings.line1_color }}; --ma-line2: {{ section.settings.line2_color }}; --ma-icon: {{ section.settings.icon_bg }}; --ma-orbit: {{ section.settings.orbit_speed | default: 28 }}s;"
+  style="--ma-bg: {{ section.settings.bg_color }}; --ma-line1: {{ section.settings.line1_color }}; --ma-line2: {{ section.settings.line2_color }}; --ma-icon: {{ section.settings.icon_bg }}; --ma-orbit: {{ section.settings.orbit_speed | default: 32 }}s;"
 >
   <div class="members-around__inner">
     <div class="members-around__copy">
@@ -33,27 +33,26 @@
       </div>
     </div>
 
+    {%- comment -%}
+      Cards travel on a circular path: enter from RIGHT → stay FRONT-facing → exit LEFT (continuous loop).
+    {%- endcomment -%}
     <div class="members-around__stage" aria-hidden="true">
-      <div class="members-around__orbit">
-        {% assign card_count = 0 %}
-        {% for block in section.blocks %}
-          {% if block.type == 'card' %}
-            {% assign card_count = card_count | plus: 1 %}
-          {% endif %}
-        {% endfor %}
-        {% if card_count == 0 %}
-          {% assign card_count = 6 %}
+      {% assign card_count = 0 %}
+      {% for block in section.blocks %}
+        {% if block.type == 'card' %}
+          {% assign card_count = card_count | plus: 1 %}
         {% endif %}
-        {% assign step = 360 | divided_by: card_count %}
+      {% endfor %}
+      {% if card_count == 0 %}{% assign card_count = 6 %}{% endif %}
 
+      <div class="members-around__rail" style="--count: {{ card_count }};">
         {% assign shown = 0 %}
         {% for block in section.blocks %}
           {% if block.type == 'card' %}
-            {% assign angle = shown | times: step %}
             {% assign tilt = block.settings.tilt | default: 0 %}
-            <div
+            <article
               class="members-around__card"
-              style="--angle: {{ angle }}deg; --tilt: {{ tilt }}deg;"
+              style="--i: {{ shown }}; --tilt: {{ tilt }}deg;"
               {{ block.shopify_attributes }}
             >
               <div class="members-around__card-face">
@@ -69,24 +68,20 @@
                   <div class="members-around__placeholder"><span>Add image</span></div>
                 {% endif %}
               </div>
-            </div>
+            </article>
             {% assign shown = shown | plus: 1 %}
           {% endif %}
         {% endfor %}
 
         {% if shown == 0 %}
-          {% assign default_tilts = "-12,-6,0,6,12,-4" | split: "," %}
+          {% assign default_tilts = "-14,-8,-2,4,10,-10" | split: "," %}
           {% for i in (1..6) %}
             {% assign ti = forloop.index0 %}
-            {% assign angle = ti | times: 60 %}
-            <div
-              class="members-around__card"
-              style="--angle: {{ angle }}deg; --tilt: {{ default_tilts[ti] }}deg;"
-            >
+            <article class="members-around__card" style="--i: {{ ti }}; --tilt: {{ default_tilts[ti] }}deg;">
               <div class="members-around__card-face">
                 <div class="members-around__placeholder"><span>Add image</span></div>
               </div>
-            </div>
+            </article>
           {% endfor %}
         {% endif %}
       </div>
@@ -111,7 +106,7 @@
   #members-around-{{ section.id }} .members-around__copy {
     text-align: center;
     padding: 0 20px;
-    margin-bottom: clamp(20px, 3vw, 36px);
+    margin-bottom: clamp(12px, 2vw, 24px);
     position: relative;
     z-index: 2;
   }
@@ -133,7 +128,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0;
     font-family: 'Montserrat', sans-serif !important;
     font-weight: 900 !important;
     font-size: clamp(32px, 6.5vw, 72px) !important;
@@ -179,38 +173,42 @@
     color: #fff;
   }
 
-  /* Orbit stage — front arc of a 3D ring */
+  /* Visible window — only the front/bottom arc of the orbit */
   #members-around-{{ section.id }} .members-around__stage {
     position: relative;
     width: 100%;
-    height: clamp(300px, 46vw, 480px);
+    height: clamp(300px, 48vw, 500px);
     overflow: hidden;
-    perspective: 1400px;
-    perspective-origin: 50% 40%;
-    -webkit-mask-image: linear-gradient(to bottom, #000 50%, transparent 100%);
-    mask-image: linear-gradient(to bottom, #000 50%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, #000 42%, transparent 100%);
+    mask-image: linear-gradient(to bottom, #000 42%, transparent 100%);
   }
 
-  #members-around-{{ section.id }} .members-around__orbit {
+  #members-around-{{ section.id }} .members-around__rail {
     position: absolute;
-    left: 50%;
-    top: 58%;
-    width: 0;
-    height: 0;
-    transform-style: preserve-3d;
-    animation: ma-orbit-{{ section.id }} var(--ma-orbit, 28s) linear infinite;
+    inset: 0;
   }
 
+  /*
+    Circular orbit:
+    - Path center sits above the stage so cards travel the bottom arc
+    - offset-rotate: 0deg keeps every card FACE toward the viewer (never spins on its own axis)
+    - Animation: RIGHT → FRONT → LEFT → around the back → RIGHT again
+  */
   #members-around-{{ section.id }} .members-around__card {
     position: absolute;
-    left: 0;
-    top: 0;
+    top: 8%;
+    left: 50%;
     width: clamp(150px, 17vw, 230px);
     height: clamp(210px, 25vw, 330px);
     margin-left: calc(clamp(150px, 17vw, 230px) / -2);
-    margin-top: calc(clamp(210px, 25vw, 330px) / -2);
-    transform-style: preserve-3d;
-    transform: rotateY(var(--angle)) translateZ(clamp(220px, 34vw, 460px));
+    offset-path: circle(clamp(240px, 38vw, 520px) at 50% 0%);
+    offset-anchor: center center;
+    offset-rotate: 0deg;
+    offset-distance: 0%;
+    transform: rotate(var(--tilt, 0deg));
+    animation: ma-orbit-acw-{{ section.id }} var(--ma-orbit, 32s) linear infinite;
+    animation-delay: calc((var(--i) / var(--count, 6)) * var(--ma-orbit, 32s) * -1);
+    will-change: offset-distance;
   }
 
   #members-around-{{ section.id }} .members-around__card-face {
@@ -220,7 +218,6 @@
     overflow: hidden;
     background: #e8efe6;
     box-shadow: 0 18px 40px rgba(0, 0, 0, 0.16);
-    animation: ma-counter-{{ section.id }} var(--ma-orbit, 28s) linear infinite;
   }
 
   #members-around-{{ section.id }} .members-around__card-face img {
@@ -259,29 +256,24 @@
     border-radius: 999px;
   }
 
-  /* Anti-clockwise orbit (negative Y) */
-  @keyframes ma-orbit-{{ section.id }} {
-    from { transform: rotateY(0deg); }
-    to { transform: rotateY(-360deg); }
-  }
-
-  /* Keep card faces pointed at the camera while ring orbits */
-  @keyframes ma-counter-{{ section.id }} {
-    from { transform: rotateY(calc(var(--angle) * -1)) rotateZ(var(--tilt, 0deg)); }
-    to { transform: rotateY(calc(var(--angle) * -1 + 360deg)) rotateZ(var(--tilt, 0deg)); }
+  /*
+    Anti-clockwise around the circle (center above):
+    along the visible bottom arc this reads as RIGHT → FRONT → LEFT.
+  */
+  @keyframes ma-orbit-acw-{{ section.id }} {
+    from { offset-distance: 0%; }
+    to { offset-distance: 100%; }
   }
 
   @media (max-width: 900px) {
     #members-around-{{ section.id }} .members-around__stage {
-      height: clamp(260px, 62vw, 360px);
-      perspective: 1000px;
+      height: clamp(260px, 64vw, 380px);
     }
     #members-around-{{ section.id }} .members-around__card {
-      width: clamp(120px, 26vw, 170px);
-      height: clamp(170px, 38vw, 250px);
-      margin-left: calc(clamp(120px, 26vw, 170px) / -2);
-      margin-top: calc(clamp(170px, 38vw, 250px) / -2);
-      transform: rotateY(var(--angle)) translateZ(clamp(160px, 42vw, 260px));
+      width: clamp(120px, 28vw, 170px);
+      height: clamp(170px, 40vw, 250px);
+      margin-left: calc(clamp(120px, 28vw, 170px) / -2);
+      offset-path: circle(clamp(170px, 48vw, 280px) at 50% 0%);
     }
   }
 
@@ -299,20 +291,13 @@
     #members-around-{{ section.id }} .members-around__social {
       width: 38px;
       height: 38px;
-      border-radius: 9px;
-    }
-    #members-around-{{ section.id }} .members-around__social ion-icon {
-      font-size: 20px;
-    }
-    #members-around-{{ section.id }} .members-around__orbit {
-      top: 55%;
     }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    #members-around-{{ section.id }} .members-around__orbit,
-    #members-around-{{ section.id }} .members-around__card-face {
+    #members-around-{{ section.id }} .members-around__card {
       animation: none;
+      offset-distance: calc(18% + (var(--i) * 10%));
     }
   }
 </style>
@@ -369,10 +354,10 @@
       "type": "range",
       "id": "orbit_speed",
       "label": "Orbit speed (seconds per loop)",
-      "min": 12,
+      "min": 16,
       "max": 60,
       "step": 2,
-      "default": 28,
+      "default": 32,
       "unit": "s"
     },
     {
@@ -424,12 +409,12 @@
       "name": "Members Getting Around",
       "category": "Laushe Sections",
       "blocks": [
-        { "type": "card", "settings": { "tilt": -12 } },
-        { "type": "card", "settings": { "tilt": -6 } },
-        { "type": "card", "settings": { "tilt": 0 } },
-        { "type": "card", "settings": { "tilt": 6 } },
-        { "type": "card", "settings": { "tilt": 12 } },
-        { "type": "card", "settings": { "tilt": -4 } }
+        { "type": "card", "settings": { "tilt": -14 } },
+        { "type": "card", "settings": { "tilt": -8 } },
+        { "type": "card", "settings": { "tilt": -2 } },
+        { "type": "card", "settings": { "tilt": 4 } },
+        { "type": "card", "settings": { "tilt": 10 } },
+        { "type": "card", "settings": { "tilt": -10 } }
       ]
     }
   ]
