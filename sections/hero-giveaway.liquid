@@ -26,31 +26,6 @@
   </div>
 </section>
 
-<!-- Quality strip: only once, directly under hero banner -->
-<section class="banner-quality-strip">
-  <div class="container text-center">
-    <p class="banner-quality-strip__text">Our products are regularly tested to ensure purity and authenticity.</p>
-    <div class="banner-quality-strip__grid">
-      <div class="banner-quality-strip__item">
-        <div class="banner-quality-strip__icon">{% render 'icon-laushe', name: 'beaker' %}</div>
-        <h3>No Pesticides</h3>
-      </div>
-      <div class="banner-quality-strip__item">
-        <div class="banner-quality-strip__icon">{% render 'icon-laushe', name: 'skull' %}</div>
-        <h3>No Heavy Metals</h3>
-      </div>
-      <div class="banner-quality-strip__item">
-        <div class="banner-quality-strip__icon">{% render 'icon-laushe', name: 'leaf' %}</div>
-        <h3>100% Organic</h3>
-      </div>
-      <div class="banner-quality-strip__item">
-        <div class="banner-quality-strip__icon">{% render 'icon-laushe', name: 'globe' %}</div>
-        <h3>Ethically Sourced</h3>
-      </div>
-    </div>
-  </div>
-</section>
-
 <style>
 .hero-giveaway {
   width: 100%;
@@ -84,53 +59,6 @@
 .mobile-only {
   display: none;
 }
-.banner-quality-strip {
-  background: #007e40;
-  padding: 48px 0 56px;
-  margin: 0 0 40px !important;
-}
-.banner-quality-strip__text {
-  color: #ffffff;
-  font-size: clamp(16px, 2.2vw, 20px);
-  font-weight: 700;
-  max-width: 720px;
-  margin: 0 auto 36px;
-  line-height: 1.45;
-}
-.banner-quality-strip__grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
-  max-width: 1100px;
-  margin: 0 auto;
-}
-.banner-quality-strip__item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 14px;
-}
-.banner-quality-strip__icon {
-  width: 72px;
-  height: 72px;
-  border-radius: 50%;
-  border: 2px solid #ffcc33;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.banner-quality-strip__icon svg {
-  width: 36px;
-  height: 36px;
-  color: #ffcc33;
-}
-.banner-quality-strip__item h3 {
-  margin: 0;
-  color: #ffffff !important;
-  font-size: 16px;
-  font-weight: 800;
-  font-family: 'Nunito', sans-serif;
-}
 @media screen and (max-width: 768px) {
   {% if section.settings.image_mobile != blank %}
     .desktop-only {
@@ -140,13 +68,6 @@
       display: block;
     }
   {% endif %}
-  .banner-quality-strip__grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 28px 16px;
-  }
-  .banner-quality-strip {
-    padding: 36px 0 40px;
-  }
 }
 </style>
 
