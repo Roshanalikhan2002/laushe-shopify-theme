@@ -48,18 +48,21 @@
 
 <style>
   .trust-title {
-    font-size: 36px;
-    font-weight: 800;
+    font-size: clamp(42px, 6vw, 64px);
+    font-weight: 900;
     color: #ffffff;
-    margin-bottom: 15px;
+    margin-bottom: 18px;
     font-family: 'Nunito', sans-serif;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
   }
   
   .trust-subtitle {
-    font-size: 16px;
-    color: rgba(255,255,255,0.9);
-    max-width: 600px;
+    font-size: 18px;
+    color: #ffffff;
+    max-width: 640px;
     margin: 0 auto;
+    font-weight: 600;
   }
   
   .trust-grid {
@@ -80,7 +83,7 @@
   .trust-icon svg {
     width: 48px;
     height: 48px;
-    color: #ffffff;
+    color: #ffcc33;
     stroke-width: 1.5;
   }
   
@@ -96,6 +99,6 @@
       grid-template-columns: repeat(2, 1fr);
       gap: 50px 20px;
     }
-    .trust-title { font-size: 28px; }
+    .trust-title { font-size: 36px; }
   }
 </style>

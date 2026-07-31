@@ -215,7 +215,7 @@ header.sticky-header {
 
 .risk-free {
     font-size: 14px;
-    color: var(--text-muted);
+    color: #ffffff;
     margin-top: 20px;
     opacity: 1;
 }
@@ -276,7 +276,7 @@ header.sticky-header {
     text-transform: uppercase;
     font-size: 12px;
     letter-spacing: 0.1em;
-    color: rgba(255,255,255,0.65);
+    color: #ffffff;
 }
 
 .comp-table td {
@@ -879,7 +879,7 @@ html, body, main, .content-for-layout {
 main > section {
     background-color: #007e40;
     color: #ffffff;
-    margin: 28px 0;
+    margin: 40px 0;
 }
 
 section,
@@ -899,10 +899,10 @@ section h4 {
 section > .container > p,
 section .section-sub,
 section .header-group > p {
-    color: rgba(255, 255, 255, 0.9);
+    color: #ffffff;
 }
 
-/* White text cards / panels: dark text for contrast */
+/* White text cards / panels: black text only (no grey) */
 .faq-card,
 .faq-card .faq-question-text,
 .faq-card .faq-icon-box,
@@ -925,14 +925,14 @@ section .header-group > p {
 .trust-widget,
 .trust-widget .trust-title,
 .trust-widget .trust-sub {
-    color: #007e40 !important;
+    color: #000000 !important;
 }
 
 .faq-card h1, .faq-card h2, .faq-card h3, .faq-card h4,
 .step-card h1, .step-card h2, .step-card h3, .step-card h4,
 .ingredient-item h1, .ingredient-item h2, .ingredient-item h3, .ingredient-item h4,
 .product-card h1, .product-card h2, .product-card h3, .product-card h4 {
-    color: #007e40 !important;
+    color: #000000 !important;
 }
 
 .menu-toggle ion-icon {
@@ -947,12 +947,12 @@ section .header-group > p {
 
 #search-bar input {
     background: rgba(255,255,255,0.12);
-    border-color: rgba(255,255,255,0.35) !important;
+    border-color: #ffffff !important;
     color: #ffffff;
 }
 
 #search-bar input::placeholder {
-    color: rgba(255,255,255,0.7);
+    color: #ffffff;
 }
 
 .mobile-drawer,
@@ -973,7 +973,7 @@ section .header-group > p {
 .product-card-dynamic {
     background: #ffffff !important;
     border: 2px solid rgba(255, 255, 255, 0.9) !important;
-    color: #007e40 !important;
+    color: #000000 !important;
     box-shadow: 0 10px 30px rgba(0,0,0,0.08);
 }
 
@@ -987,7 +987,7 @@ section .header-group > p {
 .product-card-dynamic h3,
 .product-card-dynamic h4,
 .product-card-dynamic p {
-    color: #007e40 !important;
+    color: #000000 !important;
 }
 
 .text-yellow,
@@ -1007,18 +1007,18 @@ section .header-group > p {
 .benefit-item-v2 .benefit-desc,
 .benefit-item-v2 .icon-box svg,
 .benefit-item-v2 .icon-box {
-    color: #007e40 !important;
+    color: #000000 !important;
 }
 
 .benefit-item-v2 .benefit-desc {
-    color: #2f5b45 !important;
+    color: #000000 !important;
 }
 
 @media (max-width: 768px) {
     #MainContent > section,
     .content-for-layout > section,
     main > section {
-        margin: 18px 0;
+        margin: 24px 0;
     }
 }
 
