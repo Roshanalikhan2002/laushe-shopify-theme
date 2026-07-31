@@ -628,6 +628,74 @@
         "heading_color": "#ffffff"
       }
     },
+    "members_getting_around": {
+      "type": "members-getting-around",
+      "blocks": {
+        "card_1": {
+          "type": "card",
+          "settings": {
+            "tilt": -14,
+            "spin_speed": 8
+          }
+        },
+        "card_2": {
+          "type": "card",
+          "settings": {
+            "tilt": -6,
+            "spin_speed": 9
+          }
+        },
+        "card_3": {
+          "type": "card",
+          "settings": {
+            "tilt": 4,
+            "spin_speed": 7
+          }
+        },
+        "card_4": {
+          "type": "card",
+          "settings": {
+            "tilt": 12,
+            "spin_speed": 10
+          }
+        },
+        "card_5": {
+          "type": "card",
+          "settings": {
+            "tilt": -8,
+            "spin_speed": 8
+          }
+        },
+        "card_6": {
+          "type": "card",
+          "settings": {
+            "tilt": 8,
+            "spin_speed": 9
+          }
+        }
+      },
+      "block_order": [
+        "card_1",
+        "card_2",
+        "card_3",
+        "card_4",
+        "card_5",
+        "card_6"
+      ],
+      "settings": {
+        "heading_line1": "15,000+ FAMILIES.",
+        "heading_line2": "WE'VE BEEN",
+        "heading_line3": "GETTING AROUND",
+        "bg_color": "#FCF8ED",
+        "line1_color": "#007e40",
+        "line2_color": "#0A1F14",
+        "icon_bg": "#007e40",
+        "instagram_url": "https://www.instagram.com/laushebyzahra",
+        "tiktok_url": "",
+        "youtube_url": "",
+        "facebook_url": ""
+      }
+    },
     "story": {
       "type": "story-section",
       "blocks": {
@@ -789,6 +857,7 @@
     "faq_accordion",
     "filtered_reviews",
     "influencer_reviews",
+    "members_getting_around",
     "story",
     "social_proof",
     "laushe_comparison_table_BtaEPh",

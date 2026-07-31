@@ -1,0 +1,442 @@
+<section
+  id="members-around-{{ section.id }}"
+  class="members-around"
+  style="--ma-bg: {{ section.settings.bg_color }}; --ma-line1: {{ section.settings.line1_color }}; --ma-line2: {{ section.settings.line2_color }}; --ma-icon: {{ section.settings.icon_bg }};"
+>
+  <div class="members-around__inner">
+    <div class="members-around__copy">
+      {% if section.settings.heading_line1 != blank %}
+        <p class="members-around__line1">{{ section.settings.heading_line1 }}</p>
+      {% endif %}
+      <h2 class="members-around__heading">
+        {% if section.settings.heading_line2 != blank %}
+          <span>{{ section.settings.heading_line2 }}</span>
+        {% endif %}
+        {% if section.settings.heading_line3 != blank %}
+          <span>{{ section.settings.heading_line3 }}</span>
+        {% endif %}
+      </h2>
+
+      <div class="members-around__socials" aria-label="Social links">
+        <a href="{{ section.settings.instagram_url | default: '#' }}" class="members-around__social" {% if section.settings.instagram_url != blank %}target="_blank" rel="noopener"{% endif %} aria-label="Instagram">
+          <ion-icon name="logo-instagram"></ion-icon>
+        </a>
+        <a href="{{ section.settings.tiktok_url | default: '#' }}" class="members-around__social" {% if section.settings.tiktok_url != blank %}target="_blank" rel="noopener"{% endif %} aria-label="TikTok">
+          <ion-icon name="logo-tiktok"></ion-icon>
+        </a>
+        <a href="{{ section.settings.youtube_url | default: '#' }}" class="members-around__social" {% if section.settings.youtube_url != blank %}target="_blank" rel="noopener"{% endif %} aria-label="YouTube">
+          <ion-icon name="logo-youtube"></ion-icon>
+        </a>
+        <a href="{{ section.settings.facebook_url | default: '#' }}" class="members-around__social" {% if section.settings.facebook_url != blank %}target="_blank" rel="noopener"{% endif %} aria-label="Facebook">
+          <ion-icon name="logo-facebook"></ion-icon>
+        </a>
+      </div>
+    </div>
+
+    <div class="members-around__stage" aria-hidden="true">
+      <div class="members-around__track">
+        {% assign card_count = 0 %}
+        {% for block in section.blocks %}
+          {% if block.type == 'card' %}
+            {% assign card_count = card_count | plus: 1 %}
+            {% assign tilt = block.settings.tilt | default: 0 %}
+            {% assign delay = forloop.index0 | times: 0.35 %}
+            <div
+              class="members-around__card"
+              style="--tilt: {{ tilt }}deg; --spin-delay: -{{ delay }}s; --spin-duration: {{ block.settings.spin_speed | default: 8 }}s;"
+              {{ block.shopify_attributes }}
+            >
+              <div class="members-around__card-inner">
+                <div class="members-around__face members-around__face--front">
+                  {% if block.settings.image != blank %}
+                    <img
+                      src="{{ block.settings.image | image_url: width: 700 }}"
+                      alt="{{ block.settings.image.alt | escape }}"
+                      loading="lazy"
+                      width="700"
+                      height="900"
+                    >
+                  {% else %}
+                    <div class="members-around__placeholder">
+                      <span>Add image</span>
+                    </div>
+                  {% endif %}
+                </div>
+                <div class="members-around__face members-around__face--back">
+                  {% if block.settings.image != blank %}
+                    <img
+                      src="{{ block.settings.image | image_url: width: 700 }}"
+                      alt=""
+                      loading="lazy"
+                      width="700"
+                      height="900"
+                    >
+                  {% else %}
+                    <div class="members-around__placeholder">
+                      <span>Add image</span>
+                    </div>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+
+        {% if card_count == 0 %}
+          {% assign default_tilts = "-14,-6,4,12,-8,8" | split: "," %}
+          {% for i in (1..6) %}
+            {% assign ti = forloop.index0 %}
+            <div
+              class="members-around__card"
+              style="--tilt: {{ default_tilts[ti] }}deg; --spin-delay: -{{ ti | times: 0.4 }}s; --spin-duration: {{ 7 | plus: ti }}s;"
+            >
+              <div class="members-around__card-inner">
+                <div class="members-around__face members-around__face--front">
+                  <div class="members-around__placeholder"><span>Add image</span></div>
+                </div>
+                <div class="members-around__face members-around__face--back">
+                  <div class="members-around__placeholder"><span>Add image</span></div>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  #members-around-{{ section.id }} {
+    background: var(--ma-bg, #fcf8ed);
+    overflow: hidden;
+    padding: clamp(64px, 8vw, 100px) 0 0;
+    position: relative;
+  }
+
+  #members-around-{{ section.id }} .members-around__inner {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  #members-around-{{ section.id }} .members-around__copy {
+    text-align: center;
+    padding: 0 20px;
+    margin-bottom: clamp(28px, 4vw, 48px);
+  }
+
+  #members-around-{{ section.id }} .members-around__line1 {
+    margin: 0 0 6px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: clamp(28px, 5.5vw, 64px);
+    line-height: 1;
+    letter-spacing: -0.03em;
+    text-transform: uppercase;
+    color: var(--ma-line1, #007e40);
+  }
+
+  #members-around-{{ section.id }} .members-around__heading {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: clamp(32px, 6.5vw, 72px);
+    line-height: 0.95;
+    letter-spacing: -0.035em;
+    text-transform: uppercase;
+    color: var(--ma-line2, #0a1f14);
+  }
+
+  #members-around-{{ section.id }} .members-around__heading span {
+    display: block;
+  }
+
+  #members-around-{{ section.id }} .members-around__socials {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin-top: clamp(22px, 3vw, 32px);
+  }
+
+  #members-around-{{ section.id }} .members-around__social {
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    background: var(--ma-icon, #007e40);
+    color: #fff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+  }
+
+  #members-around-{{ section.id }} .members-around__social:hover {
+    transform: translateY(-2px);
+    opacity: 0.9;
+  }
+
+  #members-around-{{ section.id }} .members-around__social ion-icon {
+    font-size: 22px;
+  }
+
+  #members-around-{{ section.id }} .members-around__stage {
+    position: relative;
+    width: 100%;
+    height: clamp(280px, 42vw, 460px);
+    overflow: hidden;
+    perspective: 1200px;
+    -webkit-mask-image: linear-gradient(to bottom, #000 55%, transparent 100%);
+    mask-image: linear-gradient(to bottom, #000 55%, transparent 100%);
+  }
+
+  #members-around-{{ section.id }} .members-around__track {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: clamp(10px, 1.6vw, 22px);
+    height: 100%;
+    padding: 10px 4vw 0;
+    transform-style: preserve-3d;
+  }
+
+  #members-around-{{ section.id }} .members-around__card {
+    flex: 0 0 auto;
+    width: clamp(140px, 16vw, 220px);
+    height: clamp(200px, 24vw, 320px);
+    transform: rotate(var(--tilt, 0deg));
+    transform-style: preserve-3d;
+    perspective: 900px;
+  }
+
+  #members-around-{{ section.id }} .members-around__card-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    animation: ma-spin-{{ section.id }} var(--spin-duration, 8s) linear infinite;
+    animation-delay: var(--spin-delay, 0s);
+    border-radius: 28px;
+  }
+
+  #members-around-{{ section.id }} .members-around__face {
+    position: absolute;
+    inset: 0;
+    border-radius: 28px;
+    overflow: hidden;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.14);
+    background: #e8efe6;
+  }
+
+  #members-around-{{ section.id }} .members-around__face--back {
+    transform: rotateY(180deg);
+  }
+
+  #members-around-{{ section.id }} .members-around__face img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  #members-around-{{ section.id }} .members-around__placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background:
+      linear-gradient(145deg, rgba(0, 126, 64, 0.12), rgba(0, 126, 64, 0.28)),
+      repeating-linear-gradient(
+        -45deg,
+        rgba(255, 255, 255, 0.35),
+        rgba(255, 255, 255, 0.35) 8px,
+        transparent 8px,
+        transparent 16px
+      );
+  }
+
+  #members-around-{{ section.id }} .members-around__placeholder span {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #007e40;
+    background: rgba(255, 255, 255, 0.85);
+    padding: 8px 12px;
+    border-radius: 999px;
+  }
+
+  @keyframes ma-spin-{{ section.id }} {
+    from { transform: rotateY(0deg); }
+    to { transform: rotateY(360deg); }
+  }
+
+  @media (max-width: 900px) {
+    #members-around-{{ section.id }} .members-around__card:nth-child(n + 5) {
+      display: none;
+    }
+    #members-around-{{ section.id }} .members-around__stage {
+      height: clamp(240px, 58vw, 340px);
+    }
+    #members-around-{{ section.id }} .members-around__card {
+      width: clamp(120px, 28vw, 170px);
+      height: clamp(170px, 40vw, 250px);
+    }
+  }
+
+  @media (max-width: 600px) {
+    #members-around-{{ section.id }} {
+      padding-top: 56px;
+    }
+    #members-around-{{ section.id }} .members-around__card:nth-child(n + 4) {
+      display: none;
+    }
+    #members-around-{{ section.id }} .members-around__social {
+      width: 38px;
+      height: 38px;
+      border-radius: 9px;
+    }
+    #members-around-{{ section.id }} .members-around__social ion-icon {
+      font-size: 20px;
+    }
+    #members-around-{{ section.id }} .members-around__track {
+      gap: 8px;
+      padding: 8px 12px 0;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    #members-around-{{ section.id }} .members-around__card-inner {
+      animation: none;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Members Getting Around",
+  "tag": "section",
+  "class": "section-members-around",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading_line1",
+      "label": "Heading line 1 (green)",
+      "default": "15,000+ FAMILIES."
+    },
+    {
+      "type": "text",
+      "id": "heading_line2",
+      "label": "Heading line 2",
+      "default": "WE'VE BEEN"
+    },
+    {
+      "type": "text",
+      "id": "heading_line3",
+      "label": "Heading line 3",
+      "default": "GETTING AROUND"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background",
+      "default": "#FCF8ED"
+    },
+    {
+      "type": "color",
+      "id": "line1_color",
+      "label": "Line 1 color",
+      "default": "#007e40"
+    },
+    {
+      "type": "color",
+      "id": "line2_color",
+      "label": "Main heading color",
+      "default": "#0A1F14"
+    },
+    {
+      "type": "color",
+      "id": "icon_bg",
+      "label": "Social icon background",
+      "default": "#007e40"
+    },
+    {
+      "type": "url",
+      "id": "instagram_url",
+      "label": "Instagram URL"
+    },
+    {
+      "type": "url",
+      "id": "tiktok_url",
+      "label": "TikTok URL"
+    },
+    {
+      "type": "url",
+      "id": "youtube_url",
+      "label": "YouTube URL"
+    },
+    {
+      "type": "url",
+      "id": "facebook_url",
+      "label": "Facebook URL"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "card",
+      "name": "Photo card",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Card image"
+        },
+        {
+          "type": "range",
+          "id": "tilt",
+          "label": "Tilt (degrees)",
+          "min": -20,
+          "max": 20,
+          "step": 1,
+          "default": 0,
+          "unit": "deg"
+        },
+        {
+          "type": "range",
+          "id": "spin_speed",
+          "label": "Spin speed (seconds)",
+          "min": 5,
+          "max": 16,
+          "step": 1,
+          "default": 8,
+          "unit": "s"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Members Getting Around",
+      "category": "Laushe Sections",
+      "blocks": [
+        { "type": "card", "settings": { "tilt": -14, "spin_speed": 8 } },
+        { "type": "card", "settings": { "tilt": -6, "spin_speed": 9 } },
+        { "type": "card", "settings": { "tilt": 4, "spin_speed": 7 } },
+        { "type": "card", "settings": { "tilt": 12, "spin_speed": 10 } },
+        { "type": "card", "settings": { "tilt": -8, "spin_speed": 8 } },
+        { "type": "card", "settings": { "tilt": 8, "spin_speed": 9 } }
+      ]
+    }
+  ]
+}
+{% endschema %}
