@@ -11,8 +11,67 @@
   "sections": {
     "hero_giveaway": {
       "type": "hero-giveaway",
+      "blocks": {
+        "product_weight_gainer": {
+          "type": "product",
+          "settings": {
+            "product": "weight-gainer-100-organic",
+            "title_override": "Weight Gainer",
+            "stars_count": "1250",
+            "rating": "4.8",
+            "show_badge": true,
+            "badge_text": "BESTSELLER",
+            "card_bg": "#e4efe8"
+          }
+        },
+        "product_hair_oil": {
+          "type": "product",
+          "settings": {
+            "product": "royce-hair-oil-sunnah-blessed",
+            "title_override": "Hair Oil",
+            "stars_count": "1250",
+            "rating": "4.8",
+            "show_badge": true,
+            "badge_text": "BESTSELLER",
+            "card_bg": "#f3e6e0"
+          }
+        },
+        "product_liquid_blush": {
+          "type": "product",
+          "settings": {
+            "product": "liquid-blush",
+            "title_override": "Liquid Blush",
+            "stars_count": "980",
+            "rating": "4.8",
+            "show_badge": true,
+            "badge_text": "BESTSELLER",
+            "card_bg": "#f0eadf"
+          }
+        },
+        "product_skin_tint": {
+          "type": "product",
+          "settings": {
+            "product": "skin-tint",
+            "title_override": "Skin Tint",
+            "stars_count": "1120",
+            "rating": "4.8",
+            "show_badge": true,
+            "badge_text": "BESTSELLER",
+            "card_bg": "#e8f1f4"
+          }
+        }
+      },
+      "block_order": [
+        "product_weight_gainer",
+        "product_hair_oil",
+        "product_liquid_blush",
+        "product_skin_tint"
+      ],
       "settings": {
-        "link": ""
+        "link": "",
+        "strip_text": "Our products are regularly tested to ensure purity and authenticity.",
+        "bs_heading": "Our Top Bestsellers",
+        "bs_subheading": "Customer favorites — Weight Gainer, Hair Oil, Liquid Blush & Skin Tint."
       }
     },
     "hero": {
@@ -134,62 +193,7 @@
     },
     "bestsellers_CXGzp8": {
       "type": "bestsellers",
-      "blocks": {
-        "product_weight_gainer": {
-          "type": "product",
-          "settings": {
-            "product": "weight-gainer-100-organic",
-            "title_override": "Weight Gainer",
-            "stars_count": "1250",
-            "rating": "4.8",
-            "show_badge": true,
-            "badge_text": "BESTSELLER",
-            "card_bg": "#e4efe8"
-          }
-        },
-        "product_hair_oil": {
-          "type": "product",
-          "settings": {
-            "product": "royce-hair-oil-sunnah-blessed",
-            "title_override": "Hair Oil",
-            "stars_count": "1250",
-            "rating": "4.8",
-            "show_badge": true,
-            "badge_text": "BESTSELLER",
-            "card_bg": "#f3e6e0"
-          }
-        },
-        "product_liquid_blush": {
-          "type": "product",
-          "settings": {
-            "product": "liquid-blush",
-            "title_override": "Liquid Blush",
-            "stars_count": "980",
-            "rating": "4.8",
-            "show_badge": true,
-            "badge_text": "BESTSELLER",
-            "card_bg": "#f0eadf"
-          }
-        },
-        "product_skin_tint": {
-          "type": "product",
-          "settings": {
-            "product": "skin-tint",
-            "title_override": "Skin Tint",
-            "stars_count": "1120",
-            "rating": "4.8",
-            "show_badge": true,
-            "badge_text": "BESTSELLER",
-            "card_bg": "#e8f1f4"
-          }
-        }
-      },
-      "block_order": [
-        "product_weight_gainer",
-        "product_hair_oil",
-        "product_liquid_blush",
-        "product_skin_tint"
-      ],
+      "disabled": true,
       "name": "Our Top Bestsellers",
       "settings": {
         "heading": "Our Top Bestsellers",
@@ -772,7 +776,6 @@
   },
   "order": [
     "hero_giveaway",
-    "bestsellers_CXGzp8",
     "catalog_grid",
     "hero",
     "review_scroller",
