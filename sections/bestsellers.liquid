@@ -9,7 +9,7 @@
     {
       "type": "product",
       "name": "Product Card",
-      "limit": 3,
+      "limit": 4,
       "settings": [
         { "id": "product", "type": "product", "label": "Select Product" },
         { "id": "title_override", "type": "text", "label": "Custom Title (Optional)" },
@@ -49,6 +49,12 @@
               <a href="{{ prod.url }}" class="bs-img-link">
                 {% if block.settings.image_override != blank %}
                   <img src="{{ block.settings.image_override | image_url: width: 700 }}" alt="{{ block.settings.title_override | default: prod.title | escape }}">
+                {% elsif prod.handle contains 'hair-oil' %}
+                  <img src="{{ 'hair-oil-v2.jpg' | asset_url }}" alt="{{ block.settings.title_override | default: prod.title | escape }}">
+                {% elsif prod.handle contains 'liquid-blush' %}
+                  <img src="{{ 'liquid-blush-petal-1.jpg' | asset_url }}" alt="{{ block.settings.title_override | default: prod.title | escape }}">
+                {% elsif prod.handle contains 'skin-tint' %}
+                  <img src="{{ 'natural-skin-tint-1.jpg' | asset_url }}" alt="{{ block.settings.title_override | default: prod.title | escape }}">
                 {% elsif prod.featured_image %}
                   <img src="{{ prod.featured_image | image_url: width: 700 }}" alt="{{ prod.title | escape }}">
                 {% else %}
@@ -129,7 +135,7 @@
   }
   .bs-grid {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 28px;
     text-align: left;
   }
