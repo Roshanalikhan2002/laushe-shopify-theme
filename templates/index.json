@@ -777,11 +777,11 @@
   "order": [
     "hero_giveaway",
     "catalog_grid",
+    "stats_bar",
     "hero",
     "modern_living_gpDB8F",
     "problem_solution",
     "benefits_grid",
-    "stats_bar",
     "laushe_comparison_table_BtaEPh",
     "review_scroller",
     "filtered_reviews",
