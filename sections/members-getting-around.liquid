@@ -112,9 +112,10 @@
   #members-around-{{ section.id }} .members-around__copy {
     text-align: center;
     padding: 0 20px;
-    margin-bottom: clamp(28px, 5vw, 56px);
+    margin-bottom: clamp(36px, 5vw, 64px);
     position: relative;
-    z-index: 2;
+    z-index: 5;
+    background: var(--ma-bg, #fcf8ed);
   }
 
   #members-around-{{ section.id }} .members-around__line1 {
@@ -182,6 +183,7 @@
   /*
     Full-bleed stage: cards enter at extreme RIGHT edge
     and exit at extreme LEFT (Grüns edge-to-edge fan).
+    Tops stay fully visible — never cropped under the heading.
   */
   #members-around-{{ section.id }} .members-around__stage {
     position: relative;
@@ -191,17 +193,19 @@
     right: 50%;
     margin-left: -50vw;
     margin-right: -50vw;
-    height: clamp(440px, 52vw, 580px);
+    /* Shorter stage — less empty cream under the fan */
+    height: clamp(420px, 48vw, 540px);
     overflow: hidden;
     z-index: 1;
-    margin-top: clamp(12px, 2vw, 28px);
+    margin-top: 0;
   }
 
   /* Position hub separately from spin so mobile can shift the fan down */
   #members-around-{{ section.id }} .members-around__wheel-anchor {
     position: absolute;
     left: 50%;
-    top: 128%;
+    /* Sit fan on the green bar — kill empty cream under cards */
+    top: 188%;
     width: 0;
     height: 0;
   }
@@ -223,12 +227,12 @@
     left: 0;
     /* Bigger cards — Grüns scale */
     width: clamp(190px, 17vw, 260px);
-    height: clamp(300px, 34vw, 420px);
+    height: clamp(280px, 32vw, 400px);
     margin-left: calc(clamp(190px, 17vw, 260px) / -2);
-    margin-top: calc(clamp(300px, 34vw, 420px) * -0.94);
+    margin-top: calc(clamp(280px, 32vw, 400px) * -0.94);
     transform:
       rotate(calc(var(--i) * 360deg / var(--count)))
-      translateY(calc(var(--ma-radius, 520px) * -1));
+      translateY(calc(var(--ma-radius, 480px) * -1));
     transform-origin: center bottom;
   }
 
@@ -282,8 +286,8 @@
   #members-around-{{ section.id }} .members-around__ground {
     position: relative;
     z-index: 2;
-    height: 72px;
-    margin-top: -48px;
+    height: 64px;
+    margin-top: -56px;
     background: #007e40;
   }
 
@@ -301,11 +305,11 @@
       margin-bottom: 16px;
     }
     #members-around-{{ section.id }} .members-around__stage {
-      height: clamp(460px, 72vw, 540px);
+      height: clamp(400px, 62vw, 480px);
       margin-top: 4px;
     }
     #members-around-{{ section.id }} .members-around__wheel-anchor {
-      top: 138%;
+      top: 182%;
     }
     #members-around-{{ section.id }} .members-around__card {
       width: clamp(180px, 32vw, 230px);
@@ -340,12 +344,12 @@
       padding-bottom: 12px;
     }
     #members-around-{{ section.id }} .members-around__stage {
-      height: 460px;
+      height: 400px;
       margin-top: 0;
       overflow: hidden;
     }
     #members-around-{{ section.id }} .members-around__wheel-anchor {
-      top: 168%;
+      top: 195%;
       left: 50%;
     }
     #members-around-{{ section.id }} .members-around__card {
