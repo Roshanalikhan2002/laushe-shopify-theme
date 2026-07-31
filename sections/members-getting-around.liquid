@@ -1,7 +1,7 @@
 <section
   id="members-around-{{ section.id }}"
   class="members-around"
-  style="--ma-bg: {{ section.settings.bg_color }}; --ma-line1: {{ section.settings.line1_color }}; --ma-line2: {{ section.settings.line2_color }}; --ma-icon: {{ section.settings.icon_bg }};"
+  style="--ma-bg: {{ section.settings.bg_color }}; --ma-line1: {{ section.settings.line1_color }}; --ma-line2: {{ section.settings.line2_color }}; --ma-icon: {{ section.settings.icon_bg }}; --ma-orbit: {{ section.settings.orbit_speed | default: 28 }}s;"
 >
   <div class="members-around__inner">
     <div class="members-around__copy">
@@ -34,69 +34,57 @@
     </div>
 
     <div class="members-around__stage" aria-hidden="true">
-      <div class="members-around__track">
+      <div class="members-around__orbit">
         {% assign card_count = 0 %}
         {% for block in section.blocks %}
           {% if block.type == 'card' %}
             {% assign card_count = card_count | plus: 1 %}
+          {% endif %}
+        {% endfor %}
+        {% if card_count == 0 %}
+          {% assign card_count = 6 %}
+        {% endif %}
+        {% assign step = 360 | divided_by: card_count %}
+
+        {% assign shown = 0 %}
+        {% for block in section.blocks %}
+          {% if block.type == 'card' %}
+            {% assign angle = shown | times: step %}
             {% assign tilt = block.settings.tilt | default: 0 %}
-            {% assign delay = forloop.index0 | times: 0.35 %}
             <div
               class="members-around__card"
-              style="--tilt: {{ tilt }}deg; --spin-delay: -{{ delay }}s; --spin-duration: {{ block.settings.spin_speed | default: 8 }}s;"
+              style="--angle: {{ angle }}deg; --tilt: {{ tilt }}deg;"
               {{ block.shopify_attributes }}
             >
-              <div class="members-around__card-inner">
-                <div class="members-around__face members-around__face--front">
-                  {% if block.settings.image != blank %}
-                    <img
-                      src="{{ block.settings.image | image_url: width: 700 }}"
-                      alt="{{ block.settings.image.alt | escape }}"
-                      loading="lazy"
-                      width="700"
-                      height="900"
-                    >
-                  {% else %}
-                    <div class="members-around__placeholder">
-                      <span>Add image</span>
-                    </div>
-                  {% endif %}
-                </div>
-                <div class="members-around__face members-around__face--back">
-                  {% if block.settings.image != blank %}
-                    <img
-                      src="{{ block.settings.image | image_url: width: 700 }}"
-                      alt=""
-                      loading="lazy"
-                      width="700"
-                      height="900"
-                    >
-                  {% else %}
-                    <div class="members-around__placeholder">
-                      <span>Add image</span>
-                    </div>
-                  {% endif %}
-                </div>
+              <div class="members-around__card-face">
+                {% if block.settings.image != blank %}
+                  <img
+                    src="{{ block.settings.image | image_url: width: 700 }}"
+                    alt="{{ block.settings.image.alt | escape }}"
+                    loading="lazy"
+                    width="700"
+                    height="900"
+                  >
+                {% else %}
+                  <div class="members-around__placeholder"><span>Add image</span></div>
+                {% endif %}
               </div>
             </div>
+            {% assign shown = shown | plus: 1 %}
           {% endif %}
         {% endfor %}
 
-        {% if card_count == 0 %}
-          {% assign default_tilts = "-14,-6,4,12,-8,8" | split: "," %}
+        {% if shown == 0 %}
+          {% assign default_tilts = "-12,-6,0,6,12,-4" | split: "," %}
           {% for i in (1..6) %}
             {% assign ti = forloop.index0 %}
+            {% assign angle = ti | times: 60 %}
             <div
               class="members-around__card"
-              style="--tilt: {{ default_tilts[ti] }}deg; --spin-delay: -{{ ti | times: 0.4 }}s; --spin-duration: {{ 7 | plus: ti }}s;"
+              style="--angle: {{ angle }}deg; --tilt: {{ default_tilts[ti] }}deg;"
             >
-              <div class="members-around__card-inner">
-                <div class="members-around__face members-around__face--front">
-                  <div class="members-around__placeholder"><span>Add image</span></div>
-                </div>
-                <div class="members-around__face members-around__face--back">
-                  <div class="members-around__placeholder"><span>Add image</span></div>
-                </div>
+              <div class="members-around__card-face">
+                <div class="members-around__placeholder"><span>Add image</span></div>
               </div>
             </div>
           {% endfor %}
@@ -123,37 +111,41 @@
   #members-around-{{ section.id }} .members-around__copy {
     text-align: center;
     padding: 0 20px;
-    margin-bottom: clamp(28px, 4vw, 48px);
+    margin-bottom: clamp(20px, 3vw, 36px);
+    position: relative;
+    z-index: 2;
   }
 
   #members-around-{{ section.id }} .members-around__line1 {
     margin: 0 0 6px;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 900;
-    font-size: clamp(28px, 5.5vw, 64px);
+    font-family: 'Montserrat', sans-serif !important;
+    font-weight: 900 !important;
+    font-size: clamp(28px, 5.5vw, 64px) !important;
     line-height: 1;
     letter-spacing: -0.03em;
     text-transform: uppercase;
-    color: var(--ma-line1, #007e40);
+    color: var(--ma-line1, #007e40) !important;
   }
 
-  #members-around-{{ section.id }} .members-around__heading {
+  #members-around-{{ section.id }} .members-around__heading,
+  #members-around-{{ section.id }} h2.members-around__heading {
     margin: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 0;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 900;
-    font-size: clamp(32px, 6.5vw, 72px);
-    line-height: 0.95;
+    font-family: 'Montserrat', sans-serif !important;
+    font-weight: 900 !important;
+    font-size: clamp(32px, 6.5vw, 72px) !important;
+    line-height: 0.95 !important;
     letter-spacing: -0.035em;
     text-transform: uppercase;
-    color: var(--ma-line2, #0a1f14);
+    color: #0a1f14 !important;
   }
 
   #members-around-{{ section.id }} .members-around__heading span {
     display: block;
+    color: #0a1f14 !important;
   }
 
   #members-around-{{ section.id }} .members-around__socials {
@@ -169,7 +161,7 @@
     height: 42px;
     border-radius: 10px;
     background: var(--ma-icon, #007e40);
-    color: #fff;
+    color: #fff !important;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -184,63 +176,54 @@
 
   #members-around-{{ section.id }} .members-around__social ion-icon {
     font-size: 22px;
+    color: #fff;
   }
 
+  /* Orbit stage — front arc of a 3D ring */
   #members-around-{{ section.id }} .members-around__stage {
     position: relative;
     width: 100%;
-    height: clamp(280px, 42vw, 460px);
+    height: clamp(300px, 46vw, 480px);
     overflow: hidden;
-    perspective: 1200px;
-    -webkit-mask-image: linear-gradient(to bottom, #000 55%, transparent 100%);
-    mask-image: linear-gradient(to bottom, #000 55%, transparent 100%);
+    perspective: 1400px;
+    perspective-origin: 50% 40%;
+    -webkit-mask-image: linear-gradient(to bottom, #000 50%, transparent 100%);
+    mask-image: linear-gradient(to bottom, #000 50%, transparent 100%);
   }
 
-  #members-around-{{ section.id }} .members-around__track {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    gap: clamp(10px, 1.6vw, 22px);
-    height: 100%;
-    padding: 10px 4vw 0;
+  #members-around-{{ section.id }} .members-around__orbit {
+    position: absolute;
+    left: 50%;
+    top: 58%;
+    width: 0;
+    height: 0;
     transform-style: preserve-3d;
+    animation: ma-orbit-{{ section.id }} var(--ma-orbit, 28s) linear infinite;
   }
 
   #members-around-{{ section.id }} .members-around__card {
-    flex: 0 0 auto;
-    width: clamp(140px, 16vw, 220px);
-    height: clamp(200px, 24vw, 320px);
-    transform: rotate(var(--tilt, 0deg));
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: clamp(150px, 17vw, 230px);
+    height: clamp(210px, 25vw, 330px);
+    margin-left: calc(clamp(150px, 17vw, 230px) / -2);
+    margin-top: calc(clamp(210px, 25vw, 330px) / -2);
     transform-style: preserve-3d;
-    perspective: 900px;
+    transform: rotateY(var(--angle)) translateZ(clamp(220px, 34vw, 460px));
   }
 
-  #members-around-{{ section.id }} .members-around__card-inner {
+  #members-around-{{ section.id }} .members-around__card-face {
     width: 100%;
     height: 100%;
-    position: relative;
-    transform-style: preserve-3d;
-    animation: ma-spin-{{ section.id }} var(--spin-duration, 8s) linear infinite;
-    animation-delay: var(--spin-delay, 0s);
-    border-radius: 28px;
-  }
-
-  #members-around-{{ section.id }} .members-around__face {
-    position: absolute;
-    inset: 0;
     border-radius: 28px;
     overflow: hidden;
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
-    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.14);
     background: #e8efe6;
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.16);
+    animation: ma-counter-{{ section.id }} var(--ma-orbit, 28s) linear infinite;
   }
 
-  #members-around-{{ section.id }} .members-around__face--back {
-    transform: rotateY(180deg);
-  }
-
-  #members-around-{{ section.id }} .members-around__face img {
+  #members-around-{{ section.id }} .members-around__card-face img {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -270,27 +253,35 @@
     font-weight: 800;
     letter-spacing: 0.06em;
     text-transform: uppercase;
-    color: #007e40;
-    background: rgba(255, 255, 255, 0.85);
+    color: #007e40 !important;
+    background: rgba(255, 255, 255, 0.9);
     padding: 8px 12px;
     border-radius: 999px;
   }
 
-  @keyframes ma-spin-{{ section.id }} {
+  /* Anti-clockwise orbit (negative Y) */
+  @keyframes ma-orbit-{{ section.id }} {
     from { transform: rotateY(0deg); }
-    to { transform: rotateY(360deg); }
+    to { transform: rotateY(-360deg); }
+  }
+
+  /* Keep card faces pointed at the camera while ring orbits */
+  @keyframes ma-counter-{{ section.id }} {
+    from { transform: rotateY(calc(var(--angle) * -1)) rotateZ(var(--tilt, 0deg)); }
+    to { transform: rotateY(calc(var(--angle) * -1 + 360deg)) rotateZ(var(--tilt, 0deg)); }
   }
 
   @media (max-width: 900px) {
-    #members-around-{{ section.id }} .members-around__card:nth-child(n + 5) {
-      display: none;
-    }
     #members-around-{{ section.id }} .members-around__stage {
-      height: clamp(240px, 58vw, 340px);
+      height: clamp(260px, 62vw, 360px);
+      perspective: 1000px;
     }
     #members-around-{{ section.id }} .members-around__card {
-      width: clamp(120px, 28vw, 170px);
-      height: clamp(170px, 40vw, 250px);
+      width: clamp(120px, 26vw, 170px);
+      height: clamp(170px, 38vw, 250px);
+      margin-left: calc(clamp(120px, 26vw, 170px) / -2);
+      margin-top: calc(clamp(170px, 38vw, 250px) / -2);
+      transform: rotateY(var(--angle)) translateZ(clamp(160px, 42vw, 260px));
     }
   }
 
@@ -298,8 +289,12 @@
     #members-around-{{ section.id }} {
       padding-top: 56px;
     }
-    #members-around-{{ section.id }} .members-around__card:nth-child(n + 4) {
-      display: none;
+    #members-around-{{ section.id }} .members-around__heading,
+    #members-around-{{ section.id }} h2.members-around__heading {
+      font-size: clamp(28px, 9vw, 40px) !important;
+    }
+    #members-around-{{ section.id }} .members-around__line1 {
+      font-size: clamp(22px, 7vw, 32px) !important;
     }
     #members-around-{{ section.id }} .members-around__social {
       width: 38px;
@@ -309,14 +304,14 @@
     #members-around-{{ section.id }} .members-around__social ion-icon {
       font-size: 20px;
     }
-    #members-around-{{ section.id }} .members-around__track {
-      gap: 8px;
-      padding: 8px 12px 0;
+    #members-around-{{ section.id }} .members-around__orbit {
+      top: 55%;
     }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    #members-around-{{ section.id }} .members-around__card-inner {
+    #members-around-{{ section.id }} .members-around__orbit,
+    #members-around-{{ section.id }} .members-around__card-face {
       animation: none;
     }
   }
@@ -371,6 +366,16 @@
       "default": "#007e40"
     },
     {
+      "type": "range",
+      "id": "orbit_speed",
+      "label": "Orbit speed (seconds per loop)",
+      "min": 12,
+      "max": 60,
+      "step": 2,
+      "default": 28,
+      "unit": "s"
+    },
+    {
       "type": "url",
       "id": "instagram_url",
       "label": "Instagram URL"
@@ -404,22 +409,12 @@
         {
           "type": "range",
           "id": "tilt",
-          "label": "Tilt (degrees)",
-          "min": -20,
-          "max": 20,
+          "label": "Card tilt",
+          "min": -16,
+          "max": 16,
           "step": 1,
           "default": 0,
           "unit": "deg"
-        },
-        {
-          "type": "range",
-          "id": "spin_speed",
-          "label": "Spin speed (seconds)",
-          "min": 5,
-          "max": 16,
-          "step": 1,
-          "default": 8,
-          "unit": "s"
         }
       ]
     }
@@ -429,12 +424,12 @@
       "name": "Members Getting Around",
       "category": "Laushe Sections",
       "blocks": [
-        { "type": "card", "settings": { "tilt": -14, "spin_speed": 8 } },
-        { "type": "card", "settings": { "tilt": -6, "spin_speed": 9 } },
-        { "type": "card", "settings": { "tilt": 4, "spin_speed": 7 } },
-        { "type": "card", "settings": { "tilt": 12, "spin_speed": 10 } },
-        { "type": "card", "settings": { "tilt": -8, "spin_speed": 8 } },
-        { "type": "card", "settings": { "tilt": 8, "spin_speed": 9 } }
+        { "type": "card", "settings": { "tilt": -12 } },
+        { "type": "card", "settings": { "tilt": -6 } },
+        { "type": "card", "settings": { "tilt": 0 } },
+        { "type": "card", "settings": { "tilt": 6 } },
+        { "type": "card", "settings": { "tilt": 12 } },
+        { "type": "card", "settings": { "tilt": -4 } }
       ]
     }
   ]
