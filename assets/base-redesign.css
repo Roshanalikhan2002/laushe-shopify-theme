@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap');
 
 html {
     scroll-behavior: smooth;
@@ -25,6 +25,7 @@ body {
     --card-border: rgba(255, 255, 255, 0.55);
     --shadow-luxe: 0 20px 40px rgba(0,0,0,0.18);
     --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    --font-main: 'Montserrat', sans-serif;
 }
 
 *, *::before, *::after {
@@ -33,8 +34,12 @@ body {
     padding: 0;
 }
 
+html, body, button, input, select, textarea {
+    font-family: var(--font-main);
+}
+
 body {
-    font-family: 'Nunito', sans-serif;
+    font-family: var(--font-main);
     background-color: var(--deep-forest);
     color: var(--white);
     line-height: 1.6;
@@ -52,10 +57,15 @@ img {
     display: block;
 }
 
-h1, h2, h3, h4, .font-heading {
-    font-family: 'Nunito', sans-serif;
+h1, h2, h3, h4, h5, h6, .font-heading {
+    font-family: var(--font-main);
     color: var(--white);
     font-weight: 800;
+    letter-spacing: -0.02em;
+}
+
+button, .btn, input, select, textarea, a, p, span, li, label {
+    font-family: var(--font-main);
 }
 
 h1 .highlight,
@@ -749,7 +759,7 @@ footer a:hover {
     font-size: 24px;
     font-weight: 900;
     color: var(--deep-forest);
-    font-family: 'Nunito', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     letter-spacing: 0.05em;
     line-height: 1;
 }
@@ -776,7 +786,7 @@ footer a:hover {
     font-size: 18px;
     font-weight: 700;
     letter-spacing: 0.02em;
-    font-family: 'Nunito', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     transition: color 0.3s ease;
 }
 
