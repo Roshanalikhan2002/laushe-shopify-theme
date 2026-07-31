@@ -1,7 +1,7 @@
 <section
   id="members-around-{{ section.id }}"
   class="members-around"
-  style="--ma-bg: {{ section.settings.bg_color }}; --ma-line1: {{ section.settings.line1_color }}; --ma-icon: {{ section.settings.icon_bg }}; --ma-orbit: {{ section.settings.orbit_speed | default: 40 }}s; --ma-radius: {{ section.settings.orbit_radius | default: 360 }}px;"
+  style="--ma-bg: {{ section.settings.bg_color }}; --ma-line1: {{ section.settings.line1_color }}; --ma-icon: {{ section.settings.icon_bg }}; --ma-orbit: {{ section.settings.orbit_speed | default: 40 }}s; --ma-radius: {{ section.settings.orbit_radius | default: 520 }}px;"
 >
   <div class="members-around__inner">
     <div class="members-around__copy">
@@ -97,7 +97,8 @@
 <style>
   #members-around-{{ section.id }} {
     background: var(--ma-bg, #fcf8ed);
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: visible;
     padding: clamp(56px, 7vw, 90px) 0 0;
     position: relative;
   }
@@ -179,14 +180,18 @@
   }
 
   /*
-    Stage shows only the TOP of the circle.
-    Pivot sits in the green ground below → bottoms cluster & connect,
-    tops fan out (Grüns hand-of-cards look).
+    Full-bleed stage: cards enter at extreme RIGHT edge
+    and exit at extreme LEFT (Grüns edge-to-edge fan).
   */
   #members-around-{{ section.id }} .members-around__stage {
     position: relative;
-    width: 100%;
-    height: clamp(380px, 48vw, 520px);
+    width: 100vw;
+    max-width: 100vw;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    height: clamp(440px, 52vw, 580px);
     overflow: hidden;
     z-index: 1;
     margin-top: clamp(12px, 2vw, 28px);
@@ -196,7 +201,7 @@
   #members-around-{{ section.id }} .members-around__wheel-anchor {
     position: absolute;
     left: 50%;
-    top: 132%;
+    top: 128%;
     width: 0;
     height: 0;
   }
@@ -216,18 +221,14 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: clamp(140px, 13.5vw, 190px);
-    height: clamp(200px, 24vw, 300px);
-    margin-left: calc(clamp(140px, 13.5vw, 190px) / -2);
-    /* Anchor near the BOTTOM of the card so lower edges sit close on the arc */
-    margin-top: calc(clamp(200px, 24vw, 300px) * -0.92);
-    /*
-      Keep radial tilt (no counter-rotate):
-      bottoms hug each other near the pivot, tops fan open.
-    */
+    /* Bigger cards — Grüns scale */
+    width: clamp(190px, 17vw, 260px);
+    height: clamp(300px, 34vw, 420px);
+    margin-left: calc(clamp(190px, 17vw, 260px) / -2);
+    margin-top: calc(clamp(300px, 34vw, 420px) * -0.94);
     transform:
       rotate(calc(var(--i) * 360deg / var(--count)))
-      translateY(calc(var(--ma-radius, 360px) * -1));
+      translateY(calc(var(--ma-radius, 520px) * -1));
     transform-origin: center bottom;
   }
 
@@ -294,23 +295,23 @@
 
   @media (max-width: 900px) {
     #members-around-{{ section.id }} {
-      --ma-radius: 200px;
+      --ma-radius: 280px;
     }
     #members-around-{{ section.id }} .members-around__copy {
       margin-bottom: 16px;
     }
     #members-around-{{ section.id }} .members-around__stage {
-      height: clamp(420px, 70vw, 520px);
+      height: clamp(460px, 72vw, 540px);
       margin-top: 4px;
     }
     #members-around-{{ section.id }} .members-around__wheel-anchor {
-      top: 140%;
+      top: 138%;
     }
     #members-around-{{ section.id }} .members-around__card {
-      width: clamp(160px, 28vw, 210px);
-      height: clamp(280px, 50vw, 380px);
-      margin-left: calc(clamp(160px, 28vw, 210px) / -2);
-      margin-top: calc(clamp(280px, 50vw, 380px) * -0.94);
+      width: clamp(180px, 32vw, 230px);
+      height: clamp(300px, 54vw, 400px);
+      margin-left: calc(clamp(180px, 32vw, 230px) / -2);
+      margin-top: calc(clamp(300px, 54vw, 400px) * -0.94);
     }
     #members-around-{{ section.id }} .members-around__ground {
       height: 52px;
@@ -318,10 +319,10 @@
     }
   }
 
-  /* Mobile — tall cards, ~2 half-visible, fully below heading */
+  /* Mobile — big cards, peek off left & right edges like Grüns */
   @media (max-width: 600px) {
     #members-around-{{ section.id }} {
-      --ma-radius: 145px;
+      --ma-radius: 210px;
       padding-top: 28px;
     }
     #members-around-{{ section.id }} .members-around__heading,
@@ -339,30 +340,25 @@
       padding-bottom: 12px;
     }
     #members-around-{{ section.id }} .members-around__stage {
-      height: 430px;
+      height: 460px;
       margin-top: 0;
       overflow: hidden;
-      /* Hard clip — nothing from the fan can paint over the heading */
-      clip-path: inset(0 0 0 0);
     }
     #members-around-{{ section.id }} .members-around__wheel-anchor {
-      /*
-        Hub deep below stage:
-        card tops land mid-lower stage, clear of icons.
-      */
-      top: 172%;
+      top: 168%;
       left: 50%;
     }
     #members-around-{{ section.id }} .members-around__card {
-      width: 56vw;
-      max-width: 230px;
-      height: 300px;
-      margin-left: calc(min(56vw, 230px) / -2);
-      margin-top: calc(300px * -0.96);
+      /* Larger + wide enough that sides clip at viewport edges */
+      width: 70vw;
+      max-width: 280px;
+      height: 380px;
+      margin-left: calc(min(70vw, 280px) / -2);
+      margin-top: calc(380px * -0.96);
       transform-origin: center bottom;
     }
     #members-around-{{ section.id }} .members-around__card-face {
-      border-radius: 22px;
+      border-radius: 24px;
     }
     #members-around-{{ section.id }} .members-around__ground {
       height: 40px;
@@ -450,13 +446,13 @@
     {
       "type": "range",
       "id": "orbit_radius",
-      "label": "Fan radius",
-      "min": 240,
-      "max": 480,
+      "label": "Fan radius (edge spread)",
+      "min": 360,
+      "max": 640,
       "step": 10,
-      "default": 360,
+      "default": 520,
       "unit": "px",
-      "info": "Smaller keeps cards lower under the heading"
+      "info": "Larger = wider arc; cards peek off left/right edges"
     },
     {
       "type": "url",
