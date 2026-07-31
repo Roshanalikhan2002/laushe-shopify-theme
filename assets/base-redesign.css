@@ -14,13 +14,16 @@ body {
 :root {
     --deep-forest: #007e40; /* Brand green */
     --primary-green: #007e40;
-    --secondary-green: #005c2e;
-    --soft-mint: #E6F5EE; /* Backgrounds */
-    --accent-gold: #ffcc33; /* Accents */
+    --secondary-green: #007e40;
+    --soft-mint: #007e40; /* Section backgrounds match brand green */
+    --accent-gold: #ffcc33; /* Accents / highlight text */
     --accent-yellow: #ffcc33; /* CTAs & Badges */
-    --charcoal: #333333; /* Text */
+    --charcoal: #ffffff; /* Body text on green */
+    --text-muted: rgba(255, 255, 255, 0.85);
     --white: #FFFFFF;
-    --shadow-luxe: 0 20px 40px rgba(0,0,0,0.08);
+    --card-bg: rgba(255, 255, 255, 0.08);
+    --card-border: rgba(255, 255, 255, 0.55);
+    --shadow-luxe: 0 20px 40px rgba(0,0,0,0.18);
     --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
@@ -32,8 +35,8 @@ body {
 
 body {
     font-family: 'Nunito', sans-serif;
-    background-color: var(--white);
-    color: var(--charcoal);
+    background-color: var(--deep-forest);
+    color: var(--white);
     line-height: 1.6;
     overflow-x: clip;
     width: 100%;
@@ -51,18 +54,29 @@ img {
 
 h1, h2, h3, h4, .font-heading {
     font-family: 'Nunito', sans-serif;
-    color: var(--deep-forest);
+    color: var(--white);
     font-weight: 800;
+}
+
+h1 .highlight,
+h2 .highlight,
+.text-yellow,
+.accent-text {
+    color: var(--accent-yellow);
 }
 
 /* Global Navigation Styles */
 .nav-links a {
     text-decoration: none;
-    color: var(--deep-forest);
+    color: var(--white);
     font-weight: 700;
     font-size: 14px;
     letter-spacing: 0.05em;
     padding: 10px 15px;
+}
+
+.nav-links a:hover {
+    color: var(--accent-yellow);
 }
 
 /* Sections & Layout */
@@ -103,13 +117,13 @@ h1, h2, h3, h4, .font-heading {
 }
 
 .btn-forest {
-    background-color: var(--deep-forest);
-    color: var(--white);
+    background-color: var(--accent-yellow);
+    color: var(--deep-forest);
 }
 
 .btn-gold {
     background-color: var(--accent-gold);
-    color: var(--white);
+    color: var(--deep-forest);
 }
 
 .btn-yellow {
@@ -124,8 +138,8 @@ h1, h2, h3, h4, .font-heading {
 
 /* Header & Announcement Bar */
 .announcement-bar {
-    background-color: var(--deep-forest);
-    color: var(--white);
+    background-color: var(--accent-yellow);
+    color: var(--deep-forest);
     text-align: center;
     padding: 10px 15px;
     font-size: 14px;
@@ -136,8 +150,8 @@ h1, h2, h3, h4, .font-heading {
 }
 
 header.sticky-header {
-    background-color: var(--white);
-    border-bottom: 1px solid #EEE;
+    background-color: var(--deep-forest);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
     padding: 20px 0;
     position: sticky;
     top: 0;
@@ -152,7 +166,7 @@ header.sticky-header {
 
 /* Hero Section Styles */
 .hero-wrapper {
-    background-color: var(--soft-mint);
+    background-color: var(--deep-forest);
     padding: 100px 0;
     overflow: hidden;
 }
@@ -165,7 +179,7 @@ header.sticky-header {
 }
 
 .ratings-badge {
-    color: var(--accent-gold);
+    color: var(--accent-yellow);
     font-weight: 800;
     font-size: 14px;
     margin-bottom: 20px;
@@ -175,6 +189,16 @@ header.sticky-header {
     font-size: 56px;
     line-height: 1.1;
     margin-bottom: 30px;
+    color: var(--white);
+}
+
+.hero-content h1 .highlight {
+    color: var(--accent-yellow);
+}
+
+.hero-content p,
+.benefit-item p {
+    color: var(--white);
 }
 
 .benefit-item {
@@ -185,15 +209,19 @@ header.sticky-header {
 }
 
 .checkmark {
-    color: var(--deep-forest);
+    color: var(--accent-yellow);
     font-weight: 900;
 }
 
 .risk-free {
     font-size: 14px;
-    color: var(--charcoal);
+    color: var(--text-muted);
     margin-top: 20px;
-    opacity: 0.8;
+    opacity: 1;
+}
+
+.hero-image img {
+    border: 3px solid var(--white);
 }
 
 /* Section Components */
@@ -210,7 +238,7 @@ header.sticky-header {
 .stat-number {
     font-size: 64px;
     font-weight: 800;
-    color: var(--deep-forest);
+    color: var(--accent-yellow);
 }
 
 /* Carousel/Cards */
@@ -248,7 +276,7 @@ header.sticky-header {
     text-transform: uppercase;
     font-size: 12px;
     letter-spacing: 0.1em;
-    color: #999;
+    color: rgba(255,255,255,0.65);
 }
 
 .comp-table td {
@@ -363,9 +391,21 @@ header.sticky-header {
 
 /* Footer */
 footer {
-    background-color: #F9F9F9;
+    background-color: var(--deep-forest) !important;
     padding: 80px 0 40px;
-    border-top: 1px solid #EEE;
+    border-top: 1px solid rgba(255, 255, 255, 0.15) !important;
+    color: var(--white);
+}
+
+footer h4,
+footer p,
+footer a,
+footer li {
+    color: var(--white) !important;
+}
+
+footer a:hover {
+    color: var(--accent-yellow) !important;
 }
 
 .footer-grid {
@@ -504,20 +544,21 @@ footer {
     font-weight: 600;
     font-size: 16px;
     cursor: pointer;
-    background: white;
-    color: var(--charcoal);
-    border: 1px solid #E0E0E0;
+    background: transparent;
+    color: var(--white);
+    border: 1px solid rgba(255, 255, 255, 0.45);
     transition: var(--transition);
 }
 
 .filter-btn:hover {
-    border-color: var(--deep-forest);
+    border-color: var(--accent-yellow);
+    color: var(--accent-yellow);
 }
 
 .filter-btn.active {
-    background: var(--deep-forest);
-    color: white;
-    border-color: var(--deep-forest);
+    background: var(--accent-yellow);
+    color: var(--deep-forest);
+    border-color: var(--accent-yellow);
 }
 
 /* --- PRODUCT GRID --- */
@@ -529,30 +570,33 @@ footer {
 }
 
 .product-card-dynamic {
-    background: white;
+    background: var(--card-bg);
     padding: 20px;
     border-radius: 20px;
     text-align: center;
     transition: var(--transition);
-    border: 1px solid #F0F0F0;
+    border: 2px solid var(--card-border);
     cursor: pointer;
     position: relative;
     overflow: hidden;
+    color: var(--white);
 }
 
 .product-card-dynamic:hover {
     transform: translateY(-10px);
     box-shadow: var(--shadow-luxe);
-    border-color: var(--deep-forest);
+    border-color: var(--accent-yellow);
 }
 
 .product-card-dynamic img {
     width: 100%;
     height: 250px;
     object-fit: contain;
-    mix-blend-mode: multiply;
+    mix-blend-mode: normal;
     margin-bottom: 20px;
     transition: var(--transition);
+    background: #fff;
+    border-radius: 12px;
 }
 
 .product-card-dynamic:hover img {
@@ -564,7 +608,7 @@ footer {
     top: 15px;
     left: 15px;
     background: #ffcc33;
-    color: white;
+    color: #ffffff;
     font-size: 11px;
     font-weight: 800;
     padding: 4px 10px;
@@ -658,7 +702,7 @@ footer {
     width: 85%;
     max-width: 320px;
     height: 100%;
-    background: #FAF7F2; /* Creamy background from mockup */
+    background: #007e40; /* Creamy background from mockup */
     box-shadow: 10px 0 30px rgba(0,0,0,0.05);
     transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
     z-index: 10003;
@@ -686,7 +730,7 @@ footer {
     position: absolute;
     left: 20px;
     font-size: 28px;
-    color: #333;
+    color: #ffffff;
     cursor: pointer;
 }
 
@@ -728,7 +772,7 @@ footer {
 
 .mobile-drawer-nav a {
     text-decoration: none;
-    color: #1A1A1A;
+    color: #ffffff;
     font-size: 18px;
     font-weight: 700;
     letter-spacing: 0.02em;
@@ -819,5 +863,80 @@ footer {
     .stats-grid .stat-value {
         font-size: 48px !important;
     }
+}
+
+/* ===== GLOBAL GREEN THEME OVERRIDES ===== */
+html, body, main, .content-for-layout {
+    background-color: #007e40 !important;
+    color: #ffffff;
+}
+
+section,
+.section-padding,
+.bg-soft-mint {
+    background-color: #007e40;
+    color: #ffffff;
+}
+
+section h1,
+section h2,
+section h3,
+section h4 {
+    color: #ffffff !important;
+}
+
+section p,
+section li,
+section span,
+section label {
+    color: inherit;
+}
+
+.menu-toggle ion-icon {
+    color: #ffffff !important;
+    font-size: 28px;
+}
+
+#search-bar {
+    background: #007e40 !important;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+}
+
+#search-bar input {
+    background: rgba(255,255,255,0.12);
+    border-color: rgba(255,255,255,0.35) !important;
+    color: #ffffff;
+}
+
+#search-bar input::placeholder {
+    color: rgba(255,255,255,0.7);
+}
+
+.mobile-drawer,
+.mobile-drawer-nav a {
+    color: #ffffff !important;
+}
+
+.mobile-drawer-nav a:hover {
+    color: #ffcc33 !important;
+}
+
+.cart-drawer {
+    background: #007e40 !important;
+    color: #ffffff;
+}
+
+.ingredient-detail-card,
+.product-card-dynamic,
+.faq-item {
+    background: rgba(255,255,255,0.08) !important;
+    border: 2px solid rgba(255,255,255,0.45) !important;
+    color: #ffffff;
+    box-shadow: none;
+}
+
+.text-yellow,
+.highlight {
+    color: #ffcc33 !important;
 }
 

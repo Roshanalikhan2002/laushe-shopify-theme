@@ -21,7 +21,8 @@
       "type": "hero-funnel",
       "settings": {
         "pre_title": "4.8 stars from 15,000+ happy families",
-        "headline": "“Transform Your Health Naturally. Discover Laushe’s Sunnah-Blessed Essentials.”",
+        "headline": "Transform Your Health Naturally.",
+        "headline_highlight": "Discover Laushe’s Sunnah-Blessed Essentials.",
         "benefit_1": "100% Pure & Natural Ingredients",
         "benefit_2": "Sunnah-Blessed Formulations with Proven Benefits",
         "benefit_3": "Zero Artificial Additives or Chemicals",
@@ -38,7 +39,7 @@
       "type": "review-scroller",
       "settings": {
         "heading": "WHAT PEOPLE ARE SAYING",
-        "bg_color": "#faf7f2",
+        "bg_color": "#007e40",
         "speed": 30
       }
     },
@@ -145,7 +146,7 @@
         "s4"
       ],
       "settings": {
-        "bg_color": "#E6F5EE",
+        "bg_color": "#007e40",
         "border_color": "#007e4014"
       }
     },
@@ -303,7 +304,7 @@
         "s4"
       ],
       "settings": {
-        "bg_color": "#005c2e",
+        "bg_color": "#007e40",
         "heading_color": "#ffffff",
         "prob_label": "The Reality Behind Modern Wellness",
         "prob_heading": "What You’re Really Consuming Matters",
@@ -432,7 +433,7 @@
       "settings": {
         "subtitle": "GOT QUESTIONS?",
         "title": "Frequently Asked Questions",
-        "bg_color": "#faf7f2"
+        "bg_color": "#007e40"
       }
     },
     "filtered_reviews": {
@@ -551,7 +552,7 @@
       ],
       "settings": {
         "heading": "Join Thousands Improving Their Health",
-        "bg_color": "#fafafa"
+        "bg_color": "#007e40"
       }
     },
     "story": {
@@ -585,7 +586,7 @@
         "s3"
       ],
       "settings": {
-        "bg_color": "#faf7f2",
+        "bg_color": "#007e40",
         "subtitle": "OUR STORY",
         "title": "Where Tradition Meets Thoughtful Care",
         "description_1": "It all began with a simple realization: true health is rarely found in shortcuts or artificial solutions. People were searching for remedies that actually nourished the body and honored the wisdom of generations before us. From this desire, Laushe was born, a promise to create products that are pure, intentional, and deeply connected to nature.\nFounded by Zahra, Laushe is a reflection of her commitment to authentic, mindful living. Every formulation she guides is Sunnah-blessed, thoughtfully combining prophetic medicine with modern nutritional insight. Her vision was never just about creating products; it was about offering families a way to care for themselves naturally, safely, and effectively, without compromise.",
@@ -607,8 +608,8 @@
       "block_order": ["inf1", "inf2", "inf3", "inf4", "inf5", "inf6"],
       "settings": {
         "heading": "Laushe with Us",
-        "bg_color": "#f7f3ea",
-        "heading_color": "#007e40"
+        "bg_color": "#007e40",
+        "heading_color": "#ffffff"
       }
     },
     "social_proof": {
@@ -636,7 +637,7 @@
       "settings": {
         "section_title": "Pure, Potent, Proven",
         "section_subtitle": "Here is what our customers report after 3 months of using Laushe products.",
-        "bg_color": "#fff9e9"
+        "bg_color": "#007e40"
       }
     },
     "laushe_comparison_table_BtaEPh": {
@@ -702,7 +703,7 @@
       "name": "Comparison Table (Laushe)",
       "settings": {
         "heading": "Laushe vs. Other Brands",
-        "bg_color": "#faf7f2"
+        "bg_color": "#007e40"
       }
     },
     "laushe_promo_cta_wwzJAq": {
@@ -712,7 +713,7 @@
         "headline": "Be part of over 15,000 families who rely on Laushe for safe, natural, and effective health solutions. Every",
         "cta_text": "Get Started Today",
         "cta_link": "",
-        "bg_color": "#000000",
+        "bg_color": "#007e40",
         "btn_color": "#ffcc33"
       }
     }

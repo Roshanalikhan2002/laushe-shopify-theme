@@ -4,6 +4,7 @@
   "settings": [
     { "id": "pre_title", "type": "text", "label": "Pre Title Badge", "default": "⭐⭐⭐⭐⭐ 4.8 stars from 10,000+ reviews | 50,000+ customers" },
     { "id": "headline", "type": "textarea", "label": "Headline", "default": "Transform Your Health Naturally. Laushe Provides the Essentials." },
+    { "id": "headline_highlight", "type": "text", "label": "Headline Yellow Highlight", "default": "ridiculously easy." },
     { "id": "benefit_1", "type": "text", "label": "Benefit 1", "default": "100% Pure & Natural Ingredients" },
     { "id": "benefit_2", "type": "text", "label": "Benefit 2", "default": "Clinically Tested & Sunnah Blessed" },
     { "id": "benefit_3", "type": "text", "label": "Benefit 3", "default": "No Artificial Additives" },
@@ -23,7 +24,12 @@
   <div class="container hero-grid">
     <div class="hero-content">
       <div class="ratings-badge">{{ section.settings.pre_title }}</div>
-      <h1>{{ section.settings.headline }}</h1>
+      <h1>
+        {{ section.settings.headline }}
+        {% if section.settings.headline_highlight != blank %}
+          <span class="highlight">{{ section.settings.headline_highlight }}</span>
+        {% endif %}
+      </h1>
 
       <div class="benefit-list" style="margin-bottom: 40px;">
         {% if section.settings.benefit_1 != blank %}
@@ -74,7 +80,7 @@
 
 <style>
   .hero-wrapper {
-    background-color: var(--soft-mint);
+    background-color: #007e40;
     padding: 100px 0;
     overflow: hidden;
   }
@@ -85,7 +91,7 @@
     align-items: center;
   }
   .ratings-badge {
-    color: var(--accent-gold);
+    color: #ffcc33;
     font-weight: 800;
     font-size: 14px;
     margin-bottom: 20px;
@@ -94,6 +100,14 @@
     font-size: 56px;
     line-height: 1.1;
     margin-bottom: 30px;
+    color: #ffffff;
+  }
+  .hero-content h1 .highlight {
+    color: #ffcc33;
+  }
+  .hero-content p,
+  .benefit-item p {
+    color: #ffffff;
   }
   .benefit-item {
     display: flex;
@@ -102,21 +116,21 @@
     margin-bottom: 12px;
   }
   .checkmark {
-    color: var(--deep-forest);
+    color: #ffcc33;
     font-weight: 900;
   }
   .risk-free {
     font-size: 14px;
-    color: var(--charcoal);
+    color: rgba(255,255,255,0.85);
     margin-top: 20px;
-    opacity: 0.8;
+    opacity: 1;
   }
   .limited-badge {
     position: absolute; 
     top: -10px; 
     right: -10px; 
-    background: var(--deep-forest); 
-    color: white; 
+    background: #ffcc33; 
+    color: #007e40; 
     padding: 5px 15px; 
     border-radius: 50px; 
     font-weight: 800; 
@@ -124,11 +138,14 @@
     font-size: 12px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.15);
   }
+  .hero-image img {
+    border: 3px solid #ffffff;
+  }
   .trust-widget {
     position: absolute; 
     bottom: -8px; 
     left: 20px; 
-    background: white; 
+    background: #ffffff; 
     padding: 4px 12px !important; 
     border-radius: 50px !important; 
     box-shadow: 0 2px 8px rgba(0,0,0,0.1); 
@@ -139,14 +156,14 @@
     max-width: fit-content;
   }
   .trust-icon {
-    color: var(--accent-gold); 
+    color: #ffcc33; 
     font-size: 14px !important;
   }
   .trust-title {
     font-weight: 800; 
     font-size: 10px !important; 
     margin: 0;
-    color: var(--deep-forest);
+    color: #007e40;
     line-height: 1;
     white-space: nowrap;
   }
@@ -154,6 +171,7 @@
     font-size: 8px !important; 
     margin: 0; 
     opacity: 0.7;
+    color: #007e40;
     white-space: nowrap;
   }
   @media (max-width: 992px) {

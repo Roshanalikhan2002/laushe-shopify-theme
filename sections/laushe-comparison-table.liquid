@@ -3,7 +3,7 @@
     
     {% if section.settings.heading != blank %}
       <div class="section-header text-center" style="margin-bottom: 50px;">
-        <h2 style="color: #007e40; font-weight: 800;">{{ section.settings.heading }}</h2>
+        <h2 style="color: #ffffff; font-weight: 800;">{{ section.settings.heading }}</h2>
       </div>
     {% endif %}
 
@@ -82,7 +82,7 @@
     align-items: center;
   }
   #section-{{ section.id }} .table-row:nth-child(even) {
-    background: #FAF7F2;
+    background: #007e40;
   }
   #section-{{ section.id }} .table-row:last-child {
     border-bottom: none;
@@ -97,14 +97,14 @@
   }
   #section-{{ section.id }} .row-col.first {
     justify-content: flex-start;
-    color: #333;
+    color: #ffffff;
   }
   #section-{{ section.id }} .status-icon {
     font-size: 20px;
     font-weight: 800;
   }
   #section-{{ section.id }} .status-icon.check {
-    color: #007e40;
+    color: #ffffff;
   }
   #section-{{ section.id }} .status-icon.cross {
     color: #D32F2F;
@@ -124,7 +124,7 @@
   "name": "Comparison Table (Laushe)",
   "settings": [
     { "id": "heading", "type": "text", "label": "Heading", "default": "The Laushe Standard" },
-    { "id": "bg_color", "type": "color", "label": "Background Color", "default": "#FAF7F2" }
+    { "id": "bg_color", "type": "color", "label": "Background Color", "default": "#007e40" }
   ],
   "blocks": [
     {

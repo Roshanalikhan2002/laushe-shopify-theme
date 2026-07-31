@@ -112,17 +112,17 @@
 </section>
 
 <style>
-  .bs-section { background: #fff; padding: 80px 0; }
+  .bs-section { background: #007e40; padding: 80px 0; }
   .bs-heading {
     font-family: 'Nunito', sans-serif;
     font-size: clamp(32px, 4vw, 44px);
     font-weight: 800;
-    color: #1a1a1a;
+    color: #ffffff;
     margin: 0 0 12px;
     letter-spacing: -0.02em;
   }
   .bs-subheading {
-    color: #5a6b62;
+    color: rgba(255,255,255,0.85);
     font-size: 16px;
     margin: 0 auto 48px;
     max-width: 560px;
@@ -146,8 +146,8 @@
     top: 14px;
     left: 14px;
     z-index: 2;
-    background: rgba(255,255,255,0.92);
-    color: #1a1a1a;
+    background: #ffcc33;
+    color: #007e40;
     font-size: 11px;
     font-weight: 800;
     padding: 6px 12px;
@@ -162,6 +162,9 @@
     height: 100%;
     padding: 28px;
     box-sizing: border-box;
+    background: #ffffff;
+    border: 3px solid #ffffff;
+    border-radius: 28px;
   }
   .bs-img-link img {
     width: 100%;
@@ -178,14 +181,14 @@
     margin: 0 0 8px;
     line-height: 1.25;
   }
-  .bs-title a { color: #1a1a1a; text-decoration: none; }
+  .bs-title a { color: #ffffff; text-decoration: none; }
   .bs-stars { display: flex; align-items: center; gap: 6px; margin-bottom: 10px; }
-  .bs-stars-gold { color: #C9A227; letter-spacing: 1px; font-size: 13px; }
-  .bs-rating { font-weight: 700; font-size: 13px; }
-  .bs-reviews { color: #777; font-size: 13px; }
+  .bs-stars-gold { color: #ffcc33; letter-spacing: 1px; font-size: 13px; }
+  .bs-rating { font-weight: 700; font-size: 13px; color: #ffffff; }
+  .bs-reviews { color: rgba(255,255,255,0.8); font-size: 13px; }
   .bs-price-row { display: flex; gap: 10px; align-items: center; margin-bottom: 16px; }
-  .bs-price { font-weight: 800; font-size: 16px; color: #1a1a1a; }
-  .bs-compare { color: #999; text-decoration: line-through; font-size: 14px; }
+  .bs-price { font-weight: 800; font-size: 16px; color: #ffcc33; }
+  .bs-compare { color: rgba(255,255,255,0.65); text-decoration: line-through; font-size: 14px; }
   .bs-shop-now {
     margin-top: auto;
     display: inline-flex;
@@ -194,8 +197,9 @@
     width: 100%;
     padding: 14px 18px;
     border-radius: 999px;
-    border: 1.5px solid #1a1a1a;
-    color: #1a1a1a;
+    border: 1.5px solid #ffcc33;
+    background: #ffcc33;
+    color: #007e40;
     text-decoration: none;
     font-weight: 700;
     font-size: 13px;
@@ -204,15 +208,15 @@
     transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
   }
   .bs-shop-now:hover {
-    background: #007e40;
-    border-color: #007e40;
+    background: transparent;
+    border-color: #ffffff;
     color: #fff;
   }
   .bs-empty {
     grid-column: 1 / -1;
     text-align: center;
     padding: 40px;
-    color: #666;
+    color: rgba(255,255,255,0.8);
   }
   @media (max-width: 900px) {
     .bs-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }

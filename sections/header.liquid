@@ -12,7 +12,7 @@
       "type": "color",
       "id": "bg_color",
       "label": "Background Color",
-      "default": "#ffffff"
+      "default": "#007e40"
     }
   ]
 }
@@ -30,8 +30,8 @@
       <a href="/" style="text-decoration: none; display: flex; align-items: center; gap: 12px;">
         <img src="{{ 'laushe-logo.jpg' | asset_url }}" alt="Laushe Logo" style="height: 60px; width: auto; object-fit: contain; border-radius: 8px;">
         <div style="display: flex; flex-direction: column; justify-content: center; text-align: left;">
-          <span style="font-size: 24px; font-weight: 800; color: #007e40; font-family: 'Nunito', sans-serif; line-height: 1; letter-spacing: 0.08em; text-transform: uppercase;">Laushe</span>
-          <span style="font-size: 11px; font-weight: 600; color: #007e40; font-family: 'Nunito', sans-serif; letter-spacing: 0.15em; text-transform: uppercase; margin-top: 3px;">by zahra</span>
+          <span style="font-size: 24px; font-weight: 800; color: #ffcc33; font-family: 'Nunito', sans-serif; line-height: 1; letter-spacing: 0.08em; text-transform: uppercase;">Laushe</span>
+          <span style="font-size: 11px; font-weight: 600; color: #ffcc33; font-family: 'Nunito', sans-serif; letter-spacing: 0.15em; text-transform: uppercase; margin-top: 3px;">by zahra</span>
         </div>
       </a>
     </div>
@@ -40,31 +40,31 @@
     <div class="right-nav" style="display: flex; flex: 1; align-items: center; justify-content: flex-end; gap: 30px;">
       <nav class="nav-links" style="display: flex; gap: 15px; align-items: center;">
         
-        <a href="/" style="text-decoration: none; color: #007e40; font-weight: 700; font-size: 14px; letter-spacing: 0.05em; padding: 10px 15px;">HOME</a>
+        <a href="/" style="text-decoration: none; color: #ffffff; font-weight: 700; font-size: 14px; letter-spacing: 0.05em; padding: 10px 15px;">HOME</a>
         
         <!-- COLLECTIONS Dropdown -->
         <div class="nav-dropdown" style="position: relative; display: inline-flex; align-items: center;">
-          <button class="nav-dropdown-btn" style="background: none; border: none; cursor: pointer; font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 14px; letter-spacing: 0.05em; color: #007e40; padding: 10px 15px; display: flex; align-items: center; gap: 5px;">
+          <button class="nav-dropdown-btn" style="background: none; border: none; cursor: pointer; font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 14px; letter-spacing: 0.05em; color: #ffffff; padding: 10px 15px; display: flex; align-items: center; gap: 5px;">
             COLLECTIONS <span style="font-size: 9px;">&#9660;</span>
           </button>
-          <div class="nav-dropdown-menu" style="position: absolute; top: calc(100% + 8px); left: 0; background: white; border-radius: 12px; box-shadow: 0 10px 40px rgba(0,0,0,0.12); min-width: 220px; padding: 10px 0; opacity: 0; visibility: hidden; transform: translateY(-8px); transition: all 0.25s ease; z-index: 2000;">
+          <div class="nav-dropdown-menu" style="position: absolute; top: calc(100% + 8px); left: 0; background: #007e40; border: 1px solid rgba(255,255,255,0.25); border-radius: 12px; box-shadow: 0 10px 40px rgba(0,0,0,0.25); min-width: 220px; padding: 10px 0; opacity: 0; visibility: hidden; transform: translateY(-8px); transition: all 0.25s ease; z-index: 2000;">
             
-            <a href="{{ section.settings.shop_all_url }}?filter=healthcare" style="display: block; padding: 12px 24px; font-size: 14px; font-weight: 600; color: #333; text-decoration: none;">Healthcare</a>
+            <a href="{{ section.settings.shop_all_url }}?filter=healthcare" style="display: block; padding: 12px 24px; font-size: 14px; font-weight: 600; color: #ffffff; text-decoration: none;">Healthcare</a>
             
-            <a href="{{ section.settings.shop_all_url }}?filter=organic" style="display: block; padding: 12px 24px; font-size: 14px; font-weight: 600; color: #333; text-decoration: none;">Organic Products</a>
+            <a href="{{ section.settings.shop_all_url }}?filter=organic" style="display: block; padding: 12px 24px; font-size: 14px; font-weight: 600; color: #ffffff; text-decoration: none;">Organic Products</a>
             
           </div>
         </div>
 
-        <a href="/pages/contact" style="text-decoration: none; color: #007e40; font-weight: 700; font-size: 14px; letter-spacing: 0.05em; padding: 10px 15px;">CONTACT</a>
+        <a href="/pages/contact" style="text-decoration: none; color: #ffffff; font-weight: 700; font-size: 14px; letter-spacing: 0.05em; padding: 10px 15px;">CONTACT</a>
         
       </nav>
 
       <div class="header-icons nav-links" style="display: flex; gap: 20px; align-items: center;">
-        <a href="javascript:void(0)" onclick="toggleSearchBar()"><ion-icon name="search-outline" style="font-size: 20px; color: #007e40;"></ion-icon></a>
+        <a href="javascript:void(0)" onclick="toggleSearchBar()"><ion-icon name="search-outline" style="font-size: 20px; color: #ffffff;"></ion-icon></a>
         <a href="/cart" class="header-cart-link" onclick="event.preventDefault(); LausheCart.open();" style="position: relative;">
-          <ion-icon name="bag-handle-outline" style="font-size: 20px; color: #007e40;"></ion-icon>
-          <span class="header-cart-count {% if cart.item_count == 0 %}hidden{% endif %}" style="position: absolute; top: -5px; right: -5px; background: #007e40; color: white; font-size: 10px; padding: 2px 5px; border-radius: 50%; min-width: 16px; height: 16px; display: {% if cart.item_count > 0 %}flex{% else %}none{% endif %}; align-items: center; justify-content: center;">
+          <ion-icon name="bag-handle-outline" style="font-size: 20px; color: #ffffff;"></ion-icon>
+          <span class="header-cart-count {% if cart.item_count == 0 %}hidden{% endif %}" style="position: absolute; top: -5px; right: -5px; background: #ffcc33; color: #007e40; font-size: 10px; padding: 2px 5px; border-radius: 50%; min-width: 16px; height: 16px; display: {% if cart.item_count > 0 %}flex{% else %}none{% endif %}; align-items: center; justify-content: center;">
             {{ cart.item_count }}
           </span>
         </a>
@@ -78,7 +78,7 @@
         <input type="hidden" name="type" value="product">
         <input type="search" name="q" placeholder="Search our store..." value="{{ search.terms | escape }}" />
         <button type="submit" style="position: absolute; right: 20px; top: 18px; background: none; border: none; cursor: pointer;">
-            <ion-icon name="search-outline" style="font-size: 24px; color: #007e40;"></ion-icon>
+            <ion-icon name="search-outline" style="font-size: 24px; color: #ffffff;"></ion-icon>
         </button>
     </form>
   </div>

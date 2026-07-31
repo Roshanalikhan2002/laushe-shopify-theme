@@ -163,7 +163,7 @@
       ],
       "settings": {
         "heading": "Laushe Honey vs. Others",
-        "bg_color": "#faf7f2"
+        "bg_color": "#007e40"
       }
     },
     "faq": {
@@ -215,7 +215,7 @@
       "settings": {
         "subtitle": "QUESTIONS & ANSWERS",
         "title": "Frequently Asked Questions",
-        "bg_color": "#faf7f2"
+        "bg_color": "#007e40"
       }
     },
     "final_cta": {
