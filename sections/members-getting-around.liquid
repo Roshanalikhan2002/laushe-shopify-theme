@@ -285,19 +285,23 @@
 
   @media (max-width: 900px) {
     #members-around-{{ section.id }} {
-      --ma-radius: 280px;
+      --ma-radius: 240px;
+    }
+    #members-around-{{ section.id }} .members-around__copy {
+      margin-bottom: 20px;
     }
     #members-around-{{ section.id }} .members-around__stage {
-      height: clamp(320px, 58vw, 400px);
+      height: clamp(340px, 62vw, 420px);
+      margin-top: 8px;
     }
     #members-around-{{ section.id }} .members-around__wheel {
-      top: 128%;
+      top: 142%;
     }
     #members-around-{{ section.id }} .members-around__card {
-      width: clamp(110px, 22vw, 150px);
-      height: clamp(170px, 36vw, 240px);
-      margin-left: calc(clamp(110px, 22vw, 150px) / -2);
-      margin-top: calc(clamp(170px, 36vw, 240px) * -0.92);
+      width: clamp(100px, 20vw, 140px);
+      height: clamp(150px, 32vw, 210px);
+      margin-left: calc(clamp(100px, 20vw, 140px) / -2);
+      margin-top: calc(clamp(150px, 32vw, 210px) * -0.92);
     }
     #members-around-{{ section.id }} .members-around__ground {
       height: 56px;
@@ -307,24 +311,50 @@
 
   @media (max-width: 600px) {
     #members-around-{{ section.id }} {
-      --ma-radius: 220px;
-      padding-top: 48px;
+      --ma-radius: 148px;
+      padding-top: 40px;
     }
     #members-around-{{ section.id }} .members-around__heading,
     #members-around-{{ section.id }} h2.members-around__heading {
-      font-size: clamp(28px, 9vw, 40px) !important;
+      font-size: clamp(26px, 8.5vw, 36px) !important;
     }
     #members-around-{{ section.id }} .members-around__line1 {
-      font-size: clamp(22px, 7vw, 32px) !important;
+      font-size: clamp(20px, 6.5vw, 28px) !important;
     }
     #members-around-{{ section.id }} .members-around__copy {
-      margin-bottom: 24px;
+      margin-bottom: 12px;
+      /* Keep heading above cards — cards must not render under this block */
+      position: relative;
+      z-index: 2;
+      background: var(--ma-bg, #fcf8ed);
+      padding-bottom: 8px;
     }
     #members-around-{{ section.id }} .members-around__stage {
-      height: 300px;
+      height: 360px;
+      margin-top: 0;
     }
     #members-around-{{ section.id }} .members-around__wheel {
-      top: 130%;
+      /* Deep hub + smaller radius = cards sit low & fully visible */
+      top: auto;
+      bottom: -6%;
+      left: 50%;
+    }
+    #members-around-{{ section.id }} .members-around__card {
+      width: 100px;
+      height: 156px;
+      margin-left: -50px;
+      margin-top: calc(156px * -0.92);
+    }
+    #members-around-{{ section.id }} .members-around__ground {
+      height: 48px;
+      margin-top: -28px;
+    }
+    #members-around-{{ section.id }} .members-around__social {
+      width: 36px;
+      height: 36px;
+    }
+    #members-around-{{ section.id }} .members-around__social ion-icon {
+      font-size: 18px;
     }
   }
 
