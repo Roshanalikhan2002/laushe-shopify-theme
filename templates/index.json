@@ -631,48 +631,18 @@
     "members_getting_around": {
       "type": "members-getting-around",
       "blocks": {
-        "card_1": {
-          "type": "card",
-          "settings": {
-            "tilt": -14,
-            "spin_speed": 8
-          }
-        },
-        "card_2": {
-          "type": "card",
-          "settings": {
-            "tilt": -6,
-            "spin_speed": 9
-          }
-        },
-        "card_3": {
-          "type": "card",
-          "settings": {
-            "tilt": 4,
-            "spin_speed": 7
-          }
-        },
-        "card_4": {
-          "type": "card",
-          "settings": {
-            "tilt": 12,
-            "spin_speed": 10
-          }
-        },
-        "card_5": {
-          "type": "card",
-          "settings": {
-            "tilt": -8,
-            "spin_speed": 8
-          }
-        },
-        "card_6": {
-          "type": "card",
-          "settings": {
-            "tilt": 8,
-            "spin_speed": 9
-          }
-        }
+        "card_1": { "type": "card", "settings": {} },
+        "card_2": { "type": "card", "settings": {} },
+        "card_3": { "type": "card", "settings": {} },
+        "card_4": { "type": "card", "settings": {} },
+        "card_5": { "type": "card", "settings": {} },
+        "card_6": { "type": "card", "settings": {} },
+        "card_7": { "type": "card", "settings": {} },
+        "card_8": { "type": "card", "settings": {} },
+        "card_9": { "type": "card", "settings": {} },
+        "card_10": { "type": "card", "settings": {} },
+        "card_11": { "type": "card", "settings": {} },
+        "card_12": { "type": "card", "settings": {} }
       },
       "block_order": [
         "card_1",
@@ -680,7 +650,13 @@
         "card_3",
         "card_4",
         "card_5",
-        "card_6"
+        "card_6",
+        "card_7",
+        "card_8",
+        "card_9",
+        "card_10",
+        "card_11",
+        "card_12"
       ],
       "settings": {
         "heading_line1": "15,000+ FAMILIES.",
@@ -690,6 +666,8 @@
         "line1_color": "#007e40",
         "line2_color": "#0A1F14",
         "icon_bg": "#007e40",
+        "orbit_speed": 36,
+        "orbit_radius": 250,
         "instagram_url": "https://www.instagram.com/laushebyzahra",
         "tiktok_url": "",
         "youtube_url": "",
