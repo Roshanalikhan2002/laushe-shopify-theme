@@ -49,42 +49,44 @@
       {% endfor %}
       {% if card_count == 0 %}{% assign card_count = 14 %}{% endif %}
 
-      <div class="members-around__wheel" style="--count: {{ card_count }};">
-        {% assign shown = 0 %}
-        {% for block in section.blocks %}
-          {% if block.type == 'card' %}
-            <article
-              class="members-around__card"
-              style="--i: {{ shown }};"
-              {{ block.shopify_attributes }}
-            >
-              <div class="members-around__card-face">
-                {% if block.settings.image != blank %}
-                  <img
-                    src="{{ block.settings.image | image_url: width: 700 }}"
-                    alt="{{ block.settings.image.alt | escape }}"
-                    loading="lazy"
-                    width="700"
-                    height="900"
-                  >
-                {% else %}
-                  <div class="members-around__placeholder"><span>Add image</span></div>
-                {% endif %}
-              </div>
-            </article>
-            {% assign shown = shown | plus: 1 %}
-          {% endif %}
-        {% endfor %}
-
-        {% if shown == 0 %}
-          {% for i in (1..14) %}
-            <article class="members-around__card" style="--i: {{ forloop.index0 }};">
-              <div class="members-around__card-face">
-                <div class="members-around__placeholder"><span>Add image</span></div>
-              </div>
-            </article>
+      <div class="members-around__wheel-anchor">
+        <div class="members-around__wheel" style="--count: {{ card_count }};">
+          {% assign shown = 0 %}
+          {% for block in section.blocks %}
+            {% if block.type == 'card' %}
+              <article
+                class="members-around__card"
+                style="--i: {{ shown }};"
+                {{ block.shopify_attributes }}
+              >
+                <div class="members-around__card-face">
+                  {% if block.settings.image != blank %}
+                    <img
+                      src="{{ block.settings.image | image_url: width: 700 }}"
+                      alt="{{ block.settings.image.alt | escape }}"
+                      loading="lazy"
+                      width="700"
+                      height="900"
+                    >
+                  {% else %}
+                    <div class="members-around__placeholder"><span>Add image</span></div>
+                  {% endif %}
+                </div>
+              </article>
+              {% assign shown = shown | plus: 1 %}
+            {% endif %}
           {% endfor %}
-        {% endif %}
+
+          {% if shown == 0 %}
+            {% for i in (1..14) %}
+              <article class="members-around__card" style="--i: {{ forloop.index0 }};">
+                <div class="members-around__card-face">
+                  <div class="members-around__placeholder"><span>Add image</span></div>
+                </div>
+              </article>
+            {% endfor %}
+          {% endif %}
+        </div>
       </div>
     </div>
   </div>
@@ -187,16 +189,23 @@
     height: clamp(380px, 48vw, 520px);
     overflow: hidden;
     z-index: 1;
-    /* Keep the fan in the lower half — away from heading/icons */
     margin-top: clamp(12px, 2vw, 28px);
+  }
+
+  /* Position hub separately from spin so mobile can shift the fan down */
+  #members-around-{{ section.id }} .members-around__wheel-anchor {
+    position: absolute;
+    left: 50%;
+    top: 132%;
+    width: 0;
+    height: 0;
   }
 
   #members-around-{{ section.id }} .members-around__wheel {
     --count: 14;
     position: absolute;
-    left: 50%;
-    /* Hub deeper below stage → whole fan sits lower, tops stay visible */
-    top: 132%;
+    left: 0;
+    top: 0;
     width: 0;
     height: 0;
     transform-origin: center center;
@@ -294,9 +303,8 @@
       height: clamp(420px, 70vw, 520px);
       margin-top: 4px;
     }
-    #members-around-{{ section.id }} .members-around__wheel {
-      top: auto;
-      bottom: 0;
+    #members-around-{{ section.id }} .members-around__wheel-anchor {
+      top: 140%;
     }
     #members-around-{{ section.id }} .members-around__card {
       width: clamp(160px, 28vw, 210px);
@@ -310,11 +318,11 @@
     }
   }
 
-  /* Mobile — Grüns style: tall cards, ~2 visible half/half */
+  /* Mobile — tall cards, ~2 half-visible, fully below heading */
   @media (max-width: 600px) {
     #members-around-{{ section.id }} {
-      --ma-radius: 155px;
-      padding-top: 32px;
+      --ma-radius: 145px;
+      padding-top: 28px;
     }
     #members-around-{{ section.id }} .members-around__heading,
     #members-around-{{ section.id }} h2.members-around__heading {
@@ -324,29 +332,35 @@
       font-size: clamp(18px, 6vw, 26px) !important;
     }
     #members-around-{{ section.id }} .members-around__copy {
-      margin-bottom: 28px;
+      margin-bottom: 12px;
       position: relative;
-      z-index: 2;
+      z-index: 5;
       background: var(--ma-bg, #fcf8ed);
-      padding-bottom: 2px;
+      padding-bottom: 12px;
     }
     #members-around-{{ section.id }} .members-around__stage {
-      height: 480px;
+      height: 430px;
       margin-top: 0;
       overflow: hidden;
+      /* Hard clip — nothing from the fan can paint over the heading */
+      clip-path: inset(0 0 0 0);
     }
-    #members-around-{{ section.id }} .members-around__wheel {
-      /* Lower fan so cards sit in the empty space, not under icons */
-      top: auto;
-      bottom: -22%;
+    #members-around-{{ section.id }} .members-around__wheel-anchor {
+      /*
+        Hub deep below stage:
+        card tops land ~mid stage, clear of icons, fill empty lower area.
+        top% ≈ (radius + cardHeight + gap) / stageHeight
+        (145 + 300 + 120) / 430 ≈ 1.31 → use 1.55 for extra clearance
+      */
+      top: 158%;
       left: 50%;
     }
     #members-around-{{ section.id }} .members-around__card {
-      width: 58vw;
-      max-width: 240px;
-      height: 360px;
-      margin-left: calc(min(58vw, 240px) / -2);
-      margin-top: calc(360px * -0.96);
+      width: 56vw;
+      max-width: 230px;
+      height: 300px;
+      margin-left: calc(min(56vw, 230px) / -2);
+      margin-top: calc(300px * -0.96);
       transform-origin: center bottom;
     }
     #members-around-{{ section.id }} .members-around__card-face {
@@ -355,6 +369,8 @@
     #members-around-{{ section.id }} .members-around__ground {
       height: 40px;
       margin-top: -28px;
+      position: relative;
+      z-index: 4;
     }
     #members-around-{{ section.id }} .members-around__social {
       width: 36px;
