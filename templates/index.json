@@ -12,11 +12,13 @@
     "hero_giveaway": {
       "type": "hero-giveaway",
       "settings": {
-        "image_desktop": "shopify://shop_images/GIVEAWAY_BANNER_2-100.jpg_1_cc0eff60-7470-409b-9f84-83fb44b7991a.jpg",
-        "image_mobile": "shopify://shop_images/GIVEAWAY_BANNER_2-100.jpg_1_cc0eff60-7470-409b-9f84-83fb44b7991a.jpg",
-        "link": ""
+        "link": "",
+        "strip_text": "Our products are regularly tested to ensure purity and authenticity.",
+        "bs_heading": "Our Top Bestsellers",
+        "bs_subheading": "Customer favorites — Weight Gainer, Hair Oil, Liquid Blush & Skin Tint."
       }
     },
+
     "hero": {
       "type": "hero-funnel",
       "settings": {
@@ -554,6 +556,98 @@
         "bg_color": "#fafafa"
       }
     },
+    "members_getting_around": {
+      "type": "members-getting-around",
+      "blocks": {
+        "card_1": {
+          "type": "card",
+          "settings": {}
+        },
+        "card_2": {
+          "type": "card",
+          "settings": {}
+        },
+        "card_3": {
+          "type": "card",
+          "settings": {}
+        },
+        "card_4": {
+          "type": "card",
+          "settings": {}
+        },
+        "card_5": {
+          "type": "card",
+          "settings": {}
+        },
+        "card_6": {
+          "type": "card",
+          "settings": {}
+        },
+        "card_7": {
+          "type": "card",
+          "settings": {}
+        },
+        "card_8": {
+          "type": "card",
+          "settings": {}
+        },
+        "card_9": {
+          "type": "card",
+          "settings": {}
+        },
+        "card_10": {
+          "type": "card",
+          "settings": {}
+        },
+        "card_11": {
+          "type": "card",
+          "settings": {}
+        },
+        "card_12": {
+          "type": "card",
+          "settings": {}
+        },
+        "card_13": {
+          "type": "card",
+          "settings": {}
+        },
+        "card_14": {
+          "type": "card",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "card_1",
+        "card_2",
+        "card_3",
+        "card_4",
+        "card_5",
+        "card_6",
+        "card_7",
+        "card_8",
+        "card_9",
+        "card_10",
+        "card_11",
+        "card_12",
+        "card_13",
+        "card_14"
+      ],
+      "settings": {
+        "heading_line1": "15,000+ FAMILIES.",
+        "heading_line2": "WE'VE BEEN",
+        "heading_line3": "GETTING AROUND",
+        "bg_color": "#fcf8ed",
+        "line1_color": "#007e40",
+        "line2_color": "#0a1f14",
+        "icon_bg": "#007e40",
+        "orbit_speed": 40,
+        "orbit_radius": 520,
+        "instagram_url": "https://www.instagram.com/laushebyzahra",
+        "tiktok_url": "",
+        "youtube_url": "",
+        "facebook_url": ""
+      }
+    },
     "story": {
       "type": "story-section",
       "blocks": {
@@ -732,6 +826,7 @@
     "faq_accordion",
     "filtered_reviews",
     "influencer_reviews",
+    "members_getting_around",
     "story",
     "social_proof",
     "laushe_comparison_table_BtaEPh",
