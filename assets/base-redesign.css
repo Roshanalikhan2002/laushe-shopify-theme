@@ -120,10 +120,10 @@ h1, h2, h3, h4, .font-heading {
     box-shadow: 0 10px 25px rgba(0,0,0,0.15);
 }
 
-/* Header & Announcement Bar — match homepage soft mint green */
+/* Header & Announcement Bar — match Quality section green (#007E40) */
 .announcement-bar {
-    background-color: var(--soft-mint);
-    color: var(--deep-forest);
+    background-color: #007E40;
+    color: #ffffff;
     text-align: center;
     padding: 10px 15px;
     font-size: 14px;
@@ -131,7 +131,7 @@ h1, h2, h3, h4, .font-heading {
     overflow: hidden;
     width: 100%;
     white-space: normal;
-    border-bottom: 1px solid rgba(0, 66, 37, 0.08);
+    border-bottom: none;
 }
 
 header.sticky-header {
