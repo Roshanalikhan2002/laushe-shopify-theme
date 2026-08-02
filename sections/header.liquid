@@ -12,7 +12,7 @@
       "type": "color",
       "id": "bg_color",
       "label": "Background Color",
-      "default": "#007e40"
+      "default": "#ffffff"
     }
   ]
 }
@@ -20,51 +20,41 @@
 
 <header class="sticky-header" style="background-color: {{ section.settings.bg_color }};">
   <div class="container header-flex">
-    <!-- Hamburger (mobile only) -->
-    <div class="menu-toggle" onclick="window.toggleMobileMenu()">
-      <ion-icon name="menu-outline"></ion-icon>
+    <!-- Left: hamburger (mobile) + nav links (desktop) -->
+    <div class="header-left">
+      <div class="menu-toggle" onclick="window.toggleMobileMenu()" aria-label="Open menu">
+        <ion-icon name="menu-outline"></ion-icon>
+      </div>
+      <nav class="nav-links header-nav-desktop">
+        <a href="/" class="header-nav-link">HOME</a>
+        <div class="nav-dropdown">
+          <button type="button" class="nav-dropdown-btn header-nav-link">
+            COLLECTIONS <span class="nav-caret">&#9660;</span>
+          </button>
+          <div class="nav-dropdown-menu">
+            <a href="{{ section.settings.shop_all_url }}?filter=healthcare">Healthcare</a>
+            <a href="{{ section.settings.shop_all_url }}?filter=organic">Organic Products</a>
+          </div>
+        </div>
+        <a href="/pages/contact" class="header-nav-link">CONTACT</a>
+      </nav>
     </div>
 
-    <!-- Logo -->
-    <div class="logo-emblem" style="flex: 0 0 auto;">
-      <a href="/" style="text-decoration: none; display: flex; align-items: center; gap: 12px;">
-        <img src="{{ 'laushe-logo.jpg' | asset_url }}" alt="Laushe Logo" style="height: 60px; width: auto; object-fit: contain; border-radius: 8px;">
-        <div style="display: flex; flex-direction: column; justify-content: center; text-align: left;">
-          <span style="font-size: 24px; font-weight: 800; color: #ffcc33; font-family: 'Montserrat', sans-serif; line-height: 1; letter-spacing: 0.08em; text-transform: uppercase;">Laushe</span>
-          <span style="font-size: 11px; font-weight: 600; color: #ffcc33; font-family: 'Montserrat', sans-serif; letter-spacing: 0.15em; text-transform: uppercase; margin-top: 3px;">by zahra</span>
-        </div>
+    <!-- Center: text logo only -->
+    <div class="logo-emblem">
+      <a href="/" class="logo-text-link" aria-label="Laushe by Zahra home">
+        <span class="logo-text-main">Laushe</span>
+        <span class="logo-text-sub">by zahra</span>
       </a>
     </div>
 
-    <!-- Right Nav (desktop) -->
-    <div class="right-nav" style="display: flex; flex: 1; align-items: center; justify-content: flex-end; gap: 30px;">
-      <nav class="nav-links" style="display: flex; gap: 15px; align-items: center;">
-        
-        <a href="/" style="text-decoration: none; color: #ffffff; font-weight: 700; font-size: 14px; letter-spacing: 0.05em; padding: 10px 15px;">HOME</a>
-        
-        <!-- COLLECTIONS Dropdown -->
-        <div class="nav-dropdown" style="position: relative; display: inline-flex; align-items: center;">
-          <button class="nav-dropdown-btn" style="background: none; border: none; cursor: pointer; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 14px; letter-spacing: 0.05em; color: #ffffff; padding: 10px 15px; display: flex; align-items: center; gap: 5px;">
-            COLLECTIONS <span style="font-size: 9px;">&#9660;</span>
-          </button>
-          <div class="nav-dropdown-menu" style="position: absolute; top: calc(100% + 8px); left: 0; background: #007e40; border: 1px solid rgba(255,255,255,0.25); border-radius: 12px; box-shadow: 0 10px 40px rgba(0,0,0,0.25); min-width: 220px; padding: 10px 0; opacity: 0; visibility: hidden; transform: translateY(-8px); transition: all 0.25s ease; z-index: 2000;">
-            
-            <a href="{{ section.settings.shop_all_url }}?filter=healthcare" style="display: block; padding: 12px 24px; font-size: 14px; font-weight: 600; color: #ffffff; text-decoration: none;">Healthcare</a>
-            
-            <a href="{{ section.settings.shop_all_url }}?filter=organic" style="display: block; padding: 12px 24px; font-size: 14px; font-weight: 600; color: #ffffff; text-decoration: none;">Organic Products</a>
-            
-          </div>
-        </div>
-
-        <a href="/pages/contact" style="text-decoration: none; color: #ffffff; font-weight: 700; font-size: 14px; letter-spacing: 0.05em; padding: 10px 15px;">CONTACT</a>
-        
-      </nav>
-
-      <div class="header-icons nav-links" style="display: flex; gap: 20px; align-items: center;">
-        <a href="javascript:void(0)" onclick="toggleSearchBar()"><ion-icon name="search-outline" style="font-size: 20px; color: #ffffff;"></ion-icon></a>
-        <a href="/cart" class="header-cart-link" onclick="event.preventDefault(); LausheCart.open();" style="position: relative;">
-          <ion-icon name="bag-handle-outline" style="font-size: 20px; color: #ffffff;"></ion-icon>
-          <span class="header-cart-count {% if cart.item_count == 0 %}hidden{% endif %}" style="position: absolute; top: -5px; right: -5px; background: #ffcc33; color: #007e40; font-size: 10px; padding: 2px 5px; border-radius: 50%; min-width: 16px; height: 16px; display: {% if cart.item_count > 0 %}flex{% else %}none{% endif %}; align-items: center; justify-content: center;">
+    <!-- Right: search + cart -->
+    <div class="header-right">
+      <div class="header-icons">
+        <a href="javascript:void(0)" onclick="toggleSearchBar()" aria-label="Search"><ion-icon name="search-outline"></ion-icon></a>
+        <a href="/cart" class="header-cart-link" onclick="event.preventDefault(); LausheCart.open();" aria-label="Cart" style="position: relative;">
+          <ion-icon name="bag-handle-outline"></ion-icon>
+          <span class="header-cart-count {% if cart.item_count == 0 %}hidden{% endif %}" style="position: absolute; top: -5px; right: -8px; background: #dcb360; color: #004225; font-size: 10px; padding: 2px 5px; border-radius: 50%; min-width: 16px; height: 16px; display: {% if cart.item_count > 0 %}flex{% else %}none{% endif %}; align-items: center; justify-content: center; font-weight: 700;">
             {{ cart.item_count }}
           </span>
         </a>
@@ -78,7 +68,7 @@
         <input type="hidden" name="type" value="product">
         <input type="search" name="q" placeholder="Search our store..." value="{{ search.terms | escape }}" />
         <button type="submit" style="position: absolute; right: 20px; top: 18px; background: none; border: none; cursor: pointer;">
-            <ion-icon name="search-outline" style="font-size: 24px; color: #ffffff;"></ion-icon>
+            <ion-icon name="search-outline" style="font-size: 24px; color: #004225;"></ion-icon>
         </button>
     </form>
   </div>
@@ -89,9 +79,10 @@
 <div id="mobile-drawer" class="mobile-drawer">
   <div class="mobile-drawer-header">
     <div class="mobile-drawer-close" onclick="window.toggleMobileMenu()">&times;</div>
-    <div class="mobile-drawer-logo" style="text-align: center;">
-      <a href="/">
-        <img src="{{ 'laushe-logo.jpg' | asset_url }}" alt="Laushe Logo" style="height: 70px; width: auto; object-fit: contain; margin-bottom: 20px; border-radius: 10px;">
+    <div class="mobile-drawer-logo">
+      <a href="/" class="logo-text-link" onclick="window.toggleMobileMenu()">
+        <span class="logo-text-main">Laushe</span>
+        <span class="logo-text-sub">by zahra</span>
       </a>
     </div>
   </div>
