@@ -38,6 +38,7 @@
     },
     "review_scroller": {
       "type": "review-scroller",
+      "disabled": true,
       "settings": {
         "heading": "WHAT PEOPLE ARE SAYING",
         "bg_color": "#faf7f2",
@@ -317,6 +318,7 @@
     },
     "athlete_endorsement": {
       "type": "athlete-endorsement",
+      "disabled": true,
       "settings": {
         "image": "shopify://shop_images/WhatsApp_Image_2026-04-04_at_10.44.16_AM.jpg",
         "quote": "I feel stronger, more focused, and ready to take on every day.",
