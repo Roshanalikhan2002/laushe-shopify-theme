@@ -3,9 +3,71 @@
     "main": {
       "type": "product-liquid-blush",
       "settings": {}
+    },
+    "product_reasons": {
+      "type": "product-reasons",
+      "blocks": {
+        "r1": {
+          "type": "reason",
+          "settings": {
+            "icon": "Leaf",
+            "title": "100% Pure & Natural",
+            "text": "No fillers, no artificial additives - just clean, Sunnah-blessed ingredients your body recognizes."
+          }
+        },
+        "r2": {
+          "type": "reason",
+          "settings": {
+            "icon": "Bolt",
+            "title": "Steady Daily Energy",
+            "text": "Support calm, lasting vitality through the day - without stimulants or the afternoon crash."
+          }
+        },
+        "r3": {
+          "type": "reason",
+          "settings": {
+            "icon": "Heart",
+            "title": "Gut-Friendly Nutrition",
+            "text": "Crafted to support digestion and nutrient absorption as part of your everyday wellness ritual."
+          }
+        },
+        "r4": {
+          "type": "reason",
+          "settings": {
+            "icon": "Spark",
+            "title": "Visible, Feelable Results",
+            "text": "Thousands of customers report better energy, digestion, and overall balance with consistent use."
+          }
+        },
+        "r5": {
+          "type": "reason",
+          "settings": {
+            "icon": "Shield",
+            "title": "Tested for Purity",
+            "text": "Quality you can trust - thoughtfully sourced and made to Laushe purity standards."
+          }
+        },
+        "r6": {
+          "type": "reason",
+          "settings": {
+            "icon": "Moon",
+            "title": "Sunnah-Blessed Ritual",
+            "text": "Rooted in tradition and made for modern life - a simple daily habit that fits your routine."
+          }
+        }
+      },
+      "block_order": ["r1", "r2", "r3", "r4", "r5", "r6"],
+      "settings": {
+        "heading": "Six Reasons to Choose Laushe",
+        "subheading": "Pure, Sunnah-blessed wellness made for everyday life. Here is why thousands trust Laushe as their daily ritual.",
+        "bg_color": "#E8F3ED",
+        "heading_color": "#dcb360",
+        "accent_color": "#007E40"
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "product_reasons"
   ]
 }
