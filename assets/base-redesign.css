@@ -642,23 +642,26 @@ footer {
 .filter-btn {
     padding: 12px 30px;
     border-radius: 50px;
-    font-weight: 600;
+    font-weight: 700;
     font-size: 16px;
     cursor: pointer;
-    background: white;
-    color: var(--charcoal);
-    border: 1px solid #E0E0E0;
+    background: #ffffff !important;
+    color: #007E40 !important;
+    border: 1.5px solid rgba(0,126,64,0.3) !important;
     transition: var(--transition);
+    font-family: 'Poppins', sans-serif;
 }
 
 .filter-btn:hover {
-    border-color: var(--deep-forest);
+    border-color: #007E40 !important;
+    background: #E8F3ED !important;
+    color: #007E40 !important;
 }
 
 .filter-btn.active {
-    background: var(--deep-forest);
-    color: white;
-    border-color: var(--deep-forest);
+    background: #007E40 !important;
+    color: #ffffff !important;
+    border-color: #007E40 !important;
 }
 
 /* --- PRODUCT GRID --- */

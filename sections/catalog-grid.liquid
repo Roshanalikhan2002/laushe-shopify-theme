@@ -226,19 +226,27 @@
   #section-{{ section.id }} .filter-btn {
     padding: 12px 28px;
     border-radius: 999px;
-    border: 1px solid rgba(0,126,64,0.15);
-    background: #fff;
-    color: #007E40;
+    border: 1.5px solid rgba(0,126,64,0.3) !important;
+    background: #ffffff !important;
+    color: #007E40 !important;
     font-weight: 700;
     font-size: 14px;
     cursor: pointer;
     transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
     font-family: 'Poppins', sans-serif;
+    -webkit-text-fill-color: #007E40;
+  }
+  #section-{{ section.id }} .filter-btn:hover {
+    border-color: #007E40 !important;
+    background: #E8F3ED !important;
+    color: #007E40 !important;
+    -webkit-text-fill-color: #007E40;
   }
   #section-{{ section.id }} .filter-btn.active {
-    background: #007E40;
-    color: #fff;
-    border-color: #007E40;
+    background: #007E40 !important;
+    color: #ffffff !important;
+    border-color: #007E40 !important;
+    -webkit-text-fill-color: #ffffff;
   }
 
   #section-{{ section.id }} .catalog-grid {
