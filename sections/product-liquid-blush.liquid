@@ -7,11 +7,12 @@
     :root {
         --olive-bg: #FFFFFF;
         --olive-inner: #FFFFFF;
-        --cream-bg: #f9f9f1;
-        --dark-green: #1a2e22;
-        --accent-green: #007e40;
-        --text-gray: #666666;
-        --star-gold: #e79d3d;
+        --cream-bg: #FFFFFF;
+        --dark-green: #004225;
+        --accent-green: #004225;
+        --text-gray: #5a6b62;
+        --star-gold: #C9A227;
+        --charcoal: #333333;
         --sticky-h: 84px;
     }
 
@@ -20,9 +21,9 @@
         margin: 0;
         padding: 0;
         -webkit-font-smoothing: antialiased;
-        font-family: 'Montserrat', sans-serif;
+        font-family: 'Inter', sans-serif;
         background-color: var(--cream-bg);
-        color: var(--dark-green);
+        color: var(--charcoal);
         width: 100%;
         overflow-x: hidden;
     }
@@ -140,12 +141,13 @@
     }
 
     .prod-title {
-        font-family: 'Montserrat', sans-serif;
-        font-size: clamp(34px, 3.5vw, 65px);
+        font-family: 'Poppins', sans-serif;
+        font-size: clamp(32px, 4vw, 44px);
         font-weight: 800;
         color: var(--dark-green);
-        line-height: 1.1;
-        margin-bottom: 20px;
+        line-height: 1.15;
+        letter-spacing: -0.02em;
+        margin-bottom: 16px;
     }
 
     .prod-rating {
@@ -157,7 +159,7 @@
         font-size: clamp(16px, 1.3vw, 22px);
     }
 
-    .prod-rating span { color: #435247; font-weight: 600; }
+    .prod-rating span { color: var(--text-gray); font-weight: 600; font-family: 'Inter', sans-serif; }
 
     .prod-price {
         display: flex;
@@ -166,14 +168,14 @@
         margin-bottom: 35px;
     }
 
-    .price-was { font-size: clamp(18px, 1.5vw, 24px); color: #8b9086; text-decoration: line-through; font-weight: 500; }
-    .price-is { font-size: clamp(38px, 3.5vw, 65px); font-weight: 800; color: #2f442f; }
+    .price-was { font-size: clamp(16px, 1.5vw, 20px); color: #999; text-decoration: line-through; font-weight: 500; font-family: 'Inter', sans-serif; }
+    .price-is { font-size: clamp(22px, 2.5vw, 28px); font-weight: 800; color: #1a1a1a; font-family: 'Poppins', sans-serif; }
 
     .prod-badges {
         display: flex;
         gap: 30px;
         padding: 25px 0;
-        border-top: 1px solid rgba(0,0,0,0.08);
+        border-top: 1px solid rgba(0,66,37,0.12);
         margin-bottom: 25px;
     }
 
@@ -181,13 +183,14 @@
         display: flex;
         align-items: center;
         gap: 12px;
-        font-size: clamp(13px, 1.1vw, 18px);
+        font-size: clamp(13px, 1.1vw, 16px);
         font-weight: 700;
         color: var(--dark-green);
+        font-family: 'Poppins', sans-serif;
     }
 
     .badge-node:not(:last-child) {
-        border-right: 1.5px solid #d2d0b8;
+        border-right: 1.5px solid rgba(0,66,37,0.15);
         padding-right: 25px;
     }
 
@@ -195,20 +198,20 @@
     .tabs-nav {
         display: flex;
         gap: 30px;
-        border-bottom: 1.5px solid #d2d0b8;
+        border-bottom: 1.5px solid rgba(0,66,37,0.15);
         margin-bottom: 25px;
     }
 
     .tab-node {
         padding: 12px 0;
-        font-size: clamp(14px, 1.2vw, 20px);
+        font-size: clamp(14px, 1.2vw, 16px);
         font-weight: 700;
-        color: #8a918c;
+        color: var(--text-gray);
         cursor: pointer;
         position: relative;
         background: none;
         border: 0;
-        font-family: inherit;
+        font-family: 'Poppins', sans-serif;
     }
 
     .tab-node.active { color: var(--dark-green); }
@@ -223,15 +226,16 @@
     }
 
     .tab-content {
-        font-size: clamp(16px, 1.3vw, 20px);
+        font-size: 16px;
         line-height: 1.7;
-        color: #435247;
+        color: var(--text-gray);
         margin-bottom: 40px;
         min-height: 80px;
+        font-family: 'Inter', sans-serif;
     }
 
     /* Videos Section */
-    .video-header { font-size: clamp(16px, 1.3vw, 22px); font-weight: 800; margin-bottom: 15px; }
+    .video-header { font-size: clamp(16px, 1.3vw, 20px); font-weight: 800; margin-bottom: 15px; font-family: 'Poppins', sans-serif; color: var(--dark-green); }
     .video-scroll-wrap {
         display: flex;
         flex-direction: column;
@@ -286,16 +290,16 @@
     .qty-box {
         display: flex;
         align-items: center;
-        border: 1px solid #b8c4bb;
+        border: 1px solid rgba(0,66,37,0.2);
         border-radius: 999px;
         padding: 8px 18px;
         gap: 15px;
-        background: #fafaf8;
+        background: #fff;
     }
     .qty-box button { background: 0; border: 0; font-size: 22px; cursor: pointer; color: var(--dark-green); }
     .qty-box span { font-weight: 700; min-width: 20px; text-align: center; }
 
-    .footer-price { font-weight: 800; font-size: 18px; }
+    .footer-price { font-weight: 800; font-size: 18px; font-family: 'Poppins', sans-serif; color: var(--dark-green); }
     .footer-atc {
         background: var(--dark-green);
         color: white;
@@ -304,9 +308,10 @@
         height: 50px;
         padding: 0 40px;
         font-weight: 800;
-        font-size: 13px;
+        font-size: 14px;
         cursor: pointer;
         letter-spacing: 0.5px;
+        font-family: 'Poppins', sans-serif;
     }
 
     /* Floating UI */
@@ -315,7 +320,7 @@
 
     /* Badges Section */
     .badges-section {
-        background-color: #f5f5ea;
+        background-color: #E8F3ED;
         background-image: url('https://www.transparenttextures.com/patterns/natural-paper.png');
         padding: clamp(40px, 5vw, 80px) 2vw;
         width: 100%;
@@ -362,9 +367,10 @@
     .badge-icon svg { width: 100%; height: 100%; color: var(--dark-green); }
 
     .badge-label {
-        font-size: clamp(13px, 1.1vw, 18px);
+        font-size: clamp(13px, 1.1vw, 16px);
         font-weight: 700;
         color: var(--dark-green);
+        font-family: 'Poppins', sans-serif;
         white-space: nowrap;
     }
 
@@ -404,11 +410,13 @@
     }
 
     .feature-text h2 {
-        font-size: clamp(40px, 5.5vw, 90px);
+        font-family: 'Poppins', sans-serif;
+        font-size: clamp(32px, 4vw, 52px);
         font-weight: 800;
-        line-height: 1.1;
-        max-width: 12ch;
-        letter-spacing: -0.03em;
+        line-height: 1.15;
+        max-width: 14ch;
+        letter-spacing: -0.02em;
+        color: var(--dark-green);
     }
 
     .feature-image {
@@ -426,7 +434,7 @@
 
     /* Reinvented Section */
     .reinvented-section {
-        background-color: #f5f5ea;
+        background-color: #E8F3ED;
         background-image: url('https://www.transparenttextures.com/patterns/natural-paper.png');
         padding: clamp(60px, 8vw, 120px) 5vw;
         text-align: center;
@@ -488,7 +496,7 @@
 
     /* Reviews Section */
     .reviews-section {
-        background-color: #f5f5ea;
+        background-color: #E8F3ED;
         padding: clamp(60px, 8vw, 100px) 5vw;
     }
 
@@ -498,7 +506,7 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        border-bottom: 1.5px solid #d2d0b8;
+        border-bottom: 1.5px solid rgba(0,66,37,0.15);
         padding-bottom: 25px;
     }
 
@@ -531,7 +539,7 @@
     .rev-verified { color: #1da1f2; font-size: 14px; }
     .rev-date { font-size: 14px; color: #999; margin-bottom: 5px; }
     .rev-stars { color: var(--star-gold); font-size: 18px; }
-    .rev-text { font-size: 16px; line-height: 1.6; color: #435247; }
+    .rev-text { font-size: 16px; line-height: 1.6; color: var(--text-gray); }
     .rev-item { font-size: 14px; color: #666; font-weight: 600; margin-top: 10px; }
     .rev-img { width: 100%; max-width: 150px; border-radius: 8px; margin-top: 15px; object-fit: cover; }
 
@@ -547,12 +555,12 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        border: 1px solid #b8c4bb;
+        border: 1px solid rgba(0,66,37,0.2);
         border-radius: 999px;
         height: 56px;
         padding: 0 15px;
         min-width: 110px;
-        background: #fafaf8;
+        background: #fff;
     }
     .m-qty button { background: 0; border: 0; font-size: 20px; color: var(--dark-green); cursor: pointer; }
     .m-qty span { font-weight: 700; font-size: 16px; }
