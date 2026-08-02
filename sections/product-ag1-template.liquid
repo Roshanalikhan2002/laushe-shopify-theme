@@ -83,6 +83,9 @@
       <div class="product-buying-v3">
         <div class="sticky-box-v3">
           <h1 class="product-title-v3">{{ product.title }}</h1>
+          <div class="product-price-v3" id="OneTimePrice">
+            {{ section.settings.custom_one_time_price | default: product.selected_or_first_available_variant.price | money }}
+          </div>
           
           <form method="post" action="/cart/add" id="AG1ProductForm" class="laushe-atc-form-v3">
             <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}" id="SelectedVariantId">
@@ -121,7 +124,8 @@
               </div>
             {% endif %}
 
-            <!-- 3. PURCHASE OPTIONS -->
+            <!-- 3. PURCHASE OPTIONS — only when there is a real choice (sub / bundle) -->
+            {% if enable_sub or enable_bundle %}
             <div class="purchase-box-v3">
                {% if enable_sub %}
                  <div class="sub-pricing-banner">
@@ -129,7 +133,6 @@
                    Unlock {{ section.settings.sub_discount }}% Pricing with a Laushe Subscription
                  </div>
                  
-                 <!-- Subscribe Option -->
                  <div class="purchase-method active" data-method="sub" onclick="switchPurchaseMethod(this, 'sub')">
                     <div class="method-radio"><div class="radio-inner"></div></div>
                     <div class="method-content">
@@ -140,90 +143,17 @@
                           {{ section.settings.custom_sub_price | default: default_sub_price | append: '/mo' }}
                         </span>
                       </div>
-                      {% comment %}
-                      <ul class="method-benefits">
-                        <li>✔ Free shipping delivered every 30 days</li>
-                        <li>✔ Includes a Free Frother**</li>
-                        <li>✔ Easily pause, skip, or cancel</li>
-                        <li>✔ 90-Day Money Back Guarantee</li>
-                      </ul>
-                      {% endcomment %}
-                    </div>
-                 </div>
-               {% endif %}
-
-               {% if enable_bogo %}
-
-                 <!-- BOGO Option -->
-                  <div class="purchase-method active" data-method="bogo" onclick="switchPurchaseMethod(this, 'bogo')">
-                    <div class="method-radio"><div class="radio-inner"></div></div>
-                    <div class="method-content">
-                      <div class="method-header">
-                        <span class="method-name">{% if force_bogo %}Buy 1 Get 1 FREE Offer{% else %}{{ section.settings.bogo_title }}{% endif %}</span>
-                        <span class="method-price" id="BogoPrice">
-                          {% if force_bogo %}{{ product.selected_or_first_available_variant.price | money }}{% else %}{{ section.settings.bogo_price }}{% endif %}
-                        </span>
-                      </div>
-                      
-                      {% if force_bogo %}
-                         <div class="gwp-selection-v3">
-                            <div class="gwp-header-v3">
-                              <ion-icon name="gift-outline"></ion-icon>
-                              <span>Choose your free item</span>
-                            </div>
-                            
-                            <div class="gwp-options-v3">
-                               {% assign current_handle = product.handle %}
-                               {% comment %} Correct Handles for the Trio {% endcomment %}
-                               {% assign handles = "skinny-sips-weight-loss-kehwa,royce-hair-oil-sunnah-blessed,hair-oil,chia-seeds300gm,chia-seeds-380g" | split: "," %}
-                               
-                               {% for h in handles %}
-                                 {% if h != current_handle %}
-                                   {% assign g_prod = all_products[h] %}
-                                   {% if g_prod != blank %}
-                                     <div class="gwp-item-v3" onclick="selectGWP(this, '{{ g_prod.selected_or_first_available_variant.id }}', event)">
-                                        <div class="gwp-radio-v3"></div>
-                                        <img src="{{ g_prod.featured_image | img_url: '100x100', crop: 'center' }}" alt="{{ g_prod.title }}">
-                                        <div class="gwp-info-v3">
-                                          <div class="gwp-name-v3">{{ g_prod.title }}</div>
-                                          <div class="gwp-price-row-v3">
-                                            <span class="gwp-old-price-v3">{{ g_prod.price | money }}</span>
-                                            <span class="gwp-free-v3">FREE</span>
-                                          </div>
-                                        </div>
-                                     </div>
-                                   {% endif %}
-                                 {% endif %}
-                               {% endfor %}
-                               
-                               {% comment %} Option for a second unit of the current product {% endcomment %}
-                               <div class="gwp-item-v3 active" onclick="selectGWP(this, '{{ product.selected_or_first_available_variant.id }}', event)">
-                                  <div class="gwp-radio-v3"></div>
-                                  <img src="{{ product.featured_image | img_url: '100x100', crop: 'center' }}" alt="{{ product.title }}">
-                                  <div class="gwp-info-v3">
-                                    <div class="gwp-name-v3">{{ product.title }} (Another one)</div>
-                                    <div class="gwp-price-row-v3">
-                                      <span class="gwp-old-price-v3">{{ product.price | money }}</span>
-                                      <span class="gwp-free-v3">FREE</span>
-                                    </div>
-                                  </div>
-                               </div>
-                            </div>
-                         </div>
-                         <input type="hidden" name="gift_id" id="SelectedGiftId" value="{{ product.selected_or_first_available_variant.id }}">
-                       {% endif %}
                     </div>
                  </div>
                {% endif %}
 
                 {% unless hide_onetime %}
-                  <!-- One-time Option -->
-                  <div class="purchase-method {% unless enable_bogo or enable_sub %}active{% endunless %}" data-method="onetime" onclick="switchPurchaseMethod(this, 'onetime')">
+                  <div class="purchase-method {% unless enable_sub %}active{% endunless %}" data-method="onetime" onclick="switchPurchaseMethod(this, 'onetime')">
                      <div class="method-radio"><div class="radio-inner"></div></div>
                      <div class="method-content">
                        <div class="method-header">
                          <span class="method-name">Buy one time</span>
-                         <span class="method-price" id="OneTimePrice">
+                         <span class="method-price">
                            {{ section.settings.custom_one_time_price | default: product.selected_or_first_available_variant.price | money }}
                          </span>
                        </div>
@@ -232,13 +162,12 @@
                 {% endunless %}
 
                 {% if enable_bundle %}
-                  <!-- Bundle Option -->
                   <div class="purchase-method" data-method="bundle" onclick="switchPurchaseMethod(this, 'bundle')">
                      <div class="method-radio"><div class="radio-inner"></div></div>
                      <div class="method-content">
                        <div class="method-header">
                          <span class="method-name">Buy bundle of 3</span>
-                         <span class="method-badge-v3" style="background: #D4AF37; color: white; padding: 2px 8px; border-radius: 4px; font-size: 10px; margin-left: 10px; font-weight: 800;">SAVE MORE</span>
+                         <span class="method-badge-v3">SAVE MORE</span>
                          <span class="method-price" id="BundlePrice">
                            {{ product.selected_or_first_available_variant.price | times: 3 | money }}
                          </span>
@@ -247,6 +176,7 @@
                   </div>
                 {% endif %}
             </div>
+            {% endif %}
 
             <!-- ADD TO CART -->
             <button type="submit" class="atc-btn-v3">
@@ -278,82 +208,127 @@
 </section>
 
 <style>
-  .laushe-product-v3 { padding: 40px 0 100px; background: #fff; color: #1a1a1a; }
+  /* Match homepage: Poppins headings + Inter body */
+  .laushe-product-v3 {
+    padding: 40px 0 100px;
+    background: #fff;
+    color: #333;
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
   .container-wide { max-width: 1300px; margin: 0 auto; padding: 0 30px; }
   
   .product-top-meta { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; padding-bottom: 20px; border-bottom: 1px solid #f0f0f0; }
-  .breadcrumbs { font-size: 13px; color: #555 !important; font-weight: 500; }
-  .breadcrumbs a { color: #555 !important; text-decoration: none; }
-  .current-crumb { color: #222 !important; font-weight: 700; margin-left: 5px; }
+  .breadcrumbs {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: #5a6b62 !important;
+    font-weight: 600;
+  }
+  .breadcrumbs a { color: #5a6b62 !important; text-decoration: none; }
+  .current-crumb { color: #004225 !important; font-weight: 700; margin-left: 5px; }
   
-  .stars-v3 { color: #4CAF50; font-size: 14px; letter-spacing: 2px; }
-  .reviews-v3 { font-size: 13px; color: #444 !important; font-weight: 600; margin-left: 10px; }
+  .stars-v3 { color: #C9A227; font-size: 15px; letter-spacing: 2px; }
+  .reviews-v3 {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: #333 !important;
+    font-weight: 600;
+    margin-left: 10px;
+  }
 
-  /* Grid Layout */
   .product-grid-v3 { display: grid; grid-template-columns: 1.1fr 1fr; gap: 80px; align-items: flex-start; }
-  
-  /* Visuals Column — stays fixed while right column scrolls */
   .product-visuals-v3 { position: sticky; top: 120px; }
-  
-  /* Buying column scrolls naturally — no sticky, no overflow hiding */
   .product-buying-v3 { overflow: visible; }
-  .promo-banner-v3 { background: #00FF00; color: #000; font-weight: 800; font-size: 14px; text-align: center; padding: 12px; border-radius: 4px; margin-bottom: 30px; }
   .main-img-v3 { width: 100%; height: auto; border-radius: 12px; transition: opacity 0.3s ease; }
   .product-thumbs-v3 { display: flex; gap: 15px; margin-top: 20px; overflow-x: auto; }
   .thumb-v3 { width: 80px; height: 80px; object-fit: cover; border-radius: 8px; cursor: pointer; border: 2px solid transparent; }
   .thumb-v3.active { border-color: #004225; }
 
-  /* Buying column — all content visible, no clipping */
-  .sticky-box-v3 { position: static; }
-  
-  /* Buying column — force readable text colors */
-  .sticky-box-v3,
-  .product-buying-v3 {
-    color: #1a1a1a;
-  }
-  .sticky-box-v3 h1,
-  .sticky-box-v3 h2,
-  .sticky-box-v3 h3,
-  .sticky-box-v3 p,
-  .sticky-box-v3 span,
-  .sticky-box-v3 li,
-  .sticky-box-v3 label,
-  .sticky-box-v3 a {
-    color: inherit;
-  }
+  .sticky-box-v3 { position: static; color: #333; }
 
-  /* Product Title */
   .product-title-v3 {
-    font-size: clamp(28px, 4vw, 44px);
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(32px, 4vw, 44px);
     font-weight: 800;
     color: #004225 !important;
-    margin-bottom: 28px;
-    font-family: 'Poppins', sans-serif;
+    margin: 0 0 12px;
     line-height: 1.15;
+    letter-spacing: -0.02em;
+  }
+
+  .product-price-v3 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 22px;
+    font-weight: 800;
+    color: #1a1a1a !important;
+    margin-bottom: 28px;
   }
   
-  .variant-label-v3 { font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; color: #666 !important; margin-bottom: 15px; }
+  .variant-label-v3 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 13px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #5a6b62 !important;
+    margin-bottom: 15px;
+  }
   
-  /* Serving Selector */
   .serving-selector-v3 { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 35px; }
   .serving-box { border: 1.5px solid #eee; border-radius: 10px; padding: 25px 20px; cursor: pointer; transition: all 0.2s ease; position: relative; background: #fff; }
   .serving-box.active { border-color: #004225; background: #f9fdf9; }
-  .serving-badge { background: #00FF00; color: #000 !important; font-size: 10px; font-weight: 800; padding: 3px 8px; border-radius: 4px; position: absolute; top: -10px; left: 20px; }
-  .serving-name { font-size: 20px; font-weight: 800; color: #004225 !important; margin-bottom: 5px; }
-  .serving-price-unit { font-size: 13px; color: #555 !important; font-weight: 600; }
+  .serving-badge {
+    font-family: 'Poppins', sans-serif;
+    background: #FFE600;
+    color: #004225 !important;
+    font-size: 11px;
+    font-weight: 800;
+    padding: 3px 8px;
+    border-radius: 4px;
+    position: absolute;
+    top: -10px;
+    left: 20px;
+  }
+  .serving-name {
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+    font-weight: 800;
+    color: #004225 !important;
+    margin-bottom: 5px;
+  }
+  .serving-price-unit {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: #5a6b62 !important;
+    font-weight: 600;
+  }
 
-  /* Flavor Selector */
   .flavor-selector-v3 { display: flex; gap: 15px; flex-wrap: wrap; margin-bottom: 40px; }
   .flavor-swatch-v3 { border: 1.5px solid #eee; border-radius: 50px; padding: 8px 18px; display: flex; align-items: center; gap: 10px; cursor: pointer; transition: all 0.2s; background: #fff; }
   .flavor-swatch-v3.active { border-color: #004225; background: #f9fdf9; }
   .swatch-circle { width: 14px; height: 14px; border-radius: 50%; display: block; }
-  .swatch-name { font-size: 14px; font-weight: 700; color: #222 !important; }
+  .swatch-name {
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: #004225 !important;
+  }
 
-  /* Purchase Options */
-  .purchase-box-v3 { border-radius: 12px; overflow: hidden; border: 1px solid #004225; margin-bottom: 40px; background: #fff; }
-  .sub-pricing-banner { background: #004225; color: white !important; padding: 12px 20px; display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 14px; }
+  .purchase-box-v3 { border-radius: 12px; overflow: hidden; border: 1px solid rgba(0,66,37,0.2); margin-bottom: 28px; background: #fff; }
+  .sub-pricing-banner {
+    font-family: 'Poppins', sans-serif;
+    background: #004225;
+    color: white !important;
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 700;
+    font-size: 14px;
+  }
   
-  .purchase-method { padding: 25px 20px; display: flex; gap: 15px; cursor: pointer; transition: background 0.2s; border-bottom: 1px solid #f0f0f0; background: #fff; color: #1a1a1a; }
+  .purchase-method { padding: 22px 20px; display: flex; gap: 15px; cursor: pointer; transition: background 0.2s; border-bottom: 1px solid #f0f0f0; background: #fff; color: #333; }
   .purchase-method:last-child { border-bottom: none; }
   .purchase-method.active { background: #f3f8f5; }
   
@@ -362,29 +337,72 @@
   .radio-inner { width: 12px; height: 12px; border-radius: 50%; background: #004225; transform: scale(0); transition: transform 0.2s; }
   .purchase-method.active .radio-inner { transform: scale(1); }
   
-  .method-content { flex: 1; color: #1a1a1a; }
-  .method-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px; gap: 12px; }
-  .method-name { font-size: 18px; font-weight: 800; color: #004225 !important; }
-  .method-price { font-size: 18px; font-weight: 800; color: #222 !important; }
-  
-  .method-benefits { list-style: none; padding: 0; margin: 15px 0 0; display: none; }
-  .purchase-method.active .method-benefits { display: block; }
-  .method-benefits li { font-size: 14px; color: #444 !important; margin-bottom: 8px; font-weight: 600; }
+  .method-content { flex: 1; }
+  .method-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px; gap: 12px; flex-wrap: wrap; }
+  .method-name {
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    font-weight: 800;
+    color: #004225 !important;
+  }
+  .method-price {
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    font-weight: 800;
+    color: #1a1a1a !important;
+  }
+  .method-badge-v3 {
+    font-family: 'Poppins', sans-serif;
+    background: #D4AF37;
+    color: white;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: 800;
+  }
 
-  /* ATC Button */
-  .atc-btn-v3 { width: 100%; padding: 22px; background: #004225; color: white !important; border: none; border-radius: 50px; font-size: 18px; font-weight: 800; cursor: pointer; transition: all 0.3s ease; margin-bottom: 40px; font-family: 'Poppins', sans-serif; }
+  .atc-btn-v3 {
+    width: 100%;
+    padding: 18px 45px;
+    background: #004225;
+    color: white !important;
+    border: none;
+    border-radius: 50px;
+    font-size: 18px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-bottom: 40px;
+    font-family: 'Poppins', sans-serif;
+  }
   .atc-btn-v3:hover { background: #002b1b; transform: translateY(-3px); box-shadow: 0 15px 30px rgba(0,66,37,0.2); }
 
-  /* Accordions */
   .accordion-v3 { border-bottom: 1px solid #f0f0f0; }
-  .accordion-header-v3 { padding: 20px 0; display: flex; justify-content: space-between; align-items: center; cursor: pointer; font-size: 18px; font-weight: 800; color: #004225 !important; transition: color 0.2s; }
+  .accordion-header-v3 {
+    font-family: 'Poppins', sans-serif;
+    padding: 20px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 800;
+    color: #004225 !important;
+    transition: color 0.2s;
+  }
   .accordion-header-v3:hover { color: #b8923f !important; }
-  .accordion-content-v3 { padding-bottom: 25px; font-size: 14px; color: #444 !important; line-height: 1.6; display: none; }
+  .accordion-content-v3 {
+    font-family: 'Inter', sans-serif;
+    padding-bottom: 25px;
+    font-size: 16px;
+    color: #5a6b62 !important;
+    line-height: 1.6;
+    display: none;
+  }
   .accordion-v3.active .accordion-content-v3 { display: block; }
-  .acc-icon { transition: transform 0.3s; font-size: 20px; color: #004225; }
+  .acc-icon { transition: transform 0.3s; font-size: 22px; color: #004225; }
   .accordion-v3.active .acc-icon { transform: rotate(45deg); }
 
-  /* Hide legacy BOGO UI if any remains */
   .bogo-glimmer-badge,
   .gwp-selection-v3,
   .purchase-method[data-method="bogo"] {
@@ -392,9 +410,12 @@
   }
 
   @media (max-width: 1000px) {
-    .product-grid-v3 { grid-template-columns: 1fr; gap: 50px; }
+    .product-grid-v3 { grid-template-columns: 1fr; gap: 40px; }
     .product-visuals-v3 { position: static; }
-    .product-title-v3 { font-size: 36px; }
+    .product-title-v3 { font-size: clamp(28px, 7vw, 36px); }
+    .product-price-v3 { font-size: 20px; }
+    .accordion-header-v3 { font-size: 15px; }
+    .atc-btn-v3 { font-size: 16px; padding: 16px 32px; }
   }
 </style>
 
