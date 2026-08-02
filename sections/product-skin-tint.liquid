@@ -23,7 +23,7 @@
         margin: 0;
         padding: 0;
         -webkit-font-smoothing: antialiased;
-        font-family: 'Inter', sans-serif !important;
+        font-family: 'Poppins', sans-serif !important;
         background-color: var(--cream-bg);
         color: var(--charcoal);
         width: 100%;
@@ -31,33 +31,21 @@
     }
 
     .laushe-product-container,
-    .laushe-product-container p,
-    .laushe-product-container span,
-    .laushe-product-container li,
-    .laushe-product-container a,
-    .laushe-product-container button,
-    .laushe-product-container label,
-    .laushe-product-container .feat-desc,
-    .laushe-product-container .feat-node p,
-    .laushe-product-container .tab-content {
-        font-family: 'Inter', sans-serif !important;
+    .laushe-product-container *:not(ion-icon):not(svg):not(path) {
+        font-family: 'Poppins', sans-serif !important;
     }
 
-    .laushe-product-container h1,
-    .laushe-product-container h2,
-    .laushe-product-container h3,
-    .laushe-product-container h4,
-    .laushe-product-container .prod-title,
-    .laushe-product-container .feat-title,
-    .laushe-product-container .feat-node h4,
-    .laushe-product-container .badge-label,
-    .laushe-product-container .badge-node,
-    .laushe-product-container .tab-node,
-    .laushe-product-container .price-is,
-    .laushe-product-container .footer-atc,
-    .laushe-product-container .m-atc,
-    .laushe-product-container .video-header {
+    .laushe-product-container .prod-subtitle,
+    .laushe-product-container .tab-content,
+    .laushe-product-container .feat-desc,
+    .laushe-product-container .feat-node p,
+    .laushe-product-container .prod-rating span,
+    .laushe-product-container .price-was,
+    .laushe-product-container .swatch-header,
+    .laushe-product-container .rev-text,
+    .laushe-product-container .review-card p {
         font-family: 'Poppins', sans-serif !important;
+        color: #333333 !important;
     }
 
     /* Full Width Container */
@@ -179,7 +167,16 @@
         color: var(--dark-green);
         line-height: 1.15;
         letter-spacing: -0.02em;
-        margin-bottom: 16px;
+        margin-bottom: 10px;
+    }
+
+    .prod-subtitle {
+        font-family: 'Poppins', sans-serif !important;
+        font-size: 15px;
+        font-weight: 600;
+        color: #333333 !important;
+        margin-bottom: 18px;
+        letter-spacing: 0.02em;
     }
 
     .prod-rating {
@@ -191,7 +188,7 @@
         font-size: clamp(16px, 1.3vw, 22px);
     }
 
-    .prod-rating span { color: var(--text-gray); font-weight: 600; font-family: 'Inter', sans-serif; }
+    .prod-rating span { color: #333 !important; font-weight: 600; font-family: 'Poppins', sans-serif !important; }
 
     .prod-price {
         display: flex;
@@ -200,7 +197,7 @@
         margin-bottom: 35px;
     }
 
-    .price-was { font-size: clamp(16px, 1.5vw, 20px); color: #999; text-decoration: line-through; font-weight: 500; font-family: 'Inter', sans-serif; }
+    .price-was { font-size: clamp(16px, 1.5vw, 20px); color: #999; text-decoration: line-through; font-weight: 500; font-family: 'Poppins', sans-serif !important; }
     .price-is { font-size: clamp(22px, 2.5vw, 28px); font-weight: 800; color: #1a1a1a; font-family: 'Poppins', sans-serif; }
 
     .prod-badges {
@@ -260,10 +257,19 @@
     .tab-content {
         font-size: 16px;
         line-height: 1.7;
-        color: var(--text-gray);
+        color: #333333 !important;
         margin-bottom: 40px;
         min-height: 80px;
-        font-family: 'Inter', sans-serif;
+        font-family: 'Poppins', sans-serif !important;
+        font-weight: 500;
+    }
+
+    .swatch-header {
+        font-size: clamp(15px, 1.2vw, 17px);
+        font-weight: 700;
+        margin-bottom: 15px;
+        font-family: 'Poppins', sans-serif !important;
+        color: #004225 !important;
     }
 
     /* Videos Section */
@@ -293,7 +299,6 @@
     .video-item img { width: 100%; height: 100%; object-fit: cover; }
 
     /* Swatches Section */
-    .swatch-header { font-size: clamp(15px, 1.2vw, 19px); font-weight: 700; margin-bottom: 15px; }
     .swatch-list { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 50px; }
     .swatch-node {
         width: clamp(38px, 3.2vw, 50px);
@@ -528,7 +533,7 @@
     }
     .feat-desc,
     .feat-node p {
-        font-family: 'Inter', sans-serif !important;
+        font-family: 'Poppins', sans-serif !important;
         font-size: 15px;
         color: #333333 !important;
         line-height: 1.55;
