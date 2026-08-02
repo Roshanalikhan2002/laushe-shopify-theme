@@ -2,10 +2,8 @@
   <div class="container container-narrow">
     
     {% if section.settings.heading != blank %}
-      <div class="section-header text-center comparison-heading-wrap">
-        <p class="comparison-eyebrow">WHY LAUSHE</p>
-        <h2 class="comparison-heading">{{ section.settings.heading }}</h2>
-        <div class="comparison-heading-line"></div>
+      <div class="section-header text-center" style="margin-bottom: 50px;">
+        <h2 style="color: #007E40; font-weight: 800;">{{ section.settings.heading }}</h2>
       </div>
     {% endif %}
 
@@ -22,24 +20,16 @@
             <div class="row-col first">{{ block.settings.feature }}</div>
             <div class="row-col">
               {% if block.settings.laushe %}
-                <span class="status-icon check" aria-label="Yes">
-                  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </span>
+                <span class="status-icon check">✓</span>
               {% else %}
-                <span class="status-icon cross" aria-label="No">
-                  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
-                </span>
+                <span class="status-icon cross">✕</span>
               {% endif %}
             </div>
             <div class="row-col">
               {% if block.settings.generic %}
-                <span class="status-icon check" aria-label="Yes">
-                  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </span>
+                <span class="status-icon check">✓</span>
               {% else %}
-                <span class="status-icon cross" aria-label="No">
-                  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
-                </span>
+                <span class="status-icon cross">✕</span>
               {% endif %}
             </div>
           </div>
@@ -47,180 +37,84 @@
       </div>
     </div>
 
-    <div class="comparison-footer">
-      <p class="comparison-footer-text">{{ section.settings.footer_text }}</p>
-    </div>
-
   </div>
 </section>
 
 <style>
+  #section-{{ section.id }} .comparison-section {
+    padding: 100px 0;
+  }
   #section-{{ section.id }} .container-narrow {
     max-width: 900px;
     margin: 0 auto;
   }
-
-  #section-{{ section.id }} .comparison-heading-wrap {
-    margin-bottom: 48px;
-  }
-
-  #section-{{ section.id }} .comparison-eyebrow {
-    color: #ffcc33;
-    font-size: 13px;
-    font-weight: 800;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    margin: 0 0 12px;
-  }
-
-  #section-{{ section.id }} .comparison-heading {
-    color: #ffffff !important;
-    font-weight: 900;
-    font-size: clamp(36px, 5.5vw, 58px);
-    margin: 0 0 16px;
-    font-family: 'Montserrat', sans-serif;
-    letter-spacing: -0.03em;
-    line-height: 1.05;
-  }
-
-  #section-{{ section.id }} .comparison-heading-line {
-    width: 72px;
-    height: 4px;
-    background: #ffcc33;
-    margin: 0 auto;
-    border-radius: 4px;
-  }
-
   #section-{{ section.id }} .comparison-table-v2 {
-    background: transparent;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+    border: 1px solid rgba(0,0,0,0.05);
   }
-
   #section-{{ section.id }} .table-header {
     display: grid;
     grid-template-columns: 2fr 1fr 1fr;
-    background: #ffcc33;
-    color: #000000;
-    padding: 18px 40px;
-    font-weight: 900;
-    font-size: 15px;
-    letter-spacing: 0.08em;
+    background: #007E40;
+    color: white;
+    padding: 20px 40px;
+    font-weight: 800;
+    font-size: 14px;
+    letter-spacing: 1px;
     text-transform: uppercase;
-    border-radius: 16px;
-    border: 2px solid #ffcc33;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.12);
   }
-
   #section-{{ section.id }} .header-col {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #000000;
-    font-weight: 900;
   }
-
   #section-{{ section.id }} .header-col.first {
     justify-content: flex-start;
   }
-
   #section-{{ section.id }} .table-row {
     display: grid;
     grid-template-columns: 2fr 1fr 1fr;
-    padding: 22px 40px;
-    border: 2px solid #ffffff;
-    border-radius: 16px;
+    padding: 25px 40px;
+    border-bottom: 1px solid rgba(0,0,0,0.03);
     align-items: center;
-    background: #007e40;
-    margin: 0;
   }
-
   #section-{{ section.id }} .table-row:nth-child(even) {
-    background: #ffffff;
-    border-color: #ffcc33;
+    background: #FAF7F2;
   }
-
+  #section-{{ section.id }} .table-row:last-child {
+    border-bottom: none;
+  }
   #section-{{ section.id }} .row-col {
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 15px;
     font-weight: 700;
-    color: #ffffff;
+    color: #444;
   }
-
   #section-{{ section.id }} .row-col.first {
     justify-content: flex-start;
-    color: #ffffff;
+    color: #333;
   }
-
-  #section-{{ section.id }} .table-row:nth-child(even) .row-col,
-  #section-{{ section.id }} .table-row:nth-child(even) .row-col.first {
-    color: #000000;
-  }
-
   #section-{{ section.id }} .status-icon {
-    width: 28px;
-    height: 28px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  #section-{{ section.id }} .status-icon svg {
-    width: 22px;
-    height: 22px;
-  }
-
-  #section-{{ section.id }} .status-icon.check {
-    color: #ffcc33;
-  }
-
-  #section-{{ section.id }} .table-row:nth-child(even) .status-icon.check {
-    color: #000000;
-  }
-
-  #section-{{ section.id }} .status-icon.cross {
-    color: #ffcc33;
-  }
-
-  #section-{{ section.id }} .table-row:nth-child(even) .status-icon.cross {
-    color: #000000;
-  }
-
-  #section-{{ section.id }} .comparison-footer {
-    margin-top: 36px;
-    background: #ffcc33;
-    border-radius: 16px;
-    padding: 22px 28px;
-    text-align: center;
-  }
-
-  #section-{{ section.id }} .comparison-footer-text {
-    margin: 0;
-    color: #000000;
-    font-size: 16px;
+    font-size: 20px;
     font-weight: 800;
-    font-family: 'Montserrat', sans-serif;
   }
-
+  #section-{{ section.id }} .status-icon.check {
+    color: #007E40;
+  }
+  #section-{{ section.id }} .status-icon.cross {
+    color: #D32F2F;
+    opacity: 0.6;
+  }
   @media (max-width: 600px) {
     #section-{{ section.id }} .table-header,
     #section-{{ section.id }} .table-row {
-      padding: 15px 18px;
+      padding: 15px 20px;
       grid-template-columns: 1.5fr 1fr 1fr;
-      font-size: 12px;
-    }
-    #section-{{ section.id }} .table-header {
-      font-size: 12px;
-      letter-spacing: 0.04em;
-    }
-    #section-{{ section.id }} .comparison-footer {
-      padding: 18px 16px;
-    }
-    #section-{{ section.id }} .comparison-footer-text {
-      font-size: 14px;
     }
   }
 </style>
@@ -230,8 +124,7 @@
   "name": "Comparison Table (Laushe)",
   "settings": [
     { "id": "heading", "type": "text", "label": "Heading", "default": "The Laushe Standard" },
-    { "id": "footer_text", "type": "text", "label": "Footer yellow bar text", "default": "Choose Laushe — purity, tradition, and results you can trust." },
-    { "id": "bg_color", "type": "color", "label": "Background Color", "default": "#007e40" }
+    { "id": "bg_color", "type": "color", "label": "Background Color", "default": "#FAF7F2" }
   ],
   "blocks": [
     {

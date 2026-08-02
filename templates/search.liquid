@@ -45,7 +45,7 @@
                 {% if item.featured_image != blank or item.handle contains 'hair-oil' %}
                   <img src="{{ display_img }}" alt="{{ item.title }}">
                 {% else %}
-                  <div style="background: #EEE; width: 100%; height: 100%; display: flex; align-items:center; justify-content:center; color: #ffffff;">No Image</div>
+                  <div style="background: #EEE; width: 100%; height: 100%; display: flex; align-items:center; justify-content:center; color: #999;">No Image</div>
                 {% endif %}
               </div>
               <div class="card-content">
@@ -95,11 +95,11 @@
   .product-card-v2:hover {
     transform: translateY(-8px);
     box-shadow: 0 15px 35px rgba(0,0,0,0.08);
-    border-color: #ffffff;
+    border-color: #007E40;
   }
   
   .card-image-area {
-    background-color: #ffffff;
+    background-color: #FAFAFA;
     border-radius: 20px 20px 0 0;
     position: relative;
     padding: 30px;
@@ -125,7 +125,7 @@
   
   .stars-line {
     font-size: 11px;
-    color: #ffcc33;
+    color: #D4AF37;
     margin-bottom: 12px;
     display: flex;
     gap: 5px;
@@ -133,21 +133,21 @@
   }
   
   .review-count {
-    color: #ffffff;
+    color: #888;
     font-weight: 500;
   }
   
   .card-title {
     font-size: 20px;
     margin-bottom: 10px;
-    color: #ffffff;
-    font-family: 'Montserrat', sans-serif;
+    color: #333;
+    font-family: 'Poppins', sans-serif;
     font-weight: 800;
   }
   
   .card-desc {
     font-size: 13px;
-    color: #ffffff;
+    color: #777;
     line-height: 1.6;
     margin-bottom: 20px;
     display: -webkit-box;
@@ -166,12 +166,12 @@
   .curr-price {
     font-weight: 800;
     font-size: 20px;
-    color: #ffffff;
+    color: #007E40;
   }
   
   .old-price {
     font-size: 14px;
-    color: #ffffff;
+    color: #999;
     text-decoration: line-through;
     font-weight: 500;
   }

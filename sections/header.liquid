@@ -54,7 +54,7 @@
         <a href="javascript:void(0)" onclick="toggleSearchBar()" aria-label="Search"><ion-icon name="search-outline"></ion-icon></a>
         <a href="/cart" class="header-cart-link" onclick="event.preventDefault(); LausheCart.open();" aria-label="Cart" style="position: relative;">
           <ion-icon name="bag-handle-outline"></ion-icon>
-          <span class="header-cart-count {% if cart.item_count == 0 %}hidden{% endif %}" style="position: absolute; top: -5px; right: -8px; background: #dcb360; color: #004225; font-size: 10px; padding: 2px 5px; border-radius: 50%; min-width: 16px; height: 16px; display: {% if cart.item_count > 0 %}flex{% else %}none{% endif %}; align-items: center; justify-content: center; font-weight: 700;">
+          <span class="header-cart-count {% if cart.item_count == 0 %}hidden{% endif %}" style="position: absolute; top: -5px; right: -8px; background: #dcb360; color: #007E40; font-size: 10px; padding: 2px 5px; border-radius: 50%; min-width: 16px; height: 16px; display: {% if cart.item_count > 0 %}flex{% else %}none{% endif %}; align-items: center; justify-content: center; font-weight: 700;">
             {{ cart.item_count }}
           </span>
         </a>
@@ -68,7 +68,7 @@
         <input type="hidden" name="type" value="product">
         <input type="search" name="q" placeholder="Search our store..." value="{{ search.terms | escape }}" />
         <button type="submit" style="position: absolute; right: 20px; top: 18px; background: none; border: none; cursor: pointer;">
-            <ion-icon name="search-outline" style="font-size: 24px; color: #004225;"></ion-icon>
+            <ion-icon name="search-outline" style="font-size: 24px; color: #007E40;"></ion-icon>
         </button>
     </form>
   </div>

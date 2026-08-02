@@ -20,7 +20,7 @@
 
 <section class="section-padding bg-white" style="padding: 100px 0;">
   <div class="container-wide" style="max-width: 1280px; margin: 0 auto; padding: 0 40px;">
-    <h2 class="h1 text-center" style="font-size: clamp(40px, 6vw, 64px); font-weight: 900; letter-spacing: -0.03em; text-align: center; margin-bottom: 60px;">{{ section.settings.headline }}</h2>
+    <h2 class="h1 text-center" style="font-size: 44px; text-align: center; margin-bottom: 60px;">{{ section.settings.headline }}</h2>
     <div class="ingredients-grid">
       {% for block in section.blocks %}
         <div class="ingredient-item">
@@ -39,11 +39,11 @@
 
 <style>
   .ingredients-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
-  .ingredient-item { display: flex; gap: 24px; align-items: flex-start; padding: 32px; border-radius: 20px; border: 1px solid #e5efe9; transition: all 0.3s ease; background: #fff; }
-  .ingredient-item:hover { border-color: #ffcc33; box-shadow: 0 10px 40px rgba(0, 126, 64,0.12); transform: translateY(-3px); }
-  .ing-icon { background: #ffcc33; width: 60px; height: 60px; min-width: 60px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 28px; color: #000000; }
-  .ing-title { font-size: 19px; font-weight: 800; color: #000000 !important; margin-bottom: 10px; font-family: 'Montserrat', sans-serif; }
-  .ing-desc { color: #000000 !important; font-size: 14px; line-height: 1.6; }
+  .ingredient-item { display: flex; gap: 24px; align-items: flex-start; padding: 32px; border-radius: 20px; border: 1px solid #f0f0f0; transition: all 0.3s ease; background: #fff; }
+  .ingredient-item:hover { border-color: #007E40; box-shadow: 0 10px 40px rgba(0,126,64,0.08); transform: translateY(-3px); }
+  .ing-icon { background: #f0faf4; width: 60px; height: 60px; min-width: 60px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 28px; color: #007E40; }
+  .ing-title { font-size: 19px; font-weight: 800; color: #007E40; margin-bottom: 10px; font-family: 'Poppins', sans-serif; }
+  .ing-desc { color: #666; font-size: 14px; line-height: 1.6; }
   @media (max-width: 768px) { .ingredients-grid { grid-template-columns: 1fr; } }
 </style>
 

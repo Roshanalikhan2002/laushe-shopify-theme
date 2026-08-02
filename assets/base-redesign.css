@@ -12,7 +12,7 @@ body {
 }
 
 :root {
-    --deep-forest: #004225; /* Updated Deep Forest Green */
+    --deep-forest: #007E40; /* Brand green */
     --soft-mint: #E8F3ED; /* Backgrounds */
     --accent-gold: #D4AF37; /* Accents */
     --accent-yellow: #FFE600; /* CTAs & Badges */
@@ -229,7 +229,7 @@ header.sticky-header {
 
 .header-nav-link.is-active,
 .header-nav-link[aria-current="page"] {
-    color: #004225;
+    color: #007E40;
 }
 
 .menu-toggle,
@@ -279,7 +279,7 @@ header.sticky-header {
 .header-icons a,
 .header-icons ion-icon {
     font-size: 22px;
-    color: #004225;
+    color: #007E40;
     line-height: 1;
 }
 
@@ -801,7 +801,7 @@ footer {
     height: 100%;
     background:
       radial-gradient(120% 80% at 0% 0%, rgba(220, 179, 96, 0.18), transparent 55%),
-      linear-gradient(165deg, #004225 0%, #01321c 48%, #0a2f1d 100%);
+      linear-gradient(165deg, #007E40 0%, #005a2e 48%, #004d27 100%);
     box-shadow: 16px 0 48px rgba(0, 0, 0, 0.28);
     transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), visibility 0.45s;
     z-index: 10003;
@@ -1020,7 +1020,7 @@ footer {
     border-radius: 999px;
     background: linear-gradient(90deg, #dcb360, #f0d48a, #dcb360);
     background-size: 200% 100%;
-    color: #004225;
+    color: #007E40;
     font-family: 'Poppins', sans-serif;
     font-weight: 800;
     font-size: 14px;

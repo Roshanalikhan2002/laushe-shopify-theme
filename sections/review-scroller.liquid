@@ -3,7 +3,7 @@
   "name": "Review Scroller",
   "settings": [
     { "type": "text", "id": "heading", "label": "Heading", "default": "WHAT PEOPLE ARE SAYING" },
-    { "type": "color", "id": "bg_color", "label": "Background Color", "default": "#007e40" },
+    { "type": "color", "id": "bg_color", "label": "Background Color", "default": "#faf7f2" },
     { "type": "range", "id": "speed", "label": "Scroll Speed (seconds)", "min": 10, "max": 60, "step": 5, "default": 30 }
   ],
   "presets": [
@@ -62,20 +62,19 @@
   .review-scroller-section {
     padding: 60px 0;
     overflow: hidden;
+    border-bottom: 1px solid rgba(0,0,0,0.03);
   }
   .scroller-header {
     text-align: center;
     margin-bottom: 40px;
   }
   .scroller-header h2 {
-    font-size: clamp(36px, 5vw, 56px);
-    letter-spacing: -0.03em;
-    font-weight: 900;
-    color: #ffffff;
-    text-transform: none;
+    font-size: 13px;
+    letter-spacing: 0.2em;
+    font-weight: 600;
+    color: #888;
+    text-transform: uppercase;
     margin: 0;
-    font-family: 'Montserrat', sans-serif;
-    line-height: 1.05;
   }
   .scroller-container {
     width: 100%;
@@ -95,22 +94,22 @@
     gap: 15px;
   }
   .quote-icon {
-    color: #ffcc33;
+    color: #D4AF37;
     font-size: 24px;
-    font-family: 'Montserrat', sans-serif;
+    font-family: serif;
     font-weight: 800;
   }
   .scroller-item p {
     font-size: 16px;
-    color: #ffffff;
+    color: #444;
     font-style: italic;
     margin: 0;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Inter', sans-serif;
   }
   .author {
     font-size: 13px;
     font-weight: 700;
-    color: #ffcc33;
+    color: #999;
     text-transform: uppercase;
     letter-spacing: 0.05em;
   }
@@ -120,6 +119,7 @@
     100% { transform: translateX(-50%); }
   }
 
+  /* Pause on hover */
   .scroller-container:hover .scroller-inner {
     animation-play-state: paused;
   }

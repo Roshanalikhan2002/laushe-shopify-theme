@@ -18,7 +18,7 @@
        "id": "bg_color",
        "type": "color",
        "label": "Background Color",
-       "default": "#007e40"
+       "default": "#FAF7F2"
     }
   ],
   "blocks": [
@@ -104,7 +104,7 @@
     margin-bottom: 60px;
   }
   .faq-subtitle {
-    color: #ffcc33; /* --accent-gold */
+    color: #D4AF37; /* --accent-gold */
     font-size: 13px;
     font-weight: 800;
     letter-spacing: 0.15em;
@@ -112,24 +112,22 @@
     margin-bottom: 15px;
   }
   .faq-title {
-    font-size: clamp(40px, 6vw, 64px);
-    color: #ffffff;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 900;
-    letter-spacing: -0.03em;
-    line-height: 1.05;
+    font-size: 44px;
+    color: #007E40; /* --deep-forest */
+    font-family: 'Poppins', sans-serif;
+    font-weight: 800;
   }
   .faq-card {
     background: white;
     border-radius: 16px;
     margin-bottom: 16px;
     overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
     transition: all 0.3s ease;
     border: 1px solid #EEE;
   }
   .faq-card:hover {
-    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.06);
   }
   .faq-trigger {
     width: 100%;
@@ -146,12 +144,12 @@
   .faq-question-text {
     font-size: 17px;
     font-weight: 700;
-    color: #000000;
-    font-family: 'Montserrat', sans-serif;
+    color: #007E40;
+    font-family: 'Poppins', sans-serif;
   }
   .faq-icon-box {
     font-size: 20px;
-    color: #000000;
+    color: #007E40;
     transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
   .faq-card.active .faq-icon-box {
@@ -170,10 +168,10 @@
     padding: 0 30px 30px 30px;
     font-size: 15px;
     line-height: 1.7;
-    color: #000000;
+    color: #555;
   }
   @media (max-width: 768px) {
-    .faq-title { font-size: clamp(28px, 7vw, 36px); font-weight: 900; }
+    .faq-title { font-size: 32px; }
     .faq-trigger { padding: 20px; }
   }
 </style>
