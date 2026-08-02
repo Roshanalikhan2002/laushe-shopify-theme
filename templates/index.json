@@ -842,6 +842,7 @@
     },
     "laushe_promo_cta_wwzJAq": {
       "type": "laushe-promo-cta",
+      "disabled": true,
       "name": "Promo CTA (Laushe)",
       "settings": {
         "headline": "Be part of over 15,000 families who rely on Laushe for safe, natural, and effective health solutions. Every",
