@@ -77,21 +77,42 @@
 <!-- MOBILE NAVIGATION DRAWER -->
 <div id="mobile-drawer-overlay" class="mobile-drawer-overlay" onclick="window.toggleMobileMenu()"></div>
 <div id="mobile-drawer" class="mobile-drawer">
+  <div class="mobile-drawer__shimmer" aria-hidden="true"></div>
   <div class="mobile-drawer-header">
-    <div class="mobile-drawer-close" onclick="window.toggleMobileMenu()">&times;</div>
+    <button type="button" class="mobile-drawer-close" onclick="window.toggleMobileMenu()" aria-label="Close menu">&times;</button>
     <div class="mobile-drawer-logo">
-      <a href="/" class="logo-text-link" onclick="window.toggleMobileMenu()">
+      <a href="/" class="logo-text-link logo-text-link--shimmer" onclick="window.toggleMobileMenu()">
         <span class="logo-text-main">Laushe</span>
         <span class="logo-text-sub">by zahra</span>
       </a>
     </div>
   </div>
+
   <nav class="mobile-drawer-nav">
-    <a href="/" onclick="window.toggleMobileMenu()">HOME</a>
-    <a href="{{ section.settings.shop_all_url }}?filter=healthcare" onclick="window.toggleMobileMenu()">HEALTHCARE</a>
-    <a href="{{ section.settings.shop_all_url }}?filter=organic" onclick="window.toggleMobileMenu()">ORGANIC PRODUCTS</a>
-    <a href="/pages/contact" onclick="window.toggleMobileMenu()">CONTACT US</a>
+    <a href="/" class="mobile-drawer-link" onclick="window.toggleMobileMenu()" style="--i:0">
+      <span class="mobile-drawer-link__label">Home</span>
+      <span class="mobile-drawer-link__arrow" aria-hidden="true">→</span>
+    </a>
+    <a href="{{ section.settings.shop_all_url }}?filter=healthcare" class="mobile-drawer-link" onclick="window.toggleMobileMenu()" style="--i:1">
+      <span class="mobile-drawer-link__label">Healthcare</span>
+      <span class="mobile-drawer-link__arrow" aria-hidden="true">→</span>
+    </a>
+    <a href="{{ section.settings.shop_all_url }}?filter=organic" class="mobile-drawer-link" onclick="window.toggleMobileMenu()" style="--i:2">
+      <span class="mobile-drawer-link__label">Organic Products</span>
+      <span class="mobile-drawer-link__arrow" aria-hidden="true">→</span>
+    </a>
+    <a href="/pages/contact" class="mobile-drawer-link" onclick="window.toggleMobileMenu()" style="--i:3">
+      <span class="mobile-drawer-link__label">Contact Us</span>
+      <span class="mobile-drawer-link__arrow" aria-hidden="true">→</span>
+    </a>
   </nav>
+
+  <div class="mobile-drawer-footer">
+    <a href="{{ section.settings.shop_all_url }}" class="mobile-drawer-cta" onclick="window.toggleMobileMenu()">
+      <span>Shop All</span>
+    </a>
+    <p class="mobile-drawer-tagline">Pure. Natural. Effective.</p>
+  </div>
 </div>
 
 <script>
