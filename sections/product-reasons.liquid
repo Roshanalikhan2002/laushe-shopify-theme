@@ -25,7 +25,18 @@
           {% for block in section.blocks %}
             <article class="product-reasons__card" {{ block.shopify_attributes }}>
               {% if block.settings.icon != blank %}
-                <div class="product-reasons__icon" aria-hidden="true">{{ block.settings.icon }}</div>
+                <div class="product-reasons__icon" aria-hidden="true">
+                  {% assign ic = block.settings.icon | downcase %}
+                  {% case ic %}
+                    {% when 'leaf' %}&#127807;
+                    {% when 'bolt' %}&#9889;
+                    {% when 'heart' %}&#128154;
+                    {% when 'spark' %}&#10024;
+                    {% when 'shield' %}&#128737;
+                    {% when 'moon' %}&#127769;
+                    {% else %}{{ block.settings.icon }}
+                  {% endcase %}
+                </div>
               {% endif %}
               <h3 class="product-reasons__card-title">{{ block.settings.title }}</h3>
               <p class="product-reasons__card-text">{{ block.settings.text }}</p>

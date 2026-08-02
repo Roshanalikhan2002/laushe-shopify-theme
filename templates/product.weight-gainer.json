@@ -1,326 +1,334 @@
 {
-  "layout": "theme",
-  "sections": {
-    "product_main": {
-      "type": "product-ag1-template",
-      "blocks": {
-        "acc1": {
-          "type": "accordion",
-          "settings": {
-            "title": "What is it?",
-            "content": "Laushe's Organic Weight Gainer is a 100% natural, Sunnah-blessed formula designed to help you build healthy mass, strengthen muscles, and support your body's energy needs — without artificial fillers or harmful additives."
-          }
-        },
-        "acc2": {
-          "type": "accordion",
-          "settings": {
-            "title": "Who's it for",
-            "content": "Ideal for those who struggle to gain weight naturally, gym-goers looking to build lean muscle, or anyone who wants a clean, organic way to support healthy body mass and sustained energy levels."
-          }
-        },
-        "acc3": {
-          "type": "accordion",
-          "settings": {
-            "title": "Benefits",
-            "content": "Made from wholesome, 100% organic ingredients\nSupports gradual, healthy weight gain without unhealthy fats\nPacked with natural proteins to fuel muscle growth\nComplex carbs provide long-lasting energy throughout the day\nFree from artificial additives, fillers, and processed sugars\nGentle on the stomach and easy to incorporate into meals"
-          }
-        },
-        "acc4": {
-          "type": "accordion",
-          "settings": {
-            "title": "How to use",
-            "content": "Combine 2 scoops with 300ml of milk or water and stir well\nConsume two times a day — once in the morning and once after exercise\nAdd to smoothies or shakes for extra calories and protein\nUse regularly alongside a balanced diet for optimal results"
-          }
-        }
-      },
-      "block_order": [
-        "acc1",
-        "acc2",
-        "acc3",
-        "acc4"
-      ],
-      "settings": {
-        "promo_banner": "100% Organic — No Steroids, No Chemicals",
-        "stars_count": "50,000+ verified 5-star reviews for Laushe products",
-        "sub_discount": 0,
-        "custom_one_time_price": "",
-        "custom_sub_price": ""
-      }
-    },
-    "benefits": {
-      "type": "benefits-grid",
-      "settings": {
-        "heading": "A natural, nutrient-packed formula with proteins, good fats, and complex carbs to help you build healthy muscle and gain strength.",
-        "subheading": "Supported by nature, backed by tradition.",
-        "center_image": "shopify://shop_images/IMG_6182.png"
-      }
-    },
-    "ingredients": {
-      "type": "ingredients-grid",
-      "blocks": {
-        "b1": {
-          "type": "ingredient",
-          "settings": {
-            "title": "Almond & Cashew Powder",
-            "desc": "Nutrient-rich fats and protein for lean mass"
-          }
-        },
-        "b2": {
-          "type": "ingredient",
-          "settings": {
-            "title": "Whey Protein (Natural)",
-            "desc": "Pure protein to build and repair muscles"
-          }
-        },
-        "b3": {
-          "type": "ingredient",
-          "settings": {
-            "title": "Banana Powder",
-            "desc": "Natural sweetness with potassium for performance"
-          }
-        },
-        "b4": {
-          "type": "ingredient",
-          "settings": {
-            "title": "Flaxseed Meal",
-            "desc": "Plant-based omega-3s and fiber for digestion"
-          }
-        }
-      },
-      "block_order": [
-        "b1",
-        "b2",
-        "b3",
-        "b4"
-      ],
-      "settings": {
-        "headline": "100% Organic, Natural Ingredients"
-      }
-    },
-    "usage": {
-      "type": "usage-steps",
-      "settings": {
-        "heading": "Your Daily Mass-Building Ritual",
-        "step1_text": "Combine 2 scoops with 300ml of milk or water and stir well",
-        "step2_text": "Consume two times a day — once in the morning and once after exercise",
-        "step3_text": "Add to smoothies or shakes for extra calories and protein",
-        "step4_text": "Use regularly alongside a balanced diet for optimal results"
-      }
-    },
-    "comparison": {
-      "type": "laushe-comparison-table",
-      "blocks": {
-        "row_1": {
-          "type": "row",
-          "settings": {
-            "feature": "100% Natural Ingredients",
-            "laushe": true,
-            "generic": false
-          }
-        },
-        "row_2": {
-          "type": "row",
-          "settings": {
-            "feature": "Sunnah-Blessed Formulation",
-            "laushe": true,
-            "generic": false
-          }
-        },
-        "row_3": {
-          "type": "row",
-          "settings": {
-            "feature": "No Artificial Additives",
-            "laushe": true,
-            "generic": false
-          }
-        },
-        "row_4": {
-          "type": "row",
-          "settings": {
-            "feature": "Scientifically Verified",
-            "laushe": true,
-            "generic": false
-          }
-        },
-        "row_5": {
-          "type": "row",
-          "settings": {
-            "feature": "Ethically Sourced",
-            "laushe": true,
-            "generic": false
-          }
-        },
-        "row_6": {
-          "type": "row",
-          "settings": {
-            "feature": "Money-Back Guarantee",
-            "laushe": true,
-            "generic": false
-          }
-        },
-        "row_7": {
-          "type": "row",
-          "settings": {
-            "feature": "Fresh & Sealed Packaging",
-            "laushe": true,
-            "generic": false
-          }
-        },
-        "row_8": {
-          "type": "row",
-          "settings": {
-            "feature": "Fair & Transparent Pricing",
-            "laushe": true,
-            "generic": false
-          }
-        }
-      },
-      "block_order": [
-        "row_1",
-        "row_2",
-        "row_3",
-        "row_4",
-        "row_5",
-        "row_6",
-        "row_7",
-        "row_8"
-      ],
-      "settings": {
-        "heading": "Laushe Weight Gainer vs. Others",
-        "bg_color": "#faf7f2"
-      }
-    },
-    "faq": {
-      "type": "faq-accordion",
-      "blocks": {
-        "faq_1": {
-          "type": "faq",
-          "settings": {
-            "question": "Who can use Weight Gainer 100% Organic?",
-            "answer": "This formula is ideal for anyone looking to increase healthy body mass, including active adults, athletes, or those struggling to gain weight naturally. It's suitable for most adults when combined with a balanced diet."
-          }
-        },
-        "faq_2": {
-          "type": "faq",
-          "settings": {
-            "question": "How quickly will I see results?",
-            "answer": "Results vary depending on diet and exercise routine. With consistent use and proper nutrition, most users notice gradual, healthy weight gain within 4–6 weeks."
-          }
-        },
-        "faq_3": {
-          "type": "faq",
-          "settings": {
-            "question": "Can it replace meals?",
-            "answer": "Weight Gainer is meant to complement your diet, not replace meals. It works best when taken alongside regular meals to provide additional nutrients, protein, and calories for muscle growth."
-          }
-        },
-        "faq_4": {
-          "type": "faq",
-          "settings": {
-            "question": "Is it safe for sensitive stomachs?",
-            "answer": "Yes, this formula is made from gentle, organic ingredients and is easy to digest. If you have specific dietary concerns or allergies, consult a healthcare professional before use."
-          }
-        },
-        "faq_5": {
-          "type": "faq",
-          "settings": {
-            "question": "Can it be mixed with other drinks or foods?",
-            "answer": "Absolutely! You can blend it with milk, water, smoothies, or even add it to oatmeal or shakes to boost calories and protein intake without affecting taste."
-          }
-        }
-      },
-      "block_order": [
-        "faq_1",
-        "faq_2",
-        "faq_3",
-        "faq_4",
-        "faq_5"
-      ],
-      "settings": {
-        "subtitle": "QUESTIONS & ANSWERS",
-        "title": "Frequently Asked Questions",
-        "bg_color": "#faf7f2"
-      }
-    },
-    "final_cta": {
-      "type": "final-cta",
-      "settings": {
-        "headline": "Build a Healthier, Stronger You Naturally",
-        "subtext": "Gain healthy weight and build real strength with Laushe's 100% organic, Sunnah-blessed Weight Gainer — no shortcuts, no chemicals.",
-        "cta_text": "SHOP NOW",
-        "cta_url": "",
-        "bg_color": "#1b4332"
-      }
-    }
-  },
-      "product_reasons": {
-      "type": "product-reasons",
-      "blocks": {
-        "r1": {
-          "type": "reason",
-          "settings": {
-            "icon": "??",
-            "title": "100% Pure & Natural",
-            "text": "No fillers, no artificial additives � just clean, Sunnah-blessed ingredients your body recognizes."
-          }
-        },
-        "r2": {
-          "type": "reason",
-          "settings": {
-            "icon": "?",
-            "title": "Steady Daily Energy",
-            "text": "Support calm, lasting vitality through the day � without stimulants or the afternoon crash."
-          }
-        },
-        "r3": {
-          "type": "reason",
-          "settings": {
-            "icon": "??",
-            "title": "Gut-Friendly Nutrition",
-            "text": "Crafted to support digestion and nutrient absorption as part of your everyday wellness ritual."
-          }
-        },
-        "r4": {
-          "type": "reason",
-          "settings": {
-            "icon": "?",
-            "title": "Visible, Feelable Results",
-            "text": "Thousands of customers report better energy, digestion, and overall balance with consistent use."
-          }
-        },
-        "r5": {
-          "type": "reason",
-          "settings": {
-            "icon": "???",
-            "title": "Tested for Purity",
-            "text": "Quality you can trust � thoughtfully sourced and made to Laushe�s purity standards."
-          }
-        },
-        "r6": {
-          "type": "reason",
-          "settings": {
-            "icon": "??",
-            "title": "Sunnah-Blessed Ritual",
-            "text": "Rooted in tradition and made for modern life � a simple daily habit that fits your routine."
-          }
-        }
-      },
-      "block_order": ["r1", "r2", "r3", "r4", "r5", "r6"],
-      "settings": {
-        "heading": "Six Reasons to Choose Laushe",
-        "subheading": "Pure, Sunnah-blessed wellness made for everyday life. Here�s why thousands trust Laushe as their daily ritual.",
-        "bg_color": "#E8F3ED",
-        "heading_color": "#dcb360",
-        "accent_color": "#007E40"
-      }
-    },
-  "order": [
-    "product_main","product_reasons",
-    "benefits",
-    "ingredients",
-    "usage",
-    "comparison",
-    "faq",
-    "final_cta"
-  ]
+    "layout":  "theme",
+    "sections":  {
+                     "product_main":  {
+                                          "type":  "product-ag1-template",
+                                          "blocks":  {
+                                                         "acc1":  {
+                                                                      "type":  "accordion",
+                                                                      "settings":  {
+                                                                                       "title":  "What is it?",
+                                                                                       "content":  "Laushe\u0027s Organic Weight Gainer is a 100% natural, Sunnah-blessed formula designed to help you build healthy mass, strengthen muscles, and support your body\u0027s energy needs â€” without artificial fillers or harmful additives."
+                                                                                   }
+                                                                  },
+                                                         "acc2":  {
+                                                                      "type":  "accordion",
+                                                                      "settings":  {
+                                                                                       "title":  "Who\u0027s it for",
+                                                                                       "content":  "Ideal for those who struggle to gain weight naturally, gym-goers looking to build lean muscle, or anyone who wants a clean, organic way to support healthy body mass and sustained energy levels."
+                                                                                   }
+                                                                  },
+                                                         "acc3":  {
+                                                                      "type":  "accordion",
+                                                                      "settings":  {
+                                                                                       "title":  "Benefits",
+                                                                                       "content":  "Made from wholesome, 100% organic ingredients\nSupports gradual, healthy weight gain without unhealthy fats\nPacked with natural proteins to fuel muscle growth\nComplex carbs provide long-lasting energy throughout the day\nFree from artificial additives, fillers, and processed sugars\nGentle on the stomach and easy to incorporate into meals"
+                                                                                   }
+                                                                  },
+                                                         "acc4":  {
+                                                                      "type":  "accordion",
+                                                                      "settings":  {
+                                                                                       "title":  "How to use",
+                                                                                       "content":  "Combine 2 scoops with 300ml of milk or water and stir well\nConsume two times a day â€” once in the morning and once after exercise\nAdd to smoothies or shakes for extra calories and protein\nUse regularly alongside a balanced diet for optimal results"
+                                                                                   }
+                                                                  }
+                                                     },
+                                          "block_order":  [
+                                                              "acc1",
+                                                              "acc2",
+                                                              "acc3",
+                                                              "acc4"
+                                                          ],
+                                          "settings":  {
+                                                           "promo_banner":  "100% Organic â€” No Steroids, No Chemicals",
+                                                           "stars_count":  "50,000+ verified 5-star reviews for Laushe products",
+                                                           "sub_discount":  0,
+                                                           "custom_one_time_price":  "",
+                                                           "custom_sub_price":  ""
+                                                       }
+                                      },
+                     "benefits":  {
+                                      "type":  "benefits-grid",
+                                      "settings":  {
+                                                       "heading":  "A natural, nutrient-packed formula with proteins, good fats, and complex carbs to help you build healthy muscle and gain strength.",
+                                                       "subheading":  "Supported by nature, backed by tradition.",
+                                                       "center_image":  "shopify://shop_images/IMG_6182.png"
+                                                   }
+                                  },
+                     "ingredients":  {
+                                         "type":  "ingredients-grid",
+                                         "blocks":  {
+                                                        "b1":  {
+                                                                   "type":  "ingredient",
+                                                                   "settings":  {
+                                                                                    "title":  "Almond \u0026 Cashew Powder",
+                                                                                    "desc":  "Nutrient-rich fats and protein for lean mass"
+                                                                                }
+                                                               },
+                                                        "b2":  {
+                                                                   "type":  "ingredient",
+                                                                   "settings":  {
+                                                                                    "title":  "Whey Protein (Natural)",
+                                                                                    "desc":  "Pure protein to build and repair muscles"
+                                                                                }
+                                                               },
+                                                        "b3":  {
+                                                                   "type":  "ingredient",
+                                                                   "settings":  {
+                                                                                    "title":  "Banana Powder",
+                                                                                    "desc":  "Natural sweetness with potassium for performance"
+                                                                                }
+                                                               },
+                                                        "b4":  {
+                                                                   "type":  "ingredient",
+                                                                   "settings":  {
+                                                                                    "title":  "Flaxseed Meal",
+                                                                                    "desc":  "Plant-based omega-3s and fiber for digestion"
+                                                                                }
+                                                               }
+                                                    },
+                                         "block_order":  [
+                                                             "b1",
+                                                             "b2",
+                                                             "b3",
+                                                             "b4"
+                                                         ],
+                                         "settings":  {
+                                                          "headline":  "100% Organic, Natural Ingredients"
+                                                      }
+                                     },
+                     "usage":  {
+                                   "type":  "usage-steps",
+                                   "settings":  {
+                                                    "heading":  "Your Daily Mass-Building Ritual",
+                                                    "step1_text":  "Combine 2 scoops with 300ml of milk or water and stir well",
+                                                    "step2_text":  "Consume two times a day â€” once in the morning and once after exercise",
+                                                    "step3_text":  "Add to smoothies or shakes for extra calories and protein",
+                                                    "step4_text":  "Use regularly alongside a balanced diet for optimal results"
+                                                }
+                               },
+                     "comparison":  {
+                                        "type":  "laushe-comparison-table",
+                                        "blocks":  {
+                                                       "row_1":  {
+                                                                     "type":  "row",
+                                                                     "settings":  {
+                                                                                      "feature":  "100% Natural Ingredients",
+                                                                                      "laushe":  true,
+                                                                                      "generic":  false
+                                                                                  }
+                                                                 },
+                                                       "row_2":  {
+                                                                     "type":  "row",
+                                                                     "settings":  {
+                                                                                      "feature":  "Sunnah-Blessed Formulation",
+                                                                                      "laushe":  true,
+                                                                                      "generic":  false
+                                                                                  }
+                                                                 },
+                                                       "row_3":  {
+                                                                     "type":  "row",
+                                                                     "settings":  {
+                                                                                      "feature":  "No Artificial Additives",
+                                                                                      "laushe":  true,
+                                                                                      "generic":  false
+                                                                                  }
+                                                                 },
+                                                       "row_4":  {
+                                                                     "type":  "row",
+                                                                     "settings":  {
+                                                                                      "feature":  "Scientifically Verified",
+                                                                                      "laushe":  true,
+                                                                                      "generic":  false
+                                                                                  }
+                                                                 },
+                                                       "row_5":  {
+                                                                     "type":  "row",
+                                                                     "settings":  {
+                                                                                      "feature":  "Ethically Sourced",
+                                                                                      "laushe":  true,
+                                                                                      "generic":  false
+                                                                                  }
+                                                                 },
+                                                       "row_6":  {
+                                                                     "type":  "row",
+                                                                     "settings":  {
+                                                                                      "feature":  "Money-Back Guarantee",
+                                                                                      "laushe":  true,
+                                                                                      "generic":  false
+                                                                                  }
+                                                                 },
+                                                       "row_7":  {
+                                                                     "type":  "row",
+                                                                     "settings":  {
+                                                                                      "feature":  "Fresh \u0026 Sealed Packaging",
+                                                                                      "laushe":  true,
+                                                                                      "generic":  false
+                                                                                  }
+                                                                 },
+                                                       "row_8":  {
+                                                                     "type":  "row",
+                                                                     "settings":  {
+                                                                                      "feature":  "Fair \u0026 Transparent Pricing",
+                                                                                      "laushe":  true,
+                                                                                      "generic":  false
+                                                                                  }
+                                                                 }
+                                                   },
+                                        "block_order":  [
+                                                            "row_1",
+                                                            "row_2",
+                                                            "row_3",
+                                                            "row_4",
+                                                            "row_5",
+                                                            "row_6",
+                                                            "row_7",
+                                                            "row_8"
+                                                        ],
+                                        "settings":  {
+                                                         "heading":  "Laushe Weight Gainer vs. Others",
+                                                         "bg_color":  "#faf7f2"
+                                                     }
+                                    },
+                     "faq":  {
+                                 "type":  "faq-accordion",
+                                 "blocks":  {
+                                                "faq_1":  {
+                                                              "type":  "faq",
+                                                              "settings":  {
+                                                                               "question":  "Who can use Weight Gainer 100% Organic?",
+                                                                               "answer":  "This formula is ideal for anyone looking to increase healthy body mass, including active adults, athletes, or those struggling to gain weight naturally. It\u0027s suitable for most adults when combined with a balanced diet."
+                                                                           }
+                                                          },
+                                                "faq_2":  {
+                                                              "type":  "faq",
+                                                              "settings":  {
+                                                                               "question":  "How quickly will I see results?",
+                                                                               "answer":  "Results vary depending on diet and exercise routine. With consistent use and proper nutrition, most users notice gradual, healthy weight gain within 4â€“6 weeks."
+                                                                           }
+                                                          },
+                                                "faq_3":  {
+                                                              "type":  "faq",
+                                                              "settings":  {
+                                                                               "question":  "Can it replace meals?",
+                                                                               "answer":  "Weight Gainer is meant to complement your diet, not replace meals. It works best when taken alongside regular meals to provide additional nutrients, protein, and calories for muscle growth."
+                                                                           }
+                                                          },
+                                                "faq_4":  {
+                                                              "type":  "faq",
+                                                              "settings":  {
+                                                                               "question":  "Is it safe for sensitive stomachs?",
+                                                                               "answer":  "Yes, this formula is made from gentle, organic ingredients and is easy to digest. If you have specific dietary concerns or allergies, consult a healthcare professional before use."
+                                                                           }
+                                                          },
+                                                "faq_5":  {
+                                                              "type":  "faq",
+                                                              "settings":  {
+                                                                               "question":  "Can it be mixed with other drinks or foods?",
+                                                                               "answer":  "Absolutely! You can blend it with milk, water, smoothies, or even add it to oatmeal or shakes to boost calories and protein intake without affecting taste."
+                                                                           }
+                                                          }
+                                            },
+                                 "block_order":  [
+                                                     "faq_1",
+                                                     "faq_2",
+                                                     "faq_3",
+                                                     "faq_4",
+                                                     "faq_5"
+                                                 ],
+                                 "settings":  {
+                                                  "subtitle":  "QUESTIONS \u0026 ANSWERS",
+                                                  "title":  "Frequently Asked Questions",
+                                                  "bg_color":  "#faf7f2"
+                                              }
+                             },
+                     "final_cta":  {
+                                       "type":  "final-cta",
+                                       "settings":  {
+                                                        "headline":  "Build a Healthier, Stronger You Naturally",
+                                                        "subtext":  "Gain healthy weight and build real strength with Laushe\u0027s 100% organic, Sunnah-blessed Weight Gainer â€” no shortcuts, no chemicals.",
+                                                        "cta_text":  "SHOP NOW",
+                                                        "cta_url":  "",
+                                                        "bg_color":  "#1b4332"
+                                                    }
+                                   },
+                     "product_reasons":  {
+                                             "type":  "product-reasons",
+                                             "blocks":  {
+                                                            "r1":  {
+                                                                       "type":  "reason",
+                                                                       "settings":  {
+                                                                                        "icon":  "Leaf",
+                                                                                        "title":  "100% Pure \u0026 Natural",
+                                                                                        "text":  "No fillers, no artificial additives - just clean, Sunnah-blessed ingredients your body recognizes."
+                                                                                    }
+                                                                   },
+                                                            "r2":  {
+                                                                       "type":  "reason",
+                                                                       "settings":  {
+                                                                                        "icon":  "Bolt",
+                                                                                        "title":  "Steady Daily Energy",
+                                                                                        "text":  "Support calm, lasting vitality through the day - without stimulants or the afternoon crash."
+                                                                                    }
+                                                                   },
+                                                            "r3":  {
+                                                                       "type":  "reason",
+                                                                       "settings":  {
+                                                                                        "icon":  "Heart",
+                                                                                        "title":  "Gut-Friendly Nutrition",
+                                                                                        "text":  "Crafted to support digestion and nutrient absorption as part of your everyday wellness ritual."
+                                                                                    }
+                                                                   },
+                                                            "r4":  {
+                                                                       "type":  "reason",
+                                                                       "settings":  {
+                                                                                        "icon":  "Spark",
+                                                                                        "title":  "Visible, Feelable Results",
+                                                                                        "text":  "Thousands of customers report better energy, digestion, and overall balance with consistent use."
+                                                                                    }
+                                                                   },
+                                                            "r5":  {
+                                                                       "type":  "reason",
+                                                                       "settings":  {
+                                                                                        "icon":  "Shield",
+                                                                                        "title":  "Tested for Purity",
+                                                                                        "text":  "Quality you can trust - thoughtfully sourced and made to Laushe purity standards."
+                                                                                    }
+                                                                   },
+                                                            "r6":  {
+                                                                       "type":  "reason",
+                                                                       "settings":  {
+                                                                                        "icon":  "Moon",
+                                                                                        "title":  "Sunnah-Blessed Ritual",
+                                                                                        "text":  "Rooted in tradition and made for modern life - a simple daily habit that fits your routine."
+                                                                                    }
+                                                                   }
+                                                        },
+                                             "block_order":  [
+                                                                 "r1",
+                                                                 "r2",
+                                                                 "r3",
+                                                                 "r4",
+                                                                 "r5",
+                                                                 "r6"
+                                                             ],
+                                             "settings":  {
+                                                              "heading_color":  "#dcb360",
+                                                              "accent_color":  "#007E40",
+                                                              "heading":  "Six Reasons to Choose Laushe",
+                                                              "bg_color":  "#E8F3ED",
+                                                              "subheading":  "Pure, Sunnah-blessed wellness made for everyday life. Here is why thousands trust Laushe as their daily ritual."
+                                                          }
+                                         }
+                 },
+    "order":  [
+                  "product_main",
+                  "product_reasons",
+                  "benefits",
+                  "ingredients",
+                  "usage",
+                  "comparison",
+                  "faq",
+                  "final_cta"
+              ]
 }

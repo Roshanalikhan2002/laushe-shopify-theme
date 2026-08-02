@@ -1,334 +1,342 @@
 {
-  "layout": "theme",
-  "sections": {
-    "product_main": {
-      "type": "product-ag1-template",
-      "blocks": {
-        "acc1": {
-          "type": "accordion",
-          "settings": {
-            "title": "What is it?",
-            "content": "Laushe's signature wellness formula is designed to support deep, restorative health through ancient tradtion and modern science."
-          }
-        },
-        "acc2": {
-          "type": "accordion",
-          "settings": {
-            "title": "Who's it for",
-            "content": "Perfect for anyone looking to optimize their daily health routine with pure, raw, and bio-available supplements."
-          }
-        },
-        "acc3": {
-          "type": "accordion",
-          "settings": {
-            "title": "Benefits",
-            "content": "Aids in relaxation and calm for body and mind\nSupports healthy internal inflammation balance\nSunnah-blessed blend with turmeric and honey\nPromotes overall vitality and daily energy\nConvenient daily ritual for sustainable health\nRich in antioxidants for full-body wellness"
-          }
-        },
-        "acc4": {
-          "type": "accordion",
-          "settings": {
-            "title": "How to use",
-            "content": "Take one tablespoon daily, ideally in the morning\nMix into warm water, milk, or your favorite herbal tea\nEnjoy directly for a rich and natural intake\nConsistent daily use provides the best results"
-          }
-        }
-      },
-      "block_order": [
-        "acc1",
-        "acc2",
-        "acc3",
-        "acc4"
-      ],
-      "settings": {
-        "promo_banner": "Includes a FREE Frother**",
-        "stars_count": "50,000+ verified 5-star reviews for Laushe products",
-        "sub_discount": 0,
-        "custom_one_time_price": "",
-        "custom_sub_price": ""
-      }
-    },
-    "benefits": {
-      "type": "benefits-grid",
-      "settings": {
-        "heading": "A powerhouse superfood rich in nutrients to fuel your daily health.",
-        "subheading": "Supported by nature, backed by tradition.",
-        "center_image": "shopify://shop_images/golden_elixir-100_jpg.jpg"
-      }
-    },
-    "ingredients": {
-      "type": "ingredients-grid",
-      "blocks": {
-        "b1": {
-          "type": "ingredient",
-          "settings": {
-            "title": "Turmeric (Haldi)",
-            "desc": "Packed with antioxidants and gentle inflammation support"
-          }
-        },
-        "b2": {
-          "type": "ingredient",
-          "settings": {
-            "title": "Raw Honey",
-            "desc": "Naturally soothing and promoting overall well-being"
-          }
-        },
-        "b3": {
-          "type": "ingredient",
-          "settings": {
-            "title": "Black Pepper",
-            "desc": "Boosts absorption for maximum benefit"
-          }
-        },
-        "b4": {
-          "type": "ingredient",
-          "settings": {
-            "title": "Ginger",
-            "desc": "Supports digestion and eases discomfort"
-          }
-        },
-        "b5": {
-          "type": "ingredient",
-          "settings": {
-            "title": "Cinnamon",
-            "desc": "Regulates blood sugar and abdominal fat."
-          }
-        }
-      },
-      "block_order": [
-        "b1",
-        "b2",
-        "b3",
-        "b4",
-        "b5"
-      ],
-      "settings": {
-        "headline": "High-Quality, Natural Ingredients"
-      }
-    },
-    "usage": {
-      "type": "usage-steps",
-      "settings": {
-        "heading": "Delicious, Herbal Formula",
-        "step1_text": "Take one tablespoon daily, ideally in the morning",
-        "step2_text": "Mix into warm water, milk, or your favorite herbal tea",
-        "step3_text": "Enjoy directly for a rich and natural intake",
-        "step4_text": "Consistent daily use provides the best results"
-      }
-    },
-    "comparison": {
-      "type": "laushe-comparison-table",
-      "blocks": {
-        "row_1": {
-          "type": "row",
-          "settings": {
-            "feature": "100% Natural Ingredients",
-            "laushe": true,
-            "generic": false
-          }
-        },
-        "row_2": {
-          "type": "row",
-          "settings": {
-            "feature": "Sunnah-Blessed Formulation",
-            "laushe": true,
-            "generic": false
-          }
-        },
-        "row_3": {
-          "type": "row",
-          "settings": {
-            "feature": "No Artificial Additives",
-            "laushe": true,
-            "generic": false
-          }
-        },
-        "row_4": {
-          "type": "row",
-          "settings": {
-            "feature": "Scientifically Verified",
-            "laushe": true,
-            "generic": false
-          }
-        },
-        "row_5": {
-          "type": "row",
-          "settings": {
-            "feature": "Ethically Sourced",
-            "laushe": true,
-            "generic": false
-          }
-        },
-        "row_6": {
-          "type": "row",
-          "settings": {
-            "feature": "Tested for Purity",
-            "laushe": true,
-            "generic": false
-          }
-        },
-        "row_7": {
-          "type": "row",
-          "settings": {
-            "feature": "Fresh & Sealed Packaging",
-            "laushe": true,
-            "generic": false
-          }
-        },
-        "row_8": {
-          "type": "row",
-          "settings": {
-            "feature": "Fair & Transparent Pricing",
-            "laushe": true,
-            "generic": false
-          }
-        }
-      },
-      "block_order": [
-        "row_1",
-        "row_2",
-        "row_3",
-        "row_4",
-        "row_5",
-        "row_6",
-        "row_7",
-        "row_8"
-      ],
-      "settings": {
-        "heading": "Laushe vs. Other Brands",
-        "bg_color": "#faf7f2"
-      }
-    },
-    "faq": {
-      "type": "faq-accordion",
-      "blocks": {
-        "faq_1": {
-          "type": "faq",
-          "settings": {
-            "question": "What is the Golden Elixir and its primary benefits?",
-            "answer": "Our Golden Elixir is a signature blend crafted with turmeric, honey, and traditional herbs to support relaxation, balanced inflammation, and overall vitality for a daily wellness boost."
-          }
-        },
-        "faq_2": {
-          "type": "faq",
-          "settings": {
-            "question": "How should I consume it for best results?",
-            "answer": "We recommend taking one tablespoon daily, ideally in the morning. You can mix it into warm water or milk, or simply enjoy it directly for a rich, natural experience."
-          }
-        },
-        "faq_3": {
-          "type": "faq",
-          "settings": {
-            "question": "Is it suitable for daily use?",
-            "answer": "Absolutely! Consistent daily use provides the most sustainable results for long-term health and vitality."
-          }
-        },
-        "faq_4": {
-          "type": "faq",
-          "settings": {
-            "question": "Are your ingredients 100% natural?",
-            "answer": "Yes, we use only 100% pure, natural, and Sunnah-blessed ingredients with zero artificial additives or chemicals."
-          }
-        },
-        "faq_5": {
-          "type": "faq",
-          "settings": {
-            "question": "Is have any side effects?",
-            "answer": "Our Golden Elixir is crafted with gentle, natural herbs. However, we always recommend consulting with your healthcare provider if you have specific medical conditions or concerns."
-          }
-        }
-      },
-      "block_order": [
-        "faq_1",
-        "faq_2",
-        "faq_3",
-        "faq_4",
-        "faq_5"
-      ],
-      "settings": {
-        "subtitle": "QUESTIONS & ANSWERS",
-        "title": "Frequently Asked Questions",
-        "bg_color": "#faf7f2"
-      }
-    },
-    "final_cta": {
-      "type": "final-cta",
-      "settings": {
-        "headline": "Unlock Daily Vitality",
-        "subtext": "Soothe inflammation and boost vitality with our Sunnah-blessed Golden Elixir formula.",
-        "cta_text": "SHOP NOW",
-        "cta_url": "",
-        "bg_color": "#1b4332"
-      }
-    }
-  },
-      "product_reasons": {
-      "type": "product-reasons",
-      "blocks": {
-        "r1": {
-          "type": "reason",
-          "settings": {
-            "icon": "??",
-            "title": "100% Pure & Natural",
-            "text": "No fillers, no artificial additives — just clean, Sunnah-blessed ingredients your body recognizes."
-          }
-        },
-        "r2": {
-          "type": "reason",
-          "settings": {
-            "icon": "?",
-            "title": "Steady Daily Energy",
-            "text": "Support calm, lasting vitality through the day — without stimulants or the afternoon crash."
-          }
-        },
-        "r3": {
-          "type": "reason",
-          "settings": {
-            "icon": "??",
-            "title": "Gut-Friendly Nutrition",
-            "text": "Crafted to support digestion and nutrient absorption as part of your everyday wellness ritual."
-          }
-        },
-        "r4": {
-          "type": "reason",
-          "settings": {
-            "icon": "?",
-            "title": "Visible, Feelable Results",
-            "text": "Thousands of customers report better energy, digestion, and overall balance with consistent use."
-          }
-        },
-        "r5": {
-          "type": "reason",
-          "settings": {
-            "icon": "???",
-            "title": "Tested for Purity",
-            "text": "Quality you can trust — thoughtfully sourced and made to Laushe’s purity standards."
-          }
-        },
-        "r6": {
-          "type": "reason",
-          "settings": {
-            "icon": "??",
-            "title": "Sunnah-Blessed Ritual",
-            "text": "Rooted in tradition and made for modern life — a simple daily habit that fits your routine."
-          }
-        }
-      },
-      "block_order": ["r1", "r2", "r3", "r4", "r5", "r6"],
-      "settings": {
-        "heading": "Six Reasons to Choose Laushe",
-        "subheading": "Pure, Sunnah-blessed wellness made for everyday life. Here’s why thousands trust Laushe as their daily ritual.",
-        "bg_color": "#E8F3ED",
-        "heading_color": "#dcb360",
-        "accent_color": "#007E40"
-      }
-    },
-  "order": [
-    "product_main","product_reasons",
-    "benefits",
-    "ingredients",
-    "usage",
-    "comparison",
-    "faq",
-    "final_cta"
-  ]
+    "layout":  "theme",
+    "sections":  {
+                     "product_main":  {
+                                          "type":  "product-ag1-template",
+                                          "blocks":  {
+                                                         "acc1":  {
+                                                                      "type":  "accordion",
+                                                                      "settings":  {
+                                                                                       "title":  "What is it?",
+                                                                                       "content":  "Laushe\u0027s signature wellness formula is designed to support deep, restorative health through ancient tradtion and modern science."
+                                                                                   }
+                                                                  },
+                                                         "acc2":  {
+                                                                      "type":  "accordion",
+                                                                      "settings":  {
+                                                                                       "title":  "Who\u0027s it for",
+                                                                                       "content":  "Perfect for anyone looking to optimize their daily health routine with pure, raw, and bio-available supplements."
+                                                                                   }
+                                                                  },
+                                                         "acc3":  {
+                                                                      "type":  "accordion",
+                                                                      "settings":  {
+                                                                                       "title":  "Benefits",
+                                                                                       "content":  "Aids in relaxation and calm for body and mind\nSupports healthy internal inflammation balance\nSunnah-blessed blend with turmeric and honey\nPromotes overall vitality and daily energy\nConvenient daily ritual for sustainable health\nRich in antioxidants for full-body wellness"
+                                                                                   }
+                                                                  },
+                                                         "acc4":  {
+                                                                      "type":  "accordion",
+                                                                      "settings":  {
+                                                                                       "title":  "How to use",
+                                                                                       "content":  "Take one tablespoon daily, ideally in the morning\nMix into warm water, milk, or your favorite herbal tea\nEnjoy directly for a rich and natural intake\nConsistent daily use provides the best results"
+                                                                                   }
+                                                                  }
+                                                     },
+                                          "block_order":  [
+                                                              "acc1",
+                                                              "acc2",
+                                                              "acc3",
+                                                              "acc4"
+                                                          ],
+                                          "settings":  {
+                                                           "promo_banner":  "Includes a FREE Frother**",
+                                                           "stars_count":  "50,000+ verified 5-star reviews for Laushe products",
+                                                           "sub_discount":  0,
+                                                           "custom_one_time_price":  "",
+                                                           "custom_sub_price":  ""
+                                                       }
+                                      },
+                     "benefits":  {
+                                      "type":  "benefits-grid",
+                                      "settings":  {
+                                                       "heading":  "A powerhouse superfood rich in nutrients to fuel your daily health.",
+                                                       "subheading":  "Supported by nature, backed by tradition.",
+                                                       "center_image":  "shopify://shop_images/golden_elixir-100_jpg.jpg"
+                                                   }
+                                  },
+                     "ingredients":  {
+                                         "type":  "ingredients-grid",
+                                         "blocks":  {
+                                                        "b1":  {
+                                                                   "type":  "ingredient",
+                                                                   "settings":  {
+                                                                                    "title":  "Turmeric (Haldi)",
+                                                                                    "desc":  "Packed with antioxidants and gentle inflammation support"
+                                                                                }
+                                                               },
+                                                        "b2":  {
+                                                                   "type":  "ingredient",
+                                                                   "settings":  {
+                                                                                    "title":  "Raw Honey",
+                                                                                    "desc":  "Naturally soothing and promoting overall well-being"
+                                                                                }
+                                                               },
+                                                        "b3":  {
+                                                                   "type":  "ingredient",
+                                                                   "settings":  {
+                                                                                    "title":  "Black Pepper",
+                                                                                    "desc":  "Boosts absorption for maximum benefit"
+                                                                                }
+                                                               },
+                                                        "b4":  {
+                                                                   "type":  "ingredient",
+                                                                   "settings":  {
+                                                                                    "title":  "Ginger",
+                                                                                    "desc":  "Supports digestion and eases discomfort"
+                                                                                }
+                                                               },
+                                                        "b5":  {
+                                                                   "type":  "ingredient",
+                                                                   "settings":  {
+                                                                                    "title":  "Cinnamon",
+                                                                                    "desc":  "Regulates blood sugar and abdominal fat."
+                                                                                }
+                                                               }
+                                                    },
+                                         "block_order":  [
+                                                             "b1",
+                                                             "b2",
+                                                             "b3",
+                                                             "b4",
+                                                             "b5"
+                                                         ],
+                                         "settings":  {
+                                                          "headline":  "High-Quality, Natural Ingredients"
+                                                      }
+                                     },
+                     "usage":  {
+                                   "type":  "usage-steps",
+                                   "settings":  {
+                                                    "heading":  "Delicious, Herbal Formula",
+                                                    "step1_text":  "Take one tablespoon daily, ideally in the morning",
+                                                    "step2_text":  "Mix into warm water, milk, or your favorite herbal tea",
+                                                    "step3_text":  "Enjoy directly for a rich and natural intake",
+                                                    "step4_text":  "Consistent daily use provides the best results"
+                                                }
+                               },
+                     "comparison":  {
+                                        "type":  "laushe-comparison-table",
+                                        "blocks":  {
+                                                       "row_1":  {
+                                                                     "type":  "row",
+                                                                     "settings":  {
+                                                                                      "feature":  "100% Natural Ingredients",
+                                                                                      "laushe":  true,
+                                                                                      "generic":  false
+                                                                                  }
+                                                                 },
+                                                       "row_2":  {
+                                                                     "type":  "row",
+                                                                     "settings":  {
+                                                                                      "feature":  "Sunnah-Blessed Formulation",
+                                                                                      "laushe":  true,
+                                                                                      "generic":  false
+                                                                                  }
+                                                                 },
+                                                       "row_3":  {
+                                                                     "type":  "row",
+                                                                     "settings":  {
+                                                                                      "feature":  "No Artificial Additives",
+                                                                                      "laushe":  true,
+                                                                                      "generic":  false
+                                                                                  }
+                                                                 },
+                                                       "row_4":  {
+                                                                     "type":  "row",
+                                                                     "settings":  {
+                                                                                      "feature":  "Scientifically Verified",
+                                                                                      "laushe":  true,
+                                                                                      "generic":  false
+                                                                                  }
+                                                                 },
+                                                       "row_5":  {
+                                                                     "type":  "row",
+                                                                     "settings":  {
+                                                                                      "feature":  "Ethically Sourced",
+                                                                                      "laushe":  true,
+                                                                                      "generic":  false
+                                                                                  }
+                                                                 },
+                                                       "row_6":  {
+                                                                     "type":  "row",
+                                                                     "settings":  {
+                                                                                      "feature":  "Tested for Purity",
+                                                                                      "laushe":  true,
+                                                                                      "generic":  false
+                                                                                  }
+                                                                 },
+                                                       "row_7":  {
+                                                                     "type":  "row",
+                                                                     "settings":  {
+                                                                                      "feature":  "Fresh \u0026 Sealed Packaging",
+                                                                                      "laushe":  true,
+                                                                                      "generic":  false
+                                                                                  }
+                                                                 },
+                                                       "row_8":  {
+                                                                     "type":  "row",
+                                                                     "settings":  {
+                                                                                      "feature":  "Fair \u0026 Transparent Pricing",
+                                                                                      "laushe":  true,
+                                                                                      "generic":  false
+                                                                                  }
+                                                                 }
+                                                   },
+                                        "block_order":  [
+                                                            "row_1",
+                                                            "row_2",
+                                                            "row_3",
+                                                            "row_4",
+                                                            "row_5",
+                                                            "row_6",
+                                                            "row_7",
+                                                            "row_8"
+                                                        ],
+                                        "settings":  {
+                                                         "heading":  "Laushe vs. Other Brands",
+                                                         "bg_color":  "#faf7f2"
+                                                     }
+                                    },
+                     "faq":  {
+                                 "type":  "faq-accordion",
+                                 "blocks":  {
+                                                "faq_1":  {
+                                                              "type":  "faq",
+                                                              "settings":  {
+                                                                               "question":  "What is the Golden Elixir and its primary benefits?",
+                                                                               "answer":  "Our Golden Elixir is a signature blend crafted with turmeric, honey, and traditional herbs to support relaxation, balanced inflammation, and overall vitality for a daily wellness boost."
+                                                                           }
+                                                          },
+                                                "faq_2":  {
+                                                              "type":  "faq",
+                                                              "settings":  {
+                                                                               "question":  "How should I consume it for best results?",
+                                                                               "answer":  "We recommend taking one tablespoon daily, ideally in the morning. You can mix it into warm water or milk, or simply enjoy it directly for a rich, natural experience."
+                                                                           }
+                                                          },
+                                                "faq_3":  {
+                                                              "type":  "faq",
+                                                              "settings":  {
+                                                                               "question":  "Is it suitable for daily use?",
+                                                                               "answer":  "Absolutely! Consistent daily use provides the most sustainable results for long-term health and vitality."
+                                                                           }
+                                                          },
+                                                "faq_4":  {
+                                                              "type":  "faq",
+                                                              "settings":  {
+                                                                               "question":  "Are your ingredients 100% natural?",
+                                                                               "answer":  "Yes, we use only 100% pure, natural, and Sunnah-blessed ingredients with zero artificial additives or chemicals."
+                                                                           }
+                                                          },
+                                                "faq_5":  {
+                                                              "type":  "faq",
+                                                              "settings":  {
+                                                                               "question":  "Is have any side effects?",
+                                                                               "answer":  "Our Golden Elixir is crafted with gentle, natural herbs. However, we always recommend consulting with your healthcare provider if you have specific medical conditions or concerns."
+                                                                           }
+                                                          }
+                                            },
+                                 "block_order":  [
+                                                     "faq_1",
+                                                     "faq_2",
+                                                     "faq_3",
+                                                     "faq_4",
+                                                     "faq_5"
+                                                 ],
+                                 "settings":  {
+                                                  "subtitle":  "QUESTIONS \u0026 ANSWERS",
+                                                  "title":  "Frequently Asked Questions",
+                                                  "bg_color":  "#faf7f2"
+                                              }
+                             },
+                     "final_cta":  {
+                                       "type":  "final-cta",
+                                       "settings":  {
+                                                        "headline":  "Unlock Daily Vitality",
+                                                        "subtext":  "Soothe inflammation and boost vitality with our Sunnah-blessed Golden Elixir formula.",
+                                                        "cta_text":  "SHOP NOW",
+                                                        "cta_url":  "",
+                                                        "bg_color":  "#1b4332"
+                                                    }
+                                   },
+                     "product_reasons":  {
+                                             "type":  "product-reasons",
+                                             "blocks":  {
+                                                            "r1":  {
+                                                                       "type":  "reason",
+                                                                       "settings":  {
+                                                                                        "icon":  "Leaf",
+                                                                                        "title":  "100% Pure \u0026 Natural",
+                                                                                        "text":  "No fillers, no artificial additives - just clean, Sunnah-blessed ingredients your body recognizes."
+                                                                                    }
+                                                                   },
+                                                            "r2":  {
+                                                                       "type":  "reason",
+                                                                       "settings":  {
+                                                                                        "icon":  "Bolt",
+                                                                                        "title":  "Steady Daily Energy",
+                                                                                        "text":  "Support calm, lasting vitality through the day - without stimulants or the afternoon crash."
+                                                                                    }
+                                                                   },
+                                                            "r3":  {
+                                                                       "type":  "reason",
+                                                                       "settings":  {
+                                                                                        "icon":  "Heart",
+                                                                                        "title":  "Gut-Friendly Nutrition",
+                                                                                        "text":  "Crafted to support digestion and nutrient absorption as part of your everyday wellness ritual."
+                                                                                    }
+                                                                   },
+                                                            "r4":  {
+                                                                       "type":  "reason",
+                                                                       "settings":  {
+                                                                                        "icon":  "Spark",
+                                                                                        "title":  "Visible, Feelable Results",
+                                                                                        "text":  "Thousands of customers report better energy, digestion, and overall balance with consistent use."
+                                                                                    }
+                                                                   },
+                                                            "r5":  {
+                                                                       "type":  "reason",
+                                                                       "settings":  {
+                                                                                        "icon":  "Shield",
+                                                                                        "title":  "Tested for Purity",
+                                                                                        "text":  "Quality you can trust - thoughtfully sourced and made to Laushe purity standards."
+                                                                                    }
+                                                                   },
+                                                            "r6":  {
+                                                                       "type":  "reason",
+                                                                       "settings":  {
+                                                                                        "icon":  "Moon",
+                                                                                        "title":  "Sunnah-Blessed Ritual",
+                                                                                        "text":  "Rooted in tradition and made for modern life - a simple daily habit that fits your routine."
+                                                                                    }
+                                                                   }
+                                                        },
+                                             "block_order":  [
+                                                                 "r1",
+                                                                 "r2",
+                                                                 "r3",
+                                                                 "r4",
+                                                                 "r5",
+                                                                 "r6"
+                                                             ],
+                                             "settings":  {
+                                                              "heading_color":  "#dcb360",
+                                                              "accent_color":  "#007E40",
+                                                              "heading":  "Six Reasons to Choose Laushe",
+                                                              "bg_color":  "#E8F3ED",
+                                                              "subheading":  "Pure, Sunnah-blessed wellness made for everyday life. Here is why thousands trust Laushe as their daily ritual."
+                                                          }
+                                         }
+                 },
+    "order":  [
+                  "product_main",
+                  "product_reasons",
+                  "benefits",
+                  "ingredients",
+                  "usage",
+                  "comparison",
+                  "faq",
+                  "final_cta"
+              ]
 }
