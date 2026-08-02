@@ -31,7 +31,7 @@
 }
 {% endschema %}
 
-<section class="wellness-catalog section-padding" style="background-color: #ffffff; border-top: 20px solid #FFF;" id="section-{{ section.id }}" data-section-id="{{ section.id }}">
+<section class="wellness-catalog section-padding" style="background-color: #e9f3ed; border-top: 20px solid #FFF;" id="section-{{ section.id }}" data-section-id="{{ section.id }}">
   <div id="laushe-shop" style="position: absolute; top: -100px;"></div>
   <div class="container">
     
@@ -113,11 +113,7 @@
                   </div>
                   <div class="card-content">
                     <h3 class="card-title"><a href="{{ product.url }}">{{ display_title }}</a></h3>
-                    <div class="card-stars">
-                      <span class="stars-gold" aria-hidden="true">★★★★★</span>
-                      <span class="rating-num">4.8</span>
-                      <span class="review-count">(2134)</span>
-                    </div>
+                    {% render 'product-card-stars', product: product, style: 'catalog' %}
                     <div class="card-price-row">
                       <span class="price-main">{{ display_price }}</span>
                       {% if product.price > 0 and compare_price > product.price %}
@@ -179,11 +175,7 @@
               </div>
               <div class="card-content">
                 <h3 class="card-title"><a href="{{ product.url }}">{{ display_title }}</a></h3>
-                <div class="card-stars">
-                  <span class="stars-gold" aria-hidden="true">★★★★★</span>
-                  <span class="rating-num">4.8</span>
-                  <span class="review-count">(2134)</span>
-                </div>
+                {% render 'product-card-stars', product: product, style: 'catalog' %}
                 <div class="card-price-row">
                   <span class="price-main">{{ display_price }}</span>
                   {% if product.price > 0 and compare_price > product.price %}
@@ -199,7 +191,7 @@
       
       <!-- Empty State -->
       <div class="catalog-empty-state" style="display: none; text-align: center; padding: 60px 0;">
-        <p style="font-size: 18px; color: #000000; font-weight: 700;">No products found with this tag.</p>
+        <p style="font-size: 18px; color: #555; opacity: 0.6;">No products found with this tag.</p>
       </div>
     </div>
 
@@ -207,29 +199,21 @@
 </section>
 
 <style>
-  #section-{{ section.id }}.wellness-catalog,
-  #section-{{ section.id }} {
-    background-color: #ffffff !important;
-    color: #000000;
-    padding: 100px 0;
-  }
-  #section-{{ section.id }} .catalog-title,
-  #section-{{ section.id }} h2.catalog-title {
-    font-size: clamp(40px, 6vw, 64px);
-    font-weight: 900;
-    color: #000000 !important;
+  #section-{{ section.id }} .wellness-catalog { padding: 100px 0; }
+  #section-{{ section.id }} .catalog-title {
+    font-size: clamp(32px, 4vw, 44px);
+    font-weight: 800;
+    color: #004225;
     margin-bottom: 12px;
-    font-family: 'Montserrat', sans-serif;
-    letter-spacing: -0.03em;
-    line-height: 1.05;
+    font-family: 'Poppins', sans-serif;
+    letter-spacing: -0.02em;
   }
   #section-{{ section.id }} .catalog-subtitle {
     font-size: 16px;
-    color: #000000 !important;
+    color: #5a6b62;
     max-width: 640px;
     margin: 0 auto;
     line-height: 1.5;
-    font-weight: 600;
   }
   #section-{{ section.id }} .catalog-filters {
     display: flex;
@@ -242,23 +226,19 @@
   #section-{{ section.id }} .filter-btn {
     padding: 12px 28px;
     border-radius: 999px;
-    border: 2px solid #000000;
-    background: #ffffff;
-    color: #000000 !important;
-    font-weight: 800;
+    border: 1px solid rgba(0,66,37,0.15);
+    background: #fff;
+    color: #004225;
+    font-weight: 700;
     font-size: 14px;
     cursor: pointer;
     transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
-    font-family: 'Montserrat', sans-serif;
-  }
-  #section-{{ section.id }} .filter-btn:hover {
-    border-color: #ffcc33;
-    color: #000000 !important;
+    font-family: 'Poppins', sans-serif;
   }
   #section-{{ section.id }} .filter-btn.active {
-    background: #ffcc33;
-    color: #000000 !important;
-    border-color: #ffcc33;
+    background: #004225;
+    color: #fff;
+    border-color: #004225;
   }
 
   #section-{{ section.id }} .catalog-grid {
@@ -285,7 +265,6 @@
     overflow: hidden;
     margin-bottom: 18px;
     aspect-ratio: 1 / 1.05;
-    border: 2px solid #000000;
   }
   #section-{{ section.id }} .card-badge {
     position: absolute;
@@ -296,18 +275,18 @@
     padding: 6px 12px;
     border-radius: 999px;
     letter-spacing: 0.04em;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Poppins', sans-serif;
   }
   #section-{{ section.id }} .card-badge--sale {
     left: 14px;
-    background: #ffcc33;
-    color: #000000;
+    background: rgba(255,255,255,0.92);
+    color: #1a1a1a;
   }
   #section-{{ section.id }} .card-badge--tag {
     right: 14px;
     left: auto;
-    background: #ffcc33;
-    color: #000000;
+    background: rgba(0,66,37,0.9);
+    color: #fff;
   }
   #section-{{ section.id }} .card-img-link {
     display: flex;
@@ -326,9 +305,9 @@
   }
   #section-{{ section.id }} .blume-card:hover .card-img { transform: scale(1.04); }
   #section-{{ section.id }} .card-img-placeholder {
-    color: #000000;
+    color: rgba(0,66,37,0.45);
     font-size: 14px;
-    font-weight: 700;
+    font-weight: 600;
   }
 
   #section-{{ section.id }} .card-content {
@@ -338,15 +317,16 @@
     text-align: left;
     padding: 0 4px;
   }
-  #section-{{ section.id }} .card-title,
-  #section-{{ section.id }} .card-title a,
-  #section-{{ section.id }} h3.card-title {
+  #section-{{ section.id }} .card-title {
     font-size: 18px;
     font-weight: 800;
-    color: #000000 !important;
+    color: #1a1a1a;
     margin: 0 0 8px;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Poppins', sans-serif;
     line-height: 1.25;
+  }
+  #section-{{ section.id }} .card-title a {
+    color: inherit;
     text-decoration: none;
   }
   #section-{{ section.id }} .card-stars {
@@ -356,15 +336,19 @@
     gap: 6px;
   }
   #section-{{ section.id }} .stars-gold {
-    color: #ffcc33;
+    color: #C9A227;
     font-size: 13px;
     letter-spacing: 1px;
   }
-  #section-{{ section.id }} .rating-num,
-  #section-{{ section.id }} .review-count {
+  #section-{{ section.id }} .rating-num {
     font-size: 13px;
     font-weight: 700;
-    color: #000000 !important;
+    color: #1a1a1a;
+  }
+  #section-{{ section.id }} .review-count {
+    font-size: 13px;
+    color: #777;
+    font-weight: 500;
   }
   #section-{{ section.id }} .card-price-row {
     display: flex;
@@ -375,13 +359,12 @@
   #section-{{ section.id }} .price-main {
     font-size: 16px;
     font-weight: 800;
-    color: #000000 !important;
+    color: #1a1a1a;
   }
   #section-{{ section.id }} .price-compare {
     font-size: 14px;
-    color: #000000 !important;
+    color: #999;
     text-decoration: line-through;
-    opacity: 0.55;
   }
   #section-{{ section.id }} .shop-now-btn {
     margin-top: auto;
@@ -391,20 +374,20 @@
     width: 100%;
     padding: 14px 18px;
     border-radius: 999px;
-    border: 2px solid #ffcc33;
-    background: #ffcc33;
-    color: #000000 !important;
-    font-weight: 800;
+    border: 1.5px solid #1a1a1a;
+    background: transparent;
+    color: #1a1a1a;
+    font-weight: 700;
     font-size: 13px;
     letter-spacing: 0.08em;
     text-decoration: none;
-    font-family: 'Montserrat', sans-serif;
-    transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+    font-family: 'Poppins', sans-serif;
+    transition: background 0.25s ease, color 0.25s ease;
   }
   #section-{{ section.id }} .shop-now-btn:hover {
-    background: #000000;
-    border-color: #000000;
-    color: #ffffff !important;
+    background: #004225;
+    border-color: #004225;
+    color: #fff;
   }
 
   @media (max-width: 1100px) {

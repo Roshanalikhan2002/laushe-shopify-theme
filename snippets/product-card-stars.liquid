@@ -1,0 +1,36 @@
+{% comment %}
+  Stable, unique-looking rating + review count per product.
+  Params:
+    - product (required)
+    - style: 'catalog' (default) | 'bestsellers'
+{% endcomment %}
+{% assign seed = product.id | default: 0 %}
+{% if seed == 0 %}
+  {% assign seed = product.handle.size | times: 97 | plus: product.title.size | times: 13 | plus: 401 %}
+{% endif %}
+
+{% assign r_mod = seed | modulo: 6 %}
+{% case r_mod %}
+  {% when 0 %}{% assign card_rating = '4.7' %}
+  {% when 1 %}{% assign card_rating = '4.8' %}
+  {% when 2 %}{% assign card_rating = '4.9' %}
+  {% when 3 %}{% assign card_rating = '5.0' %}
+  {% when 4 %}{% assign card_rating = '4.8' %}
+  {% when 5 %}{% assign card_rating = '4.9' %}
+{% endcase %}
+
+{% assign card_reviews = seed | modulo: 3900 | plus: 428 %}
+
+{% if style == 'bestsellers' %}
+  <div class="bs-stars">
+    <span class="bs-stars-gold" aria-hidden="true">★★★★★</span>
+    <span class="bs-rating">{{ card_rating }}</span>
+    <span class="bs-reviews">({{ card_reviews }})</span>
+  </div>
+{% else %}
+  <div class="card-stars">
+    <span class="stars-gold" aria-hidden="true">★★★★★</span>
+    <span class="rating-num">{{ card_rating }}</span>
+    <span class="review-count">({{ card_reviews }})</span>
+  </div>
+{% endif %}

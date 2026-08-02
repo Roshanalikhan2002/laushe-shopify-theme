@@ -1,4 +1,32 @@
-<section class="bs-section section-padding" id="laushe-bestsellers">
+{% schema %}
+{
+  "name": "Our Top Bestsellers",
+  "settings": [
+    { "id": "heading", "type": "text", "label": "Heading", "default": "Our Bestsellers" },
+    { "id": "subheading", "type": "text", "label": "Subheading", "default": "Tried and true wellness essentials that top our leaderboards." }
+  ],
+  "blocks": [
+    {
+      "type": "product",
+      "name": "Product Card",
+      "limit": 3,
+      "settings": [
+        { "id": "product", "type": "product", "label": "Select Product" },
+        { "id": "title_override", "type": "text", "label": "Custom Title (Optional)" },
+        { "id": "image_override", "type": "image_picker", "label": "Custom Image (Optional)" },
+        { "id": "stars_count", "type": "text", "label": "Review Count", "default": "1250" },
+        { "id": "rating", "type": "text", "label": "Rating", "default": "4.8" },
+        { "id": "show_badge", "type": "checkbox", "label": "Show Sale Badge", "default": false },
+        { "id": "badge_text", "type": "text", "label": "Badge Text", "default": "BESTSELLER" },
+        { "id": "card_bg", "type": "color", "label": "Image background", "default": "#E4EFE8" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Our Top Bestsellers", "category": "Laushe Sections" }]
+}
+{% endschema %}
+
+<section class="bs-section section-padding">
   <div class="container text-center">
     <h2 class="bs-heading">{{ section.settings.heading }}</h2>
     {% if section.settings.subheading != blank %}
@@ -30,14 +58,11 @@
             </div>
             <div class="bs-content">
               <h3 class="bs-title"><a href="{{ prod.url }}">{{ block.settings.title_override | default: prod.title }}</a></h3>
-              <div class="bs-stars">
-                <span class="bs-stars-gold">★★★★★</span>
-                <span class="bs-rating">{{ block.settings.rating }}</span>
-                <span class="bs-reviews">({{ block.settings.stars_count }})</span>
-              </div>
+              {% render 'product-card-stars', product: prod, style: 'bestsellers' %}
+
               <div class="bs-price-row">
                 <span class="bs-price">{{ prod.price | money }}</span>
-                {% if prod.compare_at_price > prod.price %}
+                {% if prod.price > 0 and prod.compare_at_price > prod.price %}
                   <span class="bs-compare">{{ prod.compare_at_price | money }}</span>
                 {% endif %}
               </div>
@@ -48,30 +73,58 @@
       {% endfor %}
 
       {% if shown == 0 %}
-        <div class="bs-empty">
-          <h3>No products yet</h3>
-          <p>Add products in the Theme Editor.</p>
-        </div>
+        {% for prod in collections.all.products limit: 3 %}
+          {% assign bg_i = forloop.index0 | modulo: 6 %}
+          <article class="bs-card">
+            <div class="bs-media" style="background: {{ pastel_bgs[bg_i] }};">
+              <a href="{{ prod.url }}" class="bs-img-link">
+                {% if prod.featured_image %}
+                  <img src="{{ prod.featured_image | image_url: width: 700 }}" alt="{{ prod.title | escape }}">
+                {% else %}
+                  <span class="bs-placeholder">Add image</span>
+                {% endif %}
+              </a>
+            </div>
+            <div class="bs-content">
+              <h3 class="bs-title"><a href="{{ prod.url }}">{{ prod.title }}</a></h3>
+              {% render 'product-card-stars', product: prod, style: 'bestsellers' %}
+
+              <div class="bs-price-row">
+                <span class="bs-price">{{ prod.price | money }}</span>
+              </div>
+              <a href="{{ prod.url }}" class="bs-shop-now">SHOP NOW</a>
+            </div>
+          </article>
+        {% else %}
+          <div class="bs-empty">
+            <h3>No products yet</h3>
+            <p>Add products in Shopify Admin, set price + image, then assign them here.</p>
+          </div>
+        {% endfor %}
       {% endif %}
     </div>
   </div>
 </section>
 
 <style>
-  .bs-section { background: #007e40; padding: 80px 0; }
+  .bs-section { background: #fff; padding: 80px 0; }
   .bs-heading {
-    font-family: 'Montserrat', sans-serif;
-    font-size: clamp(40px, 6vw, 64px);
-    font-weight: 900;
-    color: #ffffff;
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(32px, 4vw, 44px);
+    font-weight: 800;
+    color: #1a1a1a;
     margin: 0 0 12px;
-    letter-spacing: -0.03em;
-    line-height: 1.05;
+    letter-spacing: -0.02em;
   }
-  .bs-subheading { color: #ffffff; font-size: 16px; margin: 0 auto 48px; max-width: 560px; }
+  .bs-subheading {
+    color: #5a6b62;
+    font-size: 16px;
+    margin: 0 auto 48px;
+    max-width: 560px;
+  }
   .bs-grid {
     display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 28px;
     text-align: left;
   }
@@ -88,12 +141,13 @@
     top: 14px;
     left: 14px;
     z-index: 2;
-    background: #ffcc33;
-    color: #000;
+    background: rgba(255,255,255,0.92);
+    color: #1a1a1a;
     font-size: 11px;
     font-weight: 800;
     padding: 6px 12px;
     border-radius: 999px;
+    font-family: 'Poppins', sans-serif;
   }
   .bs-img-link {
     display: flex;
@@ -103,19 +157,30 @@
     height: 100%;
     padding: 28px;
     box-sizing: border-box;
-    background: #fff;
-    border-radius: 28px;
   }
-  .bs-img-link img { width: 100%; height: 100%; object-fit: contain; }
-  .bs-placeholder { color: #000; font-weight: 600; }
-  .bs-title { font-family: 'Montserrat', sans-serif; font-size: 18px; font-weight: 800; margin: 0 0 8px; }
-  .bs-title a { color: #fff; text-decoration: none; }
+  .bs-img-link img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: transform 0.4s ease;
+  }
+  .bs-card:hover .bs-img-link img { transform: scale(1.04); }
+  .bs-placeholder { color: rgba(0,66,37,0.45); font-weight: 600; }
+  .bs-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+    font-weight: 800;
+    margin: 0 0 8px;
+    line-height: 1.25;
+  }
+  .bs-title a { color: #1a1a1a; text-decoration: none; }
   .bs-stars { display: flex; align-items: center; gap: 6px; margin-bottom: 10px; }
-  .bs-stars-gold { color: #ffcc33; font-size: 13px; }
-  .bs-rating, .bs-reviews { font-size: 13px; color: #fff; }
+  .bs-stars-gold { color: #C9A227; letter-spacing: 1px; font-size: 13px; }
+  .bs-rating { font-weight: 700; font-size: 13px; }
+  .bs-reviews { color: #777; font-size: 13px; }
   .bs-price-row { display: flex; gap: 10px; align-items: center; margin-bottom: 16px; }
-  .bs-price { font-weight: 800; font-size: 16px; color: #ffcc33; }
-  .bs-compare { color: #fff; text-decoration: line-through; font-size: 14px; }
+  .bs-price { font-weight: 800; font-size: 16px; color: #1a1a1a; }
+  .bs-compare { color: #999; text-decoration: line-through; font-size: 14px; }
   .bs-shop-now {
     margin-top: auto;
     display: inline-flex;
@@ -124,43 +189,30 @@
     width: 100%;
     padding: 14px 18px;
     border-radius: 999px;
-    border: 1.5px solid #ffcc33;
-    background: #ffcc33;
-    color: #000;
+    border: 1.5px solid #1a1a1a;
+    color: #1a1a1a;
     text-decoration: none;
     font-weight: 700;
     font-size: 13px;
     letter-spacing: 0.08em;
+    font-family: 'Poppins', sans-serif;
+    transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
   }
-  .bs-empty { grid-column: 1 / -1; text-align: center; padding: 40px; color: #fff; }
-  @media (max-width: 900px) { .bs-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-  @media (max-width: 600px) { .bs-grid { grid-template-columns: 1fr; } }
+  .bs-shop-now:hover {
+    background: #004225;
+    border-color: #004225;
+    color: #fff;
+  }
+  .bs-empty {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 40px;
+    color: #666;
+  }
+  @media (max-width: 900px) {
+    .bs-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+  @media (max-width: 600px) {
+    .bs-grid { grid-template-columns: 1fr; }
+  }
 </style>
-
-{% schema %}
-{
-  "name": "Our Top Bestsellers",
-  "settings": [
-    { "id": "heading", "type": "text", "label": "Heading", "default": "Our Bestsellers" },
-    { "id": "subheading", "type": "text", "label": "Subheading", "default": "Tried and true wellness essentials that top our leaderboards." }
-  ],
-  "blocks": [
-    {
-      "type": "product",
-      "name": "Product Card",
-      "limit": 4,
-      "settings": [
-        { "id": "product", "type": "product", "label": "Select Product" },
-        { "id": "title_override", "type": "text", "label": "Custom Title (Optional)" },
-        { "id": "image_override", "type": "image_picker", "label": "Custom Image (Optional)" },
-        { "id": "stars_count", "type": "text", "label": "Review Count", "default": "1250" },
-        { "id": "rating", "type": "text", "label": "Rating", "default": "4.8" },
-        { "id": "show_badge", "type": "checkbox", "label": "Show Sale Badge", "default": false },
-        { "id": "badge_text", "type": "text", "label": "Badge Text", "default": "BESTSELLER" },
-        { "id": "card_bg", "type": "color", "label": "Image background", "default": "#E4EFE8" }
-      ]
-    }
-  ],
-  "presets": [{ "name": "Our Top Bestsellers", "category": "Laushe Sections" }]
-}
-{% endschema %}
