@@ -108,16 +108,16 @@
 
 <style>
   .bs-section { background: #fff; padding: 80px 0; }
-  .bs-heading {
+  .bs-section .bs-heading {
     font-family: 'Poppins', sans-serif;
     font-size: clamp(32px, 4vw, 44px);
     font-weight: 800;
-    color: #1a1a1a;
+    color: #1a1a1a !important;
     margin: 0 0 12px;
     letter-spacing: -0.02em;
   }
-  .bs-subheading {
-    color: #5a6b62;
+  .bs-section .bs-subheading {
+    color: #5a6b62 !important;
     font-size: 16px;
     margin: 0 auto 48px;
     max-width: 560px;
@@ -165,23 +165,23 @@
     transition: transform 0.4s ease;
   }
   .bs-card:hover .bs-img-link img { transform: scale(1.04); }
-  .bs-placeholder { color: rgba(0,126,64,0.45); font-weight: 600; }
-  .bs-title {
+  .bs-section .bs-placeholder { color: rgba(0,126,64,0.45); font-weight: 600; }
+  .bs-section .bs-title {
     font-family: 'Poppins', sans-serif;
     font-size: 18px;
     font-weight: 800;
     margin: 0 0 8px;
     line-height: 1.25;
   }
-  .bs-title a { color: #1a1a1a; text-decoration: none; }
-  .bs-stars { display: flex; align-items: center; gap: 6px; margin-bottom: 10px; }
-  .bs-stars-gold { color: #C9A227; letter-spacing: 1px; font-size: 13px; }
-  .bs-rating { font-weight: 700; font-size: 13px; }
-  .bs-reviews { color: #777; font-size: 13px; }
-  .bs-price-row { display: flex; gap: 10px; align-items: center; margin-bottom: 16px; }
-  .bs-price { font-weight: 800; font-size: 16px; color: #1a1a1a; }
-  .bs-compare { color: #999; text-decoration: line-through; font-size: 14px; }
-  .bs-shop-now {
+  .bs-section .bs-title a { color: #1a1a1a !important; text-decoration: none; }
+  .bs-section .bs-stars { display: flex; align-items: center; gap: 6px; margin-bottom: 10px; }
+  .bs-section .bs-stars-gold { color: #C9A227; letter-spacing: 1px; font-size: 13px; }
+  .bs-section .bs-rating { font-weight: 700; font-size: 13px; color: #1a1a1a; }
+  .bs-section .bs-reviews { color: #777; font-size: 13px; }
+  .bs-section .bs-price-row { display: flex; gap: 10px; align-items: center; margin-bottom: 16px; }
+  .bs-section .bs-price { font-weight: 800; font-size: 16px; color: #1a1a1a !important; }
+  .bs-section .bs-compare { color: #999; text-decoration: line-through; font-size: 14px; }
+  .bs-section .bs-shop-now {
     margin-top: auto;
     display: inline-flex;
     align-items: center;
@@ -190,7 +190,7 @@
     padding: 14px 18px;
     border-radius: 999px;
     border: 1.5px solid #1a1a1a;
-    color: #1a1a1a;
+    color: #1a1a1a !important;
     text-decoration: none;
     font-weight: 700;
     font-size: 13px;
@@ -198,10 +198,10 @@
     font-family: 'Poppins', sans-serif;
     transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
   }
-  .bs-shop-now:hover {
+  .bs-section .bs-shop-now:hover {
     background: #007E40;
     border-color: #007E40;
-    color: #fff;
+    color: #fff !important;
   }
   .bs-empty {
     grid-column: 1 / -1;

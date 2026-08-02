@@ -236,8 +236,9 @@
   font-family: 'Montserrat', sans-serif;
 }
 
+/* Scoped under .bs-products so white text does not leak into the separate bestsellers section */
 .bs-products { padding: 48px 0 80px; background: #007e40; }
-.bs-heading {
+.bs-products .bs-heading {
   font-family: 'Montserrat', sans-serif;
   font-size: clamp(40px, 6vw, 64px);
   font-weight: 900;
@@ -246,27 +247,27 @@
   letter-spacing: -0.03em;
   line-height: 1.05;
 }
-.bs-subheading {
+.bs-products .bs-subheading {
   color: #ffffff;
   font-size: 16px;
   margin: 0 auto 48px;
   max-width: 560px;
 }
-.bs-grid {
+.bs-products .bs-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 28px;
   text-align: left;
 }
-.bs-card { display: flex; flex-direction: column; }
-.bs-media {
+.bs-products .bs-card { display: flex; flex-direction: column; }
+.bs-products .bs-media {
   position: relative;
   border-radius: 28px;
   overflow: hidden;
   aspect-ratio: 1 / 1.05;
   margin-bottom: 18px;
 }
-.bs-badge {
+.bs-products .bs-badge {
   position: absolute;
   top: 14px;
   left: 14px;
@@ -279,7 +280,7 @@
   border-radius: 999px;
   font-family: 'Montserrat', sans-serif;
 }
-.bs-img-link {
+.bs-products .bs-img-link {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -291,30 +292,30 @@
   border: 3px solid #ffffff;
   border-radius: 28px;
 }
-.bs-img-link img {
+.bs-products .bs-img-link img {
   width: 100%;
   height: 100%;
   object-fit: contain;
   transition: transform 0.4s ease;
 }
-.bs-card:hover .bs-img-link img { transform: scale(1.04); }
-.bs-placeholder { color: #000000; font-weight: 600; }
-.bs-title {
+.bs-products .bs-card:hover .bs-img-link img { transform: scale(1.04); }
+.bs-products .bs-placeholder { color: #000000; font-weight: 600; }
+.bs-products .bs-title {
   font-family: 'Montserrat', sans-serif;
   font-size: 18px;
   font-weight: 800;
   margin: 0 0 8px;
   line-height: 1.25;
 }
-.bs-title a { color: #ffffff !important; text-decoration: none; }
-.bs-stars { display: flex; align-items: center; gap: 6px; margin-bottom: 10px; }
-.bs-stars-gold { color: #ffcc33; letter-spacing: 1px; font-size: 13px; }
-.bs-rating { font-weight: 700; font-size: 13px; color: #ffffff; }
-.bs-reviews { color: #ffffff; font-size: 13px; }
-.bs-price-row { display: flex; gap: 10px; align-items: center; margin-bottom: 16px; }
-.bs-price { font-weight: 800; font-size: 16px; color: #ffcc33; }
-.bs-compare { color: #ffffff; text-decoration: line-through; font-size: 14px; }
-.bs-shop-now {
+.bs-products .bs-title a { color: #ffffff !important; text-decoration: none; }
+.bs-products .bs-stars { display: flex; align-items: center; gap: 6px; margin-bottom: 10px; }
+.bs-products .bs-stars-gold { color: #ffcc33; letter-spacing: 1px; font-size: 13px; }
+.bs-products .bs-rating { font-weight: 700; font-size: 13px; color: #ffffff; }
+.bs-products .bs-reviews { color: #ffffff; font-size: 13px; }
+.bs-products .bs-price-row { display: flex; gap: 10px; align-items: center; margin-bottom: 16px; }
+.bs-products .bs-price { font-weight: 800; font-size: 16px; color: #ffcc33; }
+.bs-products .bs-compare { color: #ffffff; text-decoration: line-through; font-size: 14px; }
+.bs-products .bs-shop-now {
   margin-top: auto;
   display: inline-flex;
   align-items: center;
@@ -332,12 +333,12 @@
   font-family: 'Montserrat', sans-serif;
   transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
 }
-.bs-shop-now:hover {
+.bs-products .bs-shop-now:hover {
   background: transparent;
   border-color: #ffffff;
   color: #fff;
 }
-.bs-empty {
+.bs-products .bs-empty {
   grid-column: 1 / -1;
   text-align: center;
   padding: 40px;
@@ -345,7 +346,7 @@
 }
 
 @media screen and (max-width: 900px) {
-  .bs-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .bs-products .bs-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .banner-quality-strip__grid { grid-template-columns: repeat(2, 1fr); }
 }
 @media screen and (max-width: 768px) {
@@ -353,7 +354,7 @@
   .mobile-only { display: block; }
 }
 @media screen and (max-width: 600px) {
-  .bs-grid { grid-template-columns: 1fr; }
+  .bs-products .bs-grid { grid-template-columns: 1fr; }
   .banner-quality-strip { padding: 36px 0 28px; }
   .bs-products { padding: 32px 0 56px; }
 }
