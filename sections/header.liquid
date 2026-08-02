@@ -26,9 +26,9 @@
         <ion-icon name="menu-outline"></ion-icon>
       </div>
       <nav class="nav-links header-nav-desktop">
-        <a href="/" class="header-nav-link">HOME</a>
+        <a href="/" class="header-nav-link{% if request.page_type == 'index' or request.path == '/' %} is-active{% endif %}"{% if request.page_type == 'index' or request.path == '/' %} aria-current="page"{% endif %}>HOME</a>
         <div class="nav-dropdown">
-          <button type="button" class="nav-dropdown-btn header-nav-link">
+          <button type="button" class="nav-dropdown-btn header-nav-link{% if request.page_type == 'collection' or request.path contains '/collections' %} is-active{% endif %}">
             COLLECTIONS <span class="nav-caret">&#9660;</span>
           </button>
           <div class="nav-dropdown-menu">
@@ -36,7 +36,7 @@
             <a href="{{ section.settings.shop_all_url }}?filter=organic">Organic Products</a>
           </div>
         </div>
-        <a href="/pages/contact" class="header-nav-link">CONTACT</a>
+        <a href="/pages/contact" class="header-nav-link{% if request.path contains '/contact' %} is-active{% endif %}"{% if request.path contains '/contact' %} aria-current="page"{% endif %}>CONTACT</a>
       </nav>
     </div>
 

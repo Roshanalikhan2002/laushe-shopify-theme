@@ -120,10 +120,10 @@ h1, h2, h3, h4, .font-heading {
     box-shadow: 0 10px 25px rgba(0,0,0,0.15);
 }
 
-/* Header & Announcement Bar */
+/* Header & Announcement Bar — match homepage soft mint green */
 .announcement-bar {
-    background-color: var(--deep-forest);
-    color: var(--white);
+    background-color: var(--soft-mint);
+    color: var(--deep-forest);
     text-align: center;
     padding: 10px 15px;
     font-size: 14px;
@@ -131,6 +131,7 @@ h1, h2, h3, h4, .font-heading {
     overflow: hidden;
     width: 100%;
     white-space: normal;
+    border-bottom: 1px solid rgba(0, 66, 37, 0.08);
 }
 
 header.sticky-header {
@@ -224,6 +225,11 @@ header.sticky-header {
     display: inline-flex;
     align-items: center;
     gap: 5px;
+}
+
+.header-nav-link.is-active,
+.header-nav-link[aria-current="page"] {
+    color: #004225;
 }
 
 .menu-toggle,
