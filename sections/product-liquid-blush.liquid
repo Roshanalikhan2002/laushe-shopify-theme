@@ -7,18 +7,18 @@
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Poppins:wght@400;700;800&display=swap');
 
     :root {
-        /* Palette from blush swatches */
+        --olive-bg: #FFFFFF;
+        --olive-inner: #FFFFFF;
+        --cream-bg: #FFFFFF;
+        --dark-green: #004225;
+        --accent-green: #004225;
+        --text-gray: #5a6b62;
+        /* Soft touch from blush swatches — accents only */
         --blush-crimson: #c83233;
         --blush-pink: #ff7b94;
         --blush-coral: #e16951;
-        --olive-bg: #FFF5F7;
-        --olive-inner: #FFFFFF;
-        --cream-bg: #FFF1F4;
-        --dark-green: #c83233;
-        --accent-green: #e16951;
-        --text-gray: #8B3030;
         --star-gold: #e16951;
-        --charcoal: #c83233;
+        --charcoal: #333333;
         --sticky-h: 84px;
     }
 
@@ -49,7 +49,7 @@
     .laushe-product-container .rev-text,
     .laushe-product-container .review-card p {
         font-family: 'Poppins', sans-serif !important;
-        color: #8B3030 !important;
+        color: #333333 !important;
     }
 
     /* Full Width Container */
@@ -178,9 +178,21 @@
         font-family: 'Poppins', sans-serif !important;
         font-size: 15px;
         font-weight: 600;
-        color: #8B3030 !important;
+        color: #333333 !important;
         margin-bottom: 18px;
         letter-spacing: 0.02em;
+    }
+    .prod-subtitle {
+        color: #5a6b62 !important;
+    }
+    .prod-title::after {
+        content: '';
+        display: block;
+        width: 48px;
+        height: 3px;
+        margin-top: 12px;
+        border-radius: 2px;
+        background: linear-gradient(90deg, var(--blush-crimson), var(--blush-pink), var(--blush-coral));
     }
 
     .prod-rating {
@@ -192,7 +204,7 @@
         font-size: clamp(16px, 1.3vw, 22px);
     }
 
-    .prod-rating span { color: #8B3030 !important; font-weight: 600; font-family: 'Poppins', sans-serif !important; }
+    .prod-rating span { color: #333 !important; font-weight: 600; font-family: 'Poppins', sans-serif !important; }
 
     .prod-price {
         display: flex;
@@ -202,13 +214,16 @@
     }
 
     .price-was { font-size: clamp(16px, 1.5vw, 20px); color: #999; text-decoration: line-through; font-weight: 500; font-family: 'Poppins', sans-serif !important; }
-    .price-is { font-size: clamp(22px, 2.5vw, 28px); font-weight: 800; color: #c83233; font-family: 'Poppins', sans-serif; }
+    .price-is { font-size: clamp(22px, 2.5vw, 28px); font-weight: 800; color: #1a1a1a; font-family: 'Poppins', sans-serif; }
+    .price-is {
+        color: var(--blush-crimson);
+    }
 
     .prod-badges {
         display: flex;
         gap: 30px;
         padding: 25px 0;
-        border-top: 1px solid rgba(200,50,51,0.12);
+        border-top: 1px solid rgba(0,66,37,0.12);
         margin-bottom: 25px;
     }
 
@@ -223,7 +238,7 @@
     }
 
     .badge-node:not(:last-child) {
-        border-right: 1.5px solid rgba(200,50,51,0.15);
+        border-right: 1.5px solid rgba(0,66,37,0.15);
         padding-right: 25px;
     }
 
@@ -231,7 +246,7 @@
     .tabs-nav {
         display: flex;
         gap: 30px;
-        border-bottom: 1.5px solid rgba(200,50,51,0.15);
+        border-bottom: 1.5px solid rgba(0,66,37,0.15);
         margin-bottom: 25px;
     }
 
@@ -261,7 +276,7 @@
     .tab-content {
         font-size: 16px;
         line-height: 1.7;
-        color: #8B3030 !important;
+        color: #333333 !important;
         margin-bottom: 40px;
         min-height: 80px;
         font-family: 'Poppins', sans-serif !important;
@@ -273,7 +288,7 @@
         font-weight: 700;
         margin-bottom: 15px;
         font-family: 'Poppins', sans-serif !important;
-        color: #c83233 !important;
+        color: #004225 !important;
     }
 
     /* Videos Section */
@@ -313,8 +328,8 @@
         transition: 0.2s;
     }
     .swatch-node.active {
-        border: 2px solid var(--dark-green);
-        box-shadow: 0 0 0 2px var(--cream-bg), 0 0 0 4px var(--dark-green);
+        border: 2px solid var(--blush-crimson);
+        box-shadow: 0 0 0 2px #fff, 0 0 0 4px var(--blush-crimson);
         transform: scale(1.1);
     }
 
@@ -331,7 +346,7 @@
     .qty-box {
         display: flex;
         align-items: center;
-        border: 1px solid rgba(200,50,51,0.2);
+        border: 1px solid rgba(0,66,37,0.2);
         border-radius: 999px;
         padding: 8px 18px;
         gap: 15px;
@@ -353,7 +368,9 @@
         cursor: pointer;
         letter-spacing: 0.5px;
         font-family: 'Poppins', sans-serif;
+        transition: background 0.2s ease;
     }
+    .footer-atc:hover { background: var(--blush-crimson); }
 
     /* Floating UI */
     .f-cart { position: fixed; right: 25px; top: 50%; transform: translateY(-50%); width: 56px; height: 56px; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 25px rgba(0,0,0,0.12); z-index: 3100; cursor: pointer; font-size: 22px; }
@@ -361,7 +378,7 @@
 
     /* Badges Section */
     .badges-section {
-        background-color: #FFE8EE;
+        background-color: #E8F3ED;
         background-image: url('https://www.transparenttextures.com/patterns/natural-paper.png');
         padding: clamp(40px, 5vw, 80px) 2vw;
         width: 100%;
@@ -437,7 +454,7 @@
         display: flex;
         width: 100%;
         min-height: 80vh;
-        background-color: #FFE4EB; /* Blush pink */
+        background-color: #FFE8EE; /* Soft blush pink touch */
     }
 
     .feature-text {
@@ -475,7 +492,7 @@
 
     /* Reinvented Section */
     .reinvented-section {
-        background-color: #FFE8EE;
+        background-color: #E8F3ED;
         background-image: url('https://www.transparenttextures.com/patterns/natural-paper.png');
         padding: clamp(60px, 8vw, 120px) 5vw;
         text-align: center;
@@ -486,7 +503,7 @@
         font-size: clamp(32px, 4vw, 44px);
         font-weight: 800;
         margin-bottom: clamp(40px, 6vw, 80px);
-        color: #c83233 !important;
+        color: #004225 !important;
         letter-spacing: -0.02em;
         line-height: 1.15;
     }
@@ -532,14 +549,14 @@
         font-family: 'Poppins', sans-serif !important;
         font-size: clamp(16px, 1.3vw, 20px);
         font-weight: 800;
-        color: #c83233 !important;
+        color: #004225 !important;
         margin: 0;
     }
     .feat-desc,
     .feat-node p {
         font-family: 'Poppins', sans-serif !important;
         font-size: 15px;
-        color: #8B3030 !important;
+        color: #333333 !important;
         line-height: 1.55;
         max-width: 30ch;
         margin: 0;
@@ -556,7 +573,7 @@
 
     /* Reviews Section */
     .reviews-section {
-        background-color: #FFE8EE;
+        background-color: #E8F3ED;
         padding: clamp(60px, 8vw, 100px) 5vw;
     }
 
@@ -566,7 +583,7 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        border-bottom: 1.5px solid rgba(200,50,51,0.15);
+        border-bottom: 1.5px solid rgba(0,66,37,0.15);
         padding-bottom: 25px;
     }
 
@@ -615,7 +632,7 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        border: 1px solid rgba(200,50,51,0.2);
+        border: 1px solid rgba(0,66,37,0.2);
         border-radius: 999px;
         height: 56px;
         padding: 0 15px;
@@ -639,6 +656,11 @@
         justify-content: center;
         gap: 10px;
         cursor: pointer;
+        transition: background 0.2s ease, box-shadow 0.2s ease;
+    }
+    .m-atc:hover {
+        background: var(--blush-crimson);
+        box-shadow: 0 8px 20px rgba(200, 50, 51, 0.25);
     }
 
     /* Mobile Sticky Bar */
