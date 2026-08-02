@@ -32,8 +32,8 @@
 <section class="benefits-outer section-padding">
   <div class="container text-center">
     <div class="header-group" style="margin-bottom: 60px;">
-      <h2 style="font-size: clamp(40px, 6vw, 64px); font-weight: 900; letter-spacing: -0.03em; margin-bottom: 15px;">{{ section.settings.heading }}</h2>
-      <p style="color: #ffffff; font-size: 16px;">{{ section.settings.subheading }}</p>
+      <h2 class="benefits-heading">{{ section.settings.heading }}</h2>
+      <p class="benefits-subheading">{{ section.settings.subheading }}</p>
     </div>
 
     <div class="benefits-circle-grid">
@@ -88,6 +88,24 @@
 </section>
 
 <style>
+  .benefits-outer {
+    background: #ffffff;
+    color: #333333;
+  }
+
+  .benefits-heading {
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(32px, 4vw, 48px);
+    margin-bottom: 15px;
+    color: #dcb360 !important; /* yellow/gold */
+    font-weight: 800;
+  }
+
+  .benefits-subheading {
+    color: #555555 !important;
+    font-size: 16px;
+  }
+
   .benefits-circle-grid {
     display: grid;
     grid-template-columns: 1fr 1.2fr 1fr;
@@ -100,7 +118,7 @@
   .benefit-col {
     display: flex;
     flex-direction: column;
-    gap: 100px; /* Space between the two items vertically */
+    gap: 100px;
   }
   
   .benefit-left { text-align: right; }
@@ -108,10 +126,6 @@
   
   .benefit-item-v2 {
     transition: transform 0.3s ease;
-    background: #ffffff;
-    padding: 22px 24px;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
   }
   
   .benefit-left .icon-box { justify-content: flex-end; }
@@ -125,26 +139,26 @@
   .icon-box svg, .icon-box img {
     width: 44px;
     height: 44px;
-    color: #000000;
+    color: #007E40; /* Quality green */
   }
   
   .benefit-title {
+    font-family: 'Poppins', sans-serif;
     font-size: 22px;
     font-weight: 800;
     margin-bottom: 8px;
-    color: #000000 !important;
+    color: #007E40 !important; /* Quality green */
   }
   
   .benefit-desc {
     font-size: 15px;
-    color: #000000 !important;
+    color: #444444 !important;
     line-height: 1.5;
     max-width: 280px;
   }
   
   .benefit-left .benefit-desc { margin-left: auto; }
   
-  /* CIRCLE IMAGE */
   .center-circle-wrap {
     position: relative;
     padding: 20px;
