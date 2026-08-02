@@ -1,6 +1,6 @@
-<!-- 
+<!--
   Section: Final CTA Banner
-  Aesthetics: Bold, high-energy, compelling
+  Brand: #007E40 green, #dcb360 gold, Poppins + Inter
 -->
 
 {% schema %}
@@ -34,7 +34,7 @@
        "id": "bg_color",
        "type": "color",
        "label": "Background Color",
-       "default": "#1B4332"
+       "default": "#007E40"
     }
   ],
   "presets": [
@@ -46,15 +46,15 @@
 }
 {% endschema %}
 
-<section class="final-cta-section section-padding" style="background-color: {{ section.settings.bg_color }};">
+<section class="final-cta-section section-padding" style="background-color: {{ section.settings.bg_color | default: '#007E40' }};">
   <div class="container-wide">
     <div class="final-cta-wrapper text-center animate-fade-up">
        <h2 class="final-cta-headline h1">{{ section.settings.headline }}</h2>
        <p class="final-cta-subtext">{{ section.settings.subtext }}</p>
-       
+
        <div class="final-cta-actions">
-          <a href="{{ section.settings.cta_url }}" class="button-primary final-btn">{{ section.settings.cta_text }}</a>
-          <p class="final-trust-badge text-muted">⭐ 4.9/5 Star Rating</p>
+          <a href="{{ section.settings.cta_url | default: '#product-form' }}" class="button-primary final-btn">{{ section.settings.cta_text }}</a>
+          <p class="final-trust-badge">⭐ 4.9/5 Star Rating</p>
        </div>
     </div>
   </div>
@@ -64,71 +64,80 @@
   .final-cta-section {
     position: relative;
     overflow: hidden;
-    color: #FFF;
+    color: #fff;
+    background-color: #007E40;
   }
-  
+
   .final-cta-headline {
-    font-size: 3.5rem;
-    color: #FFF;
-    margin-bottom: 24px;
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  
-  .final-cta-subtext {
-    font-size: 1.3rem;
-    color: #F0F0F0;
-    margin-bottom: 40px;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  
-  .final-btn {
-    font-size: 1.15rem;
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(2rem, 4.5vw, 3.25rem);
     font-weight: 800;
-    padding: 20px 55px;
-    background: linear-gradient(135deg, #D4AF37, #F5CB5C);
-    color: #1B4332;
+    color: #fff !important;
+    margin: 0 auto 20px;
+    max-width: 800px;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+  }
+
+  .final-cta-subtext {
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.92) !important;
+    margin: 0 auto 36px;
+    max-width: 600px;
+    line-height: 1.55;
+  }
+
+  .final-btn {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    font-weight: 800;
+    padding: 18px 48px;
+    background: #dcb360;
+    color: #007E40 !important;
     border: none;
     border-radius: 50px;
     text-decoration: none;
     display: inline-block;
-    letter-spacing: 1px;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
-    box-shadow: 0 8px 30px rgba(212, 175, 55, 0.45);
-    transition: all 0.3s ease;
+    box-shadow: none;
+    transition: background 0.25s ease, color 0.25s ease, transform 0.25s ease;
     cursor: pointer;
   }
-  
+
   .final-btn:hover {
-    background: linear-gradient(135deg, #F5CB5C, #D4AF37);
-    transform: translateY(-3px);
-    box-shadow: 0 14px 40px rgba(212, 175, 55, 0.6);
-    color: #1B4332;
+    background: #e8c878;
+    transform: translateY(-2px);
+    color: #007E40 !important;
   }
-  
+
   .final-btn:active {
-    transform: translateY(0px);
-    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+    transform: translateY(0);
   }
-  
+
   .final-trust-badge {
-    margin-top: 24px;
-    color: #FFF;
-    opacity: 0.8;
-    font-size: 0.85rem;
+    font-family: 'Inter', sans-serif;
+    margin-top: 22px;
+    color: #fff !important;
+    opacity: 0.9;
+    font-size: 0.9rem;
     font-weight: 500;
   }
-  
+
   @media (max-width: 768px) {
     .final-cta-headline {
-      font-size: 2.5rem;
+      font-size: 2rem;
     }
-    
+
     .final-cta-subtext {
-      font-size: 1.1rem;
+      font-size: 1rem;
+    }
+
+    .final-btn {
+      padding: 16px 36px;
+      font-size: 0.95rem;
     }
   }
 </style>
