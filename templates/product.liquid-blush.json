@@ -64,10 +64,57 @@
         "heading_color": "#dcb360",
         "accent_color": "#007E40"
       }
+    },
+    "faq": {
+      "type": "faq-accordion",
+      "blocks": {
+        "faq_1": {
+          "type": "faq",
+          "settings": {
+            "question": "What makes Laushe Liquid Blush special?",
+            "answer": "Laushe Liquid Blush is lightweight, blendable, and made for a natural flush that looks like your own skin — not heavy or chalky. It is designed for everyday wear with a soft, buildable finish."
+          }
+        },
+        "faq_2": {
+          "type": "faq",
+          "settings": {
+            "question": "How do I apply Liquid Blush?",
+            "answer": "Apply a small amount to the apples of your cheeks and blend with fingertips, a sponge, or a brush. Start light and build until you get your preferred intensity."
+          }
+        },
+        "faq_3": {
+          "type": "faq",
+          "settings": {
+            "question": "Is it suitable for all skin types?",
+            "answer": "Yes. The formula is designed to sit comfortably on dry, normal, combination, and oily skin. If you have very sensitive skin, we recommend a patch test first."
+          }
+        },
+        "faq_4": {
+          "type": "faq",
+          "settings": {
+            "question": "How long does the blush last?",
+            "answer": "With proper setting, it can last through the day. For longer wear, apply on moisturized skin and lightly set with a translucent powder if needed."
+          }
+        },
+        "faq_5": {
+          "type": "faq",
+          "settings": {
+            "question": "Can I layer it with other makeup?",
+            "answer": "Absolutely. It layers well under or over foundation, tinted moisturizer, and skin tint. Use a light hand so the finish stays natural and fresh."
+          }
+        }
+      },
+      "block_order": ["faq_1", "faq_2", "faq_3", "faq_4", "faq_5"],
+      "settings": {
+        "subtitle": "QUESTIONS & ANSWERS",
+        "title": "Frequently Asked Questions",
+        "bg_color": "#faf7f2"
+      }
     }
   },
   "order": [
     "main",
-    "product_reasons"
+    "product_reasons",
+    "faq"
   ]
 }

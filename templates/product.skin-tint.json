@@ -64,10 +64,57 @@
         "heading_color": "#dcb360",
         "accent_color": "#007E40"
       }
+    },
+    "faq": {
+      "type": "faq-accordion",
+      "blocks": {
+        "faq_1": {
+          "type": "faq",
+          "settings": {
+            "question": "What is Laushe Skin Tint?",
+            "answer": "Laushe Skin Tint is a lightweight coverage product that evens skin tone while keeping a natural, skin-like finish. It is made for everyday wear when you want a soft glow without heavy foundation."
+          }
+        },
+        "faq_2": {
+          "type": "faq",
+          "settings": {
+            "question": "How do I apply Skin Tint?",
+            "answer": "Apply a small amount to clean, moisturized skin and blend with fingertips, a sponge, or a brush. Build lightly where you need more coverage."
+          }
+        },
+        "faq_3": {
+          "type": "faq",
+          "settings": {
+            "question": "Does it cover blemishes and redness?",
+            "answer": "It offers light-to-medium sheer coverage that softens redness and uneven tone. For spot coverage, layer a little more on targeted areas or pair with concealer."
+          }
+        },
+        "faq_4": {
+          "type": "faq",
+          "settings": {
+            "question": "Is Skin Tint good for oily or dry skin?",
+            "answer": "Yes. It is designed to feel comfortable across skin types. Dry skin can prep with moisturizer first; oily skin can lightly set with translucent powder."
+          }
+        },
+        "faq_5": {
+          "type": "faq",
+          "settings": {
+            "question": "Can I wear it alone or with other makeup?",
+            "answer": "Both. Wear it alone for a fresh everyday look, or layer with blush, concealer, and sunscreen as part of your full routine."
+          }
+        }
+      },
+      "block_order": ["faq_1", "faq_2", "faq_3", "faq_4", "faq_5"],
+      "settings": {
+        "subtitle": "QUESTIONS & ANSWERS",
+        "title": "Frequently Asked Questions",
+        "bg_color": "#faf7f2"
+      }
     }
   },
   "order": [
     "main",
-    "product_reasons"
+    "product_reasons",
+    "faq"
   ]
 }
