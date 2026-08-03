@@ -31,8 +31,18 @@
       <span class="total-label">Subtotal</span>
       <span id="CartDrawerTotal" class="total-value">Rs. 0</span>
     </div>
-    <p class="footer-note">Shipping &amp; taxes calculated at checkout</p>
-    <button type="submit" name="checkout" class="checkout-btn">Checkout Now &rarr;</button>
+    <p class="footer-note">
+      {% if settings.force_all_sold_out %}
+        {{ settings.sold_out_message | default: 'All products are currently sold out. Orders cannot be placed right now.' }}
+      {% else %}
+        Shipping &amp; taxes calculated at checkout
+      {% endif %}
+    </p>
+    {% if settings.force_all_sold_out %}
+      <button type="button" class="checkout-btn" disabled aria-disabled="true">{{ settings.sold_out_button_label | default: 'Sold Out' }}</button>
+    {% else %}
+      <button type="submit" name="checkout" class="checkout-btn">Checkout Now &rarr;</button>
+    {% endif %}
     <button type="button" class="continue-btn" onclick="LausheCart.close()">Continue Shopping</button>
   </form>
 

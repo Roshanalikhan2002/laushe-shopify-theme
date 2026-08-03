@@ -782,12 +782,16 @@
 
             <!-- ATC Bar (Desktop & Mobile) -->
             <div class="mobile-buy-bar">
+                {% unless settings.force_all_sold_out %}
                 <div class="m-qty">
                     <button onclick="changeQty(-1)">−</button>
                     <span id="qtyVal">1</span>
                     <button onclick="changeQty(1)">+</button>
                 </div>
                 <button class="m-atc" onclick="addToCart()">Add to cart <span style="font-size: 18px;">→</span></button>
+                {% else %}
+                <button class="m-atc" type="button" disabled aria-disabled="true">{{ settings.sold_out_button_label | default: 'Sold Out' }}</button>
+                {% endunless %}
             </div>
         </section>
 {% comment %}

@@ -35,11 +35,15 @@
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
   </head>
 
-  <body class="gradient">
+  <body class="gradient{% if settings.force_all_sold_out %} laushe-force-sold-out{% endif %}">
 
     <!-- ANNOUNCEMENT BAR -->
     <div class="announcement-bar">
-      ✨ Limited Time Sale ✨ Buy 1 Get 1 FREE
+      {% if settings.force_all_sold_out %}
+        {{ settings.sold_out_message | default: 'All products are currently sold out. Orders cannot be placed right now.' }}
+      {% else %}
+        ✨ Limited Time Sale ✨ Buy 1 Get 1 FREE
+      {% endif %}
     </div>
 
     <!-- STICKY HEADER -->
@@ -92,5 +96,135 @@
 
 
     {% section 'cart-drawer' %}
+
+    {% if settings.force_all_sold_out %}
+      <style>
+        body.laushe-force-sold-out .atc-btn-v3,
+        body.laushe-force-sold-out .m-atc,
+        body.laushe-force-sold-out .btn-add,
+        body.laushe-force-sold-out .sticky-atc-btn,
+        body.laushe-force-sold-out .checkout-btn-offer,
+        body.laushe-force-sold-out .checkout-btn,
+        body.laushe-force-sold-out button[name="checkout"],
+        body.laushe-force-sold-out button[type="submit"].atc-btn-v3 {
+          pointer-events: none !important;
+          opacity: 0.65 !important;
+          cursor: not-allowed !important;
+          background: #9aa39d !important;
+          border-color: #9aa39d !important;
+          color: #fff !important;
+        }
+      </style>
+      <script>
+        (function () {
+          var SOLD_OUT_LABEL = {{ settings.sold_out_button_label | default: 'Sold Out' | json }};
+          var SOLD_OUT_MSG = {{ settings.sold_out_message | default: 'All products are currently sold out. Orders cannot be placed right now.' | json }};
+          window.LAUSHE_FORCE_SOLD_OUT = true;
+
+          function isCartAddUrl(url) {
+            try {
+              var u = typeof url === 'string' ? url : (url && url.url) || '';
+              return /\/cart\/add(\.js)?(\?|$)/i.test(String(u));
+            } catch (e) {
+              return false;
+            }
+          }
+
+          function isCheckoutUrl(url) {
+            try {
+              var u = typeof url === 'string' ? url : (url && url.url) || '';
+              return /\/checkout(\?|$)/i.test(String(u)) || /\/cart(\?|$)/i.test(String(u)) && /checkout/i.test(String(u));
+            } catch (e) {
+              return false;
+            }
+          }
+
+          var nativeFetch = window.fetch;
+          if (typeof nativeFetch === 'function') {
+            window.fetch = function (input, init) {
+              var url = typeof input === 'string' ? input : (input && input.url);
+              if (isCartAddUrl(url) || isCheckoutUrl(url)) {
+                return Promise.reject(new Error(SOLD_OUT_MSG));
+              }
+              return nativeFetch.apply(this, arguments);
+            };
+          }
+
+          document.addEventListener('submit', function (e) {
+            var form = e.target;
+            if (!form || !form.getAttribute) return;
+            var action = (form.getAttribute('action') || '').toLowerCase();
+            if (action.indexOf('/cart/add') !== -1 || (form.id === 'CartDrawerFooter') || form.querySelector('[name="checkout"]')) {
+              e.preventDefault();
+              e.stopPropagation();
+              alert(SOLD_OUT_MSG);
+            }
+          }, true);
+
+          document.addEventListener('click', function (e) {
+            var el = e.target && e.target.closest
+              ? e.target.closest('.atc-btn-v3, .m-atc, .btn-add, .sticky-atc-btn, .checkout-btn-offer, .checkout-btn, button[name="checkout"], .shop-now-btn, .bs-shop-now')
+              : null;
+            if (!el) return;
+            if (el.classList.contains('shop-now-btn') || el.classList.contains('bs-shop-now')) {
+              return; /* allow product page navigation */
+            }
+            e.preventDefault();
+            e.stopPropagation();
+            alert(SOLD_OUT_MSG);
+          }, true);
+
+          function markSoldOutButtons() {
+            var selectors = [
+              '.atc-btn-v3 .atc-text',
+              '.atc-btn-v3',
+              '.m-atc',
+              '.btn-add .atc-text',
+              '.btn-add',
+              '.sticky-atc-btn',
+              '.checkout-btn-offer',
+              '.checkout-btn',
+              'button[name="checkout"]'
+            ];
+            selectors.forEach(function (sel) {
+              document.querySelectorAll(sel).forEach(function (btn) {
+                if (btn.matches('button, a, .m-atc, .sticky-atc-btn, .checkout-btn-offer, .checkout-btn')) {
+                  if (btn.tagName === 'BUTTON' || btn.tagName === 'A') {
+                    btn.setAttribute('disabled', 'disabled');
+                    btn.setAttribute('aria-disabled', 'true');
+                  }
+                  if (btn.classList.contains('atc-text') || btn.childElementCount === 0 || btn.classList.contains('m-atc') || btn.classList.contains('sticky-atc-btn') || btn.classList.contains('checkout-btn') || btn.classList.contains('checkout-btn-offer') || btn.name === 'checkout') {
+                    if (!btn.dataset.lausheSoldOutLabeled) {
+                      if (btn.classList.contains('atc-text') || btn.childElementCount === 0 || btn.classList.contains('m-atc') || btn.classList.contains('sticky-atc-btn') || btn.classList.contains('checkout-btn-offer') || btn.classList.contains('checkout-btn') || btn.name === 'checkout') {
+                        btn.textContent = btn.name === 'checkout' || btn.classList.contains('checkout-btn') ? SOLD_OUT_LABEL : SOLD_OUT_LABEL;
+                        btn.dataset.lausheSoldOutLabeled = '1';
+                      }
+                    }
+                  }
+                }
+              });
+            });
+            document.querySelectorAll('.atc-btn-v3 .atc-text, .btn-add .atc-text').forEach(function (el) {
+              el.textContent = SOLD_OUT_LABEL;
+            });
+            document.querySelectorAll('.m-atc, .sticky-atc-btn, .checkout-btn-offer').forEach(function (el) {
+              el.textContent = SOLD_OUT_LABEL;
+            });
+            document.querySelectorAll('.checkout-btn, button[name="checkout"]').forEach(function (el) {
+              el.textContent = SOLD_OUT_LABEL;
+              el.setAttribute('disabled', 'disabled');
+            });
+          }
+
+          if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', markSoldOutButtons);
+          } else {
+            markSoldOutButtons();
+          }
+          document.addEventListener('shopify:section:load', markSoldOutButtons);
+          setTimeout(markSoldOutButtons, 800);
+        })();
+      </script>
+    {% endif %}
   </body>
 </html>

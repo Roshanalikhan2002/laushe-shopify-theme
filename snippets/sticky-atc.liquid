@@ -9,9 +9,9 @@
       <h4 class="sticky-product-title">{{ product.title | truncate: 25 }}</h4>
       <p class="sticky-product-price">{{ product.price | money }}</p>
     </div>
-    <button class="button-primary sticky-atc-btn" 
-            onclick="document.querySelector('.checkout-btn-offer').click()">
-      ADD TO CART
+    <button class="button-primary sticky-atc-btn"{% if settings.force_all_sold_out %} type="button" disabled aria-disabled="true"{% else %}
+            onclick="document.querySelector('.checkout-btn-offer').click()"{% endif %}>
+      {% if settings.force_all_sold_out %}{{ settings.sold_out_button_label | default: 'Sold Out' }}{% else %}ADD TO CART{% endif %}
     </button>
   </div>
 </div>

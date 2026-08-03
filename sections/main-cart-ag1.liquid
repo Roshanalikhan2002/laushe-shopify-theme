@@ -114,9 +114,15 @@
             </div>
           </div>
 
+          {% if settings.force_all_sold_out %}
+          <button type="button" disabled aria-disabled="true" style="width: 100%; background: #9aa39d; color: white; border: none; padding: 18px; border-radius: 14px; font-size: 16px; font-weight: 700; cursor: not-allowed; font-family: 'Poppins', sans-serif;">
+            {{ settings.sold_out_button_label | default: 'Sold Out' }}
+          </button>
+          {% else %}
           <button type="submit" form="cart-form" name="checkout" style="width: 100%; background: #007E40; color: white; border: none; padding: 18px; border-radius: 14px; font-size: 16px; font-weight: 700; cursor: pointer; transition: all 0.3s ease; font-family: 'Poppins', sans-serif;">
             Proceed to Checkout
           </button>
+          {% endif %}
 
           {% if section.settings.show_shipping_info %}
             <div style="margin-top: 25px; padding: 15px; background: #f8faf9; border-radius: 12px; display: flex; gap: 12px; align-items: center;">

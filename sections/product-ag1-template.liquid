@@ -179,10 +179,16 @@
             {% endif %}
 
             <!-- ADD TO CART -->
+            {% if settings.force_all_sold_out %}
+            <button type="button" class="atc-btn-v3" disabled aria-disabled="true">
+              <span class="atc-text">{{ settings.sold_out_button_label | default: 'Sold Out' }}</span>
+            </button>
+            {% else %}
             <button type="submit" class="atc-btn-v3">
               <span class="atc-text">Add to Cart &rarr;</span>
               <span class="atc-loading" style="display: none;">Adding...</span>
             </button>
+            {% endif %}
           </form>
 
           <!-- ACCORDIONS -->

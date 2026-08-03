@@ -148,10 +148,16 @@
                         <form method="post" action="/cart/add" class="laushe-collection-atc">
                             <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}" />
                             <input type="hidden" name="quantity" value="1" />
+                            {% if settings.force_all_sold_out %}
+                            <button type="button" class="btn-add" disabled aria-disabled="true">
+                                <span class="atc-text">{{ settings.sold_out_button_label | default: 'Sold Out' }}</span>
+                            </button>
+                            {% else %}
                             <button type="submit" class="btn-add">
                                 <span class="atc-text">Add to Cart</span>
                                 <span class="atc-loading" style="display: none;">Adding...</span>
                             </button>
+                            {% endif %}
                         </form>
                     </div>
                 </div>

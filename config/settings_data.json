@@ -1,3 +1,7 @@
 {
-  "current": {}
+  "current": {
+    "force_all_sold_out": true,
+    "sold_out_button_label": "Sold Out",
+    "sold_out_message": "All products are currently sold out. Orders cannot be placed right now."
+  }
 }
