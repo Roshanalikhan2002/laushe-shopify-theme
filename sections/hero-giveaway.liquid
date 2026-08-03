@@ -66,6 +66,7 @@
       <div class="bs-grid">
         {% assign shown = 0 %}
         {% assign pastel_bgs = "#F3E6E0,#E4EFE8,#F0EADF,#E8F1F4,#F5EDE3,#E9F0E6" | split: "," %}
+        {% assign bs_priority_handles = "skinny-sips-weight-loss-kehwa,royce-hair-oil-sunnah-blessed,skin-tint,liquid-blush" | split: "," %}
         {% for block in section.blocks %}
           {% if block.type == 'product' %}
             {% assign prod = all_products[block.settings.product] %}
@@ -114,36 +115,51 @@
         {% endfor %}
 
         {% if shown == 0 %}
-          {% for prod in collections.all.products limit: 4 %}
-            {% assign bg_i = forloop.index0 | modulo: 6 %}
-            <article class="bs-card">
-              <div class="bs-media" style="background: {{ pastel_bgs[bg_i] }};">
-                <a href="{{ prod.url }}" class="bs-img-link">
-                  {% if prod.featured_image %}
-                    <img src="{{ prod.featured_image | image_url: width: 700 }}" alt="{{ prod.title | escape }}">
-                  {% else %}
-                    <span class="bs-placeholder">Add image</span>
-                  {% endif %}
-                </a>
-              </div>
-              <div class="bs-content">
-                <h3 class="bs-title"><a href="{{ prod.url }}">{{ prod.title }}</a></h3>
-                <div class="bs-stars">
-                  <span class="bs-stars-gold">★★★★★</span>
-                  <span class="bs-rating">4.8</span>
+          {% for p_handle in bs_priority_handles %}
+            {% assign prod = all_products[p_handle] %}
+            {% if prod != blank %}
+              {% assign shown = shown | plus: 1 %}
+              {% assign bg_i = forloop.index0 | modulo: 6 %}
+              <article class="bs-card">
+                <div class="bs-media" style="background: {{ pastel_bgs[bg_i] }};">
+                  <span class="bs-badge">BESTSELLER</span>
+                  <a href="{{ prod.url }}" class="bs-img-link">
+                    {% if prod.handle contains 'hair-oil' %}
+                      <img src="{{ 'hair-oil-v2.jpg' | asset_url }}" alt="{{ prod.title | escape }}">
+                    {% elsif prod.handle contains 'liquid-blush' %}
+                      <img src="{{ 'liquid-blush-petal-1.jpg' | asset_url }}" alt="{{ prod.title | escape }}">
+                    {% elsif prod.handle contains 'skin-tint' %}
+                      <img src="{{ 'natural-skin-tint-1.jpg' | asset_url }}" alt="{{ prod.title | escape }}">
+                    {% elsif prod.featured_image %}
+                      <img src="{{ prod.featured_image | image_url: width: 700 }}" alt="{{ prod.title | escape }}">
+                    {% else %}
+                      <span class="bs-placeholder">Add image</span>
+                    {% endif %}
+                  </a>
                 </div>
-                <div class="bs-price-row">
-                  <span class="bs-price">{{ prod.price | money }}</span>
+                <div class="bs-content">
+                  <h3 class="bs-title"><a href="{{ prod.url }}">{{ prod.title }}</a></h3>
+                  <div class="bs-stars">
+                    <span class="bs-stars-gold">★★★★★</span>
+                    <span class="bs-rating">4.8</span>
+                  </div>
+                  <div class="bs-price-row">
+                    <span class="bs-price">{{ prod.price | money }}</span>
+                    {% if prod.compare_at_price > prod.price %}
+                      <span class="bs-compare">{{ prod.compare_at_price | money }}</span>
+                    {% endif %}
+                  </div>
+                  <a href="{{ prod.url }}" class="bs-shop-now">SHOP NOW</a>
                 </div>
-                <a href="{{ prod.url }}" class="bs-shop-now">SHOP NOW</a>
-              </div>
-            </article>
-          {% else %}
+              </article>
+            {% endif %}
+          {% endfor %}
+          {% if shown == 0 %}
             <div class="bs-empty">
               <h3>No products yet</h3>
               <p>Add products in Theme Editor under Giveaway Hero Banner.</p>
             </div>
-          {% endfor %}
+          {% endif %}
         {% endif %}
       </div>
     </div>
@@ -395,7 +411,7 @@
       "type": "text",
       "id": "bs_subheading",
       "label": "Bestsellers subheading",
-      "default": "Customer favorites — Weight Gainer, Hair Oil, Liquid Blush & Skin Tint."
+      "default": "Customer favorites — Skinny Sips, Hair Oil, Skin Tint & Liquid Blush."
     }
   ],
   "blocks": [

@@ -22,8 +22,7 @@
         { "id": "target_product", "type": "product", "label": "Apply to this Product" },
         { "id": "title", "type": "text", "label": "Custom Title" },
         { "id": "desc", "type": "textarea", "label": "Custom Description" },
-        { "id": "image", "type": "image_picker", "label": "Custom Image" },
-        { "id": "price", "type": "text", "label": "Custom Price Text (e.g. Rs.2,990)" }
+        { "id": "image", "type": "image_picker", "label": "Custom Image" }
       ]
     }
   ],
@@ -57,7 +56,7 @@
     <div class="catalog-grid-wrapper">
       <div class="catalog-grid" id="laushe-catalog-grid-{{ section.id }}">
         {% assign target_collection = section.settings.collection | default: collections.all %}
-        {% assign priority_handles = "liquid-blush,skin-tint,skinny-sips-weight-loss-kehwa,royce-hair-oil-sunnah-blessed,chia-seeds-380g,desi-ghee,golden-elixir,pure-honey450-gm" | split: "," %}
+        {% assign priority_handles = "skinny-sips-weight-loss-kehwa,royce-hair-oil-sunnah-blessed,skin-tint,liquid-blush,chia-seeds-380g,desi-ghee,golden-elixir,pure-honey450-gm" | split: "," %}
         {% assign pastel_bgs = "#F3E6E0,#E4EFE8,#F0EADF,#E8F1F4,#F5EDE3,#E9F0E6" | split: "," %}
         {% assign card_index = 0 %}
 
@@ -84,7 +83,6 @@
                 {% if block.type == 'product_override' and block.settings.target_product == product.handle %}
                   {% if block.settings.title != blank %}{% assign display_title = block.settings.title %}{% endif %}
                   {% if block.settings.image != blank %}{% assign display_img = block.settings.image | image_url: width: 800 %}{% endif %}
-                  {% if block.settings.price != blank %}{% assign display_price = block.settings.price %}{% endif %}
                   {% assign override_block = block %}
                 {% endif %}
               {% endfor %}
@@ -149,7 +147,6 @@
             {% if block.type == 'product_override' and block.settings.target_product == product.handle %}
               {% if block.settings.title != blank %}{% assign display_title = block.settings.title %}{% endif %}
               {% if block.settings.image != blank %}{% assign display_img = block.settings.image | image_url: width: 800 %}{% endif %}
-              {% if block.settings.price != blank %}{% assign display_price = block.settings.price %}{% endif %}
               {% assign override_block = block %}
             {% endif %}
           {% endfor %}

@@ -11,11 +11,67 @@
   "sections": {
     "hero_giveaway": {
       "type": "hero-giveaway",
+      "blocks": {
+        "bs_skinny_sips": {
+          "type": "product",
+          "settings": {
+            "product": "skinny-sips-weight-loss-kehwa",
+            "title_override": "",
+            "stars_count": "1250",
+            "rating": "4.8",
+            "show_badge": true,
+            "badge_text": "BESTSELLER",
+            "card_bg": "#F3E6E0"
+          }
+        },
+        "bs_hair_oil": {
+          "type": "product",
+          "settings": {
+            "product": "royce-hair-oil-sunnah-blessed",
+            "title_override": "",
+            "stars_count": "1250",
+            "rating": "4.8",
+            "show_badge": true,
+            "badge_text": "BESTSELLER",
+            "card_bg": "#E4EFE8"
+          }
+        },
+        "bs_skin_tint": {
+          "type": "product",
+          "settings": {
+            "product": "skin-tint",
+            "title_override": "",
+            "stars_count": "1250",
+            "rating": "4.8",
+            "show_badge": true,
+            "badge_text": "BESTSELLER",
+            "card_bg": "#F0EADF"
+          }
+        },
+        "bs_liquid_blush": {
+          "type": "product",
+          "settings": {
+            "product": "liquid-blush",
+            "title_override": "",
+            "stars_count": "1250",
+            "rating": "4.8",
+            "show_badge": true,
+            "badge_text": "BESTSELLER",
+            "card_bg": "#E8F1F4"
+          }
+        }
+      },
+      "block_order": [
+        "bs_skinny_sips",
+        "bs_hair_oil",
+        "bs_skin_tint",
+        "bs_liquid_blush"
+      ],
       "settings": {
         "link": "",
         "strip_text": "Our products are regularly tested to ensure purity and authenticity.",
         "bs_heading": "Our Top Bestsellers",
-        "bs_subheading": "Customer favorites — Weight Gainer, Hair Oil, Liquid Blush & Skin Tint."
+        "bs_subheading": "Customer favorites — Skinny Sips, Hair Oil, Skin Tint & Liquid Blush."
       }
     },
     "hero": {
@@ -42,8 +98,7 @@
           "settings": {
             "target_product": "chia-seeds-380g",
             "title": "Chia Seeds 380g",
-            "desc": "High-quality chia seeds,  a powerful superfood loaded with omega-3, fiber, and protein to support everyday health.",
-            "price": "Rs.2,990"
+            "desc": "High-quality chia seeds,  a powerful superfood loaded with omega-3, fiber, and protein to support everyday health."
           }
         },
         "elixir_override": {
@@ -52,8 +107,7 @@
           "settings": {
             "target_product": "golden-elixir",
             "title": "Golden Elixir",
-            "desc": "A flavorful blend of turmeric, honey, and herbs for a healthy daily ritual.",
-            "price": "Rs.1,490"
+            "desc": "A flavorful blend of turmeric, honey, and herbs for a healthy daily ritual."
           }
         },
         "royce_override": {
@@ -61,8 +115,7 @@
           "settings": {
             "target_product": "royce-hair-oil-sunnah-blessed",
             "title": "Royce Hair Oil - Sunnah Blessed",
-            "desc": "100ml Infused with Sunnah Blessings for Stronger, Healthier Hair Ingredients ...",
-            "price": ""
+            "desc": "100ml Infused with Sunnah Blessings for Stronger, Healthier Hair Ingredients ..."
           }
         }
       },
