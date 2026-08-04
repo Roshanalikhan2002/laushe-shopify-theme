@@ -218,7 +218,7 @@
         "s1": {
           "type": "stat",
           "settings": {
-            "number": "15,000+",
+            "number": "50,000+",
             "label": "Happy Families"
           }
         },
@@ -747,7 +747,7 @@
         "card_14"
       ],
       "settings": {
-        "heading_line1": "15,000+ FAMILIES.",
+        "heading_line1": "50,000+ FAMILIES.",
         "heading_line2": "WE'VE BEEN",
         "heading_line3": "GETTING AROUND",
         "bg_color": "#fcf8ed",
