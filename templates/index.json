@@ -41,7 +41,7 @@
           "settings": {
             "product": "skin-tint",
             "title_override": "",
-            "image_override": "shopify://shop_images/Artboard10copy7-100.jpg",
+            "image_override": "",
             "stars_count": "3120",
             "rating": "4.8",
             "show_badge": true,
@@ -54,7 +54,7 @@
           "settings": {
             "product": "liquid-blush",
             "title_override": "",
-            "image_override": "shopify://shop_images/Combineimage.jpg",
+            "image_override": "",
             "stars_count": "940",
             "rating": "4.8",
             "show_badge": true,
