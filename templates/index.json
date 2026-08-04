@@ -17,11 +17,11 @@
           "settings": {
             "product": "skinny-sips-weight-loss-kehwa",
             "title_override": "",
-            "stars_count": "1250",
+            "stars_count": "15998",
             "rating": "4.8",
             "show_badge": true,
             "badge_text": "BESTSELLER",
-            "card_bg": "#F3E6E0"
+            "card_bg": "#f3e6e0"
           }
         },
         "bs_hair_oil": {
@@ -33,7 +33,7 @@
             "rating": "4.8",
             "show_badge": true,
             "badge_text": "BESTSELLER",
-            "card_bg": "#E4EFE8"
+            "card_bg": "#e4efe8"
           }
         },
         "bs_skin_tint": {
@@ -41,11 +41,12 @@
           "settings": {
             "product": "skin-tint",
             "title_override": "",
+            "image_override": "shopify://shop_images/Artboard10copy7-100.jpg",
             "stars_count": "1250",
             "rating": "4.8",
             "show_badge": true,
             "badge_text": "BESTSELLER",
-            "card_bg": "#F0EADF"
+            "card_bg": "#f0eadf"
           }
         },
         "bs_liquid_blush": {
@@ -53,11 +54,12 @@
           "settings": {
             "product": "liquid-blush",
             "title_override": "",
+            "image_override": "shopify://shop_images/Combineimage.jpg",
             "stars_count": "1250",
             "rating": "4.8",
             "show_badge": true,
             "badge_text": "BESTSELLER",
-            "card_bg": "#E8F1F4"
+            "card_bg": "#e8f1f4"
           }
         }
       },
