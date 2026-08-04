@@ -3,23 +3,42 @@
   Params:
     - product (required)
     - style: 'catalog' (default) | 'bestsellers'
+
+  A fixed set of handles is pinned to the same rating/review numbers shown
+  in the "Our Top Bestsellers" section, so the count matches everywhere
+  this product card appears on the site.
 {% endcomment %}
-{% assign seed = product.id | default: 0 %}
-{% if seed == 0 %}
-  {% assign seed = product.handle.size | times: 97 | plus: product.title.size | times: 13 | plus: 401 %}
+{% assign pinned_handles = "skinny-sips-weight-loss-kehwa,royce-hair-oil-sunnah-blessed,skin-tint,liquid-blush" | split: "," %}
+{% assign pinned_reviews = "15998,1875,3120,940" | split: "," %}
+{% assign pinned_ratings = "4.8,4.8,4.8,4.8" | split: "," %}
+{% assign pinned_index = -1 %}
+{% for h in pinned_handles %}
+  {% if h == product.handle %}
+    {% assign pinned_index = forloop.index0 %}
+  {% endif %}
+{% endfor %}
+
+{% if pinned_index > -1 %}
+  {% assign card_rating = pinned_ratings[pinned_index] %}
+  {% assign card_reviews = pinned_reviews[pinned_index] %}
+{% else %}
+  {% assign seed = product.id | default: 0 %}
+  {% if seed == 0 %}
+    {% assign seed = product.handle.size | times: 97 | plus: product.title.size | times: 13 | plus: 401 %}
+  {% endif %}
+
+  {% assign r_mod = seed | modulo: 6 %}
+  {% case r_mod %}
+    {% when 0 %}{% assign card_rating = '4.7' %}
+    {% when 1 %}{% assign card_rating = '4.8' %}
+    {% when 2 %}{% assign card_rating = '4.9' %}
+    {% when 3 %}{% assign card_rating = '5.0' %}
+    {% when 4 %}{% assign card_rating = '4.8' %}
+    {% when 5 %}{% assign card_rating = '4.9' %}
+  {% endcase %}
+
+  {% assign card_reviews = seed | modulo: 3900 | plus: 428 %}
 {% endif %}
-
-{% assign r_mod = seed | modulo: 6 %}
-{% case r_mod %}
-  {% when 0 %}{% assign card_rating = '4.7' %}
-  {% when 1 %}{% assign card_rating = '4.8' %}
-  {% when 2 %}{% assign card_rating = '4.9' %}
-  {% when 3 %}{% assign card_rating = '5.0' %}
-  {% when 4 %}{% assign card_rating = '4.8' %}
-  {% when 5 %}{% assign card_rating = '4.9' %}
-{% endcase %}
-
-{% assign card_reviews = seed | modulo: 3900 | plus: 428 %}
 
 {% if style == 'bestsellers' %}
   <div class="bs-stars">
