@@ -343,7 +343,8 @@
       ],
       "settings": {
         "heading": "Benefits",
-        "subheading": "Why People Trust Laushe?"
+        "subheading": "Why People Trust Laushe?",
+        "center_image": "shopify://shop_images/BENEFITS_IMAGE-100_jpg.jpg"
       }
     },
     "problem_solution": {
