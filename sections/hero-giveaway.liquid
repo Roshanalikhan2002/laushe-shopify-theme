@@ -83,10 +83,6 @@
                       <img src="{{ block.settings.image_override | image_url: width: 700 }}" alt="{{ block.settings.title_override | default: prod.title | escape }}">
                     {% elsif prod.handle contains 'hair-oil' %}
                       <img src="{{ 'hair-oil-v2.jpg' | asset_url }}" alt="{{ block.settings.title_override | default: prod.title | escape }}">
-                    {% elsif prod.handle contains 'liquid-blush' %}
-                      <img src="{{ 'liquid-blush-petal-1.jpg' | asset_url }}" alt="{{ block.settings.title_override | default: prod.title | escape }}">
-                    {% elsif prod.handle contains 'skin-tint' %}
-                      <img src="{{ 'natural-skin-tint-1.jpg' | asset_url }}" alt="{{ block.settings.title_override | default: prod.title | escape }}">
                     {% elsif prod.featured_image %}
                       <img src="{{ prod.featured_image | image_url: width: 700 }}" alt="{{ prod.title | escape }}">
                     {% else %}
@@ -126,10 +122,6 @@
                   <a href="{{ prod.url }}" class="bs-img-link">
                     {% if prod.handle contains 'hair-oil' %}
                       <img src="{{ 'hair-oil-v2.jpg' | asset_url }}" alt="{{ prod.title | escape }}">
-                    {% elsif prod.handle contains 'liquid-blush' %}
-                      <img src="{{ 'liquid-blush-petal-1.jpg' | asset_url }}" alt="{{ prod.title | escape }}">
-                    {% elsif prod.handle contains 'skin-tint' %}
-                      <img src="{{ 'natural-skin-tint-1.jpg' | asset_url }}" alt="{{ prod.title | escape }}">
                     {% elsif prod.featured_image %}
                       <img src="{{ prod.featured_image | image_url: width: 700 }}" alt="{{ prod.title | escape }}">
                     {% else %}
