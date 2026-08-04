@@ -47,7 +47,7 @@
         {% if section.settings.side_image %}
           <img src="{{ section.settings.side_image | img_url: '1000x' }}" class="modern-img" alt="Health Deficiency">
         {% else %}
-          <div class="modern-img placeholder-bg" style="background: #FAFAFA; width:100%; aspect-ratio: 1/1; border-radius: 40px;"></div>
+          <img src="{{ 'modern-living-deficient.jpg' | asset_url }}" class="modern-img" alt="Health Deficiency">
         {% endif %}
       </div>
     </div>
@@ -124,7 +124,8 @@
   
   .modern-living-section .modern-img {
     width: 100%;
-    height: auto;
+    aspect-ratio: 1/1;
+    object-fit: cover;
     border-radius: 40px;
     display: block;
     box-shadow: 0 30px 60px rgba(0,0,0,0.1);
