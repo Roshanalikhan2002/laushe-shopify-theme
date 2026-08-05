@@ -41,7 +41,6 @@
           "settings": {
             "product": "skin-tint",
             "title_override": "",
-            "image_override": "",
             "stars_count": "3120",
             "rating": "4.8",
             "show_badge": true,
@@ -54,7 +53,6 @@
           "settings": {
             "product": "liquid-blush",
             "title_override": "",
-            "image_override": "",
             "stars_count": "940",
             "rating": "4.8",
             "show_badge": true,
@@ -295,6 +293,7 @@
         "q3",
         "q4"
       ],
+      "disabled": true,
       "settings": {
         "heading": "Quality You Can Trust",
         "subheading": "Our products are regularly tested to ensure purity and authenticity."
