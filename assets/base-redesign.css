@@ -128,14 +128,53 @@ h1, h2, h3, h4, .font-heading {
 .announcement-bar {
     background-color: #007E40;
     color: #ffffff;
-    text-align: center;
-    padding: 10px 15px;
+    padding: 10px 0;
     font-size: 14px;
     font-weight: 700;
     overflow: hidden;
     width: 100%;
-    white-space: normal;
     border-bottom: none;
+    position: relative;
+}
+
+.announcement-bar__track {
+    display: flex;
+    width: max-content;
+    align-items: center;
+    gap: 0;
+    animation: announcement-marquee 28s linear infinite;
+    will-change: transform;
+}
+
+.announcement-bar__item {
+    display: inline-flex;
+    align-items: center;
+    white-space: nowrap;
+    padding: 0 48px;
+    letter-spacing: 0.02em;
+}
+
+.announcement-bar__item::after {
+    content: "•";
+    margin-left: 48px;
+    opacity: 0.7;
+}
+
+@keyframes announcement-marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .announcement-bar__track {
+        animation: none;
+        width: 100%;
+        justify-content: center;
+    }
+    .announcement-bar__item:not(:first-child),
+    .announcement-bar__item::after {
+        display: none;
+    }
 }
 
 header.sticky-header {

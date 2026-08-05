@@ -54,12 +54,18 @@
   <body class="gradient{% if settings.force_all_sold_out %} laushe-force-sold-out{% endif %}">
 
     <!-- ANNOUNCEMENT BAR -->
-    <div class="announcement-bar">
+    <div class="announcement-bar" aria-label="Announcement">
       {% if settings.force_all_sold_out %}
-        {{ settings.sold_out_message | default: 'All products are currently sold out. Orders cannot be placed right now.' }}
+        {% assign announce_text = settings.sold_out_message | default: 'All products are currently sold out. Orders cannot be placed right now.' %}
       {% else %}
-        ✨ Limited Time Sale ✨ Shop Now
+        {% assign announce_text = '✨ Limited Time Sale ✨ Shop Now' %}
       {% endif %}
+      <div class="announcement-bar__track">
+        <span class="announcement-bar__item">{{ announce_text }}</span>
+        <span class="announcement-bar__item" aria-hidden="true">{{ announce_text }}</span>
+        <span class="announcement-bar__item" aria-hidden="true">{{ announce_text }}</span>
+        <span class="announcement-bar__item" aria-hidden="true">{{ announce_text }}</span>
+      </div>
     </div>
 
     <!-- STICKY HEADER -->
