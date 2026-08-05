@@ -190,8 +190,8 @@ h1, h2, h3, h4, .font-heading {
 }
 
 header.sticky-header {
-    background-color: var(--cream) !important;
-    border-bottom: 1px solid rgba(0, 126, 64, 0.08);
+    background-color: #007E40 !important;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
     padding: 10px 0;
     position: sticky;
     top: 0;
@@ -231,10 +231,10 @@ header.sticky-header {
     justify-content: center;
     text-decoration: none;
     line-height: 0;
-    background: #007E40;
+    background: transparent;
     border-radius: 10px;
-    padding: 4px;
-    box-shadow: 0 4px 14px rgba(0, 126, 64, 0.25);
+    padding: 0;
+    box-shadow: none;
 }
 
 .logo-image {
@@ -291,13 +291,13 @@ header.sticky-header {
 .header-icons a,
 .header-icons ion-icon {
     font-size: 22px;
-    color: #dcb360;
+    color: #FEF9E1;
     line-height: 1;
 }
 
 .header-nav-link {
     text-decoration: none;
-    color: #dcb360;
+    color: #FEF9E1;
     font-weight: 700;
     font-size: 14px;
     letter-spacing: 0.05em;
@@ -313,12 +313,12 @@ header.sticky-header {
 
 .header-nav-link.is-active,
 .header-nav-link[aria-current="page"] {
-    color: #007E40;
+    color: #ffcc33;
 }
 
 .menu-toggle,
 .menu-toggle ion-icon {
-    color: #dcb360;
+    color: #FEF9E1;
 }
 
 .nav-caret { font-size: 9px; }
@@ -363,7 +363,7 @@ header.sticky-header {
 .header-icons a,
 .header-icons ion-icon {
     font-size: 22px;
-    color: #007E40;
+    color: #FEF9E1;
     line-height: 1;
 }
 
@@ -1198,8 +1198,8 @@ footer {
     }
 
     .header-icons ion-icon,
-    .header-icons a { color: inherit; }
-    .menu-toggle ion-icon { color: inherit; font-size: 28px; }
+    .header-icons a { color: #FEF9E1; }
+    .menu-toggle ion-icon { color: #FEF9E1; font-size: 28px; }
 }
 
 @media (max-width: 768px) {
