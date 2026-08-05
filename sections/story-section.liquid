@@ -51,10 +51,10 @@
       <!-- RIGHT IMAGE -->
       <div class="story-right">
         <div class="story-img-wrapper">
-          {% if section.settings.image %}
-            <img src="{{ section.settings.image | img_url: '1000x' }}" class="story-img-v2" alt="Our Story">
+          {% if section.settings.image != blank %}
+            <img src="{{ section.settings.image | image_url: width: 1200 }}" class="story-img-v2" alt="{{ section.settings.title | escape }}" loading="lazy" width="1000" height="1200">
           {% else %}
-            <img src="shopify://shop_images/story_lifestyle.jpg" class="story-img-v2" alt="Our Story">
+            <img src="{{ 'where-tradition-meets.jpg' | asset_url }}" class="story-img-v2" alt="{{ section.settings.title | escape }}" loading="lazy" width="1000" height="1200">
           {% endif %}
           
           <div class="story-float-badge">
