@@ -644,29 +644,13 @@
             "handle": "@pure.rituals",
             "link": ""
           }
-        },
-        "inf5": {
-          "type": "influencer",
-          "settings": {
-            "handle": "@sunnah.care",
-            "link": ""
-          }
-        },
-        "inf6": {
-          "type": "influencer",
-          "settings": {
-            "handle": "@daily.elixir",
-            "link": ""
-          }
         }
       },
       "block_order": [
         "inf1",
         "inf2",
         "inf3",
-        "inf4",
-        "inf5",
-        "inf6"
+        "inf4"
       ],
       "settings": {
         "heading": "AS SEEN ON SOCIAL",

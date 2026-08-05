@@ -16,44 +16,57 @@
       </button>
 
       <div class="inf-reviews__track" data-inf-track>
+        {% assign inf_asset_index = 0 %}
         {% for block in section.blocks %}
-          <article class="inf-reviews__card" {{ block.shopify_attributes }}>
-            <a
-              class="inf-reviews__media"
-              href="{{ block.settings.link | default: '#' }}"
-              {% if block.settings.link == blank %}onclick="return false;"{% endif %}
-              target="{% if block.settings.link != blank %}_blank{% else %}_self{% endif %}"
-              rel="noopener"
-            >
-              {% if block.settings.video != blank %}
-                <video class="inf-reviews__video" data-src="{{ block.settings.video.sources.last.url }}" preload="none" muted loop playsinline></video>
-                <button type="button" class="inf-reviews__mute-btn" data-inf-mute aria-label="Unmute video" aria-pressed="false"></button>
-              {% elsif block.settings.image != blank %}
-                <img
-                  src="{{ block.settings.image | image_url: width: 800 }}"
-                  alt="{{ block.settings.handle | default: 'Influencer review' | escape }}"
-                  loading="lazy"
-                  width="400"
-                  height="520"
-                >
-              {% elsif forloop.index <= 4 %}
-                <video class="inf-reviews__video" data-src="{{ 'social-review-' | append: forloop.index | append: '.mp4' | asset_url }}" preload="none" muted loop playsinline></video>
-                <button type="button" class="inf-reviews__mute-btn" data-inf-mute aria-label="Unmute video" aria-pressed="false"></button>
-              {% else %}
-                <div class="inf-reviews__placeholder" aria-hidden="true"></div>
-              {% endif %}
-            </a>
-          </article>
-        {% else %}
-          {% for i in (1..6) %}
-            <article class="inf-reviews__card">
-              <div class="inf-reviews__media">
-                {% if i <= 4 %}
-                  <video class="inf-reviews__video" data-src="{{ 'social-review-' | append: i | append: '.mp4' | asset_url }}" preload="none" muted loop playsinline></video>
+          {% assign has_video = false %}
+          {% assign has_image = false %}
+          {% if block.settings.video != blank %}{% assign has_video = true %}{% endif %}
+          {% if block.settings.image != blank %}{% assign has_image = true %}{% endif %}
+
+          {% if has_video or has_image %}
+            <article class="inf-reviews__card" {{ block.shopify_attributes }}>
+              <a
+                class="inf-reviews__media"
+                href="{{ block.settings.link | default: '#' }}"
+                {% if block.settings.link == blank %}onclick="return false;"{% endif %}
+                target="{% if block.settings.link != blank %}_blank{% else %}_self{% endif %}"
+                rel="noopener"
+              >
+                {% if has_video %}
+                  <video class="inf-reviews__video" data-src="{{ block.settings.video.sources.last.url }}" preload="none" muted loop playsinline></video>
                   <button type="button" class="inf-reviews__mute-btn" data-inf-mute aria-label="Unmute video" aria-pressed="false"></button>
                 {% else %}
-                  <div class="inf-reviews__placeholder" aria-hidden="true"></div>
+                  <img
+                    src="{{ block.settings.image | image_url: width: 800 }}"
+                    alt="{{ block.settings.handle | default: 'Influencer review' | escape }}"
+                    loading="lazy"
+                    width="400"
+                    height="520"
+                  >
                 {% endif %}
+              </a>
+            </article>
+          {% elsif inf_asset_index < 4 %}
+            {% assign inf_asset_index = inf_asset_index | plus: 1 %}
+            <article class="inf-reviews__card" {{ block.shopify_attributes }}>
+              <a
+                class="inf-reviews__media"
+                href="{{ block.settings.link | default: '#' }}"
+                {% if block.settings.link == blank %}onclick="return false;"{% endif %}
+                target="{% if block.settings.link != blank %}_blank{% else %}_self{% endif %}"
+                rel="noopener"
+              >
+                <video class="inf-reviews__video" data-src="{{ 'social-review-' | append: inf_asset_index | append: '.mp4' | asset_url }}" preload="none" muted loop playsinline></video>
+                <button type="button" class="inf-reviews__mute-btn" data-inf-mute aria-label="Unmute video" aria-pressed="false"></button>
+              </a>
+            </article>
+          {% endif %}
+        {% else %}
+          {% for i in (1..4) %}
+            <article class="inf-reviews__card">
+              <div class="inf-reviews__media">
+                <video class="inf-reviews__video" data-src="{{ 'social-review-' | append: i | append: '.mp4' | asset_url }}" preload="none" muted loop playsinline></video>
+                <button type="button" class="inf-reviews__mute-btn" data-inf-mute aria-label="Unmute video" aria-pressed="false"></button>
               </div>
             </article>
           {% endfor %}
