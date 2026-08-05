@@ -36,19 +36,27 @@
       </p>
       <div class="banner-quality-strip__grid">
         <div class="banner-quality-strip__item">
-          <div class="banner-quality-strip__icon">{% render 'icon-laushe', name: 'beaker' %}</div>
+          <div class="banner-quality-strip__icon">
+            <img src="{{ 'icon-no-pesticides.jpg' | asset_url }}" alt="No Pesticides" width="88" height="88" loading="lazy">
+          </div>
           <h3>No Pesticides</h3>
         </div>
         <div class="banner-quality-strip__item">
-          <div class="banner-quality-strip__icon">{% render 'icon-laushe', name: 'skull' %}</div>
+          <div class="banner-quality-strip__icon">
+            <img src="{{ 'icon-no-heavy-metals.jpg' | asset_url }}" alt="No Heavy Metals" width="88" height="88" loading="lazy">
+          </div>
           <h3>No Heavy Metals</h3>
         </div>
         <div class="banner-quality-strip__item">
-          <div class="banner-quality-strip__icon">{% render 'icon-laushe', name: 'leaf' %}</div>
+          <div class="banner-quality-strip__icon">
+            <img src="{{ 'icon-100-organic.jpg' | asset_url }}" alt="100% Organic" width="88" height="88" loading="lazy">
+          </div>
           <h3>100% Organic</h3>
         </div>
         <div class="banner-quality-strip__item">
-          <div class="banner-quality-strip__icon">{% render 'icon-laushe', name: 'globe' %}</div>
+          <div class="banner-quality-strip__icon">
+            <img src="{{ 'icon-ethically-sourced.jpg' | asset_url }}" alt="Ethically Sourced" width="88" height="88" loading="lazy">
+          </div>
           <h3>Ethically Sourced</h3>
         </div>
       </div>
@@ -219,18 +227,23 @@
   gap: 14px;
 }
 .banner-quality-strip__icon {
-  width: 72px;
-  height: 72px;
+  width: 88px;
+  height: 88px;
   border-radius: 50%;
-  border: 2px solid #ffcc33;
+  border: none;
+  background: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
+  padding: 6px;
+  box-sizing: border-box;
 }
-.banner-quality-strip__icon svg {
-  width: 36px;
-  height: 36px;
-  color: #ffcc33;
+.banner-quality-strip__icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
 }
 .banner-quality-strip__item h3 {
   margin: 0;
