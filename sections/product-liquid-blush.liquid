@@ -648,8 +648,8 @@
 
     .m-atc {
         flex: 1;
-        background: var(--dark-green);
-        color: white;
+        background: #ffcc33;
+        color: #007E40;
         border: 0;
         border-radius: 999px;
         height: 56px;
@@ -663,8 +663,16 @@
         transition: background 0.2s ease, box-shadow 0.2s ease;
     }
     .m-atc:hover {
-        background: var(--blush-crimson);
-        box-shadow: 0 8px 20px rgba(200, 50, 51, 0.25);
+        background: #ffe066;
+        box-shadow: 0 8px 20px rgba(255, 204, 51, 0.35);
+        color: #007E40;
+    }
+    .m-atc:disabled,
+    .m-atc[aria-disabled="true"] {
+        background: #e5e5e5;
+        color: #888;
+        box-shadow: none;
+        cursor: not-allowed;
     }
 
     /* Mobile Sticky Bar */

@@ -367,8 +367,8 @@
   .atc-btn-v3 {
     width: 100%;
     padding: 18px 45px;
-    background: #007E40;
-    color: white !important;
+    background: #ffcc33;
+    color: #007E40 !important;
     border: none;
     border-radius: 50px;
     font-size: 18px;
@@ -378,7 +378,15 @@
     margin-bottom: 40px;
     font-family: 'Poppins', sans-serif;
   }
-  .atc-btn-v3:hover { background: #005a2e; transform: translateY(-3px); box-shadow: 0 15px 30px rgba(0,126,64,0.2); }
+  .atc-btn-v3:hover { background: #ffe066; transform: translateY(-3px); box-shadow: 0 15px 30px rgba(255,204,51,0.35); color: #007E40 !important; }
+  .atc-btn-v3:disabled,
+  .atc-btn-v3[aria-disabled="true"] {
+    background: #e5e5e5 !important;
+    color: #888 !important;
+    box-shadow: none;
+    transform: none;
+    cursor: not-allowed;
+  }
 
   .accordion-v3 { border-bottom: 1px solid #f0f0f0; }
   .accordion-header-v3 {
