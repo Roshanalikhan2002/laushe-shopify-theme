@@ -568,6 +568,10 @@
     .center-group-img img {
         width: 100%;
         max-width: 600px;
+        height: auto;
+        object-fit: contain;
+        display: block;
+        margin: 0 auto;
         filter: drop-shadow(0 30px 60px rgba(0,0,0,0.1));
     }
 
@@ -883,7 +887,7 @@
             </div>
 
             <div class="center-group-img">
-                <img src="{{ 'combine-skin-tint-2.jpg' | asset_url }}" alt="Skin Tint Group">
+                <img src="{{ 'skin-tint-product-page.jpg' | asset_url }}" alt="Skin Tint Group" loading="lazy" width="800" height="800">
             </div>
 
             <div class="features-col right-col">
