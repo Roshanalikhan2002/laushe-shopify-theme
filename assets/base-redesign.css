@@ -88,9 +88,9 @@ h1, h2, h3, h4, .font-heading {
         margin-bottom: 30px !important;
     }
     .logo-image {
-        height: 44px;
-        width: 44px;
-        max-width: 44px;
+        height: 60px;
+        width: 60px;
+        max-width: 60px;
     }
 }
 
@@ -126,8 +126,10 @@ h1, h2, h3, h4, .font-heading {
 }
 
 .btn-yellow {
-    background-color: var(--accent-yellow);
-    color: var(--deep-forest);
+    background-color: #ffcc33 !important;
+    color: #007E40 !important;
+    -webkit-text-fill-color: #007E40;
+    box-shadow: 0 8px 24px rgba(255, 204, 51, 0.35);
 }
 
 .btn-pill:hover {
@@ -192,7 +194,7 @@ h1, h2, h3, h4, .font-heading {
 header.sticky-header {
     background-color: #007E40 !important;
     border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-    padding: 10px 0;
+    padding: 12px 0;
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -239,19 +241,20 @@ header.sticky-header {
 
 .logo-image {
     display: block;
-    height: 52px;
-    width: 52px;
-    max-width: 52px;
+    height: 78px;
+    width: 78px;
+    max-width: 78px;
     object-fit: contain;
-    border-radius: 6px;
+    border-radius: 8px;
     box-shadow: none;
     background: transparent;
+    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.35)) drop-shadow(0 0 1px rgba(254, 249, 225, 0.55));
 }
 
 .logo-image--drawer {
-    height: 64px;
-    width: 64px;
-    max-width: 64px;
+    height: 88px;
+    width: 88px;
+    max-width: 88px;
 }
 
 .logo-text-link {

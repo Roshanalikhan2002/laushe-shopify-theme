@@ -68,7 +68,9 @@
         "bs_liquid_blush"
       ],
       "settings": {
-        "link": "",
+        "link": "/collections/all",
+        "cta_text": "SHOP NOW",
+        "cta_link": "/collections/all",
         "strip_text": "Our products are regularly tested to ensure purity and authenticity.",
         "bs_heading": "Our Top Bestsellers",
         "bs_subheading": "Customer favorites — Skinny Sips, Hair Oil, Skin Tint & Liquid Blush."
