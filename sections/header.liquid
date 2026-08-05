@@ -12,13 +12,13 @@
       "type": "color",
       "id": "bg_color",
       "label": "Background Color",
-      "default": "#ffffff"
+      "default": "#FEF9E1"
     }
   ]
 }
 {% endschema %}
 
-<header class="sticky-header" style="background-color: {{ section.settings.bg_color }};">
+<header class="sticky-header" style="background-color: {{ section.settings.bg_color | default: '#FEF9E1' }};">
   <div class="container header-flex">
     <!-- Left: hamburger (mobile) + nav links (desktop) -->
     <div class="header-left">
@@ -40,11 +40,17 @@
       </nav>
     </div>
 
-    <!-- Center: text logo only -->
+    <!-- Center: crest logo -->
     <div class="logo-emblem">
-      <a href="/" class="logo-text-link" aria-label="Laushe by Zahra home">
-        <span class="logo-text-main">Laushe</span>
-        <span class="logo-text-sub">by zahra</span>
+      <a href="/" class="logo-image-link" aria-label="Laushe by Zahra home">
+        <img
+          src="{{ 'laushe-logo.jpg' | asset_url }}"
+          class="logo-image"
+          alt="Laushe"
+          width="120"
+          height="120"
+          loading="eager"
+        >
       </a>
     </div>
 
@@ -81,9 +87,15 @@
   <div class="mobile-drawer-header">
     <button type="button" class="mobile-drawer-close" onclick="window.toggleMobileMenu()" aria-label="Close menu">&times;</button>
     <div class="mobile-drawer-logo">
-      <a href="/" class="logo-text-link logo-text-link--shimmer" onclick="window.toggleMobileMenu()">
-        <span class="logo-text-main">Laushe</span>
-        <span class="logo-text-sub">by zahra</span>
+      <a href="/" class="logo-image-link" onclick="window.toggleMobileMenu()" aria-label="Laushe by Zahra home">
+        <img
+          src="{{ 'laushe-logo.jpg' | asset_url }}"
+          class="logo-image logo-image--drawer"
+          alt="Laushe"
+          width="120"
+          height="120"
+          loading="lazy"
+        >
       </a>
     </div>
   </div>
