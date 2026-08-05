@@ -227,5 +227,44 @@
       </script>
     {% endif %}
     <script src="{{ 'laushe-countup-v2.js' | asset_url }}" defer></script>
+    <script>
+      (function () {
+        try {
+          if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+        } catch (e) {}
+
+        function isReload() {
+          try {
+            var nav = performance.getEntriesByType && performance.getEntriesByType('navigation')[0];
+            if (nav) return nav.type === 'reload';
+            if (performance.navigation) return performance.navigation.type === 1;
+          } catch (e) {}
+          return false;
+        }
+
+        function forceTopOnReload() {
+          if (!isReload()) return;
+          if (window.location.hash) {
+            try {
+              history.replaceState(null, '', window.location.pathname + window.location.search);
+            } catch (e) {}
+          }
+          window.scrollTo(0, 0);
+        }
+
+        forceTopOnReload();
+        document.addEventListener('DOMContentLoaded', forceTopOnReload);
+        window.addEventListener('load', function () {
+          forceTopOnReload();
+          // Enable smooth scrolling only after initial paint (avoids hash jump feel)
+          setTimeout(function () {
+            document.documentElement.classList.add('laushe-smooth-scroll');
+          }, 300);
+        });
+        window.addEventListener('pageshow', function (e) {
+          if (e.persisted) forceTopOnReload();
+        });
+      })();
+    </script>
   </body>
 </html>

@@ -1,8 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&family=Poppins:wght@400;700;800&family=Inter:wght@400;600&display=swap');
 
 html {
-    scroll-behavior: smooth;
+    scroll-behavior: auto;
     overflow-x: hidden;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html.laushe-smooth-scroll {
+    scroll-behavior: smooth;
+  }
 }
 
 body {

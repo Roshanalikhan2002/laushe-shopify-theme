@@ -463,7 +463,15 @@
       const filterParam = (urlParams.get('filter') || '').toLowerCase();
       if (filterParam) {
         applyFilter(section, filterParam);
-        setTimeout(() => section.scrollIntoView({ behavior: 'smooth', block: 'start' }), 200);
+        // Don't auto-scroll on page reload — that jumps mobile users mid-page
+        var nav = performance.getEntriesByType && performance.getEntriesByType('navigation')[0];
+        var isReload = (nav && nav.type === 'reload') || (performance.navigation && performance.navigation.type === 1);
+        var hasShopHash = (window.location.hash || '').indexOf('laushe-shop') !== -1;
+        if (!isReload && hasShopHash) {
+          setTimeout(function () {
+            section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }, 200);
+        }
       }
     }
 
