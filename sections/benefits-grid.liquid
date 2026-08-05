@@ -36,8 +36,10 @@
       <p class="benefits-subheading">{{ section.settings.subheading }}</p>
     </div>
 
-    <div class="benefits-circle-grid">
+    {% assign benefit_count = section.blocks.size %}
+    <div class="benefits-circle-grid{% if benefit_count == 0 %} benefits-circle-grid--image-only{% endif %}">
       <!-- LEFT COLUMN -->
+      {% if benefit_count > 0 %}
       <div class="benefit-col benefit-left">
         {% for block in section.blocks limit: 2 %}
           <div class="benefit-item-v2" {{ block.shopify_attributes }}>
@@ -53,6 +55,7 @@
           </div>
         {% endfor %}
       </div>
+      {% endif %}
 
       <!-- CENTER COLUMN (IMAGE) -->
       <div class="benefit-center">
@@ -82,6 +85,7 @@
       </div>
 
       <!-- RIGHT COLUMN -->
+      {% if benefit_count > 2 %}
       <div class="benefit-col benefit-right">
         {% for block in section.blocks offset: 2 limit: 2 %}
           <div class="benefit-item-v2" {{ block.shopify_attributes }}>
@@ -97,6 +101,7 @@
           </div>
         {% endfor %}
       </div>
+      {% endif %}
     </div>
   </div>
 </section>
@@ -105,6 +110,10 @@
   .benefits-outer {
     background: #ffffff;
     color: #333333;
+  }
+
+  .benefits-outer.section-padding {
+    padding-bottom: 40px;
   }
 
   .benefits-heading {
@@ -127,6 +136,12 @@
     gap: 40px;
     max-width: 1200px;
     margin: 0 auto;
+  }
+
+  .benefits-circle-grid--image-only {
+    grid-template-columns: minmax(0, 520px);
+    justify-content: center;
+    gap: 0;
   }
   
   .benefit-col {
@@ -175,7 +190,7 @@
   
   .center-circle-wrap {
     position: relative;
-    padding: 20px;
+    padding: 0;
   }
   
   .circle-img {
@@ -188,15 +203,24 @@
     background: #ffffff;
     box-shadow: 0 20px 60px rgba(0,0,0,0.12);
     border: 1px solid #EEE;
+    display: block;
   }
   
   @media (max-width: 1024px) {
+    .benefits-outer.section-padding {
+      padding-bottom: 16px;
+    }
+
     .benefits-circle-grid {
       grid-template-columns: 1fr;
-      gap: 60px;
+      gap: 32px;
+    }
+
+    .benefits-circle-grid--image-only {
+      gap: 0;
     }
     
-    .benefit-center { order: 1; max-width: 400px; margin: 0 auto; }
+    .benefit-center { order: 1; max-width: 400px; width: 100%; margin: 0 auto; }
     .benefit-left { order: 2; text-align: center; gap: 40px; }
     .benefit-right { order: 3; text-align: center; gap: 40px; }
     
