@@ -63,6 +63,8 @@
             <img src="{{ 'kehwa-product-page.jpg' | asset_url }}" class="circle-img" alt="{{ product.title | escape }}" loading="lazy">
           {% elsif product and product.handle contains 'hair-oil' %}
             <img src="{{ 'hair-oil-product-page.jpg' | asset_url }}" class="circle-img" alt="{{ product.title | escape }}" loading="lazy">
+          {% elsif product and product.handle contains 'honey' %}
+            <img src="{{ 'honey-product-page.jpg' | asset_url }}" class="circle-img" alt="{{ product.title | escape }}" loading="lazy">
           {% elsif section.settings.center_image != blank %}
             <img src="{{ section.settings.center_image | image_url: width: 800 }}" class="circle-img" alt="Health" loading="lazy">
           {% else %}
