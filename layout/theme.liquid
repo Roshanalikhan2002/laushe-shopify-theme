@@ -58,7 +58,7 @@
       {% if settings.force_all_sold_out %}
         {% assign announce_text = settings.sold_out_message | default: 'All products are currently sold out. Orders cannot be placed right now.' %}
       {% else %}
-        {% assign announce_text = '✨ Limited Time Sale ✨ Shop Now' %}
+        {% assign announce_text = '✨ LIMITED TIME SALE ✨ SHOP NOW' %}
       {% endif %}
       <div class="announcement-bar__track">
         <span class="announcement-bar__item">{{ announce_text }}</span>
