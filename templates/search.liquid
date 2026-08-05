@@ -2,11 +2,15 @@
   <div class="section-header text-center" style="margin-bottom: 60px;">
     {% if search.performed %}
       <h1 class="h2" style="font-size: 32px; color: var(--deep-forest);">
-        {{ 'templates.search.results_with_count' | t: terms: search.terms, count: search.results_count | default: 'Search Results for "' | append: search.terms | append: '"' }}
+        {% if search.results_count == 1 %}
+          1 result for "{{ search.terms }}"
+        {% else %}
+          {{ search.results_count }} results for "{{ search.terms }}"
+        {% endif %}
       </h1>
       <p style="opacity: 0.7; margin-top: 10px;">{{ search.results_count }} results found for your search.</p>
     {% else %}
-      <h1 class="h2" style="font-size: 32px; color: var(--deep-forest);">{{ 'general.search.search' | t | default: 'Search Our Store' }}</h1>
+      <h1 class="h2" style="font-size: 32px; color: var(--deep-forest);">Search Our Store</h1>
     {% endif %}
   </div>
 
@@ -62,7 +66,7 @@
       </div>
     {% else %}
       <div class="text-center" style="padding: 40px 0;">
-        <p style="font-size: 18px; opacity: 0.6;">{{ 'templates.search.no_results' | t: terms: search.terms | default: 'No results found for your search.' }}</p>
+        <p style="font-size: 18px; opacity: 0.6;">No results found for "{{ search.terms }}". Try another search.</p>
         <a href="/collections/all" class="btn-pill btn-forest" style="margin-top: 30px; text-decoration: none;">Browse Collections</a>
       </div>
     {% endif %}
