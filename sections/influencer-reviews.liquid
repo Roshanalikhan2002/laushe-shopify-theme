@@ -26,7 +26,7 @@
               rel="noopener"
             >
               {% if block.settings.video != blank %}
-                <video class="inf-reviews__video" src="{{ block.settings.video.sources.last.url }}" autoplay muted loop playsinline></video>
+                <video class="inf-reviews__video" data-src="{{ block.settings.video.sources.last.url }}" preload="none" muted loop playsinline></video>
                 <button type="button" class="inf-reviews__mute-btn" data-inf-mute aria-label="Unmute video" aria-pressed="false"></button>
               {% elsif block.settings.image != blank %}
                 <img
@@ -37,7 +37,7 @@
                   height="520"
                 >
               {% elsif forloop.index <= 4 %}
-                <video class="inf-reviews__video" src="{{ 'social-review-' | append: forloop.index | append: '.mp4' | asset_url }}" autoplay muted loop playsinline></video>
+                <video class="inf-reviews__video" data-src="{{ 'social-review-' | append: forloop.index | append: '.mp4' | asset_url }}" preload="none" muted loop playsinline></video>
                 <button type="button" class="inf-reviews__mute-btn" data-inf-mute aria-label="Unmute video" aria-pressed="false"></button>
               {% else %}
                 <div class="inf-reviews__placeholder" aria-hidden="true"></div>
@@ -52,7 +52,7 @@
             <article class="inf-reviews__card">
               <div class="inf-reviews__media">
                 {% if i <= 4 %}
-                  <video class="inf-reviews__video" src="{{ 'social-review-' | append: i | append: '.mp4' | asset_url }}" autoplay muted loop playsinline></video>
+                  <video class="inf-reviews__video" data-src="{{ 'social-review-' | append: i | append: '.mp4' | asset_url }}" preload="none" muted loop playsinline></video>
                   <button type="button" class="inf-reviews__mute-btn" data-inf-mute aria-label="Unmute video" aria-pressed="false"></button>
                 {% else %}
                   <div class="inf-reviews__placeholder" aria-hidden="true"></div>
@@ -258,12 +258,38 @@
     prev.addEventListener('click', () => scrollByCard(-1));
     next.addEventListener('click', () => scrollByCard(1));
 
+    // Lazy-load heavy review videos only when near viewport
+    const videos = root.querySelectorAll('.inf-reviews__video[data-src]');
+    function armVideo(video) {
+      if (!video || video.getAttribute('data-armed')) return;
+      var src = video.getAttribute('data-src');
+      if (!src) return;
+      video.setAttribute('data-armed', '1');
+      video.src = src;
+      video.muted = true;
+      video.playsInline = true;
+      video.play().catch(function () {});
+    }
+    if ('IntersectionObserver' in window) {
+      var vio = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          armVideo(entry.target);
+          vio.unobserve(entry.target);
+        });
+      }, { rootMargin: '200px 0px', threshold: 0.1 });
+      videos.forEach(function (v) { vio.observe(v); });
+    } else {
+      videos.forEach(armVideo);
+    }
+
     root.querySelectorAll('[data-inf-mute]').forEach(function (btn) {
       btn.addEventListener('click', function (e) {
         e.preventDefault();
         e.stopPropagation();
         const video = btn.previousElementSibling;
         if (!video || video.tagName !== 'VIDEO') return;
+        armVideo(video);
         video.muted = !video.muted;
         btn.setAttribute('aria-pressed', video.muted ? 'false' : 'true');
         btn.setAttribute('aria-label', video.muted ? 'Unmute video' : 'Mute video');
