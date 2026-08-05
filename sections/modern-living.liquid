@@ -26,11 +26,11 @@
         
         <div class="stats-row-v2">
           <div class="stat-item-v2">
-            <span class="stat-num-v2">{{ section.settings.stat_1_num }}</span>
+            <span class="stat-num-v2 js-count-up" data-count="{{ section.settings.stat_1_num | escape }}">{{ section.settings.stat_1_num }}</span>
             <span class="stat-txt-v2">{{ section.settings.stat_1_txt }}</span>
           </div>
           <div class="stat-item-v2">
-            <span class="stat-num-v2">{{ section.settings.stat_2_num }}</span>
+            <span class="stat-num-v2 js-count-up" data-count="{{ section.settings.stat_2_num | escape }}">{{ section.settings.stat_2_num }}</span>
             <span class="stat-txt-v2">{{ section.settings.stat_2_txt }}</span>
           </div>
         </div>
