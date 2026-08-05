@@ -253,8 +253,8 @@
         "s4"
       ],
       "settings": {
-        "bg_color": "#e8f3ed",
-        "border_color": "#007e4014"
+        "bg_color": "#007E40",
+        "border_color": "#007E40"
       }
     },
     "quality_trust": {

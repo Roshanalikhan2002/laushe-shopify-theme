@@ -6,7 +6,7 @@
       "id": "bg_color",
       "type": "color",
       "label": "Background Color",
-      "default": "#E8F3ED"
+      "default": "#007E40"
     },
     {
        "id": "border_color",
@@ -45,7 +45,7 @@
 }
 {% endschema %}
 
-<section class="stats-bar-laushe" style="background-color: {{ section.settings.bg_color }}; border-top: 1px solid {{ section.settings.border_color }}; border-bottom: 1px solid {{ section.settings.border_color }};">
+<section class="stats-bar-laushe" style="background-color: {{ section.settings.bg_color | default: '#007E40' }}; border-top: none; border-bottom: none;">
   <div class="container">
     <div class="stats-grid">
       {% for block in section.blocks %}
@@ -61,6 +61,7 @@
 <style>
   .stats-bar-laushe {
     padding: 80px 0;
+    background-color: #007E40 !important;
   }
   
   .stats-grid {
@@ -74,7 +75,8 @@
     font-family: 'Poppins', sans-serif;
     font-size: 56px;
     font-weight: 800;
-    color: #007E40; /* --deep-forest */
+    color: #ffcc33 !important;
+    -webkit-text-fill-color: #ffcc33;
     line-height: 1;
   }
   
@@ -83,7 +85,8 @@
     font-weight: 800;
     letter-spacing: 0.15em;
     text-transform: uppercase;
-    color: #D4AF37; /* --accent-gold */
+    color: #ffcc33 !important;
+    -webkit-text-fill-color: #ffcc33;
     margin-top: 10px;
   }
   
