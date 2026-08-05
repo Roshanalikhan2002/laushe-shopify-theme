@@ -143,7 +143,7 @@
       "disabled": true,
       "settings": {
         "heading": "WHAT PEOPLE ARE SAYING",
-        "bg_color": "#faf7f2",
+        "bg_color": "#FEF9E1",
         "speed": 30
       }
     },
@@ -492,7 +492,7 @@
       "settings": {
         "subtitle": "GOT QUESTIONS?",
         "title": "Frequently Asked Questions",
-        "bg_color": "#faf7f2"
+        "bg_color": "#FEF9E1"
       }
     },
     "filtered_reviews": {
@@ -611,7 +611,7 @@
       ],
       "settings": {
         "heading": "Join Thousands Improving Their Health",
-        "bg_color": "#fafafa"
+        "bg_color": "#FEF9E1"
       }
     },
     "influencer_reviews": {
@@ -670,7 +670,7 @@
       ],
       "settings": {
         "heading": "AS SEEN ON SOCIAL",
-        "bg_color": "#f7f3ea",
+        "bg_color": "#FEF9E1",
         "heading_color": "#007e40"
       }
     },
@@ -754,7 +754,7 @@
         "heading_line1": "50,000+ FAMILIES.",
         "heading_line2": "WE'VE BEEN",
         "heading_line3": "GETTING AROUND",
-        "bg_color": "#fcf8ed",
+        "bg_color": "#FEF9E1",
         "line1_color": "#007e40",
         "line2_color": "#0a1f14",
         "icon_bg": "#007e40",
@@ -797,7 +797,7 @@
         "s3"
       ],
       "settings": {
-        "bg_color": "#faf7f2",
+        "bg_color": "#FEF9E1",
         "subtitle": "OUR STORY",
         "title": "Where Tradition Meets Thoughtful Care",
         "description_1": "It all began with a simple realization: true health is rarely found in shortcuts or artificial solutions. People were searching for remedies that actually nourished the body and honored the wisdom of generations before us. From this desire, Laushe was born, a promise to create products that are pure, intentional, and deeply connected to nature.\nFounded by Zahra, Laushe is a reflection of her commitment to authentic, mindful living. Every formulation she guides is Sunnah-blessed, thoughtfully combining prophetic medicine with modern nutritional insight. Her vision was never just about creating products; it was about offering families a way to care for themselves naturally, safely, and effectively, without compromise.",
@@ -830,7 +830,7 @@
       "settings": {
         "section_title": "Pure, Potent, Proven",
         "section_subtitle": "Here is what our customers report after 3 months of using Laushe products.",
-        "bg_color": "#fff9e9"
+        "bg_color": "#FEF9E1"
       }
     },
     "laushe_comparison_table_BtaEPh": {
@@ -896,7 +896,7 @@
       "name": "Comparison Table (Laushe)",
       "settings": {
         "heading": "Laushe vs. Other Brands",
-        "bg_color": "#faf7f2"
+        "bg_color": "#FEF9E1"
       }
     },
     "laushe_promo_cta_wwzJAq": {

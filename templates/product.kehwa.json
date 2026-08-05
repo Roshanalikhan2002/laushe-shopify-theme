@@ -212,7 +212,7 @@
                                                         ],
                                         "settings":  {
                                                          "heading":  "Skinny Sips vs. Other Brands",
-                                                         "bg_color":  "#faf7f2"
+                                                         "bg_color":  "#FEF9E1"
                                                      }
                                     },
                      "faq":  {
@@ -264,7 +264,7 @@
                                  "settings":  {
                                                   "subtitle":  "QUESTIONS \u0026 ANSWERS",
                                                   "title":  "Frequently Asked Questions",
-                                                  "bg_color":  "#faf7f2"
+                                                  "bg_color":  "#FEF9E1"
                                               }
                              },
                      "final_cta":  {

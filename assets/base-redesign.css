@@ -900,7 +900,7 @@ footer {
     transform: translateX(-105%);
     visibility: hidden;
     overflow: hidden;
-    color: #f7f3ea;
+    color: #FEF9E1;
 }
 
 .mobile-drawer__shimmer {
@@ -1026,7 +1026,7 @@ footer {
     align-items: center;
     justify-content: space-between;
     text-decoration: none;
-    color: #f7f3ea;
+    color: #FEF9E1;
     font-size: 16px;
     font-weight: 700;
     letter-spacing: 0.06em;
