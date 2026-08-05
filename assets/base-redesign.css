@@ -89,7 +89,8 @@ h1, h2, h3, h4, .font-heading {
     }
     .logo-image {
         height: 44px;
-        max-width: 96px;
+        width: 44px;
+        max-width: 44px;
     }
 }
 
@@ -134,10 +135,10 @@ h1, h2, h3, h4, .font-heading {
     box-shadow: 0 10px 25px rgba(0,0,0,0.15);
 }
 
-/* Header & Announcement Bar — match Quality section green (#007E40) */
+/* Header & Announcement Bar */
 .announcement-bar {
-    background-color: #007E40;
-    color: var(--pure-white);
+    background-color: #ffcc33;
+    color: #007E40;
     padding: 10px 0;
     font-size: 14px;
     font-weight: 700;
@@ -230,21 +231,27 @@ header.sticky-header {
     justify-content: center;
     text-decoration: none;
     line-height: 0;
+    background: #007E40;
+    border-radius: 10px;
+    padding: 4px;
+    box-shadow: 0 4px 14px rgba(0, 126, 64, 0.25);
 }
 
 .logo-image {
     display: block;
     height: 52px;
-    width: auto;
-    max-width: 120px;
+    width: 52px;
+    max-width: 52px;
     object-fit: contain;
-    border-radius: 8px;
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+    border-radius: 6px;
+    box-shadow: none;
+    background: transparent;
 }
 
 .logo-image--drawer {
     height: 64px;
-    max-width: 140px;
+    width: 64px;
+    max-width: 64px;
 }
 
 .logo-text-link {
