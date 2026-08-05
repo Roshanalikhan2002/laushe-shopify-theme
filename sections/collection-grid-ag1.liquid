@@ -117,9 +117,6 @@
                     {% endif %}
                     
                     {% assign prod_img = product.featured_image | img_url: '600x800', crop: 'center' %}
-                    {% if product.handle contains 'hair-oil' %}
-                        {% assign prod_img = 'hair-oil-v2.jpg' | asset_url %}
-                    {% endif %}
 
                     <a href="{{ product.url }}">
                         <img src="{{ prod_img }}" class="product-img" alt="{{ product.title }}" loading="lazy">

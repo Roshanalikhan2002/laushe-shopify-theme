@@ -81,8 +81,6 @@
                   <a href="{{ prod.url }}" class="bs-img-link">
                     {% if block.settings.image_override != blank %}
                       <img src="{{ block.settings.image_override | image_url: width: 700 }}" alt="{{ block.settings.title_override | default: prod.title | escape }}">
-                    {% elsif prod.handle contains 'hair-oil' %}
-                      <img src="{{ 'hair-oil-v2.jpg' | asset_url }}" alt="{{ block.settings.title_override | default: prod.title | escape }}">
                     {% elsif prod.featured_image %}
                       <img src="{{ prod.featured_image | image_url: width: 700 }}" alt="{{ prod.title | escape }}">
                     {% else %}
@@ -120,9 +118,7 @@
                 <div class="bs-media" style="background: {{ pastel_bgs[bg_i] }};">
                   <span class="bs-badge">BESTSELLER</span>
                   <a href="{{ prod.url }}" class="bs-img-link">
-                    {% if prod.handle contains 'hair-oil' %}
-                      <img src="{{ 'hair-oil-v2.jpg' | asset_url }}" alt="{{ prod.title | escape }}">
-                    {% elsif prod.featured_image %}
+                    {% if prod.featured_image %}
                       <img src="{{ prod.featured_image | image_url: width: 700 }}" alt="{{ prod.title | escape }}">
                     {% else %}
                       <span class="bs-placeholder">Add image</span>

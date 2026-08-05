@@ -74,7 +74,6 @@
               {% if product.featured_image %}
                 {% assign display_img = product.featured_image | image_url: width: 800 %}
               {% endif %}
-              {% if product.handle contains 'hair-oil' %}{% assign display_img = 'hair-oil-v2.jpg' | asset_url %}{% endif %}
               {% assign display_price = product.price | money %}
               {% assign compare_price = product.compare_at_price %}
 
@@ -138,7 +137,6 @@
           {% if product.featured_image %}
             {% assign display_img = product.featured_image | image_url: width: 800 %}
           {% endif %}
-          {% if product.handle contains 'hair-oil' %}{% assign display_img = 'hair-oil-v2.jpg' | asset_url %}{% endif %}
           {% assign display_price = product.price | money %}
           {% assign compare_price = product.compare_at_price %}
 
