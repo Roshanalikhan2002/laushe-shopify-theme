@@ -58,7 +58,7 @@
       <div class="benefit-center">
         <div class="center-circle-wrap">
           {% if product and product.handle == 'golden-elixir' %}
-            <img src="{{ 'golden-elixir.webp' | asset_url }}" class="circle-img" alt="Golden Elixir" loading="lazy">
+            <img src="{{ 'golden-elixir-product-page.jpg' | asset_url }}" class="circle-img" alt="Golden Elixir" loading="lazy">
           {% elsif product and product.handle contains 'skinny-sips' %}
             <img src="{{ 'kehwa-product-page.jpg' | asset_url }}" class="circle-img" alt="{{ product.title | escape }}" loading="lazy">
           {% elsif product and product.handle contains 'hair-oil' %}
