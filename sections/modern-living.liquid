@@ -137,16 +137,36 @@
   }
   
   @media (max-width: 1024px) {
-    .modern-living-image.pngection .modern-grid {
+    .modern-living-section .modern-grid {
       grid-template-columns: 1fr;
       text-align: center;
-      gap: 50px;
+      gap: 40px;
     }
     .modern-living-section .modern-content { order: 2; }
-    .modern-living-section .modern-image-wrap { order: 1; max-width: 500px; margin: 0 auto; }
+    .modern-living-section .modern-image-wrap { order: 1; max-width: 500px; width: 100%; margin: 0 auto; }
     .modern-living-section .modern-desc { margin: 0 auto 40px; }
-    .modern-living-section .stats-row-v2 { justify-content: center; }
-    .modern-living-section .modern-heading { font-size: 40px; }
-    .modern-living-section .stat-num-v2 { font-size: 48px; }
+    .modern-living-section .stats-row-v2 {
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 28px;
+    }
+    .modern-living-section .stat-item-v2 {
+      align-items: center;
+      max-width: 160px;
+    }
+    .modern-living-section .cta-wrap {
+      display: flex;
+      justify-content: center;
+    }
+    .modern-living-section .modern-heading { font-size: 32px; }
+    .modern-living-section .stat-num-v2 { font-size: 44px; }
+  }
+
+  @media (max-width: 480px) {
+    .modern-living-section .modern-heading { font-size: 28px; }
+    .modern-living-section .modern-desc { font-size: 16px; margin-bottom: 32px; }
+    .modern-living-section .stats-row-v2 { gap: 20px; }
+    .modern-living-section .stat-item-v2 { max-width: 140px; }
+    .modern-living-section .modern-img { border-radius: 24px; }
   }
 </style>
