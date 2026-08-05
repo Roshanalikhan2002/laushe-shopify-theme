@@ -50,7 +50,7 @@
     <div class="stats-grid">
       {% for block in section.blocks %}
         <div class="stat-item" {{ block.shopify_attributes }}>
-          <div class="stat-value">{{ block.settings.number }}</div>
+          <div class="stat-value js-count-up" data-count="{{ block.settings.number | escape }}">{{ block.settings.number }}</div>
           <p class="stat-label">{{ block.settings.label }}</p>
         </div>
       {% endfor %}

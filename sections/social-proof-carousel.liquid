@@ -71,7 +71,7 @@
       {% for block in section.blocks %}
         {% if block.type == 'social_stat' %}
           <div class="stat-box" {{ block.shopify_attributes }}>
-            <div class="stat-number">{{ block.settings.number }}</div>
+            <div class="stat-number js-count-up" data-count="{{ block.settings.number | escape }}">{{ block.settings.number }}</div>
             <p class="stat-label-bold">{{ block.settings.label }}</p>
           </div>
         {% endif %}

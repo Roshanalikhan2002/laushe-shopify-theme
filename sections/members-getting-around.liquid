@@ -6,7 +6,7 @@
   <div class="members-around__inner">
     <div class="members-around__copy">
       {% if section.settings.heading_line1 != blank %}
-        <p class="members-around__line1">{{ section.settings.heading_line1 }}</p>
+        <p class="members-around__line1 js-count-up-line" data-count-line="{{ section.settings.heading_line1 | escape }}">{{ section.settings.heading_line1 }}</p>
       {% endif %}
       <h2 class="members-around__heading">
         {% if section.settings.heading_line2 != blank %}
