@@ -1079,21 +1079,38 @@ footer {
     .header-nav-desktop { display: none !important; }
 
     .header-flex {
-        grid-template-columns: 1fr auto 1fr;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
         padding: 0 8px;
         position: relative;
+        min-height: 52px;
     }
 
-    .header-left { justify-content: flex-start; }
-    .header-right { justify-content: flex-end; }
+    .header-left {
+        justify-content: flex-start;
+        flex: 0 0 auto;
+        z-index: 3;
+    }
+    .header-right {
+        justify-content: flex-end;
+        flex: 0 0 auto;
+        z-index: 3;
+        margin-left: auto;
+    }
     .logo-emblem {
         position: absolute;
         left: 50%;
         top: 50%;
         transform: translate(-50%, -50%);
-        justify-self: center;
         z-index: 2;
         pointer-events: auto;
+    }
+
+    .header-icons {
+        display: flex !important;
+        align-items: center;
+        gap: 14px;
     }
 
     .header-icons ion-icon,
