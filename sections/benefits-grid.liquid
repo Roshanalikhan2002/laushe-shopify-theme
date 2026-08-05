@@ -69,6 +69,8 @@
             <img src="{{ 'chia-seeds-product-page.jpg' | asset_url }}" class="circle-img" alt="{{ product.title | escape }}" loading="lazy">
           {% elsif product and product.handle contains 'panjiri' %}
             <img src="{{ 'panjiri-product-page.jpg' | asset_url }}" class="circle-img" alt="{{ product.title | escape }}" loading="lazy">
+          {% elsif product and product.handle contains 'ghee' %}
+            <img src="{{ 'desi-ghee-product-page.jpg' | asset_url }}" class="circle-img" alt="{{ product.title | escape }}" loading="lazy">
           {% elsif section.settings.center_image != blank %}
             <img src="{{ section.settings.center_image | image_url: width: 800 }}" class="circle-img" alt="Health" loading="lazy">
           {% else %}
