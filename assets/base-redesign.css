@@ -62,7 +62,7 @@ h1, h2, h3, h4, .font-heading {
 /* Global Navigation Styles */
 .nav-links a {
     text-decoration: none;
-    color: var(--deep-forest);
+    color: #ffffff;
     font-weight: 700;
     font-size: 14px;
     letter-spacing: 0.05em;
@@ -198,6 +198,12 @@ header.sticky-header {
     position: sticky;
     top: 0;
     z-index: 1000;
+    overflow: visible;
+}
+
+header.sticky-header > .container {
+    overflow: visible;
+    max-width: 1280px;
 }
 
 .header-flex {
@@ -211,8 +217,10 @@ header.sticky-header {
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    gap: 8px;
+    gap: 4px;
     min-width: 0;
+    margin-left: -8px;
+    overflow: visible;
 }
 
 .header-right {
@@ -225,6 +233,7 @@ header.sticky-header {
 .logo-emblem {
     justify-self: center;
     text-align: center;
+    z-index: 1;
 }
 
 .logo-image-link {
@@ -287,8 +296,11 @@ header.sticky-header {
 
 .header-nav-desktop {
     display: flex;
-    gap: 6px;
+    gap: 2px;
     align-items: center;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+    z-index: 2;
 }
 
 .header-icons a,
@@ -298,13 +310,17 @@ header.sticky-header {
     line-height: 1;
 }
 
-.header-nav-link {
+.header-nav-link,
+.header-nav-desktop .header-nav-link,
+.header-nav-desktop a.header-nav-link,
+.header-nav-desktop .nav-dropdown-btn {
     text-decoration: none;
-    color: #FEF9E1;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff;
     font-weight: 700;
     font-size: 14px;
     letter-spacing: 0.05em;
-    padding: 10px 12px;
+    padding: 10px 10px;
     background: none;
     border: none;
     cursor: pointer;
@@ -312,11 +328,18 @@ header.sticky-header {
     display: inline-flex;
     align-items: center;
     gap: 5px;
+    transition: color 0.2s ease;
 }
 
+.header-nav-link:hover,
+.header-nav-desktop .header-nav-link:hover,
+.header-nav-desktop .nav-dropdown-btn:hover,
 .header-nav-link.is-active,
-.header-nav-link[aria-current="page"] {
-    color: #ffcc33;
+.header-nav-link[aria-current="page"],
+.header-nav-desktop .header-nav-link.is-active,
+.header-nav-desktop .nav-dropdown-btn.is-active {
+    color: #ffcc33 !important;
+    -webkit-text-fill-color: #ffcc33;
 }
 
 .menu-toggle,

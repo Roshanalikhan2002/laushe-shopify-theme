@@ -43,9 +43,6 @@
                 <div class="inf-reviews__placeholder" aria-hidden="true"></div>
               {% endif %}
             </a>
-            {% if block.settings.handle != blank %}
-              <p class="inf-reviews__handle">{{ block.settings.handle }}</p>
-            {% endif %}
           </article>
         {% else %}
           {% for i in (1..6) %}
@@ -58,7 +55,6 @@
                   <div class="inf-reviews__placeholder" aria-hidden="true"></div>
                 {% endif %}
               </div>
-              <p class="inf-reviews__handle">@laushebyzahra</p>
             </article>
           {% endfor %}
         {% endfor %}
@@ -184,11 +180,7 @@
       #ddd5c6;
   }
   #inf-reviews-{{ section.id }} .inf-reviews__handle {
-    margin: 10px 0 0;
-    font-size: 13px;
-    color: #6b6b6b;
-    font-family: 'Poppins', sans-serif;
-    font-weight: 500;
+    display: none !important;
   }
 
   #inf-reviews-{{ section.id }} .inf-reviews__nav {
