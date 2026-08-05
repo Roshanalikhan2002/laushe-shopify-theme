@@ -202,20 +202,18 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: clamp(170px, 16vw, 220px);
-  height: clamp(52px, 5.2vw, 68px);
-  padding: 0;
-  border-radius: 50%;
+  padding: 18px 48px;
+  border-radius: 999px;
   background: #ffcc33 !important;
   color: #007E40 !important;
   -webkit-text-fill-color: #007E40;
   font-family: 'Poppins', 'Montserrat', sans-serif;
-  font-size: clamp(13px, 1.3vw, 17px);
+  font-size: clamp(15px, 1.4vw, 18px);
   font-weight: 800;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  text-transform: none;
   text-decoration: none;
-  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.22);
+  box-shadow: 0 8px 28px rgba(255, 204, 51, 0.45);
   transition: transform 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
   white-space: nowrap;
 }
@@ -223,7 +221,7 @@
   background: #ffe066 !important;
   color: #007E40 !important;
   transform: translateY(-2px);
-  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.28);
+  box-shadow: 0 12px 32px rgba(255, 204, 51, 0.55);
 }
 @media (max-width: 768px) {
   .hero-giveaway__image {
@@ -236,9 +234,8 @@
     bottom: 8%;
     top: auto;
     transform: translateX(-50%);
-    width: 168px;
-    height: 54px;
-    font-size: 14px;
+    padding: 16px 40px;
+    font-size: 15px;
   }
   .hero-giveaway__cta:hover {
     transform: translateX(-50%) translateY(-2px);
