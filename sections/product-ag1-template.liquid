@@ -77,7 +77,7 @@
         <div class="sticky-box-v3">
           <h1 class="product-title-v3">{{ product.title }}</h1>
           <div class="product-price-v3" id="OneTimePrice">
-            {{ section.settings.custom_one_time_price | default: product.selected_or_first_available_variant.price | money }}
+            {{ product.selected_or_first_available_variant.price | money }}
           </div>
           
           <form method="post" action="/cart/add" id="AG1ProductForm" class="laushe-atc-form-v3">
@@ -147,7 +147,7 @@
                        <div class="method-header">
                          <span class="method-name">Buy one time</span>
                          <span class="method-price">
-                           {{ section.settings.custom_one_time_price | default: product.selected_or_first_available_variant.price | money }}
+                           {{ product.selected_or_first_available_variant.price | money }}
                          </span>
                        </div>
                      </div>
@@ -437,24 +437,23 @@
     if (variant) {
       window.lausheSelectedVariantId = variant.id;
       syncVariantInput();
-      // Update displayed prices — guard against elements not existing on BOGO-only pages
+      // Always show Shopify admin variant price (no theme overrides)
       const priceInPaise = variant.price;
-      const customOneTime = "{{ section.settings.custom_one_time_price }}";
-      const customSub = "{{ section.settings.custom_sub_price }}";
+      const shopifyPriceText = 'Rs. ' + (priceInPaise / 100).toLocaleString('en-PK');
 
       const oneTimePriceEl = document.getElementById('OneTimePrice');
       if (oneTimePriceEl) {
-        oneTimePriceEl.innerText = customOneTime || ('Rs. ' + (priceInPaise / 100).toLocaleString());
+        oneTimePriceEl.innerText = shopifyPriceText;
       }
 
       const subPriceEl = document.getElementById('SubPrice');
       if (subPriceEl) {
-        subPriceEl.innerText = customSub ? (customSub + '/mo') : ('Rs. ' + Math.round(priceInPaise * 0.75 / 100).toLocaleString() + '/mo');
+        subPriceEl.innerText = 'Rs. ' + Math.round(priceInPaise * 0.75 / 100).toLocaleString('en-PK') + '/mo';
       }
 
       const bogoPriceEl = document.getElementById('BogoPrice');
       if (bogoPriceEl) {
-        bogoPriceEl.innerText = customOneTime || ('Rs. ' + (priceInPaise / 100).toLocaleString());
+        bogoPriceEl.innerText = shopifyPriceText;
       }
     }
   }

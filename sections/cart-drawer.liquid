@@ -27,8 +27,16 @@
 
   <form action="/cart" method="post" id="CartDrawerFooter" class="drawer-footer" style="display:none;">
     <div id="CartDrawerDiscountContainer"></div>
+    <div class="footer-row" id="CartDrawerOriginalRow" style="display:none;">
+      <span class="total-label" style="font-weight:600;color:#666;">Subtotal</span>
+      <span id="CartDrawerOriginalTotal" class="total-value" style="font-size:15px;font-weight:600;color:#666;">Rs. 0</span>
+    </div>
+    <div class="footer-row" id="CartDrawerDiscountRow" style="display:none;">
+      <span class="total-label" style="font-weight:600;color:#c45c26;" id="CartDrawerDiscountLabel">Discount</span>
+      <span id="CartDrawerDiscountValue" class="total-value" style="font-size:15px;font-weight:700;color:#c45c26;">Rs. 0</span>
+    </div>
     <div class="footer-row">
-      <span class="total-label">Subtotal</span>
+      <span class="total-label">Total</span>
       <span id="CartDrawerTotal" class="total-value">Rs. 0</span>
     </div>
     <p class="footer-note">
@@ -233,13 +241,15 @@
     render: function(cart) {
       var itemsEl = document.getElementById('CartDrawerItems');
       var totalEl = document.getElementById('CartDrawerTotal');
-      var bar = document.getElementById('ProgressBar');
-      var barText = document.getElementById('ProgressText');
+      var originalRow = document.getElementById('CartDrawerOriginalRow');
+      var originalEl = document.getElementById('CartDrawerOriginalTotal');
+      var discountRow = document.getElementById('CartDrawerDiscountRow');
+      var discountLabel = document.getElementById('CartDrawerDiscountLabel');
+      var discountValue = document.getElementById('CartDrawerDiscountValue');
       var footer = document.getElementById('CartDrawerFooter');
       var discountContainer = document.getElementById('CartDrawerDiscountContainer');
       if (!itemsEl) return;
 
-      var totalRs = cart.total_price / 100;
       var hasGift = false;
       cart.items.forEach(function(i) {
         if (i.properties && (i.properties._is_gift === 'true' || i.properties.is_gift === 'true')) {
@@ -256,13 +266,32 @@
         }
       }
 
-      if (totalEl) totalEl.innerText = 'Rs. ' + totalRs.toLocaleString('en-PK');
+      // Always show Shopify cart totals (admin product price minus any Admin discounts)
+      if (totalEl) totalEl.innerText = LausheCart.fmt(cart.total_price);
 
-
+      var discountAmount = cart.total_discount || 0;
+      if (discountAmount > 0) {
+        var discountTitle = 'Discount';
+        var apps = cart.cart_level_discount_applications || [];
+        if (apps.length && apps[0].title) discountTitle = apps[0].title;
+        else if (cart.discount_codes && cart.discount_codes.length && cart.discount_codes[0].code) {
+          discountTitle = cart.discount_codes[0].code;
+        }
+        if (originalRow) originalRow.style.display = 'flex';
+        if (originalEl) originalEl.innerText = LausheCart.fmt(cart.original_total_price);
+        if (discountRow) discountRow.style.display = 'flex';
+        if (discountLabel) discountLabel.innerText = discountTitle;
+        if (discountValue) discountValue.innerText = '-' + LausheCart.fmt(discountAmount);
+      } else {
+        if (originalRow) originalRow.style.display = 'none';
+        if (discountRow) discountRow.style.display = 'none';
+      }
 
       if (cart.item_count === 0) {
         itemsEl.innerHTML = '<div class="empty-state"><p class="empty-msg">Your cart is empty.</p><button class="checkout-btn" onclick="LausheCart.close()">Keep Shopping</button></div>';
         if (footer) footer.style.display = 'none';
+        if (originalRow) originalRow.style.display = 'none';
+        if (discountRow) discountRow.style.display = 'none';
         return;
       }
 
@@ -270,7 +299,16 @@
 
       itemsEl.innerHTML = cart.items.map(function(item) {
         var isGift = (item.properties && (item.properties._is_gift === 'true' || item.properties.is_gift === 'true'));
-        var priceDisplay = isGift ? '<span style="color: #2d7a4f; font-weight: 800;">FREE GIFT</span>' : LausheCart.fmt(item.original_line_price);
+        var priceDisplay;
+        if (isGift) {
+          priceDisplay = '<span style="color: #2d7a4f; font-weight: 800;">FREE GIFT</span>';
+        } else if (item.original_line_price > item.final_line_price) {
+          priceDisplay = '<span style="text-decoration:line-through;color:#999;margin-right:6px;">' +
+            LausheCart.fmt(item.original_line_price) + '</span>' +
+            '<span style="color:#007E40;font-weight:700;">' + LausheCart.fmt(item.final_line_price) + '</span>';
+        } else {
+          priceDisplay = LausheCart.fmt(item.final_line_price);
+        }
         
         return '<div class="cart-item" data-key="' + item.key + '">' +
           '<img src="' + (item.image || '') + '" class="item-img" alt="' + item.title + '">' +

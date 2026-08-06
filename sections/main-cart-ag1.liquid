@@ -99,8 +99,21 @@
           
           <div style="display: flex; justify-content: space-between; margin-bottom: 15px; font-size: 16px; color: #555;">
             <span>Subtotal</span>
-            <span style="font-weight: 700; color: #007E40;">{{ cart.total_price | money }}</span>
+            <span style="font-weight: 700; color: #007E40;">{{ cart.original_total_price | money }}</span>
           </div>
+
+          {% if cart.total_discount > 0 %}
+          <div style="display: flex; justify-content: space-between; margin-bottom: 15px; font-size: 16px; color: #c45c26;">
+            <span>
+              {% if cart.cart_level_discount_applications.size > 0 %}
+                {{ cart.cart_level_discount_applications.first.title }}
+              {% else %}
+                Discount
+              {% endif %}
+            </span>
+            <span style="font-weight: 700;">-{{ cart.total_discount | money }}</span>
+          </div>
+          {% endif %}
           
           <div style="display: flex; justify-content: space-between; margin-bottom: 25px; font-size: 16px; color: #555;">
             <span>Shipping</span>
