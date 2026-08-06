@@ -35,11 +35,7 @@
 {% assign hide_onetime = false %}
 {% assign enable_bogo = false %}
 
-{% comment %} Handle Bundle of 3 for Panjiri, Ghee, and Honey {% endcomment %}
 {% assign enable_bundle = false %}
-{% if prod_title contains 'panjiri' or prod_title contains 'ghee' or prod_title contains 'honey' %}
-  {% assign enable_bundle = true %}
-{% endif %}
 
 {% comment %} GLOBAL: Remove subscription from all pages as per user request {% endcomment %}
 {% assign enable_sub = false %}
@@ -157,21 +153,6 @@
                      </div>
                   </div>
                 {% endunless %}
-
-                {% if enable_bundle %}
-                  <div class="purchase-method" data-method="bundle" onclick="switchPurchaseMethod(this, 'bundle')">
-                     <div class="method-radio"><div class="radio-inner"></div></div>
-                     <div class="method-content">
-                       <div class="method-header">
-                         <span class="method-name">Buy bundle of 3</span>
-                         <span class="method-badge-v3">SAVE MORE</span>
-                         <span class="method-price" id="BundlePrice">
-                           {{ product.selected_or_first_available_variant.price | times: 3 | money }}
-                         </span>
-                       </div>
-                     </div>
-                  </div>
-                {% endif %}
             </div>
             {% endif %}
 
@@ -506,9 +487,7 @@
       window.laushe_selected_purchase_method = method;
       
       // Update quantity or hidden fields if needed
-      if (method === 'bundle') {
-        document.querySelector('input[name="quantity"]').value = "3";
-      } else if (method === 'bogo') {
+      if (method === 'bogo') {
         document.querySelector('input[name="quantity"]').value = "1";
       } else {
         document.querySelector('input[name="quantity"]').value = "1";
@@ -572,8 +551,6 @@
             { id: parseInt(variantId), quantity: 1 },
             { id: parseInt(giftId), quantity: 1, properties: { '_is_gift': 'true' } }
           ];
-        } else if (method === 'bundle') {
-          itemsToAdd = [{ id: parseInt(variantId), quantity: 3 }];
         } else {
           itemsToAdd = [{ id: parseInt(variantId), quantity: 1 }];
         }
