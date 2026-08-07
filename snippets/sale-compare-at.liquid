@@ -2,23 +2,17 @@
   50% OFF compare-at helper.
   - Uses Shopify compare_at when set above price
   - Otherwise falls back to 2x sale price for discounted products
-  - Skin Tint & Liquid Blush: never invent a discount (normal price only)
+  - Skin Tint & Liquid Blush: never show a cut/compare price
   Usage:
     {% capture compare_cents %}{% render 'sale-compare-at', product: product %}{% endcapture %}
     {% assign compare_price = compare_cents | strip | plus: 0 %}
 {%- endcomment -%}
-{%- liquid
-  assign skip_sale = false
-  if product != blank
-    if product.handle contains 'skin-tint' or product.handle contains 'liquid-blush'
-      assign skip_sale = true
-    endif
-  endif
--%}
-{%- if product != blank and product.compare_at_price != blank and product.compare_at_price > product.price -%}
-{{- product.compare_at_price -}}
-{%- elsif skip_sale -%}
+{%- if product != blank and product.handle contains 'skin-tint' -%}
 0
+{%- elsif product != blank and product.handle contains 'liquid-blush' -%}
+0
+{%- elsif product != blank and product.compare_at_price != blank and product.compare_at_price > product.price -%}
+{{- product.compare_at_price -}}
 {%- elsif product != blank and product.price > 0 -%}
 {{- product.price | times: 2 -}}
 {%- else -%}

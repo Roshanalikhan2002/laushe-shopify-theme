@@ -308,13 +308,19 @@
           var unitPrice = item.original_price || item.price || 0;
           var handle = String(item.handle || item.url || '').toLowerCase();
           var skipSale = handle.indexOf('skin-tint') !== -1 || handle.indexOf('liquid-blush') !== -1;
-          var unitCompare = (item.compare_at_price && item.compare_at_price > unitPrice)
-            ? item.compare_at_price
-            : (!skipSale && unitPrice > 0 ? unitPrice * 2 : 0);
+          var unitCompare = 0;
+          if (!skipSale) {
+            unitCompare = (item.compare_at_price && item.compare_at_price > unitPrice)
+              ? item.compare_at_price
+              : (unitPrice > 0 ? unitPrice * 2 : 0);
+          }
           var lineSale = item.final_line_price;
           var lineCompare = unitCompare * item.quantity;
           // Prefer Shopify line discount strikethrough when present; else 50% compare-at
-          if (item.original_line_price > item.final_line_price) {
+          // Skin Tint / Liquid Blush: never show cut price
+          if (skipSale) {
+            priceDisplay = '<span class="price-is">' + LausheCart.fmt(lineSale) + '</span>';
+          } else if (item.original_line_price > item.final_line_price) {
             priceDisplay = '<span class="price-was">' + LausheCart.fmt(item.original_line_price) + '</span>' +
               '<span class="price-is">' + LausheCart.fmt(lineSale) + '</span>';
           } else if (lineCompare > lineSale) {
