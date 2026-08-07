@@ -92,14 +92,9 @@
 
               <div class="catalog-item" data-tags="{{ product_tags_string }}" {% if product.handle contains 'skin-tint' or product.handle contains 'liquid-blush' %}data-exclusive="makeup"{% endif %} {{ override_block.shopify_attributes }}>
                 <article class="catalog-card blume-card">
-                  <div class="card-media" style="background: {{ card_bg }};">
-                    {% if product.price > 0 and compare_price > product.price %}
-                      {% assign saving = compare_price | minus: product.price | times: 100 | divided_by: compare_price %}
-                      <span class="card-badge card-badge--sale">{{ saving }}% OFF</span>
-                    {% endif %}
-                    {% if product.tags contains 'bestseller' or forloop.parentloop.first %}
-                      <span class="card-badge card-badge--tag">BESTSELLER</span>
-                    {% endif %}
+                  <div class="card-media">
+                    <span class="card-badge card-badge--tag">BESTSELLER</span>
+                    <span class="card-badge card-badge--sale">50% OFF</span>
                     <a href="{{ product.url }}" class="card-img-link" aria-label="{{ display_title | escape }}">
                       {% if display_img != blank %}
                         <img src="{{ display_img }}" alt="{{ display_title | escape }}" class="card-img" loading="lazy" width="600" height="600">
@@ -155,11 +150,9 @@
 
           <div class="catalog-item" data-tags="{{ product_tags_string }}" {{ override_block.shopify_attributes }}>
             <article class="catalog-card blume-card">
-              <div class="card-media" style="background: {{ card_bg }};">
-                {% if product.price > 0 and compare_price > product.price %}
-                  {% assign saving = compare_price | minus: product.price | times: 100 | divided_by: compare_price %}
-                  <span class="card-badge card-badge--sale">{{ saving }}% OFF</span>
-                {% endif %}
+              <div class="card-media">
+                <span class="card-badge card-badge--tag">BESTSELLER</span>
+                <span class="card-badge card-badge--sale">50% OFF</span>
                 <a href="{{ product.url }}" class="card-img-link" aria-label="{{ display_title | escape }}">
                   {% if display_img != blank %}
                     <img src="{{ display_img }}" alt="{{ display_title | escape }}" class="card-img" loading="lazy" width="600" height="600">
@@ -272,6 +265,7 @@
     height: auto;
     min-height: 0;
     flex-shrink: 0;
+    background: #ffffff;
   }
   #section-{{ section.id }} .card-badge {
     position: absolute;
@@ -284,31 +278,37 @@
     letter-spacing: 0.04em;
     font-family: 'Poppins', sans-serif;
   }
-  #section-{{ section.id }} .card-badge--sale {
-    left: 14px;
-    background: rgba(255,255,255,0.92);
-    color: #1a1a1a;
-  }
   #section-{{ section.id }} .card-badge--tag {
+    left: 14px;
+    right: auto;
+    background: #ffcc33;
+    color: #000000;
+  }
+  #section-{{ section.id }} .card-badge--sale {
     right: 14px;
     left: auto;
-    background: rgba(0,126,64,0.9);
-    color: #fff;
+    background: #007E40;
+    color: #ffffff;
   }
   #section-{{ section.id }} .card-img-link {
     position: absolute;
     inset: 0;
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 100%;
     height: 100%;
-    padding: 0;
+    padding: 18px;
     box-sizing: border-box;
+    background: #ffffff;
   }
   #section-{{ section.id }} .card-img {
     width: 100%;
     height: 100%;
+    max-width: 100%;
+    max-height: 100%;
     display: block;
-    object-fit: cover;
+    object-fit: contain;
     object-position: center;
     transition: transform 0.4s ease;
   }
@@ -333,6 +333,7 @@
     margin: 0 0 8px;
     font-family: 'Poppins', sans-serif;
     line-height: 1.25;
+    min-height: 45px;
   }
   #section-{{ section.id }} .card-title a {
     color: inherit;
@@ -405,6 +406,11 @@
   @media (max-width: 600px) {
     #section-{{ section.id }} .catalog-grid { grid-template-columns: 1fr; gap: 36px; }
     #section-{{ section.id }} .card-media { border-radius: 24px; }
+    #section-{{ section.id }} .card-img-link { padding: 14px; }
+    #section-{{ section.id }} .card-badge { top: 10px; font-size: 10px; padding: 5px 10px; }
+    #section-{{ section.id }} .card-badge--tag { left: 10px; }
+    #section-{{ section.id }} .card-badge--sale { right: 10px; }
+    #section-{{ section.id }} .card-title { min-height: 40px; font-size: 17px; }
   }
 </style>
 

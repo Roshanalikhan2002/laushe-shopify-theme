@@ -85,6 +85,7 @@
                   {% if block.settings.show_badge and block.settings.badge_text != blank %}
                     <span class="bs-badge">{{ block.settings.badge_text }}</span>
                   {% endif %}
+                  <span class="bs-badge bs-badge--sale">50% OFF</span>
                   <a href="{{ prod.url }}" class="bs-img-link">
                     {% if block.settings.image_override != blank %}
                       <img src="{{ block.settings.image_override | image_url: width: 700 }}" alt="{{ block.settings.title_override | default: prod.title | escape }}">
@@ -124,6 +125,7 @@
               <article class="bs-card">
                 <div class="bs-media" style="background: {{ pastel_bgs[bg_i] }};">
                   <span class="bs-badge">BESTSELLER</span>
+                  <span class="bs-badge bs-badge--sale">50% OFF</span>
                   <a href="{{ prod.url }}" class="bs-img-link">
                     {% if prod.featured_image %}
                       <img src="{{ prod.featured_image | image_url: width: 700 }}" alt="{{ prod.title | escape }}">
@@ -341,13 +343,19 @@
   border-radius: 999px;
   font-family: 'Montserrat', sans-serif;
 }
+.bs-products .bs-badge--sale {
+  left: auto;
+  right: 14px;
+  background: #ffffff;
+  color: #007e40;
+}
 .bs-products .bs-img-link {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
   height: 100%;
-  padding: 0;
+  padding: 14px;
   box-sizing: border-box;
   background: #FEF9E1;
   border: 3px solid #ffffff;
@@ -357,7 +365,7 @@
   width: 100%;
   height: 100%;
   display: block;
-  object-fit: cover;
+  object-fit: contain;
   object-position: center;
   transition: transform 0.4s ease;
 }
