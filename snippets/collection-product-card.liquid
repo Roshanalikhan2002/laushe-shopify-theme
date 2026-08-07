@@ -1,0 +1,82 @@
+{%- comment -%}
+  Shared collection product card — matches homepage Wellness Collection cards.
+  Accepts: product
+{%- endcomment -%}
+
+{%- assign product_tags = product.tags | join: ',' | downcase -%}
+{%- assign cat = 'general' -%}
+{%- if product_tags contains 'healthcare' or product_tags contains 'health' -%}
+  {%- assign cat = cat | append: ' healthcare' -%}
+{%- endif -%}
+{%- if product_tags contains 'organic' or product_tags contains 'natural' -%}
+  {%- assign cat = cat | append: ' organic' -%}
+{%- endif -%}
+{%- if product_tags contains 'bundle' or product_tags contains 'pack' -%}
+  {%- assign cat = cat | append: ' bundle' -%}
+{%- endif -%}
+{%- if product.handle contains 'skin-tint' or product.handle contains 'liquid-blush' or product_tags contains 'makeup' or product_tags contains 'blush' -%}
+  {%- assign cat = cat | append: ' makeup' -%}
+{%- endif -%}
+
+{%- assign is_makeup = false -%}
+{%- if product.handle contains 'skin-tint' or product.handle contains 'liquid-blush' -%}
+  {%- assign is_makeup = true -%}
+{%- endif -%}
+
+{%- assign compare_price = product.compare_at_price -%}
+{%- if product.handle contains 'skin-tint' and compare_price == blank -%}
+  {%- assign compare_price = 249000 -%}
+{%- elsif product.handle contains 'liquid-blush' and compare_price == blank -%}
+  {%- assign compare_price = 189000 -%}
+{%- endif -%}
+
+<div
+  class="product-card collection-group{% if is_makeup %} collection-group--hidden{% endif %}"
+  data-category="{{ cat }}"
+  {% if is_makeup %}data-exclusive="makeup"{% endif %}
+>
+  <div class="product-img-wrap">
+    <span class="best-seller-badge">BESTSELLER</span>
+    <span class="sale-badge">50% OFF</span>
+    <a href="{{ product.url }}" aria-label="{{ product.title | escape }}">
+      {% if product.featured_image %}
+        <img
+          src="{{ product.featured_image | image_url: width: 800 }}"
+          class="product-img"
+          alt="{{ product.title | escape }}"
+          loading="lazy"
+          width="600"
+          height="600"
+        >
+      {% endif %}
+    </a>
+  </div>
+
+  <div class="product-info">
+    <h3 class="product-title"><a href="{{ product.url }}">{{ product.title }}</a></h3>
+
+    {% render 'product-card-stars', product: product, style: 'catalog' %}
+
+    <div class="product-price-wrapper">
+      {% if compare_price > product.price %}
+        <span class="product-price-old">{{ compare_price | money }}</span>
+      {% endif %}
+      <span class="product-price">{{ product.price | money }}</span>
+    </div>
+
+    <form method="post" action="/cart/add" class="laushe-collection-atc">
+      <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+      <input type="hidden" name="quantity" value="1">
+      {% if settings.force_all_sold_out %}
+        <button type="button" class="btn-add" disabled aria-disabled="true">
+          <span class="atc-text">{{ settings.sold_out_button_label | default: 'Sold Out' }}</span>
+        </button>
+      {% else %}
+        <button type="submit" class="btn-add">
+          <span class="atc-text">SHOP NOW</span>
+          <span class="atc-loading" style="display: none;">Adding...</span>
+        </button>
+      {% endif %}
+    </form>
+  </div>
+</div>

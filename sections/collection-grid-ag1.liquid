@@ -1,52 +1,106 @@
 {% style %}
-  /* COLLECTION HEADER */
-  .collection-hero { background: #007E40; color: #FFF; padding: 80px 0; text-align: center; }
-  .collection-hero h1 { font-size: 48px; margin: 0 0 15px 0; color: #D4AF37; }
-  .collection-hero p { font-size: 18px; max-width: 600px; margin: 0 auto; opacity: 0.9; }
+  .laushe-collection-page {
+    background: #ffffff;
+    font-family: 'Inter', sans-serif;
+    color: #333;
+  }
 
-  /* FILTER TABS (AG1 Style) — high contrast, always readable */
-  .filter-nav { background: #FEF9E1; padding: 18px 0; border-bottom: 1px solid #EEE; position: sticky; top: 0; z-index: 100; }
-  .tab-list { display: flex; justify-content: center; gap: 12px; list-style: none; margin: 0; padding: 0; flex-wrap: wrap; }
-  .tab-link {
+  /* HERO — brand green, matches site */
+  .laushe-collection-page .collection-hero {
+    background: #007E40;
+    color: #fff;
+    padding: 72px 20px 64px;
+    text-align: center;
+  }
+  .laushe-collection-page .collection-hero h1 {
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(36px, 5vw, 52px);
+    font-weight: 800;
+    margin: 0 0 12px;
+    color: #ffffff;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+  }
+  .laushe-collection-page .collection-hero p {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    max-width: 560px;
+    margin: 0 auto;
+    color: rgba(255,255,255,0.9);
+    line-height: 1.6;
+  }
+
+  /* FILTERS — homepage catalog style */
+  .laushe-collection-page .filter-nav {
+    background: #ffffff;
+    padding: 28px 0 8px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid rgba(0,126,64,0.08);
+  }
+  .laushe-collection-page .tab-list {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    flex-wrap: wrap;
+  }
+  .laushe-collection-page .tab-link {
     font-family: 'Poppins', sans-serif;
     font-weight: 700;
     color: #007E40 !important;
+    -webkit-text-fill-color: #007E40;
     text-decoration: none;
-    padding: 10px 22px;
+    padding: 12px 28px;
     border-radius: 999px;
-    border: 1.5px solid rgba(0,126,64,0.25);
-    background: #FEF9E1 !important;
+    border: 1.5px solid rgba(0,126,64,0.3);
+    background: #ffffff !important;
     transition: 0.25s ease;
     cursor: pointer;
-    text-transform: uppercase;
-    font-size: 13px;
-    letter-spacing: 0.06em;
+    text-transform: none;
+    font-size: 14px;
+    letter-spacing: 0;
     display: inline-block;
   }
-  .tab-link.active,
-  .tab-link:hover {
+  .laushe-collection-page .tab-link.active,
+  .laushe-collection-page .tab-link:hover {
     color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff;
     background: #007E40 !important;
     border-color: #007E40 !important;
   }
 
-  /* PRODUCT GRID */
-  .grid-section { padding: 60px 0; background: #FEF9E1 !important; min-height: 400px; }
-  .product-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; transition: opacity 0.3s ease; }
-  
-  /* PRODUCT CARD — same image fit as Our Top Bestsellers */
-  .product-card {
-    background: #FEF9E1;
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  /* GRID */
+  .laushe-collection-page .grid-section {
+    padding: 40px 0 80px;
+    background: #ffffff;
+    min-height: 400px;
+  }
+  .laushe-collection-page .product-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 28px;
+    transition: opacity 0.3s ease;
+  }
+
+  /* CARDS — match homepage Wellness / Bestsellers */
+  .laushe-collection-page .product-card {
+    background: transparent;
+    border-radius: 0;
+    overflow: visible;
+    box-shadow: none;
+    transition: transform 0.35s ease;
     position: relative;
     display: flex;
     flex-direction: column;
+    height: 100%;
   }
-  .product-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
-  .product-img-wrap {
+  .laushe-collection-page .product-card:hover { transform: translateY(-4px); }
+
+  .laushe-collection-page .product-img-wrap {
     position: relative;
     order: 0;
     width: 100%;
@@ -54,9 +108,10 @@
     background: #FEF9E1;
     flex-shrink: 0;
     overflow: hidden;
-    border-radius: 20px 20px 0 0;
+    border-radius: 28px;
+    margin-bottom: 18px;
   }
-  .product-img-wrap a {
+  .laushe-collection-page .product-img-wrap a {
     position: absolute;
     inset: 0;
     display: block;
@@ -65,278 +120,344 @@
     padding: 0;
     box-sizing: border-box;
   }
-  .product-img {
+  .laushe-collection-page .product-img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     object-position: center;
     background: #FEF9E1;
     display: block;
+    transition: transform 0.4s ease;
   }
-  
-  .best-seller-badge { position: absolute; top: 12px; left: 12px; background: #ffcc33; color: #000; font-size: 10px; font-weight: 800; padding: 5px 12px; border-radius: 50px; text-transform: uppercase; z-index: 2; }
-  .sale-badge { position: absolute; top: 12px; right: 12px; background: #007E40; color: #fff; font-size: 10px; font-weight: 800; padding: 5px 12px; border-radius: 50px; text-transform: uppercase; z-index: 2; }
-  
-  .product-info { order: 1; padding: 25px; text-align: center; }
-  .product-title { font-size: 18px; margin: 0 0 8px 0; font-weight: 700; color: #333; }
-  .product-desc { font-size: 13px; color: #777; margin-bottom: 15px; line-height: 1.5; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; height: 40px; }
-  .product-price { font-weight: 800; font-size: 17px; color: #007E40; display: inline-block; }
-  .product-price-old { font-size: 14px; color: #999; text-decoration: line-through; margin-right: 8px; font-weight: 500; display: inline-block; }
-  .product-price-wrapper { margin-bottom: 15px; }
-  
-  .btn-add { background: #E8F3EE; color: #007E40; width: 100%; border: none; padding: 14px; border-radius: 50px; font-weight: 700; cursor: pointer; transition: 0.3s; font-size: 14px; display: block; text-align: center; text-decoration: none; }
-  .btn-add:hover { background: #007E40; color: #FFF; }
+  .laushe-collection-page .product-card:hover .product-img { transform: scale(1.04); }
 
-  .collection-group--hidden { display: none !important; }
+  .laushe-collection-page .best-seller-badge {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    background: #ffcc33;
+    color: #000;
+    font-family: 'Poppins', sans-serif;
+    font-size: 11px;
+    font-weight: 800;
+    padding: 6px 12px;
+    border-radius: 999px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    z-index: 2;
+  }
+  .laushe-collection-page .sale-badge {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    background: #007E40;
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+    font-size: 11px;
+    font-weight: 800;
+    padding: 6px 12px;
+    border-radius: 999px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    z-index: 2;
+  }
 
-  @media (max-width: 991px) {
-    .product-grid { grid-template-columns: repeat(2, 1fr); }
+  .laushe-collection-page .product-info {
+    order: 1;
+    padding: 0 4px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+  .laushe-collection-page .product-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+    margin: 0 0 8px;
+    font-weight: 800;
+    color: #1a1a1a;
+    line-height: 1.25;
+    min-height: 45px;
+  }
+  .laushe-collection-page .product-title a {
+    color: inherit;
+    text-decoration: none;
+  }
+  .laushe-collection-page .product-desc { display: none; }
+
+  .laushe-collection-page .product-stars,
+  .laushe-collection-page .card-stars {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 10px;
+  }
+  .laushe-collection-page .stars-gold {
+    color: #C9A227;
+    font-size: 13px;
+    letter-spacing: 1px;
+  }
+  .laushe-collection-page .stars-rating,
+  .laushe-collection-page .rating-num {
+    font-weight: 700;
+    font-size: 13px;
+    color: #1a1a1a;
+  }
+  .laushe-collection-page .stars-count,
+  .laushe-collection-page .review-count {
+    color: #777;
+    font-size: 13px;
+  }
+
+  .laushe-collection-page .product-price-wrapper {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+  .laushe-collection-page .product-price {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 800;
+    font-size: 16px;
+    color: #1a1a1a;
+  }
+  .laushe-collection-page .product-price-old {
+    font-size: 14px;
+    color: #999;
+    text-decoration: line-through;
+    font-weight: 500;
+  }
+
+  .laushe-collection-page .btn-add,
+  .laushe-collection-page .shop-now-btn {
+    margin-top: auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 14px 18px;
+    border-radius: 999px;
+    border: 1.5px solid #1a1a1a;
+    background: transparent;
+    color: #1a1a1a;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+  }
+  .laushe-collection-page .btn-add:hover,
+  .laushe-collection-page .shop-now-btn:hover {
+    background: #007E40;
+    border-color: #007E40;
+    color: #fff;
+  }
+  .laushe-collection-page .btn-add:disabled {
+    background: #9aa39d;
+    border-color: #9aa39d;
+    color: #fff;
+    cursor: not-allowed;
+  }
+
+  .laushe-collection-page .collection-group--hidden { display: none !important; }
+
+  @media (max-width: 1100px) {
+    .laushe-collection-page .product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   }
   @media (max-width: 600px) {
-    .product-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
-    .product-info { padding: 15px; }
-    .product-title { font-size: 14px; margin-bottom: 5px; }
-    .product-desc { font-size: 11px; height: 34px; margin-bottom: 10px; }
-    .product-price { font-size: 15px; }
-    .product-price-old { font-size: 12px; }
-    .product-price-wrapper { margin-bottom: 10px; }
-    .product-img-wrap a { padding: 0; }
-    .btn-add { padding: 10px; font-size: 12px; }
-    
-    .tab-list { gap: 15px; overflow-x: auto; padding: 0 20px 10px; justify-content: flex-start; -webkit-overflow-scrolling: touch; }
-    .tab-link { white-space: nowrap; font-size: 11px; }
+    .laushe-collection-page .collection-hero { padding: 48px 16px 40px; }
+    .laushe-collection-page .product-grid { grid-template-columns: 1fr; gap: 36px; }
+    .laushe-collection-page .product-img-wrap { border-radius: 24px; }
+    .laushe-collection-page .product-title { min-height: 40px; font-size: 17px; }
+    .laushe-collection-page .tab-list {
+      gap: 10px;
+      overflow-x: auto;
+      padding: 0 16px 8px;
+      justify-content: flex-start;
+      flex-wrap: nowrap;
+      -webkit-overflow-scrolling: touch;
+    }
+    .laushe-collection-page .tab-link { white-space: nowrap; font-size: 13px; padding: 10px 20px; }
   }
 {% endstyle %}
 
-<!-- HERO -->
-<header class="collection-hero">
-    <div class="container-wide">
-        <h1>{{ collection.title | default: 'Wellness Essentials' }}</h1>
-        <p>{{ collection.description | default: 'Pure, Sunnah-blessed health solutions crafted for your modern lifestyle.' }}</p>
+<div class="laushe-collection-page">
+  <header class="collection-hero">
+    <div class="container">
+      <h1>{{ collection.title | default: 'Shop All' }}</h1>
+      <p>{{ collection.description | default: 'Pure, Raw, and Bio-available supplements for every stage of your health journey.' | strip_html }}</p>
     </div>
-</header>
+  </header>
 
-<!-- FILTER TABS -->
-<nav class="filter-nav">
-    <div class="container-wide">
-        <ul class="tab-list" id="CollectionFilterTabs">
-            <li><a href="javascript:void(0)" class="tab-link active" data-filter="all">Shop All</a></li>
-            <li><a href="javascript:void(0)" class="tab-link" data-filter="healthcare">Healthcare</a></li>
-            <li><a href="javascript:void(0)" class="tab-link" data-filter="organic">Organic</a></li>
-            <li><a href="javascript:void(0)" class="tab-link" data-filter="makeup">Makeup</a></li>
-        </ul>
+  <nav class="filter-nav">
+    <div class="container">
+      <ul class="tab-list" id="CollectionFilterTabs">
+        <li><a href="javascript:void(0)" class="tab-link active" data-filter="all">All Products</a></li>
+        <li><a href="javascript:void(0)" class="tab-link" data-filter="healthcare">Healthcare</a></li>
+        <li><a href="javascript:void(0)" class="tab-link" data-filter="organic">Organic</a></li>
+        <li><a href="javascript:void(0)" class="tab-link" data-filter="makeup">Makeup</a></li>
+      </ul>
     </div>
-</nav>
+  </nav>
 
-<main class="grid-section">
-    <div class="container-wide">
-        <div class="product-grid" id="ProductGrid">
-            {% for product in collection.products %}
-                {%- assign product_tags = product.tags | join: ',' | downcase -%}
-                {%- assign cat = 'general' -%}
-                {%- if product_tags contains 'healthcare' or product_tags contains 'health' -%}
-                  {%- assign cat = cat | append: ' healthcare' -%}
-                {%- endif -%}
-                {%- if product_tags contains 'organic' or product_tags contains 'natural' -%}
-                  {%- assign cat = cat | append: ' organic' -%}
-                {%- endif -%}
-                {%- if product_tags contains 'bundle' or product_tags contains 'pack' -%}
-                  {%- assign cat = cat | append: ' bundle' -%}
-                {%- endif -%}
-                {%- if product.handle contains 'skin-tint' or product.handle contains 'liquid-blush' or product_tags contains 'makeup' or product_tags contains 'blush' -%}
-                  {%- assign cat = cat | append: ' makeup' -%}
-                {%- endif -%}
+  <main class="grid-section">
+    <div class="container">
+      <div class="product-grid" id="ProductGrid">
+        {% assign priority_handles = "skinny-sips-weight-loss-kehwa,royce-hair-oil-sunnah-blessed,skin-tint,liquid-blush,chia-seeds-380g,desi-ghee,golden-elixir,pure-honey450-gm,panjiri,weight-gainer-100-organic" | split: "," %}
+        {% assign rendered_handles = "" %}
 
-                <div class="product-card collection-group {% if product.handle contains 'skin-tint' or product.handle contains 'liquid-blush' %}collection-group--hidden{% endif %}" data-category="{{ cat }}" {% if product.handle contains 'skin-tint' or product.handle contains 'liquid-blush' %}data-exclusive="makeup"{% endif %}>
-                    <div class="product-img-wrap">
-                      <div class="best-seller-badge">BESTSELLER</div>
-                      <div class="sale-badge">50% OFF</div>
-                      {% assign prod_img = product.featured_image | image_url: width: 800 %}
-                      <a href="{{ product.url }}">
-                          <img src="{{ prod_img }}" class="product-img" alt="{{ product.title }}" loading="lazy" width="600" height="600">
-                      </a>
-                    </div>
-                    
-                    <div class="product-info">
-                        <h3 class="product-title">{{ product.title }}</h3>
-                        {% unless product.handle contains 'skin-tint' or product.handle contains 'liquid-blush' %}
-                          <p class="product-desc">{{ product.metafields.custom.short_description | default: 'Premium wellness essential for your daily routine.' }}</p>
-                        {% endunless %}
-                        
-                        <div class="product-price-wrapper">
-                          {% assign compare_price = product.compare_at_price %}
-                          {% if product.handle contains 'skin-tint' and compare_price == blank %}
-                            {% assign compare_price = 249000 %}
-                          {% elsif product.handle contains 'liquid-blush' and compare_price == blank %}
-                            {% assign compare_price = 189000 %}
-                          {% endif %}
+        {% comment %} PASS 1: homepage order {% endcomment %}
+        {% for p_handle in priority_handles %}
+          {% for product in collection.products %}
+            {% if product.handle == p_handle %}
+              {% assign rendered_handles = rendered_handles | append: product.handle | append: ',' %}
+              {% render 'collection-product-card', product: product %}
+            {% endif %}
+          {% endfor %}
+        {% endfor %}
 
-                          {% if compare_price > product.price %}
-                            <span class="product-price-old">{{ compare_price | money }}</span>
-                          {% endif %}
-                          <span class="product-price">{{ product.price | money }}</span>
-                        </div>
-                        
-                        <form method="post" action="/cart/add" class="laushe-collection-atc">
-                            <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}" />
-                            <input type="hidden" name="quantity" value="1" />
-                            {% if settings.force_all_sold_out %}
-                            <button type="button" class="btn-add" disabled aria-disabled="true">
-                                <span class="atc-text">{{ settings.sold_out_button_label | default: 'Sold Out' }}</span>
-                            </button>
-                            {% else %}
-                            <button type="submit" class="btn-add">
-                                <span class="atc-text">Add to Cart</span>
-                                <span class="atc-loading" style="display: none;">Adding...</span>
-                            </button>
-                            {% endif %}
-                        </form>
-                    </div>
-                </div>
-            {% else %}
-                <div class="text-center" style="width: 100%; padding: 40px;">
-                   <p>No products found in this collection.</p>
-                </div>
-            {% endfor %}
-        </div>
+        {% comment %} PASS 2: remaining products {% endcomment %}
+        {% for product in collection.products %}
+          {% assign handle_token = product.handle | append: ',' %}
+          {% unless rendered_handles contains handle_token %}
+            {% render 'collection-product-card', product: product %}
+          {% endunless %}
+        {% else %}
+          <div style="grid-column: 1 / -1; text-align: center; padding: 48px 20px; color: #666;">
+            <p>No products found in this collection.</p>
+          </div>
+        {% endfor %}
+      </div>
     </div>
-</main>
+  </main>
+</div>
 
 <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const tabs = document.querySelectorAll('.tab-link');
-        const groups = document.querySelectorAll('.collection-group');
-        const grid = document.getElementById('ProductGrid');
+  document.addEventListener("DOMContentLoaded", function() {
+    const tabs = document.querySelectorAll('.laushe-collection-page .tab-link');
+    const groups = document.querySelectorAll('.laushe-collection-page .collection-group');
+    const grid = document.getElementById('ProductGrid');
 
-        function applyFilter(filter, bypassAnimation = false) {
-            if (!bypassAnimation) grid.style.opacity = '0.3';
-            
-            setTimeout(() => {
-                groups.forEach(group => {
-                    const categories = group.getAttribute('data-category');
-                    const isExclusive = group.getAttribute('data-exclusive');
-                    
-                    if (filter === 'all') {
-                        if (isExclusive) {
-                            group.classList.add('collection-group--hidden');
-                        } else {
-                            group.classList.remove('collection-group--hidden');
-                        }
-                    } else {
-                        if (categories.includes(filter)) {
-                            group.classList.remove('collection-group--hidden');
-                        } else {
-                            group.classList.add('collection-group--hidden');
-                        }
-                    }
-                });
-                if (!bypassAnimation) grid.style.opacity = '1';
-            }, bypassAnimation ? 0 : 200);
-        }
+    function applyFilter(filter, bypassAnimation) {
+      if (!bypassAnimation && grid) grid.style.opacity = '0.3';
 
-        tabs.forEach(tab => {
-            tab.addEventListener('click', (e) => {
-                e.preventDefault();
-                const filter = tab.getAttribute('data-filter');
-                tabs.forEach(t => t.classList.remove('active'));
-                tab.classList.add('active');
-                applyFilter(filter);
-                
-                // Update URL without refreshing
-                const newUrl = window.location.pathname + '?filter=' + filter;
-                window.history.pushState({path:newUrl},'',newUrl);
-            });
-        });
+      setTimeout(function() {
+        groups.forEach(function(group) {
+          var categories = group.getAttribute('data-category') || '';
+          var isExclusive = group.getAttribute('data-exclusive');
 
-        // HANDLE DEEP LINKING FROM HEADER
-        const urlParams = new URLSearchParams(window.location.search);
-        const externalFilter = urlParams.get('filter');
-        if (externalFilter) {
-            const targetTab = Array.from(tabs).find(t => t.getAttribute('data-filter') === externalFilter);
-            if (targetTab) {
-                targetTab.click();
-                // Smooth scroll to grid
-                const gridTop = document.getElementById('CollectionFilterTabs').offsetTop;
-                window.scrollTo({ top: gridTop - 100, behavior: 'smooth' });
+          if (filter === 'all') {
+            if (isExclusive) {
+              group.classList.add('collection-group--hidden');
+            } else {
+              group.classList.remove('collection-group--hidden');
             }
+          } else {
+            if (categories.indexOf(filter) !== -1) {
+              group.classList.remove('collection-group--hidden');
+            } else {
+              group.classList.add('collection-group--hidden');
+            }
+          }
+        });
+        if (!bypassAnimation && grid) grid.style.opacity = '1';
+      }, bypassAnimation ? 0 : 200);
+    }
+
+    tabs.forEach(function(tab) {
+      tab.addEventListener('click', function(e) {
+        e.preventDefault();
+        var filter = tab.getAttribute('data-filter');
+        tabs.forEach(function(t) { t.classList.remove('active'); });
+        tab.classList.add('active');
+        applyFilter(filter);
+
+        var newUrl = window.location.pathname + '?filter=' + filter;
+        window.history.pushState({ path: newUrl }, '', newUrl);
+      });
+    });
+
+    var urlParams = new URLSearchParams(window.location.search);
+    var externalFilter = urlParams.get('filter');
+    if (externalFilter) {
+      var targetTab = Array.prototype.find.call(tabs, function(t) {
+        return t.getAttribute('data-filter') === externalFilter;
+      });
+      if (targetTab) {
+        targetTab.click();
+        var tabsEl = document.getElementById('CollectionFilterTabs');
+        if (tabsEl) {
+          window.scrollTo({ top: tabsEl.offsetTop - 100, behavior: 'smooth' });
+        }
+      }
+    }
+
+    document.querySelectorAll('.laushe-collection-atc').forEach(function(form) {
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        var btn = form.querySelector('.btn-add');
+        var atcText = btn.querySelector('.atc-text');
+        var atcLoading = btn.querySelector('.atc-loading');
+        var variantId = form.querySelector('input[name="id"]').value;
+
+        if (!variantId) {
+          alert('Please select a valid product variant.');
+          return;
         }
 
-        // AJAX ADD TO CART
-        const atcForms = document.querySelectorAll('.laushe-collection-atc');
-        atcForms.forEach(form => {
-            form.addEventListener('submit', function(e) {
-                e.preventDefault();
-                const btn = form.querySelector('.btn-add');
-                const atcText = btn.querySelector('.atc-text');
-                const atcLoading = btn.querySelector('.atc-loading');
-                const variantId = form.querySelector('input[name="id"]').value;
+        atcText.style.display = 'none';
+        atcLoading.style.display = 'inline';
+        btn.style.opacity = '0.7';
+        btn.disabled = true;
 
-                if (!variantId) {
-                  alert('Please select a valid product variant.');
-                  return;
-                }
+        fetch('/cart/add.js', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ id: parseInt(variantId), quantity: 1 })
+        })
+        .then(function(res) {
+          if (!res.ok) throw new Error('Cart add failed');
+          return res.json();
+        })
+        .then(function(data) {
+          atcLoading.style.display = 'none';
+          atcText.style.display = 'inline';
+          atcText.innerText = 'Added!';
+          btn.style.opacity = '1';
 
-                atcText.style.display = 'none';
-                atcLoading.style.display = 'inline';
-                btn.style.opacity = '0.7';
-                btn.disabled = true;
+          if (window.LausheCart) {
+            LausheCart.open();
+          } else {
+            document.dispatchEvent(new CustomEvent('cart:updated', { detail: data }));
+          }
 
-                fetch('/cart/add.js', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ id: parseInt(variantId), quantity: 1 })
-                })
-                .then(res => {
-                    if (!res.ok) throw new Error('Cart add failed');
-                    return res.json();
-                })
-                .then(data => {
-                    // Success visual
-                    atcLoading.style.display = 'none';
-                    atcText.style.display = 'inline';
-                    atcText.innerText = 'Added! ✓';
-                    btn.style.background = '#4CAF50';
-                    btn.style.color = '#FFF';
-                    btn.style.opacity = '1';
-
-                    // Trigger cart drawer
-                    if (window.LausheCart) {
-                        LausheCart.open();
-                    } else {
-                        document.dispatchEvent(new CustomEvent('cart:updated', { detail: data }));
-                    }
-
-                    setTimeout(() => {
-                        atcText.innerText = 'Add to Cart';
-                        btn.style.background = '';
-                        btn.style.color = '';
-                        btn.disabled = false;
-                    }, 2000);
-                })
-                .catch(err => {
-                    console.error('ATC error:', err);
-                    atcLoading.style.display = 'none';
-                    atcText.style.display = 'inline';
-                    atcText.innerText = 'Error!';
-                    btn.disabled = false;
-                    btn.style.opacity = '1';
-                    setTimeout(() => {
-                        atcText.innerText = 'Add to Cart';
-                    }, 2500);
-                });
-            });
+          setTimeout(function() {
+            atcText.innerText = 'SHOP NOW';
+            btn.disabled = false;
+          }, 2000);
+        })
+        .catch(function(err) {
+          console.error('ATC error:', err);
+          atcLoading.style.display = 'none';
+          atcText.style.display = 'inline';
+          atcText.innerText = 'Error!';
+          btn.disabled = false;
+          btn.style.opacity = '1';
+          setTimeout(function() {
+            atcText.innerText = 'SHOP NOW';
+          }, 2500);
         });
+      });
     });
+  });
 </script>
 
 {% schema %}
 {
   "name": "Collection Grid AG1",
   "settings": [],
-  "presets": [
-    {
-      "name": "Collection Grid AG1"
-    }
-  ]
+  "presets": [{ "name": "Collection Grid AG1" }]
 }
 {% endschema %}
