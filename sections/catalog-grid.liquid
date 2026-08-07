@@ -56,7 +56,7 @@
     <div class="catalog-grid-wrapper">
       <div class="catalog-grid" id="laushe-catalog-grid-{{ section.id }}">
         {% assign target_collection = section.settings.collection | default: collections.all %}
-        {% assign priority_handles = "skinny-sips-weight-loss-kehwa,royce-hair-oil-sunnah-blessed,skin-tint,liquid-blush,chia-seeds-380g,desi-ghee,golden-elixir,pure-honey450-gm" | split: "," %}
+        {% assign priority_handles = "skinny-sips-weight-loss-kehwa,royce-hair-oil-sunnah-blessed,skin-tint,liquid-blush,chia-seeds300gm,pure-desi-ghee-500gm,golden-elixir,pure-honey450-gm,panjiri-450gm,weight-gainer-100-organic" | split: "," %}
         {% assign pastel_bgs = "#F3E6E0,#E4EFE8,#F0EADF,#E8F1F4,#F5EDE3,#E9F0E6" | split: "," %}
         {% assign card_index = 0 %}
 
@@ -241,6 +241,7 @@
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 28px;
+    align-items: stretch;
   }
   #section-{{ section.id }} .catalog-item { width: 100%; display: flex; }
   #section-{{ section.id }} .blume-card {
@@ -328,7 +329,13 @@
     margin: 0 0 8px;
     font-family: 'Poppins', sans-serif;
     line-height: 1.25;
-    min-height: 45px;
+    height: 2.5em;
+    min-height: 2.5em;
+    max-height: 2.5em;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
   }
   #section-{{ section.id }} .card-title a {
     color: inherit;
