@@ -93,7 +93,12 @@
               <div class="catalog-item" data-tags="{{ product_tags_string }}" {% if product.handle contains 'skin-tint' or product.handle contains 'liquid-blush' %}data-exclusive="makeup"{% endif %} {{ override_block.shopify_attributes }}>
                 <article class="catalog-card blume-card">
                   <div class="card-media">
-                    <span class="card-badge card-badge--tag">BESTSELLER</span>
+                    {% if product.handle == 'skinny-sips-weight-loss-kehwa'
+                      or product.handle == 'royce-hair-oil-sunnah-blessed'
+                      or product.handle == 'skin-tint'
+                      or product.handle == 'liquid-blush' %}
+                      <span class="card-badge card-badge--tag">BESTSELLER</span>
+                    {% endif %}
                     <span class="card-badge card-badge--sale">50% OFF</span>
                     <a href="{{ product.url }}" class="card-img-link" aria-label="{{ display_title | escape }}">
                       {% if display_img != blank %}
@@ -151,7 +156,6 @@
           <div class="catalog-item" data-tags="{{ product_tags_string }}" {{ override_block.shopify_attributes }}>
             <article class="catalog-card blume-card">
               <div class="card-media">
-                <span class="card-badge card-badge--tag">BESTSELLER</span>
                 <span class="card-badge card-badge--sale">50% OFF</span>
                 <a href="{{ product.url }}" class="card-img-link" aria-label="{{ display_title | escape }}">
                   {% if display_img != blank %}

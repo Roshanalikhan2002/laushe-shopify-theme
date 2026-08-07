@@ -18,9 +18,12 @@
   {%- assign cat = cat | append: ' makeup' -%}
 {%- endif -%}
 
-{%- assign is_makeup = false -%}
-{%- if product.handle contains 'skin-tint' or product.handle contains 'liquid-blush' -%}
-  {%- assign is_makeup = true -%}
+{%- assign show_bestseller = false -%}
+{%- if product.handle == 'skinny-sips-weight-loss-kehwa'
+  or product.handle == 'royce-hair-oil-sunnah-blessed'
+  or product.handle == 'skin-tint'
+  or product.handle == 'liquid-blush' -%}
+  {%- assign show_bestseller = true -%}
 {%- endif -%}
 
 {%- assign compare_price = product.compare_at_price -%}
@@ -35,7 +38,9 @@
   data-category="{{ cat }}"
 >
   <div class="product-img-wrap">
-    <span class="best-seller-badge">BESTSELLER</span>
+    {% if show_bestseller %}
+      <span class="best-seller-badge">BESTSELLER</span>
+    {% endif %}
     <span class="sale-badge">50% OFF</span>
     <a href="{{ product.url }}" aria-label="{{ product.title | escape }}">
       {% if product.featured_image %}
