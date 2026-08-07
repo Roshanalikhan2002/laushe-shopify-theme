@@ -76,8 +76,14 @@
       <div class="product-buying-v3">
         <div class="sticky-box-v3">
           <h1 class="product-title-v3">{{ product.title }}</h1>
+          {% assign v = product.selected_or_first_available_variant %}
+          {% capture compare_cents %}{% render 'sale-compare-at-variant', price: v.price, compare_at_price: v.compare_at_price %}{% endcapture %}
+          {% assign compare_price = compare_cents | plus: 0 %}
           <div class="product-price-v3" id="OneTimePrice">
-            {{ product.selected_or_first_available_variant.price | money }}
+            <span class="price-is-v3" id="OneTimePriceValue">{{ v.price | money }}</span>
+            {% if compare_price > v.price %}
+              <span class="price-was-v3" id="OneTimeCompareValue">{{ compare_price | money }}</span>
+            {% endif %}
           </div>
           
           <form method="post" action="/cart/add" id="AG1ProductForm" class="laushe-atc-form-v3">
@@ -247,6 +253,20 @@
     font-weight: 800;
     color: #1a1a1a !important;
     margin-bottom: 28px;
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .product-price-v3 .price-is-v3 {
+    font-weight: 800;
+    color: #1a1a1a;
+  }
+  .product-price-v3 .price-was-v3 {
+    font-size: 16px;
+    font-weight: 500;
+    color: #999;
+    text-decoration: line-through;
   }
   
   .variant-label-v3 {
@@ -437,13 +457,37 @@
     if (variant) {
       window.lausheSelectedVariantId = variant.id;
       syncVariantInput();
-      // Always show Shopify admin variant price (no theme overrides)
+      // Always show Shopify admin variant price + compare-at (50% OFF display)
       const priceInPaise = variant.price;
+      const compareAt = (variant.compare_at_price && variant.compare_at_price > priceInPaise)
+        ? variant.compare_at_price
+        : (priceInPaise > 0 ? priceInPaise * 2 : 0);
       const shopifyPriceText = 'Rs. ' + (priceInPaise / 100).toLocaleString('en-PK');
+      const compareText = compareAt > priceInPaise
+        ? 'Rs. ' + (compareAt / 100).toLocaleString('en-PK')
+        : '';
 
       const oneTimePriceEl = document.getElementById('OneTimePrice');
-      if (oneTimePriceEl) {
-        oneTimePriceEl.innerText = shopifyPriceText;
+      const oneTimeValueEl = document.getElementById('OneTimePriceValue');
+      const oneTimeCompareEl = document.getElementById('OneTimeCompareValue');
+      if (oneTimeValueEl) {
+        oneTimeValueEl.innerText = shopifyPriceText;
+        if (oneTimeCompareEl) {
+          if (compareText) {
+            oneTimeCompareEl.innerText = compareText;
+            oneTimeCompareEl.style.display = '';
+          } else {
+            oneTimeCompareEl.style.display = 'none';
+          }
+        } else if (oneTimePriceEl && compareText) {
+          oneTimePriceEl.innerHTML = '<span class="price-is-v3" id="OneTimePriceValue">' + shopifyPriceText +
+            '</span><span class="price-was-v3" id="OneTimeCompareValue">' + compareText + '</span>';
+        }
+      } else if (oneTimePriceEl) {
+        oneTimePriceEl.innerHTML = compareText
+          ? '<span class="price-is-v3" id="OneTimePriceValue">' + shopifyPriceText +
+            '</span><span class="price-was-v3" id="OneTimeCompareValue">' + compareText + '</span>'
+          : shopifyPriceText;
       }
 
       const subPriceEl = document.getElementById('SubPrice');

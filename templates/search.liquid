@@ -55,8 +55,10 @@
                 <p class="card-desc">{{ item.description | strip_html | truncate: 100 }}</p>
                 <div class="card-price-row">
                   <span class="curr-price">{{ item.price | money }}</span>
-                  {% if item.compare_at_price > item.price %}
-                    <span class="old-price">{{ item.compare_at_price | money }}</span>
+                  {% capture compare_cents %}{% render 'sale-compare-at', product: item %}{% endcapture %}
+                  {% assign compare_price = compare_cents | plus: 0 %}
+                  {% if item.price > 0 and compare_price > item.price %}
+                    <span class="old-price">{{ compare_price | money }}</span>
                   {% endif %}
                 </div>
               </div>

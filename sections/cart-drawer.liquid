@@ -154,6 +154,8 @@
     text-overflow: ellipsis;
   }
   .item-price { font-size: 13px; color: #666; font-weight: 600; margin-bottom: 8px; }
+  .item-price .price-was { text-decoration: line-through; color: #999; margin-right: 6px; font-weight: 500; }
+  .item-price .price-is { color: #007E40; font-weight: 700; }
   .item-controls { display: flex; align-items: center; gap: 10px; }
   .qty-selector { display: flex; border: 1px solid #ddd; border-radius: 8px; overflow: hidden; }
   .qty-btn {
@@ -302,12 +304,23 @@
         var priceDisplay;
         if (isGift) {
           priceDisplay = '<span style="color: #2d7a4f; font-weight: 800;">FREE GIFT</span>';
-        } else if (item.original_line_price > item.final_line_price) {
-          priceDisplay = '<span style="text-decoration:line-through;color:#999;margin-right:6px;">' +
-            LausheCart.fmt(item.original_line_price) + '</span>' +
-            '<span style="color:#007E40;font-weight:700;">' + LausheCart.fmt(item.final_line_price) + '</span>';
         } else {
-          priceDisplay = LausheCart.fmt(item.final_line_price);
+          var unitPrice = item.original_price || item.price || 0;
+          var unitCompare = (item.compare_at_price && item.compare_at_price > unitPrice)
+            ? item.compare_at_price
+            : (unitPrice > 0 ? unitPrice * 2 : 0);
+          var lineSale = item.final_line_price;
+          var lineCompare = unitCompare * item.quantity;
+          // Prefer Shopify line discount strikethrough when present; else 50% compare-at
+          if (item.original_line_price > item.final_line_price) {
+            priceDisplay = '<span class="price-was">' + LausheCart.fmt(item.original_line_price) + '</span>' +
+              '<span class="price-is">' + LausheCart.fmt(lineSale) + '</span>';
+          } else if (lineCompare > lineSale) {
+            priceDisplay = '<span class="price-was">' + LausheCart.fmt(lineCompare) + '</span>' +
+              '<span class="price-is">' + LausheCart.fmt(lineSale) + '</span>';
+          } else {
+            priceDisplay = '<span class="price-is">' + LausheCart.fmt(lineSale) + '</span>';
+          }
         }
         
         return '<div class="cart-item" data-key="' + item.key + '">' +

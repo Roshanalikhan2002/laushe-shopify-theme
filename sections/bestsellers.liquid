@@ -60,10 +60,12 @@
               <h3 class="bs-title"><a href="{{ prod.url }}">{{ block.settings.title_override | default: prod.title }}</a></h3>
               {% render 'product-card-stars', product: prod, style: 'bestsellers' %}
 
+              {% capture compare_cents %}{% render 'sale-compare-at', product: prod %}{% endcapture %}
+              {% assign compare_price = compare_cents | plus: 0 %}
               <div class="bs-price-row">
                 <span class="bs-price">{{ prod.price | money }}</span>
-                {% if prod.price > 0 and prod.compare_at_price > prod.price %}
-                  <span class="bs-compare">{{ prod.compare_at_price | money }}</span>
+                {% if prod.price > 0 and compare_price > prod.price %}
+                  <span class="bs-compare">{{ compare_price | money }}</span>
                 {% endif %}
               </div>
               <a href="{{ prod.url }}" class="bs-shop-now">SHOP NOW</a>
@@ -89,8 +91,13 @@
               <h3 class="bs-title"><a href="{{ prod.url }}">{{ prod.title }}</a></h3>
               {% render 'product-card-stars', product: prod, style: 'bestsellers' %}
 
+              {% capture compare_cents %}{% render 'sale-compare-at', product: prod %}{% endcapture %}
+              {% assign compare_price = compare_cents | plus: 0 %}
               <div class="bs-price-row">
                 <span class="bs-price">{{ prod.price | money }}</span>
+                {% if prod.price > 0 and compare_price > prod.price %}
+                  <span class="bs-compare">{{ compare_price | money }}</span>
+                {% endif %}
               </div>
               <a href="{{ prod.url }}" class="bs-shop-now">SHOP NOW</a>
             </div>

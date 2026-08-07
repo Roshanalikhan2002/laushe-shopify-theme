@@ -75,7 +75,8 @@
                 {% assign display_img = product.featured_image | image_url: width: 800 %}
               {% endif %}
               {% assign display_price = product.price | money %}
-              {% assign compare_price = product.compare_at_price %}
+              {% capture compare_cents %}{% render 'sale-compare-at', product: product %}{% endcapture %}
+              {% assign compare_price = compare_cents | plus: 0 %}
 
               {% assign override_block = nil %}
               {% for block in section.blocks %}
@@ -138,7 +139,8 @@
             {% assign display_img = product.featured_image | image_url: width: 800 %}
           {% endif %}
           {% assign display_price = product.price | money %}
-          {% assign compare_price = product.compare_at_price %}
+          {% capture compare_cents %}{% render 'sale-compare-at', product: product %}{% endcapture %}
+          {% assign compare_price = compare_cents | plus: 0 %}
 
           {% assign override_block = nil %}
           {% for block in section.blocks %}

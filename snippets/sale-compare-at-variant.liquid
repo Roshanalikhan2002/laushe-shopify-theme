@@ -1,0 +1,11 @@
+{%- comment -%}
+  Same as sale-compare-at but for a cart line item / variant.
+  Params: price (cents), compare_at_price (cents, optional)
+{%- endcomment -%}
+{%- if compare_at_price != blank and compare_at_price > price -%}
+{{- compare_at_price -}}
+{%- elsif price > 0 -%}
+{{- price | times: 2 -}}
+{%- else -%}
+0
+{%- endif -%}

@@ -62,7 +62,15 @@
                       {% if item.properties._is_gift == 'true' or item.properties.is_gift == 'true' %}
                         <span style="font-size: 18px; font-weight: 800; color: #2d7a4f;">FREE GIFT</span>
                       {% else %}
-                        <span style="font-size: 18px; font-weight: 700; color: #007E40;">{{ item.final_line_price | money }}</span>
+                        {% capture unit_compare_cents %}{% render 'sale-compare-at-variant', price: item.original_price, compare_at_price: item.variant.compare_at_price %}{% endcapture %}
+                        {% assign unit_compare = unit_compare_cents | plus: 0 %}
+                        {% assign line_compare = unit_compare | times: item.quantity %}
+                        <span style="font-size: 18px; font-weight: 700; color: #007E40; text-align: right;">
+                          {% if line_compare > item.final_line_price %}
+                            <span style="display:block; font-size:13px; font-weight:500; color:#999; text-decoration:line-through;">{{ line_compare | money }}</span>
+                          {% endif %}
+                          {{ item.final_line_price | money }}
+                        </span>
                       {% endif %}
                     </div>
 

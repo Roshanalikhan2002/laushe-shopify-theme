@@ -1,0 +1,14 @@
+{%- comment -%}
+  Sitewide 50% OFF helper.
+  Outputs compare-at cents for a product (Shopify compare_at, or 2x price if missing).
+  Usage:
+    {% capture compare_cents %}{% render 'sale-compare-at', product: product %}{% endcapture %}
+    {% assign compare_price = compare_cents | strip | plus: 0 %}
+{%- endcomment -%}
+{%- if product != blank and product.compare_at_price != blank and product.compare_at_price > product.price -%}
+{{- product.compare_at_price -}}
+{%- elsif product != blank and product.price > 0 -%}
+{{- product.price | times: 2 -}}
+{%- else -%}
+0
+{%- endif -%}

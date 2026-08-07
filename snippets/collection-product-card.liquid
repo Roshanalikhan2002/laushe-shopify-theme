@@ -26,12 +26,8 @@
   {%- assign show_bestseller = true -%}
 {%- endif -%}
 
-{%- assign compare_price = product.compare_at_price -%}
-{%- if product.handle contains 'skin-tint' and compare_price == blank -%}
-  {%- assign compare_price = 249000 -%}
-{%- elsif product.handle contains 'liquid-blush' and compare_price == blank -%}
-  {%- assign compare_price = 189000 -%}
-{%- endif -%}
+{%- capture compare_cents -%}{% render 'sale-compare-at', product: product %}{%- endcapture -%}
+{%- assign compare_price = compare_cents | plus: 0 -%}
 
 <div
   class="product-card collection-group"
