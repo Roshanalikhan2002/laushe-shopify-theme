@@ -20,6 +20,12 @@
         "id": "sold_out_message",
         "label": "Sold out message",
         "default": "All products are currently sold out. Orders cannot be placed right now."
+      },
+      {
+        "type": "text",
+        "id": "announcement_bar_text",
+        "label": "Announcement bar text",
+        "default": "LIMITED TIME 50% OFF — SHOP NOW"
       }
     ]
   }

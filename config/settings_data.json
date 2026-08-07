@@ -2,6 +2,7 @@
   "current": {
     "force_all_sold_out": false,
     "sold_out_button_label": "Sold Out",
-    "sold_out_message": "All products are currently sold out. Orders cannot be placed right now."
+    "sold_out_message": "All products are currently sold out. Orders cannot be placed right now.",
+    "announcement_bar_text": "LIMITED TIME 50% OFF — SHOP NOW"
   }
 }
