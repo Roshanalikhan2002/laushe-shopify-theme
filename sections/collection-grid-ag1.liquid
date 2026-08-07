@@ -362,20 +362,13 @@
       setTimeout(function() {
         groups.forEach(function(group) {
           var categories = group.getAttribute('data-category') || '';
-          var isExclusive = group.getAttribute('data-exclusive');
 
           if (filter === 'all') {
-            if (isExclusive) {
-              group.classList.add('collection-group--hidden');
-            } else {
-              group.classList.remove('collection-group--hidden');
-            }
+            group.classList.remove('collection-group--hidden');
+          } else if (categories.indexOf(filter) !== -1) {
+            group.classList.remove('collection-group--hidden');
           } else {
-            if (categories.indexOf(filter) !== -1) {
-              group.classList.remove('collection-group--hidden');
-            } else {
-              group.classList.add('collection-group--hidden');
-            }
+            group.classList.add('collection-group--hidden');
           }
         });
         if (!bypassAnimation && grid) grid.style.opacity = '1';
