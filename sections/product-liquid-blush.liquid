@@ -739,10 +739,6 @@
             <div class="prod-subtitle">Dewy • Lightweight • Buildable</div>
             
             <div class="prod-price">
-                {% capture compare_cents %}{% render 'sale-compare-at', product: product %}{% endcapture %}
-                {% assign compare_price = compare_cents | plus: 0 %}
-                {% if compare_price == 0 %}{% assign compare_price = product.price | default: 99500 | times: 2 %}{% endif %}
-                <span class="price-was">{{ compare_price | money }}</span>
                 <span class="price-is">{{ product.price | default: 99500 | money }}</span>
             </div>
 

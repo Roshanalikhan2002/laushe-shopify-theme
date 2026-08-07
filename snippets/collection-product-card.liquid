@@ -37,7 +37,9 @@
     {% if show_bestseller %}
       <span class="best-seller-badge">BESTSELLER</span>
     {% endif %}
-    <span class="sale-badge">50% OFF</span>
+    {% unless product.handle contains 'skin-tint' or product.handle contains 'liquid-blush' %}
+      <span class="sale-badge">50% OFF</span>
+    {% endunless %}
     <a href="{{ product.url }}" aria-label="{{ product.title | escape }}">
       {% if product.featured_image %}
         <img

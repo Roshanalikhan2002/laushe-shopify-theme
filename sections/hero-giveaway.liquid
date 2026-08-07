@@ -85,7 +85,9 @@
                   {% if block.settings.show_badge and block.settings.badge_text != blank %}
                     <span class="bs-badge">{{ block.settings.badge_text }}</span>
                   {% endif %}
-                  <span class="bs-badge bs-badge--sale">50% OFF</span>
+                  {% unless prod.handle contains 'skin-tint' or prod.handle contains 'liquid-blush' %}
+                    <span class="bs-badge bs-badge--sale">50% OFF</span>
+                  {% endunless %}
                   <a href="{{ prod.url }}" class="bs-img-link">
                     {% if block.settings.image_override != blank %}
                       <img src="{{ block.settings.image_override | image_url: width: 700 }}" alt="{{ block.settings.title_override | default: prod.title | escape }}">
@@ -127,7 +129,9 @@
               <article class="bs-card">
                 <div class="bs-media" style="background: {{ pastel_bgs[bg_i] }};">
                   <span class="bs-badge">BESTSELLER</span>
-                  <span class="bs-badge bs-badge--sale">50% OFF</span>
+                  {% unless prod.handle contains 'skin-tint' or prod.handle contains 'liquid-blush' %}
+                    <span class="bs-badge bs-badge--sale">50% OFF</span>
+                  {% endunless %}
                   <a href="{{ prod.url }}" class="bs-img-link">
                     {% if prod.featured_image %}
                       <img src="{{ prod.featured_image | image_url: width: 700 }}" alt="{{ prod.title | escape }}">

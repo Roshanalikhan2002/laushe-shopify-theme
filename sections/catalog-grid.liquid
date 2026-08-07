@@ -100,7 +100,9 @@
                       or product.handle == 'liquid-blush' %}
                       <span class="card-badge card-badge--tag">BESTSELLER</span>
                     {% endif %}
-                    <span class="card-badge card-badge--sale">50% OFF</span>
+                    {% unless product.handle contains 'skin-tint' or product.handle contains 'liquid-blush' %}
+                      <span class="card-badge card-badge--sale">50% OFF</span>
+                    {% endunless %}
                     <a href="{{ product.url }}" class="card-img-link" aria-label="{{ display_title | escape }}">
                       {% if display_img != blank %}
                         <img src="{{ display_img }}" alt="{{ display_title | escape }}" class="card-img" loading="lazy" width="600" height="600">
@@ -158,7 +160,9 @@
           <div class="catalog-item" data-tags="{{ product_tags_string }}" {{ override_block.shopify_attributes }}>
             <article class="catalog-card blume-card">
               <div class="card-media">
-                <span class="card-badge card-badge--sale">50% OFF</span>
+                {% unless product.handle contains 'skin-tint' or product.handle contains 'liquid-blush' %}
+                  <span class="card-badge card-badge--sale">50% OFF</span>
+                {% endunless %}
                 <a href="{{ product.url }}" class="card-img-link" aria-label="{{ display_title | escape }}">
                   {% if display_img != blank %}
                     <img src="{{ display_img }}" alt="{{ display_title | escape }}" class="card-img" loading="lazy" width="600" height="600">

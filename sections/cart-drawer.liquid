@@ -306,9 +306,11 @@
           priceDisplay = '<span style="color: #2d7a4f; font-weight: 800;">FREE GIFT</span>';
         } else {
           var unitPrice = item.original_price || item.price || 0;
+          var handle = String(item.handle || item.url || '').toLowerCase();
+          var skipSale = handle.indexOf('skin-tint') !== -1 || handle.indexOf('liquid-blush') !== -1;
           var unitCompare = (item.compare_at_price && item.compare_at_price > unitPrice)
             ? item.compare_at_price
-            : (unitPrice > 0 ? unitPrice * 2 : 0);
+            : (!skipSale && unitPrice > 0 ? unitPrice * 2 : 0);
           var lineSale = item.final_line_price;
           var lineCompare = unitCompare * item.quantity;
           // Prefer Shopify line discount strikethrough when present; else 50% compare-at

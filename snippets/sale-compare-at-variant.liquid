@@ -1,9 +1,20 @@
 {%- comment -%}
-  Same as sale-compare-at but for a cart line item / variant.
-  Params: price (cents), compare_at_price (cents, optional)
+  Compare-at for a cart line / variant.
+  Params: price, compare_at_price, product_handle (optional)
+  Skin Tint & Liquid Blush never get a fake 2x discount.
 {%- endcomment -%}
+{%- liquid
+  assign skip_sale = false
+  if product_handle != blank
+    if product_handle contains 'skin-tint' or product_handle contains 'liquid-blush'
+      assign skip_sale = true
+    endif
+  endif
+-%}
 {%- if compare_at_price != blank and compare_at_price > price -%}
 {{- compare_at_price -}}
+{%- elsif skip_sale -%}
+0
 {%- elsif price > 0 -%}
 {{- price | times: 2 -}}
 {%- else -%}
