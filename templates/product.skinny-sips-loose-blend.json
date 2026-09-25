@@ -8,32 +8,46 @@
           "type": "accordion",
           "settings": {
             "title": "What is it?",
-            "content": "Skinny Sips Herbal Kehwa Loose Blend is Laushe's signature weight-loss kehwa in a pure, loose-leaf format — a Sunnah-blessed blend of natural herbs and botanicals crafted to boost metabolism, curb appetite, and support healthy fat loss, one soothing cup at a time."
+            "content": "Small Sips. Big Changes. Meet the loose-blend version of Laushe Skinny Sips — made for those who love their daily kehwa without the hassle of tea bags. A carefully blended herbal infusion made with natural botanicals, Skinny Sips is an easy addition to your everyday wellness routine. No tea bag needed. No complicated preparation. Just scoop, steep, strain and sip."
           }
         },
         "acc2": {
           "type": "accordion",
           "settings": {
             "title": "Who's it for",
-            "content": "Perfect for anyone who prefers a fresh, loose-leaf brew over sachets — ideal for managing weight naturally, reducing bloating, and staying energized throughout the day without artificial stimulants or crash diets."
+            "content": "Perfect for anyone who prefers traditional, loose-leaf brewing over tea bags — an easy way to add a warm herbal drink to your everyday wellness routine."
           }
         },
         "acc3": {
           "type": "accordion",
           "settings": {
-            "title": "Benefits",
-            "content": "Targets stubborn fat and helps burn calories faster\nBoosts metabolism to turn food into energy efficiently\nCleanses your body naturally by flushing out toxins\nSupports a flatter stomach and smoother digestion\nReduces cravings and helps you manage portions better\nWorks seamlessly as part of your daily health routine"
+            "title": "Don't Want Tea Bags?",
+            "content": "No problem — Skinny Sips is now available as a loose herbal blend. Instead of opening a tea bag, simply: 1 teaspoon, hot water, 2 minutes, strain, enjoy. Perfect for people who prefer a more traditional way of preparing their kehwa."
           }
         },
         "acc4": {
           "type": "accordion",
           "settings": {
-            "title": "How to use",
-            "content": "Each pouch contains 150g of loose herbal blend — roughly a 4-6 week supply\nAdd 1 heaped teaspoon per cup and steep in hot water for 5-7 minutes\nEnjoy after each main meal, up to 3 times daily for best results"
+            "title": "Product Details",
+            "content": "Product: Skinny Sips Herbal Kehwa\nFormat: Loose Herbal Blend\nNet Weight: 150g\nBrand: Laushe by Zahra\nPreparation: 1 teaspoon per cup\nSteeping Time: 2 minutes\nServing: Best enjoyed warm"
+          }
+        },
+        "acc5": {
+          "type": "accordion",
+          "settings": {
+            "title": "Storage",
+            "content": "Store in a cool, dry place away from direct sunlight and moisture. Keep the pouch tightly sealed after every use to preserve freshness."
+          }
+        },
+        "acc6": {
+          "type": "accordion",
+          "settings": {
+            "title": "Important Note",
+            "content": "Skinny Sips is a herbal beverage intended to complement a balanced lifestyle. It is not a substitute for a balanced diet or medical treatment. If you are pregnant, breastfeeding, taking medication, or have an existing medical condition, consult your healthcare professional before use."
           }
         }
       },
-      "block_order": ["acc1", "acc2", "acc3", "acc4"],
+      "block_order": ["acc1", "acc2", "acc3", "acc4", "acc5", "acc6"],
       "settings": {
         "promo_banner": "Loose Leaf. Pure Herbal Blend.",
         "stars_count": "50,000+ verified 5-star reviews for Laushe products",
@@ -48,66 +62,58 @@
         "r1": {
           "type": "reason",
           "settings": {
-            "icon": "Leaf",
-            "title": "100% Pure & Natural",
-            "text": "No fillers, no artificial additives - just clean, Sunnah-blessed ingredients your body recognizes."
+            "icon": "🌿",
+            "title": "100% Natural Ingredients",
+            "text": "A blend of carefully selected herbs and botanicals."
           }
         },
         "r2": {
           "type": "reason",
           "settings": {
-            "icon": "Bolt",
-            "title": "Steady Daily Energy",
-            "text": "Support calm, lasting vitality through the day - without stimulants or the afternoon crash."
+            "icon": "☕",
+            "title": "Loose Herbal Blend",
+            "text": "Prefer traditional brewing over tea bags? Simply use a teaspoon of the blend directly in hot water."
           }
         },
         "r3": {
           "type": "reason",
           "settings": {
-            "icon": "Heart",
-            "title": "Gut-Friendly Nutrition",
-            "text": "Crafted to support digestion and nutrient absorption as part of your everyday wellness ritual."
+            "icon": "✨",
+            "title": "Easy to Prepare",
+            "text": "Your kehwa is ready in just a few minutes."
           }
         },
         "r4": {
           "type": "reason",
           "settings": {
-            "icon": "Spark",
-            "title": "Visible, Feelable Results",
-            "text": "Thousands of customers report better energy, digestion, and overall balance with consistent use."
+            "icon": "🌱",
+            "title": "A Simple Daily Ritual",
+            "text": "An easy way to add a warm herbal drink to your everyday routine."
           }
         },
         "r5": {
           "type": "reason",
           "settings": {
-            "icon": "Shield",
-            "title": "Tested for Purity",
-            "text": "Quality you can trust - thoughtfully sourced and made to Laushe purity standards."
-          }
-        },
-        "r6": {
-          "type": "reason",
-          "settings": {
-            "icon": "Moon",
-            "title": "Sunnah-Blessed Ritual",
-            "text": "Rooted in tradition and made for modern life - a simple daily habit that fits your routine."
+            "icon": "💚",
+            "title": "Supports Digestion & Wellness",
+            "text": "Made with traditional herbal ingredients commonly used as part of a balanced wellness routine."
           }
         }
       },
-      "block_order": ["r1", "r2", "r3", "r4", "r5", "r6"],
+      "block_order": ["r1", "r2", "r3", "r4", "r5"],
       "settings": {
         "heading_color": "#dcb360",
         "accent_color": "#007E40",
-        "heading": "Six Reasons to Choose Laushe",
+        "heading": "Why You'll Love Skinny Sips",
         "bg_color": "#E8F3ED",
-        "subheading": "Pure, Sunnah-blessed wellness made for everyday life. Here is why thousands trust Laushe as their daily ritual."
+        "subheading": ""
       }
     },
     "benefits": {
       "type": "benefits-grid",
       "settings": {
-        "heading": "A natural herbal tea that supports fat burning, boosts metabolism, and promotes healthy weight loss, one loose-leaf cup at a time.",
-        "subheading": "Supported by nature, backed by tradition.",
+        "heading": "A carefully blended herbal infusion made with natural botanicals — an easy addition to your everyday wellness routine.",
+        "subheading": "No tea bag needed. No complicated preparation. Just scoop, steep, strain and sip.",
         "center_image": ""
       }
     },
@@ -131,14 +137,14 @@
         "b3": {
           "type": "ingredient",
           "settings": {
-            "title": "Cinnamon Stick",
+            "title": "Cinnamon",
             "desc": "Helps balance blood sugar and reduce belly fat naturally"
           }
         },
         "b4": {
           "type": "ingredient",
           "settings": {
-            "title": "Black Seeds (Kalonji)",
+            "title": "Black Seeds / Kalonji",
             "desc": "Enhances fat-burning and strengthens your immune system"
           }
         },
@@ -159,17 +165,17 @@
       },
       "block_order": ["b1", "b2", "b3", "b4", "b5", "b6"],
       "settings": {
-        "headline": "Pure, Natural Herbal Ingredients"
+        "headline": "What's Inside?"
       }
     },
     "usage": {
       "type": "usage-steps",
       "settings": {
-        "heading": "Your Daily Loose-Leaf Ritual",
-        "step1_text": "Each pouch contains 150g of loose herbal blend — roughly a 4-6 week supply",
-        "step2_text": "Add 1 heaped teaspoon per cup and steep in hot water for 5-7 minutes",
-        "step3_text": "Enjoy after each main meal, up to 3 times daily for best results",
-        "step4_text": ""
+        "heading": "Your Kehwa in 3 Simple Steps",
+        "step1_text": "Scoop — Take 1 teaspoon of Skinny Sips.",
+        "step2_text": "Steep — Add it to a cup of hot water and let it steep for 2 minutes.",
+        "step3_text": "Strain & Sip — Strain the herbs and enjoy your freshly prepared Skinny Sips kehwa warm.",
+        "step4_text": "Pro tip: Add a little honey if you prefer a naturally sweeter taste."
       }
     },
     "comparison": {
@@ -235,14 +241,14 @@
           "type": "faq",
           "settings": {
             "question": "How should I store the loose blend?",
-            "answer": "Keep the pouch sealed in a cool, dry place away from direct sunlight to preserve freshness and potency for up to 12 months."
+            "answer": "Store in a cool, dry place away from direct sunlight and moisture. Keep the pouch tightly sealed after every use to preserve freshness."
           }
         },
         "faq_4": {
           "type": "faq",
           "settings": {
             "question": "Is it safe for daily use?",
-            "answer": "Yes, it's made with natural herbal ingredients and is safe for regular use when taken as directed. If you have any medical conditions or are pregnant, it's best to consult your doctor before use."
+            "answer": "Yes, it's made with natural herbal ingredients and is safe for regular use when taken as directed. If you are pregnant, breastfeeding, taking medication, or have an existing medical condition, consult your healthcare professional before use."
           }
         },
         "faq_5": {
@@ -263,7 +269,7 @@
     "final_cta": {
       "type": "final-cta",
       "settings": {
-        "headline": "Start Your Loose-Leaf Slimming Ritual Today",
+        "headline": "Small Sips. Big Changes.",
         "subtext": "Steep your way to a healthier, lighter you with Laushe's Skinny Sips Herbal Kehwa Loose Blend — pure, natural, and Sunnah-blessed.",
         "cta_text": "Buy Now",
         "cta_url": "",
