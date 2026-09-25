@@ -62,8 +62,8 @@
         }
       },
       "block_order": [
-        "bs_skinny_sips",
         "bs_hair_oil",
+        "bs_skinny_sips",
         "bs_skin_tint",
         "bs_liquid_blush"
       ],
