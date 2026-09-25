@@ -1,0 +1,284 @@
+{
+  "layout": "theme",
+  "sections": {
+    "product_main": {
+      "type": "product-ag1-template",
+      "blocks": {
+        "acc1": {
+          "type": "accordion",
+          "settings": {
+            "title": "What is it?",
+            "content": "Skinny Sips Herbal Kehwa Loose Blend is Laushe's signature weight-loss kehwa in a pure, loose-leaf format — a Sunnah-blessed blend of natural herbs and botanicals crafted to boost metabolism, curb appetite, and support healthy fat loss, one soothing cup at a time."
+          }
+        },
+        "acc2": {
+          "type": "accordion",
+          "settings": {
+            "title": "Who's it for",
+            "content": "Perfect for anyone who prefers a fresh, loose-leaf brew over sachets — ideal for managing weight naturally, reducing bloating, and staying energized throughout the day without artificial stimulants or crash diets."
+          }
+        },
+        "acc3": {
+          "type": "accordion",
+          "settings": {
+            "title": "Benefits",
+            "content": "Targets stubborn fat and helps burn calories faster\nBoosts metabolism to turn food into energy efficiently\nCleanses your body naturally by flushing out toxins\nSupports a flatter stomach and smoother digestion\nReduces cravings and helps you manage portions better\nWorks seamlessly as part of your daily health routine"
+          }
+        },
+        "acc4": {
+          "type": "accordion",
+          "settings": {
+            "title": "How to use",
+            "content": "Each pouch contains 150g of loose herbal blend — roughly a 4-6 week supply\nAdd 1 heaped teaspoon per cup and steep in hot water for 5-7 minutes\nEnjoy after each main meal, up to 3 times daily for best results"
+          }
+        }
+      },
+      "block_order": ["acc1", "acc2", "acc3", "acc4"],
+      "settings": {
+        "promo_banner": "Loose Leaf. Pure Herbal Blend.",
+        "stars_count": "50,000+ verified 5-star reviews for Laushe products",
+        "sub_discount": 0,
+        "custom_one_time_price": "",
+        "custom_sub_price": ""
+      }
+    },
+    "product_reasons": {
+      "type": "product-reasons",
+      "blocks": {
+        "r1": {
+          "type": "reason",
+          "settings": {
+            "icon": "Leaf",
+            "title": "100% Pure & Natural",
+            "text": "No fillers, no artificial additives - just clean, Sunnah-blessed ingredients your body recognizes."
+          }
+        },
+        "r2": {
+          "type": "reason",
+          "settings": {
+            "icon": "Bolt",
+            "title": "Steady Daily Energy",
+            "text": "Support calm, lasting vitality through the day - without stimulants or the afternoon crash."
+          }
+        },
+        "r3": {
+          "type": "reason",
+          "settings": {
+            "icon": "Heart",
+            "title": "Gut-Friendly Nutrition",
+            "text": "Crafted to support digestion and nutrient absorption as part of your everyday wellness ritual."
+          }
+        },
+        "r4": {
+          "type": "reason",
+          "settings": {
+            "icon": "Spark",
+            "title": "Visible, Feelable Results",
+            "text": "Thousands of customers report better energy, digestion, and overall balance with consistent use."
+          }
+        },
+        "r5": {
+          "type": "reason",
+          "settings": {
+            "icon": "Shield",
+            "title": "Tested for Purity",
+            "text": "Quality you can trust - thoughtfully sourced and made to Laushe purity standards."
+          }
+        },
+        "r6": {
+          "type": "reason",
+          "settings": {
+            "icon": "Moon",
+            "title": "Sunnah-Blessed Ritual",
+            "text": "Rooted in tradition and made for modern life - a simple daily habit that fits your routine."
+          }
+        }
+      },
+      "block_order": ["r1", "r2", "r3", "r4", "r5", "r6"],
+      "settings": {
+        "heading_color": "#dcb360",
+        "accent_color": "#007E40",
+        "heading": "Six Reasons to Choose Laushe",
+        "bg_color": "#E8F3ED",
+        "subheading": "Pure, Sunnah-blessed wellness made for everyday life. Here is why thousands trust Laushe as their daily ritual."
+      }
+    },
+    "benefits": {
+      "type": "benefits-grid",
+      "settings": {
+        "heading": "A natural herbal tea that supports fat burning, boosts metabolism, and promotes healthy weight loss, one loose-leaf cup at a time.",
+        "subheading": "Supported by nature, backed by tradition.",
+        "center_image": ""
+      }
+    },
+    "ingredients": {
+      "type": "ingredients-grid",
+      "blocks": {
+        "b1": {
+          "type": "ingredient",
+          "settings": {
+            "title": "Dried Hibiscus Flower",
+            "desc": "Supports fat management, aids digestion, and promotes liver health"
+          }
+        },
+        "b2": {
+          "type": "ingredient",
+          "settings": {
+            "title": "Dried Ginger",
+            "desc": "Boosts metabolism, eases inflammation, and helps control appetite"
+          }
+        },
+        "b3": {
+          "type": "ingredient",
+          "settings": {
+            "title": "Cinnamon Stick",
+            "desc": "Helps balance blood sugar and reduce belly fat naturally"
+          }
+        },
+        "b4": {
+          "type": "ingredient",
+          "settings": {
+            "title": "Black Seeds (Kalonji)",
+            "desc": "Enhances fat-burning and strengthens your immune system"
+          }
+        },
+        "b5": {
+          "type": "ingredient",
+          "settings": {
+            "title": "Cumin Seeds",
+            "desc": "Improves digestion, reduces bloating, and stimulates metabolism"
+          }
+        },
+        "b6": {
+          "type": "ingredient",
+          "settings": {
+            "title": "Lemongrass",
+            "desc": "Detoxifies gently and supports healthy weight management"
+          }
+        }
+      },
+      "block_order": ["b1", "b2", "b3", "b4", "b5", "b6"],
+      "settings": {
+        "headline": "Pure, Natural Herbal Ingredients"
+      }
+    },
+    "usage": {
+      "type": "usage-steps",
+      "settings": {
+        "heading": "Your Daily Loose-Leaf Ritual",
+        "step1_text": "Each pouch contains 150g of loose herbal blend — roughly a 4-6 week supply",
+        "step2_text": "Add 1 heaped teaspoon per cup and steep in hot water for 5-7 minutes",
+        "step3_text": "Enjoy after each main meal, up to 3 times daily for best results",
+        "step4_text": ""
+      }
+    },
+    "comparison": {
+      "type": "laushe-comparison-table",
+      "blocks": {
+        "row_1": {
+          "type": "row",
+          "settings": { "feature": "100% Natural Ingredients", "laushe": true, "generic": false }
+        },
+        "row_2": {
+          "type": "row",
+          "settings": { "feature": "Sunnah-Blessed Formulation", "laushe": true, "generic": false }
+        },
+        "row_3": {
+          "type": "row",
+          "settings": { "feature": "No Artificial Additives", "laushe": true, "generic": false }
+        },
+        "row_4": {
+          "type": "row",
+          "settings": { "feature": "Scientifically Verified", "laushe": true, "generic": false }
+        },
+        "row_5": {
+          "type": "row",
+          "settings": { "feature": "Ethically Sourced", "laushe": true, "generic": false }
+        },
+        "row_6": {
+          "type": "row",
+          "settings": { "feature": "Money-Back Guarantee", "laushe": true, "generic": false }
+        },
+        "row_7": {
+          "type": "row",
+          "settings": { "feature": "Fresh & Sealed Packaging", "laushe": true, "generic": false }
+        },
+        "row_8": {
+          "type": "row",
+          "settings": { "feature": "Fair & Transparent Pricing", "laushe": true, "generic": false }
+        }
+      },
+      "block_order": ["row_1", "row_2", "row_3", "row_4", "row_5", "row_6", "row_7", "row_8"],
+      "settings": {
+        "heading": "Skinny Sips Loose Blend vs. Other Brands",
+        "bg_color": "#FEF9E1"
+      }
+    },
+    "faq": {
+      "type": "faq-accordion",
+      "blocks": {
+        "faq_1": {
+          "type": "faq",
+          "settings": {
+            "question": "Can I use Skinny Sips Loose Blend without dieting?",
+            "answer": "Yes, it's designed to support your body naturally, even without strict dieting. However, combining it with a balanced diet and an active lifestyle can help you achieve faster and more noticeable results."
+          }
+        },
+        "faq_2": {
+          "type": "faq",
+          "settings": {
+            "question": "How is the loose blend different from the sachet version?",
+            "answer": "Both use the same herbal recipe. The loose blend lets you control the strength of each cup and brew fresh leaves directly, while sachets offer pre-measured convenience."
+          }
+        },
+        "faq_3": {
+          "type": "faq",
+          "settings": {
+            "question": "How should I store the loose blend?",
+            "answer": "Keep the pouch sealed in a cool, dry place away from direct sunlight to preserve freshness and potency for up to 12 months."
+          }
+        },
+        "faq_4": {
+          "type": "faq",
+          "settings": {
+            "question": "Is it safe for daily use?",
+            "answer": "Yes, it's made with natural herbal ingredients and is safe for regular use when taken as directed. If you have any medical conditions or are pregnant, it's best to consult your doctor before use."
+          }
+        },
+        "faq_5": {
+          "type": "faq",
+          "settings": {
+            "question": "What results can I expect with regular use?",
+            "answer": "With consistent use, many users notice reduced bloating, better digestion, and gradual weight loss within a few weeks. Continued use supports long-term results and a healthier routine."
+          }
+        }
+      },
+      "block_order": ["faq_1", "faq_2", "faq_3", "faq_4", "faq_5"],
+      "settings": {
+        "subtitle": "QUESTIONS & ANSWERS",
+        "title": "Frequently Asked Questions",
+        "bg_color": "#FEF9E1"
+      }
+    },
+    "final_cta": {
+      "type": "final-cta",
+      "settings": {
+        "headline": "Start Your Loose-Leaf Slimming Ritual Today",
+        "subtext": "Steep your way to a healthier, lighter you with Laushe's Skinny Sips Herbal Kehwa Loose Blend — pure, natural, and Sunnah-blessed.",
+        "cta_text": "Buy Now",
+        "cta_url": "",
+        "bg_color": "#007E40"
+      }
+    }
+  },
+  "order": [
+    "product_main",
+    "product_reasons",
+    "benefits",
+    "ingredients",
+    "usage",
+    "comparison",
+    "faq",
+    "final_cta"
+  ]
+}
